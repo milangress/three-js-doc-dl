@@ -1,0 +1,147 @@
+<!DOCTYPE html><html><head><title>WebGLProgram – three.js docs</title></head><body><body>
+		<h1>WebGLProgram</h1>
+
+		<p class=/"desc/">Constructor for the GLSL program sent to vertex and fragment shaders, including default uniforms and attributes.</p>
+
+		<h2>Built-in uniforms and attributes</h2>
+
+		<h3>Vertex shader (unconditional):</h3>
+		<div>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// = object.matrixWorld</span><span class=/"pln/">
+uniform mat4 modelMatrix</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"com/">// = camera.matrixWorldInverse * object.matrixWorld</span><span class=/"pln/">
+uniform mat4 modelViewMatrix</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"com/">// = camera.projectionMatrix</span><span class=/"pln/">
+uniform mat4 projectionMatrix</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"com/">// = camera.matrixWorldInverse</span><span class=/"pln/">
+uniform mat4 viewMatrix</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"com/">// = inverse transpose of modelViewMatrix</span><span class=/"pln/">
+uniform mat3 normalMatrix</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"com/">// = camera position in world space</span><span class=/"pln/">
+uniform vec3 cameraPosition</span><span class=/"pun/">;</span></code>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// default vertex attributes provided by BufferGeometry</span><span class=/"pln/">
+attribute vec3 position</span><span class=/"pun/">;</span><span class=/"pln/">
+attribute vec3 normal</span><span class=/"pun/">;</span><span class=/"pln/">
+attribute vec2 uv</span><span class=/"pun/">;</span></code>
+		<p>
+		Note that you can therefore calculate the position of a vertex in the vertex shader by:
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">gl_Position </span><span class=/"pun/">=</span><span class=/"pln/"> projectionMatrix </span><span class=/"pun/">*</span><span class=/"pln/"> modelViewMatrix </span><span class=/"pun/">*</span><span class=/"pln/"> vec4</span><span class=/"pun/">(</span><span class=/"pln/"> position</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1.0</span><span class=/"pln/"> </span><span class=/"pun/">);</span></code>
+		or alternatively
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">gl_Position </span><span class=/"pun/">=</span><span class=/"pln/"> projectionMatrix </span><span class=/"pun/">*</span><span class=/"pln/"> viewMatrix </span><span class=/"pun/">*</span><span class=/"pln/"> modelMatrix </span><span class=/"pun/">*</span><span class=/"pln/"> vec4</span><span class=/"pun/">(</span><span class=/"pln/"> position</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1.0</span><span class=/"pln/"> </span><span class=/"pun/">);</span></code>
+		</p>
+		</div>
+
+		<h3>Vertex shader (conditional):</h3>
+		<div>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">#ifdef</span><span class=/"pln/"> USE_TANGENT
+	attribute vec4 tangent</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"com/">#endif</span><span class=/"pln/">
+</span><span class=/"com/">#if defined( USE_COLOR_ALPHA )</span><span class=/"pln/">
+	</span><span class=/"com/">// vertex color attribute with alpha</span><span class=/"pln/">
+	attribute vec4 color</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"com/">#elif</span><span class=/"pln/"> </span><span class=/"kwd/">defined</span><span class=/"pun/">(</span><span class=/"pln/"> USE_COLOR </span><span class=/"pun/">)</span><span class=/"pln/">
+	</span><span class=/"com/">// vertex color attribute</span><span class=/"pln/">
+	attribute vec3 color</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"com/">#endif</span></code>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">#ifdef</span><span class=/"pln/"> USE_MORPHTARGETS
+
+	attribute vec3 morphTarget0</span><span class=/"pun/">;</span><span class=/"pln/">
+	attribute vec3 morphTarget1</span><span class=/"pun/">;</span><span class=/"pln/">
+	attribute vec3 morphTarget2</span><span class=/"pun/">;</span><span class=/"pln/">
+	attribute vec3 morphTarget3</span><span class=/"pun/">;</span><span class=/"pln/">
+
+	</span><span class=/"com/">#ifdef</span><span class=/"pln/"> USE_MORPHNORMALS
+
+		attribute vec3 morphNormal0</span><span class=/"pun/">;</span><span class=/"pln/">
+		attribute vec3 morphNormal1</span><span class=/"pun/">;</span><span class=/"pln/">
+		attribute vec3 morphNormal2</span><span class=/"pun/">;</span><span class=/"pln/">
+		attribute vec3 morphNormal3</span><span class=/"pun/">;</span><span class=/"pln/">
+
+	</span><span class=/"com/">#else</span><span class=/"pln/">
+
+		attribute vec3 morphTarget4</span><span class=/"pun/">;</span><span class=/"pln/">
+		attribute vec3 morphTarget5</span><span class=/"pun/">;</span><span class=/"pln/">
+		attribute vec3 morphTarget6</span><span class=/"pun/">;</span><span class=/"pln/">
+		attribute vec3 morphTarget7</span><span class=/"pun/">;</span><span class=/"pln/">
+
+	</span><span class=/"com/">#endif</span><span class=/"pln/">
+</span><span class=/"com/">#endif</span></code>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">#ifdef</span><span class=/"pln/"> USE_SKINNING
+	attribute vec4 skinIndex</span><span class=/"pun/">;</span><span class=/"pln/">
+	attribute vec4 skinWeight</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"com/">#endif</span></code>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">#ifdef</span><span class=/"pln/"> USE_INSTANCING
+	</span><span class=/"com/">// Note that modelViewMatrix is not set when rendering an instanced model,</span><span class=/"pln/">
+	</span><span class=/"com/">// but can be calculated from viewMatrix * modelMatrix.</span><span class=/"pln/">
+	</span><span class=/"com/">//</span><span class=/"pln/">
+	</span><span class=/"com/">// Basic Usage:</span><span class=/"pln/">
+	</span><span class=/"com/">//   gl_Position = projectionMatrix * viewMatrix * modelMatrix * instanceMatrix * vec4(position, 1.0);</span><span class=/"pln/">
+	attribute mat4 instanceMatrix</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"com/">#endif</span></code>
+		</div>
+
+		<h3>Fragment shader:</h3>
+		<div>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">uniform mat4 viewMatrix</span><span class=/"pun/">;</span><span class=/"pln/">
+uniform vec3 cameraPosition</span><span class=/"pun/">;</span></code>
+		</div>
+
+
+		<h2>Constructor</h2>
+
+		<h3>WebGLProgram( renderer : <a class=/"param links/" data-fragment=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGLRenderer</a>, cacheKey : <span class=/"param/">String</span>, parameters : <span class=/"param/">Object</span> )</h3>
+		<p>For parameters see <a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGLRenderer</a>.</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.name/" target=/"_parent/" title=/"WebGLProgram.name/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.name/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.name/" id=/"name/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.name/">name</a>  : <span class=/"param/">String</span></h3>
+		<p>The name of the respective shader program.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.id/" target=/"_parent/" title=/"WebGLProgram.id/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.id/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.id/" id=/"id/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.id/">id</a>  : <span class=/"param/">String</span></h3>
+		<p>The identifier of this instance.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.cacheKey/" target=/"_parent/" title=/"WebGLProgram.cacheKey/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.cacheKey/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.cacheKey/" id=/"cacheKey/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.cacheKey/">cacheKey</a>  : <span class=/"param/">String</span></h3>
+		<p>This key enables the reusability of a single WebGLProgram for different materials.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.usedTimes/" target=/"_parent/" title=/"WebGLProgram.usedTimes/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.usedTimes/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.usedTimes/" id=/"usedTimes/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.usedTimes/">usedTimes</a>  : <span class=/"param/">Integer</span></h3>
+		<p>How many times this instance is used for rendering render items.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.program/" target=/"_parent/" title=/"WebGLProgram.program/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.program/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.program/" id=/"program/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.program/">program</a>  : <span class=/"param/">Object</span></h3>
+		<p>The actual shader program.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.vertexShader/" target=/"_parent/" title=/"WebGLProgram.vertexShader/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.vertexShader/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.vertexShader/" id=/"vertexShader/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.vertexShader/">vertexShader</a>  : <a class=/"param links/" data-fragment=/"WebGLShader/">WebGLShader</a></h3>
+		<p>The vertex shader.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.fragmentShader/" target=/"_parent/" title=/"WebGLProgram.fragmentShader/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.fragmentShader/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.fragmentShader/" id=/"fragmentShader/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.fragmentShader/">fragmentShader</a>  : <a class=/"param links/" data-fragment=/"WebGLShader/">WebGLShader</a></h3>
+		<p>The fragment shader.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.getUniforms/" target=/"_parent/" title=/"WebGLProgram.getUniforms/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.getUniforms/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.getUniforms/" id=/"getUniforms/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.getUniforms/">getUniforms</a> () : <span class=/"param/">Object</span></h3>
+		<p>
+		Returns a name-value mapping of all active uniform locations.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.getAttributes/" target=/"_parent/" title=/"WebGLProgram.getAttributes/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.getAttributes/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.getAttributes/" id=/"getAttributes/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.getAttributes/">getAttributes</a> () : <span class=/"param/">Object</span></h3>
+		<p>
+		Returns a name-value mapping of all active vertex attribute locations.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"WebGLProgram.destroy/" target=/"_parent/" title=/"WebGLProgram.destroy/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.destroy/">#</a> .<a class=/"links/" data-fragment=/"WebGLProgram.destroy/" id=/"destroy/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram.destroy/">destroy</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+		Destroys an instance of WebGLProgram.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/renderers/webgl/WebGLProgram.js/" target=/"_blank/">src/renderers/webgl/WebGLProgram.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

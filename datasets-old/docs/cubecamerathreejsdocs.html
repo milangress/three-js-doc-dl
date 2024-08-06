@@ -1,0 +1,71 @@
+<!DOCTYPE html><html><head><title>CubeCamera – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> →
+
+		<h1>CubeCamera</h1>
+
+		<p class="desc">
+			Creates 6 cameras that render to a <a class="links" data-fragment="WebGLCubeRenderTarget" title="WebGLCubeRenderTarget" href="./index.html#api/en/renderers/WebGLCubeRenderTarget">WebGLCubeRenderTarget</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="com">// Create cube render target</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> cubeRenderTarget </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">WebGLCubeRenderTarget</span><span class="pun">(</span><span class="pln"> </span><span class="lit">128</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> generateMipmaps</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"> minFilter</span><span class="pun">:</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">LinearMipmapLinearFilter</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Create cube camera</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> cubeCamera </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">CubeCamera</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">100000</span><span class="pun">,</span><span class="pln"> cubeRenderTarget </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> cubeCamera </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Create car</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> chromeMaterial </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">MeshLambertMaterial</span><span class="pun">(</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> color</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0xffffff</span><span class="pun">,</span><span class="pln"> envMap</span><span class="pun">:</span><span class="pln"> cubeRenderTarget</span><span class="pun">.</span><span class="pln">texture </span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> car </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Mesh</span><span class="pun">(</span><span class="pln"> carGeometry</span><span class="pun">,</span><span class="pln"> chromeMaterial </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> car </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Update the render target cube</span><span class="pln">
+car</span><span class="pun">.</span><span class="pln">visible </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+cubeCamera</span><span class="pun">.</span><span class="pln">position</span><span class="pun">.</span><span class="pln">copy</span><span class="pun">(</span><span class="pln"> car</span><span class="pun">.</span><span class="pln">position </span><span class="pun">);</span><span class="pln">
+cubeCamera</span><span class="pun">.</span><span class="pln">update</span><span class="pun">(</span><span class="pln"> renderer</span><span class="pun">,</span><span class="pln"> scene </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Render the scene</span><span class="pln">
+car</span><span class="pun">.</span><span class="pln">visible </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+renderer</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln"> scene</span><span class="pun">,</span><span class="pln"> camera </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href="../examples/#webgl_materials_cubemap_dynamic" target="_blank">materials / cubemap / dynamic </a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>CubeCamera( near : <span class="param">Number</span>, far : <span class="param">Number</span>, renderTarget : <a class="param links" data-fragment="WebGLCubeRenderTarget" href="./index.html#api/en/renderers/WebGLCubeRenderTarget">WebGLCubeRenderTarget</a> )</h3>
+		<p>
+			near -- The near clipping distance. <br>
+			far -- The far clipping distance. <br>
+			renderTarget -- The destination cube render target.
+		</p>
+
+		<p>Constructs a CubeCamera that contains 6 <a class="links" data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="./index.html#api/en/cameras/PerspectiveCamera">PerspectiveCameras</a> that render to a <a class="links" data-fragment="WebGLCubeRenderTarget" title="WebGLCubeRenderTarget" href="./index.html#api/en/renderers/WebGLCubeRenderTarget">WebGLCubeRenderTarget</a>.</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="CubeCamera.renderTarget" target="_parent" title="CubeCamera.renderTarget" href="./index.html#api/en/cameras/CubeCamera.renderTarget">#</a> .<a class="links" data-fragment="CubeCamera.renderTarget" id="renderTarget" href="./index.html#api/en/cameras/CubeCamera.renderTarget">renderTarget</a>  : <a class="param links" data-fragment="WebGLCubeRenderTarget" href="./index.html#api/en/renderers/WebGLCubeRenderTarget">WebGLCubeRenderTarget</a></h3>
+		<p>The destination cube render target.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="CubeCamera.update" target="_parent" title="CubeCamera.update" href="./index.html#api/en/cameras/CubeCamera.update">#</a> .<a class="links" data-fragment="CubeCamera.update" id="update" href="./index.html#api/en/cameras/CubeCamera.update">update</a> ( renderer : <a class="param links" data-fragment="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGLRenderer</a>, scene : <a class="param links" data-fragment="Scene" href="./index.html#api/en/scenes/Scene">Scene</a> ) : <span class="param">undefined</span></h3>
+		<p>
+			renderer -- The current WebGL renderer <br>
+			scene -- The current scene
+		</p>
+		<p>Call this to update the <a class="links" data-fragment="CubeCamera.renderTarget" title="CubeCamera.renderTarget" href="./index.html#api/en/cameras/CubeCamera.renderTarget">renderTarget</a>.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/cameras/CubeCamera.js" target="_blank">src/cameras/CubeCamera.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html><html><head><title>AnimationObjectGroup – three.js docs</title></head><body><body>
+		<h1>AnimationObjectGroup</h1>
+
+		<p class="desc">
+			A group of objects that receives a shared animation state.<br><br>
+
+			For an overview of the different elements of the three.js animation system
+			see the "Animation System" article in the "Next Steps" section of the
+			manual.
+		</p>
+
+		<h2>Usage:</h2>
+
+		<p class="desc">
+			Add objects you would otherwise pass as 'root' to the constructor or the
+			<a class="links" data-fragment="AnimationMixer.clipAction" title="AnimationMixer.clipAction" href="./index.html#api/en/animation/AnimationMixer.clipAction">clipAction</a> method of <a class="links" data-fragment="AnimationMixer" title="AnimationMixer" href="./index.html#api/en/animation/AnimationMixer">AnimationMixer</a> and instead pass this object as 'root'.<br><br>
+
+			Note that objects of this class appear as one object to the mixer, so
+			cache control of the individual objects must be done on the group.
+		</p>
+
+		<h2>Limitations</h2>
+		<p class="desc">
+			The animated properties must be compatible among all objects in the
+			group.<br><br>
+
+			A single property can either be controlled through a target group or
+			directly, but not both.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			AnimationObjectGroup( obj1 : <span class="param">Object</span>, obj2 : <span class="param">Object</span>, obj3 : <span class="param">Object</span>, ...)
+		</h3>
+		<p>
+			<a class="links" data-fragment="Object" title="Object">obj</a> - an arbitrary number of meshes that share the same
+			animation state.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="AnimationObjectGroup.isAnimationObjectGroup" target="_parent" title="AnimationObjectGroup.isAnimationObjectGroup" href="./index.html#api/en/animation/AnimationObjectGroup.isAnimationObjectGroup">#</a> .<a class="links" data-fragment="AnimationObjectGroup.isAnimationObjectGroup" id="isAnimationObjectGroup" href="./index.html#api/en/animation/AnimationObjectGroup.isAnimationObjectGroup">isAnimationObjectGroup</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type AnimationObjectGroup.</p>
+
+		<h3><a class="permalink links" data-fragment="AnimationObjectGroup.stats" target="_parent" title="AnimationObjectGroup.stats" href="./index.html#api/en/animation/AnimationObjectGroup.stats">#</a> .<a class="links" data-fragment="AnimationObjectGroup.stats" id="stats" href="./index.html#api/en/animation/AnimationObjectGroup.stats">stats</a>  : <span class="param">Object</span></h3>
+		<p>
+			An object that contains some informations of this <code class="inline prettyprint" translate="no"><span class="typ">AnimationObjectGroup</span></code>
+			(total number, number in use, number of bindings per object)
+		</p>
+
+		<h3><a class="permalink links" data-fragment="AnimationObjectGroup.uuid" target="_parent" title="AnimationObjectGroup.uuid" href="./index.html#api/en/animation/AnimationObjectGroup.uuid">#</a> .<a class="links" data-fragment="AnimationObjectGroup.uuid" id="uuid" href="./index.html#api/en/animation/AnimationObjectGroup.uuid">uuid</a>  : <span class="param">String</span></h3>
+		<p>
+			The <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a>
+			of this <code class="inline prettyprint" translate="no"><span class="typ">AnimationObjectGroup</span></code>. It gets automatically assigned and
+			shouldn't be edited.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="AnimationObjectGroup.add" target="_parent" title="AnimationObjectGroup.add" href="./index.html#api/en/animation/AnimationObjectGroup.add">#</a> .<a class="links" data-fragment="AnimationObjectGroup.add" id="add" href="./index.html#api/en/animation/AnimationObjectGroup.add">add</a> ( obj1 : <span class="param">Object</span>, obj2 : <span class="param">Object</span>, obj3 : <span class="param">Object</span>, ... ) : <span class="param">undefined</span>
+		</h3>
+		<p>Adds an arbitrary number of objects to this <code class="inline prettyprint" translate="no"><span class="typ">AnimationObjectGroup</span></code>.</p>
+
+		<h3><a class="permalink links" data-fragment="AnimationObjectGroup.remove" target="_parent" title="AnimationObjectGroup.remove" href="./index.html#api/en/animation/AnimationObjectGroup.remove">#</a> .<a class="links" data-fragment="AnimationObjectGroup.remove" id="remove" href="./index.html#api/en/animation/AnimationObjectGroup.remove">remove</a> ( obj1 : <span class="param">Object</span>, obj2 : <span class="param">Object</span>, obj3 : <span class="param">Object</span>, ... ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			Removes an arbitrary number of objects from this <code class="inline prettyprint" translate="no"><span class="typ">AnimationObjectGroup</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="AnimationObjectGroup.uncache" target="_parent" title="AnimationObjectGroup.uncache" href="./index.html#api/en/animation/AnimationObjectGroup.uncache">#</a> .<a class="links" data-fragment="AnimationObjectGroup.uncache" id="uncache" href="./index.html#api/en/animation/AnimationObjectGroup.uncache">uncache</a> ( obj1 : <span class="param">Object</span>, obj2 : <span class="param">Object</span>, obj3 : <span class="param">Object</span>, ... ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			Deallocates all memory resources for the passed objects of this
+			<code class="inline prettyprint" translate="no"><span class="typ">AnimationObjectGroup</span></code>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/animation/AnimationObjectGroup.js" target="_blank">src/animation/AnimationObjectGroup.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

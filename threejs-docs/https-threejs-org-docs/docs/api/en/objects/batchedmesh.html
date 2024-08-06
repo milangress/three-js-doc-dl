@@ -1,0 +1,278 @@
+<!DOCTYPE html><html><head><title>BatchedMesh – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a> →
+
+		<h1>BatchedMesh</h1>
+
+		<p class=/"desc/">
+			A special version of <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a> with multi draw batch rendering support. Use
+			BatchedMesh if you have to render a large number of objects with the same
+			material but with different world transformations. The usage of BatchedMesh will
+			help you to reduce the number of draw calls and thus improve the overall
+			rendering performance in your application.
+
+			<br>
+			<br>
+
+			If the <a href=/"https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_multi_draw/" target=/"_blank/">WEBGL_multi_draw extension</a> is
+			not supported then a less performant fallback is used.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> box </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">BoxGeometry</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sphere </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">SphereGeometry</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">12</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">12</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> material </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">MeshBasicMaterial</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> color</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">0x00ff00</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// initialize and add geometries into the batched mesh</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> batchedMesh </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">BatchedMesh</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">10</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">5000</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">10000</span><span class=/"pun/">,</span><span class=/"pln/"> material </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> boxGeometryId </span><span class=/"pun/">=</span><span class=/"pln/"> batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">addGeometry</span><span class=/"pun/">(</span><span class=/"pln/"> box </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sphereGeometryId </span><span class=/"pun/">=</span><span class=/"pln/"> batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">addGeometry</span><span class=/"pun/">(</span><span class=/"pln/"> sphere </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// create instances of those geometries</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> boxInstancedId1 </span><span class=/"pun/">=</span><span class=/"pln/"> batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">addInstance</span><span class=/"pun/">(</span><span class=/"pln/"> boxGeometryId </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> boxInstancedId2 </span><span class=/"pun/">=</span><span class=/"pln/"> batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">addInstance</span><span class=/"pun/">(</span><span class=/"pln/"> boxGeometryId </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sphereInstancedId1 </span><span class=/"pun/">=</span><span class=/"pln/"> batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">addInstance</span><span class=/"pun/">(</span><span class=/"pln/"> sphereGeometryId </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sphereInstancedId2 </span><span class=/"pun/">=</span><span class=/"pln/"> batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">addInstance</span><span class=/"pun/">(</span><span class=/"pln/"> sphereGeometryId </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// position the geometries</span><span class=/"pln/">
+batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">setMatrixAt</span><span class=/"pun/">(</span><span class=/"pln/"> boxInstancedId1</span><span class=/"pun/">,</span><span class=/"pln/"> boxMatrix1 </span><span class=/"pun/">);</span><span class=/"pln/">
+batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">setMatrixAt</span><span class=/"pun/">(</span><span class=/"pln/"> boxInstancedId2</span><span class=/"pun/">,</span><span class=/"pln/"> boxMatrix2 </span><span class=/"pun/">);</span><span class=/"pln/">
+
+batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">setMatrixAt</span><span class=/"pun/">(</span><span class=/"pln/"> sphereInstancedId1</span><span class=/"pun/">,</span><span class=/"pln/"> sphereMatrix1 </span><span class=/"pun/">);</span><span class=/"pln/">
+batchedMesh</span><span class=/"pun/">.</span><span class=/"pln/">setMatrixAt</span><span class=/"pun/">(</span><span class=/"pln/"> sphereInstancedId2</span><span class=/"pun/">,</span><span class=/"pln/"> sphereMatrix2 </span><span class=/"pun/">);</span><span class=/"pln/">
+
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> batchedMesh </span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href=/"../examples/#webgl_mesh_batch/" target=/"_blank/">WebGL / mesh / batch</a><br>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>
+			BatchedMesh(
+				maxInstanceCount : <span class=/"param/">Integer</span>, maxVertexCount : <span class=/"param/">Integer</span>,
+				maxIndexCount : <span class=/"param/">Integer</span>, material : <a class=/"param links/" data-fragment=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a>,
+			)
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">maxInstanceCount</a> - the max number of individual instances planned to be added and rendered.<br>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">maxVertexCount</a> - the max number of vertices to be used by all unique geometries.<br>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">maxIndexCount</a> - the max number of indices to be used by all unique geometries.<br>
+			<a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">material</a> - an instance of <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a>. Default is a new <a class=/"links/" data-fragment=/"MeshBasicMaterial/" title=/"MeshBasicMaterial/" href=/"./index.html#api/en/materials/MeshBasicMaterial/">MeshBasicMaterial</a>.<br>
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.boundingBox/" target=/"_parent/" title=/"BatchedMesh.boundingBox/" href=/"./index.html#api/en/objects/BatchedMesh.boundingBox/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.boundingBox/" id=/"boundingBox/" href=/"./index.html#api/en/objects/BatchedMesh.boundingBox/">boundingBox</a>  : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a></h3>
+		<p>
+			This bounding box encloses all instances of the BatchedMesh. Can be calculated
+			with <a class=/"links/" data-fragment=/"BatchedMesh.computeBoundingBox/" title=/"BatchedMesh.computeBoundingBox/" href=/"./index.html#api/en/objects/BatchedMesh.computeBoundingBox/">.computeBoundingBox</a>(). Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.boundingSphere/" target=/"_parent/" title=/"BatchedMesh.boundingSphere/" href=/"./index.html#api/en/objects/BatchedMesh.boundingSphere/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.boundingSphere/" id=/"boundingSphere/" href=/"./index.html#api/en/objects/BatchedMesh.boundingSphere/">boundingSphere</a>  : <a class=/"param links/" data-fragment=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">Sphere</a></h3>
+		<p>
+			This bounding sphere encloses all instances of the BatchedMesh. Can be
+			calculated with <a class=/"links/" data-fragment=/"BatchedMesh.computeBoundingSphere/" title=/"BatchedMesh.computeBoundingSphere/" href=/"./index.html#api/en/objects/BatchedMesh.computeBoundingSphere/">.computeBoundingSphere</a>(). Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.perObjectFrustumCulled/" target=/"_parent/" title=/"BatchedMesh.perObjectFrustumCulled/" href=/"./index.html#api/en/objects/BatchedMesh.perObjectFrustumCulled/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.perObjectFrustumCulled/" id=/"perObjectFrustumCulled/" href=/"./index.html#api/en/objects/BatchedMesh.perObjectFrustumCulled/">perObjectFrustumCulled</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			If true then the individual objects within the BatchedMesh are frustum culled. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.sortObjects/" target=/"_parent/" title=/"BatchedMesh.sortObjects/" href=/"./index.html#api/en/objects/BatchedMesh.sortObjects/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.sortObjects/" id=/"sortObjects/" href=/"./index.html#api/en/objects/BatchedMesh.sortObjects/">sortObjects</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			If true then the individual objects within the BatchedMesh are sorted to improve overdraw-related artifacts.
+			If the material is marked as /"transparent/" objects are rendered back to front and if not then they are
+			rendered front to back. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.maxInstanceCount/" target=/"_parent/" title=/"BatchedMesh.maxInstanceCount/" href=/"./index.html#api/en/objects/BatchedMesh.maxInstanceCount/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.maxInstanceCount/" id=/"maxInstanceCount/" href=/"./index.html#api/en/objects/BatchedMesh.maxInstanceCount/">maxInstanceCount</a>  : <span class=/"param/">Integer</span></h3>
+		<p>
+			The maximum number of individual instances that can be stored in the BatchedMesh. Read only.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.isBatchedMesh/" target=/"_parent/" title=/"BatchedMesh.isBatchedMesh/" href=/"./index.html#api/en/objects/BatchedMesh.isBatchedMesh/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.isBatchedMesh/" id=/"isBatchedMesh/" href=/"./index.html#api/en/objects/BatchedMesh.isBatchedMesh/">isBatchedMesh</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type BatchedMesh.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a> class for common methods.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.computeBoundingBox/" target=/"_parent/" title=/"BatchedMesh.computeBoundingBox/" href=/"./index.html#api/en/objects/BatchedMesh.computeBoundingBox/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.computeBoundingBox/" id=/"computeBoundingBox/" href=/"./index.html#api/en/objects/BatchedMesh.computeBoundingBox/">computeBoundingBox</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Computes the bounding box, updating <a class=/"links/" data-fragment=/"BatchedMesh.boundingBox/" title=/"BatchedMesh.boundingBox/" href=/"./index.html#api/en/objects/BatchedMesh.boundingBox/">.boundingBox</a> attribute.<br>
+			Bounding boxes aren't computed by default. They need to be explicitly
+			computed, otherwise they are <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.computeBoundingSphere/" target=/"_parent/" title=/"BatchedMesh.computeBoundingSphere/" href=/"./index.html#api/en/objects/BatchedMesh.computeBoundingSphere/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.computeBoundingSphere/" id=/"computeBoundingSphere/" href=/"./index.html#api/en/objects/BatchedMesh.computeBoundingSphere/">computeBoundingSphere</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Computes the bounding sphere, updating <a class=/"links/" data-fragment=/"BatchedMesh.boundingSphere/" title=/"BatchedMesh.boundingSphere/" href=/"./index.html#api/en/objects/BatchedMesh.boundingSphere/">.boundingSphere</a>
+			attribute.<br>
+			Bounding spheres aren't computed by default. They need to be explicitly
+			computed, otherwise they are <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.dispose/" target=/"_parent/" title=/"BatchedMesh.dispose/" href=/"./index.html#api/en/objects/BatchedMesh.dispose/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.dispose/" id=/"dispose/" href=/"./index.html#api/en/objects/BatchedMesh.dispose/">dispose</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BatchedMesh.setCustomSort/" target=/"_parent/" title=/"BatchedMesh.setCustomSort/" href=/"./index.html#api/en/objects/BatchedMesh.setCustomSort/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.setCustomSort/" id=/"setCustomSort/" href=/"./index.html#api/en/objects/BatchedMesh.setCustomSort/">setCustomSort</a> ( sortFunction : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Takes a sort a function that is run before render. The function takes a list of instances to sort and a camera. The objects
+			in the list include a /"z/" field to perform a depth-ordered sort with.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.getColorAt/" target=/"_parent/" title=/"BatchedMesh.getColorAt/" href=/"./index.html#api/en/objects/BatchedMesh.getColorAt/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.getColorAt/" id=/"getColorAt/" href=/"./index.html#api/en/objects/BatchedMesh.getColorAt/">getColorAt</a> ( instanceId : <span class=/"param/">Integer</span>, target : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> ) : <span class=/"param/">undefined</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">instanceId</a>: The id of an instance to get the color of.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">target</a>: The target object to copy the color in to.
+		</p>
+		<p>Get the color of the defined geometry.</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.getMatrixAt/" target=/"_parent/" title=/"BatchedMesh.getMatrixAt/" href=/"./index.html#api/en/objects/BatchedMesh.getMatrixAt/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.getMatrixAt/" id=/"getMatrixAt/" href=/"./index.html#api/en/objects/BatchedMesh.getMatrixAt/">getMatrixAt</a> ( instanceId : <span class=/"param/">Integer</span>, target : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">instanceId</a>: The id of an instance to get the matrix of.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">target</a>: This 4x4 matrix will be set to the local
+			transformation matrix of the defined instance.
+		</p>
+		<p>Get the local transformation matrix of the defined instance.</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.getVisibleAt/" target=/"_parent/" title=/"BatchedMesh.getVisibleAt/" href=/"./index.html#api/en/objects/BatchedMesh.getVisibleAt/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.getVisibleAt/" id=/"getVisibleAt/" href=/"./index.html#api/en/objects/BatchedMesh.getVisibleAt/">getVisibleAt</a> ( instanceId : <span class=/"param/">Integer</span> ) : <span class=/"param/">Boolean</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">instanceId</a>: The id of an instance to get the visibility state of.
+		</p>
+		<p>Get whether the given instance is marked as /"visible/" or not.</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.setColorAt/" target=/"_parent/" title=/"BatchedMesh.setColorAt/" href=/"./index.html#api/en/objects/BatchedMesh.setColorAt/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.setColorAt/" id=/"setColorAt/" href=/"./index.html#api/en/objects/BatchedMesh.setColorAt/">setColorAt</a> ( instanceId : <span class=/"param/">Integer</span>, color : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> ) : <span class=/"param/">undefined</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">instanceId</a>: The id of the instance to set the color of.
+		</p>
+		<p><a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">color</a>: The color to set the instance to.</p>
+		<p>
+			Sets the given color to the defined geometry instance.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.setMatrixAt/" target=/"_parent/" title=/"BatchedMesh.setMatrixAt/" href=/"./index.html#api/en/objects/BatchedMesh.setMatrixAt/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.setMatrixAt/" id=/"setMatrixAt/" href=/"./index.html#api/en/objects/BatchedMesh.setMatrixAt/">setMatrixAt</a> ( instanceId : <span class=/"param/">Integer</span>, matrix : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">instanceId</a>: The id of an instance to set the matrix of.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">matrix</a>: A 4x4 matrix representing the local transformation
+			of a single instance.
+		</p>
+		<p>
+			Sets the given local transformation matrix to the defined instance.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.setVisibleAt/" target=/"_parent/" title=/"BatchedMesh.setVisibleAt/" href=/"./index.html#api/en/objects/BatchedMesh.setVisibleAt/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.setVisibleAt/" id=/"setVisibleAt/" href=/"./index.html#api/en/objects/BatchedMesh.setVisibleAt/">setVisibleAt</a> ( instanceId : <span class=/"param/">Integer</span>, visible : <span class=/"param/">Boolean</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">instanceId</a>: The id of the instance to set the visibility of.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"Boolean/" title=/"Boolean/">visible</a>: A boolean value indicating the visibility state.
+		</p>
+		<p>
+			Sets the visibility of the instance at the given index.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.addGeometry/" target=/"_parent/" title=/"BatchedMesh.addGeometry/" href=/"./index.html#api/en/objects/BatchedMesh.addGeometry/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.addGeometry/" id=/"addGeometry/" href=/"./index.html#api/en/objects/BatchedMesh.addGeometry/">addGeometry</a> ( geometry : <a class=/"param links/" data-fragment=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a>, reservedVertexRange : <span class=/"param/">Integer</span>, reservedIndexRange : <span class=/"param/">Integer</span> ) : <span class=/"param/">Integer</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">geometry</a>: The geometry to add into the BatchedMesh.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">reservedVertexRange</a>: Optional parameter specifying the amount of vertex buffer space to reserve for the added geometry. This
+			is necessary if it is planned to set a new geometry at this index at a later time that is larger than the original geometry. Defaults to
+			the length of the given geometry vertex buffer.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">reservedIndexRange</a>: Optional parameter specifying the amount of index buffer space to reserve for the added geometry. This
+			is necessary if it is planned to set a new geometry at this index at a later time that is larger than the original geometry. Defaults to
+			the length of the given geometry index buffer.
+		</p>
+		<p>
+			Adds the given geometry to the BatchedMesh and returns the associated geometry id referring to it to be used in other functions.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.addInstance/" target=/"_parent/" title=/"BatchedMesh.addInstance/" href=/"./index.html#api/en/objects/BatchedMesh.addInstance/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.addInstance/" id=/"addInstance/" href=/"./index.html#api/en/objects/BatchedMesh.addInstance/">addInstance</a> ( geometryId : <span class=/"param/">Integer</span> ) : <span class=/"param/">Integer</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">geometryId</a>: The id of a previously added geometry via /"addGeometry/" to add into the BatchedMesh to render.
+		</p>
+		<p>
+			Adds a new instance to the BatchedMesh using the geometry of the given geometryId and returns a new id referring to the new instance to be used
+			by other functions.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"BatchedMesh.setGeometryAt/" target=/"_parent/" title=/"BatchedMesh.setGeometryAt/" href=/"./index.html#api/en/objects/BatchedMesh.setGeometryAt/">#</a> .<a class=/"links/" data-fragment=/"BatchedMesh.setGeometryAt/" id=/"setGeometryAt/" href=/"./index.html#api/en/objects/BatchedMesh.setGeometryAt/">setGeometryAt</a> ( geometryId : <span class=/"param/">Integer</span>, geometry : <a class=/"param links/" data-fragment=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> ) : <span class=/"param/">Integer</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">geometryId</a>: Which geometry id to replace with this geometry.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">geometry</a>: The geometry to substitute at the given geometry id.
+		</p>
+		<p>
+			Replaces the geometry at <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">geometryId</span></code> with the provided geometry. Throws an error if there is not enough space reserved for geometry.
+			Calling this will change all instances that are rendering that geometry.
+		</p>
+
+		<!--
+		<h3>
+			<a class='permalink links' data-fragment='BatchedMesh.getInstanceCountAt' target='_parent' title='BatchedMesh.getInstanceCountAt'>#</a> .<a class='links' data-fragment='BatchedMesh.getInstanceCountAt' id='getInstanceCountAt'>getInstanceCountAt</a> ( index : <span class=/"param/">Integer</span> ) : <span class=/"param/">Integer</span>
+		</h3>
+		<p>
+			<a class='links' data-fragment='Integer' title='Integer'>index</a>: The index of an instance. Values have to be in the
+			range [0, count].
+		</p>
+		<p>
+			Gets the instance count of the geometry at <code class=/"inline/">index</code>. Returns <code class=/"inline/">null</code> if instance counts are not configured.
+		</p>
+
+		<h3>
+			<a class='permalink links' data-fragment='BatchedMesh.setInstanceCountAt' target='_parent' title='BatchedMesh.setInstanceCountAt'>#</a> .<a class='links' data-fragment='BatchedMesh.setInstanceCountAt' id='setInstanceCountAt'>setInstanceCountAt</a> ( index : <span class=/"param/">Integer</span>, instanceCount  : <span class=/"param/">Integer</span> ) : <span class=/"param/">Integer</span>
+		</h3>
+		<p>
+			<a class='links' data-fragment='Integer' title='Integer'>index</a>: Which geometry index to configure an instance count for.
+		</p>
+		<p>
+			<a class='links' data-fragment='Integer' title='Integer'>instanceCount</a>: The number of instances to render of the given geometry index.
+		</p>
+		<p>
+			Sets an instance count of the geometry at <code class=/"inline/">index</code>.
+		</p>
+		-->
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/objects/BatchedMesh.js/" target=/"_blank/">src/objects/BatchedMesh.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

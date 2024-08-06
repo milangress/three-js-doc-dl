@@ -1,0 +1,627 @@
+<!DOCTYPE html><html><head><title>Object3D – three.js docs</title></head><body><body>
+		<h1>Object3D</h1>
+
+		<p class=/"desc/">
+			This is the base class for most objects in three.js and provides a set of
+			properties and methods for manipulating objects in 3D space.<br><br>
+
+			Note that this can be used for grouping objects via the <a class=/"links/" data-fragment=/"Object3D.add/" title=/"Object3D.add/" href=/"./index.html#api/en/core/Object3D.add/">.add</a>( object ) method which adds the object as a child, however it is better to
+			use <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a> for this.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Object3D()</h3>
+		<p>The constructor takes no arguments.</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.animations/" target=/"_parent/" title=/"Object3D.animations/" href=/"./index.html#api/en/core/Object3D.animations/">#</a> .<a class=/"links/" data-fragment=/"Object3D.animations/" id=/"animations/" href=/"./index.html#api/en/core/Object3D.animations/">animations</a>  : <a class=/"param links/" data-fragment=/"AnimationClip/" href=/"./index.html#api/en/animation/AnimationClip/">AnimationClip</a></h3>
+		<p>Array with object's animation clips.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.castShadow/" target=/"_parent/" title=/"Object3D.castShadow/" href=/"./index.html#api/en/core/Object3D.castShadow/">#</a> .<a class=/"links/" data-fragment=/"Object3D.castShadow/" id=/"castShadow/" href=/"./index.html#api/en/core/Object3D.castShadow/">castShadow</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Whether the object gets rendered into shadow map. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.children/" target=/"_parent/" title=/"Object3D.children/" href=/"./index.html#api/en/core/Object3D.children/">#</a> .<a class=/"links/" data-fragment=/"Object3D.children/" id=/"children/" href=/"./index.html#api/en/core/Object3D.children/">children</a>  : <span class=/"param/">Array</span></h3>
+		<p>
+			Array with object's children. See <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a> for info on manually
+			grouping objects.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.customDepthMaterial/" target=/"_parent/" title=/"Object3D.customDepthMaterial/" href=/"./index.html#api/en/core/Object3D.customDepthMaterial/">#</a> .<a class=/"links/" data-fragment=/"Object3D.customDepthMaterial/" id=/"customDepthMaterial/" href=/"./index.html#api/en/core/Object3D.customDepthMaterial/">customDepthMaterial</a>  : <a class=/"param links/" data-fragment=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a></h3>
+		<p>
+			Custom depth material to be used when rendering to the depth map. Can only
+			be used in context of meshes. When shadow-casting with a
+			<a class=/"links/" data-fragment=/"DirectionalLight/" title=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">DirectionalLight</a> or <a class=/"links/" data-fragment=/"SpotLight/" title=/"SpotLight/" href=/"./index.html#api/en/lights/SpotLight/">SpotLight</a>, if you are modifying vertex
+			positions in the vertex shader you must specify a customDepthMaterial for
+			proper shadows. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">undefined</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.customDistanceMaterial/" target=/"_parent/" title=/"Object3D.customDistanceMaterial/" href=/"./index.html#api/en/core/Object3D.customDistanceMaterial/">#</a> .<a class=/"links/" data-fragment=/"Object3D.customDistanceMaterial/" id=/"customDistanceMaterial/" href=/"./index.html#api/en/core/Object3D.customDistanceMaterial/">customDistanceMaterial</a>  : <a class=/"param links/" data-fragment=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a></h3>
+		<p>
+			Same as <a class=/"links/" data-fragment=/"Object3D.customDepthMaterial/" title=/"Object3D.customDepthMaterial/" href=/"./index.html#api/en/core/Object3D.customDepthMaterial/">customDepthMaterial</a>, but used with
+			<a class=/"links/" data-fragment=/"PointLight/" title=/"PointLight/" href=/"./index.html#api/en/lights/PointLight/">PointLight</a>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">undefined</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.frustumCulled/" target=/"_parent/" title=/"Object3D.frustumCulled/" href=/"./index.html#api/en/core/Object3D.frustumCulled/">#</a> .<a class=/"links/" data-fragment=/"Object3D.frustumCulled/" id=/"frustumCulled/" href=/"./index.html#api/en/core/Object3D.frustumCulled/">frustumCulled</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			When this is set, it checks every frame if the object is in the frustum of
+			the camera before rendering the object. If set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code> the object gets
+			rendered every frame even if it is not in the frustum of the camera.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.id/" target=/"_parent/" title=/"Object3D.id/" href=/"./index.html#api/en/core/Object3D.id/">#</a> .<a class=/"links/" data-fragment=/"Object3D.id/" id=/"id/" href=/"./index.html#api/en/core/Object3D.id/">id</a>  : <span class=/"param/">Integer</span></h3>
+		<p>readonly – Unique number for this object instance.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.isObject3D/" target=/"_parent/" title=/"Object3D.isObject3D/" href=/"./index.html#api/en/core/Object3D.isObject3D/">#</a> .<a class=/"links/" data-fragment=/"Object3D.isObject3D/" id=/"isObject3D/" href=/"./index.html#api/en/core/Object3D.isObject3D/">isObject3D</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Object3D.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.layers/" target=/"_parent/" title=/"Object3D.layers/" href=/"./index.html#api/en/core/Object3D.layers/">#</a> .<a class=/"links/" data-fragment=/"Object3D.layers/" id=/"layers/" href=/"./index.html#api/en/core/Object3D.layers/">layers</a>  : <a class=/"param links/" data-fragment=/"Layers/" href=/"./index.html#api/en/core/Layers/">Layers</a></h3>
+		<p>
+			The layer membership of the object. The object is only visible if it has
+			at least one layer in common with the <a class=/"links/" data-fragment=/"Camera/" title=/"Camera/" href=/"./index.html#api/en/cameras/Camera/">Camera</a> in use. This property
+			can also be used to filter out unwanted objects in ray-intersection tests
+			when using <a class=/"links/" data-fragment=/"Raycaster/" title=/"Raycaster/" href=/"./index.html#api/en/core/Raycaster/">Raycaster</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.matrix/" target=/"_parent/" title=/"Object3D.matrix/" href=/"./index.html#api/en/core/Object3D.matrix/">#</a> .<a class=/"links/" data-fragment=/"Object3D.matrix/" id=/"matrix/" href=/"./index.html#api/en/core/Object3D.matrix/">matrix</a>  : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a></h3>
+		<p>The local transform matrix.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.matrixAutoUpdate/" target=/"_parent/" title=/"Object3D.matrixAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixAutoUpdate/">#</a> .<a class=/"links/" data-fragment=/"Object3D.matrixAutoUpdate/" id=/"matrixAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixAutoUpdate/">matrixAutoUpdate</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			When this is set, it calculates the matrix of position, (rotation or
+			quaternion) and scale every frame and also recalculates the matrixWorld
+			property. Default is <a class=/"links/" data-fragment=/"Object3D.DEFAULT_MATRIX_AUTO_UPDATE/" title=/"Object3D.DEFAULT_MATRIX_AUTO_UPDATE/" href=/"./index.html#api/en/core/Object3D.DEFAULT_MATRIX_AUTO_UPDATE/">Object3D.DEFAULT_MATRIX_AUTO_UPDATE</a> (true).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.matrixWorld/" target=/"_parent/" title=/"Object3D.matrixWorld/" href=/"./index.html#api/en/core/Object3D.matrixWorld/">#</a> .<a class=/"links/" data-fragment=/"Object3D.matrixWorld/" id=/"matrixWorld/" href=/"./index.html#api/en/core/Object3D.matrixWorld/">matrixWorld</a>  : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a></h3>
+		<p>
+			The global transform of the object. If the Object3D has no parent, then
+			it's identical to the local transform <a class=/"links/" data-fragment=/"Object3D.matrix/" title=/"Object3D.matrix/" href=/"./index.html#api/en/core/Object3D.matrix/">.matrix</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.matrixWorldAutoUpdate/" target=/"_parent/" title=/"Object3D.matrixWorldAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixWorldAutoUpdate/">#</a> .<a class=/"links/" data-fragment=/"Object3D.matrixWorldAutoUpdate/" id=/"matrixWorldAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixWorldAutoUpdate/">matrixWorldAutoUpdate</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			If set, then the renderer checks every frame if the object and its
+			children need matrix updates. When it isn't, then you have to maintain all
+			matrices in the object and its children yourself. Default is
+			<a class=/"links/" data-fragment=/"Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/" title=/"Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/" href=/"./index.html#api/en/core/Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/">Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE</a> (true).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.matrixWorldNeedsUpdate/" target=/"_parent/" title=/"Object3D.matrixWorldNeedsUpdate/" href=/"./index.html#api/en/core/Object3D.matrixWorldNeedsUpdate/">#</a> .<a class=/"links/" data-fragment=/"Object3D.matrixWorldNeedsUpdate/" id=/"matrixWorldNeedsUpdate/" href=/"./index.html#api/en/core/Object3D.matrixWorldNeedsUpdate/">matrixWorldNeedsUpdate</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			When this is set, it calculates the matrixWorld in that frame and resets
+			this property to false. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.modelViewMatrix/" target=/"_parent/" title=/"Object3D.modelViewMatrix/" href=/"./index.html#api/en/core/Object3D.modelViewMatrix/">#</a> .<a class=/"links/" data-fragment=/"Object3D.modelViewMatrix/" id=/"modelViewMatrix/" href=/"./index.html#api/en/core/Object3D.modelViewMatrix/">modelViewMatrix</a>  : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a></h3>
+		<p>
+			This is passed to the shader and used to calculate the position of the
+			object.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.name/" target=/"_parent/" title=/"Object3D.name/" href=/"./index.html#api/en/core/Object3D.name/">#</a> .<a class=/"links/" data-fragment=/"Object3D.name/" id=/"name/" href=/"./index.html#api/en/core/Object3D.name/">name</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			Optional name of the object (doesn't need to be unique). Default is an
+			empty string.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.normalMatrix/" target=/"_parent/" title=/"Object3D.normalMatrix/" href=/"./index.html#api/en/core/Object3D.normalMatrix/">#</a> .<a class=/"links/" data-fragment=/"Object3D.normalMatrix/" id=/"normalMatrix/" href=/"./index.html#api/en/core/Object3D.normalMatrix/">normalMatrix</a>  : <a class=/"param links/" data-fragment=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">Matrix3</a></h3>
+		<p>
+			This is passed to the shader and used to calculate lighting for the
+			object. It is the transpose of the inverse of the upper left 3x3
+			sub-matrix of this object's modelViewMatrix.<br><br>
+
+			The reason for this special matrix is that simply using the
+			modelViewMatrix could result in a non-unit length of normals (on scaling)
+			or in a non-perpendicular direction (on non-uniform scaling).<br><br>
+
+			On the other hand the translation part of the modelViewMatrix is not
+			relevant for the calculation of normals. Thus a Matrix3 is sufficient.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.onAfterRender/" target=/"_parent/" title=/"Object3D.onAfterRender/" href=/"./index.html#api/en/core/Object3D.onAfterRender/">#</a> .<a class=/"links/" data-fragment=/"Object3D.onAfterRender/" id=/"onAfterRender/" href=/"./index.html#api/en/core/Object3D.onAfterRender/">onAfterRender</a>  : <a class=/"param links/" data-fragment=/"Function/">Function</a></h3>
+		<p>
+			An optional callback that is executed immediately after a 3D object is
+			rendered. This function is called with the following parameters: renderer,
+			scene, camera, geometry, material, group.
+		</p>
+		<p>
+			Please notice that this callback is only executed for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">renderable</span></code> 3D
+			objects. Meaning 3D objects which define their visual appearance with
+			geometries and materials like instances of <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a>, <a class=/"links/" data-fragment=/"Line/" title=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a>,
+			<a class=/"links/" data-fragment=/"Points/" title=/"Points/" href=/"./index.html#api/en/objects/Points/">Points</a> or <a class=/"links/" data-fragment=/"Sprite/" title=/"Sprite/" href=/"./index.html#api/en/objects/Sprite/">Sprite</a>. Instances of <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a>
+			or <a class=/"links/" data-fragment=/"Bone/" title=/"Bone/" href=/"./index.html#api/en/objects/Bone/">Bone</a> are not renderable and thus this callback is not executed
+			for such objects.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.onAfterShadow/" target=/"_parent/" title=/"Object3D.onAfterShadow/" href=/"./index.html#api/en/core/Object3D.onAfterShadow/">#</a> .<a class=/"links/" data-fragment=/"Object3D.onAfterShadow/" id=/"onAfterShadow/" href=/"./index.html#api/en/core/Object3D.onAfterShadow/">onAfterShadow</a>  : <a class=/"param links/" data-fragment=/"Function/">Function</a></h3>
+		<p>
+			An optional callback that is executed immediately after a 3D object is
+			rendered to a shadow map. This function is called with the following parameters: renderer,
+			scene, camera, shadowCamera, geometry, depthMaterial, group.
+		</p>
+		<p>
+			Please notice that this callback is only executed for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">renderable</span></code> 3D
+			objects. Meaning 3D objects which define their visual appearance with
+			geometries and materials like instances of <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a>, <a class=/"links/" data-fragment=/"Line/" title=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a>,
+			<a class=/"links/" data-fragment=/"Points/" title=/"Points/" href=/"./index.html#api/en/objects/Points/">Points</a> or <a class=/"links/" data-fragment=/"Sprite/" title=/"Sprite/" href=/"./index.html#api/en/objects/Sprite/">Sprite</a>. Instances of <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a>
+			or <a class=/"links/" data-fragment=/"Bone/" title=/"Bone/" href=/"./index.html#api/en/objects/Bone/">Bone</a> are not renderable and thus this callback is not executed
+			for such objects.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.onBeforeRender/" target=/"_parent/" title=/"Object3D.onBeforeRender/" href=/"./index.html#api/en/core/Object3D.onBeforeRender/">#</a> .<a class=/"links/" data-fragment=/"Object3D.onBeforeRender/" id=/"onBeforeRender/" href=/"./index.html#api/en/core/Object3D.onBeforeRender/">onBeforeRender</a>  : <a class=/"param links/" data-fragment=/"Function/">Function</a></h3>
+		<p>
+			An optional callback that is executed immediately before a 3D object is
+			rendered. This function is called with the following parameters: renderer,
+			scene, camera, geometry, material, group.
+		</p>
+		<p>
+			Please notice that this callback is only executed for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">renderable</span></code> 3D
+			objects. Meaning 3D objects which define their visual appearance with
+			geometries and materials like instances of <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a>, <a class=/"links/" data-fragment=/"Line/" title=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a>,
+			<a class=/"links/" data-fragment=/"Points/" title=/"Points/" href=/"./index.html#api/en/objects/Points/">Points</a> or <a class=/"links/" data-fragment=/"Sprite/" title=/"Sprite/" href=/"./index.html#api/en/objects/Sprite/">Sprite</a>. Instances of <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a>
+			or <a class=/"links/" data-fragment=/"Bone/" title=/"Bone/" href=/"./index.html#api/en/objects/Bone/">Bone</a> are not renderable and thus this callback is not executed
+			for such objects.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.onBeforeShadow/" target=/"_parent/" title=/"Object3D.onBeforeShadow/" href=/"./index.html#api/en/core/Object3D.onBeforeShadow/">#</a> .<a class=/"links/" data-fragment=/"Object3D.onBeforeShadow/" id=/"onBeforeShadow/" href=/"./index.html#api/en/core/Object3D.onBeforeShadow/">onBeforeShadow</a>  : <a class=/"param links/" data-fragment=/"Function/">Function</a></h3>
+		<p>
+			An optional callback that is executed immediately before a 3D object is
+			rendered to a shadow map. This function is called with the following parameters: renderer,
+			scene, camera, shadowCamera, geometry, depthMaterial, group.
+		</p>
+		<p>
+			Please notice that this callback is only executed for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">renderable</span></code> 3D
+			objects. Meaning 3D objects which define their visual appearance with
+			geometries and materials like instances of <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a>, <a class=/"links/" data-fragment=/"Line/" title=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a>,
+			<a class=/"links/" data-fragment=/"Points/" title=/"Points/" href=/"./index.html#api/en/objects/Points/">Points</a> or <a class=/"links/" data-fragment=/"Sprite/" title=/"Sprite/" href=/"./index.html#api/en/objects/Sprite/">Sprite</a>. Instances of <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a>
+			or <a class=/"links/" data-fragment=/"Bone/" title=/"Bone/" href=/"./index.html#api/en/objects/Bone/">Bone</a> are not renderable and thus this callback is not executed
+			for such objects.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.parent/" target=/"_parent/" title=/"Object3D.parent/" href=/"./index.html#api/en/core/Object3D.parent/">#</a> .<a class=/"links/" data-fragment=/"Object3D.parent/" id=/"parent/" href=/"./index.html#api/en/core/Object3D.parent/">parent</a>  : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+			Object's parent in the <a href=/"https://en.wikipedia.org/wiki/Scene_graph/" target=/"_blank/">scene graph</a>. An object can have at most one parent.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.position/" target=/"_parent/" title=/"Object3D.position/" href=/"./index.html#api/en/core/Object3D.position/">#</a> .<a class=/"links/" data-fragment=/"Object3D.position/" id=/"position/" href=/"./index.html#api/en/core/Object3D.position/">position</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			A <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> representing the object's local position. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">)</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.quaternion/" target=/"_parent/" title=/"Object3D.quaternion/" href=/"./index.html#api/en/core/Object3D.quaternion/">#</a> .<a class=/"links/" data-fragment=/"Object3D.quaternion/" id=/"quaternion/" href=/"./index.html#api/en/core/Object3D.quaternion/">quaternion</a>  : <a class=/"param links/" data-fragment=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a></h3>
+		<p>Object's local rotation as a <a class=/"links/" data-fragment=/"Quaternion/" title=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.receiveShadow/" target=/"_parent/" title=/"Object3D.receiveShadow/" href=/"./index.html#api/en/core/Object3D.receiveShadow/">#</a> .<a class=/"links/" data-fragment=/"Object3D.receiveShadow/" id=/"receiveShadow/" href=/"./index.html#api/en/core/Object3D.receiveShadow/">receiveShadow</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Whether the material receives shadows. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.renderOrder/" target=/"_parent/" title=/"Object3D.renderOrder/" href=/"./index.html#api/en/core/Object3D.renderOrder/">#</a> .<a class=/"links/" data-fragment=/"Object3D.renderOrder/" id=/"renderOrder/" href=/"./index.html#api/en/core/Object3D.renderOrder/">renderOrder</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+			This value allows the default rendering order of
+			<a href=/"https://en.wikipedia.org/wiki/Scene_graph/" target=/"_blank/">scene graph</a> objects to be
+			overridden although opaque and transparent objects remain sorted
+			independently. When this property is set for an instance of <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a>, all descendants objects will be sorted and rendered together.
+			Sorting is from lowest to highest renderOrder. Default value is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.rotation/" target=/"_parent/" title=/"Object3D.rotation/" href=/"./index.html#api/en/core/Object3D.rotation/">#</a> .<a class=/"links/" data-fragment=/"Object3D.rotation/" id=/"rotation/" href=/"./index.html#api/en/core/Object3D.rotation/">rotation</a>  : <a class=/"param links/" data-fragment=/"Euler/" href=/"./index.html#api/en/math/Euler/">Euler</a></h3>
+		<p>
+			Object's local rotation (see
+			<a href=/"https://en.wikipedia.org/wiki/Euler_angles/" target=/"_blank/">Euler angles</a>), in
+			radians.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.scale/" target=/"_parent/" title=/"Object3D.scale/" href=/"./index.html#api/en/core/Object3D.scale/">#</a> .<a class=/"links/" data-fragment=/"Object3D.scale/" id=/"scale/" href=/"./index.html#api/en/core/Object3D.scale/">scale</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>The object's local scale. Default is <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>( 1, 1, 1 ).</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.up/" target=/"_parent/" title=/"Object3D.up/" href=/"./index.html#api/en/core/Object3D.up/">#</a> .<a class=/"links/" data-fragment=/"Object3D.up/" id=/"up/" href=/"./index.html#api/en/core/Object3D.up/">up</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			This is used by the <a class=/"links/" data-fragment=/"Object3D.lookAt/" title=/"Object3D.lookAt/" href=/"./index.html#api/en/core/Object3D.lookAt/">lookAt</a> method, for example, to
+			determine the orientation of the result.<br>
+			Default is <a class=/"links/" data-fragment=/"Object3D.DEFAULT_UP/" title=/"Object3D.DEFAULT_UP/" href=/"./index.html#api/en/core/Object3D.DEFAULT_UP/">Object3D.DEFAULT_UP</a> - that is, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pln/"> </span><span class=/"pun/">)</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.userData/" target=/"_parent/" title=/"Object3D.userData/" href=/"./index.html#api/en/core/Object3D.userData/">#</a> .<a class=/"links/" data-fragment=/"Object3D.userData/" id=/"userData/" href=/"./index.html#api/en/core/Object3D.userData/">userData</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			An object that can be used to store custom data about the Object3D. It
+			should not hold references to functions as these will not be cloned.
+			Default is an empty object <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">{}</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.uuid/" target=/"_parent/" title=/"Object3D.uuid/" href=/"./index.html#api/en/core/Object3D.uuid/">#</a> .<a class=/"links/" data-fragment=/"Object3D.uuid/" id=/"uuid/" href=/"./index.html#api/en/core/Object3D.uuid/">uuid</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			<a href=/"http://en.wikipedia.org/wiki/Universally_unique_identifier/" target=/"_blank/">UUID</a> of
+			this object instance. This gets automatically assigned, so this shouldn't
+			be edited.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.visible/" target=/"_parent/" title=/"Object3D.visible/" href=/"./index.html#api/en/core/Object3D.visible/">#</a> .<a class=/"links/" data-fragment=/"Object3D.visible/" id=/"visible/" href=/"./index.html#api/en/core/Object3D.visible/">visible</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Object gets rendered if <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.</p>
+
+		<h2>Static Properties</h2>
+		<p>
+			Static properties and methods are defined per class rather than per
+			instance of that class. This means that changing
+			<a class=/"links/" data-fragment=/"Object3D.DEFAULT_UP/" title=/"Object3D.DEFAULT_UP/" href=/"./index.html#api/en/core/Object3D.DEFAULT_UP/">Object3D.DEFAULT_UP</a> or <a class=/"links/" data-fragment=/"Object3D.DEFAULT_MATRIX_AUTO_UPDATE/" title=/"Object3D.DEFAULT_MATRIX_AUTO_UPDATE/" href=/"./index.html#api/en/core/Object3D.DEFAULT_MATRIX_AUTO_UPDATE/">Object3D.DEFAULT_MATRIX_AUTO_UPDATE</a>
+			will change the values of <a class=/"links/" data-fragment=/"Object3D.up/" title=/"Object3D.up/" href=/"./index.html#api/en/core/Object3D.up/">up</a> and <a class=/"links/" data-fragment=/"Object3D.matrixAutoUpdate/" title=/"Object3D.matrixAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixAutoUpdate/">matrixAutoUpdate</a> for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">every</span></code> instance of Object3D (or derived classes)
+			created after the change has been made (already created Object3Ds will not
+			be affected).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.DEFAULT_UP/" target=/"_parent/" title=/"Object3D.DEFAULT_UP/" href=/"./index.html#api/en/core/Object3D.DEFAULT_UP/">#</a> .<a class=/"links/" data-fragment=/"Object3D.DEFAULT_UP/" id=/"DEFAULT_UP/" href=/"./index.html#api/en/core/Object3D.DEFAULT_UP/">DEFAULT_UP</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			The default <a class=/"links/" data-fragment=/"Object3D.up/" title=/"Object3D.up/" href=/"./index.html#api/en/core/Object3D.up/">up</a> direction for objects, also used as the default
+			position for <a class=/"links/" data-fragment=/"DirectionalLight/" title=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">DirectionalLight</a>, <a class=/"links/" data-fragment=/"HemisphereLight/" title=/"HemisphereLight/" href=/"./index.html#api/en/lights/HemisphereLight/">HemisphereLight</a> and
+			<a class=/"links/" data-fragment=/"Spotlight/" title=/"Spotlight/">Spotlight</a> (which creates lights shining from the top down).<br>
+			Set to ( 0, 1, 0 ) by default.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.DEFAULT_MATRIX_AUTO_UPDATE/" target=/"_parent/" title=/"Object3D.DEFAULT_MATRIX_AUTO_UPDATE/" href=/"./index.html#api/en/core/Object3D.DEFAULT_MATRIX_AUTO_UPDATE/">#</a> .<a class=/"links/" data-fragment=/"Object3D.DEFAULT_MATRIX_AUTO_UPDATE/" id=/"DEFAULT_MATRIX_AUTO_UPDATE/" href=/"./index.html#api/en/core/Object3D.DEFAULT_MATRIX_AUTO_UPDATE/">DEFAULT_MATRIX_AUTO_UPDATE</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			The default setting for <a class=/"links/" data-fragment=/"Object3D.matrixAutoUpdate/" title=/"Object3D.matrixAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixAutoUpdate/">matrixAutoUpdate</a> for
+			newly created Object3Ds.<br>
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/" target=/"_parent/" title=/"Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/" href=/"./index.html#api/en/core/Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/">#</a> .<a class=/"links/" data-fragment=/"Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/" id=/"DEFAULT_MATRIX_WORLD_AUTO_UPDATE/" href=/"./index.html#api/en/core/Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE/">DEFAULT_MATRIX_WORLD_AUTO_UPDATE</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			The default setting for [page:.matrixWorldAutoUpdate
+			matrixWorldAutoUpdate] for newly created Object3Ds.<br>
+		</p>
+
+		<h2>Methods</h2>
+
+		<p>
+			<a class=/"links/" data-fragment=/"EventDispatcher/" title=/"EventDispatcher/" href=/"./index.html#api/en/core/EventDispatcher/">EventDispatcher</a> methods are available on this
+			class.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.add/" target=/"_parent/" title=/"Object3D.add/" href=/"./index.html#api/en/core/Object3D.add/">#</a> .<a class=/"links/" data-fragment=/"Object3D.add/" id=/"add/" href=/"./index.html#api/en/core/Object3D.add/">add</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, ... ) : <span class=/"param/">this</span></h3>
+		<p>
+			Adds <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">object</span></code> as child of this object. An arbitrary number of objects may
+			be added. Any current parent on an object passed in here will be removed,
+			since an object can have at most one parent.<br><br>
+
+			See <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a> for info on manually grouping objects.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.applyMatrix4/" target=/"_parent/" title=/"Object3D.applyMatrix4/" href=/"./index.html#api/en/core/Object3D.applyMatrix4/">#</a> .<a class=/"links/" data-fragment=/"Object3D.applyMatrix4/" id=/"applyMatrix4/" href=/"./index.html#api/en/core/Object3D.applyMatrix4/">applyMatrix4</a> ( matrix : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			Applies the matrix transform to the object and updates the object's
+			position, rotation and scale.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.applyQuaternion/" target=/"_parent/" title=/"Object3D.applyQuaternion/" href=/"./index.html#api/en/core/Object3D.applyQuaternion/">#</a> .<a class=/"links/" data-fragment=/"Object3D.applyQuaternion/" id=/"applyQuaternion/" href=/"./index.html#api/en/core/Object3D.applyQuaternion/">applyQuaternion</a> ( quaternion : <a class=/"param links/" data-fragment=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a> ) : <span class=/"param/">this</span></h3>
+		<p>Applies the rotation represented by the quaternion to the object.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.attach/" target=/"_parent/" title=/"Object3D.attach/" href=/"./index.html#api/en/core/Object3D.attach/">#</a> .<a class=/"links/" data-fragment=/"Object3D.attach/" id=/"attach/" href=/"./index.html#api/en/core/Object3D.attach/">attach</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Adds <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">object</span></code> as a child of this, while maintaining the object's world
+			transform.<br><br>
+			Note: This method does not support scene graphs having
+			non-uniformly-scaled nodes(s).
+		</p>
+		
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.clear/" target=/"_parent/" title=/"Object3D.clear/" href=/"./index.html#api/en/core/Object3D.clear/">#</a> .<a class=/"links/" data-fragment=/"Object3D.clear/" id=/"clear/" href=/"./index.html#api/en/core/Object3D.clear/">clear</a> () : <span class=/"param/">this</span></h3>
+		<p>Removes all child objects.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.clone/" target=/"_parent/" title=/"Object3D.clone/" href=/"./index.html#api/en/core/Object3D.clone/">#</a> .<a class=/"links/" data-fragment=/"Object3D.clone/" id=/"clone/" href=/"./index.html#api/en/core/Object3D.clone/">clone</a> ( recursive : <span class=/"param/">Boolean</span> ) : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+			recursive -- if true, descendants of the object are also cloned. Default
+			is true.<br><br>
+
+			Returns a clone of this object and optionally all descendants.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.copy/" target=/"_parent/" title=/"Object3D.copy/" href=/"./index.html#api/en/core/Object3D.copy/">#</a> .<a class=/"links/" data-fragment=/"Object3D.copy/" id=/"copy/" href=/"./index.html#api/en/core/Object3D.copy/">copy</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, recursive : <span class=/"param/">Boolean</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			recursive -- If set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>, descendants of the object are copied next to the existing ones. 
+			If set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>, descendants are left unchanged. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.<br><br>
+
+			Copies the given object into this object. Note: Event listeners and
+			user-defined callbacks (<a class=/"links/" data-fragment=/"Object3D.onAfterRender/" title=/"Object3D.onAfterRender/" href=/"./index.html#api/en/core/Object3D.onAfterRender/">.onAfterRender</a> and <a class=/"links/" data-fragment=/"Object3D.onBeforeRender/" title=/"Object3D.onBeforeRender/" href=/"./index.html#api/en/core/Object3D.onBeforeRender/">.onBeforeRender</a>)
+			are not copied.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getObjectById/" target=/"_parent/" title=/"Object3D.getObjectById/" href=/"./index.html#api/en/core/Object3D.getObjectById/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getObjectById/" id=/"getObjectById/" href=/"./index.html#api/en/core/Object3D.getObjectById/">getObjectById</a> ( id : <span class=/"param/">Integer</span> ) : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+			id -- Unique number of the object instance<br><br>
+
+			Searches through an object and its children, starting with the object
+			itself, and returns the first with a matching id.<br>
+			Note that ids are assigned in chronological order: 1, 2, 3, ...,
+			incrementing by one for each new object.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getObjectByName/" target=/"_parent/" title=/"Object3D.getObjectByName/" href=/"./index.html#api/en/core/Object3D.getObjectByName/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getObjectByName/" id=/"getObjectByName/" href=/"./index.html#api/en/core/Object3D.getObjectByName/">getObjectByName</a> ( name : <span class=/"param/">String</span> ) : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+			name -- String to match to the children's Object3D.name property.
+			<br><br>
+
+			Searches through an object and its children, starting with the object
+			itself, and returns the first with a matching name.<br>
+			Note that for most objects the name is an empty string by default. You
+			will have to set it manually to make use of this method.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getObjectByProperty/" target=/"_parent/" title=/"Object3D.getObjectByProperty/" href=/"./index.html#api/en/core/Object3D.getObjectByProperty/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getObjectByProperty/" id=/"getObjectByProperty/" href=/"./index.html#api/en/core/Object3D.getObjectByProperty/">getObjectByProperty</a> ( name : <span class=/"param/">String</span>, value : <a class=/"param links/" data-fragment=/"Any/">Any</a> ) : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+			name -- the property name to search for. <br>
+			value -- value of the given property. <br><br>
+
+			Searches through an object and its children, starting with the object
+			itself, and returns the first with a property that matches the value
+			given.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getObjectsByProperty/" target=/"_parent/" title=/"Object3D.getObjectsByProperty/" href=/"./index.html#api/en/core/Object3D.getObjectsByProperty/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getObjectsByProperty/" id=/"getObjectsByProperty/" href=/"./index.html#api/en/core/Object3D.getObjectsByProperty/">getObjectsByProperty</a> ( name : <span class=/"param/">String</span>, value : <a class=/"param links/" data-fragment=/"Any/">Any</a>, optionalTarget : <span class=/"param/">Array</span> ) : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+			name -- the property name to search for. <br>
+			value -- value of the given property. <br>
+			optionalTarget -- (optional) target to set the result.
+			Otherwise a new Array is instantiated. If set, you must clear this
+			array prior to each call (i.e., array.length = 0;). <br><br>
+
+			Searches through an object and its children, starting with the object
+			itself, and returns all the objects with a property that matches the value
+			given.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getWorldPosition/" target=/"_parent/" title=/"Object3D.getWorldPosition/" href=/"./index.html#api/en/core/Object3D.getWorldPosition/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getWorldPosition/" id=/"getWorldPosition/" href=/"./index.html#api/en/core/Object3D.getWorldPosition/">getWorldPosition</a> ( target : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">target</a> — the result will be copied into this Vector3.
+			<br><br>
+
+			Returns a vector representing the position of the object in world space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getWorldQuaternion/" target=/"_parent/" title=/"Object3D.getWorldQuaternion/" href=/"./index.html#api/en/core/Object3D.getWorldQuaternion/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getWorldQuaternion/" id=/"getWorldQuaternion/" href=/"./index.html#api/en/core/Object3D.getWorldQuaternion/">getWorldQuaternion</a> ( target : <a class=/"param links/" data-fragment=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a> ) : <a class=/"param links/" data-fragment=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Quaternion/" title=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">target</a> — the result will be copied into this Quaternion.
+			<br><br>
+
+			Returns a quaternion representing the rotation of the object in world
+			space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getWorldScale/" target=/"_parent/" title=/"Object3D.getWorldScale/" href=/"./index.html#api/en/core/Object3D.getWorldScale/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getWorldScale/" id=/"getWorldScale/" href=/"./index.html#api/en/core/Object3D.getWorldScale/">getWorldScale</a> ( target : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">target</a> — the result will be copied into this Vector3.
+			<br><br>
+
+			Returns a vector of the scaling factors applied to the object for each
+			axis in world space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.getWorldDirection/" target=/"_parent/" title=/"Object3D.getWorldDirection/" href=/"./index.html#api/en/core/Object3D.getWorldDirection/">#</a> .<a class=/"links/" data-fragment=/"Object3D.getWorldDirection/" id=/"getWorldDirection/" href=/"./index.html#api/en/core/Object3D.getWorldDirection/">getWorldDirection</a> ( target : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">target</a> — the result will be copied into this Vector3.
+			<br><br>
+
+			Returns a vector representing the direction of object's positive z-axis in
+			world space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.localToWorld/" target=/"_parent/" title=/"Object3D.localToWorld/" href=/"./index.html#api/en/core/Object3D.localToWorld/">#</a> .<a class=/"links/" data-fragment=/"Object3D.localToWorld/" id=/"localToWorld/" href=/"./index.html#api/en/core/Object3D.localToWorld/">localToWorld</a> ( vector : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			vector - A vector representing a position in this object's local space.<br><br>
+
+			Converts the vector from this object's local space to world space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.lookAt/" target=/"_parent/" title=/"Object3D.lookAt/" href=/"./index.html#api/en/core/Object3D.lookAt/">#</a> .<a class=/"links/" data-fragment=/"Object3D.lookAt/" id=/"lookAt/" href=/"./index.html#api/en/core/Object3D.lookAt/">lookAt</a> ( vector : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">undefined</span><br>
+			<a class=/"permalink links/" data-fragment=/"Object3D.lookAt/" target=/"_parent/" title=/"Object3D.lookAt/" href=/"./index.html#api/en/core/Object3D.lookAt/">#</a> .<a class=/"links/" data-fragment=/"Object3D.lookAt/" id=/"lookAt/" href=/"./index.html#api/en/core/Object3D.lookAt/">lookAt</a> ( x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span>, z : <span class=/"param/">Float</span> ) : <span class=/"param/">undefined</span>
+		</h3>
+		<p>
+			vector - A vector representing a position in world space.<br><br>
+			Optionally, the <a class=/"links/" data-fragment=/"Object3D.x/" title=/"Object3D.x/" href=/"./index.html#api/en/core/Object3D.x/">x</a>, <a class=/"links/" data-fragment=/"Object3D.y/" title=/"Object3D.y/" href=/"./index.html#api/en/core/Object3D.y/">y</a> and <a class=/"links/" data-fragment=/"Object3D.z/" title=/"Object3D.z/" href=/"./index.html#api/en/core/Object3D.z/">z</a> components of the
+			world space position.<br><br>
+
+			Rotates the object to face a point in world space.<br><br>
+
+			This method does not support objects having non-uniformly-scaled
+			parent(s).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.raycast/" target=/"_parent/" title=/"Object3D.raycast/" href=/"./index.html#api/en/core/Object3D.raycast/">#</a> .<a class=/"links/" data-fragment=/"Object3D.raycast/" id=/"raycast/" href=/"./index.html#api/en/core/Object3D.raycast/">raycast</a> ( raycaster : <a class=/"param links/" data-fragment=/"Raycaster/" href=/"./index.html#api/en/core/Raycaster/">Raycaster</a>, intersects : <span class=/"param/">Array</span> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			Abstract (empty) method to get intersections between a casted ray and this
+			object. Subclasses such as <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a>, <a class=/"links/" data-fragment=/"Line/" title=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a>, and <a class=/"links/" data-fragment=/"Points/" title=/"Points/" href=/"./index.html#api/en/objects/Points/">Points</a>
+			implement this method in order to use raycasting.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.remove/" target=/"_parent/" title=/"Object3D.remove/" href=/"./index.html#api/en/core/Object3D.remove/">#</a> .<a class=/"links/" data-fragment=/"Object3D.remove/" id=/"remove/" href=/"./index.html#api/en/core/Object3D.remove/">remove</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, ... ) : <span class=/"param/">this</span></h3>
+		<p>
+			Removes <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">object</span></code> as child of this object. An arbitrary number of objects
+			may be removed.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.removeFromParent/" target=/"_parent/" title=/"Object3D.removeFromParent/" href=/"./index.html#api/en/core/Object3D.removeFromParent/">#</a> .<a class=/"links/" data-fragment=/"Object3D.removeFromParent/" id=/"removeFromParent/" href=/"./index.html#api/en/core/Object3D.removeFromParent/">removeFromParent</a> () : <span class=/"param/">this</span></h3>
+		<p>Removes this object from its current parent.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.rotateOnAxis/" target=/"_parent/" title=/"Object3D.rotateOnAxis/" href=/"./index.html#api/en/core/Object3D.rotateOnAxis/">#</a> .<a class=/"links/" data-fragment=/"Object3D.rotateOnAxis/" id=/"rotateOnAxis/" href=/"./index.html#api/en/core/Object3D.rotateOnAxis/">rotateOnAxis</a> ( axis : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, angle : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			axis -- A normalized vector in object space. <br>
+			angle -- The angle in radians.<br><br>
+
+			Rotate an object along an axis in object space. The axis is assumed to be
+			normalized.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.rotateOnWorldAxis/" target=/"_parent/" title=/"Object3D.rotateOnWorldAxis/" href=/"./index.html#api/en/core/Object3D.rotateOnWorldAxis/">#</a> .<a class=/"links/" data-fragment=/"Object3D.rotateOnWorldAxis/" id=/"rotateOnWorldAxis/" href=/"./index.html#api/en/core/Object3D.rotateOnWorldAxis/">rotateOnWorldAxis</a> ( axis : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, angle : <span class=/"param/">Float</span>) : <span class=/"param/">this</span></h3>
+		<p>
+			axis -- A normalized vector in world space. <br>
+			angle -- The angle in radians.<br><br>
+
+			Rotate an object along an axis in world space. The axis is assumed to be
+			normalized. Method Assumes no rotated parent.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.rotateX/" target=/"_parent/" title=/"Object3D.rotateX/" href=/"./index.html#api/en/core/Object3D.rotateX/">#</a> .<a class=/"links/" data-fragment=/"Object3D.rotateX/" id=/"rotateX/" href=/"./index.html#api/en/core/Object3D.rotateX/">rotateX</a> ( rad : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			rad - the angle to rotate in radians.<br><br>
+
+			Rotates the object around x axis in local space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.rotateY/" target=/"_parent/" title=/"Object3D.rotateY/" href=/"./index.html#api/en/core/Object3D.rotateY/">#</a> .<a class=/"links/" data-fragment=/"Object3D.rotateY/" id=/"rotateY/" href=/"./index.html#api/en/core/Object3D.rotateY/">rotateY</a> ( rad : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			rad - the angle to rotate in radians.<br><br>
+
+			Rotates the object around y axis in local space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.rotateZ/" target=/"_parent/" title=/"Object3D.rotateZ/" href=/"./index.html#api/en/core/Object3D.rotateZ/">#</a> .<a class=/"links/" data-fragment=/"Object3D.rotateZ/" id=/"rotateZ/" href=/"./index.html#api/en/core/Object3D.rotateZ/">rotateZ</a> ( rad : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			rad - the angle to rotate in radians.<br><br>
+
+			Rotates the object around z axis in local space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.setRotationFromAxisAngle/" target=/"_parent/" title=/"Object3D.setRotationFromAxisAngle/" href=/"./index.html#api/en/core/Object3D.setRotationFromAxisAngle/">#</a> .<a class=/"links/" data-fragment=/"Object3D.setRotationFromAxisAngle/" id=/"setRotationFromAxisAngle/" href=/"./index.html#api/en/core/Object3D.setRotationFromAxisAngle/">setRotationFromAxisAngle</a> ( axis : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, angle : <span class=/"param/">Float</span> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			axis -- A normalized vector in object space. <br>
+			angle -- angle in radians<br><br>
+
+			Calls <a class=/"links/" data-fragment=/"Quaternion.setFromAxisAngle/" title=/"Quaternion.setFromAxisAngle/" href=/"./index.html#api/en/math/Quaternion.setFromAxisAngle/">setFromAxisAngle</a>( <a class=/"links/" data-fragment=/"Float/" title=/"Float/">axis</a>, <a class=/"links/" data-fragment=/"Float/" title=/"Float/">angle</a> ) on the <a class=/"links/" data-fragment=/"Object3D.quaternion/" title=/"Object3D.quaternion/" href=/"./index.html#api/en/core/Object3D.quaternion/">.quaternion</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.setRotationFromEuler/" target=/"_parent/" title=/"Object3D.setRotationFromEuler/" href=/"./index.html#api/en/core/Object3D.setRotationFromEuler/">#</a> .<a class=/"links/" data-fragment=/"Object3D.setRotationFromEuler/" id=/"setRotationFromEuler/" href=/"./index.html#api/en/core/Object3D.setRotationFromEuler/">setRotationFromEuler</a> ( euler : <a class=/"param links/" data-fragment=/"Euler/" href=/"./index.html#api/en/math/Euler/">Euler</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			euler -- Euler angle specifying rotation amount.<br>
+
+			Calls <a class=/"links/" data-fragment=/"Quaternion.setRotationFromEuler/" title=/"Quaternion.setRotationFromEuler/" href=/"./index.html#api/en/math/Quaternion.setRotationFromEuler/">setRotationFromEuler</a>(
+			<a class=/"links/" data-fragment=/"Euler/" title=/"Euler/" href=/"./index.html#api/en/math/Euler/">euler</a>) on the <a class=/"links/" data-fragment=/"Object3D.quaternion/" title=/"Object3D.quaternion/" href=/"./index.html#api/en/core/Object3D.quaternion/">.quaternion</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.setRotationFromMatrix/" target=/"_parent/" title=/"Object3D.setRotationFromMatrix/" href=/"./index.html#api/en/core/Object3D.setRotationFromMatrix/">#</a> .<a class=/"links/" data-fragment=/"Object3D.setRotationFromMatrix/" id=/"setRotationFromMatrix/" href=/"./index.html#api/en/core/Object3D.setRotationFromMatrix/">setRotationFromMatrix</a> ( m : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			m -- rotate the quaternion by the rotation component of the matrix.<br>
+
+			Calls <a class=/"links/" data-fragment=/"Quaternion.setFromRotationMatrix/" title=/"Quaternion.setFromRotationMatrix/" href=/"./index.html#api/en/math/Quaternion.setFromRotationMatrix/">setFromRotationMatrix</a>(
+			<a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">m</a>) on the <a class=/"links/" data-fragment=/"Object3D.quaternion/" title=/"Object3D.quaternion/" href=/"./index.html#api/en/core/Object3D.quaternion/">.quaternion</a>.<br><br>
+
+			Note that this assumes that the upper 3x3 of m is a pure rotation matrix
+			(i.e, unscaled).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.setRotationFromQuaternion/" target=/"_parent/" title=/"Object3D.setRotationFromQuaternion/" href=/"./index.html#api/en/core/Object3D.setRotationFromQuaternion/">#</a> .<a class=/"links/" data-fragment=/"Object3D.setRotationFromQuaternion/" id=/"setRotationFromQuaternion/" href=/"./index.html#api/en/core/Object3D.setRotationFromQuaternion/">setRotationFromQuaternion</a> ( q : <a class=/"param links/" data-fragment=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			q -- normalized Quaternion.<br><br>
+
+			Copy the given quaternion into <a class=/"links/" data-fragment=/"Object3D.quaternion/" title=/"Object3D.quaternion/" href=/"./index.html#api/en/core/Object3D.quaternion/">.quaternion</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.toJSON/" target=/"_parent/" title=/"Object3D.toJSON/" href=/"./index.html#api/en/core/Object3D.toJSON/">#</a> .<a class=/"links/" data-fragment=/"Object3D.toJSON/" id=/"toJSON/" href=/"./index.html#api/en/core/Object3D.toJSON/">toJSON</a> ( meta : <span class=/"param/">Object</span> ) : <span class=/"param/">Object</span></h3>
+		<p>
+			meta -- object containing metadata such as materials, textures or images
+			for the object.<br>
+			Convert the object to three.js
+			<a href=/"https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4/" target=/"_blank/">JSON Object/Scene format</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.translateOnAxis/" target=/"_parent/" title=/"Object3D.translateOnAxis/" href=/"./index.html#api/en/core/Object3D.translateOnAxis/">#</a> .<a class=/"links/" data-fragment=/"Object3D.translateOnAxis/" id=/"translateOnAxis/" href=/"./index.html#api/en/core/Object3D.translateOnAxis/">translateOnAxis</a> ( axis : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, distance : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			axis -- A normalized vector in object space.<br>
+			distance -- The distance to translate.<br><br>
+
+			Translate an object by distance along an axis in object space. The axis is
+			assumed to be normalized.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.translateX/" target=/"_parent/" title=/"Object3D.translateX/" href=/"./index.html#api/en/core/Object3D.translateX/">#</a> .<a class=/"links/" data-fragment=/"Object3D.translateX/" id=/"translateX/" href=/"./index.html#api/en/core/Object3D.translateX/">translateX</a> ( distance : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Translates object along x axis in object space by <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">distance</span></code> units.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.translateY/" target=/"_parent/" title=/"Object3D.translateY/" href=/"./index.html#api/en/core/Object3D.translateY/">#</a> .<a class=/"links/" data-fragment=/"Object3D.translateY/" id=/"translateY/" href=/"./index.html#api/en/core/Object3D.translateY/">translateY</a> ( distance : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Translates object along y axis in object space by <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">distance</span></code> units.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.translateZ/" target=/"_parent/" title=/"Object3D.translateZ/" href=/"./index.html#api/en/core/Object3D.translateZ/">#</a> .<a class=/"links/" data-fragment=/"Object3D.translateZ/" id=/"translateZ/" href=/"./index.html#api/en/core/Object3D.translateZ/">translateZ</a> ( distance : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Translates object along z axis in object space by <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">distance</span></code> units.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.traverse/" target=/"_parent/" title=/"Object3D.traverse/" href=/"./index.html#api/en/core/Object3D.traverse/">#</a> .<a class=/"links/" data-fragment=/"Object3D.traverse/" id=/"traverse/" href=/"./index.html#api/en/core/Object3D.traverse/">traverse</a> ( callback : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			callback - A function with as first argument an object3D object.<br><br>
+
+			Executes the callback on this object and all descendants.<br>
+			Note: Modifying the scene graph inside the callback is discouraged.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.traverseVisible/" target=/"_parent/" title=/"Object3D.traverseVisible/" href=/"./index.html#api/en/core/Object3D.traverseVisible/">#</a> .<a class=/"links/" data-fragment=/"Object3D.traverseVisible/" id=/"traverseVisible/" href=/"./index.html#api/en/core/Object3D.traverseVisible/">traverseVisible</a> ( callback : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			callback - A function with as first argument an object3D object.<br><br>
+
+			Like traverse, but the callback will only be executed for visible objects.
+			Descendants of invisible objects are not traversed.<br>
+			Note: Modifying the scene graph inside the callback is discouraged.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.traverseAncestors/" target=/"_parent/" title=/"Object3D.traverseAncestors/" href=/"./index.html#api/en/core/Object3D.traverseAncestors/">#</a> .<a class=/"links/" data-fragment=/"Object3D.traverseAncestors/" id=/"traverseAncestors/" href=/"./index.html#api/en/core/Object3D.traverseAncestors/">traverseAncestors</a> ( callback : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			callback - A function with as first argument an object3D object.<br><br>
+
+			Executes the callback on all ancestors.<br>
+			Note: Modifying the scene graph inside the callback is discouraged.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.updateMatrix/" target=/"_parent/" title=/"Object3D.updateMatrix/" href=/"./index.html#api/en/core/Object3D.updateMatrix/">#</a> .<a class=/"links/" data-fragment=/"Object3D.updateMatrix/" id=/"updateMatrix/" href=/"./index.html#api/en/core/Object3D.updateMatrix/">updateMatrix</a> () : <span class=/"param/">undefined</span></h3>
+		<p>Updates the local transform.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.updateMatrixWorld/" target=/"_parent/" title=/"Object3D.updateMatrixWorld/" href=/"./index.html#api/en/core/Object3D.updateMatrixWorld/">#</a> .<a class=/"links/" data-fragment=/"Object3D.updateMatrixWorld/" id=/"updateMatrixWorld/" href=/"./index.html#api/en/core/Object3D.updateMatrixWorld/">updateMatrixWorld</a> ( force : <span class=/"param/">Boolean</span> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			force - A boolean that can be used to bypass
+			<a class=/"links/" data-fragment=/"Object3D.matrixWorldAutoUpdate/" title=/"Object3D.matrixWorldAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixWorldAutoUpdate/">.matrixWorldAutoUpdate</a>, to recalculate the world matrix of the
+			object and descendants on the current frame. Useful if you cannot wait for
+			the renderer to update it on the next frame (assuming
+			<a class=/"links/" data-fragment=/"Object3D.matrixWorldAutoUpdate/" title=/"Object3D.matrixWorldAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixWorldAutoUpdate/">.matrixWorldAutoUpdate</a> set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>).<br><br>
+
+			Updates the global transform of the object and its descendants if the
+			world matrix needs update (<a class=/"links/" data-fragment=/"Object3D.matrixWorldNeedsUpdate/" title=/"Object3D.matrixWorldNeedsUpdate/" href=/"./index.html#api/en/core/Object3D.matrixWorldNeedsUpdate/">.matrixWorldNeedsUpdate</a> set to true) or
+			if the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">force</span></code> parameter is set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.updateWorldMatrix/" target=/"_parent/" title=/"Object3D.updateWorldMatrix/" href=/"./index.html#api/en/core/Object3D.updateWorldMatrix/">#</a> .<a class=/"links/" data-fragment=/"Object3D.updateWorldMatrix/" id=/"updateWorldMatrix/" href=/"./index.html#api/en/core/Object3D.updateWorldMatrix/">updateWorldMatrix</a> ( updateParents : <span class=/"param/">Boolean</span>, updateChildren : <span class=/"param/">Boolean</span> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			updateParents - recursively updates global transform of ancestors.<br>
+			updateChildren - recursively updates global transform of descendants.<br><br>
+
+			Updates the global transform of the object.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Object3D.worldToLocal/" target=/"_parent/" title=/"Object3D.worldToLocal/" href=/"./index.html#api/en/core/Object3D.worldToLocal/">#</a> .<a class=/"links/" data-fragment=/"Object3D.worldToLocal/" id=/"worldToLocal/" href=/"./index.html#api/en/core/Object3D.worldToLocal/">worldToLocal</a> ( vector : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			vector - A vector representing a position in world space.<br><br>
+
+			Converts the vector from world space to this object's local space.
+		</p>
+
+		<h2>Events</h2>
+
+		<h3>added</h3>
+		<p>
+			Fires when the object has been added to its parent object.
+		</p>
+
+		<h3>removed</h3>
+		<p>
+			Fires when the object has been removed from its parent object.
+		</p>
+
+		<h3>childadded</h3>
+		<p>
+			Fires when a new child object has been added.
+		</p>
+
+		<h3>childremoved</h3>
+		<p>
+			Fires when a new child object has been removed.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/core/Object3D.js/" target=/"_blank/">src/core/Object3D.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

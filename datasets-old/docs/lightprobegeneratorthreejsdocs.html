@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head><title>LightProbeGenerator – three.js docs</title></head><body><body>
+
+		<h1>LightProbeGenerator</h1>
+
+		<p class="desc">
+			Utility class for creating instances of <a class="links" data-fragment="LightProbe" title="LightProbe" href="./index.html#api/en/lights/LightProbe">LightProbe</a>.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			LightProbeGenerator is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">LightProbeGenerator</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/lights/LightProbeGenerator.js'</span><span class="pun">;</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#webgl_lightprobe" target="_blank">WebGL / light probe </a><br>
+			<a href="../examples/#webgl_lightprobe_cubecamera" target="_blank">WebGL / light probe / cube camera </a>
+		</p>
+
+		<h2>Static Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="LightProbeGenerator.fromCubeTexture" target="_parent" title="LightProbeGenerator.fromCubeTexture" href="./index.html#examples/en/lights/LightProbeGenerator.fromCubeTexture">#</a> .<a class="links" data-fragment="LightProbeGenerator.fromCubeTexture" id="fromCubeTexture" href="./index.html#examples/en/lights/LightProbeGenerator.fromCubeTexture">fromCubeTexture</a> ( cubeTexture : <a class="param links" data-fragment="CubeTexture" href="./index.html#api/en/textures/CubeTexture">CubeTexture</a> ) : <a class="param links" data-fragment="LightProbe" href="./index.html#api/en/lights/LightProbe">LightProbe</a></h3>
+		<p>
+			Creates a light probe from the given (radiance) environment map. The method expects that the environment map is represented as a cube texture.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LightProbeGenerator.fromCubeRenderTarget" target="_parent" title="LightProbeGenerator.fromCubeRenderTarget" href="./index.html#examples/en/lights/LightProbeGenerator.fromCubeRenderTarget">#</a> .<a class="links" data-fragment="LightProbeGenerator.fromCubeRenderTarget" id="fromCubeRenderTarget" href="./index.html#examples/en/lights/LightProbeGenerator.fromCubeRenderTarget">fromCubeRenderTarget</a> ( renderer : <a class="param links" data-fragment="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGLRenderer</a>, cubeRenderTarget : <a class="param links" data-fragment="WebGLCubeRenderTarget" href="./index.html#api/en/renderers/WebGLCubeRenderTarget">WebGLCubeRenderTarget</a> ) : <a class="param links" data-fragment="LightProbe" href="./index.html#api/en/lights/LightProbe">LightProbe</a></h3>
+		<p>
+			Creates a light probe from the given (radiance) environment map. The method expects that the environment map is represented as a cube render target.
+		</p>
+		<p>
+			The <a class="links" data-fragment="Texture.format" title="Texture.format" href="./index.html#api/en/textures/Texture.format">format</a> of the cube render target must be set to <code class="inline prettyprint" translate="no"><span class="pln">RGBA</span></code>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/lights/LightProbeGenerator.js" target="_blank">examples/jsm/lights/LightProbeGenerator.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

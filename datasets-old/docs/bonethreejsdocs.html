@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><title>Bone – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> →
+
+		<h1>Bone</h1>
+
+		<p class="desc">
+			A bone which is part of a <a class="links" data-fragment="Skeleton" title="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a>. The skeleton in turn is used by
+			the <a class="links" data-fragment="SkinnedMesh" title="SkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh">SkinnedMesh</a>. Bones are almost identical to a blank
+			<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> root </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Bone</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> child </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Bone</span><span class="pun">();</span><span class="pln">
+
+root</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> child </span><span class="pun">);</span><span class="pln">
+child</span><span class="pun">.</span><span class="pln">position</span><span class="pun">.</span><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>Bone( )</h3>
+		<p>Creates a new Bone.</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="Bone.isBone" target="_parent" title="Bone.isBone" href="./index.html#api/en/objects/Bone.isBone">#</a> .<a class="links" data-fragment="Bone.isBone" id="isBone" href="./index.html#api/en/objects/Bone.isBone">isBone</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Bone.</p>
+
+		<h3><a class="permalink links" data-fragment="Bone.type" target="_parent" title="Bone.type" href="./index.html#api/en/objects/Bone.type">#</a> .<a class="links" data-fragment="Bone.type" id="type" href="./index.html#api/en/objects/Bone.type">type</a>  : <span class="param">String</span></h3>
+		<p>Set to 'Bone', this can be used to find all Bones in a scene.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/objects/Bone.js" target="_blank">src/objects/Bone.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

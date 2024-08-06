@@ -1,0 +1,274 @@
+<!DOCTYPE html><html><head><title>MeshLambertMaterial – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> →
+
+		<h1>MeshLambertMaterial</h1>
+
+		<p class="desc">
+			A material for non-shiny surfaces, without specular highlights.<br><br>
+
+			The material uses a non-physically based
+			<a href="https://en.wikipedia.org/wiki/Lambertian_reflectance" target="_blank">Lambertian</a>
+			model for calculating reflectance. This can simulate some surfaces (such
+			as untreated wood or stone) well, but cannot simulate shiny surfaces with
+			specular highlights (such as varnished wood). MeshLambertMaterial uses per-fragment
+			shading.<br><br>
+
+			Due to the simplicity of the reflectance and illumination models,
+			performance will be greater when using this material over the
+			<a class="links" data-fragment="MeshPhongMaterial" title="MeshPhongMaterial" href="./index.html#api/en/materials/MeshPhongMaterial">MeshPhongMaterial</a>, <a class="links" data-fragment="MeshStandardMaterial" title="MeshStandardMaterial" href="./index.html#api/en/materials/MeshStandardMaterial">MeshStandardMaterial</a> or
+			<a class="links" data-fragment="MeshPhysicalMaterial" title="MeshPhysicalMaterial" href="./index.html#api/en/materials/MeshPhysicalMaterial">MeshPhysicalMaterial</a>, at the cost of some graphical accuracy.
+		</p>
+
+		<iframe id="scene" src="scenes/material-browser.html#MeshLambertMaterial"></iframe>
+
+		<script>
+
+		// iOS iframe auto-resize workaround
+
+		if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+			const scene = document.getElementById( 'scene' );
+
+			scene.style.width = getComputedStyle( scene ).width;
+			scene.style.height = getComputedStyle( scene ).height;
+			scene.setAttribute( 'scrolling', 'no' );
+
+		}
+
+		</script>
+
+		<h2>Constructor</h2>
+
+		<h3>MeshLambertMaterial( parameters : <span class="param">Object</span> )</h3>
+		<p>
+			<a class="links" data-fragment="Object" title="Object">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>) can be
+			passed in here.<br><br>
+
+			The exception is the property <a class="links" data-fragment="Hexadecimal" title="Hexadecimal">color</a>, which can be
+			passed in as a hexadecimal string and is <code class="inline prettyprint" translate="no"><span class="lit">0xffffff</span></code> (white) by default.
+			<a class="links" data-fragment="Color.set" title="Color.set" href="./index.html#api/en/math/Color.set">Color.set</a>( color ) is called internally.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.alphaMap" target="_parent" title="MeshLambertMaterial.alphaMap" href="./index.html#api/en/materials/MeshLambertMaterial.alphaMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.alphaMap" id="alphaMap" href="./index.html#api/en/materials/MeshLambertMaterial.alphaMap">alphaMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The alpha map is a grayscale texture that controls the opacity across the
+			surface (black: fully transparent; white: fully opaque). Default is
+			null.<br><br>
+
+			Only the color of the texture is used, ignoring the alpha channel if one
+			exists. For RGB and RGBA textures, the <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer
+			will use the green channel when sampling this texture due to the extra bit
+			of precision provided for green in DXT-compressed and uncompressed RGB 565
+			formats. Luminance-only and luminance/alpha textures will also still work
+			as expected.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.aoMap" target="_parent" title="MeshLambertMaterial.aoMap" href="./index.html#api/en/materials/MeshLambertMaterial.aoMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.aoMap" id="aoMap" href="./index.html#api/en/materials/MeshLambertMaterial.aoMap">aoMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The red channel of this texture is used as the ambient occlusion map.
+			Default is null. The aoMap requires a second set of UVs.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.aoMapIntensity" target="_parent" title="MeshLambertMaterial.aoMapIntensity" href="./index.html#api/en/materials/MeshLambertMaterial.aoMapIntensity">#</a> .<a class="links" data-fragment="MeshLambertMaterial.aoMapIntensity" id="aoMapIntensity" href="./index.html#api/en/materials/MeshLambertMaterial.aoMapIntensity">aoMapIntensity</a>  : <span class="param">Float</span></h3>
+		<p>
+			Intensity of the ambient occlusion effect. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>. Zero is no
+			occlusion effect.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.bumpMap" target="_parent" title="MeshLambertMaterial.bumpMap" href="./index.html#api/en/materials/MeshLambertMaterial.bumpMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.bumpMap" id="bumpMap" href="./index.html#api/en/materials/MeshLambertMaterial.bumpMap">bumpMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The texture to create a bump map. The black and white values map to the
+			perceived depth in relation to the lights. Bump doesn't actually affect
+			the geometry of the object, only the lighting. If a normal map is defined
+			this will be ignored.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.bumpScale" target="_parent" title="MeshLambertMaterial.bumpScale" href="./index.html#api/en/materials/MeshLambertMaterial.bumpScale">#</a> .<a class="links" data-fragment="MeshLambertMaterial.bumpScale" id="bumpScale" href="./index.html#api/en/materials/MeshLambertMaterial.bumpScale">bumpScale</a>  : <span class="param">Float</span></h3>
+		<p>
+			How much the bump map affects the material. Typical ranges are 0-1.
+			Default is 1.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.color" target="_parent" title="MeshLambertMaterial.color" href="./index.html#api/en/materials/MeshLambertMaterial.color">#</a> .<a class="links" data-fragment="MeshLambertMaterial.color" id="color" href="./index.html#api/en/materials/MeshLambertMaterial.color">color</a>  : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a></h3>
+		<p><a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">Color</a> of the material, by default set to white (0xffffff).</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.combine" target="_parent" title="MeshLambertMaterial.combine" href="./index.html#api/en/materials/MeshLambertMaterial.combine">#</a> .<a class="links" data-fragment="MeshLambertMaterial.combine" id="combine" href="./index.html#api/en/materials/MeshLambertMaterial.combine">combine</a>  : <span class="param">Integer</span></h3>
+		<p>
+			How to combine the result of the surface's color with the environment map,
+			if any.<br><br>
+
+			Options are <a class="links" data-fragment="Materials" title="Materials" href="./index.html#api/en/constants/Materials">THREE.MultiplyOperation</a> (default),
+			<a class="links" data-fragment="Materials" title="Materials" href="./index.html#api/en/constants/Materials">THREE.MixOperation</a>, <a class="links" data-fragment="Materials" title="Materials" href="./index.html#api/en/constants/Materials">THREE.AddOperation</a>.
+			If mix is chosen, the <a class="links" data-fragment="MeshLambertMaterial.reflectivity" title="MeshLambertMaterial.reflectivity" href="./index.html#api/en/materials/MeshLambertMaterial.reflectivity">.reflectivity</a> is used to blend between the
+			two colors.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.displacementMap" target="_parent" title="MeshLambertMaterial.displacementMap" href="./index.html#api/en/materials/MeshLambertMaterial.displacementMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.displacementMap" id="displacementMap" href="./index.html#api/en/materials/MeshLambertMaterial.displacementMap">displacementMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The displacement map affects the position of the mesh's vertices. Unlike
+			other maps which only affect the light and shade of the material the
+			displaced vertices can cast shadows, block other objects, and otherwise
+			act as real geometry. The displacement texture is an image where the value
+			of each pixel (white being the highest) is mapped against, and
+			repositions, the vertices of the mesh.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.displacementScale" target="_parent" title="MeshLambertMaterial.displacementScale" href="./index.html#api/en/materials/MeshLambertMaterial.displacementScale">#</a> .<a class="links" data-fragment="MeshLambertMaterial.displacementScale" id="displacementScale" href="./index.html#api/en/materials/MeshLambertMaterial.displacementScale">displacementScale</a>  : <span class="param">Float</span></h3>
+		<p>
+			How much the displacement map affects the mesh (where black is no
+			displacement, and white is maximum displacement). Without a displacement
+			map set, this value is not applied. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.displacementBias" target="_parent" title="MeshLambertMaterial.displacementBias" href="./index.html#api/en/materials/MeshLambertMaterial.displacementBias">#</a> .<a class="links" data-fragment="MeshLambertMaterial.displacementBias" id="displacementBias" href="./index.html#api/en/materials/MeshLambertMaterial.displacementBias">displacementBias</a>  : <span class="param">Float</span></h3>
+		<p>
+			The offset of the displacement map's values on the mesh's vertices.
+			Without a displacement map set, this value is not applied. Default is <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.emissive" target="_parent" title="MeshLambertMaterial.emissive" href="./index.html#api/en/materials/MeshLambertMaterial.emissive">#</a> .<a class="links" data-fragment="MeshLambertMaterial.emissive" id="emissive" href="./index.html#api/en/materials/MeshLambertMaterial.emissive">emissive</a>  : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a></h3>
+		<p>
+			Emissive (light) color of the material, essentially a solid color
+			unaffected by other lighting. Default is black.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.emissiveMap" target="_parent" title="MeshLambertMaterial.emissiveMap" href="./index.html#api/en/materials/MeshLambertMaterial.emissiveMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.emissiveMap" id="emissiveMap" href="./index.html#api/en/materials/MeshLambertMaterial.emissiveMap">emissiveMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			Set emissive (glow) map. Default is null. The emissive map color is
+			modulated by the emissive color and the emissive intensity. If you have an
+			emissive map, be sure to set the emissive color to something other than
+			black.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.emissiveIntensity" target="_parent" title="MeshLambertMaterial.emissiveIntensity" href="./index.html#api/en/materials/MeshLambertMaterial.emissiveIntensity">#</a> .<a class="links" data-fragment="MeshLambertMaterial.emissiveIntensity" id="emissiveIntensity" href="./index.html#api/en/materials/MeshLambertMaterial.emissiveIntensity">emissiveIntensity</a>  : <span class="param">Float</span></h3>
+		<p>
+			Intensity of the emissive light. Modulates the emissive color. Default is
+			1.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.envMap" target="_parent" title="MeshLambertMaterial.envMap" href="./index.html#api/en/materials/MeshLambertMaterial.envMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.envMap" id="envMap" href="./index.html#api/en/materials/MeshLambertMaterial.envMap">envMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>The environment map. Default is null.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.envMapRotation" target="_parent" title="MeshLambertMaterial.envMapRotation" href="./index.html#api/en/materials/MeshLambertMaterial.envMapRotation">#</a> .<a class="links" data-fragment="MeshLambertMaterial.envMapRotation" id="envMapRotation" href="./index.html#api/en/materials/MeshLambertMaterial.envMapRotation">envMapRotation</a>  : <a class="param links" data-fragment="Euler" href="./index.html#api/en/math/Euler">Euler</a></h3>
+		<p>
+			The rotation of the environment map in radians. Default is <code class="inline prettyprint" translate="no"><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,</span><span class="lit">0</span><span class="pun">)</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.flatShading" target="_parent" title="MeshLambertMaterial.flatShading" href="./index.html#api/en/materials/MeshLambertMaterial.flatShading">#</a> .<a class="links" data-fragment="MeshLambertMaterial.flatShading" id="flatShading" href="./index.html#api/en/materials/MeshLambertMaterial.flatShading">flatShading</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Define whether the material is rendered with flat shading. Default is
+			false.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.fog" target="_parent" title="MeshLambertMaterial.fog" href="./index.html#api/en/materials/MeshLambertMaterial.fog">#</a> .<a class="links" data-fragment="MeshLambertMaterial.fog" id="fog" href="./index.html#api/en/materials/MeshLambertMaterial.fog">fog</a>  : <span class="param">Boolean</span></h3>
+		<p>Whether the material is affected by fog. Default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.lightMap" target="_parent" title="MeshLambertMaterial.lightMap" href="./index.html#api/en/materials/MeshLambertMaterial.lightMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.lightMap" id="lightMap" href="./index.html#api/en/materials/MeshLambertMaterial.lightMap">lightMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The light map. Default is null. The lightMap requires a second set of UVs.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.lightMapIntensity" target="_parent" title="MeshLambertMaterial.lightMapIntensity" href="./index.html#api/en/materials/MeshLambertMaterial.lightMapIntensity">#</a> .<a class="links" data-fragment="MeshLambertMaterial.lightMapIntensity" id="lightMapIntensity" href="./index.html#api/en/materials/MeshLambertMaterial.lightMapIntensity">lightMapIntensity</a>  : <span class="param">Float</span></h3>
+		<p>Intensity of the baked light. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.map" target="_parent" title="MeshLambertMaterial.map" href="./index.html#api/en/materials/MeshLambertMaterial.map">#</a> .<a class="links" data-fragment="MeshLambertMaterial.map" id="map" href="./index.html#api/en/materials/MeshLambertMaterial.map">map</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The color map. May optionally include an alpha channel, typically combined
+			with <a class="links" data-fragment="Material.transparent" title="Material.transparent" href="./index.html#api/en/materials/Material.transparent">.transparent</a> or <a class="links" data-fragment="Material.alphaTest" title="Material.alphaTest" href="./index.html#api/en/materials/Material.alphaTest">.alphaTest</a>. 
+			Default is null.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.normalMap" target="_parent" title="MeshLambertMaterial.normalMap" href="./index.html#api/en/materials/MeshLambertMaterial.normalMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.normalMap" id="normalMap" href="./index.html#api/en/materials/MeshLambertMaterial.normalMap">normalMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The texture to create a normal map. The RGB values affect the surface
+			normal for each pixel fragment and change the way the color is lit. Normal
+			maps do not change the actual shape of the surface, only the lighting. In
+			case the material has a normal map authored using the left handed
+			convention, the y component of normalScale should be negated to compensate
+			for the different handedness.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.normalMapType" target="_parent" title="MeshLambertMaterial.normalMapType" href="./index.html#api/en/materials/MeshLambertMaterial.normalMapType">#</a> .<a class="links" data-fragment="MeshLambertMaterial.normalMapType" id="normalMapType" href="./index.html#api/en/materials/MeshLambertMaterial.normalMapType">normalMapType</a>  : <span class="param">Integer</span></h3>
+		<p>
+			The type of normal map.<br><br>
+
+			Options are <a class="links" data-fragment="constant" title="constant">THREE.TangentSpaceNormalMap</a> (default), and
+			<a class="links" data-fragment="constant" title="constant">THREE.ObjectSpaceNormalMap</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.normalScale" target="_parent" title="MeshLambertMaterial.normalScale" href="./index.html#api/en/materials/MeshLambertMaterial.normalScale">#</a> .<a class="links" data-fragment="MeshLambertMaterial.normalScale" id="normalScale" href="./index.html#api/en/materials/MeshLambertMaterial.normalScale">normalScale</a>  : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			How much the normal map affects the material. Typical ranges are 0-1.
+			Default is a <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> set to (1,1).
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.reflectivity" target="_parent" title="MeshLambertMaterial.reflectivity" href="./index.html#api/en/materials/MeshLambertMaterial.reflectivity">#</a> .<a class="links" data-fragment="MeshLambertMaterial.reflectivity" id="reflectivity" href="./index.html#api/en/materials/MeshLambertMaterial.reflectivity">reflectivity</a>  : <span class="param">Float</span></h3>
+		<p>
+			How much the environment map affects the surface; also see
+			<a class="links" data-fragment="MeshLambertMaterial.combine" title="MeshLambertMaterial.combine" href="./index.html#api/en/materials/MeshLambertMaterial.combine">.combine</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.refractionRatio" target="_parent" title="MeshLambertMaterial.refractionRatio" href="./index.html#api/en/materials/MeshLambertMaterial.refractionRatio">#</a> .<a class="links" data-fragment="MeshLambertMaterial.refractionRatio" id="refractionRatio" href="./index.html#api/en/materials/MeshLambertMaterial.refractionRatio">refractionRatio</a>  : <span class="param">Float</span></h3>
+		<p>
+			The index of refraction (IOR) of air (approximately 1) divided by the
+			index of refraction of the material. It is used with environment mapping
+			modes <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.CubeRefractionMapping</a> and <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.EquirectangularRefractionMapping</a>. 
+			The refraction ratio should not
+			exceed <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>. Default is <code class="inline prettyprint" translate="no"><span class="lit">0.98</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.specularMap" target="_parent" title="MeshLambertMaterial.specularMap" href="./index.html#api/en/materials/MeshLambertMaterial.specularMap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.specularMap" id="specularMap" href="./index.html#api/en/materials/MeshLambertMaterial.specularMap">specularMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>Specular map used by the material. Default is null.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.wireframe" target="_parent" title="MeshLambertMaterial.wireframe" href="./index.html#api/en/materials/MeshLambertMaterial.wireframe">#</a> .<a class="links" data-fragment="MeshLambertMaterial.wireframe" id="wireframe" href="./index.html#api/en/materials/MeshLambertMaterial.wireframe">wireframe</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Render geometry as wireframe. Default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code> (i.e. render as flat
+			polygons).
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.wireframeLinecap" target="_parent" title="MeshLambertMaterial.wireframeLinecap" href="./index.html#api/en/materials/MeshLambertMaterial.wireframeLinecap">#</a> .<a class="links" data-fragment="MeshLambertMaterial.wireframeLinecap" id="wireframeLinecap" href="./index.html#api/en/materials/MeshLambertMaterial.wireframeLinecap">wireframeLinecap</a>  : <span class="param">String</span></h3>
+		<p>
+			Define appearance of line ends. Possible values are "butt", "round" and
+			"square". Default is 'round'.<br><br>
+
+			This corresponds to the
+			<a href="https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/lineCap" target="_blank">2D Canvas lineCap</a> 
+			property and it is ignored by the <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.wireframeLinejoin" target="_parent" title="MeshLambertMaterial.wireframeLinejoin" href="./index.html#api/en/materials/MeshLambertMaterial.wireframeLinejoin">#</a> .<a class="links" data-fragment="MeshLambertMaterial.wireframeLinejoin" id="wireframeLinejoin" href="./index.html#api/en/materials/MeshLambertMaterial.wireframeLinejoin">wireframeLinejoin</a>  : <span class="param">String</span></h3>
+		<p>
+			Define appearance of line joints. Possible values are "round", "bevel" and
+			"miter". Default is 'round'.<br><br>
+
+			This corresponds to the
+			<a href="https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/lineJoin" target="_blank">2D Canvas lineJoin</a> 
+			property and it is ignored by the <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshLambertMaterial.wireframeLinewidth" target="_parent" title="MeshLambertMaterial.wireframeLinewidth" href="./index.html#api/en/materials/MeshLambertMaterial.wireframeLinewidth">#</a> .<a class="links" data-fragment="MeshLambertMaterial.wireframeLinewidth" id="wireframeLinewidth" href="./index.html#api/en/materials/MeshLambertMaterial.wireframeLinewidth">wireframeLinewidth</a>  : <span class="param">Float</span></h3>
+		<p>
+			Controls wireframe thickness. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.<br><br>
+
+			Due to limitations of the
+			<a href="https://www.khronos.org/registry/OpenGL/specs/gl/glspec46.core.pdf" target="_blank">OpenGL Core Profile</a> 
+			with the <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer on most
+			platforms linewidth will always be <code class="inline prettyprint" translate="no"><span class="lit">1</span></code> regardless of the set value.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/materials/MeshLambertMaterial.js" target="_blank">src/materials/MeshLambertMaterial.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

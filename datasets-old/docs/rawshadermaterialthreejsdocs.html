@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><title>RawShaderMaterial – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> → <a class="links" data-fragment="ShaderMaterial" title="ShaderMaterial" href="./index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a> →
+
+		<h1>RawShaderMaterial</h1>
+
+		<p class="desc">
+			This class works just like <a class="links" data-fragment="ShaderMaterial" title="ShaderMaterial" href="./index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a>, except that definitions
+			of built-in uniforms and attributes are not automatically prepended to the
+			GLSL shader code.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> material </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">RawShaderMaterial</span><span class="pun">(</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	uniforms</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		time</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.0</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+	</span><span class="pun">},</span><span class="pln">
+	vertexShader</span><span class="pun">:</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="pln"> </span><span class="str">'vertexShader'</span><span class="pln"> </span><span class="pun">).</span><span class="pln">textContent</span><span class="pun">,</span><span class="pln">
+	fragmentShader</span><span class="pun">:</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="pln"> </span><span class="str">'fragmentShader'</span><span class="pln"> </span><span class="pun">).</span><span class="pln">textContent</span><span class="pun">,</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href="../examples/#webgl_buffergeometry_rawshader" target="_blank">WebGL / buffergeometry / rawshader</a><br>
+			<a href="../examples/#webgl_buffergeometry_instancing_billboards" target="_blank">WebGL / buffergeometry / instancing / billboards</a><br>
+			<a href="../examples/#webgl_buffergeometry_instancing" target="_blank">WebGL / buffergeometry / instancing</a><br>
+			<a href="../examples/#webgl_raymarching_reflect" target="_blank">WebGL / raymarching / reflect</a><br>
+			<a href="../examples/#webgl_volume_cloud" target="_blank">WebGL / volume / cloud</a><br>
+			<a href="../examples/#webgl_volume_instancing" target="_blank">WebGL / volume / instancing</a><br>
+			<a href="../examples/#webgl_volume_perlin" target="_blank">WebGL / volume / perlin</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>RawShaderMaterial( parameters : <span class="param">Object</span> )</h3>
+		<p>
+			<a class="links" data-fragment="Object" title="Object">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> and
+			<a class="links" data-fragment="ShaderMaterial" title="ShaderMaterial" href="./index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a>) can be passed in here.<br><br>
+		</p>
+
+		<h2>Properties</h2>
+		<p>
+			See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> and <a class="links" data-fragment="ShaderMaterial" title="ShaderMaterial" href="./index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a> classes for common
+			properties.
+		</p>
+
+		<h2>Methods</h2>
+		<p>
+			See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> and <a class="links" data-fragment="ShaderMaterial" title="ShaderMaterial" href="./index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a> classes for common
+			methods.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/materials/RawShaderMaterial.js" target="_blank">src/materials/RawShaderMaterial.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

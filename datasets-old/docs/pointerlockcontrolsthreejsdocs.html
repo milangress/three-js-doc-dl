@@ -1,0 +1,164 @@
+<!DOCTYPE html><html><head><title>PointerLockControls – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="EventDispatcher" title="EventDispatcher" href="./index.html#api/en/core/EventDispatcher">EventDispatcher</a> →
+
+		<h1>PointerLockControls</h1>
+
+		<p class="desc">
+			The implementation of this class is based on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API" target="_blank">Pointer Lock API</a>.
+			PointerLockControls is a perfect choice for first person 3D games.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			PointerLockControls is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">PointerLockControls</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/controls/PointerLockControls.js'</span><span class="pun">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> controls </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PointerLockControls</span><span class="pun">(</span><span class="pln"> camera</span><span class="pun">,</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">body </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// add event listener to show/hide a UI (e.g. the game's menu)</span><span class="pln">
+
+controls</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="pln"> </span><span class="str">'lock'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	menu</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">display </span><span class="pun">=</span><span class="pln"> </span><span class="str">'none'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+controls</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="pln"> </span><span class="str">'unlock'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	menu</span><span class="pun">.</span><span class="pln">style</span><span class="pun">.</span><span class="pln">display </span><span class="pun">=</span><span class="pln"> </span><span class="str">'block'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href="../examples/#misc_controls_pointerlock" target="_blank">misc / controls / pointerlock </a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>PointerLockControls( camera : <a class="param links" data-fragment="Camera" href="./index.html#api/en/cameras/Camera">Camera</a>, domElement : <a class="param links" data-fragment="HTMLDOMElement">HTMLDOMElement</a> )</h3>
+		
+			<p>
+			<a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">camera</a>: The camera of the rendered scene.
+			</p>
+			<p>
+			<a class="links" data-fragment="HTMLDOMElement" title="HTMLDOMElement">domElement</a>: The HTML element used for event listeners.
+			</p>
+			<p>
+				Creates a new instance of PointerLockControls.
+			</p>
+		
+
+		<h2>Events</h2>
+
+		<h3>change</h3>
+		<p>
+			Fires when the user moves the mouse.
+		</p>
+
+		<h3>lock</h3>
+		<p>
+			Fires when the pointer lock status is "locked" (in other words: the mouse is captured).
+		</p>
+
+		<h3>unlock</h3>
+		<p>
+			Fires when the pointer lock status is "unlocked" (in other words: the mouse is not captured anymore).
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.domElement" target="_parent" title="PointerLockControls.domElement" href="./index.html#examples/en/controls/PointerLockControls.domElement">#</a> .<a class="links" data-fragment="PointerLockControls.domElement" id="domElement" href="./index.html#examples/en/controls/PointerLockControls.domElement">domElement</a>  : <a class="param links" data-fragment="HTMLDOMElement">HTMLDOMElement</a></h3>
+		<p>
+			The HTMLDOMElement used to listen for mouse / touch events. This must be passed in the constructor; changing it here will
+			not set up new event listeners.
+		</p>
+
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.isLocked" target="_parent" title="PointerLockControls.isLocked" href="./index.html#examples/en/controls/PointerLockControls.isLocked">#</a> .<a class="links" data-fragment="PointerLockControls.isLocked" id="isLocked" href="./index.html#examples/en/controls/PointerLockControls.isLocked">isLocked</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Whether or not the controls are locked.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.maxPolarAngle" target="_parent" title="PointerLockControls.maxPolarAngle" href="./index.html#examples/en/controls/PointerLockControls.maxPolarAngle">#</a> .<a class="links" data-fragment="PointerLockControls.maxPolarAngle" id="maxPolarAngle" href="./index.html#examples/en/controls/PointerLockControls.maxPolarAngle">maxPolarAngle</a>  : <span class="param">Float</span></h3>
+		<p>
+			Camera pitch, upper limit. Range is 0 to Math.PI radians. Default is Math.PI.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.minPolarAngle" target="_parent" title="PointerLockControls.minPolarAngle" href="./index.html#examples/en/controls/PointerLockControls.minPolarAngle">#</a> .<a class="links" data-fragment="PointerLockControls.minPolarAngle" id="minPolarAngle" href="./index.html#examples/en/controls/PointerLockControls.minPolarAngle">minPolarAngle</a>  : <span class="param">Float</span></h3>
+		<p>
+			Camera pitch, lower limit. Range is 0 to Math.PI radians. Default is 0.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.pointerSpeed" target="_parent" title="PointerLockControls.pointerSpeed" href="./index.html#examples/en/controls/PointerLockControls.pointerSpeed">#</a> .<a class="links" data-fragment="PointerLockControls.pointerSpeed" id="pointerSpeed" href="./index.html#examples/en/controls/PointerLockControls.pointerSpeed">pointerSpeed</a>  : <span class="param">Float</span></h3>
+		<p>
+			Multiplier for how much the pointer movement influences the camera rotation. Default is 1.
+		</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a class="links" data-fragment="EventDispatcher" title="EventDispatcher" href="./index.html#api/en/core/EventDispatcher">EventDispatcher</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.connect" target="_parent" title="PointerLockControls.connect" href="./index.html#examples/en/controls/PointerLockControls.connect">#</a> .<a class="links" data-fragment="PointerLockControls.connect" id="connect" href="./index.html#examples/en/controls/PointerLockControls.connect">connect</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Adds the event listeners of the controls.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.disconnect" target="_parent" title="PointerLockControls.disconnect" href="./index.html#examples/en/controls/PointerLockControls.disconnect">#</a> .<a class="links" data-fragment="PointerLockControls.disconnect" id="disconnect" href="./index.html#examples/en/controls/PointerLockControls.disconnect">disconnect</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Removes the event listeners of the controls.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.getDirection" target="_parent" title="PointerLockControls.getDirection" href="./index.html#examples/en/controls/PointerLockControls.getDirection">#</a> .<a class="links" data-fragment="PointerLockControls.getDirection" id="getDirection" href="./index.html#examples/en/controls/PointerLockControls.getDirection">getDirection</a> ( target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a></h3>
+		<p>
+			</p><p>
+				<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">target</a>: The target vector.
+			</p>
+			<p>
+				Returns the look direction of the camera.
+			</p>
+		<p></p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.lock" target="_parent" title="PointerLockControls.lock" href="./index.html#examples/en/controls/PointerLockControls.lock">#</a> .<a class="links" data-fragment="PointerLockControls.lock" id="lock" href="./index.html#examples/en/controls/PointerLockControls.lock">lock</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Activates the pointer lock.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.moveForward" target="_parent" title="PointerLockControls.moveForward" href="./index.html#examples/en/controls/PointerLockControls.moveForward">#</a> .<a class="links" data-fragment="PointerLockControls.moveForward" id="moveForward" href="./index.html#examples/en/controls/PointerLockControls.moveForward">moveForward</a> ( distance : <span class="param">Number</span> ) : <span class="param">undefined</span></h3>
+		<p>
+			</p><p>
+				<a class="links" data-fragment="Number" title="Number">distance</a>: The signed distance.
+			</p>
+			<p>
+				Moves the camera forward parallel to the xz-plane. Assumes camera.up is y-up.
+			</p>
+		<p></p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.moveRight" target="_parent" title="PointerLockControls.moveRight" href="./index.html#examples/en/controls/PointerLockControls.moveRight">#</a> .<a class="links" data-fragment="PointerLockControls.moveRight" id="moveRight" href="./index.html#examples/en/controls/PointerLockControls.moveRight">moveRight</a> ( distance : <span class="param">Number</span> ) : <span class="param">undefined</span></h3>
+		<p>
+			</p><p>
+				<a class="links" data-fragment="Number" title="Number">distance</a>: The signed distance.
+			</p>
+			<p>
+				Moves the camera sidewards parallel to the xz-plane.
+			</p>
+		<p></p>
+
+		<h3><a class="permalink links" data-fragment="PointerLockControls.unlock" target="_parent" title="PointerLockControls.unlock" href="./index.html#examples/en/controls/PointerLockControls.unlock">#</a> .<a class="links" data-fragment="PointerLockControls.unlock" id="unlock" href="./index.html#examples/en/controls/PointerLockControls.unlock">unlock</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Exits the pointer lock.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/controls/PointerLockControls.js" target="_blank">examples/jsm/controls/PointerLockControls.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

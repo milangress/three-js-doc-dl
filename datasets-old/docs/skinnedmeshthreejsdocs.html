@@ -1,0 +1,175 @@
+<!DOCTYPE html><html><head><title>SkinnedMesh – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> → <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> →
+
+		<h1>SkinnedMesh</h1>
+
+		<p class="desc">
+			A mesh that has a <a class="links" data-fragment="Skeleton" title="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a> with <a class="links" data-fragment="Bone" title="Bone" href="./index.html#api/en/objects/Bone">bones</a> that can then be
+			used to animate the vertices of the geometry.
+		</p>
+
+		<iframe id="scene" src="scenes/bones-browser.html"></iframe>
+
+		<script>
+
+		// iOS iframe auto-resize workaround
+
+		if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+			const scene = document.getElementById( 'scene' );
+
+			scene.style.width = getComputedStyle( scene ).width;
+			scene.style.height = getComputedStyle( scene ).height;
+			scene.setAttribute( 'scrolling', 'no' );
+
+		}
+
+		</script>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> geometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">CylinderGeometry</span><span class="pun">(</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">15</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">30</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// create the skin indices and skin weights manually</span><span class="pln">
+</span><span class="com">// (typically a loader would read this data from a 3D model for you)</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> position </span><span class="pun">=</span><span class="pln"> geometry</span><span class="pun">.</span><span class="pln">attributes</span><span class="pun">.</span><span class="pln">position</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> vertex </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Vector3</span><span class="pun">();</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> skinIndices </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> skinWeights </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> let i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> position</span><span class="pun">.</span><span class="pln">count</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">++</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	vertex</span><span class="pun">.</span><span class="pln">fromBufferAttribute</span><span class="pun">(</span><span class="pln"> position</span><span class="pun">,</span><span class="pln"> i </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="com">// compute skinIndex and skinWeight based on some configuration data</span><span class="pln">
+	</span><span class="kwd">const</span><span class="pln"> y </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> vertex</span><span class="pun">.</span><span class="pln">y </span><span class="pun">+</span><span class="pln"> sizing</span><span class="pun">.</span><span class="pln">halfHeight </span><span class="pun">);</span><span class="pln">
+	</span><span class="kwd">const</span><span class="pln"> skinIndex </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Math</span><span class="pun">.</span><span class="pln">floor</span><span class="pun">(</span><span class="pln"> y </span><span class="pun">/</span><span class="pln"> sizing</span><span class="pun">.</span><span class="pln">segmentHeight </span><span class="pun">);</span><span class="pln">
+	</span><span class="kwd">const</span><span class="pln"> skinWeight </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> y </span><span class="pun">%</span><span class="pln"> sizing</span><span class="pun">.</span><span class="pln">segmentHeight </span><span class="pun">)</span><span class="pln"> </span><span class="pun">/</span><span class="pln"> sizing</span><span class="pun">.</span><span class="pln">segmentHeight</span><span class="pun">;</span><span class="pln">
+	skinIndices</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln"> skinIndex</span><span class="pun">,</span><span class="pln"> skinIndex </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+	skinWeights</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> skinWeight</span><span class="pun">,</span><span class="pln"> skinWeight</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+geometry</span><span class="pun">.</span><span class="pln">setAttribute</span><span class="pun">(</span><span class="pln"> </span><span class="str">'skinIndex'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Uint16BufferAttribute</span><span class="pun">(</span><span class="pln"> skinIndices</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+geometry</span><span class="pun">.</span><span class="pln">setAttribute</span><span class="pun">(</span><span class="pln"> </span><span class="str">'skinWeight'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Float32BufferAttribute</span><span class="pun">(</span><span class="pln"> skinWeights</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// create skinned mesh and skeleton</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> mesh </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">SkinnedMesh</span><span class="pun">(</span><span class="pln"> geometry</span><span class="pun">,</span><span class="pln"> material </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> skeleton </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Skeleton</span><span class="pun">(</span><span class="pln"> bones </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// see example from THREE.Skeleton</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> rootBone </span><span class="pun">=</span><span class="pln"> skeleton</span><span class="pun">.</span><span class="pln">bones</span><span class="pun">[</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">];</span><span class="pln">
+mesh</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> rootBone </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// bind the skeleton to the mesh</span><span class="pln">
+mesh</span><span class="pun">.</span><span class="pln">bind</span><span class="pun">(</span><span class="pln"> skeleton </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// move the bones and manipulate the model</span><span class="pln">
+skeleton</span><span class="pun">.</span><span class="pln">bones</span><span class="pun">[</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">].</span><span class="pln">rotation</span><span class="pun">.</span><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="pun">-</span><span class="lit">0.1</span><span class="pun">;</span><span class="pln">
+skeleton</span><span class="pun">.</span><span class="pln">bones</span><span class="pun">[</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">].</span><span class="pln">rotation</span><span class="pun">.</span><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0.2</span><span class="pun">;</span></code>
+
+		<h2>Constructor</h2>
+		<h3>
+			SkinnedMesh( geometry : <a class="param links" data-fragment="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>, material : <a class="param links" data-fragment="Material" href="./index.html#api/en/materials/Material">Material</a> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">geometry</a> - an instance of <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>.<br>
+			<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">material</a> - (optional) an instance of <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>.
+			Default is a new <a class="links" data-fragment="MeshBasicMaterial" title="MeshBasicMaterial" href="./index.html#api/en/materials/MeshBasicMaterial">MeshBasicMaterial</a>.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.bindMode" target="_parent" title="SkinnedMesh.bindMode" href="./index.html#api/en/objects/SkinnedMesh.bindMode">#</a> .<a class="links" data-fragment="SkinnedMesh.bindMode" id="bindMode" href="./index.html#api/en/objects/SkinnedMesh.bindMode">bindMode</a>  : <span class="param">String</span></h3>
+		<p>
+			Either <code class="inline prettyprint" translate="no"><span class="typ">AttachedBindMode</span></code> or <code class="inline prettyprint" translate="no"><span class="typ">DetachedBindMode</span></code>. <code class="inline prettyprint" translate="no"><span class="typ">AttachedBindMode</span></code> means the skinned mesh
+			shares the same world space as the skeleton. This is not true when using <code class="inline prettyprint" translate="no"><span class="typ">DetachedBindMode</span></code>
+			which is useful when sharing a skeleton across multiple skinned meshes.
+			Default is <code class="inline prettyprint" translate="no"><span class="typ">AttachedBindMode</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.bindMatrix" target="_parent" title="SkinnedMesh.bindMatrix" href="./index.html#api/en/objects/SkinnedMesh.bindMatrix">#</a> .<a class="links" data-fragment="SkinnedMesh.bindMatrix" id="bindMatrix" href="./index.html#api/en/objects/SkinnedMesh.bindMatrix">bindMatrix</a>  : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a></h3>
+		<p>The base matrix that is used for the bound bone transforms.</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.bindMatrixInverse" target="_parent" title="SkinnedMesh.bindMatrixInverse" href="./index.html#api/en/objects/SkinnedMesh.bindMatrixInverse">#</a> .<a class="links" data-fragment="SkinnedMesh.bindMatrixInverse" id="bindMatrixInverse" href="./index.html#api/en/objects/SkinnedMesh.bindMatrixInverse">bindMatrixInverse</a>  : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a></h3>
+		<p>The base matrix that is used for resetting the bound bone transforms.</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.boundingBox" target="_parent" title="SkinnedMesh.boundingBox" href="./index.html#api/en/objects/SkinnedMesh.boundingBox">#</a> .<a class="links" data-fragment="SkinnedMesh.boundingBox" id="boundingBox" href="./index.html#api/en/objects/SkinnedMesh.boundingBox">boundingBox</a>  : <a class="param links" data-fragment="Box3" href="./index.html#api/en/math/Box3">Box3</a></h3>
+		<p>
+			The bounding box of the SkinnedMesh. Can be calculated with
+			<a class="links" data-fragment="SkinnedMesh.computeBoundingBox" title="SkinnedMesh.computeBoundingBox" href="./index.html#api/en/objects/SkinnedMesh.computeBoundingBox">.computeBoundingBox</a>(). Default is <code class="inline prettyprint" translate="no"><span class="kwd">null</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.boundingSphere" target="_parent" title="SkinnedMesh.boundingSphere" href="./index.html#api/en/objects/SkinnedMesh.boundingSphere">#</a> .<a class="links" data-fragment="SkinnedMesh.boundingSphere" id="boundingSphere" href="./index.html#api/en/objects/SkinnedMesh.boundingSphere">boundingSphere</a>  : <a class="param links" data-fragment="Sphere" href="./index.html#api/en/math/Sphere">Sphere</a></h3>
+		<p>
+			The bounding sphere of the SkinnedMesh. Can be calculated with
+			<a class="links" data-fragment="SkinnedMesh.computeBoundingSphere" title="SkinnedMesh.computeBoundingSphere" href="./index.html#api/en/objects/SkinnedMesh.computeBoundingSphere">.computeBoundingSphere</a>(). Default is <code class="inline prettyprint" translate="no"><span class="kwd">null</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.isSkinnedMesh" target="_parent" title="SkinnedMesh.isSkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh.isSkinnedMesh">#</a> .<a class="links" data-fragment="SkinnedMesh.isSkinnedMesh" id="isSkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh.isSkinnedMesh">isSkinnedMesh</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type SkinnedMesh.</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.skeleton" target="_parent" title="SkinnedMesh.skeleton" href="./index.html#api/en/objects/SkinnedMesh.skeleton">#</a> .<a class="links" data-fragment="SkinnedMesh.skeleton" id="skeleton" href="./index.html#api/en/objects/SkinnedMesh.skeleton">skeleton</a>  : <a class="param links" data-fragment="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a></h3>
+		<p><a class="links" data-fragment="Skeleton" title="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a> representing the bone hierarchy of the skinned mesh.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> class for common methods.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SkinnedMesh.bind" target="_parent" title="SkinnedMesh.bind" href="./index.html#api/en/objects/SkinnedMesh.bind">#</a> .<a class="links" data-fragment="SkinnedMesh.bind" id="bind" href="./index.html#api/en/objects/SkinnedMesh.bind">bind</a> ( skeleton : <a class="param links" data-fragment="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a>, bindMatrix : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Skeleton" title="Skeleton" href="./index.html#api/en/objects/Skeleton">skeleton</a> - <a class="links" data-fragment="Skeleton" title="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a> created from a <a class="links" data-fragment="Bone" title="Bone" href="./index.html#api/en/objects/Bone">Bones</a> tree.<br>
+			<a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">bindMatrix</a> - <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> that represents the base
+			transform of the skeleton.<br><br>
+
+			Bind a skeleton to the skinned mesh. The bindMatrix gets saved to
+			.bindMatrix property and the .bindMatrixInverse gets calculated.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.clone" target="_parent" title="SkinnedMesh.clone" href="./index.html#api/en/objects/SkinnedMesh.clone">#</a> .<a class="links" data-fragment="SkinnedMesh.clone" id="clone" href="./index.html#api/en/objects/SkinnedMesh.clone">clone</a> () : <a class="param links" data-fragment="SkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh">SkinnedMesh</a></h3>
+		<p>
+			This method does currently not clone an instance of SkinnedMesh correctly.
+			Please use <a class="links" data-fragment="SkeletonUtils.clone" title="SkeletonUtils.clone" href="./index.html#examples/en/utils/SkeletonUtils.clone">SkeletonUtils.clone</a>() in the meanwhile.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.computeBoundingBox" target="_parent" title="SkinnedMesh.computeBoundingBox" href="./index.html#api/en/objects/SkinnedMesh.computeBoundingBox">#</a> .<a class="links" data-fragment="SkinnedMesh.computeBoundingBox" id="computeBoundingBox" href="./index.html#api/en/objects/SkinnedMesh.computeBoundingBox">computeBoundingBox</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Computes the bounding box of the skinned mesh, and updates the <a class="links" data-fragment="SkinnedMesh.boundingBox" title="SkinnedMesh.boundingBox" href="./index.html#api/en/objects/SkinnedMesh.boundingBox">.boundingBox</a> attribute.
+			The bounding box is not computed by the engine; it must be computed by your app.
+			If the skinned mesh is animated, the bounding box should be recomputed per frame.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.computeBoundingSphere" target="_parent" title="SkinnedMesh.computeBoundingSphere" href="./index.html#api/en/objects/SkinnedMesh.computeBoundingSphere">#</a> .<a class="links" data-fragment="SkinnedMesh.computeBoundingSphere" id="computeBoundingSphere" href="./index.html#api/en/objects/SkinnedMesh.computeBoundingSphere">computeBoundingSphere</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Computes the bounding sphere of the skinned mesh, and updates the <a class="links" data-fragment="SkinnedMesh.boundingSphere" title="SkinnedMesh.boundingSphere" href="./index.html#api/en/objects/SkinnedMesh.boundingSphere">.boundingSphere</a> attribute.
+			The bounding sphere is automatically computed by the engine when it is needed, e.g., for ray casting and view frustum culling.
+			If the skinned mesh is animated, the bounding sphere should be recomputed per frame.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.normalizeSkinWeights" target="_parent" title="SkinnedMesh.normalizeSkinWeights" href="./index.html#api/en/objects/SkinnedMesh.normalizeSkinWeights">#</a> .<a class="links" data-fragment="SkinnedMesh.normalizeSkinWeights" id="normalizeSkinWeights" href="./index.html#api/en/objects/SkinnedMesh.normalizeSkinWeights">normalizeSkinWeights</a> () : <span class="param">undefined</span></h3>
+		<p>Normalizes the skin weights.</p>
+
+		<h3><a class="permalink links" data-fragment="SkinnedMesh.pose" target="_parent" title="SkinnedMesh.pose" href="./index.html#api/en/objects/SkinnedMesh.pose">#</a> .<a class="links" data-fragment="SkinnedMesh.pose" id="pose" href="./index.html#api/en/objects/SkinnedMesh.pose">pose</a> () : <span class="param">undefined</span></h3>
+		<p>This method sets the skinned mesh in the rest pose (resets the pose).</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SkinnedMesh.applyBoneTransform" target="_parent" title="SkinnedMesh.applyBoneTransform" href="./index.html#api/en/objects/SkinnedMesh.applyBoneTransform">#</a> .<a class="links" data-fragment="SkinnedMesh.applyBoneTransform" id="applyBoneTransform" href="./index.html#api/en/objects/SkinnedMesh.applyBoneTransform">applyBoneTransform</a> ( index : <span class="param">Integer</span>, vector : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<p>
+			Applies the bone transform associated with the given index to the given
+			position vector. Returns the updated vector.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/objects/SkinnedMesh.js" target="_blank">src/objects/SkinnedMesh.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

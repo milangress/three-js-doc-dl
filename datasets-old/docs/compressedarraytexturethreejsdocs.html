@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head><title>CompressedArrayTexture – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="CompressedTexture" title="CompressedTexture" href="./index.html#api/en/textures/CompressedTexture">CompressedTexture</a> →
+
+		<h1>CompressedArrayTexture</h1>
+
+		<p class="desc">
+			Creates an texture 2D array based on data in compressed form, for example
+			from a <a href="https://en.wikipedia.org/wiki/DirectDraw_Surface" target="_blank">DDS</a>
+			file.<br><br>
+
+			For use with the <a class="links" data-fragment="CompressedTextureLoader" title="CompressedTextureLoader" href="./index.html#api/en/loaders/CompressedTextureLoader">CompressedTextureLoader</a>.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			CompressedArrayTexture( mipmaps : <span class="param">Array</span>, width : <span class="param">Number</span>, height : <span class="param">Number</span>, format : <a class="param links" data-fragment="Constant">Constant</a>, type : <a class="param links" data-fragment="Constant">Constant</a> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">mipmaps</a> -- The mipmaps array should contain objects with
+			data, width and height. The mipmaps should be of the correct format and
+			type.<br>
+
+			<a class="links" data-fragment="Number" title="Number">width</a> -- The width of the biggest mipmap.<br>
+
+			<a class="links" data-fragment="Number" title="Number">height</a> -- The height of the biggest mipmap.<br>
+
+			<a class="links" data-fragment="Number" title="Number">depth</a> -- The number of layers of the 2D array texture.<br>
+
+			<a class="links" data-fragment="Constant" title="Constant">format</a> -- The format used in the mipmaps. See
+			<a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">ST3C Compressed Texture Formats</a>, <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">PVRTC Compressed Texture Formats</a> 
+			and <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">ETC Compressed Texture Format</a> for other choices.<br>
+
+			<a class="links" data-fragment="Constant" title="Constant">type</a> -- Default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.UnsignedByteType</a>.
+			See <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">type constants</a> for other choices.<br>
+		</p>
+
+		<h2>Properties</h2>
+
+		See the base <a class="links" data-fragment="CompressedTexture" title="CompressedTexture" href="./index.html#api/en/textures/CompressedTexture">CompressedTexture</a> class for common
+		properties.
+
+		<h3><a class="permalink links" data-fragment="CompressedArrayTexture.wrapR" target="_parent" title="CompressedArrayTexture.wrapR" href="./index.html#api/en/textures/CompressedArrayTexture.wrapR">#</a> .<a class="links" data-fragment="CompressedArrayTexture.wrapR" id="wrapR" href="./index.html#api/en/textures/CompressedArrayTexture.wrapR">wrapR</a>  : <span class="param">number</span></h3>
+		<p>
+			This defines how the texture is wrapped in the depth direction.<br>
+			The default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.ClampToEdgeWrapping</a>, where the edge
+			is clamped to the outer edge texels. The other two choices are
+			<a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.RepeatWrapping</a> and <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.MirroredRepeatWrapping</a>. 
+			See the <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">texture constants</a>
+			page for details.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="CompressedArrayTexture.image" target="_parent" title="CompressedArrayTexture.image" href="./index.html#api/en/textures/CompressedArrayTexture.image">#</a> .<a class="links" data-fragment="CompressedArrayTexture.image" id="image" href="./index.html#api/en/textures/CompressedArrayTexture.image">image</a>  : <span class="param">Object</span></h3>
+		<p>Overridden with a object containing width, height, and depth.</p>
+
+		<h3><a class="permalink links" data-fragment="CompressedArrayTexture.layerUpdates" target="_parent" title="CompressedArrayTexture.layerUpdates" href="./index.html#api/en/textures/CompressedArrayTexture.layerUpdates">#</a> .<a class="links" data-fragment="CompressedArrayTexture.layerUpdates" id="layerUpdates" href="./index.html#api/en/textures/CompressedArrayTexture.layerUpdates">layerUpdates</a>  : <a class="param links" data-fragment="Set">Set</a></h3>
+		<p>
+			A set of all layers which need to be updated in the texture. See
+			<a class="links" data-fragment="CompressedTextureArray.addLayerUpdate" title="CompressedTextureArray.addLayerUpdate">addLayerUpdate</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="CompressedArrayTexture.isCompressedArrayTexture" target="_parent" title="CompressedArrayTexture.isCompressedArrayTexture" href="./index.html#api/en/textures/CompressedArrayTexture.isCompressedArrayTexture">#</a> .<a class="links" data-fragment="CompressedArrayTexture.isCompressedArrayTexture" id="isCompressedArrayTexture" href="./index.html#api/en/textures/CompressedArrayTexture.isCompressedArrayTexture">isCompressedArrayTexture</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type CompressedArrayTexture.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="CompressedArrayTexture.addLayerUpdate" target="_parent" title="CompressedArrayTexture.addLayerUpdate" href="./index.html#api/en/textures/CompressedArrayTexture.addLayerUpdate">#</a> .<a class="links" data-fragment="CompressedArrayTexture.addLayerUpdate" id="addLayerUpdate" href="./index.html#api/en/textures/CompressedArrayTexture.addLayerUpdate">addLayerUpdate</a> ( layerIndex ) : <a class="param links" data-fragment="addLayerUpdate">addLayerUpdate</a></h3>
+		<p>
+			Describes that a specific layer of the texture needs to be updated.
+			Normally when <a class="links" data-fragment="Texture.needsUpdate" title="Texture.needsUpdate" href="./index.html#api/en/textures/Texture.needsUpdate">needsUpdate</a> is set to true, the
+			entire compressed texture array is sent to the GPU. Marking specific
+			layers will only transmit subsets of all mipmaps associated with a
+			specific depth in the array which is often much more performant.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="CompressedArrayTexture.clearLayerUpdates" target="_parent" title="CompressedArrayTexture.clearLayerUpdates" href="./index.html#api/en/textures/CompressedArrayTexture.clearLayerUpdates">#</a> .<a class="links" data-fragment="CompressedArrayTexture.clearLayerUpdates" id="clearLayerUpdates" href="./index.html#api/en/textures/CompressedArrayTexture.clearLayerUpdates">clearLayerUpdates</a> () : <a class="param links" data-fragment="clearLayerUpdates">clearLayerUpdates</a></h3>
+		<p>
+			Resets the layer updates registry. See
+			<a class="links" data-fragment="CompressedTextureArray.addLayerUpdate" title="CompressedTextureArray.addLayerUpdate">addLayerUpdate</a>.
+		</p>
+
+		<p>
+			See the base <a class="links" data-fragment="CompressedTexture" title="CompressedTexture" href="./index.html#api/en/textures/CompressedTexture">CompressedTexture</a> class for common
+			methods.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/textures/CompressedArrayTexture.js" target="_blank">src/textures/CompressedArrayTexture.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

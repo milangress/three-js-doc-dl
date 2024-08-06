@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head><title>Mesh – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> →
+
+		<h1>Mesh</h1>
+
+		<p class="desc">
+			Class representing triangular
+			<a href="https://en.wikipedia.org/wiki/Polygon_mesh" target="_blank">polygon mesh</a> based
+			objects. Also serves as a base for other classes such as
+			<a class="links" data-fragment="SkinnedMesh" title="SkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh">SkinnedMesh</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> geometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">BoxGeometry</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> material </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">MeshBasicMaterial</span><span class="pun">(</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> color</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0xffff00</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> mesh </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Mesh</span><span class="pun">(</span><span class="pln"> geometry</span><span class="pun">,</span><span class="pln"> material </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> mesh </span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			Mesh( geometry : <a class="param links" data-fragment="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>, material : <a class="param links" data-fragment="Material" href="./index.html#api/en/materials/Material">Material</a> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">geometry</a> — (optional) an instance of
+			<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>. Default is a new <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>.<br>
+			<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">material</a> — (optional) a single or an array of
+			<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>. Default is a new <a class="links" data-fragment="MeshBasicMaterial" title="MeshBasicMaterial" href="./index.html#api/en/materials/MeshBasicMaterial">MeshBasicMaterial</a>
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="Mesh.geometry" target="_parent" title="Mesh.geometry" href="./index.html#api/en/objects/Mesh.geometry">#</a> .<a class="links" data-fragment="Mesh.geometry" id="geometry" href="./index.html#api/en/objects/Mesh.geometry">geometry</a>  : <a class="param links" data-fragment="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a></h3>
+		<p>
+			An instance of <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> (or derived classes), defining the
+			object's structure.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Mesh.isMesh" target="_parent" title="Mesh.isMesh" href="./index.html#api/en/objects/Mesh.isMesh">#</a> .<a class="links" data-fragment="Mesh.isMesh" id="isMesh" href="./index.html#api/en/objects/Mesh.isMesh">isMesh</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Mesh.</p>
+
+		<h3><a class="permalink links" data-fragment="Mesh.material" target="_parent" title="Mesh.material" href="./index.html#api/en/objects/Mesh.material">#</a> .<a class="links" data-fragment="Mesh.material" id="material" href="./index.html#api/en/objects/Mesh.material">material</a>  : <a class="param links" data-fragment="Material" href="./index.html#api/en/materials/Material">Material</a></h3>
+		<p>
+			An instance of material derived from the <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> base class or an
+			array of materials, defining the object's appearance. Default is a
+			<a class="links" data-fragment="MeshBasicMaterial" title="MeshBasicMaterial" href="./index.html#api/en/materials/MeshBasicMaterial">MeshBasicMaterial</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Mesh.morphTargetInfluences" target="_parent" title="Mesh.morphTargetInfluences" href="./index.html#api/en/objects/Mesh.morphTargetInfluences">#</a> .<a class="links" data-fragment="Mesh.morphTargetInfluences" id="morphTargetInfluences" href="./index.html#api/en/objects/Mesh.morphTargetInfluences">morphTargetInfluences</a>  : <span class="param">Array</span></h3>
+		<p>
+			An array of weights typically from 0-1 that specify how much of the morph
+			is applied. Undefined by default, but reset to a blank array by
+			<a class="links" data-fragment="Mesh.updateMorphTargets" title="Mesh.updateMorphTargets" href="./index.html#api/en/objects/Mesh.updateMorphTargets">updateMorphTargets</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Mesh.morphTargetDictionary" target="_parent" title="Mesh.morphTargetDictionary" href="./index.html#api/en/objects/Mesh.morphTargetDictionary">#</a> .<a class="links" data-fragment="Mesh.morphTargetDictionary" id="morphTargetDictionary" href="./index.html#api/en/objects/Mesh.morphTargetDictionary">morphTargetDictionary</a>  : <span class="param">Object</span></h3>
+		<p>
+			A dictionary of morphTargets based on the morphTarget.name property.
+			Undefined by default, but rebuilt <a class="links" data-fragment="Mesh.updateMorphTargets" title="Mesh.updateMorphTargets" href="./index.html#api/en/objects/Mesh.updateMorphTargets">updateMorphTargets</a>.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="Mesh.clone" target="_parent" title="Mesh.clone" href="./index.html#api/en/objects/Mesh.clone">#</a> .<a class="links" data-fragment="Mesh.clone" id="clone" href="./index.html#api/en/objects/Mesh.clone">clone</a> () : <a class="param links" data-fragment="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a></h3>
+		<p>Returns a clone of this Mesh object and its descendants.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Mesh.getVertexPosition" target="_parent" title="Mesh.getVertexPosition" href="./index.html#api/en/objects/Mesh.getVertexPosition">#</a> .<a class="links" data-fragment="Mesh.getVertexPosition" id="getVertexPosition" href="./index.html#api/en/objects/Mesh.getVertexPosition">getVertexPosition</a> ( index : <span class="param">Integer</span>, target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<p>
+			Get the local-space position of the vertex at the given index, taking into
+			account the current animation state of both morph targets and skinning.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Mesh.raycast" target="_parent" title="Mesh.raycast" href="./index.html#api/en/objects/Mesh.raycast">#</a> .<a class="links" data-fragment="Mesh.raycast" id="raycast" href="./index.html#api/en/objects/Mesh.raycast">raycast</a> ( raycaster : <a class="param links" data-fragment="Raycaster" href="./index.html#api/en/core/Raycaster">Raycaster</a>, intersects : <span class="param">Array</span> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			Get intersections between a casted ray and this mesh.
+			<a class="links" data-fragment="Raycaster.intersectObject" title="Raycaster.intersectObject" href="./index.html#api/en/core/Raycaster.intersectObject">Raycaster.intersectObject</a> will call this method, but the results
+			are not ordered.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Mesh.updateMorphTargets" target="_parent" title="Mesh.updateMorphTargets" href="./index.html#api/en/objects/Mesh.updateMorphTargets">#</a> .<a class="links" data-fragment="Mesh.updateMorphTargets" id="updateMorphTargets" href="./index.html#api/en/objects/Mesh.updateMorphTargets">updateMorphTargets</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Updates the morphTargets to have no influence on the object. Resets the
+			<a class="links" data-fragment="Mesh.morphTargetInfluences" title="Mesh.morphTargetInfluences" href="./index.html#api/en/objects/Mesh.morphTargetInfluences">morphTargetInfluences</a> and
+			<a class="links" data-fragment="Mesh.morphTargetDictionary" title="Mesh.morphTargetDictionary" href="./index.html#api/en/objects/Mesh.morphTargetDictionary">morphTargetDictionary</a> properties.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/objects/Mesh.js" target="_blank">src/objects/Mesh.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

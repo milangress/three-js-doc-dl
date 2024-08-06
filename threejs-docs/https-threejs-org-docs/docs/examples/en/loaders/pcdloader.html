@@ -1,0 +1,111 @@
+<!DOCTYPE html><html><head><title>PCDLoader – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> →
+
+		<h1>PCDLoader</h1>
+
+		<p class=/"desc/">
+			A loader for the PCD (Point Cloud Data) file format. PCDLoader supports ASCII and (compressed) binary files as well as the following PCD fields:
+			</p><ul>
+				<li>x y z</li>
+				<li>rgb</li>
+				<li>normal_x normal_y normal_z</li>
+				<li>intensity</li>
+				<li>label</li>
+			</ul>
+		<p></p>
+
+		<h2>Import</h2>
+
+		<p>
+			PCDLoader is an add-on, and must be imported explicitly.
+			See <a href=/"#manual/introduction/Installation/" target=/"_blank/">Installation / Addons</a>.
+		</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">import</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> </span><span class=/"typ/">PCDLoader</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"kwd/">from</span><span class=/"pln/"> </span><span class=/"str/">'three/addons/loaders/PCDLoader.js'</span><span class=/"pun/">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// instantiate a loader</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> loader </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">PCDLoader</span><span class=/"pun/">();</span><span class=/"pln/">
+
+</span><span class=/"com/">// load a resource</span><span class=/"pln/">
+loader</span><span class=/"pun/">.</span><span class=/"pln/">load</span><span class=/"pun/">(</span><span class=/"pln/">
+	</span><span class=/"com/">// resource URL</span><span class=/"pln/">
+	</span><span class=/"str/">'pointcloud.pcd'</span><span class=/"pun/">,</span><span class=/"pln/">
+	</span><span class=/"com/">// called when the resource is loaded</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> points </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+
+		scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> points </span><span class=/"pun/">);</span><span class=/"pln/">
+
+	</span><span class=/"pun/">},</span><span class=/"pln/">
+	</span><span class=/"com/">// called when loading is in progresses</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> xhr </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+
+		console</span><span class=/"pun/">.</span><span class=/"pln/">log</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> xhr</span><span class=/"pun/">.</span><span class=/"pln/">loaded </span><span class=/"pun/">/</span><span class=/"pln/"> xhr</span><span class=/"pun/">.</span><span class=/"pln/">total </span><span class=/"pun/">*</span><span class=/"pln/"> </span><span class=/"lit/">100</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">+</span><span class=/"pln/"> </span><span class=/"str/">'% loaded'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+	</span><span class=/"pun/">},</span><span class=/"pln/">
+	</span><span class=/"com/">// called when loading has errors</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> error </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+
+		console</span><span class=/"pun/">.</span><span class=/"pln/">log</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'An error happened'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+	</span><span class=/"pun/">}</span><span class=/"pln/">
+</span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href=/"../examples/#webgl_loader_pcd/" target=/"_blank/">webgl_loader_pcd</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>PCDLoader( manager : <a class=/"param links/" data-fragment=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">LoadingManager</a> )</h3>
+		<p>
+		<a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">manager</a> — The <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">loadingManager</a> for the loader to use. Default is <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">THREE.DefaultLoadingManager</a>.
+		</p>
+		<p>
+		Creates a new PCDLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> class for common properties.</p>
+
+		<h3><a class=/"links/" data-fragment=/"Boolean/" title=/"Boolean/">littleEndian</a></h3>
+		<p>
+		Default value is true.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> class for common methods.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"PCDLoader.load/" target=/"_parent/" title=/"PCDLoader.load/" href=/"./index.html#examples/en/loaders/PCDLoader.load/">#</a> .<a class=/"links/" data-fragment=/"PCDLoader.load/" id=/"load/" href=/"./index.html#examples/en/loaders/PCDLoader.load/">load</a> ( url : <span class=/"param/">String</span>, onLoad : <a class=/"param links/" data-fragment=/"Function/">Function</a>, onProgress : <a class=/"param links/" data-fragment=/"Function/">Function</a>, onError : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+		<a class=/"links/" data-fragment=/"String/" title=/"String/">url</a> — A string containing the path/URL of the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">.</span><span class=/"pln/">pcd</span></code> file.<br>
+		<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onLoad</a> — (optional) A function to be called after loading is successfully completed. The function receives loaded <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> as an argument.<br>
+		<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onProgress</a> — (optional) A function to be called while the loading is in progress. The argument will be the XMLHttpRequest instance, which contains <a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">total</a> and <a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">loaded</a> bytes. If the server does not set the Content-Length header; .<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">total</a> will be 0.<br>
+		<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onError</a> — (optional) A function to be called if an error occurs during loading. The function receives the error as an argument.<br>
+		</p>
+		<p>
+		Begin loading from url and call onLoad with the parsed response content.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"PCDLoader.parse/" target=/"_parent/" title=/"PCDLoader.parse/" href=/"./index.html#examples/en/loaders/PCDLoader.parse/">#</a> .<a class=/"links/" data-fragment=/"PCDLoader.parse/" id=/"parse/" href=/"./index.html#examples/en/loaders/PCDLoader.parse/">parse</a> ( data : <span class=/"param/">Arraybuffer</span>,url : <span class=/"param/">String</span> ) : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+		<a class=/"links/" data-fragment=/"Arraybuffer/" title=/"Arraybuffer/">data</a> — The binary structure to parse.
+		</p>
+		<p>
+		<a class=/"links/" data-fragment=/"String/" title=/"String/">url</a> — The file name or file url.
+		</p>
+		<p>
+		Parse an <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">pcd</span></code> binary structure and return an <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>.<br>
+		The object is converted to <a class=/"links/" data-fragment=/"Points/" title=/"Points/" href=/"./index.html#api/en/objects/Points/">Points</a> with a <a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> and a <a class=/"links/" data-fragment=/"PointsMaterial/" title=/"PointsMaterial/" href=/"./index.html#api/en/materials/PointsMaterial/">PointsMaterial</a>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/examples/jsm/loaders/PCDLoader.js/" target=/"_blank/">examples/jsm/loaders/PCDLoader.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

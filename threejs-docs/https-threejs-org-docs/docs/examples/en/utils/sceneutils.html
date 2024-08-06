@@ -1,0 +1,109 @@
+<!DOCTYPE html><html><head><title>SceneUtils – three.js docs</title></head><body><body>
+		<h1>SceneUtils</h1>
+
+		<p class=/"desc/">
+			A class containing useful utility functions for scene manipulation.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			SceneUtils is an add-on, and must be imported explicitly.
+			See <a href=/"#manual/introduction/Installation/" target=/"_blank/">Installation / Addons</a>.
+		</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">import</span><span class=/"pln/"> </span><span class=/"pun/">*</span><span class=/"pln/"> </span><span class=/"kwd/">as</span><span class=/"pln/"> </span><span class=/"typ/">SceneUtils</span><span class=/"pln/"> </span><span class=/"kwd/">from</span><span class=/"pln/"> </span><span class=/"str/">'three/addons/utils/SceneUtils.js'</span><span class=/"pun/">;</span></code>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"SceneUtils.createMeshesFromInstancedMesh/" target=/"_parent/" title=/"SceneUtils.createMeshesFromInstancedMesh/" href=/"./index.html#examples/en/utils/SceneUtils.createMeshesFromInstancedMesh/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.createMeshesFromInstancedMesh/" id=/"createMeshesFromInstancedMesh/" href=/"./index.html#examples/en/utils/SceneUtils.createMeshesFromInstancedMesh/">createMeshesFromInstancedMesh</a> ( instancedMesh : <a class=/"param links/" data-fragment=/"InstancedMesh/" href=/"./index.html#api/en/objects/InstancedMesh/">InstancedMesh</a> ) : <a class=/"param links/" data-fragment=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a></h3>
+		<p>
+		instancedMesh -- The instanced mesh.
+		</p>
+		<p>
+		Creates a new group object that contains a new mesh for each instance of the given instanced mesh.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"SceneUtils.createMeshesFromMultiMaterialMesh/" target=/"_parent/" title=/"SceneUtils.createMeshesFromMultiMaterialMesh/" href=/"./index.html#examples/en/utils/SceneUtils.createMeshesFromMultiMaterialMesh/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.createMeshesFromMultiMaterialMesh/" id=/"createMeshesFromMultiMaterialMesh/" href=/"./index.html#examples/en/utils/SceneUtils.createMeshesFromMultiMaterialMesh/">createMeshesFromMultiMaterialMesh</a> ( mesh : <a class=/"param links/" data-fragment=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a> ) : <a class=/"param links/" data-fragment=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a></h3>
+		<p>
+		mesh -- A mesh with multiple materials.
+		</p>
+		<p>
+		Converts the given multi-material mesh into an instance of <a class=/"links/" data-fragment=/"Group/" title=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a> holding for each material a separate mesh.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"SceneUtils.createMultiMaterialObject/" target=/"_parent/" title=/"SceneUtils.createMultiMaterialObject/" href=/"./index.html#examples/en/utils/SceneUtils.createMultiMaterialObject/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.createMultiMaterialObject/" id=/"createMultiMaterialObject/" href=/"./index.html#examples/en/utils/SceneUtils.createMultiMaterialObject/">createMultiMaterialObject</a> ( geometry : <a class=/"param links/" data-fragment=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a>, materials : <span class=/"param/">Array</span> ) : <a class=/"param links/" data-fragment=/"Group/" href=/"./index.html#api/en/objects/Group/">Group</a></h3>
+		<p>
+		geometry -- The geometry for the set of materials. <br>
+		materials -- The materials for the object.
+		</p>
+		<p>
+		Creates a new Group that contains a new mesh for each material defined in materials. Beware that this is not the same as an array of materials which defines multiple materials for 1 mesh.<br>
+		This is mostly useful for objects that need both a material and a wireframe implementation.
+		</p>
+
+    <h3><a class=/"permalink links/" data-fragment=/"SceneUtils.reduceVertices/" target=/"_parent/" title=/"SceneUtils.reduceVertices/" href=/"./index.html#examples/en/utils/SceneUtils.reduceVertices/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.reduceVertices/" id=/"reduceVertices/" href=/"./index.html#examples/en/utils/SceneUtils.reduceVertices/">reduceVertices</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, func : <a class=/"param links/" data-fragment=/"function/">function</a>, initialValue : <a class=/"param links/" data-fragment=/"T/">T</a> ) : <a class=/"param links/" data-fragment=/"T/">T</a></h3>
+		<p>
+		object -- The object to traverse (uses <a class=/"links/" data-fragment=/"Object3D.traverseVisible/" title=/"Object3D.traverseVisible/" href=/"./index.html#api/en/core/Object3D.traverseVisible/">traverseVisible</a> internally). <br>
+		func -- The binary function applied for the reduction. Must have the signature: (value: T, vertex: Vector3): T. <br>
+    initialValue -- The value to initialize the reduction with. This is required
+    as it also sets the reduction type, which is not required to be Vector3.
+		</p>
+		<p>
+		Akin to Array.prototype.reduce(), but operating on the vertices of all the
+		visible descendant objects, in world space. Additionally, it can operate as a
+		transform-reduce, returning a different type T than the Vector3 input. This
+		can be useful for e.g. fitting a viewing frustum to the scene.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"SceneUtils.sortInstancedMesh/" target=/"_parent/" title=/"SceneUtils.sortInstancedMesh/" href=/"./index.html#examples/en/utils/SceneUtils.sortInstancedMesh/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.sortInstancedMesh/" id=/"sortInstancedMesh/" href=/"./index.html#examples/en/utils/SceneUtils.sortInstancedMesh/">sortInstancedMesh</a> ( mesh : <a class=/"param links/" data-fragment=/"InstancedMesh/" href=/"./index.html#api/en/objects/InstancedMesh/">InstancedMesh</a>, compareFn : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+		mesh -- InstancedMesh in which instances will be sorted. <br>
+		compareFn -- Comparator function defining the sort order.
+		</p>
+		<p>
+		Sorts the instances within an <a class=/"links/" data-fragment=/"InstancedMesh/" title=/"InstancedMesh/" href=/"./index.html#api/en/objects/InstancedMesh/">InstancedMesh</a>, according to a user-defined
+		callback. The callback will be provided with two arguments, <i>indexA</i>
+		and <i>indexB</i>, and must return a numerical value. See
+		<a href=/"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description/" target=/"_blank/">Array.prototype.sort</a>
+		for more information on sorting callbacks and their return values.
+		</p>
+		<p>
+		Because of the high performance cost, three.js does not sort
+		<a class=/"links/" data-fragment=/"InstancedMesh/" title=/"InstancedMesh/" href=/"./index.html#api/en/objects/InstancedMesh/">InstancedMesh</a> instances automatically. Manually sorting may be
+		helpful to improve display of alpha blended materials (back to front),
+		and to reduce overdraw in opaque materials (front to back).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"SceneUtils.traverseGenerator/" target=/"_parent/" title=/"SceneUtils.traverseGenerator/" href=/"./index.html#examples/en/utils/SceneUtils.traverseGenerator/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.traverseGenerator/" id=/"traverseGenerator/" href=/"./index.html#examples/en/utils/SceneUtils.traverseGenerator/">traverseGenerator</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> ) : <a class=/"param links/" data-fragment=/"Generator/">Generator</a></h3>
+		<p>
+		object -- The 3D object to traverse.
+		</p>
+		<p>
+		A generator based version of <a class=/"links/" data-fragment=/"Object3D.traverse/" title=/"Object3D.traverse/" href=/"./index.html#api/en/core/Object3D.traverse/">Object3D.traverse</a>().
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"SceneUtils.traverseVisibleGenerator/" target=/"_parent/" title=/"SceneUtils.traverseVisibleGenerator/" href=/"./index.html#examples/en/utils/SceneUtils.traverseVisibleGenerator/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.traverseVisibleGenerator/" id=/"traverseVisibleGenerator/" href=/"./index.html#examples/en/utils/SceneUtils.traverseVisibleGenerator/">traverseVisibleGenerator</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> ) : <a class=/"param links/" data-fragment=/"Generator/">Generator</a></h3>
+		<p>
+		object -- The 3D object to traverse.
+		</p>
+		<p>
+		A generator based version of <a class=/"links/" data-fragment=/"Object3D.traverseVisible/" title=/"Object3D.traverseVisible/" href=/"./index.html#api/en/core/Object3D.traverseVisible/">Object3D.traverseVisible</a>().
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"SceneUtils.traverseAncestorsGenerator/" target=/"_parent/" title=/"SceneUtils.traverseAncestorsGenerator/" href=/"./index.html#examples/en/utils/SceneUtils.traverseAncestorsGenerator/">#</a> .<a class=/"links/" data-fragment=/"SceneUtils.traverseAncestorsGenerator/" id=/"traverseAncestorsGenerator/" href=/"./index.html#examples/en/utils/SceneUtils.traverseAncestorsGenerator/">traverseAncestorsGenerator</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> ) : <a class=/"param links/" data-fragment=/"Generator/">Generator</a></h3>
+		<p>
+		object -- The 3D object to traverse.
+		</p>
+		<p>
+		A generator based version of <a class=/"links/" data-fragment=/"Object3D.traverseAncestors/" title=/"Object3D.traverseAncestors/" href=/"./index.html#api/en/core/Object3D.traverseAncestors/">Object3D.traverseAncestors</a>().
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/examples/jsm/utils/SceneUtils.js/" target=/"_blank/">examples/jsm/utils/SceneUtils.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

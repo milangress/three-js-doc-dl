@@ -1,0 +1,148 @@
+<!DOCTYPE html><html><head><title>WebGLRenderTarget – three.js docs</title></head><body><body>
+		<h1>WebGLRenderTarget</h1>
+
+		<p class="desc">
+			A
+			<a href="https://webglfundamentals.org/webgl/lessons/webgl-render-to-texture.html" target="_blank">render target</a> 
+			is a buffer where the video card draws pixels for a scene
+			that is being rendered in the background. It is used in different effects,
+			such as applying postprocessing to a rendered image before displaying it
+			on the screen.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			WebGLRenderTarget(width : <span class="param">Number</span>, height : <span class="param">Number</span>, options : <span class="param">Object</span>)
+		</h3>
+
+		<p>
+			<a class="links" data-fragment="Float" title="Float">width</a> - The width of the renderTarget. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.<br>
+			<a class="links" data-fragment="Float" title="Float">height</a> - The height of the renderTarget. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.<br>
+			options - optional object that holds texture parameters for an
+			auto-generated target texture and depthBuffer/stencilBuffer booleans. For
+			an explanation of the texture parameters see <a class="links" data-fragment="Texture" title="Texture" href="./index.html#api/en/textures/Texture">Texture</a>. The
+			following are valid options:<br><br>
+
+			<a class="links" data-fragment="Constant" title="Constant">wrapS</a> - default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">ClampToEdgeWrapping</a>.
+			<br>
+			<a class="links" data-fragment="Constant" title="Constant">wrapT</a> - default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">ClampToEdgeWrapping</a>.
+			<br>
+			<a class="links" data-fragment="Constant" title="Constant">magFilter</a> - default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">LinearFilter</a>.
+			<br>
+			<a class="links" data-fragment="Constant" title="Constant">minFilter</a> - default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">LinearFilter</a>.
+			<br>
+			<a class="links" data-fragment="Boolean" title="Boolean">generateMipmaps</a> - default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>.<br>
+			<a class="links" data-fragment="Constant" title="Constant">format</a> - default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">RGBAFormat</a>. <br>
+			<a class="links" data-fragment="Constant" title="Constant">type</a> - default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">UnsignedByteType</a>. <br>
+			<a class="links" data-fragment="Number" title="Number">anisotropy</a> - default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>. See
+			<a class="links" data-fragment="Texture.anisotropy" title="Texture.anisotropy" href="./index.html#api/en/textures/Texture.anisotropy">Texture.anisotropy</a><br>
+			<a class="links" data-fragment="Constant" title="Constant">colorSpace</a> - default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">NoColorSpace</a>.
+			<br>
+			<a class="links" data-fragment="String" title="String">internalFormat</a> - default is <code class="inline prettyprint" translate="no"><span class="kwd">null</span></code>.<br>
+			<a class="links" data-fragment="Boolean" title="Boolean">depthBuffer</a> - default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>. <br>
+			<a class="links" data-fragment="Boolean" title="Boolean">stencilBuffer</a> - default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>.<br>
+			<a class="links" data-fragment="Boolean" title="Boolean">resolveDepthBuffer</a> - default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.<br>
+			<a class="links" data-fragment="Boolean" title="Boolean">resolveStencilBuffer</a> - default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.<br>
+			<a class="links" data-fragment="Number" title="Number">samples</a> - default is <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.<br>
+			<a class="links" data-fragment="Number" title="Number">count</a> - default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.<br><br>
+
+			Creates a new WebGLRenderTarget
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.isWebGLRenderTarget" target="_parent" title="WebGLRenderTarget.isWebGLRenderTarget" href="./index.html#api/en/renderers/WebGLRenderTarget.isWebGLRenderTarget">#</a> .<a class="links" data-fragment="WebGLRenderTarget.isWebGLRenderTarget" id="isWebGLRenderTarget" href="./index.html#api/en/renderers/WebGLRenderTarget.isWebGLRenderTarget">isWebGLRenderTarget</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type WebGLRenderTarget.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.width" target="_parent" title="WebGLRenderTarget.width" href="./index.html#api/en/renderers/WebGLRenderTarget.width">#</a> .<a class="links" data-fragment="WebGLRenderTarget.width" id="width" href="./index.html#api/en/renderers/WebGLRenderTarget.width">width</a>  : <span class="param">number</span></h3>
+		<p>The width of the render target.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.height" target="_parent" title="WebGLRenderTarget.height" href="./index.html#api/en/renderers/WebGLRenderTarget.height">#</a> .<a class="links" data-fragment="WebGLRenderTarget.height" id="height" href="./index.html#api/en/renderers/WebGLRenderTarget.height">height</a>  : <span class="param">number</span></h3>
+		<p>The height of the render target.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.scissor" target="_parent" title="WebGLRenderTarget.scissor" href="./index.html#api/en/renderers/WebGLRenderTarget.scissor">#</a> .<a class="links" data-fragment="WebGLRenderTarget.scissor" id="scissor" href="./index.html#api/en/renderers/WebGLRenderTarget.scissor">scissor</a>  : <a class="param links" data-fragment="Vector4" href="./index.html#api/en/math/Vector4">Vector4</a></h3>
+		<p>
+			A rectangular area inside the render target's viewport. Fragments that are
+			outside the area will be discarded.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.scissorTest" target="_parent" title="WebGLRenderTarget.scissorTest" href="./index.html#api/en/renderers/WebGLRenderTarget.scissorTest">#</a> .<a class="links" data-fragment="WebGLRenderTarget.scissorTest" id="scissorTest" href="./index.html#api/en/renderers/WebGLRenderTarget.scissorTest">scissorTest</a>  : <span class="param">Boolean</span></h3>
+		<p>Indicates whether the scissor test is active or not.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.viewport" target="_parent" title="WebGLRenderTarget.viewport" href="./index.html#api/en/renderers/WebGLRenderTarget.viewport">#</a> .<a class="links" data-fragment="WebGLRenderTarget.viewport" id="viewport" href="./index.html#api/en/renderers/WebGLRenderTarget.viewport">viewport</a>  : <a class="param links" data-fragment="Vector4" href="./index.html#api/en/math/Vector4">Vector4</a></h3>
+		<p>The viewport of this render target.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.texture" target="_parent" title="WebGLRenderTarget.texture" href="./index.html#api/en/renderers/WebGLRenderTarget.texture">#</a> .<a class="links" data-fragment="WebGLRenderTarget.texture" id="texture" href="./index.html#api/en/renderers/WebGLRenderTarget.texture">texture</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			This texture instance holds the rendered pixels. Use it as input for
+			further processing.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.textures" target="_parent" title="WebGLRenderTarget.textures" href="./index.html#api/en/renderers/WebGLRenderTarget.textures">#</a> .<a class="links" data-fragment="WebGLRenderTarget.textures" id="textures" href="./index.html#api/en/renderers/WebGLRenderTarget.textures">textures</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			An array holding the <a class="links" data-fragment="WebGLRenderTarget.texture" title="WebGLRenderTarget.texture" href="./index.html#api/en/renderers/WebGLRenderTarget.texture">texture</a> references
+			of multiple render targets configured with the <a class="links" data-fragment="Number" title="Number">count</a> option.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.depthBuffer" target="_parent" title="WebGLRenderTarget.depthBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.depthBuffer">#</a> .<a class="links" data-fragment="WebGLRenderTarget.depthBuffer" id="depthBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.depthBuffer">depthBuffer</a>  : <span class="param">Boolean</span></h3>
+		<p>Renders to the depth buffer. Default is true.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.stencilBuffer" target="_parent" title="WebGLRenderTarget.stencilBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.stencilBuffer">#</a> .<a class="links" data-fragment="WebGLRenderTarget.stencilBuffer" id="stencilBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.stencilBuffer">stencilBuffer</a>  : <span class="param">Boolean</span></h3>
+		<p>Renders to the stencil buffer. Default is false.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.resolveDepthBuffer" target="_parent" title="WebGLRenderTarget.resolveDepthBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.resolveDepthBuffer">#</a> .<a class="links" data-fragment="WebGLRenderTarget.resolveDepthBuffer" id="resolveDepthBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.resolveDepthBuffer">resolveDepthBuffer</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Defines whether the depth buffer should be resolved when rendering into a multisampled render target. 
+			Default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.resolveStencilBuffer" target="_parent" title="WebGLRenderTarget.resolveStencilBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.resolveStencilBuffer">#</a> .<a class="links" data-fragment="WebGLRenderTarget.resolveStencilBuffer" id="resolveStencilBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.resolveStencilBuffer">resolveStencilBuffer</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Defines whether the stencil buffer should be resolved when rendering into a multisampled render target. 
+			This property has no effect when <a class="links" data-fragment="WebGLRenderTarget.resolveDepthBuffer" title="WebGLRenderTarget.resolveDepthBuffer" href="./index.html#api/en/renderers/WebGLRenderTarget.resolveDepthBuffer">.resolveDepthBuffer</a> is set to <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>. 
+			Default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.depthTexture" target="_parent" title="WebGLRenderTarget.depthTexture" href="./index.html#api/en/renderers/WebGLRenderTarget.depthTexture">#</a> .<a class="links" data-fragment="WebGLRenderTarget.depthTexture" id="depthTexture" href="./index.html#api/en/renderers/WebGLRenderTarget.depthTexture">depthTexture</a>  : <a class="param links" data-fragment="DepthTexture" href="./index.html#api/en/textures/DepthTexture">DepthTexture</a></h3>
+		<p>
+			If set, the scene depth will be rendered to this texture. Default is null.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.samples" target="_parent" title="WebGLRenderTarget.samples" href="./index.html#api/en/renderers/WebGLRenderTarget.samples">#</a> .<a class="links" data-fragment="WebGLRenderTarget.samples" id="samples" href="./index.html#api/en/renderers/WebGLRenderTarget.samples">samples</a>  : <span class="param">Number</span></h3>
+		<p>
+			Defines the count of MSAA samples. Default is <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3>
+			<a class="permalink links" data-fragment="WebGLRenderTarget.setSize" target="_parent" title="WebGLRenderTarget.setSize" href="./index.html#api/en/renderers/WebGLRenderTarget.setSize">#</a> .<a class="links" data-fragment="WebGLRenderTarget.setSize" id="setSize" href="./index.html#api/en/renderers/WebGLRenderTarget.setSize">setSize</a> ( width : <span class="param">Number</span>, height : <span class="param">Number</span> ) : <span class="param">undefined</span>
+		</h3>
+		<p>Sets the size of the render target.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.clone" target="_parent" title="WebGLRenderTarget.clone" href="./index.html#api/en/renderers/WebGLRenderTarget.clone">#</a> .<a class="links" data-fragment="WebGLRenderTarget.clone" id="clone" href="./index.html#api/en/renderers/WebGLRenderTarget.clone">clone</a> () : <a class="param links" data-fragment="WebGLRenderTarget" href="./index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a></h3>
+		<p>Creates a copy of this render target.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.copy" target="_parent" title="WebGLRenderTarget.copy" href="./index.html#api/en/renderers/WebGLRenderTarget.copy">#</a> .<a class="links" data-fragment="WebGLRenderTarget.copy" id="copy" href="./index.html#api/en/renderers/WebGLRenderTarget.copy">copy</a> ( source : <a class="param links" data-fragment="WebGLRenderTarget" href="./index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a> ) : <span class="param">this</span></h3>
+		<p>Adopts the settings of the given render target.</p>
+
+		<h3><a class="permalink links" data-fragment="WebGLRenderTarget.dispose" target="_parent" title="WebGLRenderTarget.dispose" href="./index.html#api/en/renderers/WebGLRenderTarget.dispose">#</a> .<a class="links" data-fragment="WebGLRenderTarget.dispose" id="dispose" href="./index.html#api/en/renderers/WebGLRenderTarget.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<p>
+			<a class="links" data-fragment="EventDispatcher" title="EventDispatcher" href="./index.html#api/en/core/EventDispatcher">EventDispatcher</a> methods are available on this
+			class.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/renderers/WebGLRenderTarget.js" target="_blank">src/renderers/WebGLRenderTarget.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

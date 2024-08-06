@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><title>SphericalHarmonics3 – three.js docs</title></head><body><body>
+		<h1>SphericalHarmonics3</h1>
+
+		<p class="desc">
+			Represents a third-order spherical harmonics (SH). Light probes use this
+			class to encode lighting information.
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>SphericalHarmonics3()</h3>
+		<p>Creates a new instance of SphericalHarmonics3.</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.coefficients" target="_parent" title="SphericalHarmonics3.coefficients" href="./index.html#api/en/math/SphericalHarmonics3.coefficients">#</a> .<a class="links" data-fragment="SphericalHarmonics3.coefficients" id="coefficients" href="./index.html#api/en/math/SphericalHarmonics3.coefficients">coefficients</a>  : <span class="param">Array</span></h3>
+		<p>
+			An array holding the (9) SH coefficients. A single coefficient is
+			represented as an instance of <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.isSphericalHarmonics3" target="_parent" title="SphericalHarmonics3.isSphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3.isSphericalHarmonics3">#</a> .<a class="links" data-fragment="SphericalHarmonics3.isSphericalHarmonics3" id="isSphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3.isSphericalHarmonics3">isSphericalHarmonics3</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type SphericalHarmonics3.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.add" target="_parent" title="SphericalHarmonics3.add" href="./index.html#api/en/math/SphericalHarmonics3.add">#</a> .<a class="links" data-fragment="SphericalHarmonics3.add" id="add" href="./index.html#api/en/math/SphericalHarmonics3.add">add</a> ( sh : <a class="param links" data-fragment="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to add.<br><br>
+
+			Adds the given SH to this instance.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SphericalHarmonics3.addScaledSH" target="_parent" title="SphericalHarmonics3.addScaledSH" href="./index.html#api/en/math/SphericalHarmonics3.addScaledSH">#</a> .<a class="links" data-fragment="SphericalHarmonics3.addScaledSH" id="addScaledSH" href="./index.html#api/en/math/SphericalHarmonics3.addScaledSH">addScaledSH</a> ( sh : <a class="param links" data-fragment="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a>, scale : <span class="param">Number</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to add.<br>
+			<a class="links" data-fragment="Number" title="Number">scale</a> - The scale factor.<br><br>
+
+			A convenience method for performing <a class="links" data-fragment="SphericalHarmonics3.add" title="SphericalHarmonics3.add" href="./index.html#api/en/math/SphericalHarmonics3.add">.add</a>() and <a class="links" data-fragment="SphericalHarmonics3.scale" title="SphericalHarmonics3.scale" href="./index.html#api/en/math/SphericalHarmonics3.scale">.scale</a>() at
+			once.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.clone" target="_parent" title="SphericalHarmonics3.clone" href="./index.html#api/en/math/SphericalHarmonics3.clone">#</a> .<a class="links" data-fragment="SphericalHarmonics3.clone" id="clone" href="./index.html#api/en/math/SphericalHarmonics3.clone">clone</a> () : <a class="param links" data-fragment="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a></h3>
+		<p>Returns a new instance of SphericalHarmonics3 with equal coefficients.</p>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.copy" target="_parent" title="SphericalHarmonics3.copy" href="./index.html#api/en/math/SphericalHarmonics3.copy">#</a> .<a class="links" data-fragment="SphericalHarmonics3.copy" id="copy" href="./index.html#api/en/math/SphericalHarmonics3.copy">copy</a> ( sh : <a class="param links" data-fragment="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to copy.<br><br>
+
+			Copies the given SH to this instance.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.equals" target="_parent" title="SphericalHarmonics3.equals" href="./index.html#api/en/math/SphericalHarmonics3.equals">#</a> .<a class="links" data-fragment="SphericalHarmonics3.equals" id="equals" href="./index.html#api/en/math/SphericalHarmonics3.equals">equals</a> ( sh : <a class="param links" data-fragment="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to compare with.<br><br>
+
+			Returns true if the given SH and this instance have equal coefficients.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SphericalHarmonics3.fromArray" target="_parent" title="SphericalHarmonics3.fromArray" href="./index.html#api/en/math/SphericalHarmonics3.fromArray">#</a> .<a class="links" data-fragment="SphericalHarmonics3.fromArray" id="fromArray" href="./index.html#api/en/math/SphericalHarmonics3.fromArray">fromArray</a> ( array : <span class="param">Array</span>, offset : <span class="param">Number</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">array</a> - The array holding the numbers of the SH
+			coefficients.<br>
+			<a class="links" data-fragment="Number" title="Number">offset</a> - (optional) The array offset.<br><br>
+
+			Sets the coefficients of this instance from the given array.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SphericalHarmonics3.getAt" target="_parent" title="SphericalHarmonics3.getAt" href="./index.html#api/en/math/SphericalHarmonics3.getAt">#</a> .<a class="links" data-fragment="SphericalHarmonics3.getAt" id="getAt" href="./index.html#api/en/math/SphericalHarmonics3.getAt">getAt</a> ( normal : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> - The normal vector (assumed to be unit length).<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">target</a> - The result vector.<br><br>
+
+			Returns the radiance in the direction of the given normal.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SphericalHarmonics3.getIrradianceAt" target="_parent" title="SphericalHarmonics3.getIrradianceAt" href="./index.html#api/en/math/SphericalHarmonics3.getIrradianceAt">#</a> .<a class="links" data-fragment="SphericalHarmonics3.getIrradianceAt" id="getIrradianceAt" href="./index.html#api/en/math/SphericalHarmonics3.getIrradianceAt">getIrradianceAt</a> ( normal : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> - The normal vector (assumed to be unit length).<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">target</a> - The result vector.<br><br>
+
+			Returns the irradiance (radiance convolved with cosine lobe) in the
+			direction of the given normal.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SphericalHarmonics3.lerp" target="_parent" title="SphericalHarmonics3.lerp" href="./index.html#api/en/math/SphericalHarmonics3.lerp">#</a> .<a class="links" data-fragment="SphericalHarmonics3.lerp" id="lerp" href="./index.html#api/en/math/SphericalHarmonics3.lerp">lerp</a> ( sh : <a class="param links" data-fragment="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a>, alpha : <span class="param">Number</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="./index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to interpolate with.<br>
+			<a class="links" data-fragment="Number" title="Number">alpha</a> - The alpha factor.<br><br>
+
+			Linear interpolates between the given SH and this instance by the given
+			alpha factor.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.scale" target="_parent" title="SphericalHarmonics3.scale" href="./index.html#api/en/math/SphericalHarmonics3.scale">#</a> .<a class="links" data-fragment="SphericalHarmonics3.scale" id="scale" href="./index.html#api/en/math/SphericalHarmonics3.scale">scale</a> ( scale : <span class="param">Number</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Number" title="Number">scale</a> - The scale factor.<br><br>
+
+			Scales this SH by the given scale factor.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.set" target="_parent" title="SphericalHarmonics3.set" href="./index.html#api/en/math/SphericalHarmonics3.set">#</a> .<a class="links" data-fragment="SphericalHarmonics3.set" id="set" href="./index.html#api/en/math/SphericalHarmonics3.set">set</a> ( coefficients : <span class="param">Array</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">coefficients</a> - An array of SH coefficients.<br><br>
+
+			Sets the given SH coefficients to this instance.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="SphericalHarmonics3.toArray" target="_parent" title="SphericalHarmonics3.toArray" href="./index.html#api/en/math/SphericalHarmonics3.toArray">#</a> .<a class="links" data-fragment="SphericalHarmonics3.toArray" id="toArray" href="./index.html#api/en/math/SphericalHarmonics3.toArray">toArray</a> ( array : <span class="param">Array</span>, offset : <span class="param">Number</span> ) : <span class="param">Array</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">array</a> - (optional) The target array.<br>
+			<a class="links" data-fragment="Number" title="Number">offset</a> - (optional) The array offset.<br><br>
+
+			Returns an array with the coefficients, or copies them into the provided
+			array. The coefficients are represented as numbers.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SphericalHarmonics3.zero" target="_parent" title="SphericalHarmonics3.zero" href="./index.html#api/en/math/SphericalHarmonics3.zero">#</a> .<a class="links" data-fragment="SphericalHarmonics3.zero" id="zero" href="./index.html#api/en/math/SphericalHarmonics3.zero">zero</a> () : <span class="param">this</span></h3>
+		<p>Sets all SH coefficients to <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.</p>
+
+		<h2>Static Methods</h2>
+
+		<h3>
+			<a class="permalink links" data-fragment="SphericalHarmonics3.getBasisAt" target="_parent" title="SphericalHarmonics3.getBasisAt" href="./index.html#api/en/math/SphericalHarmonics3.getBasisAt">#</a> .<a class="links" data-fragment="SphericalHarmonics3.getBasisAt" id="getBasisAt" href="./index.html#api/en/math/SphericalHarmonics3.getBasisAt">getBasisAt</a> ( normal : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, shBasis : <span class="param">Array</span> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> - The normal vector (assumed to be unit length).<br>
+			<a class="links" data-fragment="Array" title="Array">shBasis</a> - The resulting SH basis.<br><br>
+
+			Computes the SH basis for the given normal vector.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/SphericalHarmonics3.js" target="_blank">src/math/SphericalHarmonics3.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

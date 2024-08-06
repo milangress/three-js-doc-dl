@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><title>FogExp2 – three.js docs</title></head><body><body>
+		<h1>FogExp2</h1>
+
+		<p class=/"desc/">
+			This class contains the parameters that define exponential squared fog,
+			which gives a clear view near the camera and a faster than exponentially
+			densening fog farther from the camera.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> scene </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Scene</span><span class=/"pun/">();</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">fog </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">FogExp2</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0xcccccc</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0.002</span><span class=/"pln/"> </span><span class=/"pun/">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>FogExp2( color : <span class=/"param/">Integer</span>, density : <span class=/"param/">Float</span> )</h3>
+
+		<p>
+			The color parameter is passed to the <a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> constructor to set the
+			color property. Color can be a hexadecimal integer or a CSS-style string.
+		</p>
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FogExp2.isFogExp2/" target=/"_parent/" title=/"FogExp2.isFogExp2/" href=/"./index.html#api/en/scenes/FogExp2.isFogExp2/">#</a> .<a class=/"links/" data-fragment=/"FogExp2.isFogExp2/" id=/"isFogExp2/" href=/"./index.html#api/en/scenes/FogExp2.isFogExp2/">isFogExp2</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type FogExp2.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FogExp2.name/" target=/"_parent/" title=/"FogExp2.name/" href=/"./index.html#api/en/scenes/FogExp2.name/">#</a> .<a class=/"links/" data-fragment=/"FogExp2.name/" id=/"name/" href=/"./index.html#api/en/scenes/FogExp2.name/">name</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			Optional name of the object (doesn't need to be unique). Default is an
+			empty string.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FogExp2.color/" target=/"_parent/" title=/"FogExp2.color/" href=/"./index.html#api/en/scenes/FogExp2.color/">#</a> .<a class=/"links/" data-fragment=/"FogExp2.color/" id=/"color/" href=/"./index.html#api/en/scenes/FogExp2.color/">color</a>  : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a></h3>
+		<p>
+			Fog color. Example: If set to black, far away objects will be rendered
+			black.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FogExp2.density/" target=/"_parent/" title=/"FogExp2.density/" href=/"./index.html#api/en/scenes/FogExp2.density/">#</a> .<a class=/"links/" data-fragment=/"FogExp2.density/" id=/"density/" href=/"./index.html#api/en/scenes/FogExp2.density/">density</a>  : <span class=/"param/">Float</span></h3>
+		<p>Defines how fast the fog will grow dense.</p>
+		<p>Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.00025</span></code>.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FogExp2.clone/" target=/"_parent/" title=/"FogExp2.clone/" href=/"./index.html#api/en/scenes/FogExp2.clone/">#</a> .<a class=/"links/" data-fragment=/"FogExp2.clone/" id=/"clone/" href=/"./index.html#api/en/scenes/FogExp2.clone/">clone</a> () : <a class=/"param links/" data-fragment=/"FogExp2/" href=/"./index.html#api/en/scenes/FogExp2/">FogExp2</a></h3>
+		<p>Returns a new FogExp2 instance with the same parameters as this one.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FogExp2.toJSON/" target=/"_parent/" title=/"FogExp2.toJSON/" href=/"./index.html#api/en/scenes/FogExp2.toJSON/">#</a> .<a class=/"links/" data-fragment=/"FogExp2.toJSON/" id=/"toJSON/" href=/"./index.html#api/en/scenes/FogExp2.toJSON/">toJSON</a> () : <span class=/"param/">Object</span></h3>
+		<p>Return FogExp2 data in JSON format.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/scenes/FogExp2.js/" target=/"_blank/">src/scenes/FogExp2.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

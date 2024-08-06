@@ -1,0 +1,249 @@
+<!DOCTYPE html><html><head><title>Audio – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> →
+
+		<h1>Audio</h1>
+
+		<p class=/"desc/">
+			Create a non-positional ( global ) audio object.<br><br>
+
+			This uses the
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/" target=/"_blank/">Web Audio API</a>.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// create an AudioListener and add it to the camera</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> listener </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">AudioListener</span><span class=/"pun/">();</span><span class=/"pln/">
+camera</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> listener </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// create a global audio source</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sound </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Audio</span><span class=/"pun/">(</span><span class=/"pln/"> listener </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// load a sound and set it as the Audio object's buffer</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> audioLoader </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">AudioLoader</span><span class=/"pun/">();</span><span class=/"pln/">
+audioLoader</span><span class=/"pun/">.</span><span class=/"pln/">load</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'sounds/ambient.ogg'</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"kwd/">function</span><span class=/"pun/">(</span><span class=/"pln/"> buffer </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+	sound</span><span class=/"pun/">.</span><span class=/"pln/">setBuffer</span><span class=/"pun/">(</span><span class=/"pln/"> buffer </span><span class=/"pun/">);</span><span class=/"pln/">
+	sound</span><span class=/"pun/">.</span><span class=/"pln/">setLoop</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"kwd/">true</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+	sound</span><span class=/"pun/">.</span><span class=/"pln/">setVolume</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0.5</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+	sound</span><span class=/"pun/">.</span><span class=/"pln/">play</span><span class=/"pun/">();</span><span class=/"pln/">
+</span><span class=/"pun/">});</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href=/"../examples/#webaudio_sandbox/" target=/"_blank/">webaudio / sandbox </a><br>
+			<a href=/"../examples/#webaudio_visualizer/" target=/"_blank/">webaudio / visualizer </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Audio( listener : <a class=/"param links/" data-fragment=/"AudioListener/" href=/"./index.html#api/en/audio/AudioListener/">AudioListener</a> )</h3>
+		<p>listener — (required) <a class=/"links/" data-fragment=/"AudioListener/" title=/"AudioListener/" href=/"./index.html#api/en/audio/AudioListener/">AudioListener</a> instance.</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.autoplay/" target=/"_parent/" title=/"Audio.autoplay/" href=/"./index.html#api/en/audio/Audio.autoplay/">#</a> .<a class=/"links/" data-fragment=/"Audio.autoplay/" id=/"autoplay/" href=/"./index.html#api/en/audio/Audio.autoplay/">autoplay</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Whether to start playback automatically. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.context/" target=/"_parent/" title=/"Audio.context/" href=/"./index.html#api/en/audio/Audio.context/">#</a> .<a class=/"links/" data-fragment=/"Audio.context/" id=/"context/" href=/"./index.html#api/en/audio/Audio.context/">context</a>  : <a class=/"param links/" data-fragment=/"AudioContext/" href=/"./index.html#api/en/audio/AudioContext/">AudioContext</a></h3>
+		<p>
+			The <a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/" target=/"_blank/">AudioContext</a> of the <a class=/"links/" data-fragment=/"AudioListener/" title=/"AudioListener/" href=/"./index.html#api/en/audio/AudioListener/">listener</a> given in the
+			constructor.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.detune/" target=/"_parent/" title=/"Audio.detune/" href=/"./index.html#api/en/audio/Audio.detune/">#</a> .<a class=/"links/" data-fragment=/"Audio.detune/" id=/"detune/" href=/"./index.html#api/en/audio/Audio.detune/">detune</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+			Modify pitch, measured in cents. +/- 100 is a semitone. +/- 1200 is an
+			octave. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.filters/" target=/"_parent/" title=/"Audio.filters/" href=/"./index.html#api/en/audio/Audio.filters/">#</a> .<a class=/"links/" data-fragment=/"Audio.filters/" id=/"filters/" href=/"./index.html#api/en/audio/Audio.filters/">filters</a>  : <span class=/"param/">Array</span></h3>
+		<p>
+			Represents an array of
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/" target=/"_blank/">AudioNodes</a>. Can be used to apply a variety of low-order filters to create
+			more complex sound effects. In most cases, the array contains instances of
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/" target=/"_blank/">BiquadFilterNodes</a>. Filters are set via <a class=/"links/" data-fragment=/"Audio.setFilter/" title=/"Audio.setFilter/" href=/"./index.html#api/en/audio/Audio.setFilter/">Audio.setFilter</a> or
+			<a class=/"links/" data-fragment=/"Audio.setFilters/" title=/"Audio.setFilters/" href=/"./index.html#api/en/audio/Audio.setFilters/">Audio.setFilters</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.gain/" target=/"_parent/" title=/"Audio.gain/" href=/"./index.html#api/en/audio/Audio.gain/">#</a> .<a class=/"links/" data-fragment=/"Audio.gain/" id=/"gain/" href=/"./index.html#api/en/audio/Audio.gain/">gain</a>  : <a class=/"param links/" data-fragment=/"GainNode/">GainNode</a></h3>
+		<p>
+			A <a href=/"https://developer.mozilla.org/en-US/docs/Web/API/GainNode/" target=/"_blank/">GainNode</a> created using
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createGain/" target=/"_blank/">AudioContext.createGain</a>().
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.hasPlaybackControl/" target=/"_parent/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">#</a> .<a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" id=/"hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Whether playback can be controlled using the <a class=/"links/" data-fragment=/"Audio.play/" title=/"Audio.play/" href=/"./index.html#api/en/audio/Audio.play/">play</a>(),
+			<a class=/"links/" data-fragment=/"Audio.pause/" title=/"Audio.pause/" href=/"./index.html#api/en/audio/Audio.pause/">pause</a>() etc. methods. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.isPlaying/" target=/"_parent/" title=/"Audio.isPlaying/" href=/"./index.html#api/en/audio/Audio.isPlaying/">#</a> .<a class=/"links/" data-fragment=/"Audio.isPlaying/" id=/"isPlaying/" href=/"./index.html#api/en/audio/Audio.isPlaying/">isPlaying</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Whether the audio is currently playing.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.listener/" target=/"_parent/" title=/"Audio.listener/" href=/"./index.html#api/en/audio/Audio.listener/">#</a> .<a class=/"links/" data-fragment=/"Audio.listener/" id=/"listener/" href=/"./index.html#api/en/audio/Audio.listener/">listener</a>  : <a class=/"param links/" data-fragment=/"AudioListener/" href=/"./index.html#api/en/audio/AudioListener/">AudioListener</a></h3>
+		<p>A reference to the listener object of this audio.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.playbackRate/" target=/"_parent/" title=/"Audio.playbackRate/" href=/"./index.html#api/en/audio/Audio.playbackRate/">#</a> .<a class=/"links/" data-fragment=/"Audio.playbackRate/" id=/"playbackRate/" href=/"./index.html#api/en/audio/Audio.playbackRate/">playbackRate</a>  : <span class=/"param/">Number</span></h3>
+		<p>Speed of playback. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.offset/" target=/"_parent/" title=/"Audio.offset/" href=/"./index.html#api/en/audio/Audio.offset/">#</a> .<a class=/"links/" data-fragment=/"Audio.offset/" id=/"offset/" href=/"./index.html#api/en/audio/Audio.offset/">offset</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+			An offset to the time within the audio buffer that playback should begin.
+			Same as the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">offset</span></code> parameter of
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start/" target=/"_blank/">AudioBufferSourceNode.start</a>(). Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.duration/" target=/"_parent/" title=/"Audio.duration/" href=/"./index.html#api/en/audio/Audio.duration/">#</a> .<a class=/"links/" data-fragment=/"Audio.duration/" id=/"duration/" href=/"./index.html#api/en/audio/Audio.duration/">duration</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+			Overrides the duration of the audio. Same as the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">duration</span></code> parameter of
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start/" target=/"_blank/">AudioBufferSourceNode.start</a>(). Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">undefined</span></code> to play the whole
+			buffer.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.source/" target=/"_parent/" title=/"Audio.source/" href=/"./index.html#api/en/audio/Audio.source/">#</a> .<a class=/"links/" data-fragment=/"Audio.source/" id=/"source/" href=/"./index.html#api/en/audio/Audio.source/">source</a>  : <a class=/"param links/" data-fragment=/"AudioNode/">AudioNode</a></h3>
+		<p>
+			An
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/" target=/"_blank/">AudioBufferSourceNode</a> created using
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createBufferSource/" target=/"_blank/">AudioContext.createBufferSource</a>().
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.sourceType/" target=/"_parent/" title=/"Audio.sourceType/" href=/"./index.html#api/en/audio/Audio.sourceType/">#</a> .<a class=/"links/" data-fragment=/"Audio.sourceType/" id=/"sourceType/" href=/"./index.html#api/en/audio/Audio.sourceType/">sourceType</a>  : <span class=/"param/">String</span></h3>
+		<p>Type of the audio source. Default is string 'empty'.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.type/" target=/"_parent/" title=/"Audio.type/" href=/"./index.html#api/en/audio/Audio.type/">#</a> .<a class=/"links/" data-fragment=/"Audio.type/" id=/"type/" href=/"./index.html#api/en/audio/Audio.type/">type</a>  : <span class=/"param/">String</span></h3>
+		<p>String denoting the type, set to 'Audio'.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.connect/" target=/"_parent/" title=/"Audio.connect/" href=/"./index.html#api/en/audio/Audio.connect/">#</a> .<a class=/"links/" data-fragment=/"Audio.connect/" id=/"connect/" href=/"./index.html#api/en/audio/Audio.connect/">connect</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			Connect to the <a class=/"links/" data-fragment=/"Audio.source/" title=/"Audio.source/" href=/"./index.html#api/en/audio/Audio.source/">Audio.source</a>. This is used internally on
+			initialisation and when setting / removing filters.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.disconnect/" target=/"_parent/" title=/"Audio.disconnect/" href=/"./index.html#api/en/audio/Audio.disconnect/">#</a> .<a class=/"links/" data-fragment=/"Audio.disconnect/" id=/"disconnect/" href=/"./index.html#api/en/audio/Audio.disconnect/">disconnect</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			Disconnect from the <a class=/"links/" data-fragment=/"Audio.source/" title=/"Audio.source/" href=/"./index.html#api/en/audio/Audio.source/">Audio.source</a>. This is used internally when
+			setting / removing filters.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.getDetune/" target=/"_parent/" title=/"Audio.getDetune/" href=/"./index.html#api/en/audio/Audio.getDetune/">#</a> .<a class=/"links/" data-fragment=/"Audio.getDetune/" id=/"getDetune/" href=/"./index.html#api/en/audio/Audio.getDetune/">getDetune</a> () : <span class=/"param/">Float</span></h3>
+		<p>Returns the detuning of oscillation in cents.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.getFilter/" target=/"_parent/" title=/"Audio.getFilter/" href=/"./index.html#api/en/audio/Audio.getFilter/">#</a> .<a class=/"links/" data-fragment=/"Audio.getFilter/" id=/"getFilter/" href=/"./index.html#api/en/audio/Audio.getFilter/">getFilter</a> () : <a class=/"param links/" data-fragment=/"BiquadFilterNode/">BiquadFilterNode</a></h3>
+		<p>Returns the first element of the <a class=/"links/" data-fragment=/"Audio.filters/" title=/"Audio.filters/" href=/"./index.html#api/en/audio/Audio.filters/">filters</a> array.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.getFilters/" target=/"_parent/" title=/"Audio.getFilters/" href=/"./index.html#api/en/audio/Audio.getFilters/">#</a> .<a class=/"links/" data-fragment=/"Audio.getFilters/" id=/"getFilters/" href=/"./index.html#api/en/audio/Audio.getFilters/">getFilters</a> () : <span class=/"param/">Array</span></h3>
+		<p>Returns the <a class=/"links/" data-fragment=/"Audio.filters/" title=/"Audio.filters/" href=/"./index.html#api/en/audio/Audio.filters/">filters</a> array.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.getLoop/" target=/"_parent/" title=/"Audio.getLoop/" href=/"./index.html#api/en/audio/Audio.getLoop/">#</a> .<a class=/"links/" data-fragment=/"Audio.getLoop/" id=/"getLoop/" href=/"./index.html#api/en/audio/Audio.getLoop/">getLoop</a> () : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Return the value of
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loop/" target=/"_blank/">source.loop</a> (whether playback should loop).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.getOutput/" target=/"_parent/" title=/"Audio.getOutput/" href=/"./index.html#api/en/audio/Audio.getOutput/">#</a> .<a class=/"links/" data-fragment=/"Audio.getOutput/" id=/"getOutput/" href=/"./index.html#api/en/audio/Audio.getOutput/">getOutput</a> () : <a class=/"param links/" data-fragment=/"GainNode/">GainNode</a></h3>
+		<p>Return the <a class=/"links/" data-fragment=/"Audio.gain/" title=/"Audio.gain/" href=/"./index.html#api/en/audio/Audio.gain/">gainNode</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.getPlaybackRate/" target=/"_parent/" title=/"Audio.getPlaybackRate/" href=/"./index.html#api/en/audio/Audio.getPlaybackRate/">#</a> .<a class=/"links/" data-fragment=/"Audio.getPlaybackRate/" id=/"getPlaybackRate/" href=/"./index.html#api/en/audio/Audio.getPlaybackRate/">getPlaybackRate</a> () : <span class=/"param/">Float</span></h3>
+		<p>Return the value of <a class=/"links/" data-fragment=/"Audio.playbackRate/" title=/"Audio.playbackRate/" href=/"./index.html#api/en/audio/Audio.playbackRate/">playbackRate</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.getVolume/" target=/"_parent/" title=/"Audio.getVolume/" href=/"./index.html#api/en/audio/Audio.getVolume/">#</a> .<a class=/"links/" data-fragment=/"Audio.getVolume/" id=/"getVolume/" href=/"./index.html#api/en/audio/Audio.getVolume/">getVolume</a> ( value ) : <span class=/"param/">Float</span></h3>
+		<p>Return the current volume.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.play/" target=/"_parent/" title=/"Audio.play/" href=/"./index.html#api/en/audio/Audio.play/">#</a> .<a class=/"links/" data-fragment=/"Audio.play/" id=/"play/" href=/"./index.html#api/en/audio/Audio.play/">play</a> ( delay ) : <span class=/"param/">this</span></h3>
+		<p>
+			If <a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a> is true, starts
+			playback.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.pause/" target=/"_parent/" title=/"Audio.pause/" href=/"./index.html#api/en/audio/Audio.pause/">#</a> .<a class=/"links/" data-fragment=/"Audio.pause/" id=/"pause/" href=/"./index.html#api/en/audio/Audio.pause/">pause</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			If <a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a> is true, pauses
+			playback.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.onEnded/" target=/"_parent/" title=/"Audio.onEnded/" href=/"./index.html#api/en/audio/Audio.onEnded/">#</a> .<a class=/"links/" data-fragment=/"Audio.onEnded/" id=/"onEnded/" href=/"./index.html#api/en/audio/Audio.onEnded/">onEnded</a> () : <span class=/"param/">undefined</span></h3>
+		<p>Called automatically when playback finished.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setBuffer/" target=/"_parent/" title=/"Audio.setBuffer/" href=/"./index.html#api/en/audio/Audio.setBuffer/">#</a> .<a class=/"links/" data-fragment=/"Audio.setBuffer/" id=/"setBuffer/" href=/"./index.html#api/en/audio/Audio.setBuffer/">setBuffer</a> ( audioBuffer ) : <span class=/"param/">this</span></h3>
+		<p>
+			Setup the <a class=/"links/" data-fragment=/"Audio.source/" title=/"Audio.source/" href=/"./index.html#api/en/audio/Audio.source/">source</a> to the audioBuffer, and sets
+			<a class=/"links/" data-fragment=/"Audio.sourceType/" title=/"Audio.sourceType/" href=/"./index.html#api/en/audio/Audio.sourceType/">sourceType</a> to 'buffer'.<br>
+			If <a class=/"links/" data-fragment=/"Audio.autoplay/" title=/"Audio.autoplay/" href=/"./index.html#api/en/audio/Audio.autoplay/">autoplay</a>, also starts playback.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setDetune/" target=/"_parent/" title=/"Audio.setDetune/" href=/"./index.html#api/en/audio/Audio.setDetune/">#</a> .<a class=/"links/" data-fragment=/"Audio.setDetune/" id=/"setDetune/" href=/"./index.html#api/en/audio/Audio.setDetune/">setDetune</a> ( value : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Defines the detuning of oscillation in cents.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setFilter/" target=/"_parent/" title=/"Audio.setFilter/" href=/"./index.html#api/en/audio/Audio.setFilter/">#</a> .<a class=/"links/" data-fragment=/"Audio.setFilter/" id=/"setFilter/" href=/"./index.html#api/en/audio/Audio.setFilter/">setFilter</a> ( filter ) : <span class=/"param/">this</span></h3>
+		<p>Applies a single filter node to the audio.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setFilters/" target=/"_parent/" title=/"Audio.setFilters/" href=/"./index.html#api/en/audio/Audio.setFilters/">#</a> .<a class=/"links/" data-fragment=/"Audio.setFilters/" id=/"setFilters/" href=/"./index.html#api/en/audio/Audio.setFilters/">setFilters</a> ( value : <span class=/"param/">Array</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			value - arrays of filters.<br>
+			Applies an array of filter nodes to the audio.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setLoop/" target=/"_parent/" title=/"Audio.setLoop/" href=/"./index.html#api/en/audio/Audio.setLoop/">#</a> .<a class=/"links/" data-fragment=/"Audio.setLoop/" id=/"setLoop/" href=/"./index.html#api/en/audio/Audio.setLoop/">setLoop</a> ( value : <span class=/"param/">Boolean</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Set
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loop/" target=/"_blank/">source.loop</a> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">value</span></code> (whether playback should loop).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setLoopStart/" target=/"_parent/" title=/"Audio.setLoopStart/" href=/"./index.html#api/en/audio/Audio.setLoopStart/">#</a> .<a class=/"links/" data-fragment=/"Audio.setLoopStart/" id=/"setLoopStart/" href=/"./index.html#api/en/audio/Audio.setLoopStart/">setLoopStart</a> ( value : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Set
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loopStart/" target=/"_blank/">source.loopStart</a> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">value</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setLoopEnd/" target=/"_parent/" title=/"Audio.setLoopEnd/" href=/"./index.html#api/en/audio/Audio.setLoopEnd/">#</a> .<a class=/"links/" data-fragment=/"Audio.setLoopEnd/" id=/"setLoopEnd/" href=/"./index.html#api/en/audio/Audio.setLoopEnd/">setLoopEnd</a> ( value : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Set
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loopEnd/" target=/"_blank/">source.loopEnd</a> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">value</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setMediaElementSource/" target=/"_parent/" title=/"Audio.setMediaElementSource/" href=/"./index.html#api/en/audio/Audio.setMediaElementSource/">#</a> .<a class=/"links/" data-fragment=/"Audio.setMediaElementSource/" id=/"setMediaElementSource/" href=/"./index.html#api/en/audio/Audio.setMediaElementSource/">setMediaElementSource</a> ( mediaElement ) : <span class=/"param/">this</span></h3>
+		<p>
+			Applies the given object of type
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/" target=/"_blank/">HTMLMediaElement</a> as the source of this audio.<br>
+			Also sets <a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a> to false.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setMediaStreamSource/" target=/"_parent/" title=/"Audio.setMediaStreamSource/" href=/"./index.html#api/en/audio/Audio.setMediaStreamSource/">#</a> .<a class=/"links/" data-fragment=/"Audio.setMediaStreamSource/" id=/"setMediaStreamSource/" href=/"./index.html#api/en/audio/Audio.setMediaStreamSource/">setMediaStreamSource</a> ( mediaStream ) : <span class=/"param/">this</span></h3>
+		<p>
+			Applies the given object of type
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/" target=/"_blank/">MediaStream</a> as the source of this audio.<br>
+			Also sets <a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a> to false.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setNodeSource/" target=/"_parent/" title=/"Audio.setNodeSource/" href=/"./index.html#api/en/audio/Audio.setNodeSource/">#</a> .<a class=/"links/" data-fragment=/"Audio.setNodeSource/" id=/"setNodeSource/" href=/"./index.html#api/en/audio/Audio.setNodeSource/">setNodeSource</a> ( audioNode ) : <span class=/"param/">this</span></h3>
+		<p>
+			Setup the <a class=/"links/" data-fragment=/"Audio.source/" title=/"Audio.source/" href=/"./index.html#api/en/audio/Audio.source/">source</a> to the audioBuffer, and sets
+			<a class=/"links/" data-fragment=/"Audio.sourceType/" title=/"Audio.sourceType/" href=/"./index.html#api/en/audio/Audio.sourceType/">sourceType</a> to 'audioNode'.<br>
+			Also sets <a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a> to false.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setPlaybackRate/" target=/"_parent/" title=/"Audio.setPlaybackRate/" href=/"./index.html#api/en/audio/Audio.setPlaybackRate/">#</a> .<a class=/"links/" data-fragment=/"Audio.setPlaybackRate/" id=/"setPlaybackRate/" href=/"./index.html#api/en/audio/Audio.setPlaybackRate/">setPlaybackRate</a> ( value : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			If <a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a> is enabled, set the
+			<a class=/"links/" data-fragment=/"Audio.playbackRate/" title=/"Audio.playbackRate/" href=/"./index.html#api/en/audio/Audio.playbackRate/">playbackRate</a> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">value</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.setVolume/" target=/"_parent/" title=/"Audio.setVolume/" href=/"./index.html#api/en/audio/Audio.setVolume/">#</a> .<a class=/"links/" data-fragment=/"Audio.setVolume/" id=/"setVolume/" href=/"./index.html#api/en/audio/Audio.setVolume/">setVolume</a> ( value : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Set the volume.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Audio.stop/" target=/"_parent/" title=/"Audio.stop/" href=/"./index.html#api/en/audio/Audio.stop/">#</a> .<a class=/"links/" data-fragment=/"Audio.stop/" id=/"stop/" href=/"./index.html#api/en/audio/Audio.stop/">stop</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			If <a class=/"links/" data-fragment=/"Audio.hasPlaybackControl/" title=/"Audio.hasPlaybackControl/" href=/"./index.html#api/en/audio/Audio.hasPlaybackControl/">hasPlaybackControl</a> is enabled, stops
+			playback.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/audio/Audio.js/" target=/"_blank/">src/audio/Audio.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

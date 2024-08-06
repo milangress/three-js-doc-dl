@@ -1,0 +1,116 @@
+<!DOCTYPE html><html><head><title>MeshDepthMaterial – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> →
+
+		<h1>MeshDepthMaterial</h1>
+
+		<p class="desc">
+			A material for drawing geometry by depth. Depth is based off of the camera
+			near and far plane. White is nearest, black is farthest.
+		</p>
+
+		<iframe id="scene" src="scenes/material-browser.html#MeshDepthMaterial"></iframe>
+
+		<script>
+
+		// iOS iframe auto-resize workaround
+
+		if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+			const scene = document.getElementById( 'scene' );
+
+			scene.style.width = getComputedStyle( scene ).width;
+			scene.style.height = getComputedStyle( scene ).height;
+			scene.setAttribute( 'scrolling', 'no' );
+
+		}
+
+		</script>
+
+		<h2>Constructor</h2>
+
+		<h3>MeshDepthMaterial( parameters : <span class="param">Object</span> )</h3>
+		<p>
+			<a class="links" data-fragment="Object" title="Object">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>) can be
+			passed in here.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.alphaMap" target="_parent" title="MeshDepthMaterial.alphaMap" href="./index.html#api/en/materials/MeshDepthMaterial.alphaMap">#</a> .<a class="links" data-fragment="MeshDepthMaterial.alphaMap" id="alphaMap" href="./index.html#api/en/materials/MeshDepthMaterial.alphaMap">alphaMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The alpha map is a grayscale texture that controls the opacity across the
+			surface (black: fully transparent; white: fully opaque). Default is
+			null.<br><br>
+
+			Only the color of the texture is used, ignoring the alpha channel if one
+			exists. For RGB and RGBA textures, the <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer
+			will use the green channel when sampling this texture due to the extra bit
+			of precision provided for green in DXT-compressed and uncompressed RGB 565
+			formats. Luminance-only and luminance/alpha textures will also still work
+			as expected.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.depthPacking" target="_parent" title="MeshDepthMaterial.depthPacking" href="./index.html#api/en/materials/MeshDepthMaterial.depthPacking">#</a> .<a class="links" data-fragment="MeshDepthMaterial.depthPacking" id="depthPacking" href="./index.html#api/en/materials/MeshDepthMaterial.depthPacking">depthPacking</a>  : <a class="param links" data-fragment="Constant">Constant</a></h3>
+		<p>Type for depth packing. Default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">BasicDepthPacking</a>.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.displacementMap" target="_parent" title="MeshDepthMaterial.displacementMap" href="./index.html#api/en/materials/MeshDepthMaterial.displacementMap">#</a> .<a class="links" data-fragment="MeshDepthMaterial.displacementMap" id="displacementMap" href="./index.html#api/en/materials/MeshDepthMaterial.displacementMap">displacementMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The displacement map affects the position of the mesh's vertices. Unlike
+			other maps which only affect the light and shade of the material the
+			displaced vertices can cast shadows, block other objects, and otherwise
+			act as real geometry. The displacement texture is an image where the value
+			of each pixel (white being the highest) is mapped against, and
+			repositions, the vertices of the mesh.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.displacementScale" target="_parent" title="MeshDepthMaterial.displacementScale" href="./index.html#api/en/materials/MeshDepthMaterial.displacementScale">#</a> .<a class="links" data-fragment="MeshDepthMaterial.displacementScale" id="displacementScale" href="./index.html#api/en/materials/MeshDepthMaterial.displacementScale">displacementScale</a>  : <span class="param">Float</span></h3>
+		<p>
+			How much the displacement map affects the mesh (where black is no
+			displacement, and white is maximum displacement). Without a displacement
+			map set, this value is not applied. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.displacementBias" target="_parent" title="MeshDepthMaterial.displacementBias" href="./index.html#api/en/materials/MeshDepthMaterial.displacementBias">#</a> .<a class="links" data-fragment="MeshDepthMaterial.displacementBias" id="displacementBias" href="./index.html#api/en/materials/MeshDepthMaterial.displacementBias">displacementBias</a>  : <span class="param">Float</span></h3>
+		<p>
+			The offset of the displacement map's values on the mesh's vertices.
+			Without a displacement map set, this value is not applied. Default is <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.fog" target="_parent" title="MeshDepthMaterial.fog" href="./index.html#api/en/materials/MeshDepthMaterial.fog">#</a> .<a class="links" data-fragment="MeshDepthMaterial.fog" id="fog" href="./index.html#api/en/materials/MeshDepthMaterial.fog">fog</a>  : <span class="param">Boolean</span></h3>
+		<p>Whether the material is affected by fog. Default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.map" target="_parent" title="MeshDepthMaterial.map" href="./index.html#api/en/materials/MeshDepthMaterial.map">#</a> .<a class="links" data-fragment="MeshDepthMaterial.map" id="map" href="./index.html#api/en/materials/MeshDepthMaterial.map">map</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The color map. May optionally include an alpha channel, typically combined
+			with <a class="links" data-fragment="Material.transparent" title="Material.transparent" href="./index.html#api/en/materials/Material.transparent">.transparent</a> or <a class="links" data-fragment="Material.alphaTest" title="Material.alphaTest" href="./index.html#api/en/materials/Material.alphaTest">.alphaTest</a>. 
+			Default is null.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.wireframe" target="_parent" title="MeshDepthMaterial.wireframe" href="./index.html#api/en/materials/MeshDepthMaterial.wireframe">#</a> .<a class="links" data-fragment="MeshDepthMaterial.wireframe" id="wireframe" href="./index.html#api/en/materials/MeshDepthMaterial.wireframe">wireframe</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Render geometry as wireframe. Default is false (i.e. render as smooth
+			shaded).
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshDepthMaterial.wireframeLinewidth" target="_parent" title="MeshDepthMaterial.wireframeLinewidth" href="./index.html#api/en/materials/MeshDepthMaterial.wireframeLinewidth">#</a> .<a class="links" data-fragment="MeshDepthMaterial.wireframeLinewidth" id="wireframeLinewidth" href="./index.html#api/en/materials/MeshDepthMaterial.wireframeLinewidth">wireframeLinewidth</a>  : <span class="param">Float</span></h3>
+		<p>
+			Controls wireframe thickness. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.<br><br>
+
+			Due to limitations of the
+			<a href="https://www.khronos.org/registry/OpenGL/specs/gl/glspec46.core.pdf" target="_blank">OpenGL Core Profile</a> 
+			with the <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer on most platforms linewidth will always be <code class="inline prettyprint" translate="no"><span class="lit">1</span></code> regardless of the set value.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> class for common methods.</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/materials/MeshDepthMaterial.js" target="_blank">src/materials/MeshDepthMaterial.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

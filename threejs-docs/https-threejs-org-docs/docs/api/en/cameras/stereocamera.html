@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><title>StereoCamera – three.js docs</title></head><body><body>
+		<h1>StereoCamera</h1>
+
+		<p class=/"desc/">
+			Dual <a class=/"links/" data-fragment=/"PerspectiveCamera/" title=/"PerspectiveCamera/" href=/"./index.html#api/en/cameras/PerspectiveCamera/">PerspectiveCamera</a>s used for effects such as
+			<a href=/"https://en.wikipedia.org/wiki/Anaglyph_3D/" target=/"_blank/">3D Anaglyph</a> or
+			<a href=/"https://en.wikipedia.org/wiki/parallax_barrier/" target=/"_blank/">Parallax Barrier</a>.
+		</p>
+
+		<h2>Examples</h2>
+		<p>
+			<a href=/"../examples/#webgl_effects_anaglyph/" target=/"_blank/">effects / anaglyph </a><br>
+			<a href=/"../examples/#webgl_effects_parallaxbarrier/" target=/"_blank/">effects / parallaxbarrier </a><br>
+			<a href=/"../examples/#webgl_effects_stereo/" target=/"_blank/">effects / stereo </a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>StereoCamera( )</h3>
+		
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"StereoCamera.aspect/" target=/"_parent/" title=/"StereoCamera.aspect/" href=/"./index.html#api/en/cameras/StereoCamera.aspect/">#</a> .<a class=/"links/" data-fragment=/"StereoCamera.aspect/" id=/"aspect/" href=/"./index.html#api/en/cameras/StereoCamera.aspect/">aspect</a>  : <span class=/"param/">Float</span></h3>
+		<p>Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"StereoCamera.eyeSep/" target=/"_parent/" title=/"StereoCamera.eyeSep/" href=/"./index.html#api/en/cameras/StereoCamera.eyeSep/">#</a> .<a class=/"links/" data-fragment=/"StereoCamera.eyeSep/" id=/"eyeSep/" href=/"./index.html#api/en/cameras/StereoCamera.eyeSep/">eyeSep</a>  : <span class=/"param/">Float</span></h3>
+		<p>Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.064</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"StereoCamera.cameraL/" target=/"_parent/" title=/"StereoCamera.cameraL/" href=/"./index.html#api/en/cameras/StereoCamera.cameraL/">#</a> .<a class=/"links/" data-fragment=/"StereoCamera.cameraL/" id=/"cameraL/" href=/"./index.html#api/en/cameras/StereoCamera.cameraL/">cameraL</a>  : <a class=/"param links/" data-fragment=/"PerspectiveCamera/" href=/"./index.html#api/en/cameras/PerspectiveCamera/">PerspectiveCamera</a></h3>
+		<p>
+			Left camera. This is added to <a class=/"links/" data-fragment=/"Layers/" title=/"Layers/" href=/"./index.html#api/en/core/Layers/">layer 1</a> - objects to be
+			rendered by the left camera must also be added to this layer.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"StereoCamera.cameraR/" target=/"_parent/" title=/"StereoCamera.cameraR/" href=/"./index.html#api/en/cameras/StereoCamera.cameraR/">#</a> .<a class=/"links/" data-fragment=/"StereoCamera.cameraR/" id=/"cameraR/" href=/"./index.html#api/en/cameras/StereoCamera.cameraR/">cameraR</a>  : <a class=/"param links/" data-fragment=/"PerspectiveCamera/" href=/"./index.html#api/en/cameras/PerspectiveCamera/">PerspectiveCamera</a></h3>
+		<p>
+			Right camera.This is added to <a class=/"links/" data-fragment=/"Layers/" title=/"Layers/" href=/"./index.html#api/en/core/Layers/">layer 2</a> - objects to be
+			rendered by the right camera must also be added to this layer.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"StereoCamera.update/" target=/"_parent/" title=/"StereoCamera.update/" href=/"./index.html#api/en/cameras/StereoCamera.update/">#</a> .<a class=/"links/" data-fragment=/"StereoCamera.update/" id=/"update/" href=/"./index.html#api/en/cameras/StereoCamera.update/">update</a> ( camera : <a class=/"param links/" data-fragment=/"PerspectiveCamera/" href=/"./index.html#api/en/cameras/PerspectiveCamera/">PerspectiveCamera</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>Update the stereo cameras based on the camera passed in.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/cameras/StereoCamera.js/" target=/"_blank/">src/cameras/StereoCamera.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

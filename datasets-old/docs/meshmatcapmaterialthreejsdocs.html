@@ -1,0 +1,157 @@
+<!DOCTYPE html><html><head><title>MeshMatcapMaterial – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> →
+
+		<h1>MeshMatcapMaterial</h1>
+
+		<p class="desc">
+			MeshMatcapMaterial is defined by a MatCap (or Lit Sphere) texture, which encodes the
+			material color and shading.<br><br>
+			MeshMatcapMaterial does not respond to lights since the matcap image file encodes
+			baked lighting. It will cast a shadow onto an object that receives shadows
+			(and shadow clipping works), but it will not self-shadow or receive
+			shadows.
+		</p>
+
+		<iframe id="scene" src="scenes/material-browser.html#MeshMatcapMaterial"></iframe>
+
+		<script>
+
+		// iOS iframe auto-resize workaround
+
+		if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+			const scene = document.getElementById( 'scene' );
+
+			scene.style.width = getComputedStyle( scene ).width;
+			scene.style.height = getComputedStyle( scene ).height;
+			scene.setAttribute( 'scrolling', 'no' );
+
+		}
+
+		</script>
+
+		<h2>Constructor</h2>
+
+		<h3>MeshMatcapMaterial( parameters : <span class="param">Object</span> )</h3>
+		<p>
+			<a class="links" data-fragment="Object" title="Object">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>) can be
+			passed in here.<br><br>
+
+			The exception is the property <a class="links" data-fragment="Hexadecimal" title="Hexadecimal">color</a>, which can be
+			passed in as a hexadecimal string and is <code class="inline prettyprint" translate="no"><span class="lit">0xffffff</span></code> (white) by default.
+			<a class="links" data-fragment="Color.set" title="Color.set" href="./index.html#api/en/math/Color.set">Color.set</a>( color ) is called internally.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.alphaMap" target="_parent" title="MeshMatcapMaterial.alphaMap" href="./index.html#api/en/materials/MeshMatcapMaterial.alphaMap">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.alphaMap" id="alphaMap" href="./index.html#api/en/materials/MeshMatcapMaterial.alphaMap">alphaMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The alpha map is a grayscale texture that controls the opacity across the
+			surface (black: fully transparent; white: fully opaque). Default is
+			null.<br><br>
+
+			Only the color of the texture is used, ignoring the alpha channel if one
+			exists. For RGB and RGBA textures, the <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer
+			will use the green channel when sampling this texture due to the extra bit
+			of precision provided for green in DXT-compressed and uncompressed RGB 565
+			formats. Luminance-only and luminance/alpha textures will also still work
+			as expected.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.bumpMap" target="_parent" title="MeshMatcapMaterial.bumpMap" href="./index.html#api/en/materials/MeshMatcapMaterial.bumpMap">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.bumpMap" id="bumpMap" href="./index.html#api/en/materials/MeshMatcapMaterial.bumpMap">bumpMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The texture to create a bump map. The black and white values map to the
+			perceived depth in relation to the lights. Bump doesn't actually affect
+			the geometry of the object, only the lighting. If a normal map is defined
+			this will be ignored.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.bumpScale" target="_parent" title="MeshMatcapMaterial.bumpScale" href="./index.html#api/en/materials/MeshMatcapMaterial.bumpScale">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.bumpScale" id="bumpScale" href="./index.html#api/en/materials/MeshMatcapMaterial.bumpScale">bumpScale</a>  : <span class="param">Float</span></h3>
+		<p>
+			How much the bump map affects the material. Typical ranges are 0-1.
+			Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.color" target="_parent" title="MeshMatcapMaterial.color" href="./index.html#api/en/materials/MeshMatcapMaterial.color">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.color" id="color" href="./index.html#api/en/materials/MeshMatcapMaterial.color">color</a>  : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a></h3>
+		<p><a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">Color</a> of the material, by default set to white (0xffffff).</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.displacementMap" target="_parent" title="MeshMatcapMaterial.displacementMap" href="./index.html#api/en/materials/MeshMatcapMaterial.displacementMap">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.displacementMap" id="displacementMap" href="./index.html#api/en/materials/MeshMatcapMaterial.displacementMap">displacementMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The displacement map affects the position of the mesh's vertices. Unlike
+			other maps which only affect the light and shade of the material the
+			displaced vertices can cast shadows, block other objects, and otherwise
+			act as real geometry. The displacement texture is an image where the value
+			of each pixel (white being the highest) is mapped against, and
+			repositions, the vertices of the mesh.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.displacementScale" target="_parent" title="MeshMatcapMaterial.displacementScale" href="./index.html#api/en/materials/MeshMatcapMaterial.displacementScale">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.displacementScale" id="displacementScale" href="./index.html#api/en/materials/MeshMatcapMaterial.displacementScale">displacementScale</a>  : <span class="param">Float</span></h3>
+		<p>
+			How much the displacement map affects the mesh (where black is no
+			displacement, and white is maximum displacement). Without a displacement
+			map set, this value is not applied. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.displacementBias" target="_parent" title="MeshMatcapMaterial.displacementBias" href="./index.html#api/en/materials/MeshMatcapMaterial.displacementBias">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.displacementBias" id="displacementBias" href="./index.html#api/en/materials/MeshMatcapMaterial.displacementBias">displacementBias</a>  : <span class="param">Float</span></h3>
+		<p>
+			The offset of the displacement map's values on the mesh's vertices.
+			Without a displacement map set, this value is not applied. Default is <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.flatShading" target="_parent" title="MeshMatcapMaterial.flatShading" href="./index.html#api/en/materials/MeshMatcapMaterial.flatShading">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.flatShading" id="flatShading" href="./index.html#api/en/materials/MeshMatcapMaterial.flatShading">flatShading</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Define whether the material is rendered with flat shading. Default is
+			false.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.fog" target="_parent" title="MeshMatcapMaterial.fog" href="./index.html#api/en/materials/MeshMatcapMaterial.fog">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.fog" id="fog" href="./index.html#api/en/materials/MeshMatcapMaterial.fog">fog</a>  : <span class="param">Boolean</span></h3>
+		<p>Whether the material is affected by fog. Default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.map" target="_parent" title="MeshMatcapMaterial.map" href="./index.html#api/en/materials/MeshMatcapMaterial.map">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.map" id="map" href="./index.html#api/en/materials/MeshMatcapMaterial.map">map</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The color map. May optionally include an alpha channel, typically combined
+			with <a class="links" data-fragment="Material.transparent" title="Material.transparent" href="./index.html#api/en/materials/Material.transparent">.transparent</a> or <a class="links" data-fragment="Material.alphaTest" title="Material.alphaTest" href="./index.html#api/en/materials/Material.alphaTest">.alphaTest</a>. 
+			Default is null. The texture map color is modulated by the
+			diffuse <a class="links" data-fragment="MeshMatcapMaterial.color" title="MeshMatcapMaterial.color" href="./index.html#api/en/materials/MeshMatcapMaterial.color">.color</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.matcap" target="_parent" title="MeshMatcapMaterial.matcap" href="./index.html#api/en/materials/MeshMatcapMaterial.matcap">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.matcap" id="matcap" href="./index.html#api/en/materials/MeshMatcapMaterial.matcap">matcap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>The matcap map. Default is null.</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.normalMap" target="_parent" title="MeshMatcapMaterial.normalMap" href="./index.html#api/en/materials/MeshMatcapMaterial.normalMap">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.normalMap" id="normalMap" href="./index.html#api/en/materials/MeshMatcapMaterial.normalMap">normalMap</a>  : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The texture to create a normal map. The RGB values affect the surface
+			normal for each pixel fragment and change the way the color is lit. Normal
+			maps do not change the actual shape of the surface, only the lighting. In
+			case the material has a normal map authored using the left handed
+			convention, the y component of normalScale should be negated to compensate
+			for the different handedness.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.normalMapType" target="_parent" title="MeshMatcapMaterial.normalMapType" href="./index.html#api/en/materials/MeshMatcapMaterial.normalMapType">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.normalMapType" id="normalMapType" href="./index.html#api/en/materials/MeshMatcapMaterial.normalMapType">normalMapType</a>  : <span class="param">Integer</span></h3>
+		<p>
+			The type of normal map.<br><br>
+
+			Options are <a class="links" data-fragment="constant" title="constant">THREE.TangentSpaceNormalMap</a> (default), and
+			<a class="links" data-fragment="constant" title="constant">THREE.ObjectSpaceNormalMap</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="MeshMatcapMaterial.normalScale" target="_parent" title="MeshMatcapMaterial.normalScale" href="./index.html#api/en/materials/MeshMatcapMaterial.normalScale">#</a> .<a class="links" data-fragment="MeshMatcapMaterial.normalScale" id="normalScale" href="./index.html#api/en/materials/MeshMatcapMaterial.normalScale">normalScale</a>  : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			How much the normal map affects the material. Typical ranges are 0-1.
+			Default is a <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> set to (1,1).
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> class for common methods.</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/materials/MeshMatcapMaterial.js" target="_blank">src/materials/MeshMatcapMaterial.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

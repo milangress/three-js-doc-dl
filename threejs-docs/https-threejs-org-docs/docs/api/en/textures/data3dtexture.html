@@ -1,0 +1,132 @@
+<!DOCTYPE html><html><head><title>Data3DTexture – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Texture/" title=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a> →
+
+		<h1>Data3DTexture</h1>
+
+		<p class=/"desc/">
+			Creates a three-dimensional texture from raw data, with parameters to
+			divide it into width, height, and depth.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			Data3DTexture( data : <span class=/"param/">TypedArray</span>, width : <span class=/"param/">Number</span>, height : <span class=/"param/">Number</span>, depth : <span class=/"param/">Number</span> )
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object/" title=/"Object/">data</a> --
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView/" target=/"_blank/">ArrayBufferView</a> of the texture.<br>
+
+			<a class=/"links/" data-fragment=/"Number/" title=/"Number/">width</a> -- width of the texture.<br>
+
+			<a class=/"links/" data-fragment=/"Number/" title=/"Number/">height</a> -- height of the texture.<br>
+
+			<a class=/"links/" data-fragment=/"Number/" title=/"Number/">depth</a> -- depth of the texture.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p>This creates a Data3DTexture with repeating data, 0 to 255</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// create a buffer with some data</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sizeX </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">64</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sizeY </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">64</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sizeZ </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">64</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"kwd/">const</span><span class=/"pln/"> data </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">Uint8Array</span><span class=/"pun/">(</span><span class=/"pln/"> sizeX </span><span class=/"pun/">*</span><span class=/"pln/"> sizeY </span><span class=/"pun/">*</span><span class=/"pln/"> sizeZ </span><span class=/"pun/">);</span><span class=/"pln/">
+let i </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"kwd/">for</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> let z </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">;</span><span class=/"pln/"> z </span><span class=/"pun/">&lt;</span><span class=/"pln/"> sizeZ</span><span class=/"pun/">;</span><span class=/"pln/"> z </span><span class=/"pun/">++</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+	</span><span class=/"kwd/">for</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> let y </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">;</span><span class=/"pln/"> y </span><span class=/"pun/">&lt;</span><span class=/"pln/"> sizeY</span><span class=/"pun/">;</span><span class=/"pln/"> y </span><span class=/"pun/">++</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+		</span><span class=/"kwd/">for</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> let x </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">;</span><span class=/"pln/"> x </span><span class=/"pun/">&lt;</span><span class=/"pln/"> sizeX</span><span class=/"pun/">;</span><span class=/"pln/"> x </span><span class=/"pun/">++</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+			data</span><span class=/"pun/">[</span><span class=/"pln/"> i </span><span class=/"pun/">]</span><span class=/"pln/"> </span><span class=/"pun/">=</span><span class=/"pln/"> i </span><span class=/"pun/">%</span><span class=/"pln/"> </span><span class=/"lit/">256</span><span class=/"pun/">;</span><span class=/"pln/">
+			i </span><span class=/"pun/">++;</span><span class=/"pln/">
+		</span><span class=/"pun/">}</span><span class=/"pln/">
+	</span><span class=/"pun/">}</span><span class=/"pln/">
+</span><span class=/"pun/">}</span><span class=/"pln/">
+
+</span><span class=/"com/">// use the buffer to create the texture</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> texture </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Data3DTexture</span><span class=/"pun/">(</span><span class=/"pln/"> data</span><span class=/"pun/">,</span><span class=/"pln/"> sizeX</span><span class=/"pun/">,</span><span class=/"pln/"> sizeY</span><span class=/"pun/">,</span><span class=/"pln/"> sizeZ </span><span class=/"pun/">);</span><span class=/"pln/">
+texture</span><span class=/"pun/">.</span><span class=/"pln/">needsUpdate </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">true</span><span class=/"pun/">;</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href=/"../examples/#webgl_texture3d/" target=/"_blank/">WebGL / texture3d</a><br>
+			<a href=/"../examples/#webgl_texture3d_partialupdate/" target=/"_blank/">WebGL / texture3d / partialupdate</a><br>
+			<a href=/"../examples/#webgl_volume_cloud/" target=/"_blank/">WebGL / volume / cloud</a><br>
+			<a href=/"../examples/#webgl_volume_perlin/" target=/"_blank/">WebGL / volume / perlin</a>
+		</p>
+
+		<h2>Properties</h2>
+
+		<p>See the base <a class=/"links/" data-fragment=/"Texture/" title=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.flipY/" target=/"_parent/" title=/"Data3DTexture.flipY/" href=/"./index.html#api/en/textures/Data3DTexture.flipY/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.flipY/" id=/"flipY/" href=/"./index.html#api/en/textures/Data3DTexture.flipY/">flipY</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Whether the texture is flipped along the Y axis when uploaded to the GPU.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.generateMipmaps/" target=/"_parent/" title=/"Data3DTexture.generateMipmaps/" href=/"./index.html#api/en/textures/Data3DTexture.generateMipmaps/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.generateMipmaps/" id=/"generateMipmaps/" href=/"./index.html#api/en/textures/Data3DTexture.generateMipmaps/">generateMipmaps</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Whether to generate mipmaps (if possible) for the texture. Default is
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.image/" target=/"_parent/" title=/"Data3DTexture.image/" href=/"./index.html#api/en/textures/Data3DTexture.image/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.image/" id=/"image/" href=/"./index.html#api/en/textures/Data3DTexture.image/">image</a>  : <a class=/"param links/" data-fragment=/"Image/">Image</a></h3>
+		<p>
+			Overridden with a record type holding data, width and height and depth.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.isData3DTexture/" target=/"_parent/" title=/"Data3DTexture.isData3DTexture/" href=/"./index.html#api/en/textures/Data3DTexture.isData3DTexture/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.isData3DTexture/" id=/"isData3DTexture/" href=/"./index.html#api/en/textures/Data3DTexture.isData3DTexture/">isData3DTexture</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Data3DTexture.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.magFilter/" target=/"_parent/" title=/"Data3DTexture.magFilter/" href=/"./index.html#api/en/textures/Data3DTexture.magFilter/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.magFilter/" id=/"magFilter/" href=/"./index.html#api/en/textures/Data3DTexture.magFilter/">magFilter</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			How the texture is sampled when a texel covers more than one pixel. The
+			default is <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.NearestFilter</a>, which uses the value of
+			the closest texel.<br><br>
+
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for details.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.minFilter/" target=/"_parent/" title=/"Data3DTexture.minFilter/" href=/"./index.html#api/en/textures/Data3DTexture.minFilter/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.minFilter/" id=/"minFilter/" href=/"./index.html#api/en/textures/Data3DTexture.minFilter/">minFilter</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			How the texture is sampled when a texel covers less than one pixel. The
+			default is <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.NearestFilter</a>, which uses the value of
+			the closest texel.<br><br>
+
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for details.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.unpackAlignment/" target=/"_parent/" title=/"Data3DTexture.unpackAlignment/" href=/"./index.html#api/en/textures/Data3DTexture.unpackAlignment/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.unpackAlignment/" id=/"unpackAlignment/" href=/"./index.html#api/en/textures/Data3DTexture.unpackAlignment/">unpackAlignment</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code> by default. Specifies the alignment requirements for the start of each
+			pixel row in memory. The allowable values are 1 (byte-alignment), 2 (rows
+			aligned to even-numbered bytes), 4 (word-alignment), and 8 (rows start on
+			double-word boundaries). See
+			<a href=/"https://registry.khronos.org/OpenGL-Refpages/es3.0/html/glPixelStorei.xhtml/" target=/"_blank/">glPixelStorei</a> for more information.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Data3DTexture.wrapR/" target=/"_parent/" title=/"Data3DTexture.wrapR/" href=/"./index.html#api/en/textures/Data3DTexture.wrapR/">#</a> .<a class=/"links/" data-fragment=/"Data3DTexture.wrapR/" id=/"wrapR/" href=/"./index.html#api/en/textures/Data3DTexture.wrapR/">wrapR</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			This defines how the texture is wrapped in the depth direction.<br>
+			The default is <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.ClampToEdgeWrapping</a>, where the edge
+			is clamped to the outer edge texels. The other two choices are
+			<a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.RepeatWrapping</a> and <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.MirroredRepeatWrapping</a>. 
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for details.
+		</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a class=/"links/" data-fragment=/"Texture/" title=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/textures/Data3DTexture.js/" target=/"_blank/">src/textures/Data3DTexture.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

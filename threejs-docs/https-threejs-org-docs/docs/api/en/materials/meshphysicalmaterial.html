@@ -1,0 +1,337 @@
+<!DOCTYPE html><html><head><title>MeshPhysicalMaterial – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> → <a class=/"links/" data-fragment=/"MeshStandardMaterial/" title=/"MeshStandardMaterial/" href=/"./index.html#api/en/materials/MeshStandardMaterial/">MeshStandardMaterial</a> →
+
+		<h1>MeshPhysicalMaterial</h1>
+
+		<p class=/"desc/">
+			An extension of the <a class=/"links/" data-fragment=/"MeshStandardMaterial/" title=/"MeshStandardMaterial/" href=/"./index.html#api/en/materials/MeshStandardMaterial/">MeshStandardMaterial</a>, providing more advanced
+			physically-based rendering properties:
+		</p>
+
+		<ul>
+			<li>
+				<b>Anisotropy:</b> Ability to represent the anisotropic property of materials 
+				as observable with brushed metals.
+			</li>
+			<li>
+				<b>Clearcoat:</b> Some materials — like car paints, carbon fiber, and
+				wet surfaces — require a clear, reflective layer on top of another layer
+				that may be irregular or rough. Clearcoat approximates this effect,
+				without the need for a separate transparent surface.
+			</li>
+			<li>
+				<b>Iridescence:</b> Allows to render the effect where hue varies 
+				depending on the viewing angle and illumination angle. This can be seen on
+				soap bubbles, oil films, or on the wings of many insects.
+			</li>
+			<li>
+				<b>Physically-based transparency:</b> One limitation of
+				<a class=/"links/" data-fragment=/"Material.opacity/" title=/"Material.opacity/" href=/"./index.html#api/en/materials/Material.opacity/">.opacity</a> is that highly transparent materials
+				are less reflective. Physically-based <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.transmission/" title=/"MeshPhysicalMaterial.transmission/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.transmission/">.transmission</a> provides a
+				more realistic option for thin, transparent surfaces like glass.
+			</li>
+			<li>
+				<b>Advanced reflectivity:</b> More flexible reflectivity for
+				non-metallic materials.
+			</li>
+			<li>
+				<b>Sheen:</b> Can be used for representing cloth and fabric materials.
+			</li>
+		</ul>
+
+		<p>
+			As a result of these complex shading features, MeshPhysicalMaterial has a
+			higher performance cost, per pixel, than other three.js materials. Most
+			effects are disabled by default, and add cost as they are enabled. For
+			best results, always specify an <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.envMap/" title=/"MeshPhysicalMaterial.envMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.envMap/">environment map</a> when using
+			this material.
+		</p>
+
+		<iframe id=/"scene/" src=/"scenes/material-browser.html#MeshPhysicalMaterial/"></iframe>
+
+		<script>
+
+		// iOS iframe auto-resize workaround
+
+		if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+			const scene = document.getElementById( 'scene' );
+
+			scene.style.width = getComputedStyle( scene ).width;
+			scene.style.height = getComputedStyle( scene ).height;
+			scene.setAttribute( 'scrolling', 'no' );
+
+		}
+
+		</script>
+
+		<h2>Examples</h2>
+		<p>
+			<a href=/"../examples/#webgl_loader_gltf_anisotropy/" target=/"_blank/">loader / gltf / anisotropy</a><br>
+			<a href=/"../examples/#webgl_materials_physical_clearcoat/" target=/"_blank/">materials / physical / clearcoat</a><br>
+			<a href=/"../examples/#webgl_loader_gltf_iridescence/" target=/"_blank/">loader / gltf / iridescence</a><br>
+			<a href=/"../examples/#webgl_loader_gltf_sheen/" target=/"_blank/">loader / gltf / sheen</a><br>
+			<a href=/"../examples/#webgl_materials_physical_transmission/" target=/"_blank/">materials / physical / transmission</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>MeshPhysicalMaterial( parameters : <span class=/"param/">Object</span> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object/" title=/"Object/">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> and
+			<a class=/"links/" data-fragment=/"MeshStandardMaterial/" title=/"MeshStandardMaterial/" href=/"./index.html#api/en/materials/MeshStandardMaterial/">MeshStandardMaterial</a>) can be passed in here.<br><br>
+
+			The exception is the property <a class=/"links/" data-fragment=/"Hexadecimal/" title=/"Hexadecimal/">color</a>, which can be
+			passed in as a hexadecimal string and is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0xffffff</span></code> (white) by default.
+			<a class=/"links/" data-fragment=/"Color.set/" title=/"Color.set/" href=/"./index.html#api/en/math/Color.set/">Color.set</a>( color ) is called internally.
+		</p>
+
+		<h2>Properties</h2>
+		<p>
+			See the base <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> and <a class=/"links/" data-fragment=/"MeshStandardMaterial/" title=/"MeshStandardMaterial/" href=/"./index.html#api/en/materials/MeshStandardMaterial/">MeshStandardMaterial</a> classes for
+			common properties.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.anisotropy/" target=/"_parent/" title=/"MeshPhysicalMaterial.anisotropy/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropy/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.anisotropy/" id=/"anisotropy/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropy/">anisotropy</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			The anisotropy strength. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.anisotropyMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.anisotropyMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropyMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.anisotropyMap/" id=/"anisotropyMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropyMap/">anisotropyMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			Red and green channels represent the anisotropy direction in <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">[-</span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">]</span></code> tangent,
+			bitangent space, to be rotated by <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.anisotropyRotation/" title=/"MeshPhysicalMaterial.anisotropyRotation/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropyRotation/">.anisotropyRotation</a>. The blue channel
+			contains strength as <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">[</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">]</span></code> to be multiplied by <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.anisotropy/" title=/"MeshPhysicalMaterial.anisotropy/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropy/">.anisotropy</a>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.anisotropyRotation/" target=/"_parent/" title=/"MeshPhysicalMaterial.anisotropyRotation/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropyRotation/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.anisotropyRotation/" id=/"anisotropyRotation/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropyRotation/">anisotropyRotation</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			The rotation of the anisotropy in tangent, bitangent space, measured in radians
+			counter-clockwise from the tangent. When <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.anisotropyMap/" title=/"MeshPhysicalMaterial.anisotropyMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.anisotropyMap/">.anisotropyMap</a> is present, this
+			property provides additional rotation to the vectors in the texture. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.attenuationColor/" target=/"_parent/" title=/"MeshPhysicalMaterial.attenuationColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.attenuationColor/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.attenuationColor/" id=/"attenuationColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.attenuationColor/">attenuationColor</a>  : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a></h3>
+		<p>
+			The color that white light turns into due to absorption when reaching the
+			attenuation distance. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">white</span></code> (0xffffff).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.attenuationDistance/" target=/"_parent/" title=/"MeshPhysicalMaterial.attenuationDistance/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.attenuationDistance/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.attenuationDistance/" id=/"attenuationDistance/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.attenuationDistance/">attenuationDistance</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Density of the medium given as the average distance that light travels in
+			the medium before interacting with a particle. The value is given in world
+			space units, and must be greater than zero. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">Infinity</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.clearcoat/" target=/"_parent/" title=/"MeshPhysicalMaterial.clearcoat/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoat/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoat/" id=/"clearcoat/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoat/">clearcoat</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Represents the intensity of the clear coat layer, from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>. Use
+			clear coat related properties to enable multilayer materials that have a
+			thin translucent layer over the base layer. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.clearcoatMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.clearcoatMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoatMap/" id=/"clearcoatMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatMap/">clearcoatMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The red channel of this texture is multiplied against <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoat/" title=/"MeshPhysicalMaterial.clearcoat/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoat/">.clearcoat</a>,
+			for per-pixel control over a coating's intensity. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.clearcoatNormalMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.clearcoatNormalMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatNormalMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoatNormalMap/" id=/"clearcoatNormalMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatNormalMap/">clearcoatNormalMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			Can be used to enable independent normals for the clear coat layer.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.clearcoatNormalScale/" target=/"_parent/" title=/"MeshPhysicalMaterial.clearcoatNormalScale/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatNormalScale/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoatNormalScale/" id=/"clearcoatNormalScale/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatNormalScale/">clearcoatNormalScale</a>  : <a class=/"param links/" data-fragment=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">Vector2</a></h3>
+		<p>
+			How much <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoatNormalMap/" title=/"MeshPhysicalMaterial.clearcoatNormalMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatNormalMap/">.clearcoatNormalMap</a> affects the clear coat layer, from
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"lit/">0</span><span class=/"pun/">)</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"lit/">1</span><span class=/"pun/">)</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"lit/">1</span><span class=/"pun/">)</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.clearcoatRoughness/" target=/"_parent/" title=/"MeshPhysicalMaterial.clearcoatRoughness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatRoughness/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoatRoughness/" id=/"clearcoatRoughness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatRoughness/">clearcoatRoughness</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Roughness of the clear coat layer, from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.clearcoatRoughnessMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.clearcoatRoughnessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatRoughnessMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoatRoughnessMap/" id=/"clearcoatRoughnessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatRoughnessMap/">clearcoatRoughnessMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The green channel of this texture is multiplied against
+			<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.clearcoatRoughness/" title=/"MeshPhysicalMaterial.clearcoatRoughness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.clearcoatRoughness/">.clearcoatRoughness</a>, for per-pixel control over a coating's
+			roughness. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.defines/" target=/"_parent/" title=/"MeshPhysicalMaterial.defines/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.defines/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.defines/" id=/"defines/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.defines/">defines</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			An object of the form:
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pun/">{</span><span class=/"pln/"> 
+	</span><span class=/"str/">'STANDARD'</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"str/">''</span><span class=/"pun/">,</span><span class=/"pln/">
+	</span><span class=/"str/">'PHYSICAL'</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"str/">''</span><span class=/"pun/">,</span><span class=/"pln/"> 
+</span><span class=/"pun/">};</span></code>
+
+			This is used by the <a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGLRenderer</a> for selecting shaders.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.dispersion/" target=/"_parent/" title=/"MeshPhysicalMaterial.dispersion/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.dispersion/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.dispersion/" id=/"dispersion/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.dispersion/">dispersion</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Defines the strength of the angular separation of colors (chromatic aberration) transmitting through a relatively clear volume.
+			Any value zero or larger is valid, the typical range of realistic values is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">[</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">]</span></code>.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code> (no dispersion).
+			This property can be only be used with transmissive objects, see <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.transmission/" title=/"MeshPhysicalMaterial.transmission/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.transmission/">.transmission</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.ior/" target=/"_parent/" title=/"MeshPhysicalMaterial.ior/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.ior/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.ior/" id=/"ior/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.ior/">ior</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Index-of-refraction for non-metallic materials, from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2.333</span></code>.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.5</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.reflectivity/" target=/"_parent/" title=/"MeshPhysicalMaterial.reflectivity/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.reflectivity/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.reflectivity/" id=/"reflectivity/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.reflectivity/">reflectivity</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Degree of reflectivity, from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.5</span></code>, which
+			corresponds to an index-of-refraction of 1.5.<br>
+
+			This models the reflectivity of non-metallic materials. It has no effect
+			when <a class=/"links/" data-fragment=/"MeshStandardMaterial.metalness/" title=/"MeshStandardMaterial.metalness/" href=/"./index.html#api/en/materials/MeshStandardMaterial.metalness/">metalness</a> is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.iridescence/" target=/"_parent/" title=/"MeshPhysicalMaterial.iridescence/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescence/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescence/" id=/"iridescence/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescence/">iridescence</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			The intensity of the <a href=/"https://en.wikipedia.org/wiki/Iridescence/" target=/"_blank/">iridescence</a> layer, simulating RGB color shift based on the angle between the surface and the viewer, from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.iridescenceMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.iridescenceMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescenceMap/" id=/"iridescenceMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceMap/">iridescenceMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The red channel of this texture is multiplied against
+			<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescence/" title=/"MeshPhysicalMaterial.iridescence/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescence/">.iridescence</a>, for per-pixel control over iridescence.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.iridescenceIOR/" target=/"_parent/" title=/"MeshPhysicalMaterial.iridescenceIOR/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceIOR/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescenceIOR/" id=/"iridescenceIOR/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceIOR/">iridescenceIOR</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Strength of the iridescence RGB color shift effect, represented by an index-of-refraction. Between <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2.333</span></code>.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.3</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.iridescenceThicknessRange/" target=/"_parent/" title=/"MeshPhysicalMaterial.iridescenceThicknessRange/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceThicknessRange/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescenceThicknessRange/" id=/"iridescenceThicknessRange/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceThicknessRange/">iridescenceThicknessRange</a>  : <span class=/"param/">Array</span></h3>
+		<p>
+			Array of exactly 2 elements, specifying minimum and maximum thickness of the iridescence layer.
+			Thickness of iridescence layer has an equivalent effect of the one <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.thickness/" title=/"MeshPhysicalMaterial.thickness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.thickness/">.thickness</a> has on <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.ior/" title=/"MeshPhysicalMaterial.ior/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.ior/">.ior</a>.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">[</span><span class=/"lit/">100</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">400</span><span class=/"pun/">]</span></code>.<br>
+
+			If <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescenceThicknessMap/" title=/"MeshPhysicalMaterial.iridescenceThicknessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceThicknessMap/">.iridescenceThicknessMap</a> is not defined, iridescence thickness will use only the second element of the given array.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.iridescenceThicknessMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.iridescenceThicknessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceThicknessMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescenceThicknessMap/" id=/"iridescenceThicknessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceThicknessMap/">iridescenceThicknessMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			A texture that defines the thickness of the iridescence layer, stored in the green channel.
+			Minimum and maximum values of thickness are defined by <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.iridescenceThicknessRange/" title=/"MeshPhysicalMaterial.iridescenceThicknessRange/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.iridescenceThicknessRange/">.iridescenceThicknessRange</a> array:<br>
+			</p><ul>
+				<li><code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> in the green channel will result in thickness equal to first element of the array.</li>
+				<li><code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code> in the green channel will result in thickness equal to second element of the array.</li>
+				<li>Values in-between will linearly interpolate between the elements of the array.</li>
+			</ul>
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		<p></p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.sheen/" target=/"_parent/" title=/"MeshPhysicalMaterial.sheen/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheen/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.sheen/" id=/"sheen/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheen/">sheen</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			The intensity of the sheen layer, from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.sheenRoughness/" target=/"_parent/" title=/"MeshPhysicalMaterial.sheenRoughness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenRoughness/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.sheenRoughness/" id=/"sheenRoughness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenRoughness/">sheenRoughness</a>  : <span class=/"param/">Float</span></h3>
+		<p>Roughness of the sheen layer, from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.sheenRoughnessMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.sheenRoughnessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenRoughnessMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.sheenRoughnessMap/" id=/"sheenRoughnessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenRoughnessMap/">sheenRoughnessMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The alpha channel of this texture is multiplied against
+			<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.sheenRoughness/" title=/"MeshPhysicalMaterial.sheenRoughness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenRoughness/">.sheenRoughness</a>, for per-pixel control over sheen roughness.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.sheenColor/" target=/"_parent/" title=/"MeshPhysicalMaterial.sheenColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenColor/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.sheenColor/" id=/"sheenColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenColor/">sheenColor</a>  : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a></h3>
+		<p>The sheen tint. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0x000000</span></code>, black.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.sheenColorMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.sheenColorMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenColorMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.sheenColorMap/" id=/"sheenColorMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenColorMap/">sheenColorMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The RGB channels of this texture are multiplied against
+			<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.sheenColor/" title=/"MeshPhysicalMaterial.sheenColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.sheenColor/">.sheenColor</a>, for per-pixel control over sheen tint. Default is
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.specularIntensity/" target=/"_parent/" title=/"MeshPhysicalMaterial.specularIntensity/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularIntensity/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.specularIntensity/" id=/"specularIntensity/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularIntensity/">specularIntensity</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			A float that scales the amount of specular reflection for non-metals only.
+			When set to zero, the model is effectively Lambertian. From <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.specularIntensityMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.specularIntensityMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularIntensityMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.specularIntensityMap/" id=/"specularIntensityMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularIntensityMap/">specularIntensityMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The alpha channel of this texture is multiplied against
+			<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.specularIntensity/" title=/"MeshPhysicalMaterial.specularIntensity/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularIntensity/">.specularIntensity</a>, for per-pixel control over specular intensity.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.specularColor/" target=/"_parent/" title=/"MeshPhysicalMaterial.specularColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularColor/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.specularColor/" id=/"specularColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularColor/">specularColor</a>  : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a></h3>
+		<p>
+			A <a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> that tints the specular reflection at normal incidence for
+			non-metals only. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0xffffff</span></code>, white.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.specularColorMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.specularColorMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularColorMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.specularColorMap/" id=/"specularColorMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularColorMap/">specularColorMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The RGB channels of this texture are multiplied against
+			<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.specularColor/" title=/"MeshPhysicalMaterial.specularColor/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.specularColor/">.specularColor</a>, for per-pixel control over specular color. Default
+			is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.thickness/" target=/"_parent/" title=/"MeshPhysicalMaterial.thickness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.thickness/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.thickness/" id=/"thickness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.thickness/">thickness</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			The thickness of the volume beneath the surface. The value is given in the
+			coordinate space of the mesh. If the value is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code> the material is
+			thin-walled. Otherwise the material is a volume boundary. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.thicknessMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.thicknessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.thicknessMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.thicknessMap/" id=/"thicknessMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.thicknessMap/">thicknessMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			A texture that defines the thickness, stored in the green channel. This will
+			be multiplied by <a class=/"links/" data-fragment=/"MeshPhysicalMaterial.thickness/" title=/"MeshPhysicalMaterial.thickness/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.thickness/">.thickness</a>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.transmission/" target=/"_parent/" title=/"MeshPhysicalMaterial.transmission/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.transmission/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.transmission/" id=/"transmission/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.transmission/">transmission</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Degree of transmission (or optical transparency), from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code>.<br>
+
+			Thin, transparent or semitransparent, plastic or glass materials remain
+			largely reflective even if they are fully transmissive. The transmission
+			property can be used to model these materials.<br>
+
+			When transmission is non-zero, <a class=/"links/" data-fragment=/"Material.opacity/" title=/"Material.opacity/" href=/"./index.html#api/en/materials/Material.opacity/">opacity</a> should be
+			set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"MeshPhysicalMaterial.transmissionMap/" target=/"_parent/" title=/"MeshPhysicalMaterial.transmissionMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.transmissionMap/">#</a> .<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.transmissionMap/" id=/"transmissionMap/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.transmissionMap/">transmissionMap</a>  : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			The red channel of this texture is multiplied against
+			<a class=/"links/" data-fragment=/"MeshPhysicalMaterial.transmission/" title=/"MeshPhysicalMaterial.transmission/" href=/"./index.html#api/en/materials/MeshPhysicalMaterial.transmission/">.transmission</a>, for per-pixel control over optical transparency.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h2>Methods</h2>
+		<p>
+			See the base <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> and <a class=/"links/" data-fragment=/"MeshStandardMaterial/" title=/"MeshStandardMaterial/" href=/"./index.html#api/en/materials/MeshStandardMaterial/">MeshStandardMaterial</a> classes for
+			common methods.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/materials/MeshPhysicalMaterial.js/" target=/"_blank/">src/materials/MeshPhysicalMaterial.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

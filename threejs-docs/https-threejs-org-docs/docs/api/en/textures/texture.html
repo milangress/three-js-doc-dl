@@ -1,0 +1,335 @@
+<!DOCTYPE html><html><head><title>Texture – three.js docs</title></head><body><body>
+		<h1>Texture</h1>
+
+		<p class=/"desc/">
+			Create a texture to apply to a surface or as a reflection or refraction
+			map.
+		</p>
+
+		<p>
+			Note: After the initial use of a texture, its dimensions, format, and type
+			cannot be changed. Instead, call <a class=/"links/" data-fragment=/"Texture.dispose/" title=/"Texture.dispose/" href=/"./index.html#api/en/textures/Texture.dispose/">.dispose</a>() on the texture and
+			instantiate a new one.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// load a texture, set wrap mode to repeat</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> texture </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">TextureLoader</span><span class=/"pun/">().</span><span class=/"pln/">load</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">/"textures/water.jpg/"</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+texture</span><span class=/"pun/">.</span><span class=/"pln/">wrapS </span><span class=/"pun/">=</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">RepeatWrapping</span><span class=/"pun/">;</span><span class=/"pln/">
+texture</span><span class=/"pun/">.</span><span class=/"pln/">wrapT </span><span class=/"pun/">=</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">RepeatWrapping</span><span class=/"pun/">;</span><span class=/"pln/">
+texture</span><span class=/"pun/">.</span><span class=/"pln/">repeat</span><span class=/"pun/">.</span><span class=/"kwd/">set</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">4</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">4</span><span class=/"pln/"> </span><span class=/"pun/">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			Texture( image, mapping, wrapS, wrapT, magFilter, minFilter, format, type,
+			anisotropy, colorSpace )
+		</h3>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.id/" target=/"_parent/" title=/"Texture.id/" href=/"./index.html#api/en/textures/Texture.id/">#</a> .<a class=/"links/" data-fragment=/"Texture.id/" id=/"id/" href=/"./index.html#api/en/textures/Texture.id/">id</a>  : <span class=/"param/">Integer</span></h3>
+		<p>Readonly - unique number for this texture instance.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.isTexture/" target=/"_parent/" title=/"Texture.isTexture/" href=/"./index.html#api/en/textures/Texture.isTexture/">#</a> .<a class=/"links/" data-fragment=/"Texture.isTexture/" id=/"isTexture/" href=/"./index.html#api/en/textures/Texture.isTexture/">isTexture</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Texture.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.uuid/" target=/"_parent/" title=/"Texture.uuid/" href=/"./index.html#api/en/textures/Texture.uuid/">#</a> .<a class=/"links/" data-fragment=/"Texture.uuid/" id=/"uuid/" href=/"./index.html#api/en/textures/Texture.uuid/">uuid</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			<a href=/"http://en.wikipedia.org/wiki/Universally_unique_identifier/" target=/"_blank/">UUID</a> of
+			this object instance. This gets automatically assigned, so this shouldn't
+			be edited.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.name/" target=/"_parent/" title=/"Texture.name/" href=/"./index.html#api/en/textures/Texture.name/">#</a> .<a class=/"links/" data-fragment=/"Texture.name/" id=/"name/" href=/"./index.html#api/en/textures/Texture.name/">name</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			Optional name of the object (doesn't need to be unique). Default is an
+			empty string.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.image/" target=/"_parent/" title=/"Texture.image/" href=/"./index.html#api/en/textures/Texture.image/">#</a> .<a class=/"links/" data-fragment=/"Texture.image/" id=/"image/" href=/"./index.html#api/en/textures/Texture.image/">image</a>  : <a class=/"param links/" data-fragment=/"Image/">Image</a></h3>
+		<p>
+			An image object, typically created using the <a class=/"links/" data-fragment=/"TextureLoader.load/" title=/"TextureLoader.load/" href=/"./index.html#api/en/loaders/TextureLoader.load/">TextureLoader.load</a>
+			method. This can be any image (e.g., PNG, JPG, GIF, DDS) or video (e.g.,
+			MP4, OGG/OGV) type supported by three.js.<br><br>
+
+			To use video as a texture you need to have a playing HTML5 video element
+			as a source for your texture image and continuously update this texture as
+			long as video is playing - the <a class=/"links/" data-fragment=/"VideoTexture/" title=/"VideoTexture/" href=/"./index.html#api/en/textures/VideoTexture/">VideoTexture</a> class
+			handles this automatically.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.mipmaps/" target=/"_parent/" title=/"Texture.mipmaps/" href=/"./index.html#api/en/textures/Texture.mipmaps/">#</a> .<a class=/"links/" data-fragment=/"Texture.mipmaps/" id=/"mipmaps/" href=/"./index.html#api/en/textures/Texture.mipmaps/">mipmaps</a>  : <span class=/"param/">Array</span></h3>
+		<p>Array of user-specified mipmaps (optional).</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.mapping/" target=/"_parent/" title=/"Texture.mapping/" href=/"./index.html#api/en/textures/Texture.mapping/">#</a> .<a class=/"links/" data-fragment=/"Texture.mapping/" id=/"mapping/" href=/"./index.html#api/en/textures/Texture.mapping/">mapping</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			How the image is applied to the object. An object type of <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.UVMapping</a> 
+			is the default, where the U,V coordinates are used to
+			apply the map.<br>
+
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for other mapping types.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.channel/" target=/"_parent/" title=/"Texture.channel/" href=/"./index.html#api/en/textures/Texture.channel/">#</a> .<a class=/"links/" data-fragment=/"Texture.channel/" id=/"channel/" href=/"./index.html#api/en/textures/Texture.channel/">channel</a>  : <span class=/"param/">Integer</span></h3>
+		<p>
+			Lets you select the uv attribute to map the texture to. <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code> for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">uv</span></code>,
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code> for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">uv1</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2</span></code> for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">uv2</span></code> and <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">3</span></code> for <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">uv3</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.wrapS/" target=/"_parent/" title=/"Texture.wrapS/" href=/"./index.html#api/en/textures/Texture.wrapS/">#</a> .<a class=/"links/" data-fragment=/"Texture.wrapS/" id=/"wrapS/" href=/"./index.html#api/en/textures/Texture.wrapS/">wrapS</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			This defines how the texture is wrapped horizontally and corresponds to
+			<strong>U</strong> in UV mapping.<br>
+			The default is <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.ClampToEdgeWrapping</a>, where the edge
+			is clamped to the outer edge texels. The other two choices are
+			<a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.RepeatWrapping</a> and <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.MirroredRepeatWrapping</a>. 
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a>
+			page for details.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.wrapT/" target=/"_parent/" title=/"Texture.wrapT/" href=/"./index.html#api/en/textures/Texture.wrapT/">#</a> .<a class=/"links/" data-fragment=/"Texture.wrapT/" id=/"wrapT/" href=/"./index.html#api/en/textures/Texture.wrapT/">wrapT</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			This defines how the texture is wrapped vertically and corresponds to <strong>V</strong>
+			in UV mapping.<br>
+			The same choices are available as for <a class=/"permalink links/" data-fragment=/"Texture.wrapS/" target=/"_parent/" title=/"Texture.wrapS/" href=/"./index.html#api/en/textures/Texture.wrapS/">#</a> .<a class=/"links/" data-fragment=/"Texture.wrapS/" id=/"wrapS/" href=/"./index.html#api/en/textures/Texture.wrapS/">wrapS</a>  : <span class=/"param/">number</span>.<br><br>
+
+			NOTE: tiling of images in textures only functions if image dimensions are
+			powers of two (2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, ...) in
+			terms of pixels. Individual dimensions need not be equal, but each must be
+			a power of two. This is a limitation of WebGL, not three.js.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.magFilter/" target=/"_parent/" title=/"Texture.magFilter/" href=/"./index.html#api/en/textures/Texture.magFilter/">#</a> .<a class=/"links/" data-fragment=/"Texture.magFilter/" id=/"magFilter/" href=/"./index.html#api/en/textures/Texture.magFilter/">magFilter</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			How the texture is sampled when a texel covers more than one pixel. The
+			default is <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.LinearFilter</a>, which takes the four
+			closest texels and bilinearly interpolates among them. The other option is
+			<a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.NearestFilter</a>, which uses the value of the closest
+			texel.<br>
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for details.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.minFilter/" target=/"_parent/" title=/"Texture.minFilter/" href=/"./index.html#api/en/textures/Texture.minFilter/">#</a> .<a class=/"links/" data-fragment=/"Texture.minFilter/" id=/"minFilter/" href=/"./index.html#api/en/textures/Texture.minFilter/">minFilter</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			How the texture is sampled when a texel covers less than one pixel. The
+			default is <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.LinearMipmapLinearFilter</a>, which uses
+			mipmapping and a trilinear filter. <br><br>
+
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for all possible choices.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.anisotropy/" target=/"_parent/" title=/"Texture.anisotropy/" href=/"./index.html#api/en/textures/Texture.anisotropy/">#</a> .<a class=/"links/" data-fragment=/"Texture.anisotropy/" id=/"anisotropy/" href=/"./index.html#api/en/textures/Texture.anisotropy/">anisotropy</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			The number of samples taken along the axis through the pixel that has the
+			highest density of texels. By default, this value is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>. A higher value
+			gives a less blurry result than a basic mipmap, at the cost of more
+			texture samples being used. Use <a class=/"links/" data-fragment=/"WebGLRenderer.capabilities/" title=/"WebGLRenderer.capabilities/" href=/"./index.html#api/en/renderers/WebGLRenderer.capabilities/">renderer.capabilities.getMaxAnisotropy</a>() 
+			to find the maximum valid anisotropy value for the GPU; this value is usually a power of 2.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.format/" target=/"_parent/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">#</a> .<a class=/"links/" data-fragment=/"Texture.format/" id=/"format/" href=/"./index.html#api/en/textures/Texture.format/">format</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			The default is <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.RGBAFormat</a>.<br><br>
+
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for details of other
+			formats.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.internalFormat/" target=/"_parent/" title=/"Texture.internalFormat/" href=/"./index.html#api/en/textures/Texture.internalFormat/">#</a> .<a class=/"links/" data-fragment=/"Texture.internalFormat/" id=/"internalFormat/" href=/"./index.html#api/en/textures/Texture.internalFormat/">internalFormat</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			The default value is obtained using a combination of <a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">.format</a> and <a class=/"links/" data-fragment=/"Texture.type/" title=/"Texture.type/" href=/"./index.html#api/en/textures/Texture.type/">.type</a>.<br>
+
+			The GPU format allows the developer to specify how the data is going to be
+			stored on the GPU.<br><br>
+
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for details regarding all
+			supported internal formats.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.type/" target=/"_parent/" title=/"Texture.type/" href=/"./index.html#api/en/textures/Texture.type/">#</a> .<a class=/"links/" data-fragment=/"Texture.type/" id=/"type/" href=/"./index.html#api/en/textures/Texture.type/">type</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			This must correspond to the <a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">.format</a>. The default is
+			<a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.UnsignedByteType</a>, which will be used for most
+			texture formats.<br><br>
+
+			See the <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">texture constants</a> page for details of other
+			formats.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.offset/" target=/"_parent/" title=/"Texture.offset/" href=/"./index.html#api/en/textures/Texture.offset/">#</a> .<a class=/"links/" data-fragment=/"Texture.offset/" id=/"offset/" href=/"./index.html#api/en/textures/Texture.offset/">offset</a>  : <a class=/"param links/" data-fragment=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">Vector2</a></h3>
+		<p>
+			How much a single repetition of the texture is offset from the beginning,
+			in each direction U and V. Typical range is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0.0</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.repeat/" target=/"_parent/" title=/"Texture.repeat/" href=/"./index.html#api/en/textures/Texture.repeat/">#</a> .<a class=/"links/" data-fragment=/"Texture.repeat/" id=/"repeat/" href=/"./index.html#api/en/textures/Texture.repeat/">repeat</a>  : <a class=/"param links/" data-fragment=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">Vector2</a></h3>
+		<p>
+			How many times the texture is repeated across the surface, in each
+			direction U and V. If repeat is set greater than 1 in either direction,
+			the corresponding Wrap parameter should also be set to <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.RepeatWrapping</a> 
+			or <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.MirroredRepeatWrapping</a> to
+			achieve the desired tiling effect.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.rotation/" target=/"_parent/" title=/"Texture.rotation/" href=/"./index.html#api/en/textures/Texture.rotation/">#</a> .<a class=/"links/" data-fragment=/"Texture.rotation/" id=/"rotation/" href=/"./index.html#api/en/textures/Texture.rotation/">rotation</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			How much the texture is rotated around the center point, in radians.
+			Positive values are counter-clockwise. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.center/" target=/"_parent/" title=/"Texture.center/" href=/"./index.html#api/en/textures/Texture.center/">#</a> .<a class=/"links/" data-fragment=/"Texture.center/" id=/"center/" href=/"./index.html#api/en/textures/Texture.center/">center</a>  : <a class=/"param links/" data-fragment=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">Vector2</a></h3>
+		<p>
+			The point around which rotation occurs. A value of (0.5, 0.5) corresponds
+			to the center of the texture. Default is (0, 0), the lower left.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.matrixAutoUpdate/" target=/"_parent/" title=/"Texture.matrixAutoUpdate/" href=/"./index.html#api/en/textures/Texture.matrixAutoUpdate/">#</a> .<a class=/"links/" data-fragment=/"Texture.matrixAutoUpdate/" id=/"matrixAutoUpdate/" href=/"./index.html#api/en/textures/Texture.matrixAutoUpdate/">matrixAutoUpdate</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Whether to update the texture's uv-transform <a class=/"links/" data-fragment=/"Texture.matrix/" title=/"Texture.matrix/" href=/"./index.html#api/en/textures/Texture.matrix/">.matrix</a>
+			from the texture properties <a class=/"links/" data-fragment=/"Texture.offset/" title=/"Texture.offset/" href=/"./index.html#api/en/textures/Texture.offset/">.offset</a>,
+			<a class=/"links/" data-fragment=/"Texture.repeat/" title=/"Texture.repeat/" href=/"./index.html#api/en/textures/Texture.repeat/">.repeat</a>, <a class=/"links/" data-fragment=/"Texture.rotation/" title=/"Texture.rotation/" href=/"./index.html#api/en/textures/Texture.rotation/">.rotation</a>, and
+			<a class=/"links/" data-fragment=/"Texture.center/" title=/"Texture.center/" href=/"./index.html#api/en/textures/Texture.center/">.center</a>. True by default. Set this to false if you
+			are specifying the uv-transform matrix directly.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.matrix/" target=/"_parent/" title=/"Texture.matrix/" href=/"./index.html#api/en/textures/Texture.matrix/">#</a> .<a class=/"links/" data-fragment=/"Texture.matrix/" id=/"matrix/" href=/"./index.html#api/en/textures/Texture.matrix/">matrix</a>  : <a class=/"param links/" data-fragment=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">Matrix3</a></h3>
+		<p>
+			The uv-transform matrix for the texture. Updated by the renderer from the
+			texture properties <a class=/"links/" data-fragment=/"Texture.offset/" title=/"Texture.offset/" href=/"./index.html#api/en/textures/Texture.offset/">.offset</a>, <a class=/"links/" data-fragment=/"Texture.repeat/" title=/"Texture.repeat/" href=/"./index.html#api/en/textures/Texture.repeat/">.repeat</a>, 
+			<a class=/"links/" data-fragment=/"Texture.rotation/" title=/"Texture.rotation/" href=/"./index.html#api/en/textures/Texture.rotation/">.rotation</a>, and <a class=/"links/" data-fragment=/"Texture.center/" title=/"Texture.center/" href=/"./index.html#api/en/textures/Texture.center/">.center</a> 
+			when the texture's <a class=/"links/" data-fragment=/"Texture.matrixAutoUpdate/" title=/"Texture.matrixAutoUpdate/" href=/"./index.html#api/en/textures/Texture.matrixAutoUpdate/">.matrixAutoUpdate</a> 
+			property is true. When <a class=/"links/" data-fragment=/"Texture.matrixAutoUpdate/" title=/"Texture.matrixAutoUpdate/" href=/"./index.html#api/en/textures/Texture.matrixAutoUpdate/">.matrixAutoUpdate</a> 
+			property is false, this matrix may be set manually.
+			Default is the identity matrix.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.generateMipmaps/" target=/"_parent/" title=/"Texture.generateMipmaps/" href=/"./index.html#api/en/textures/Texture.generateMipmaps/">#</a> .<a class=/"links/" data-fragment=/"Texture.generateMipmaps/" id=/"generateMipmaps/" href=/"./index.html#api/en/textures/Texture.generateMipmaps/">generateMipmaps</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Whether to generate mipmaps (if possible) for a texture. True by default.
+			Set this to false if you are creating mipmaps manually.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.premultiplyAlpha/" target=/"_parent/" title=/"Texture.premultiplyAlpha/" href=/"./index.html#api/en/textures/Texture.premultiplyAlpha/">#</a> .<a class=/"links/" data-fragment=/"Texture.premultiplyAlpha/" id=/"premultiplyAlpha/" href=/"./index.html#api/en/textures/Texture.premultiplyAlpha/">premultiplyAlpha</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			If set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>, the alpha channel, if present, is multiplied into the
+			color channels when the texture is uploaded to the GPU. Default is
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.<br><br>
+
+			Note that this property has no effect for
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap/" target=/"_blank/">ImageBitmap</a>. 
+			You need to configure on bitmap creation instead. See
+			<a class=/"links/" data-fragment=/"ImageBitmapLoader/" title=/"ImageBitmapLoader/" href=/"./index.html#api/en/loaders/ImageBitmapLoader/">ImageBitmapLoader</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.flipY/" target=/"_parent/" title=/"Texture.flipY/" href=/"./index.html#api/en/textures/Texture.flipY/">#</a> .<a class=/"links/" data-fragment=/"Texture.flipY/" id=/"flipY/" href=/"./index.html#api/en/textures/Texture.flipY/">flipY</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			If set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>, the texture is flipped along the vertical axis when
+			uploaded to the GPU. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.<br><br>
+
+			Note that this property has no effect for
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap/" target=/"_blank/">ImageBitmap</a>. 
+			You need to configure on bitmap creation instead. See
+			<a class=/"links/" data-fragment=/"ImageBitmapLoader/" title=/"ImageBitmapLoader/" href=/"./index.html#api/en/loaders/ImageBitmapLoader/">ImageBitmapLoader</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.unpackAlignment/" target=/"_parent/" title=/"Texture.unpackAlignment/" href=/"./index.html#api/en/textures/Texture.unpackAlignment/">#</a> .<a class=/"links/" data-fragment=/"Texture.unpackAlignment/" id=/"unpackAlignment/" href=/"./index.html#api/en/textures/Texture.unpackAlignment/">unpackAlignment</a>  : <span class=/"param/">number</span></h3>
+		<p>
+			4 by default. Specifies the alignment requirements for the start of each
+			pixel row in memory. The allowable values are 1 (byte-alignment), 2 (rows
+			aligned to even-numbered bytes), 4 (word-alignment), and 8 (rows start on
+			double-word boundaries). See
+			<a href=/"http://www.khronos.org/opengles/sdk/docs/man/xhtml/glPixelStorei.xml/" target=/"_blank/">glPixelStorei</a> for more information.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.colorSpace/" target=/"_parent/" title=/"Texture.colorSpace/" href=/"./index.html#api/en/textures/Texture.colorSpace/">#</a> .<a class=/"links/" data-fragment=/"Texture.colorSpace/" id=/"colorSpace/" href=/"./index.html#api/en/textures/Texture.colorSpace/">colorSpace</a>  : <span class=/"param/">string</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.NoColorSpace</a> is the default. Textures containing color data should be
+			annotated with <a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.SRGBColorSpace</a> or
+			<a class=/"links/" data-fragment=/"Textures/" title=/"Textures/" href=/"./index.html#api/en/constants/Textures/">THREE.LinearSRGBColorSpace</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.version/" target=/"_parent/" title=/"Texture.version/" href=/"./index.html#api/en/textures/Texture.version/">#</a> .<a class=/"links/" data-fragment=/"Texture.version/" id=/"version/" href=/"./index.html#api/en/textures/Texture.version/">version</a>  : <span class=/"param/">Integer</span></h3>
+		<p>
+			This starts at <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code> and counts how many times <a class=/"links/" data-fragment=/"Texture.needsUpdate/" title=/"Texture.needsUpdate/" href=/"./index.html#api/en/textures/Texture.needsUpdate/">.needsUpdate</a> is set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.onUpdate/" target=/"_parent/" title=/"Texture.onUpdate/" href=/"./index.html#api/en/textures/Texture.onUpdate/">#</a> .<a class=/"links/" data-fragment=/"Texture.onUpdate/" id=/"onUpdate/" href=/"./index.html#api/en/textures/Texture.onUpdate/">onUpdate</a>  : <a class=/"param links/" data-fragment=/"Function/">Function</a></h3>
+		<p>
+			A callback function, called when the texture is updated (e.g., when
+			needsUpdate has been set to true and then the texture is used).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.needsUpdate/" target=/"_parent/" title=/"Texture.needsUpdate/" href=/"./index.html#api/en/textures/Texture.needsUpdate/">#</a> .<a class=/"links/" data-fragment=/"Texture.needsUpdate/" id=/"needsUpdate/" href=/"./index.html#api/en/textures/Texture.needsUpdate/">needsUpdate</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Set this to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code> to trigger an update next time the texture is used.
+			Particularly important for setting the wrap mode.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.userData/" target=/"_parent/" title=/"Texture.userData/" href=/"./index.html#api/en/textures/Texture.userData/">#</a> .<a class=/"links/" data-fragment=/"Texture.userData/" id=/"userData/" href=/"./index.html#api/en/textures/Texture.userData/">userData</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			An object that can be used to store custom data about the texture. It
+			should not hold references to functions as these will not be cloned.
+			Default is an empty object <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">{}</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.source/" target=/"_parent/" title=/"Texture.source/" href=/"./index.html#api/en/textures/Texture.source/">#</a> .<a class=/"links/" data-fragment=/"Texture.source/" id=/"source/" href=/"./index.html#api/en/textures/Texture.source/">source</a>  : <a class=/"param links/" data-fragment=/"Source/" href=/"./index.html#api/en/textures/Source/">Source</a></h3>
+		<p>
+			The data definition of a texture. A reference to the data source can be
+			shared across textures. This is often useful in context of spritesheets
+			where multiple textures render the same data but with different texture
+			transformations.
+		</p>
+
+		<h2>Methods</h2>
+
+		<p>
+			<a class=/"links/" data-fragment=/"EventDispatcher/" title=/"EventDispatcher/" href=/"./index.html#api/en/core/EventDispatcher/">EventDispatcher</a> methods are available on this
+			class.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.updateMatrix/" target=/"_parent/" title=/"Texture.updateMatrix/" href=/"./index.html#api/en/textures/Texture.updateMatrix/">#</a> .<a class=/"links/" data-fragment=/"Texture.updateMatrix/" id=/"updateMatrix/" href=/"./index.html#api/en/textures/Texture.updateMatrix/">updateMatrix</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Update the texture's uv-transform <a class=/"links/" data-fragment=/"Texture.matrix/" title=/"Texture.matrix/" href=/"./index.html#api/en/textures/Texture.matrix/">.matrix</a> from the
+			texture properties <a class=/"links/" data-fragment=/"Texture.offset/" title=/"Texture.offset/" href=/"./index.html#api/en/textures/Texture.offset/">.offset</a>, <a class=/"links/" data-fragment=/"Texture.repeat/" title=/"Texture.repeat/" href=/"./index.html#api/en/textures/Texture.repeat/">.repeat</a>, 
+			<a class=/"links/" data-fragment=/"Texture.rotation/" title=/"Texture.rotation/" href=/"./index.html#api/en/textures/Texture.rotation/">.rotation</a>, and <a class=/"links/" data-fragment=/"Texture.center/" title=/"Texture.center/" href=/"./index.html#api/en/textures/Texture.center/">.center</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.clone/" target=/"_parent/" title=/"Texture.clone/" href=/"./index.html#api/en/textures/Texture.clone/">#</a> .<a class=/"links/" data-fragment=/"Texture.clone/" id=/"clone/" href=/"./index.html#api/en/textures/Texture.clone/">clone</a> () : <a class=/"param links/" data-fragment=/"Texture/" href=/"./index.html#api/en/textures/Texture/">Texture</a></h3>
+		<p>
+			Make copy of the texture. Note this is not a /"deep copy/", the image is
+			shared. Besides, cloning a texture does not automatically mark it for a
+			texture upload. You have to set <a class=/"links/" data-fragment=/"Texture.needsUpdate/" title=/"Texture.needsUpdate/" href=/"./index.html#api/en/textures/Texture.needsUpdate/">.needsUpdate</a> to
+			true as soon as its image property (the data source) is fully loaded or
+			ready.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.toJSON/" target=/"_parent/" title=/"Texture.toJSON/" href=/"./index.html#api/en/textures/Texture.toJSON/">#</a> .<a class=/"links/" data-fragment=/"Texture.toJSON/" id=/"toJSON/" href=/"./index.html#api/en/textures/Texture.toJSON/">toJSON</a> ( meta : <span class=/"param/">Object</span> ) : <span class=/"param/">Object</span></h3>
+		<p>
+			meta -- optional object containing metadata.<br>
+			Convert the texture to three.js
+			<a href=/"https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4/" target=/"_blank/">JSON Object/Scene format</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.dispose/" target=/"_parent/" title=/"Texture.dispose/" href=/"./index.html#api/en/textures/Texture.dispose/">#</a> .<a class=/"links/" data-fragment=/"Texture.dispose/" id=/"dispose/" href=/"./index.html#api/en/textures/Texture.dispose/">dispose</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Texture.transformUv/" target=/"_parent/" title=/"Texture.transformUv/" href=/"./index.html#api/en/textures/Texture.transformUv/">#</a> .<a class=/"links/" data-fragment=/"Texture.transformUv/" id=/"transformUv/" href=/"./index.html#api/en/textures/Texture.transformUv/">transformUv</a> ( uv : <a class=/"param links/" data-fragment=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">Vector2</a> ) : <a class=/"param links/" data-fragment=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">Vector2</a></h3>
+		<p>
+			Transform the uv based on the value of this texture's <a class=/"links/" data-fragment=/"Texture.offset/" title=/"Texture.offset/" href=/"./index.html#api/en/textures/Texture.offset/">.offset</a>, 
+			<a class=/"links/" data-fragment=/"Texture.repeat/" title=/"Texture.repeat/" href=/"./index.html#api/en/textures/Texture.repeat/">.repeat</a>, <a class=/"links/" data-fragment=/"Texture.wrapS/" title=/"Texture.wrapS/" href=/"./index.html#api/en/textures/Texture.wrapS/">.wrapS</a>,
+			<a class=/"links/" data-fragment=/"Texture.wrapT/" title=/"Texture.wrapT/" href=/"./index.html#api/en/textures/Texture.wrapT/">.wrapT</a> and <a class=/"links/" data-fragment=/"Texture.flipY/" title=/"Texture.flipY/" href=/"./index.html#api/en/textures/Texture.flipY/">.flipY</a> properties.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/textures/Texture.js/" target=/"_blank/">src/textures/Texture.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

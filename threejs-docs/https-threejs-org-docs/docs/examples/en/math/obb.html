@@ -1,0 +1,184 @@
+<!DOCTYPE html><html><head><title>OBB – three.js docs</title></head><body><body>
+		<h1>OBB</h1>
+
+		<p class=/"desc/">
+			Represents an oriented bounding box (OBB) in 3D space.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			OBB is an add-on, and must be imported explicitly.
+			See <a href=/"#manual/introduction/Installation/" target=/"_blank/">Installation / Addons</a>.
+		</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">import</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> OBB </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"kwd/">from</span><span class=/"pln/"> </span><span class=/"str/">'three/addons/math/OBB.js'</span><span class=/"pun/">;</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href=/"../examples/#webgl_math_obb/" target=/"_blank/">webgl_math_obb</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>OBB( center : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, halfSize : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, rotation : <a class=/"param links/" data-fragment=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">Matrix3</a> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">center</a> — The center of the OBB. (optional)<br>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">halfSize</a> — Positive halfwidth extents of the OBB along each axis. (optional)<br>
+			<a class=/"links/" data-fragment=/"Matrix3/" title=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">rotation</a> — The rotation of the OBB. (optional)
+		</p>
+		<p>
+			Creates a new OBB.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.center/" target=/"_parent/" title=/"OBB.center/" href=/"./index.html#examples/en/math/OBB.center/">#</a> .<a class=/"links/" data-fragment=/"OBB.center/" id=/"center/" href=/"./index.html#examples/en/math/OBB.center/">center</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			The center of the OBB. Default is <strong>( 0, 0, 0 )</strong>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.halfSize/" target=/"_parent/" title=/"OBB.halfSize/" href=/"./index.html#examples/en/math/OBB.halfSize/">#</a> .<a class=/"links/" data-fragment=/"OBB.halfSize/" id=/"halfSize/" href=/"./index.html#examples/en/math/OBB.halfSize/">halfSize</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			Positive halfwidth extents of the OBB along each axis. Default is <strong>( 0, 0, 0 )</strong>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.rotation/" target=/"_parent/" title=/"OBB.rotation/" href=/"./index.html#examples/en/math/OBB.rotation/">#</a> .<a class=/"links/" data-fragment=/"OBB.rotation/" id=/"rotation/" href=/"./index.html#examples/en/math/OBB.rotation/">rotation</a>  : <a class=/"param links/" data-fragment=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">Matrix3</a></h3>
+		<p>
+			The rotation of the OBB. Default is the identity matrix.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.applyMatrix4/" target=/"_parent/" title=/"OBB.applyMatrix4/" href=/"./index.html#examples/en/math/OBB.applyMatrix4/">#</a> .<a class=/"links/" data-fragment=/"OBB.applyMatrix4/" id=/"applyMatrix4/" href=/"./index.html#examples/en/math/OBB.applyMatrix4/">applyMatrix4</a> ( matrix : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">matrix</a> — A 4x4 transformation matrix.
+		</p>
+		<p>
+			Applies the given transformation matrix to this OBB. This method can be used to transform the
+			bounding volume with the world matrix of a 3D object in order to keep both entities in sync.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.clampPoint/" target=/"_parent/" title=/"OBB.clampPoint/" href=/"./index.html#examples/en/math/OBB.clampPoint/">#</a> .<a class=/"links/" data-fragment=/"OBB.clampPoint/" id=/"clampPoint/" href=/"./index.html#examples/en/math/OBB.clampPoint/">clampPoint</a> ( point : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, clampedPoint : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> — The point that should be clamped within the bounds of this OBB.<br>
+			<a class=/"links/" data-fragment=/"Matrix3/" title=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">clampedPoint</a> — The result will be copied into this vector.
+		</p>
+		<p>
+			Clamps the given point within the bounds of this OBB.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.clone/" target=/"_parent/" title=/"OBB.clone/" href=/"./index.html#examples/en/math/OBB.clone/">#</a> .<a class=/"links/" data-fragment=/"OBB.clone/" id=/"clone/" href=/"./index.html#examples/en/math/OBB.clone/">clone</a> () : <a class=/"param links/" data-fragment=/"OBB/" href=/"./index.html#examples/en/math/OBB/">OBB</a></h3>
+		<p>
+			Creates a cloned OBB for this instance.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.containsPoint/" target=/"_parent/" title=/"OBB.containsPoint/" href=/"./index.html#examples/en/math/OBB.containsPoint/">#</a> .<a class=/"links/" data-fragment=/"OBB.containsPoint/" id=/"containsPoint/" href=/"./index.html#examples/en/math/OBB.containsPoint/">containsPoint</a> ( point : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> — The point to test.
+		</p>
+		<p>
+			Whether the given point lies within this OBB or not.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.copy/" target=/"_parent/" title=/"OBB.copy/" href=/"./index.html#examples/en/math/OBB.copy/">#</a> .<a class=/"links/" data-fragment=/"OBB.copy/" id=/"copy/" href=/"./index.html#examples/en/math/OBB.copy/">copy</a> ( obb : <a class=/"param links/" data-fragment=/"OBB/" href=/"./index.html#examples/en/math/OBB/">OBB</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"OBB/" title=/"OBB/" href=/"./index.html#examples/en/math/OBB/">obb</a> — The OBB to copy.
+		</p>
+		<p>
+			Copies the properties of the given OBB to this OBB.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.equals/" target=/"_parent/" title=/"OBB.equals/" href=/"./index.html#examples/en/math/OBB.equals/">#</a> .<a class=/"links/" data-fragment=/"OBB.equals/" id=/"equals/" href=/"./index.html#examples/en/math/OBB.equals/">equals</a> ( obb : <a class=/"param links/" data-fragment=/"OBB/" href=/"./index.html#examples/en/math/OBB/">OBB</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"OBB/" title=/"OBB/" href=/"./index.html#examples/en/math/OBB/">obb</a> — The OBB to test.
+		</p>
+		<p>
+			Whether the given OBB is equal to this OBB or not.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.fromBox3/" target=/"_parent/" title=/"OBB.fromBox3/" href=/"./index.html#examples/en/math/OBB.fromBox3/">#</a> .<a class=/"links/" data-fragment=/"OBB.fromBox3/" id=/"fromBox3/" href=/"./index.html#examples/en/math/OBB.fromBox3/">fromBox3</a> ( box3 : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box3</a> — An AABB.
+		</p>
+		<p>
+			Defines an OBB based on the given AABB.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.getSize/" target=/"_parent/" title=/"OBB.getSize/" href=/"./index.html#examples/en/math/OBB.getSize/">#</a> .<a class=/"links/" data-fragment=/"OBB.getSize/" id=/"getSize/" href=/"./index.html#examples/en/math/OBB.getSize/">getSize</a> ( size : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">size</a> — The result will be copied into this vector.
+		</p>
+		<p>
+			Returns the size of this OBB into the given vector.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.intersectsBox3/" target=/"_parent/" title=/"OBB.intersectsBox3/" href=/"./index.html#examples/en/math/OBB.intersectsBox3/">#</a> .<a class=/"links/" data-fragment=/"OBB.intersectsBox3/" id=/"intersectsBox3/" href=/"./index.html#examples/en/math/OBB.intersectsBox3/">intersectsBox3</a> ( box3 : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box3</a> — The AABB to test.
+		</p>
+		<p>
+			Whether the given AABB intersects this OBB or not.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.intersectsSphere/" target=/"_parent/" title=/"OBB.intersectsSphere/" href=/"./index.html#examples/en/math/OBB.intersectsSphere/">#</a> .<a class=/"links/" data-fragment=/"OBB.intersectsSphere/" id=/"intersectsSphere/" href=/"./index.html#examples/en/math/OBB.intersectsSphere/">intersectsSphere</a> ( sphere : <a class=/"param links/" data-fragment=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">Sphere</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Sphere/" title=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">sphere</a> — The bounding sphere to test.
+		</p>
+		<p>
+			Whether the given bounding sphere intersects this OBB or not.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.intersectsOBB/" target=/"_parent/" title=/"OBB.intersectsOBB/" href=/"./index.html#examples/en/math/OBB.intersectsOBB/">#</a> .<a class=/"links/" data-fragment=/"OBB.intersectsOBB/" id=/"intersectsOBB/" href=/"./index.html#examples/en/math/OBB.intersectsOBB/">intersectsOBB</a> ( obb : <a class=/"param links/" data-fragment=/"OBB/" href=/"./index.html#examples/en/math/OBB/">OBB</a>, epsilon : <span class=/"param/">Number</span> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"OBB/" title=/"OBB/" href=/"./index.html#examples/en/math/OBB/">obb</a> — The OBB to test.<br>
+			<a class=/"links/" data-fragment=/"Number/" title=/"Number/">epsilon</a> — An optional numeric value to counteract arithmetic errors. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">Number</span><span class=/"pun/">.</span><span class=/"pln/">EPSILON</span></code>.
+		</p>
+		<p>
+			Whether the given OBB intersects this OBB or not.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.intersectsPlane/" target=/"_parent/" title=/"OBB.intersectsPlane/" href=/"./index.html#examples/en/math/OBB.intersectsPlane/">#</a> .<a class=/"links/" data-fragment=/"OBB.intersectsPlane/" id=/"intersectsPlane/" href=/"./index.html#examples/en/math/OBB.intersectsPlane/">intersectsPlane</a> ( plane : <a class=/"param links/" data-fragment=/"Plane/" href=/"./index.html#api/en/math/Plane/">Plane</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Plane/" title=/"Plane/" href=/"./index.html#api/en/math/Plane/">plane</a> — The plane to test.
+		</p>
+		<p>
+			Whether the given plane intersects this OBB or not.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.intersectsRay/" target=/"_parent/" title=/"OBB.intersectsRay/" href=/"./index.html#examples/en/math/OBB.intersectsRay/">#</a> .<a class=/"links/" data-fragment=/"OBB.intersectsRay/" id=/"intersectsRay/" href=/"./index.html#examples/en/math/OBB.intersectsRay/">intersectsRay</a> ( ray : <a class=/"param links/" data-fragment=/"Ray/" href=/"./index.html#api/en/math/Ray/">Ray</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Ray/" title=/"Ray/" href=/"./index.html#api/en/math/Ray/">ray</a> — The ray to test.
+		</p>
+		<p>
+			Whether the given ray intersects this OBB or not.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.intersectRay/" target=/"_parent/" title=/"OBB.intersectRay/" href=/"./index.html#examples/en/math/OBB.intersectRay/">#</a> .<a class=/"links/" data-fragment=/"OBB.intersectRay/" id=/"intersectRay/" href=/"./index.html#examples/en/math/OBB.intersectRay/">intersectRay</a> ( ray : <a class=/"param links/" data-fragment=/"Ray/" href=/"./index.html#api/en/math/Ray/">Ray</a>, intersectionPoint : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Ray/" title=/"Ray/" href=/"./index.html#api/en/math/Ray/">ray</a> — The ray to test.<br>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">intersectionPoint</a> — The result will be copied into this vector.
+		</p>
+		<p>
+			Performs a Ray/OBB intersection test and stores the intersection point to the given 3D vector.
+			If no intersection is detected, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code> is returned.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"OBB.set/" target=/"_parent/" title=/"OBB.set/" href=/"./index.html#examples/en/math/OBB.set/">#</a> .<a class=/"links/" data-fragment=/"OBB.set/" id=/"set/" href=/"./index.html#examples/en/math/OBB.set/">set</a> ( center : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, halfSize : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, rotation : <a class=/"param links/" data-fragment=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">Matrix3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">center</a> — The center of the OBB.<br>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">halfSize</a> — Positive halfwidth extents of the OBB along each axis.<br>
+			<a class=/"links/" data-fragment=/"Matrix3/" title=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">rotation</a> — The rotation of the OBB.
+		</p>
+		<p>
+			Defines the OBB for the given values.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+		<a href=/"https://github.com/mrdoob/three.js/blob/master/examples/jsm/math/OBB.js/" target=/"_blank/">examples/jsm/math/OBB.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

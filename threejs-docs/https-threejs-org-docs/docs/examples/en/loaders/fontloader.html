@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head><title>FontLoader – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> →
+
+		<h1>FontLoader</h1>
+
+		<p class=/"desc/">
+		Class for loading a font in JSON format. Returns a font, which is an
+		array of <a class=/"links/" data-fragment=/"Shape/" title=/"Shape/" href=/"./index.html#api/en/extras/core/Shape/">Shapes</a> representing the font.
+		This uses the <a class=/"links/" data-fragment=/"FileLoader/" title=/"FileLoader/" href=/"./index.html#api/en/loaders/FileLoader/">FileLoader</a> internally for loading files. <br><br>
+
+		You can convert fonts online using <a href=/"https://gero3.github.io/facetype.js//" target=/"_blank/">facetype.js</a>
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			FontLoader is an add-on, and must be imported explicitly.
+			See <a href=/"#manual/introduction/Installation/" target=/"_blank/">Installation / Addons</a>.
+		</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">import</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> </span><span class=/"typ/">FontLoader</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"kwd/">from</span><span class=/"pln/"> </span><span class=/"str/">'three/addons/loaders/FontLoader.js'</span><span class=/"pun/">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> loader </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">FontLoader</span><span class=/"pun/">();</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> font </span><span class=/"pun/">=</span><span class=/"pln/"> loader</span><span class=/"pun/">.</span><span class=/"pln/">load</span><span class=/"pun/">(</span><span class=/"pln/">
+	</span><span class=/"com/">// resource URL</span><span class=/"pln/">
+	</span><span class=/"str/">'fonts/helvetiker_bold.typeface.json'</span><span class=/"pun/">,</span><span class=/"pln/">
+
+	</span><span class=/"com/">// onLoad callback</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> font </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+		</span><span class=/"com/">// do something with the font</span><span class=/"pln/">
+		console</span><span class=/"pun/">.</span><span class=/"pln/">log</span><span class=/"pun/">(</span><span class=/"pln/"> font </span><span class=/"pun/">);</span><span class=/"pln/">
+	</span><span class=/"pun/">},</span><span class=/"pln/">
+
+	</span><span class=/"com/">// onProgress callback</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> xhr </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+		console</span><span class=/"pun/">.</span><span class=/"pln/">log</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/">xhr</span><span class=/"pun/">.</span><span class=/"pln/">loaded </span><span class=/"pun/">/</span><span class=/"pln/"> xhr</span><span class=/"pun/">.</span><span class=/"pln/">total </span><span class=/"pun/">*</span><span class=/"pln/"> </span><span class=/"lit/">100</span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">+</span><span class=/"pln/"> </span><span class=/"str/">'% loaded'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+	</span><span class=/"pun/">},</span><span class=/"pln/">
+
+	</span><span class=/"com/">// onError callback</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> err </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+		console</span><span class=/"pun/">.</span><span class=/"pln/">log</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'An error happened'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+	</span><span class=/"pun/">}</span><span class=/"pln/">
+</span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+		<a href=/"../examples/#webgl_geometry_text_shapes/" target=/"_blank/">geometry / text / shapes </a><br>
+		<a href=/"../examples/#webgl_geometry_text/" target=/"_blank/">geometry / text </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>FontLoader( manager : <a class=/"param links/" data-fragment=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">LoadingManager</a> )</h3>
+		<p>
+		<a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">manager</a> — The <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">loadingManager</a> for the loader to use. Default is <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">THREE.DefaultLoadingManager</a>.<br><br>
+		Creates a new FontLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> class for common methods.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FontLoader.load/" target=/"_parent/" title=/"FontLoader.load/" href=/"./index.html#examples/en/loaders/FontLoader.load/">#</a> .<a class=/"links/" data-fragment=/"FontLoader.load/" id=/"load/" href=/"./index.html#examples/en/loaders/FontLoader.load/">load</a> ( url : <span class=/"param/">String</span>, onLoad : <a class=/"param links/" data-fragment=/"Function/">Function</a>, onProgress : <a class=/"param links/" data-fragment=/"Function/">Function</a>, onError : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+		<a class=/"links/" data-fragment=/"String/" title=/"String/">url</a> — the path or URL to the file. This can also be a
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs/" target=/"_blank/">Data URI</a>.<br>
+		<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onLoad</a> — Will be called when load completes. The argument will be the loaded font.<br>
+		<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onProgress</a> — Will be called while load progresses. The argument will be the XMLHttpRequest instance, which contains .<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">total</a> and .<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">loaded</a> bytes. If the server does not set the Content-Length header; .<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">total</a> will be 0.<br>
+		<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onError</a> — Will be called when load errors.<br><br>
+
+		Begin loading from url and pass the loaded font to onLoad.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"FontLoader.parse/" target=/"_parent/" title=/"FontLoader.parse/" href=/"./index.html#examples/en/loaders/FontLoader.parse/">#</a> .<a class=/"links/" data-fragment=/"FontLoader.parse/" id=/"parse/" href=/"./index.html#examples/en/loaders/FontLoader.parse/">parse</a> ( json : <span class=/"param/">Object</span> ) : <a class=/"param links/" data-fragment=/"Font/">Font</a></h3>
+		<p>
+		<a class=/"links/" data-fragment=/"Object/" title=/"Object/">json</a> — The <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">JSON</span></code> structure to parse.<br><br>
+		Parse a <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">JSON</span></code> structure and return a font.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/examples/jsm/loaders/FontLoader.js/" target=/"_blank/">examples/jsm/loaders/FontLoader.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

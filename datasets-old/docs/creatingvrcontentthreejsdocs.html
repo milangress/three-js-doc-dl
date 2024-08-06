@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><title>Creating VR content – three.js docs</title></head><body><body>
+	<h1>How to create VR content</h1>
+
+	<p>
+		This guide provides a brief overview of the basic components of a web-based VR application
+		made with three.js.
+	</p>
+
+	<h2>Workflow</h2>
+
+	<p>
+		First, you have to include <a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/webxr/VRButton.js" target="_blank">VRButton.js</a>
+		into your project.
+	</p>
+
+	<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">VRButton</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/webxr/VRButton.js'</span><span class="pun">;</span></code>
+
+	<p>
+		<strong>VRButton.createButton()</strong> does two important things: It creates a button which indicates
+		VR compatibility. Besides, it initiates a VR session if the user activates the button. The only thing you have
+		to do is to add the following line of code to your app.
+	</p>
+
+	<code class=" prettyprint" translate="no"><span class="pln">document</span><span class="pun">.</span><span class="pln">body</span><span class="pun">.</span><span class="pln">appendChild</span><span class="pun">(</span><span class="pln"> </span><span class="typ">VRButton</span><span class="pun">.</span><span class="pln">createButton</span><span class="pun">(</span><span class="pln"> renderer </span><span class="pun">)</span><span class="pln"> </span><span class="pun">);</span></code>
+
+	<p>
+		Next, you have to tell your instance of <code class="inline prettyprint" translate="no"><span class="typ">WebGLRenderer</span></code> to enable XR rendering.
+	</p>
+
+	<code class=" prettyprint" translate="no"><span class="pln">renderer</span><span class="pun">.</span><span class="pln">xr</span><span class="pun">.</span><span class="pln">enabled </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span></code>
+
+	<p>
+		Finally, you have to adjust your animation loop since we can't use our well known
+		<strong>window.requestAnimationFrame()</strong> function. For VR projects we use <a class="links" data-fragment="WebGLRenderer.setAnimationLoop" title="WebGLRenderer.setAnimationLoop" href="./index.html#api/en/renderers/WebGLRenderer.setAnimationLoop">setAnimationLoop</a>.
+		The minimal code looks like this:
+	</p>
+
+	<code class=" prettyprint" translate="no"><span class="pln">renderer</span><span class="pun">.</span><span class="pln">setAnimationLoop</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	renderer</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln"> scene</span><span class="pun">,</span><span class="pln"> camera </span><span class="pun">);</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span></code>
+
+	<h2>Next Steps</h2>
+
+	<p>
+		Have a look at one of the official WebVR examples to see this workflow in action.<br><br>
+
+		<a href="../examples/#webxr_vr_ballshooter" target="_blank">WebXR / VR / ballshooter</a><br>
+		<a href="../examples/#webxr_vr_cubes" target="_blank">WebXR / VR / cubes</a><br>
+		<a href="../examples/#webxr_vr_dragging" target="_blank">WebXR / VR / dragging</a><br>
+		<a href="../examples/#webxr_vr_paint" target="_blank">WebXR / VR / paint</a><br>
+		<a href="../examples/#webxr_vr_panorama_depth" target="_blank">WebXR / VR / panorama_depth</a><br>
+		<a href="../examples/#webxr_vr_panorama" target="_blank">WebXR / VR / panorama</a><br>
+		<a href="../examples/#webxr_vr_rollercoaster" target="_blank">WebXR / VR / rollercoaster</a><br>
+		<a href="../examples/#webxr_vr_sandbox" target="_blank">WebXR / VR / sandbox</a><br>
+		<a href="../examples/#webxr_vr_sculpt" target="_blank">WebXR / VR / sculpt</a><br>
+		<a href="../examples/#webxr_vr_video" target="_blank">WebXR / VR / video</a>
+	</p>
+
+
+
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head><title>PolyhedronGeometry – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> →
+
+		<h1>PolyhedronGeometry</h1>
+
+		<p class="desc">
+			A polyhedron is a solid in three dimensions with flat faces. This class
+			will take an array of vertices, project them onto a sphere, and then
+			divide them up to the desired level of detail. This class is used by
+			<a class="links" data-fragment="DodecahedronGeometry" title="DodecahedronGeometry" href="./index.html#api/en/geometries/DodecahedronGeometry">DodecahedronGeometry</a>, <a class="links" data-fragment="IcosahedronGeometry" title="IcosahedronGeometry" href="./index.html#api/en/geometries/IcosahedronGeometry">IcosahedronGeometry</a>,
+			<a class="links" data-fragment="OctahedronGeometry" title="OctahedronGeometry" href="./index.html#api/en/geometries/OctahedronGeometry">OctahedronGeometry</a>, and <a class="links" data-fragment="TetrahedronGeometry" title="TetrahedronGeometry" href="./index.html#api/en/geometries/TetrahedronGeometry">TetrahedronGeometry</a> to generate
+			their respective geometries.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> verticesOfCube </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">    </span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">    </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">    </span><span class="lit">1</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">    </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">    </span><span class="pun">-</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">];</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> indicesOfFaces </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="lit">2</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,</span><span class="pln">    </span><span class="lit">0</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">0</span><span class="pun">,</span><span class="lit">4</span><span class="pun">,</span><span class="lit">7</span><span class="pun">,</span><span class="pln">    </span><span class="lit">7</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">0</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">5</span><span class="pun">,</span><span class="pln">    </span><span class="lit">5</span><span class="pun">,</span><span class="lit">4</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">6</span><span class="pun">,</span><span class="pln">    </span><span class="lit">6</span><span class="pun">,</span><span class="lit">5</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">,</span><span class="lit">7</span><span class="pun">,</span><span class="pln">    </span><span class="lit">7</span><span class="pun">,</span><span class="lit">6</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="pln">
+    </span><span class="lit">4</span><span class="pun">,</span><span class="lit">5</span><span class="pun">,</span><span class="lit">6</span><span class="pun">,</span><span class="pln">    </span><span class="lit">6</span><span class="pun">,</span><span class="lit">7</span><span class="pun">,</span><span class="lit">4</span><span class="pln">
+</span><span class="pun">];</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> geometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PolyhedronGeometry</span><span class="pun">(</span><span class="pln"> verticesOfCube</span><span class="pun">,</span><span class="pln"> indicesOfFaces</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			PolyhedronGeometry(vertices : <span class="param">Array</span>, indices : <span class="param">Array</span>, radius : <span class="param">Float</span>, detail : <span class="param">Integer</span>)
+		</h3>
+		<p>
+			vertices — <a class="links" data-fragment="Array" title="Array">Array</a> of points of the form [1,1,1, -1,-1,-1, ... ]
+			<br>
+			indices — <a class="links" data-fragment="Array" title="Array">Array</a> of indices that make up the faces of the form
+			[0,1,2, 2,3,0, ... ] <br>
+			radius — <a class="links" data-fragment="Float" title="Float">Float</a> - The radius of the final shape <br>
+			detail — <a class="links" data-fragment="Integer" title="Integer">Integer</a> - How many levels to subdivide the geometry. The
+			more detail, the smoother the shape.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="PolyhedronGeometry.parameters" target="_parent" title="PolyhedronGeometry.parameters" href="./index.html#api/en/geometries/PolyhedronGeometry.parameters">#</a> .<a class="links" data-fragment="PolyhedronGeometry.parameters" id="parameters" href="./index.html#api/en/geometries/PolyhedronGeometry.parameters">parameters</a>  : <span class="param">Object</span></h3>
+		<p>
+			An object with a property for each of the constructor parameters. Any
+			modification after instantiation does not change the geometry.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/geometries/PolyhedronGeometry.js" target="_blank">src/geometries/PolyhedronGeometry.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

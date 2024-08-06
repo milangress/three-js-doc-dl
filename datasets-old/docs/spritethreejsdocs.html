@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head><title>Sprite – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> →
+
+		<h1>Sprite</h1>
+
+		<p class="desc">
+			A sprite is a plane that always faces towards the camera, generally with a
+			partially transparent texture applied.<br><br>
+
+			Sprites do not cast shadows, setting <code class=" prettyprint" translate="no"><span class="pln">castShadow </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span></code> will
+			have no effect.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> map </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">TextureLoader</span><span class="pun">().</span><span class="pln">load</span><span class="pun">(</span><span class="pln"> </span><span class="str">'sprite.png'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> material </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">SpriteMaterial</span><span class="pun">(</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> map</span><span class="pun">:</span><span class="pln"> map </span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> sprite </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Sprite</span><span class="pun">(</span><span class="pln"> material </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> sprite </span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>Sprite( material : <a class="param links" data-fragment="Material" href="./index.html#api/en/materials/Material">Material</a> )</h3>
+		<p>
+			<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">material</a> - (optional) an instance of
+			<a class="links" data-fragment="SpriteMaterial" title="SpriteMaterial" href="./index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a>. Default is a white <a class="links" data-fragment="SpriteMaterial" title="SpriteMaterial" href="./index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a>.<br><br>
+
+			Creates a new Sprite.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="Sprite.isSprite" target="_parent" title="Sprite.isSprite" href="./index.html#api/en/objects/Sprite.isSprite">#</a> .<a class="links" data-fragment="Sprite.isSprite" id="isSprite" href="./index.html#api/en/objects/Sprite.isSprite">isSprite</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Sprite.</p>
+
+		<h3><a class="permalink links" data-fragment="Sprite.material" target="_parent" title="Sprite.material" href="./index.html#api/en/objects/Sprite.material">#</a> .<a class="links" data-fragment="Sprite.material" id="material" href="./index.html#api/en/objects/Sprite.material">material</a>  : <a class="param links" data-fragment="SpriteMaterial" href="./index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a></h3>
+		<p>
+			An instance of <a class="links" data-fragment="SpriteMaterial" title="SpriteMaterial" href="./index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a>, defining the object's appearance.
+			Default is a white <a class="links" data-fragment="SpriteMaterial" title="SpriteMaterial" href="./index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Sprite.center" target="_parent" title="Sprite.center" href="./index.html#api/en/objects/Sprite.center">#</a> .<a class="links" data-fragment="Sprite.center" id="center" href="./index.html#api/en/objects/Sprite.center">center</a>  : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			The sprite's anchor point, and the point around which the sprite rotates.
+			A value of (0.5, 0.5) corresponds to the midpoint of the sprite. A value
+			of (0, 0) corresponds to the lower left corner of the sprite. The default
+			is (0.5, 0.5).
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="Sprite.clone" target="_parent" title="Sprite.clone" href="./index.html#api/en/objects/Sprite.clone">#</a> .<a class="links" data-fragment="Sprite.clone" id="clone" href="./index.html#api/en/objects/Sprite.clone">clone</a> () : <a class="param links" data-fragment="Sprite" href="./index.html#api/en/objects/Sprite">Sprite</a></h3>
+		<p>Returns a clone of this Sprite object and any descendants.</p>
+
+		<h3><a class="permalink links" data-fragment="Sprite.copy" target="_parent" title="Sprite.copy" href="./index.html#api/en/objects/Sprite.copy">#</a> .<a class="links" data-fragment="Sprite.copy" id="copy" href="./index.html#api/en/objects/Sprite.copy">copy</a> ( sprite : <a class="param links" data-fragment="Sprite" href="./index.html#api/en/objects/Sprite">Sprite</a> ) : <span class="param">this</span></h3>
+		<p>Copies the properties of the passed sprite to this one.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Sprite.raycast" target="_parent" title="Sprite.raycast" href="./index.html#api/en/objects/Sprite.raycast">#</a> .<a class="links" data-fragment="Sprite.raycast" id="raycast" href="./index.html#api/en/objects/Sprite.raycast">raycast</a> ( raycaster : <a class="param links" data-fragment="Raycaster" href="./index.html#api/en/core/Raycaster">Raycaster</a>, intersects : <span class="param">Array</span> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			Get intersections between a casted ray and this sprite.
+			<a class="links" data-fragment="Raycaster.intersectObject" title="Raycaster.intersectObject" href="./index.html#api/en/core/Raycaster.intersectObject">Raycaster.intersectObject</a>() will call this method. The raycaster
+			must be initialized by calling <a class="links" data-fragment="Raycaster.setFromCamera" title="Raycaster.setFromCamera" href="./index.html#api/en/core/Raycaster.setFromCamera">Raycaster.setFromCamera</a>() before
+			raycasting against sprites.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/objects/Sprite.js" target="_blank">src/objects/Sprite.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

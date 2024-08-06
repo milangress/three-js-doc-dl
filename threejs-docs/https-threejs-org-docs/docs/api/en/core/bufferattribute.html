@@ -1,0 +1,257 @@
+<!DOCTYPE html><html><head><title>BufferAttribute – three.js docs</title></head><body><body>
+		<h1>BufferAttribute</h1>
+
+		<p class=/"desc/">
+			This class stores data for an attribute (such as vertex positions, face
+			indices, normals, colors, UVs, and any custom attributes ) associated with
+			a <a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a>, which allows for more efficient passing of data
+			to the GPU. See that page for details and a usage example. When working
+			with vector-like data, the <i>.fromBufferAttribute( attribute, index )</i>
+			helper methods on <a class=/"links/" data-fragment=/"Vector2.fromBufferAttribute/" title=/"Vector2.fromBufferAttribute/" href=/"./index.html#api/en/math/Vector2.fromBufferAttribute/">Vector2</a>,
+			<a class=/"links/" data-fragment=/"Vector3.fromBufferAttribute/" title=/"Vector3.fromBufferAttribute/" href=/"./index.html#api/en/math/Vector3.fromBufferAttribute/">Vector3</a>,
+			<a class=/"links/" data-fragment=/"Vector4.fromBufferAttribute/" title=/"Vector4.fromBufferAttribute/" href=/"./index.html#api/en/math/Vector4.fromBufferAttribute/">Vector4</a>, and
+			<a class=/"links/" data-fragment=/"Color.fromBufferAttribute/" title=/"Color.fromBufferAttribute/" href=/"./index.html#api/en/math/Color.fromBufferAttribute/">Color</a> classes may be helpful.
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>BufferAttribute( array : <span class=/"param/">TypedArray</span>, itemSize : <span class=/"param/">Integer</span>, normalized : <span class=/"param/">Boolean</span> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"TypedArray/" title=/"TypedArray/">array</a> -- Must be a
+			<a href=/"https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/" target=/"_blank/">TypedArray</a>. Used to instantiate the buffer. <br>
+			This array should have
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">itemSize </span><span class=/"pun/">*</span><span class=/"pln/"> numVertices</span></code>
+			elements, where numVertices is the number of vertices in the associated
+			<a class=/"links/" data-fragment=/"BufferGemetry/" title=/"BufferGemetry/">BufferGeometry</a>.<br><br>
+
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">itemSize</a> -- the number of values of the array that should
+			be associated with a particular vertex. For instance, if this attribute is
+			storing a 3-component vector (such as a position, normal, or color), then
+			itemSize should be 3.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"Boolean/" title=/"Boolean/">normalized</a> -- (optional) Applies to integer data only.
+			Indicates how the underlying data in the buffer maps to the values in the
+			GLSL code. For instance, if <a class=/"links/" data-fragment=/"TypedArray/" title=/"TypedArray/">array</a> is an instance of
+			UInt16Array, and <a class=/"links/" data-fragment=/"Boolean/" title=/"Boolean/">normalized</a> is true, the values <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span><span class=/"pln/"> </span><span class=/"pun/">-</span><span class=/"pln/"> </span><span class=/"pun/">+</span><span class=/"lit/">65535</span></code> in the array data will be mapped to 0.0f - +1.0f in the GLSL
+			attribute. An Int16Array (signed) would map from -32768 - +32767 to -1.0f
+			- +1.0f. If <a class=/"links/" data-fragment=/"Boolean/" title=/"Boolean/">normalized</a> is false, the values will be
+			converted to floats unmodified, i.e. 32767 becomes 32767.0f.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.array/" target=/"_parent/" title=/"BufferAttribute.array/" href=/"./index.html#api/en/core/BufferAttribute.array/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.array/" id=/"array/" href=/"./index.html#api/en/core/BufferAttribute.array/">array</a>  : <span class=/"param/">TypedArray</span></h3>
+		<p>The <a class=/"links/" data-fragment=/"TypedArray/" title=/"TypedArray/">array</a> holding data stored in the buffer.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.count/" target=/"_parent/" title=/"BufferAttribute.count/" href=/"./index.html#api/en/core/BufferAttribute.count/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.count/" id=/"count/" href=/"./index.html#api/en/core/BufferAttribute.count/">count</a>  : <span class=/"param/">Integer</span></h3>
+		<p>
+			Represents the number of items this buffer attribute stores. It is internally computed by dividing the <a class=/"links/" data-fragment=/"BufferAttribute.array/" title=/"BufferAttribute.array/" href=/"./index.html#api/en/core/BufferAttribute.array/">array</a>'s length by the
+			<a class=/"links/" data-fragment=/"BufferAttribute.itemSize/" title=/"BufferAttribute.itemSize/" href=/"./index.html#api/en/core/BufferAttribute.itemSize/">itemSize</a>. Read-only property.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.gpuType/" target=/"_parent/" title=/"BufferAttribute.gpuType/" href=/"./index.html#api/en/core/BufferAttribute.gpuType/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.gpuType/" id=/"gpuType/" href=/"./index.html#api/en/core/BufferAttribute.gpuType/">gpuType</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+			Configures the bound GPU type for use in shaders. Either <a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">THREE.FloatType</a> or <a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">THREE.IntType</a>, default is <a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">THREE.FloatType</a>.
+
+			Note: this only has an effect for integer arrays and is not configurable for float arrays. For lower precision float types, see <a class=/"links/" data-fragment=/"BufferAttributeTypes/" title=/"BufferAttributeTypes/">THREE.Float16BufferAttribute</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.isBufferAttribute/" target=/"_parent/" title=/"BufferAttribute.isBufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute.isBufferAttribute/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.isBufferAttribute/" id=/"isBufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute.isBufferAttribute/">isBufferAttribute</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type BufferAttribute.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.itemSize/" target=/"_parent/" title=/"BufferAttribute.itemSize/" href=/"./index.html#api/en/core/BufferAttribute.itemSize/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.itemSize/" id=/"itemSize/" href=/"./index.html#api/en/core/BufferAttribute.itemSize/">itemSize</a>  : <span class=/"param/">Integer</span></h3>
+		<p>
+			The length of vectors that are being stored in the
+			<a class=/"links/" data-fragment=/"BufferAttribute.array/" title=/"BufferAttribute.array/" href=/"./index.html#api/en/core/BufferAttribute.array/">array</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.name/" target=/"_parent/" title=/"BufferAttribute.name/" href=/"./index.html#api/en/core/BufferAttribute.name/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.name/" id=/"name/" href=/"./index.html#api/en/core/BufferAttribute.name/">name</a>  : <span class=/"param/">String</span></h3>
+		<p>Optional name for this attribute instance. Default is an empty string.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.needsUpdate/" target=/"_parent/" title=/"BufferAttribute.needsUpdate/" href=/"./index.html#api/en/core/BufferAttribute.needsUpdate/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.needsUpdate/" id=/"needsUpdate/" href=/"./index.html#api/en/core/BufferAttribute.needsUpdate/">needsUpdate</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Flag to indicate that this attribute has changed and should be re-sent to
+			the GPU. Set this to true when you modify the value of the array.<br><br>
+
+			Setting this to true also increments the <a class=/"links/" data-fragment=/"BufferAttribute.version/" title=/"BufferAttribute.version/" href=/"./index.html#api/en/core/BufferAttribute.version/">version</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.normalized/" target=/"_parent/" title=/"BufferAttribute.normalized/" href=/"./index.html#api/en/core/BufferAttribute.normalized/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.normalized/" id=/"normalized/" href=/"./index.html#api/en/core/BufferAttribute.normalized/">normalized</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Indicates how the underlying data in the buffer maps to the values in the
+			GLSL shader code. See the constructor above for details.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.onUploadCallback/" target=/"_parent/" title=/"BufferAttribute.onUploadCallback/" href=/"./index.html#api/en/core/BufferAttribute.onUploadCallback/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.onUploadCallback/" id=/"onUploadCallback/" href=/"./index.html#api/en/core/BufferAttribute.onUploadCallback/">onUploadCallback</a>  : <a class=/"param links/" data-fragment=/"Function/">Function</a></h3>
+		<p>
+			A callback function that is executed after the Renderer has transferred
+			the attribute array data to the GPU.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.updateRanges/" target=/"_parent/" title=/"BufferAttribute.updateRanges/" href=/"./index.html#api/en/core/BufferAttribute.updateRanges/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.updateRanges/" id=/"updateRanges/" href=/"./index.html#api/en/core/BufferAttribute.updateRanges/">updateRanges</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			Array of objects containing:<br>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">start</a>: Position at which to start
+			update.<br>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">count</a>: The number of components to update. <br><br>
+
+			This can be used to only update some components of stored vectors (for
+			example, just the component related to color). Use the <a class=/"links/" data-fragment=/"BufferAttribute.addUpdateRange/" title=/"BufferAttribute.addUpdateRange/" href=/"./index.html#api/en/core/BufferAttribute.addUpdateRange/">addUpdateRange</a>
+			function to add ranges to this array.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.usage/" target=/"_parent/" title=/"BufferAttribute.usage/" href=/"./index.html#api/en/core/BufferAttribute.usage/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.usage/" id=/"usage/" href=/"./index.html#api/en/core/BufferAttribute.usage/">usage</a>  : <a class=/"param links/" data-fragment=/"Usage/">Usage</a></h3>
+		<p>
+			Defines the intended usage pattern of the data store for optimization
+			purposes. Corresponds to the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">usage</span></code> parameter of
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bufferData/" target=/"_blank/">WebGLRenderingContext.bufferData</a>(). Default is <a class=/"links/" data-fragment=/"BufferAttributeUsage/" title=/"BufferAttributeUsage/" href=/"./index.html#api/en/constants/BufferAttributeUsage/">StaticDrawUsage</a>. See usage <a class=/"links/" data-fragment=/"BufferAttributeUsage/" title=/"BufferAttributeUsage/" href=/"./index.html#api/en/constants/BufferAttributeUsage/">constants</a> for all
+			possible values. <br><br>
+
+			Note: After the initial use of a buffer, its usage cannot be changed.
+			Instead, instantiate a new one and set the desired usage before the next
+			render.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.version/" target=/"_parent/" title=/"BufferAttribute.version/" href=/"./index.html#api/en/core/BufferAttribute.version/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.version/" id=/"version/" href=/"./index.html#api/en/core/BufferAttribute.version/">version</a>  : <span class=/"param/">Integer</span></h3>
+		<p>
+			A version number, incremented every time the
+			<a class=/"links/" data-fragment=/"BufferAttribute.needsUpdate/" title=/"BufferAttribute.needsUpdate/" href=/"./index.html#api/en/core/BufferAttribute.needsUpdate/">needsUpdate</a> property is set to true.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.applyMatrix3/" target=/"_parent/" title=/"BufferAttribute.applyMatrix3/" href=/"./index.html#api/en/core/BufferAttribute.applyMatrix3/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.applyMatrix3/" id=/"applyMatrix3/" href=/"./index.html#api/en/core/BufferAttribute.applyMatrix3/">applyMatrix3</a> ( m : <a class=/"param links/" data-fragment=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">Matrix3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Applies matrix <a class=/"links/" data-fragment=/"Matrix3/" title=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">m</a> to every Vector3 element of this
+			BufferAttribute.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.applyMatrix4/" target=/"_parent/" title=/"BufferAttribute.applyMatrix4/" href=/"./index.html#api/en/core/BufferAttribute.applyMatrix4/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.applyMatrix4/" id=/"applyMatrix4/" href=/"./index.html#api/en/core/BufferAttribute.applyMatrix4/">applyMatrix4</a> ( m : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Applies matrix <a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">m</a> to every Vector3 element of this
+			BufferAttribute.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.applyNormalMatrix/" target=/"_parent/" title=/"BufferAttribute.applyNormalMatrix/" href=/"./index.html#api/en/core/BufferAttribute.applyNormalMatrix/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.applyNormalMatrix/" id=/"applyNormalMatrix/" href=/"./index.html#api/en/core/BufferAttribute.applyNormalMatrix/">applyNormalMatrix</a> ( m : <a class=/"param links/" data-fragment=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">Matrix3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Applies normal matrix <a class=/"links/" data-fragment=/"Matrix3/" title=/"Matrix3/" href=/"./index.html#api/en/math/Matrix3/">m</a> to every Vector3 element of this
+			BufferAttribute.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.transformDirection/" target=/"_parent/" title=/"BufferAttribute.transformDirection/" href=/"./index.html#api/en/core/BufferAttribute.transformDirection/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.transformDirection/" id=/"transformDirection/" href=/"./index.html#api/en/core/BufferAttribute.transformDirection/">transformDirection</a> ( m : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Applies matrix <a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">m</a> to every Vector3 element of this
+			BufferAttribute, interpreting the elements as a direction vectors.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.addUpdateRange/" target=/"_parent/" title=/"BufferAttribute.addUpdateRange/" href=/"./index.html#api/en/core/BufferAttribute.addUpdateRange/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.addUpdateRange/" id=/"addUpdateRange/" href=/"./index.html#api/en/core/BufferAttribute.addUpdateRange/">addUpdateRange</a> ( start : <span class=/"param/">Integer</span>, count : <span class=/"param/">Integer</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Adds a range of data in the data array to be updated on the GPU. Adds an
+			object describing the range to the <a class=/"links/" data-fragment=/"BufferAttribute.updateRanges/" title=/"BufferAttribute.updateRanges/" href=/"./index.html#api/en/core/BufferAttribute.updateRanges/">updateRanges</a>
+			array.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.clearUpdateRanges/" target=/"_parent/" title=/"BufferAttribute.clearUpdateRanges/" href=/"./index.html#api/en/core/BufferAttribute.clearUpdateRanges/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.clearUpdateRanges/" id=/"clearUpdateRanges/" href=/"./index.html#api/en/core/BufferAttribute.clearUpdateRanges/">clearUpdateRanges</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			Clears the <a class=/"links/" data-fragment=/"BufferAttribute.updateRanges/" title=/"BufferAttribute.updateRanges/" href=/"./index.html#api/en/core/BufferAttribute.updateRanges/">updateRanges</a> array.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.clone/" target=/"_parent/" title=/"BufferAttribute.clone/" href=/"./index.html#api/en/core/BufferAttribute.clone/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.clone/" id=/"clone/" href=/"./index.html#api/en/core/BufferAttribute.clone/">clone</a> () : <a class=/"param links/" data-fragment=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a></h3>
+		<p>Return a copy of this bufferAttribute.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.copy/" target=/"_parent/" title=/"BufferAttribute.copy/" href=/"./index.html#api/en/core/BufferAttribute.copy/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.copy/" id=/"copy/" href=/"./index.html#api/en/core/BufferAttribute.copy/">copy</a> ( bufferAttribute : <a class=/"param links/" data-fragment=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a> ) : <span class=/"param/">this</span></h3>
+		<p>Copies another BufferAttribute to this BufferAttribute.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.copyArray/" target=/"_parent/" title=/"BufferAttribute.copyArray/" href=/"./index.html#api/en/core/BufferAttribute.copyArray/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.copyArray/" id=/"copyArray/" href=/"./index.html#api/en/core/BufferAttribute.copyArray/">copyArray</a> ( array ) : <span class=/"param/">this</span></h3>
+		<p>
+			Copy the array given here (which can be a normal array or TypedArray) into
+			<a class=/"links/" data-fragment=/"BufferAttribute.array/" title=/"BufferAttribute.array/" href=/"./index.html#api/en/core/BufferAttribute.array/">array</a>.<br><br>
+
+			See
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/set/" target=/"_blank/">TypedArray.set</a> for notes on requirements if copying a TypedArray.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.copyAt/" target=/"_parent/" title=/"BufferAttribute.copyAt/" href=/"./index.html#api/en/core/BufferAttribute.copyAt/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.copyAt/" id=/"copyAt/" href=/"./index.html#api/en/core/BufferAttribute.copyAt/">copyAt</a> ( index1 : <span class=/"param/">Integer</span>, bufferAttribute : <a class=/"param links/" data-fragment=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a>, index2 : <span class=/"param/">Integer</span> ) : <span class=/"param/">this</span></h3>
+		<p>Copy a vector from bufferAttribute[index2] to <a class=/"links/" data-fragment=/"BufferAttribute.array/" title=/"BufferAttribute.array/" href=/"./index.html#api/en/core/BufferAttribute.array/">array</a>[index1].</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.getComponent/" target=/"_parent/" title=/"BufferAttribute.getComponent/" href=/"./index.html#api/en/core/BufferAttribute.getComponent/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.getComponent/" id=/"getComponent/" href=/"./index.html#api/en/core/BufferAttribute.getComponent/">getComponent</a> ( index : <span class=/"param/">Integer</span>, component : <span class=/"param/">Integer</span> ) : <span class=/"param/">Number</span> </h3>
+		<p>Returns the given component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.getX/" target=/"_parent/" title=/"BufferAttribute.getX/" href=/"./index.html#api/en/core/BufferAttribute.getX/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.getX/" id=/"getX/" href=/"./index.html#api/en/core/BufferAttribute.getX/">getX</a> ( index : <span class=/"param/">Integer</span> ) : <span class=/"param/">Number</span></h3>
+		<p>Returns the x component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.getY/" target=/"_parent/" title=/"BufferAttribute.getY/" href=/"./index.html#api/en/core/BufferAttribute.getY/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.getY/" id=/"getY/" href=/"./index.html#api/en/core/BufferAttribute.getY/">getY</a> ( index : <span class=/"param/">Integer</span> ) : <span class=/"param/">Number</span></h3>
+		<p>Returns the y component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.getZ/" target=/"_parent/" title=/"BufferAttribute.getZ/" href=/"./index.html#api/en/core/BufferAttribute.getZ/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.getZ/" id=/"getZ/" href=/"./index.html#api/en/core/BufferAttribute.getZ/">getZ</a> ( index : <span class=/"param/">Integer</span> ) : <span class=/"param/">Number</span></h3>
+		<p>Returns the z component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.getW/" target=/"_parent/" title=/"BufferAttribute.getW/" href=/"./index.html#api/en/core/BufferAttribute.getW/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.getW/" id=/"getW/" href=/"./index.html#api/en/core/BufferAttribute.getW/">getW</a> ( index : <span class=/"param/">Integer</span> ) : <span class=/"param/">Number</span></h3>
+		<p>Returns the w component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.onUpload/" target=/"_parent/" title=/"BufferAttribute.onUpload/" href=/"./index.html#api/en/core/BufferAttribute.onUpload/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.onUpload/" id=/"onUpload/" href=/"./index.html#api/en/core/BufferAttribute.onUpload/">onUpload</a> ( callback : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Sets the value of the onUploadCallback property.<br><br>
+
+			In the <a href=/"../examples/#webgl_buffergeometry/" target=/"_blank/">WebGL / Buffergeometry</a> this is used
+			to free memory after the buffer has been transferred to the GPU.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.set/" target=/"_parent/" title=/"BufferAttribute.set/" href=/"./index.html#api/en/core/BufferAttribute.set/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.set/" id=/"set/" href=/"./index.html#api/en/core/BufferAttribute.set/">set</a> ( value : <span class=/"param/">Array</span>, offset : <span class=/"param/">Integer</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			value -- an <a class=/"links/" data-fragment=/"Array/" title=/"Array/">Array</a> or <a class=/"links/" data-fragment=/"TypedArray/" title=/"TypedArray/">TypedArray</a> from which to copy values.
+			<br>
+			offset -- (optional) index of the <a class=/"links/" data-fragment=/"BufferAttribute.array/" title=/"BufferAttribute.array/" href=/"./index.html#api/en/core/BufferAttribute.array/">array</a> at
+			which to start copying.<br><br>
+
+			Calls
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/set/" target=/"_blank/">TypedArray.set</a>( <a class=/"links/" data-fragment=/"Array/" title=/"Array/">value</a>, <a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">offset</a> ) on the
+			<a class=/"links/" data-fragment=/"BufferAttribute.array/" title=/"BufferAttribute.array/" href=/"./index.html#api/en/core/BufferAttribute.array/">array</a>.<br><br>
+
+			In particular, see that page for requirements on <a class=/"links/" data-fragment=/"Array/" title=/"Array/">value</a> being
+			a <a class=/"links/" data-fragment=/"TypedArray/" title=/"TypedArray/">TypedArray</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setUsage/" target=/"_parent/" title=/"BufferAttribute.setUsage/" href=/"./index.html#api/en/core/BufferAttribute.setUsage/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setUsage/" id=/"setUsage/" href=/"./index.html#api/en/core/BufferAttribute.setUsage/">setUsage</a> ( value : <a class=/"param links/" data-fragment=/"Usage/">Usage</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Set <a class=/"links/" data-fragment=/"BufferAttribute.usage/" title=/"BufferAttribute.usage/" href=/"./index.html#api/en/core/BufferAttribute.usage/">usage</a> to value. See usage
+			<a class=/"links/" data-fragment=/"BufferAttributeUsage/" title=/"BufferAttributeUsage/" href=/"./index.html#api/en/constants/BufferAttributeUsage/">constants</a> for all possible input values.
+			<br><br>
+
+			Note: After the initial use of a buffer, its usage cannot be changed.
+			Instead, instantiate a new one and set the desired usage before the next
+			render.
+		</p>
+		
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setComponent/" target=/"_parent/" title=/"BufferAttribute.setComponent/" href=/"./index.html#api/en/core/BufferAttribute.setComponent/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setComponent/" id=/"setComponent/" href=/"./index.html#api/en/core/BufferAttribute.setComponent/">setComponent</a> ( index : <span class=/"param/">Integer</span>, component : <span class=/"param/">Integer</span>, value : <span class=/"param/">Float</span> ) : <span class=/"param/">Number</span> </h3>
+		<p>Sets the given component of the vector at the given index.</p>
+		
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setX/" target=/"_parent/" title=/"BufferAttribute.setX/" href=/"./index.html#api/en/core/BufferAttribute.setX/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setX/" id=/"setX/" href=/"./index.html#api/en/core/BufferAttribute.setX/">setX</a> ( index : <span class=/"param/">Integer</span>, x : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Sets the x component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setY/" target=/"_parent/" title=/"BufferAttribute.setY/" href=/"./index.html#api/en/core/BufferAttribute.setY/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setY/" id=/"setY/" href=/"./index.html#api/en/core/BufferAttribute.setY/">setY</a> ( index : <span class=/"param/">Integer</span>, y : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Sets the y component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setZ/" target=/"_parent/" title=/"BufferAttribute.setZ/" href=/"./index.html#api/en/core/BufferAttribute.setZ/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setZ/" id=/"setZ/" href=/"./index.html#api/en/core/BufferAttribute.setZ/">setZ</a> ( index : <span class=/"param/">Integer</span>, z : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Sets the z component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setW/" target=/"_parent/" title=/"BufferAttribute.setW/" href=/"./index.html#api/en/core/BufferAttribute.setW/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setW/" id=/"setW/" href=/"./index.html#api/en/core/BufferAttribute.setW/">setW</a> ( index : <span class=/"param/">Integer</span>, w : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Sets the w component of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setXY/" target=/"_parent/" title=/"BufferAttribute.setXY/" href=/"./index.html#api/en/core/BufferAttribute.setXY/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setXY/" id=/"setXY/" href=/"./index.html#api/en/core/BufferAttribute.setXY/">setXY</a> ( index : <span class=/"param/">Integer</span>, x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Sets the x and y components of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setXYZ/" target=/"_parent/" title=/"BufferAttribute.setXYZ/" href=/"./index.html#api/en/core/BufferAttribute.setXYZ/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setXYZ/" id=/"setXYZ/" href=/"./index.html#api/en/core/BufferAttribute.setXYZ/">setXYZ</a> ( index : <span class=/"param/">Integer</span>, x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span>, z : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Sets the x, y and z components of the vector at the given index.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BufferAttribute.setXYZW/" target=/"_parent/" title=/"BufferAttribute.setXYZW/" href=/"./index.html#api/en/core/BufferAttribute.setXYZW/">#</a> .<a class=/"links/" data-fragment=/"BufferAttribute.setXYZW/" id=/"setXYZW/" href=/"./index.html#api/en/core/BufferAttribute.setXYZW/">setXYZW</a> ( index : <span class=/"param/">Integer</span>, x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span>, z : <span class=/"param/">Float</span>, w : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>Sets the x, y, z and w components of the vector at the given index.</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/core/BufferAttribute.js/" target=/"_blank/">src/core/BufferAttribute.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

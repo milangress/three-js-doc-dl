@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head><title>BoxHelper – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> → <a class=/"links/" data-fragment=/"Line/" title=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a> → <a class=/"links/" data-fragment=/"LineSegments/" title=/"LineSegments/" href=/"./index.html#api/en/objects/LineSegments/">LineSegments</a> →
+
+		<h1>BoxHelper</h1>
+
+		<p class=/"desc/">
+			Helper object to graphically show the world-axis-aligned bounding box
+			around an object. The actual bounding box is handled with <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a>,
+			this is just a visual helper for debugging. It can be automatically
+			resized with the <a class=/"links/" data-fragment=/"BoxHelper.update/" title=/"BoxHelper.update/" href=/"./index.html#api/en/helpers/BoxHelper.update/">BoxHelper.update</a> method when the object it's
+			created from is transformed. Note that the object must have a
+			<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> for this to work, so it won't work with <a class=/"links/" data-fragment=/"Sprite/" title=/"Sprite/" href=/"./index.html#api/en/objects/Sprite/">Sprites</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> sphere </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">SphereGeometry</span><span class=/"pun/">();</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> </span><span class=/"kwd/">object</span><span class=/"pln/"> </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Mesh</span><span class=/"pun/">(</span><span class=/"pln/"> sphere</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">MeshBasicMaterial</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0xff0000</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> box </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">BoxHelper</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"kwd/">object</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0xffff00</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> box </span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href=/"../examples/#webgl_helpers/" target=/"_blank/">WebGL / helpers</a><br>
+			<a href=/"../examples/#webgl_loader_nrrd/" target=/"_blank/">WebGL / loader / nrrd</a><br>
+			<a href=/"../examples/#webgl_buffergeometry_drawrange/" target=/"_blank/">WebGL / buffergeometry / drawrange</a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>BoxHelper( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, color : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">object</a> -- (optional) the object3D to show the
+			world-axis-aligned boundingbox.<br>
+			<a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">color</a> -- (optional) hexadecimal value that defines the box's
+			color. Default is 0xffff00.<br><br>
+
+			Creates a new wireframe box that bounds the passed object. Internally this
+			uses <a class=/"links/" data-fragment=/"Box3.setFromObject/" title=/"Box3.setFromObject/" href=/"./index.html#api/en/math/Box3.setFromObject/">Box3.setFromObject</a> to calculate the dimensions. Note that this
+			includes any children.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"LineSegments/" title=/"LineSegments/" href=/"./index.html#api/en/objects/LineSegments/">LineSegments</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"LineSegments/" title=/"LineSegments/" href=/"./index.html#api/en/objects/LineSegments/">LineSegments</a> class for common methods.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BoxHelper.update/" target=/"_parent/" title=/"BoxHelper.update/" href=/"./index.html#api/en/helpers/BoxHelper.update/">#</a> .<a class=/"links/" data-fragment=/"BoxHelper.update/" id=/"update/" href=/"./index.html#api/en/helpers/BoxHelper.update/">update</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Updates the helper's geometry to match the dimensions of the object,
+			including any children. See <a class=/"links/" data-fragment=/"Box3.setFromObject/" title=/"Box3.setFromObject/" href=/"./index.html#api/en/math/Box3.setFromObject/">Box3.setFromObject</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BoxHelper.setFromObject/" target=/"_parent/" title=/"BoxHelper.setFromObject/" href=/"./index.html#api/en/helpers/BoxHelper.setFromObject/">#</a> .<a class=/"links/" data-fragment=/"BoxHelper.setFromObject/" id=/"setFromObject/" href=/"./index.html#api/en/helpers/BoxHelper.setFromObject/">setFromObject</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">object</a> - <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> to create the helper of.<br><br>
+
+			Updates the wireframe box for the passed object.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"BoxHelper.dispose/" target=/"_parent/" title=/"BoxHelper.dispose/" href=/"./index.html#api/en/helpers/BoxHelper.dispose/">#</a> .<a class=/"links/" data-fragment=/"BoxHelper.dispose/" id=/"dispose/" href=/"./index.html#api/en/helpers/BoxHelper.dispose/">dispose</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/helpers/BoxHelper.js/" target=/"_blank/">src/helpers/BoxHelper.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

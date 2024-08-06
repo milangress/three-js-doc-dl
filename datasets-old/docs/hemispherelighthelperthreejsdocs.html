@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head><title>HemisphereLightHelper – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> →
+
+		<h1>HemisphereLightHelper</h1>
+
+		<p class="desc">
+			Creates a visual aid consisting of a spherical <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> for a
+			<a class="links" data-fragment="HemisphereLight" title="HemisphereLight" href="./index.html#api/en/lights/HemisphereLight">HemisphereLight</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> light </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">HemisphereLight</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0xffffbb</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0x080820</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> helper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">HemisphereLightHelper</span><span class="pun">(</span><span class="pln"> light</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> helper </span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			HemisphereLightHelper( light : <a class="param links" data-fragment="HemisphereLight" href="./index.html#api/en/lights/HemisphereLight">HemisphereLight</a>, sphereSize : <span class="param">Number</span>,
+			color : <a class="param links" data-fragment="Hex">Hex</a> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="HemisphereLight" title="HemisphereLight" href="./index.html#api/en/lights/HemisphereLight">light</a> -- The light being visualized. <br><br>
+
+			<a class="links" data-fragment="Number" title="Number">size</a> -- The size of the mesh used to visualize the light.<br><br>
+
+			<a class="links" data-fragment="Hex" title="Hex">color</a> -- (optional) if this is not the set the helper will take
+			the color of the light.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="HemisphereLightHelper.light" target="_parent" title="HemisphereLightHelper.light" href="./index.html#api/en/helpers/HemisphereLightHelper.light">#</a> .<a class="links" data-fragment="HemisphereLightHelper.light" id="light" href="./index.html#api/en/helpers/HemisphereLightHelper.light">light</a>  : <a class="param links" data-fragment="HemisphereLight" href="./index.html#api/en/lights/HemisphereLight">HemisphereLight</a></h3>
+		<p>Reference to the HemisphereLight being visualized.</p>
+
+		<h3><a class="permalink links" data-fragment="HemisphereLightHelper.matrix" target="_parent" title="HemisphereLightHelper.matrix" href="./index.html#api/en/helpers/HemisphereLightHelper.matrix">#</a> .<a class="links" data-fragment="HemisphereLightHelper.matrix" id="matrix" href="./index.html#api/en/helpers/HemisphereLightHelper.matrix">matrix</a>  : <span class="param">Object</span></h3>
+		<p>
+			Reference to the hemisphereLight's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="HemisphereLightHelper.matrixAutoUpdate" target="_parent" title="HemisphereLightHelper.matrixAutoUpdate" href="./index.html#api/en/helpers/HemisphereLightHelper.matrixAutoUpdate">#</a> .<a class="links" data-fragment="HemisphereLightHelper.matrixAutoUpdate" id="matrixAutoUpdate" href="./index.html#api/en/helpers/HemisphereLightHelper.matrixAutoUpdate">matrixAutoUpdate</a>  : <span class="param">Object</span></h3>
+		<p>
+			See <a class="links" data-fragment="Object3D.matrixAutoUpdate" title="Object3D.matrixAutoUpdate" href="./index.html#api/en/core/Object3D.matrixAutoUpdate">Object3D.matrixAutoUpdate</a>. Set to <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code> here as the helper is
+			using the hemisphereLight's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="HemisphereLightHelper.color" target="_parent" title="HemisphereLightHelper.color" href="./index.html#api/en/helpers/HemisphereLightHelper.color">#</a> .<a class="links" data-fragment="HemisphereLightHelper.color" id="color" href="./index.html#api/en/helpers/HemisphereLightHelper.color">color</a>  : <a class="param links" data-fragment="hex">hex</a></h3>
+		<p>
+			The color parameter passed in the constructor. Default is <code class="inline prettyprint" translate="no"><span class="kwd">undefined</span></code>. If
+			this is changed, the helper's color will update the next time
+			<a class="links" data-fragment="HemisphereLightHelper.update" title="HemisphereLightHelper.update" href="./index.html#api/en/helpers/HemisphereLightHelper.update">update</a> is called.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="HemisphereLightHelper.dispose" target="_parent" title="HemisphereLightHelper.dispose" href="./index.html#api/en/helpers/HemisphereLightHelper.dispose">#</a> .<a class="links" data-fragment="HemisphereLightHelper.dispose" id="dispose" href="./index.html#api/en/helpers/HemisphereLightHelper.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="HemisphereLightHelper.update" target="_parent" title="HemisphereLightHelper.update" href="./index.html#api/en/helpers/HemisphereLightHelper.update">#</a> .<a class="links" data-fragment="HemisphereLightHelper.update" id="update" href="./index.html#api/en/helpers/HemisphereLightHelper.update">update</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Updates the helper to match the position and direction of the
+			<a class="links" data-fragment="HemisphereLightHelper.light" title="HemisphereLightHelper.light" href="./index.html#api/en/helpers/HemisphereLightHelper.light">.light</a>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/helpers/HemisphereLightHelper.js" target="_blank">src/helpers/HemisphereLightHelper.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

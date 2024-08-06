@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><title>Matrix transformations – three.js docs</title></head><body><body>
+		<h1>Matrix transformations</h1>
+
+		<p>
+		Three.js uses <code class="inline prettyprint" translate="no"><span class="pln">matrices</span></code> to encode 3D transformations---translations (position), rotations, and scaling. Every instance of <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> has a <a class="links" data-fragment="Object3D.matrix" title="Object3D.matrix" href="./index.html#api/en/core/Object3D.matrix">matrix</a> which stores that object's position, rotation, and scale. This page describes how to update an object's transformation.
+		</p>
+
+		<h2>Convenience properties and <code class="inline prettyprint" translate="no"><span class="pln">matrixAutoUpdate</span></code></h2>
+
+		<p>
+			There are two ways to update an object's transformation:
+		</p>
+		<ol>
+			<li>
+				Modify the object's <code class="inline prettyprint" translate="no"><span class="pln">position</span></code>, <code class="inline prettyprint" translate="no"><span class="pln">quaternion</span></code>, and <code class="inline prettyprint" translate="no"><span class="pln">scale</span></code> properties, and let three.js recompute
+				the object's matrix from these properties:
+				<code class=" prettyprint" translate="no"><span class="kwd">object</span><span class="pun">.</span><span class="pln">position</span><span class="pun">.</span><span class="pln">copy</span><span class="pun">(</span><span class="pln"> start_position </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">object</span><span class="pun">.</span><span class="pln">quaternion</span><span class="pun">.</span><span class="pln">copy</span><span class="pun">(</span><span class="pln"> quaternion </span><span class="pun">);</span></code>
+				By default, the <code class="inline prettyprint" translate="no"><span class="pln">matrixAutoUpdate</span></code> property is set true, and the matrix will be automatically recalculated.
+				If the object is static, or you wish to manually control when recalculation occurs, better performance can be obtained by setting the property false:
+				<code class=" prettyprint" translate="no"><span class="kwd">object</span><span class="pun">.</span><span class="pln">matrixAutoUpdate </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span></code>
+				And after changing any properties, manually update the matrix:
+				<code class=" prettyprint" translate="no"><span class="kwd">object</span><span class="pun">.</span><span class="pln">updateMatrix</span><span class="pun">();</span></code>
+			</li>
+			<li>
+				Modify the object's matrix directly. The <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> class has various methods for modifying the matrix:
+				<code class=" prettyprint" translate="no"><span class="kwd">object</span><span class="pun">.</span><span class="pln">matrix</span><span class="pun">.</span><span class="pln">setRotationFromQuaternion</span><span class="pun">(</span><span class="pln"> quaternion </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">object</span><span class="pun">.</span><span class="pln">matrix</span><span class="pun">.</span><span class="pln">setPosition</span><span class="pun">(</span><span class="pln"> start_position </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">object</span><span class="pun">.</span><span class="pln">matrixAutoUpdate </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span></code>
+				Note that <code class="inline prettyprint" translate="no"><span class="pln">matrixAutoUpdate</span></code> <em>must</em> be set to <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code> in this case, and you should make sure <em>not</em> to call <code class="inline prettyprint" translate="no"><span class="pln">updateMatrix</span></code>. Calling <code class="inline prettyprint" translate="no"><span class="pln">updateMatrix</span></code> will clobber the manual changes made to the matrix, recalculating the matrix from <code class="inline prettyprint" translate="no"><span class="pln">position</span></code>, <code class="inline prettyprint" translate="no"><span class="pln">scale</span></code>, and so on.
+			</li>
+		</ol>
+
+		<h2>Object and world matrices</h2>
+		<p>
+		An object's <a class="links" data-fragment="Object3D.matrix" title="Object3D.matrix" href="./index.html#api/en/core/Object3D.matrix">matrix</a> stores the object's transformation <em>relative</em> to the object's <a class="links" data-fragment="Object3D.parent" title="Object3D.parent" href="./index.html#api/en/core/Object3D.parent">parent</a>; to get the object's transformation in <em>world</em> coordinates, you must access the object's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">Object3D.matrixWorld</a>.
+		</p>
+		<p>
+		When either the parent or the child object's transformation changes, you can request that the child object's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a> be updated by calling <a class="links" data-fragment="Object3D.updateMatrixWorld" title="Object3D.updateMatrixWorld" href="./index.html#api/en/core/Object3D.updateMatrixWorld">updateMatrixWorld</a>().
+		</p>
+		<p>
+		An object can be transformed via <a class="links" data-fragment="Object3D.applyMatrix4" title="Object3D.applyMatrix4" href="./index.html#api/en/core/Object3D.applyMatrix4">Object3D.applyMatrix4</a>. Note: Under-the-hood, this method relies on <a class="links" data-fragment="Matrix4.decompose" title="Matrix4.decompose" href="./index.html#api/en/math/Matrix4.decompose">Matrix4.decompose</a>, and not all matrices are decomposable in this way. For example, if an object has a non-uniformly scaled parent, then the object's world matrix may not be decomposable, and this method may not be appropriate.
+		</p>
+
+		<h2>Rotation and Quaternion</h2>
+		<p>
+		Three.js provides two ways of representing 3D rotations: <a class="links" data-fragment="Euler" title="Euler" href="./index.html#api/en/math/Euler">Euler angles</a> and <a class="links" data-fragment="Quaternion" title="Quaternion" href="./index.html#api/en/math/Quaternion">Quaternions</a>, as well as methods for converting between the two. Euler angles are subject to a problem called "gimbal lock," where certain configurations can lose a degree of freedom (preventing the object from being rotated about one axis). For this reason, object rotations are <em>always</em> stored in the object's <a class="links" data-fragment="Object3D.quaternion" title="Object3D.quaternion" href="./index.html#api/en/core/Object3D.quaternion">quaternion</a>.
+		</p>
+		<p>
+		Previous versions of the library included a <code class="inline prettyprint" translate="no"><span class="pln">useQuaternion</span></code> property which, when set to false, would cause the object's <a class="links" data-fragment="Object3D.matrix" title="Object3D.matrix" href="./index.html#api/en/core/Object3D.matrix">matrix</a> to be calculated from an Euler angle. This practice is deprecated---instead, you should use the <a class="links" data-fragment="Object3D.setRotationFromEuler" title="Object3D.setRotationFromEuler" href="./index.html#api/en/core/Object3D.setRotationFromEuler">setRotationFromEuler</a> method, which will update the quaternion.
+		</p>
+
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

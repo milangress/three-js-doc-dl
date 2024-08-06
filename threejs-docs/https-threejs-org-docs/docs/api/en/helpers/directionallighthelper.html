@@ -1,0 +1,84 @@
+<!DOCTYPE html><html><head><title>DirectionalLightHelper – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> →
+
+		<h1>DirectionalLightHelper</h1>
+
+		<p class=/"desc/">
+			Helper object to assist with visualizing a <a class=/"links/" data-fragment=/"DirectionalLight/" title=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">DirectionalLight</a>'s
+			effect on the scene. This consists of plane and a line representing the
+			light's position and direction.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> light </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">DirectionalLight</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0xFFFFFF</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> light </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"kwd/">const</span><span class=/"pln/"> helper </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">DirectionalLightHelper</span><span class=/"pun/">(</span><span class=/"pln/"> light</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">5</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> helper </span><span class=/"pun/">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			DirectionalLightHelper( light : <a class=/"param links/" data-fragment=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">DirectionalLight</a>, size : <span class=/"param/">Number</span>, color : <a class=/"param links/" data-fragment=/"Hex/">Hex</a> )
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"DirectionalLight/" title=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">light</a>-- The light to be visualized. <br><br>
+
+			<a class=/"links/" data-fragment=/"Number/" title=/"Number/">size</a> -- (optional) dimensions of the plane. Default is
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br><br>
+
+			<a class=/"links/" data-fragment=/"Hex/" title=/"Hex/">color</a> -- (optional) if this is not the set the helper will take
+			the color of the light.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLightHelper.lightPlane/" target=/"_parent/" title=/"DirectionalLightHelper.lightPlane/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.lightPlane/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLightHelper.lightPlane/" id=/"lightPlane/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.lightPlane/">lightPlane</a>  : <a class=/"param links/" data-fragment=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a></h3>
+		<p>Contains the line mesh showing the location of the directional light.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLightHelper.light/" target=/"_parent/" title=/"DirectionalLightHelper.light/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.light/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLightHelper.light/" id=/"light/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.light/">light</a>  : <a class=/"param links/" data-fragment=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">DirectionalLight</a></h3>
+		<p>
+			Reference to the <a class=/"links/" data-fragment=/"DirectionalLight/" title=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">directionalLight</a> being
+			visualized.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLightHelper.matrix/" target=/"_parent/" title=/"DirectionalLightHelper.matrix/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.matrix/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLightHelper.matrix/" id=/"matrix/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.matrix/">matrix</a>  : <span class=/"param/">Object</span></h3>
+		<p>Reference to the light's <a class=/"links/" data-fragment=/"Object3D.matrixWorld/" title=/"Object3D.matrixWorld/" href=/"./index.html#api/en/core/Object3D.matrixWorld/">matrixWorld</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLightHelper.matrixAutoUpdate/" target=/"_parent/" title=/"DirectionalLightHelper.matrixAutoUpdate/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.matrixAutoUpdate/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLightHelper.matrixAutoUpdate/" id=/"matrixAutoUpdate/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.matrixAutoUpdate/">matrixAutoUpdate</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			See <a class=/"links/" data-fragment=/"Object3D.matrixAutoUpdate/" title=/"Object3D.matrixAutoUpdate/" href=/"./index.html#api/en/core/Object3D.matrixAutoUpdate/">Object3D.matrixAutoUpdate</a>. Set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code> here as the helper is
+			using the light's <a class=/"links/" data-fragment=/"Object3D.matrixWorld/" title=/"Object3D.matrixWorld/" href=/"./index.html#api/en/core/Object3D.matrixWorld/">matrixWorld</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLightHelper.color/" target=/"_parent/" title=/"DirectionalLightHelper.color/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.color/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLightHelper.color/" id=/"color/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.color/">color</a>  : <a class=/"param links/" data-fragment=/"hex/">hex</a></h3>
+		<p>
+			The color parameter passed in the constructor. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">undefined</span></code>. If
+			this is changed, the helper's color will update the next time
+			<a class=/"links/" data-fragment=/"DirectionalLightHelper.update/" title=/"DirectionalLightHelper.update/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.update/">update</a> is called.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLightHelper.dispose/" target=/"_parent/" title=/"DirectionalLightHelper.dispose/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.dispose/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLightHelper.dispose/" id=/"dispose/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.dispose/">dispose</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLightHelper.update/" target=/"_parent/" title=/"DirectionalLightHelper.update/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.update/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLightHelper.update/" id=/"update/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.update/">update</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Updates the helper to match the position and direction of the <a class=/"links/" data-fragment=/"DirectionalLightHelper.light/" title=/"DirectionalLightHelper.light/" href=/"./index.html#api/en/helpers/DirectionalLightHelper.light/">directionalLight</a> being visualized.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/helpers/DirectionalLightHelper.js/" target=/"_blank/">src/helpers/DirectionalLightHelper.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

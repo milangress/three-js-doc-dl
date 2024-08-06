@@ -1,0 +1,127 @@
+<!DOCTYPE html><html><head><title>LookupTable – three.js docs</title></head><body><body>
+		<h1>Lut</h1>
+
+		<p class=/"desc/">
+			Represents a lookup table for colormaps. It is used to determine the color values from a range of data values.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			Lut is an add-on, and must be imported explicitly.
+			See <a href=/"#manual/introduction/Installation/" target=/"_blank/">Installation / Addons</a>.
+		</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">import</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> </span><span class=/"typ/">Lut</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"kwd/">from</span><span class=/"pln/"> </span><span class=/"str/">'three/addons/math/Lut.js'</span><span class=/"pun/">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> lut </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">Lut</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'rainbow'</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">512</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> color </span><span class=/"pun/">=</span><span class=/"pln/"> lut</span><span class=/"pun/">.</span><span class=/"pln/">getColor</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0.5</span><span class=/"pln/"> </span><span class=/"pun/">);</span></code>
+
+		<h2>Constructor</h2>
+
+
+		<h3>Lut( colormap : <span class=/"param/">String</span>, count : <span class=/"param/">Number</span> )</h3>
+		<p>
+		colormap - Sets a colormap from predefined colormaps. Available colormaps are: <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">rainbow</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">cooltowarm</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">blackbody</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">grayscale</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">rainbow</span></code>.<br>
+		count - Sets the number of colors used to represent the data array. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">32</span></code>.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.lut/" target=/"_parent/" title=/"Lut.lut/">#</a> .<a class=/"links/" data-fragment=/"Lut.lut/" id=/"lut/">lut</a>  : <span class=/"param/">Array</span></h3>
+		<p>
+		The lookup table for the selected color map represented as an array of <a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a>s.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.map/" target=/"_parent/" title=/"Lut.map/">#</a> .<a class=/"links/" data-fragment=/"Lut.map/" id=/"map/">map</a>  : <span class=/"param/">Array</span></h3>
+		<p>
+		The currently selected color map. Default is the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">rainbow</span></code> color map.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.minV/" target=/"_parent/" title=/"Lut.minV/">#</a> .<a class=/"links/" data-fragment=/"Lut.minV/" id=/"minV/">minV</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+		The minimum value to be represented with the lookup table. Default is <strong>0</strong>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.maxV/" target=/"_parent/" title=/"Lut.maxV/">#</a> .<a class=/"links/" data-fragment=/"Lut.maxV/" id=/"maxV/">maxV</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+		The maximum value to be represented with the lookup table. Default is <strong>1</strong>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.n/" target=/"_parent/" title=/"Lut.n/">#</a> .<a class=/"links/" data-fragment=/"Lut.n/" id=/"n/">n</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+		The number of colors of the current selected color map. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">32</span></code>.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.copy/" target=/"_parent/" title=/"Lut.copy/">#</a> .<a class=/"links/" data-fragment=/"Lut.copy/" id=/"copy/">copy</a> ( lut : <a class=/"param links/" data-fragment=/"Lut/">Lut</a> ) : <span class=/"param/">this</span> this : <a class=/"param links/" data-fragment=/"Lut/">Lut</a></h3>
+		<p>
+		color — Lut to copy.
+		</p>
+		<p>
+		Copies the given lut.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.addColorMap/" target=/"_parent/" title=/"Lut.addColorMap/">#</a> .<a class=/"links/" data-fragment=/"Lut.addColorMap/" id=/"addColorMap/">addColorMap</a> ( name : <span class=/"param/">String</span>, arrayOfColors : <span class=/"param/">Array</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+		name — The name of the color map.<br>
+		arrayOfColors — An array of color values. Each value is an array holding a threshold and the actual color value as a hexadecimal number.
+		</p>
+		<p>
+		Adds a color map to this Lut instance.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.createCanvas/" target=/"_parent/" title=/"Lut.createCanvas/">#</a> .<a class=/"links/" data-fragment=/"Lut.createCanvas/" id=/"createCanvas/">createCanvas</a> () : <a class=/"param links/" data-fragment=/"HTMLCanvasElement/">HTMLCanvasElement</a></h3>
+		<p>
+		Creates a canvas in order to visualize the lookup table as a texture.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.getColor/" target=/"_parent/" title=/"Lut.getColor/">#</a> .<a class=/"links/" data-fragment=/"Lut.getColor/" id=/"getColor/">getColor</a> ( alpha : <span class=/"param/">Number</span> ) : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a></h3>
+		<p>
+		value -- the data value to be displayed as a color.
+		</p>
+		<p>
+		Returns an instance of <a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> for the given data value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.setColorMap/" target=/"_parent/" title=/"Lut.setColorMap/">#</a> .<a class=/"links/" data-fragment=/"Lut.setColorMap/" id=/"setColorMap/">setColorMap</a> ( colormap : <span class=/"param/">String</span>, count : <span class=/"param/">Number</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+		colormap — The name of the color map.<br>
+		count — The number of colors. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">32</span></code>.
+		</p>
+		<p>
+		Configure the lookup table for the given color map and number of colors.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.setMin/" target=/"_parent/" title=/"Lut.setMin/">#</a> .<a class=/"links/" data-fragment=/"Lut.setMin/" id=/"setMin/">setMin</a> ( minV : <span class=/"param/">Number</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+		minV — The minimum value to be represented with the lookup table
+		</p>
+		<p>
+		Sets this Lut with the minimum value to be represented.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.setMax/" target=/"_parent/" title=/"Lut.setMax/">#</a> .<a class=/"links/" data-fragment=/"Lut.setMax/" id=/"setMax/">setMax</a> ( maxV : <span class=/"param/">Number</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+		maxV — The maximum value to be represented with the lookup table.
+		</p>
+		<p>
+		Sets this Lut with the maximum value to be represented.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Lut.updateCanvas/" target=/"_parent/" title=/"Lut.updateCanvas/">#</a> .<a class=/"links/" data-fragment=/"Lut.updateCanvas/" id=/"updateCanvas/">updateCanvas</a> ( canvas : <a class=/"param links/" data-fragment=/"HTMLCanvasElement/">HTMLCanvasElement</a> ) : <a class=/"param links/" data-fragment=/"HTMLCanvasElement/">HTMLCanvasElement</a></h3>
+		<p>
+		Updates the canvas with the Lut's data.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/examples/jsm/math/Lut.js/" target=/"_blank/">examples/jsm/math/Lut.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

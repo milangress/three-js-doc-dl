@@ -1,0 +1,131 @@
+<!DOCTYPE html><html><head><title>Loader – three.js docs</title></head><body><body>
+		<h1>Loader</h1>
+
+		<p class=/"desc/">Base class for implementing loaders.</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Loader( manager : <a class=/"param links/" data-fragment=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">LoadingManager</a> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">manager</a> — The <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">loadingManager</a>
+			for the loader to use. Default is <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">THREE.DefaultLoadingManager</a>.
+		</p>
+		<p>Creates a new Loader.</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.crossOrigin/" target=/"_parent/" title=/"Loader.crossOrigin/" href=/"./index.html#api/en/loaders/Loader.crossOrigin/">#</a> .<a class=/"links/" data-fragment=/"Loader.crossOrigin/" id=/"crossOrigin/" href=/"./index.html#api/en/loaders/Loader.crossOrigin/">crossOrigin</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			The crossOrigin string to implement CORS for loading the url from a
+			different domain that allows CORS. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">anonymous</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.withCredentials/" target=/"_parent/" title=/"Loader.withCredentials/" href=/"./index.html#api/en/loaders/Loader.withCredentials/">#</a> .<a class=/"links/" data-fragment=/"Loader.withCredentials/" id=/"withCredentials/" href=/"./index.html#api/en/loaders/Loader.withCredentials/">withCredentials</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Whether the XMLHttpRequest uses credentials. See
+			<a class=/"links/" data-fragment=/"Loader.setWithCredentials/" title=/"Loader.setWithCredentials/" href=/"./index.html#api/en/loaders/Loader.setWithCredentials/">.setWithCredentials</a>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.manager/" target=/"_parent/" title=/"Loader.manager/" href=/"./index.html#api/en/loaders/Loader.manager/">#</a> .<a class=/"links/" data-fragment=/"Loader.manager/" id=/"manager/" href=/"./index.html#api/en/loaders/Loader.manager/">manager</a>  : <a class=/"param links/" data-fragment=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">LoadingManager</a></h3>
+		<p>
+			The <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">loadingManager</a> the loader is using. Default is
+			<a class=/"links/" data-fragment=/"DefaultLoadingManager/" title=/"DefaultLoadingManager/" href=/"./index.html#api/en/loaders/managers/DefaultLoadingManager/">DefaultLoadingManager</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.path/" target=/"_parent/" title=/"Loader.path/" href=/"./index.html#api/en/loaders/Loader.path/">#</a> .<a class=/"links/" data-fragment=/"Loader.path/" id=/"path/" href=/"./index.html#api/en/loaders/Loader.path/">path</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			The base path from which the asset will be loaded. Default is the empty
+			string.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.resourcePath/" target=/"_parent/" title=/"Loader.resourcePath/" href=/"./index.html#api/en/loaders/Loader.resourcePath/">#</a> .<a class=/"links/" data-fragment=/"Loader.resourcePath/" id=/"resourcePath/" href=/"./index.html#api/en/loaders/Loader.resourcePath/">resourcePath</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			The base path from which additional resources like textures will be
+			loaded. Default is the empty string.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.requestHeader/" target=/"_parent/" title=/"Loader.requestHeader/" href=/"./index.html#api/en/loaders/Loader.requestHeader/">#</a> .<a class=/"links/" data-fragment=/"Loader.requestHeader/" id=/"requestHeader/" href=/"./index.html#api/en/loaders/Loader.requestHeader/">requestHeader</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			The <a href=/"https://developer.mozilla.org/en-US/docs/Glossary/Request_header/" target=/"_blank/">request header</a> 
+			used in HTTP request. See <a class=/"links/" data-fragment=/"Loader.setRequestHeader/" title=/"Loader.setRequestHeader/" href=/"./index.html#api/en/loaders/Loader.setRequestHeader/">.setRequestHeader</a>.
+			Default is empty object.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.load/" target=/"_parent/" title=/"Loader.load/" href=/"./index.html#api/en/loaders/Loader.load/">#</a> .<a class=/"links/" data-fragment=/"Loader.load/" id=/"load/" href=/"./index.html#api/en/loaders/Loader.load/">load</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			This method needs to be implement by all concrete loaders. It holds the
+			logic for loading the asset from the backend.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Loader.loadAsync/" target=/"_parent/" title=/"Loader.loadAsync/" href=/"./index.html#api/en/loaders/Loader.loadAsync/">#</a> .<a class=/"links/" data-fragment=/"Loader.loadAsync/" id=/"loadAsync/" href=/"./index.html#api/en/loaders/Loader.loadAsync/">loadAsync</a> ( url : <span class=/"param/">String</span>, onProgress : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <a class=/"param links/" data-fragment=/"Promise/">Promise</a>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"String/" title=/"String/">url</a> — A string containing the path/URL of the file to be
+			loaded.<br>
+			<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onProgress</a> (optional) — A function to be called while the
+			loading is in progress. The argument will be the ProgressEvent instance,
+			which contains .<a class=/"links/" data-fragment=/"Boolean/" title=/"Boolean/">lengthComputable</a>, .<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">total</a> and
+			.<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">loaded</a>. If the server does not set the Content-Length
+			header; .<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">total</a> will be 0.<br>
+		</p>
+		<p>
+			This method is equivalent to <a class=/"links/" data-fragment=/"Loader.load/" title=/"Loader.load/" href=/"./index.html#api/en/loaders/Loader.load/">.load</a>, but returns a
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/" target=/"_blank/">Promise</a>.
+		</p>
+		<p>
+			<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onLoad</a> is handled by
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve/" target=/"_blank/">Promise.resolve</a>
+			and <a class=/"links/" data-fragment=/"Function/" title=/"Function/">onError</a> is handled by
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject/" target=/"_blank/">Promise.reject</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.parse/" target=/"_parent/" title=/"Loader.parse/" href=/"./index.html#api/en/loaders/Loader.parse/">#</a> .<a class=/"links/" data-fragment=/"Loader.parse/" id=/"parse/" href=/"./index.html#api/en/loaders/Loader.parse/">parse</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			This method needs to be implement by all concrete loaders. It holds the
+			logic for parsing the asset into three.js entities.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.setCrossOrigin/" target=/"_parent/" title=/"Loader.setCrossOrigin/" href=/"./index.html#api/en/loaders/Loader.setCrossOrigin/">#</a> .<a class=/"links/" data-fragment=/"Loader.setCrossOrigin/" id=/"setCrossOrigin/" href=/"./index.html#api/en/loaders/Loader.setCrossOrigin/">setCrossOrigin</a> ( crossOrigin : <span class=/"param/">String</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"String/" title=/"String/">crossOrigin</a> — The crossOrigin string to implement CORS for
+			loading the url from a different domain that allows CORS.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.setWithCredentials/" target=/"_parent/" title=/"Loader.setWithCredentials/" href=/"./index.html#api/en/loaders/Loader.setWithCredentials/">#</a> .<a class=/"links/" data-fragment=/"Loader.setWithCredentials/" id=/"setWithCredentials/" href=/"./index.html#api/en/loaders/Loader.setWithCredentials/">setWithCredentials</a> ( value : <span class=/"param/">Boolean</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Whether the XMLHttpRequest uses credentials such as cookies, authorization
+			headers or TLS client certificates. See
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials/" target=/"_blank/">XMLHttpRequest.withCredentials</a>.<br>
+			Note that this has no effect if you are loading files locally or from the
+			same domain.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.setPath/" target=/"_parent/" title=/"Loader.setPath/" href=/"./index.html#api/en/loaders/Loader.setPath/">#</a> .<a class=/"links/" data-fragment=/"Loader.setPath/" id=/"setPath/" href=/"./index.html#api/en/loaders/Loader.setPath/">setPath</a> ( path : <span class=/"param/">String</span> ) : <span class=/"param/">this</span></h3>
+		<p><a class=/"links/" data-fragment=/"String/" title=/"String/">path</a> — Set the base path for the asset.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.setResourcePath/" target=/"_parent/" title=/"Loader.setResourcePath/" href=/"./index.html#api/en/loaders/Loader.setResourcePath/">#</a> .<a class=/"links/" data-fragment=/"Loader.setResourcePath/" id=/"setResourcePath/" href=/"./index.html#api/en/loaders/Loader.setResourcePath/">setResourcePath</a> ( resourcePath : <span class=/"param/">String</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"String/" title=/"String/">resourcePath</a> — Set the base path for dependent resources
+			like textures.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Loader.setRequestHeader/" target=/"_parent/" title=/"Loader.setRequestHeader/" href=/"./index.html#api/en/loaders/Loader.setRequestHeader/">#</a> .<a class=/"links/" data-fragment=/"Loader.setRequestHeader/" id=/"setRequestHeader/" href=/"./index.html#api/en/loaders/Loader.setRequestHeader/">setRequestHeader</a> ( requestHeader : <span class=/"param/">Object</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object/" title=/"Object/">requestHeader</a> - key: The name of the header whose value is
+			to be set. value: The value to set as the body of the header.<br><br>
+
+			Set the
+			<a href=/"https://developer.mozilla.org/en-US/docs/Glossary/Request_header/" target=/"_blank/">request header</a> used in HTTP request.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/loaders/Loader.js/" target=/"_blank/">src/loaders/Loader.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

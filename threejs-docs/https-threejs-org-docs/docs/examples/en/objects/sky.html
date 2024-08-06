@@ -1,0 +1,80 @@
+<!DOCTYPE html><html><head><title>Sky – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a> →
+
+		<h1>Sky</h1>
+
+		<p class=/"desc/">
+			Sky creates a ready to go sky environment for your scenes.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			Sky is an add-on, and therefore must be imported explicitly.
+			See <a href=/"#manual/introduction/Installation/" target=/"_blank/">Installation / Addons</a>.
+		</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">import</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> </span><span class=/"typ/">Sky</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"kwd/">from</span><span class=/"pln/"> </span><span class=/"str/">'three/addons/objects/Sky.js'</span><span class=/"pun/">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> sky </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">Sky</span><span class=/"pun/">();</span><span class=/"pln/">
+sky</span><span class=/"pun/">.</span><span class=/"pln/">scale</span><span class=/"pun/">.</span><span class=/"pln/">setScalar</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">450000</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"kwd/">const</span><span class=/"pln/"> phi </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"typ/">MathUtils</span><span class=/"pun/">.</span><span class=/"pln/">degToRad</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">90</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> theta </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"typ/">MathUtils</span><span class=/"pun/">.</span><span class=/"pln/">degToRad</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">180</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> sunPosition </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">Vector3</span><span class=/"pun/">().</span><span class=/"pln/">setFromSphericalCoords</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> phi</span><span class=/"pun/">,</span><span class=/"pln/"> theta </span><span class=/"pun/">);</span><span class=/"pln/">
+
+sky</span><span class=/"pun/">.</span><span class=/"pln/">material</span><span class=/"pun/">.</span><span class=/"pln/">uniforms</span><span class=/"pun/">.</span><span class=/"pln/">sunPosition</span><span class=/"pun/">.</span><span class=/"pln/">value </span><span class=/"pun/">=</span><span class=/"pln/"> sunPosition</span><span class=/"pun/">;</span><span class=/"pln/">
+
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> sky </span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href=/"../examples/#webgl_shaders_sky/" target=/"_blank/">misc / objects / Sky </a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>Sky()</h3>
+		<p>
+		Create a new Sky instance.
+		</p>
+
+		<h2>Properties</h2>
+		<p>
+		Sky instance is a <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">Mesh</a> with a pre-defined <a class=/"links/" data-fragment=/"ShaderMaterial/" title=/"ShaderMaterial/" href=/"./index.html#api/en/materials/ShaderMaterial/">ShaderMaterial</a>, so every property described here should be set using <a class=/"links/" data-fragment=/"Uniform/" title=/"Uniform/" href=/"./index.html#api/en/core/Uniform/">Uniform</a>s.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Sky.turbidity/" target=/"_parent/" title=/"Sky.turbidity/" href=/"./index.html#examples/en/objects/Sky.turbidity/">#</a> .<a class=/"links/" data-fragment=/"Sky.turbidity/" id=/"turbidity/" href=/"./index.html#examples/en/objects/Sky.turbidity/">turbidity</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+		Haziness of the Sky.
+		</p>
+		<h3><a class=/"permalink links/" data-fragment=/"Sky.rayleigh/" target=/"_parent/" title=/"Sky.rayleigh/" href=/"./index.html#examples/en/objects/Sky.rayleigh/">#</a> .<a class=/"links/" data-fragment=/"Sky.rayleigh/" id=/"rayleigh/" href=/"./index.html#examples/en/objects/Sky.rayleigh/">rayleigh</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+		For a more detailed explanation see: <a href=/"https://en.wikipedia.org/wiki/Rayleigh_scattering/" target=/"_blank/">Rayleigh scattering</a> .
+		</p>
+		<h3><a class=/"permalink links/" data-fragment=/"Sky.mieCoefficient/" target=/"_parent/" title=/"Sky.mieCoefficient/" href=/"./index.html#examples/en/objects/Sky.mieCoefficient/">#</a> .<a class=/"links/" data-fragment=/"Sky.mieCoefficient/" id=/"mieCoefficient/" href=/"./index.html#examples/en/objects/Sky.mieCoefficient/">mieCoefficient</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+		<a href=/"https://en.wikipedia.org/wiki/Mie_scattering/" target=/"_blank/">Mie scattering</a> amount.
+		</p>
+		<h3><a class=/"permalink links/" data-fragment=/"Sky.mieDirectionalG/" target=/"_parent/" title=/"Sky.mieDirectionalG/" href=/"./index.html#examples/en/objects/Sky.mieDirectionalG/">#</a> .<a class=/"links/" data-fragment=/"Sky.mieDirectionalG/" id=/"mieDirectionalG/" href=/"./index.html#examples/en/objects/Sky.mieDirectionalG/">mieDirectionalG</a>  : <span class=/"param/">Number</span></h3>
+		<p>
+		<a href=/"https://en.wikipedia.org/wiki/Mie_scattering/" target=/"_blank/">Mie scattering</a> direction.
+		</p>
+		<h3><a class=/"permalink links/" data-fragment=/"Sky.sunPosition/" target=/"_parent/" title=/"Sky.sunPosition/" href=/"./index.html#examples/en/objects/Sky.sunPosition/">#</a> .<a class=/"links/" data-fragment=/"Sky.sunPosition/" id=/"sunPosition/" href=/"./index.html#examples/en/objects/Sky.sunPosition/">sunPosition</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+		The position of the sun.
+		</p>
+		<h3><a class=/"permalink links/" data-fragment=/"Sky.up/" target=/"_parent/" title=/"Sky.up/" href=/"./index.html#examples/en/objects/Sky.up/">#</a> .<a class=/"links/" data-fragment=/"Sky.up/" id=/"up/" href=/"./index.html#examples/en/objects/Sky.up/">up</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+		The sun's elevation from the horizon, in degrees.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+		<a href=/"https://github.com/mrdoob/three.js/blob/master/examples/jsm/objects/Sky.js/" target=/"_blank/">examples/jsm/objects/Sky.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

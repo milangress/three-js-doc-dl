@@ -1,0 +1,200 @@
+<!DOCTYPE html><html><head><title>InstancedMesh – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> →
+
+		<h1>InstancedMesh</h1>
+
+		<p class="desc">
+			A special version of <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> with instanced rendering support. Use
+			InstancedMesh if you have to render a large number of objects with the same
+			geometry and material(s) but with different world transformations. The usage
+			of InstancedMesh will help you to reduce the number of draw calls and thus
+			improve the overall rendering performance in your application.
+		</p>
+
+		<h2>Examples</h2>
+		<p>
+			<a href="../examples/#webgl_instancing_dynamic" target="_blank">WebGL / instancing / dynamic</a><br>
+			<a href="../examples/#webgl_instancing_performance" target="_blank">WebGL / instancing / performance</a><br>
+			<a href="../examples/#webgl_instancing_scatter" target="_blank">WebGL / instancing / scatter</a><br>
+			<a href="../examples/#webgl_instancing_raycast" target="_blank">WebGL / instancing / raycast</a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>
+			InstancedMesh( geometry : <a class="param links" data-fragment="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>, material : <a class="param links" data-fragment="Material" href="./index.html#api/en/materials/Material">Material</a>,
+			count : <span class="param">Integer</span> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">geometry</a> - an instance of <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>.<br>
+			<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">material</a> — a single or an array of
+			<a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>. Default is a new <a class="links" data-fragment="MeshBasicMaterial" title="MeshBasicMaterial" href="./index.html#api/en/materials/MeshBasicMaterial">MeshBasicMaterial</a>.<br>
+			<a class="links" data-fragment="Integer" title="Integer">count</a> - the number of instances.<br>
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.boundingBox" target="_parent" title="InstancedMesh.boundingBox" href="./index.html#api/en/objects/InstancedMesh.boundingBox">#</a> .<a class="links" data-fragment="InstancedMesh.boundingBox" id="boundingBox" href="./index.html#api/en/objects/InstancedMesh.boundingBox">boundingBox</a>  : <a class="param links" data-fragment="Box3" href="./index.html#api/en/math/Box3">Box3</a></h3>
+		<p>
+			This bounding box encloses all instances of the InstancedMesh. Can be calculated
+			with <a class="links" data-fragment="InstancedMesh.computeBoundingBox" title="InstancedMesh.computeBoundingBox" href="./index.html#api/en/objects/InstancedMesh.computeBoundingBox">.computeBoundingBox</a>(). Default is <code class="inline prettyprint" translate="no"><span class="kwd">null</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.boundingSphere" target="_parent" title="InstancedMesh.boundingSphere" href="./index.html#api/en/objects/InstancedMesh.boundingSphere">#</a> .<a class="links" data-fragment="InstancedMesh.boundingSphere" id="boundingSphere" href="./index.html#api/en/objects/InstancedMesh.boundingSphere">boundingSphere</a>  : <a class="param links" data-fragment="Sphere" href="./index.html#api/en/math/Sphere">Sphere</a></h3>
+		<p>
+			This bounding sphere encloses all instances of the InstancedMesh. Can be
+			calculated with <a class="links" data-fragment="InstancedMesh.computeBoundingSphere" title="InstancedMesh.computeBoundingSphere" href="./index.html#api/en/objects/InstancedMesh.computeBoundingSphere">.computeBoundingSphere</a>(). Default is <code class="inline prettyprint" translate="no"><span class="kwd">null</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.count" target="_parent" title="InstancedMesh.count" href="./index.html#api/en/objects/InstancedMesh.count">#</a> .<a class="links" data-fragment="InstancedMesh.count" id="count" href="./index.html#api/en/objects/InstancedMesh.count">count</a>  : <span class="param">Integer</span></h3>
+		<p>
+			The number of instances. The <code class="inline prettyprint" translate="no"><span class="pln">count</span></code> value passed into the constructor
+			represents the maximum number of instances of this mesh. You can change
+			the number of instances at runtime to an integer value in the range [0, count].
+		</p>
+		<p>
+			If you need more instances than the original count value, you have to
+			create a new InstancedMesh.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.instanceColor" target="_parent" title="InstancedMesh.instanceColor" href="./index.html#api/en/objects/InstancedMesh.instanceColor">#</a> .<a class="links" data-fragment="InstancedMesh.instanceColor" id="instanceColor" href="./index.html#api/en/objects/InstancedMesh.instanceColor">instanceColor</a>  : <a class="param links" data-fragment="InstancedBufferAttribute" href="./index.html#api/en/core/InstancedBufferAttribute">InstancedBufferAttribute</a></h3>
+		<p>
+			Represents the colors of all instances. <code class="inline prettyprint" translate="no"><span class="kwd">null</span></code> by default. You have to set
+			its <a class="links" data-fragment="BufferAttribute.needsUpdate" title="BufferAttribute.needsUpdate" href="./index.html#api/en/core/BufferAttribute.needsUpdate">needsUpdate</a> flag to true if you
+			modify instanced data via <a class="links" data-fragment="InstancedMesh.setColorAt" title="InstancedMesh.setColorAt" href="./index.html#api/en/objects/InstancedMesh.setColorAt">.setColorAt</a>().
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.instanceMatrix" target="_parent" title="InstancedMesh.instanceMatrix" href="./index.html#api/en/objects/InstancedMesh.instanceMatrix">#</a> .<a class="links" data-fragment="InstancedMesh.instanceMatrix" id="instanceMatrix" href="./index.html#api/en/objects/InstancedMesh.instanceMatrix">instanceMatrix</a>  : <a class="param links" data-fragment="InstancedBufferAttribute" href="./index.html#api/en/core/InstancedBufferAttribute">InstancedBufferAttribute</a></h3>
+		<p>
+			Represents the local transformation of all instances. You have to set its
+			<a class="links" data-fragment="BufferAttribute.needsUpdate" title="BufferAttribute.needsUpdate" href="./index.html#api/en/core/BufferAttribute.needsUpdate">needsUpdate</a> flag to true if you modify
+			instanced data via <a class="links" data-fragment="InstancedMesh.setMatrixAt" title="InstancedMesh.setMatrixAt" href="./index.html#api/en/objects/InstancedMesh.setMatrixAt">.setMatrixAt</a>().
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.morphTexture" target="_parent" title="InstancedMesh.morphTexture" href="./index.html#api/en/objects/InstancedMesh.morphTexture">#</a> .<a class="links" data-fragment="InstancedMesh.morphTexture" id="morphTexture" href="./index.html#api/en/objects/InstancedMesh.morphTexture">morphTexture</a>  : <a class="param links" data-fragment="DataTexture" href="./index.html#api/en/textures/DataTexture">DataTexture</a></h3>
+		<p>
+			Represents the morph target weights of all instances. You have to set its
+			<a class="links" data-fragment="Texture.needsUpdate" title="Texture.needsUpdate" href="./index.html#api/en/textures/Texture.needsUpdate">needsUpdate</a> flag to true if you modify
+			instanced data via <a class="links" data-fragment="InstancedMesh.setMorphAt" title="InstancedMesh.setMorphAt" href="./index.html#api/en/objects/InstancedMesh.setMorphAt">.setMorphAt</a>().
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.isInstancedMesh" target="_parent" title="InstancedMesh.isInstancedMesh" href="./index.html#api/en/objects/InstancedMesh.isInstancedMesh">#</a> .<a class="links" data-fragment="InstancedMesh.isInstancedMesh" id="isInstancedMesh" href="./index.html#api/en/objects/InstancedMesh.isInstancedMesh">isInstancedMesh</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type InstancedMesh.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.computeBoundingBox" target="_parent" title="InstancedMesh.computeBoundingBox" href="./index.html#api/en/objects/InstancedMesh.computeBoundingBox">#</a> .<a class="links" data-fragment="InstancedMesh.computeBoundingBox" id="computeBoundingBox" href="./index.html#api/en/objects/InstancedMesh.computeBoundingBox">computeBoundingBox</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Computes the bounding box of the instanced mesh, and updates the <a class="links" data-fragment="InstancedMesh.boundingBox" title="InstancedMesh.boundingBox" href="./index.html#api/en/objects/InstancedMesh.boundingBox">.boundingBox</a> attribute.
+			The bounding box is not computed by the engine; it must be computed by your app.
+			You may need to recompute the bounding box if an instance is transformed via <a class="links" data-fragment="InstancedMesh.setMatrixAt" title="InstancedMesh.setMatrixAt" href="./index.html#api/en/objects/InstancedMesh.setMatrixAt">.setMatrixAt</a>().
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.computeBoundingSphere" target="_parent" title="InstancedMesh.computeBoundingSphere" href="./index.html#api/en/objects/InstancedMesh.computeBoundingSphere">#</a> .<a class="links" data-fragment="InstancedMesh.computeBoundingSphere" id="computeBoundingSphere" href="./index.html#api/en/objects/InstancedMesh.computeBoundingSphere">computeBoundingSphere</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Computes the bounding sphere of the instanced mesh, and updates the <a class="links" data-fragment="InstancedMesh.boundingSphere" title="InstancedMesh.boundingSphere" href="./index.html#api/en/objects/InstancedMesh.boundingSphere">.boundingSphere</a> attribute.
+			The engine automatically computes the bounding sphere when it is needed, e.g., for ray casting or view frustum culling.
+			You may need to recompute the bounding sphere if an instance is transformed via <a class="links" data-fragment="InstancedMesh.setMatrixAt" title="InstancedMesh.setMatrixAt" href="./index.html#api/en/objects/InstancedMesh.setMatrixAt">.setMatrixAt</a>().
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InstancedMesh.dispose" target="_parent" title="InstancedMesh.dispose" href="./index.html#api/en/objects/InstancedMesh.dispose">#</a> .<a class="links" data-fragment="InstancedMesh.dispose" id="dispose" href="./index.html#api/en/objects/InstancedMesh.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="InstancedMesh.getColorAt" target="_parent" title="InstancedMesh.getColorAt" href="./index.html#api/en/objects/InstancedMesh.getColorAt">#</a> .<a class="links" data-fragment="InstancedMesh.getColorAt" id="getColorAt" href="./index.html#api/en/objects/InstancedMesh.getColorAt">getColorAt</a> ( index : <span class="param">Integer</span>, color : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Integer" title="Integer">index</a>: The index of an instance. Values have to be in the
+			range [0, count].
+		</p>
+		<p>
+			<a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">color</a>: This color object will be set to the color of the
+			defined instance.
+		</p>
+		<p>Get the color of the defined instance.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="InstancedMesh.getMatrixAt" target="_parent" title="InstancedMesh.getMatrixAt" href="./index.html#api/en/objects/InstancedMesh.getMatrixAt">#</a> .<a class="links" data-fragment="InstancedMesh.getMatrixAt" id="getMatrixAt" href="./index.html#api/en/objects/InstancedMesh.getMatrixAt">getMatrixAt</a> ( index : <span class="param">Integer</span>, matrix : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Integer" title="Integer">index</a>: The index of an instance. Values have to be in the
+			range [0, count].
+		</p>
+		<p>
+			<a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">matrix</a>: This 4x4 matrix will be set to the local
+			transformation matrix of the defined instance.
+		</p>
+		<p>Get the local transformation matrix of the defined instance.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="InstancedMesh.getMorphAt" target="_parent" title="InstancedMesh.getMorphAt" href="./index.html#api/en/objects/InstancedMesh.getMorphAt">#</a> .<a class="links" data-fragment="InstancedMesh.getMorphAt" id="getMorphAt" href="./index.html#api/en/objects/InstancedMesh.getMorphAt">getMorphAt</a> ( index : <span class="param">Integer</span>, mesh : <a class="param links" data-fragment="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Integer" title="Integer">index</a>: The index of an instance. Values have to be in the
+			range [0, count].
+		</p>
+		<p>
+			<a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">mesh</a>: The <a class="links" data-fragment="Mesh.morphTargetInfluences" title="Mesh.morphTargetInfluences" href="./index.html#api/en/objects/Mesh.morphTargetInfluences">.morphTargetInfluences</a> property of this mesh will be filled with the morph target weights of the defined instance.
+		</p>
+		<p>Get the morph target weights of the defined instance.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="InstancedMesh.setColorAt" target="_parent" title="InstancedMesh.setColorAt" href="./index.html#api/en/objects/InstancedMesh.setColorAt">#</a> .<a class="links" data-fragment="InstancedMesh.setColorAt" id="setColorAt" href="./index.html#api/en/objects/InstancedMesh.setColorAt">setColorAt</a> ( index : <span class="param">Integer</span>, color : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Integer" title="Integer">index</a>: The index of an instance. Values have to be in the
+			range [0, count].
+		</p>
+		<p><a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">color</a>: The color of a single instance.</p>
+		<p>
+			Sets the given color to the defined instance. Make sure you set
+			<a class="links" data-fragment="InstancedMesh.instanceColor" title="InstancedMesh.instanceColor" href="./index.html#api/en/objects/InstancedMesh.instanceColor">.instanceColor</a><a class="links" data-fragment="BufferAttribute.needsUpdate" title="BufferAttribute.needsUpdate" href="./index.html#api/en/core/BufferAttribute.needsUpdate">.needsUpdate</a> to
+			true after updating all the colors.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="InstancedMesh.setMatrixAt" target="_parent" title="InstancedMesh.setMatrixAt" href="./index.html#api/en/objects/InstancedMesh.setMatrixAt">#</a> .<a class="links" data-fragment="InstancedMesh.setMatrixAt" id="setMatrixAt" href="./index.html#api/en/objects/InstancedMesh.setMatrixAt">setMatrixAt</a> ( index : <span class="param">Integer</span>, matrix : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Integer" title="Integer">index</a>: The index of an instance. Values have to be in the
+			range [0, count].
+		</p>
+		<p>
+			<a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">matrix</a>: A 4x4 matrix representing the local transformation
+			of a single instance.
+		</p>
+		<p>
+			Sets the given local transformation matrix to the defined instance. Make
+			sure you set <a class="links" data-fragment="InstancedMesh.instanceMatrix" title="InstancedMesh.instanceMatrix" href="./index.html#api/en/objects/InstancedMesh.instanceMatrix">.instanceMatrix</a><a class="links" data-fragment="BufferAttribute.needsUpdate" title="BufferAttribute.needsUpdate" href="./index.html#api/en/core/BufferAttribute.needsUpdate">.needsUpdate</a> 
+			to true after updating all the matrices.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="InstancedMesh.setMorphAt" target="_parent" title="InstancedMesh.setMorphAt" href="./index.html#api/en/objects/InstancedMesh.setMorphAt">#</a> .<a class="links" data-fragment="InstancedMesh.setMorphAt" id="setMorphAt" href="./index.html#api/en/objects/InstancedMesh.setMorphAt">setMorphAt</a> ( index : <span class="param">Integer</span>, mesh : <a class="param links" data-fragment="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Integer" title="Integer">index</a>: The index of an instance. Values have to be in the
+			range [0, count].
+		</p>
+		<p>
+			<a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">mesh</a>: A mesh with <a class="links" data-fragment="Mesh.morphTargetInfluences" title="Mesh.morphTargetInfluences" href="./index.html#api/en/objects/Mesh.morphTargetInfluences">.morphTargetInfluences</a> property containing the morph target weights
+			of a single instance.
+		</p>
+		<p>
+			Sets the morph target weights to the defined instance. Make
+			sure you set <a class="links" data-fragment="InstancedMesh.morphTexture" title="InstancedMesh.morphTexture" href="./index.html#api/en/objects/InstancedMesh.morphTexture">.morphTexture</a><a class="links" data-fragment="Texture.needsUpdate" title="Texture.needsUpdate" href="./index.html#api/en/textures/Texture.needsUpdate">.needsUpdate</a> 
+			to true after updating all the influences.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/objects/InstancedMesh.js" target="_blank">src/objects/InstancedMesh.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

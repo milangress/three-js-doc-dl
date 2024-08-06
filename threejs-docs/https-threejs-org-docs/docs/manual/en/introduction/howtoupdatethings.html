@@ -1,0 +1,220 @@
+<!DOCTYPE html><html><head><title>Updating resources – three.js docs</title></head><body><body>
+		<h1>How to update things</h1>
+		<div>
+			<p>All objects by default automatically update their matrices if they have been added to the scene with</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> </span><span class=/"kwd/">object</span><span class=/"pln/"> </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Object3D</span><span class=/"pun/">();</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"kwd/">object</span><span class=/"pln/"> </span><span class=/"pun/">);</span></code>
+			or if they are the child of another object that has been added to the scene:
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> object1 </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Object3D</span><span class=/"pun/">();</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> object2 </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Object3D</span><span class=/"pun/">();</span><span class=/"pln/">
+
+object1</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> object2 </span><span class=/"pun/">);</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> object1 </span><span class=/"pun/">);</span><span class=/"pln/"> </span><span class=/"com/">//object1 and object2 will automatically update their matrices</span></code>
+		</div>
+
+		<p>However, if you know the object will be static, you can disable this and update the transform matrix manually just when needed.</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">object</span><span class=/"pun/">.</span><span class=/"pln/">matrixAutoUpdate </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">false</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"kwd/">object</span><span class=/"pun/">.</span><span class=/"pln/">updateMatrix</span><span class=/"pun/">();</span></code>
+
+		<h2>BufferGeometry</h2>
+		<div>
+			<p>
+				BufferGeometries store information (such as vertex positions, face indices, normals, colors,
+				UVs, and any custom attributes) in <a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">buffers</a> - that is,
+				<a href=/"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays/" target=/"_blank/">typed arrays</a>.
+				This makes them generally faster than standard Geometries, at the cost of being somewhat harder to
+				work with.
+			</p>
+			<p>
+				With regards to updating BufferGeometries, the most important thing to understand is that
+				you cannot resize buffers (this is very costly,	basically the equivalent to creating a new geometry).
+				You can however update the content of buffers.
+			</p>
+			<p>
+				This means that if you know an attribute of your BufferGeometry will grow, say the number of vertices,
+				you must pre-allocate a buffer large enough to hold any new vertices that may be created. Of
+				course, this also means that there will be a maximum size for your BufferGeometry - there is
+				no way to create a BufferGeometry that can efficiently be extended indefinitely.
+			</p>
+			<p>
+				We'll use the example of a line that gets extended at render time. We'll allocate space
+				in the buffer for 500 vertices but draw only two at first, using <a class=/"links/" data-fragment=/"BufferGeometry.drawRange/" title=/"BufferGeometry.drawRange/" href=/"./index.html#api/en/core/BufferGeometry.drawRange/">BufferGeometry.drawRange</a>.
+			</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> MAX_POINTS </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">500</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"com/">// geometry</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> geometry </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">BufferGeometry</span><span class=/"pun/">();</span><span class=/"pln/">
+
+</span><span class=/"com/">// attributes</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> positions </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> </span><span class=/"typ/">Float32Array</span><span class=/"pun/">(</span><span class=/"pln/"> MAX_POINTS </span><span class=/"pun/">*</span><span class=/"pln/"> </span><span class=/"lit/">3</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/"> </span><span class=/"com/">// 3 vertices per point</span><span class=/"pln/">
+geometry</span><span class=/"pun/">.</span><span class=/"pln/">setAttribute</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'position'</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">BufferAttribute</span><span class=/"pun/">(</span><span class=/"pln/"> positions</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">3</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// draw range</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> drawCount </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">2</span><span class=/"pun/">;</span><span class=/"pln/"> </span><span class=/"com/">// draw the first 2 points, only</span><span class=/"pln/">
+geometry</span><span class=/"pun/">.</span><span class=/"pln/">setDrawRange</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> drawCount </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// material</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> material </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">LineBasicMaterial</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> color</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">0xff0000</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// line</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> line </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Line</span><span class=/"pun/">(</span><span class=/"pln/"> geometry</span><span class=/"pun/">,</span><span class=/"pln/"> material </span><span class=/"pun/">);</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> line </span><span class=/"pun/">);</span></code>
+		 	<p>
+				Next we'll randomly add points to the line using a pattern like:
+			</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> positionAttribute </span><span class=/"pun/">=</span><span class=/"pln/"> line</span><span class=/"pun/">.</span><span class=/"pln/">geometry</span><span class=/"pun/">.</span><span class=/"pln/">getAttribute</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'position'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+let x </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> y </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> z </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"kwd/">for</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> let i </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">;</span><span class=/"pln/"> i </span><span class=/"pun/">&lt;</span><span class=/"pln/"> positionAttribute</span><span class=/"pun/">.</span><span class=/"pln/">count</span><span class=/"pun/">;</span><span class=/"pln/"> i </span><span class=/"pun/">++</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+
+	positionAttribute</span><span class=/"pun/">.</span><span class=/"pln/">setXYZ</span><span class=/"pun/">(</span><span class=/"pln/"> i</span><span class=/"pun/">,</span><span class=/"pln/"> x</span><span class=/"pun/">,</span><span class=/"pln/"> y</span><span class=/"pun/">,</span><span class=/"pln/"> z </span><span class=/"pun/">);</span><span class=/"pln/">
+
+    x </span><span class=/"pun/">+=</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"typ/">Math</span><span class=/"pun/">.</span><span class=/"pln/">random</span><span class=/"pun/">()</span><span class=/"pln/"> </span><span class=/"pun/">-</span><span class=/"pln/"> </span><span class=/"lit/">0.5</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">*</span><span class=/"pln/"> </span><span class=/"lit/">30</span><span class=/"pun/">;</span><span class=/"pln/">
+    y </span><span class=/"pun/">+=</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"typ/">Math</span><span class=/"pun/">.</span><span class=/"pln/">random</span><span class=/"pun/">()</span><span class=/"pln/"> </span><span class=/"pun/">-</span><span class=/"pln/"> </span><span class=/"lit/">0.5</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">*</span><span class=/"pln/"> </span><span class=/"lit/">30</span><span class=/"pun/">;</span><span class=/"pln/">
+    z </span><span class=/"pun/">+=</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"typ/">Math</span><span class=/"pun/">.</span><span class=/"pln/">random</span><span class=/"pun/">()</span><span class=/"pln/"> </span><span class=/"pun/">-</span><span class=/"pln/"> </span><span class=/"lit/">0.5</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">*</span><span class=/"pln/"> </span><span class=/"lit/">30</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"pun/">}</span></code>
+			<p>
+				If you want to change the <em>number of points</em> rendered after the first render, do this:
+			</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">line</span><span class=/"pun/">.</span><span class=/"pln/">geometry</span><span class=/"pun/">.</span><span class=/"pln/">setDrawRange</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> newValue </span><span class=/"pun/">);</span></code>
+			<p>
+				If you want to change the position data values after the first render, you need to
+				set the needsUpdate flag like so:
+			</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">positionAttribute</span><span class=/"pun/">.</span><span class=/"pln/">needsUpdate </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">true</span><span class=/"pun/">;</span><span class=/"pln/"> </span><span class=/"com/">// required after the first render</span></code>
+
+			<p>
+				If you change the position data values after the initial render, you may need to recompute
+				bounding volumes so other features of the engine like view frustum culling or helpers properly work.
+			</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">line</span><span class=/"pun/">.</span><span class=/"pln/">geometry</span><span class=/"pun/">.</span><span class=/"pln/">computeBoundingBox</span><span class=/"pun/">();</span><span class=/"pln/">
+line</span><span class=/"pun/">.</span><span class=/"pln/">geometry</span><span class=/"pun/">.</span><span class=/"pln/">computeBoundingSphere</span><span class=/"pun/">();</span></code>
+
+			<p>
+				<a href=/"https://jsfiddle.net/t4m85pLr/1//" target=/"_blank/">Here is a fiddle</a> showing an animated line which you can adapt to your use case.
+			</p>
+
+			<h3>Examples</h3>
+
+			<p>
+				<a href=/"../examples/#webgl_custom_attributes/" target=/"_blank/">WebGL / custom / attributes</a><br>
+				<a href=/"../examples/#webgl_buffergeometry_custom_attributes_particles/" target=/"_blank/">WebGL / buffergeometry / custom / attributes / particles</a>
+			</p>
+
+		</div>
+
+		<h2>Materials</h2>
+		<div>
+			<p>All uniforms values can be changed freely (e.g. colors, textures, opacity, etc), values are sent to the shader every frame.</p>
+
+			<p>Also GLstate related parameters can change any time (depthTest, blending, polygonOffset, etc).</p>
+
+			<p>The following properties can't be easily changed at runtime (once the material is rendered at least once):</p>
+			<ul>
+				<li>numbers and types of uniforms</li>
+				<li>presence or not of
+					<ul>
+						<li>texture</li>
+						<li>fog</li>
+						<li>vertex colors</li>
+						<li>morphing</li>
+						<li>shadow map</li>
+						<li>alpha test</li>
+						<li>transparent</li>
+					</ul>
+				</li>
+			</ul>
+
+			<p>Changes in these require building of new shader program. You'll need to set</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">material</span><span class=/"pun/">.</span><span class=/"pln/">needsUpdate </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">true</span></code>
+
+			<p>Bear in mind this might be quite slow and induce jerkiness in framerate (especially on Windows, as shader compilation is slower in DirectX than OpenGL).</p>
+
+			<p>For smoother experience you can emulate changes in these features to some degree by having /"dummy/" values like zero intensity lights, white textures, or zero density fog.</p>
+
+			<p>You can freely change the material used for geometry chunks, however you cannot change how an object is divided into chunks (according to face materials). </p>
+
+			<h3>If you need to have different configurations of materials during runtime:</h3>
+			<p>If the number of materials / chunks is small, you could pre-divide the object beforehand (e.g. hair / face / body / upper clothes / trousers for a human, front / sides / top / glass / tire / interior for a car). </p>
+
+			<p>If the number is large (e.g. each face could be potentially different), consider a different solution, such as using attributes / textures to drive different per-face look.</p>
+
+			<h3>Examples</h3>
+			<p>
+				<a href=/"../examples/#webgl_materials_car/" target=/"_blank/">WebGL / materials / car</a><br>
+				<a href=/"../examples/#webgl_postprocessing_dof/" target=/"_blank/">WebGL / webgl_postprocessing / dof</a>
+			</p>
+		</div>
+
+
+		<h2>Textures</h2>
+		<div>
+			<p>Image, canvas, video and data textures need to have the following flag set if they are changed:</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">texture</span><span class=/"pun/">.</span><span class=/"pln/">needsUpdate </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">true</span><span class=/"pun/">;</span></code>
+			<p>Render targets update automatically.</p>
+
+			<h3>Examples</h3>
+			<p>
+				<a href=/"../examples/#webgl_materials_video/" target=/"_blank/">WebGL / materials / video</a><br>
+				<a href=/"../examples/#webgl_rtt/" target=/"_blank/">WebGL / rtt</a>
+			</p>
+
+		</div>
+
+		<h2>Cameras</h2>
+		<div>
+			<p>A camera's position and target is updated automatically. If you need to change</p>
+			<ul>
+				<li>
+					fov
+				</li>
+				<li>
+					aspect
+				</li>
+				<li>
+					near
+				</li>
+				<li>
+					far
+				</li>
+			</ul>
+			<p>
+				then you'll need to recompute the projection matrix:
+			</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">camera</span><span class=/"pun/">.</span><span class=/"pln/">aspect </span><span class=/"pun/">=</span><span class=/"pln/"> window</span><span class=/"pun/">.</span><span class=/"pln/">innerWidth </span><span class=/"pun/">/</span><span class=/"pln/"> window</span><span class=/"pun/">.</span><span class=/"pln/">innerHeight</span><span class=/"pun/">;</span><span class=/"pln/">
+camera</span><span class=/"pun/">.</span><span class=/"pln/">updateProjectionMatrix</span><span class=/"pun/">();</span></code>
+		</div>
+
+		<h2>InstancedMesh</h2>
+		<div>
+			<p>
+				<code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">InstancedMesh</span></code> is a class for conveniently access instanced rendering in <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">three</span><span class=/"pun/">.</span><span class=/"pln/">js</span></code>. Certain library features like view frustum culling or
+				ray casting rely on up-to-date bounding volumes (bounding sphere and bounding box). Because of the way how <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">InstancedMesh</span></code> works, the class 
+				has its own <a class=/"links/" data-fragment=/"InstancedMesh.boundingBox/" title=/"InstancedMesh.boundingBox/" href=/"./index.html#api/en/objects/InstancedMesh.boundingBox/">boundingBox</a> and <a class=/"links/" data-fragment=/"InstancedMesh.boundingSphere/" title=/"InstancedMesh.boundingSphere/" href=/"./index.html#api/en/objects/InstancedMesh.boundingSphere/">boundingSphere</a> properties that supersede
+				the bounding volumes on geometry level.
+			</p>
+			<p>
+				Similar to geometries you have to recompute the bounding box and sphere whenever you change the underlying data. In context of <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">InstancedMesh</span></code>, that
+				happens when you transform instances via <a class=/"links/" data-fragment=/"InstancedMesh.setMatrixAt/" title=/"InstancedMesh.setMatrixAt/" href=/"./index.html#api/en/objects/InstancedMesh.setMatrixAt/">setMatrixAt</a>(). You can use the same pattern like with geometries.
+			</p>
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">instancedMesh</span><span class=/"pun/">.</span><span class=/"pln/">computeBoundingBox</span><span class=/"pun/">();</span><span class=/"pln/">
+instancedMesh</span><span class=/"pun/">.</span><span class=/"pln/">computeBoundingSphere</span><span class=/"pun/">();</span></code>
+
+		</div>
+
+		<h2>SkinnedMesh</h2>
+		<div>
+			<p>
+				<code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">SkinnedMesh</span></code> follows the same principles like <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">InstancedMesh</span></code> in context of bounding volumes. Meaning the class has its own version of
+				<a class=/"links/" data-fragment=/"SkinnedMesh.boundingBox/" title=/"SkinnedMesh.boundingBox/" href=/"./index.html#api/en/objects/SkinnedMesh.boundingBox/">boundingBox</a> and <a class=/"links/" data-fragment=/"SkinnedMesh.boundingSphere/" title=/"SkinnedMesh.boundingSphere/" href=/"./index.html#api/en/objects/SkinnedMesh.boundingSphere/">boundingSphere</a> to correctly enclose animated meshes.
+				When calling <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">computeBoundingBox</span><span class=/"pun/">()</span></code> and <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">computeBoundingSphere</span><span class=/"pun/">()</span></code>, the class computes the respective bounding volumes based on the current
+				bone tranformation (or in other words the current animation state).
+			</p>
+		</div>
+
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

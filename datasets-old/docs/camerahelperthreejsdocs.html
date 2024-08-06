@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head><title>CameraHelper – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> → <a class="links" data-fragment="Line" title="Line" href="./index.html#api/en/objects/Line">Line</a> → <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> →
+
+		<h1>CameraHelper</h1>
+
+		<p class="desc">
+			This helps with visualizing what a camera contains in its frustum. It
+			visualizes the frustum of a camera using a <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a>.<br><br>
+			CameraHelper must be a child of the scene.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> camera </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PerspectiveCamera</span><span class="pun">(</span><span class="pln"> </span><span class="lit">75</span><span class="pun">,</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerWidth </span><span class="pun">/</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerHeight</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1000</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> helper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">CameraHelper</span><span class="pun">(</span><span class="pln"> camera </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> helper </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href="../examples/#webgl_camera" target="_blank">WebGL / camera</a><br>
+			<a href="../examples/#webgl_geometry_extrude_splines" target="_blank">WebGL / extrude / splines</a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>CameraHelper( camera : <a class="param links" data-fragment="Camera" href="./index.html#api/en/cameras/Camera">Camera</a> )</h3>
+		<p>
+			<a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">camera</a> -- The camera to visualize.<br><br>
+
+			This create a new CameraHelper for the specified camera.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="CameraHelper.camera" target="_parent" title="CameraHelper.camera" href="./index.html#api/en/helpers/CameraHelper.camera">#</a> .<a class="links" data-fragment="CameraHelper.camera" id="camera" href="./index.html#api/en/helpers/CameraHelper.camera">camera</a>  : <a class="param links" data-fragment="Camera" href="./index.html#api/en/cameras/Camera">Camera</a></h3>
+		<p>The camera being visualized.</p>
+
+		<h3><a class="permalink links" data-fragment="CameraHelper.pointMap" target="_parent" title="CameraHelper.pointMap" href="./index.html#api/en/helpers/CameraHelper.pointMap">#</a> .<a class="links" data-fragment="CameraHelper.pointMap" id="pointMap" href="./index.html#api/en/helpers/CameraHelper.pointMap">pointMap</a>  : <span class="param">Object</span></h3>
+		<p>This contains the points used to visualize the camera.</p>
+
+		<h3><a class="permalink links" data-fragment="CameraHelper.matrix" target="_parent" title="CameraHelper.matrix" href="./index.html#api/en/helpers/CameraHelper.matrix">#</a> .<a class="links" data-fragment="CameraHelper.matrix" id="matrix" href="./index.html#api/en/helpers/CameraHelper.matrix">matrix</a>  : <span class="param">Object</span></h3>
+		<p>Reference to the <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">camera.matrixWorld</a>.</p>
+
+		<h3><a class="permalink links" data-fragment="CameraHelper.matrixAutoUpdate" target="_parent" title="CameraHelper.matrixAutoUpdate" href="./index.html#api/en/helpers/CameraHelper.matrixAutoUpdate">#</a> .<a class="links" data-fragment="CameraHelper.matrixAutoUpdate" id="matrixAutoUpdate" href="./index.html#api/en/helpers/CameraHelper.matrixAutoUpdate">matrixAutoUpdate</a>  : <span class="param">Object</span></h3>
+		<p>
+			See <a class="links" data-fragment="Object3D.matrixAutoUpdate" title="Object3D.matrixAutoUpdate" href="./index.html#api/en/core/Object3D.matrixAutoUpdate">Object3D.matrixAutoUpdate</a>. Set to <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code> here as the helper is
+			using the camera's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a>.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="CameraHelper.dispose" target="_parent" title="CameraHelper.dispose" href="./index.html#api/en/helpers/CameraHelper.dispose">#</a> .<a class="links" data-fragment="CameraHelper.dispose" id="dispose" href="./index.html#api/en/helpers/CameraHelper.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="CameraHelper.setColors" target="_parent" title="CameraHelper.setColors" href="./index.html#api/en/helpers/CameraHelper.setColors">#</a> .<a class="links" data-fragment="CameraHelper.setColors" id="setColors" href="./index.html#api/en/helpers/CameraHelper.setColors">setColors</a> ( frustum : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a>, cone : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a>, up : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a>, target : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a>, cross : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a> ) : <span class="param">this</span>
+		</h3>
+		<p>Defines the colors of the helper.</p>
+
+		<h3><a class="permalink links" data-fragment="CameraHelper.update" target="_parent" title="CameraHelper.update" href="./index.html#api/en/helpers/CameraHelper.update">#</a> .<a class="links" data-fragment="CameraHelper.update" id="update" href="./index.html#api/en/helpers/CameraHelper.update">update</a> () : <span class="param">undefined</span></h3>
+		<p>Updates the helper based on the projectionMatrix of the camera.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/helpers/CameraHelper.js" target="_blank">src/helpers/CameraHelper.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

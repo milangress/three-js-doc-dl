@@ -1,0 +1,450 @@
+<!DOCTYPE html><html><head><title>ShaderMaterial – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> →
+
+		<h1>ShaderMaterial</h1>
+
+		<p class=/"desc/">
+			A material rendered with custom shaders. A shader is a small program
+			written in
+			<a href=/"https://www.khronos.org/files/opengles_shading_language.pdf/" target=/"_blank/">GLSL</a>
+			that runs on the GPU. You may want to use a custom shader if you need to:
+		</p>
+
+		<ul>
+			<li>
+				implement an effect not included with any of the built-in <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">materials</a>
+			</li>
+			<li>
+				combine many objects into a single <a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> in order to
+				improve performance
+			</li>
+		</ul>
+		There are the following notes to bear in mind when using a <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">ShaderMaterial</span></code>:
+
+		<ul>
+			<li>
+				A <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">ShaderMaterial</span></code> will only be rendered properly by
+				<a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGLRenderer</a>, since the GLSL code in the
+				<a href=/"https://en.wikipedia.org/wiki/Shader#Vertex_shaders/" target=/"_blank/">vertexShader</a>
+				and <a href=/"https://en.wikipedia.org/wiki/Shader#Pixel_shaders/" target=/"_blank/">fragmentShader</a> 
+				properties must be compiled and run on the GPU using WebGL.
+			</li>
+			<li>
+				As of THREE r72, directly assigning attributes in a ShaderMaterial is no
+				longer supported. A <a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> instance must be used instead,
+				using <a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a> instances to define custom attributes.
+			</li>
+			<li>
+				As of THREE r77, <a class=/"links/" data-fragment=/"WebGLRenderTarget/" title=/"WebGLRenderTarget/" href=/"./index.html#api/en/renderers/WebGLRenderTarget/">WebGLRenderTarget</a> or
+				<a class=/"links/" data-fragment=/"WebGLCubeRenderTarget/" title=/"WebGLCubeRenderTarget/" href=/"./index.html#api/en/renderers/WebGLCubeRenderTarget/">WebGLCubeRenderTarget</a> instances are no longer supposed to be used
+				as uniforms. Their <a class=/"links/" data-fragment=/"Texture/" title=/"Texture/" href=/"./index.html#api/en/textures/Texture/">texture</a> property must be used instead.
+			</li>
+			<li>
+				Built in attributes and uniforms are passed to the shaders along with
+				your code. If you don't want the <a class=/"links/" data-fragment=/"WebGLProgram/" title=/"WebGLProgram/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram/">WebGLProgram</a> to add anything to
+				your shader code, you can use <a class=/"links/" data-fragment=/"RawShaderMaterial/" title=/"RawShaderMaterial/" href=/"./index.html#api/en/materials/RawShaderMaterial/">RawShaderMaterial</a> instead of this
+				class.
+			</li>
+			<li>
+				You can use the directive #pragma unroll_loop_start and #pragma
+				unroll_loop_end in order to unroll a <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">for</span></code> loop in GLSL by the shader
+				preprocessor. The directive has to be placed right above the loop. The
+				loop formatting has to correspond to a defined standard.
+				<ul>
+					<li>
+						The loop has to be
+						<a href=/"https://en.wikipedia.org/wiki/Normalized_loop/" target=/"_blank/">normalized</a>.
+					</li>
+					<li>The loop variable has to be <strong>i</strong>.</li>
+					<li>
+						The value <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">UNROLLED_LOOP_INDEX</span></code> will be replaced with the explicitly
+						value of <strong>i</strong> for the given iteration and can be used in preprocessor
+						statements.
+					</li>
+				</ul>
+				<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">#pragma</span><span class=/"pln/"> unroll_loop_start 
+</span><span class=/"kwd/">for</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"kwd/">int</span><span class=/"pln/"> i </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">;</span><span class=/"pln/"> i </span><span class=/"pun/">&lt;</span><span class=/"pln/"> </span><span class=/"lit/">10</span><span class=/"pun/">;</span><span class=/"pln/"> i </span><span class=/"pun/">++</span><span class=/"pln/"> </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+	 </span><span class=/"com/">// ... </span><span class=/"pln/">
+ </span><span class=/"pun/">}</span><span class=/"pln/">
+</span><span class=/"com/">#pragma</span><span class=/"pln/"> unroll_loop_end</span></code>
+			</li>
+		</ul>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> material </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">ShaderMaterial</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+
+	uniforms</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+		time</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> value</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">1.0</span><span class=/"pln/"> </span><span class=/"pun/">},</span><span class=/"pln/">
+		resolution</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> value</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Vector2</span><span class=/"pun/">()</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/">
+	</span><span class=/"pun/">},</span><span class=/"pln/">
+
+	vertexShader</span><span class=/"pun/">:</span><span class=/"pln/"> document</span><span class=/"pun/">.</span><span class=/"pln/">getElementById</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'vertexShader'</span><span class=/"pln/"> </span><span class=/"pun/">).</span><span class=/"pln/">textContent</span><span class=/"pun/">,</span><span class=/"pln/">
+	fragmentShader</span><span class=/"pun/">:</span><span class=/"pln/"> document</span><span class=/"pun/">.</span><span class=/"pln/">getElementById</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'fragmentShader'</span><span class=/"pln/"> </span><span class=/"pun/">).</span><span class=/"pln/">textContent
+
+</span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href=/"../examples/#webgl_buffergeometry_custom_attributes_particles/" target=/"_blank/">webgl / buffergeometry / custom / attributes / particles</a><br>
+			<a href=/"../examples/#webgl_buffergeometry_selective_draw/" target=/"_blank/">webgl / buffergeometry / selective / draw</a><br>
+			<a href=/"../examples/#webgl_custom_attributes/" target=/"_blank/">webgl / custom / attributes</a><br>
+			<a href=/"../examples/#webgl_custom_attributes_lines/" target=/"_blank/">webgl / custom / attributes / lines</a><br>
+			<a href=/"../examples/#webgl_custom_attributes_points/" target=/"_blank/">webgl / custom / attributes / points</a><br>
+			<a href=/"../examples/#webgl_custom_attributes_points2/" target=/"_blank/">webgl / custom / attributes / points2</a><br>
+			<a href=/"../examples/#webgl_custom_attributes_points3/" target=/"_blank/">webgl / custom / attributes / points3</a><br>
+			<a href=/"../examples/#webgl_depth_texture/" target=/"_blank/">webgl / depth / texture</a><br>
+			<a href=/"../examples/#webgl_gpgpu_birds/" target=/"_blank/">webgl / gpgpu / birds</a><br>
+			<a href=/"../examples/#webgl_gpgpu_protoplanet/" target=/"_blank/">webgl / gpgpu / protoplanet</a><br>
+			<a href=/"../examples/#webgl_gpgpu_water/" target=/"_blank/">webgl / gpgpu / water</a><br>
+			<a href=/"../examples/#webgl_interactive_points/" target=/"_blank/">webgl / interactive / points</a><br>
+			<a href=/"../examples/#webgl_video_kinect/" target=/"_blank/">webgl / video / kinect</a><br>
+			<a href=/"../examples/#webgl_lights_hemisphere/" target=/"_blank/">webgl / lights / hemisphere</a><br>
+			<a href=/"../examples/#webgl_marchingcubes/" target=/"_blank/">webgl / marchingcubes</a><br>
+			<a href=/"../examples/#webgl_materials_envmaps/" target=/"_blank/">webgl / materials / envmaps</a><br>
+			<a href=/"../examples/#webgl_materials_wireframe/" target=/"_blank/">webgl / materials / wireframe</a><br>
+			<a href=/"../examples/#webgl_modifier_tessellation/" target=/"_blank/">webgl / modifier / tessellation</a><br>
+			<a href=/"../examples/#webgl_postprocessing_dof2/" target=/"_blank/">webgl / postprocessing / dof2</a><br>
+			<a href=/"../examples/#webgl_postprocessing_godrays/" target=/"_blank/">webgl / postprocessing / godrays</a>
+		</p>
+
+		<h2>Vertex shaders and fragment shaders</h2>
+
+		<div>
+			<p>You can specify two different types of shaders for each material:</p>
+			<ul>
+				<li>
+					The vertex shader runs first; it receives <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">attributes</span></code>, calculates /
+					manipulates the position of each individual vertex, and passes
+					additional data (<code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">varying</span></code>s) to the fragment shader.
+				</li>
+				<li>
+					The fragment ( or pixel ) shader runs second; it sets the color of
+					each individual /"fragment/" (pixel) rendered to the screen.
+				</li>
+			</ul>
+			<p>
+				There are three types of variables in shaders: uniforms, attributes, and
+				varyings:
+			</p>
+			<ul>
+				<li>
+					<code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">Uniforms</span></code> are variables that have the same value for all vertices -
+					lighting, fog, and shadow maps are examples of data that would be
+					stored in uniforms. Uniforms can be accessed by both the vertex shader
+					and the fragment shader.
+				</li>
+				<li>
+					<code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">Attributes</span></code> are variables associated with each vertex---for instance,
+					the vertex position, face normal, and vertex color are all examples of
+					data that would be stored in attributes. Attributes can <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">only</span></code> be
+					accessed within the vertex shader.
+				</li>
+				<li>
+					<code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">Varyings</span></code> are variables that are passed from the vertex shader to the
+					fragment shader. For each fragment, the value of each varying will be
+					smoothly interpolated from the values of adjacent vertices.
+				</li>
+			</ul>
+			<p>
+				Note that <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">within</span></code> the shader itself, uniforms and attributes act like
+				constants; you can only modify their values by passing different values
+				to the buffers from your JavaScript code.
+			</p>
+		</div>
+
+		<h2>Built-in attributes and uniforms</h2>
+
+		<div>
+			<p>
+				The <a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGLRenderer</a> provides many attributes and uniforms to
+				shaders by default; definitions of these variables are prepended to your
+				<code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">fragmentShader</span></code> and <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">vertexShader</span></code> code by the <a class=/"links/" data-fragment=/"WebGLProgram/" title=/"WebGLProgram/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram/">WebGLProgram</a> when
+				the shader is compiled; you don't need to declare them yourself. See
+				<a class=/"links/" data-fragment=/"WebGLProgram/" title=/"WebGLProgram/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram/">WebGLProgram</a> for details of these variables.
+			</p>
+			<p>
+				Some of these uniforms or attributes (e.g. those pertaining lighting,
+				fog, etc.) require properties to be set on the material in order for
+				<a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGLRenderer</a> to copy the appropriate values to the GPU - make
+				sure to set these flags if you want to use these features in your own
+				shader.
+			</p>
+			<p>
+				If you don't want <a class=/"links/" data-fragment=/"WebGLProgram/" title=/"WebGLProgram/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram/">WebGLProgram</a> to add anything to your shader
+				code, you can use <a class=/"links/" data-fragment=/"RawShaderMaterial/" title=/"RawShaderMaterial/" href=/"./index.html#api/en/materials/RawShaderMaterial/">RawShaderMaterial</a> instead of this class.
+			</p>
+		</div>
+
+		<h2>Custom attributes and uniforms</h2>
+
+		<div>
+			<p>
+				Both custom attributes and uniforms must be declared in your GLSL shader
+				code (within <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">vertexShader</span></code> and/or <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">fragmentShader</span></code>). Custom uniforms
+				must be defined in <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">both</span></code> the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">uniforms</span></code> property of your
+				<code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">ShaderMaterial</span></code>, whereas any custom attributes must be defined via
+				<a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a> instances. Note that <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">varying</span></code>s only need to be
+				declared within the shader code (not within the material).
+			</p>
+			<p>
+				To declare a custom attribute, please reference the
+				<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> page for an overview, and the
+				<a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a> page for a detailed look at the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">BufferAttribute</span></code>
+				API.
+			</p>
+			<p>
+				When creating your attributes, each typed array that you create to hold
+				your attribute's data must be a multiple of your data type's size. For
+				example, if your attribute is a <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">THREE.Vector3</a> type, and
+				you have 3000 vertices in your <a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a>, your typed array
+				value must be created with a length of 3000 * 3, or 9000 (one value
+				per-component). A table of each data type's size is shown below for
+				reference:
+			</p>
+
+			<table>
+				<caption>
+					<a id=/"attribute-sizes/">Attribute sizes</a>
+				</caption>
+				<thead>
+					<tr>
+						<th>GLSL type</th>
+						<th>JavaScript type</th>
+						<th>Size</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>float</td>
+						<td><a class=/"links/" data-fragment=/"Number/" title=/"Number/">Number</a></td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>vec2</td>
+						<td><a class=/"links/" data-fragment=/"Vector2/" title=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">THREE.Vector2</a></td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>vec3</td>
+						<td><a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">THREE.Vector3</a></td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>vec3</td>
+						<td><a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">THREE.Color</a></td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>vec4</td>
+						<td><a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">THREE.Vector4</a></td>
+						<td>4</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>
+				Note that attribute buffers are <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">not</span></code> refreshed automatically when their
+				values change. To update custom attributes, set the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">needsUpdate</span></code> flag
+				to true on the <a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a> of the geometry (see
+				<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> for further details).
+			</p>
+
+			<p>
+				To declare a custom <a class=/"links/" data-fragment=/"Uniform/" title=/"Uniform/" href=/"./index.html#api/en/core/Uniform/">Uniform</a>, use the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">uniforms</span></code> property:
+				<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">uniforms</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> 
+	time</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> value</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">1.0</span><span class=/"pln/"> </span><span class=/"pun/">},</span><span class=/"pln/">
+	resolution</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> value</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Vector2</span><span class=/"pun/">()</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> 
+</span><span class=/"pun/">}</span></code>
+			</p>
+
+			<p>
+				You're recommended to update custom <a class=/"links/" data-fragment=/"Uniform/" title=/"Uniform/" href=/"./index.html#api/en/core/Uniform/">Uniform</a> values depending on
+				<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">object</a> and <a class=/"links/" data-fragment=/"Camera/" title=/"Camera/" href=/"./index.html#api/en/cameras/Camera/">camera</a> in
+				<a class=/"links/" data-fragment=/"Object3D.onBeforeRender/" title=/"Object3D.onBeforeRender/" href=/"./index.html#api/en/core/Object3D.onBeforeRender/">Object3D.onBeforeRender</a> because <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> can be shared
+				among <a class=/"links/" data-fragment=/"Mesh/" title=/"Mesh/" href=/"./index.html#api/en/objects/Mesh/">meshes</a>, <a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">matrixWorld</a> of <a class=/"links/" data-fragment=/"Scene/" title=/"Scene/" href=/"./index.html#api/en/scenes/Scene/">Scene</a> and
+				<a class=/"links/" data-fragment=/"Camera/" title=/"Camera/" href=/"./index.html#api/en/cameras/Camera/">Camera</a> are updated in <a class=/"links/" data-fragment=/"WebGLRenderer.render/" title=/"WebGLRenderer.render/" href=/"./index.html#api/en/renderers/WebGLRenderer.render/">WebGLRenderer.render</a>, and some
+				effects render a <a class=/"links/" data-fragment=/"Scene/" title=/"Scene/" href=/"./index.html#api/en/scenes/Scene/">scene</a> with their own private <a class=/"links/" data-fragment=/"Camera/" title=/"Camera/" href=/"./index.html#api/en/cameras/Camera/">cameras</a>.
+			</p>
+		</div>
+
+		<h2>Constructor</h2>
+
+		<h3>ShaderMaterial( parameters : <span class=/"param/">Object</span> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object/" title=/"Object/">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a>) can be
+			passed in here.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.clipping/" target=/"_parent/" title=/"ShaderMaterial.clipping/" href=/"./index.html#api/en/materials/ShaderMaterial.clipping/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.clipping/" id=/"clipping/" href=/"./index.html#api/en/materials/ShaderMaterial.clipping/">clipping</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Defines whether this material supports clipping; true to let the renderer
+			pass the clippingPlanes uniform. Default is false.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.defaultAttributeValues/" target=/"_parent/" title=/"ShaderMaterial.defaultAttributeValues/" href=/"./index.html#api/en/materials/ShaderMaterial.defaultAttributeValues/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.defaultAttributeValues/" id=/"defaultAttributeValues/" href=/"./index.html#api/en/materials/ShaderMaterial.defaultAttributeValues/">defaultAttributeValues</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			When the rendered geometry doesn't include these attributes but the
+			material does, these default values will be passed to the shaders. This
+			avoids errors when buffer data is missing.
+
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">this</span><span class=/"pun/">.</span><span class=/"pln/">defaultAttributeValues </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> 
+	</span><span class=/"str/">'color'</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">[</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pln/"> </span><span class=/"pun/">],</span><span class=/"pln/"> 
+	</span><span class=/"str/">'uv'</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">[</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pln/"> </span><span class=/"pun/">],</span><span class=/"pln/">
+	</span><span class=/"str/">'uv1'</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">[</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pln/"> </span><span class=/"pun/">]</span><span class=/"pln/"> 
+</span><span class=/"pun/">};</span></code>
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.defines/" target=/"_parent/" title=/"ShaderMaterial.defines/" href=/"./index.html#api/en/materials/ShaderMaterial.defines/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.defines/" id=/"defines/" href=/"./index.html#api/en/materials/ShaderMaterial.defines/">defines</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			Defines custom constants using <code class=/"inline prettyprint/" translate=/"no/"><span class=/"com/">#define</span></code> directives within the GLSL code
+			for both the vertex shader and the fragment shader; each key/value pair
+			yields another directive:
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">defines</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> 
+	FOO</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">15</span><span class=/"pun/">,</span><span class=/"pln/"> 
+	BAR</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"kwd/">true</span><span class=/"pln/"> 
+</span><span class=/"pun/">}</span></code>
+			yields the lines
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">#define</span><span class=/"pln/"> FOO </span><span class=/"lit/">15</span><span class=/"pln/"> 
+</span><span class=/"com/">#define</span><span class=/"pln/"> BAR </span><span class=/"kwd/">true</span></code>
+			in the GLSL code.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.extensions/" target=/"_parent/" title=/"ShaderMaterial.extensions/" href=/"./index.html#api/en/materials/ShaderMaterial.extensions/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.extensions/" id=/"extensions/" href=/"./index.html#api/en/materials/ShaderMaterial.extensions/">extensions</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			An object with the following properties:
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">this</span><span class=/"pun/">.</span><span class=/"pln/">extensions </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> 
+	clipCullDistance</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"kwd/">false</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"com/">// set to use vertex shader clipping</span><span class=/"pln/">
+	multiDraw</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"kwd/">false</span><span class=/"pln/"> </span><span class=/"com/">// set to use vertex shader multi_draw / enable gl_DrawID</span><span class=/"pln/">
+</span><span class=/"pun/">};</span></code>
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.fog/" target=/"_parent/" title=/"ShaderMaterial.fog/" href=/"./index.html#api/en/materials/ShaderMaterial.fog/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.fog/" id=/"fog/" href=/"./index.html#api/en/materials/ShaderMaterial.fog/">fog</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Define whether the material color is affected by global fog settings; true
+			to pass fog uniforms to the shader. Default is false.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.fragmentShader/" target=/"_parent/" title=/"ShaderMaterial.fragmentShader/" href=/"./index.html#api/en/materials/ShaderMaterial.fragmentShader/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.fragmentShader/" id=/"fragmentShader/" href=/"./index.html#api/en/materials/ShaderMaterial.fragmentShader/">fragmentShader</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			Fragment shader GLSL code. This is the actual code for the shader. In the
+			example above, the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">vertexShader</span></code> and <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">fragmentShader</span></code> code is extracted
+			from the DOM; it could be passed as a string directly or loaded via AJAX
+			instead.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.glslVersion/" target=/"_parent/" title=/"ShaderMaterial.glslVersion/" href=/"./index.html#api/en/materials/ShaderMaterial.glslVersion/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.glslVersion/" id=/"glslVersion/" href=/"./index.html#api/en/materials/ShaderMaterial.glslVersion/">glslVersion</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			Defines the GLSL version of custom shader code. Valid values are
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"pln/">GLSL1</span></code> or <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"pln/">GLSL3</span></code>. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">null</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.index0AttributeName/" target=/"_parent/" title=/"ShaderMaterial.index0AttributeName/" href=/"./index.html#api/en/materials/ShaderMaterial.index0AttributeName/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.index0AttributeName/" id=/"index0AttributeName/" href=/"./index.html#api/en/materials/ShaderMaterial.index0AttributeName/">index0AttributeName</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			If set, this calls
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bindAttribLocation/" target=/"_blank/">gl.bindAttribLocation</a> 
+			to bind a generic vertex index to an attribute variable. Default is undefined.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.isShaderMaterial/" target=/"_parent/" title=/"ShaderMaterial.isShaderMaterial/" href=/"./index.html#api/en/materials/ShaderMaterial.isShaderMaterial/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.isShaderMaterial/" id=/"isShaderMaterial/" href=/"./index.html#api/en/materials/ShaderMaterial.isShaderMaterial/">isShaderMaterial</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type ShaderMaterial.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.lights/" target=/"_parent/" title=/"ShaderMaterial.lights/" href=/"./index.html#api/en/materials/ShaderMaterial.lights/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.lights/" id=/"lights/" href=/"./index.html#api/en/materials/ShaderMaterial.lights/">lights</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Defines whether this material uses lighting; true to pass uniform data
+			related to lighting to this shader. Default is false.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.linewidth/" target=/"_parent/" title=/"ShaderMaterial.linewidth/" href=/"./index.html#api/en/materials/ShaderMaterial.linewidth/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.linewidth/" id=/"linewidth/" href=/"./index.html#api/en/materials/ShaderMaterial.linewidth/">linewidth</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Controls wireframe thickness. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br><br>
+
+			Due to limitations of the
+			<a href=/"https://www.khronos.org/registry/OpenGL/specs/gl/glspec46.core.pdf/" target=/"_blank/">OpenGL Core Profile</a> 
+			with the <a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGL</a> renderer on most
+			platforms linewidth will always be <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code> regardless of the set value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.flatShading/" target=/"_parent/" title=/"ShaderMaterial.flatShading/" href=/"./index.html#api/en/materials/ShaderMaterial.flatShading/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.flatShading/" id=/"flatShading/" href=/"./index.html#api/en/materials/ShaderMaterial.flatShading/">flatShading</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Define whether the material is rendered with flat shading. 
+			Default is false.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.uniforms/" target=/"_parent/" title=/"ShaderMaterial.uniforms/" href=/"./index.html#api/en/materials/ShaderMaterial.uniforms/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.uniforms/" id=/"uniforms/" href=/"./index.html#api/en/materials/ShaderMaterial.uniforms/">uniforms</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			An object of the form:
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pun/">{</span><span class=/"pln/"> 
+	</span><span class=/"str/">/"uniform1/"</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> value</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">1.0</span><span class=/"pln/"> </span><span class=/"pun/">},</span><span class=/"pln/"> 
+	</span><span class=/"str/">/"uniform2/"</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> value</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">2</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> 
+</span><span class=/"pun/">}</span></code>
+			specifying the uniforms to be passed to the shader code; keys are uniform
+			names, values are definitions of the form
+			<code class=/" prettyprint/" translate=/"no/"><span class=/"pun/">{</span><span class=/"pln/">
+	value</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">1.0</span><span class=/"pln/"> 
+</span><span class=/"pun/">}</span></code>
+			where <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">value</span></code> is the value of the uniform. Names must match the name of
+			the uniform, as defined in the GLSL code. Note that uniforms are refreshed
+			on every frame, so updating the value of the uniform will immediately
+			update the value available to the GLSL code.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.uniformsNeedUpdate/" target=/"_parent/" title=/"ShaderMaterial.uniformsNeedUpdate/" href=/"./index.html#api/en/materials/ShaderMaterial.uniformsNeedUpdate/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.uniformsNeedUpdate/" id=/"uniformsNeedUpdate/" href=/"./index.html#api/en/materials/ShaderMaterial.uniformsNeedUpdate/">uniformsNeedUpdate</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Can be used to force a uniform update while changing uniforms in
+			<a class=/"links/" data-fragment=/"Object3D.onBeforeRender/" title=/"Object3D.onBeforeRender/" href=/"./index.html#api/en/core/Object3D.onBeforeRender/">Object3D.onBeforeRender</a>(). Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.vertexColors/" target=/"_parent/" title=/"ShaderMaterial.vertexColors/" href=/"./index.html#api/en/materials/ShaderMaterial.vertexColors/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.vertexColors/" id=/"vertexColors/" href=/"./index.html#api/en/materials/ShaderMaterial.vertexColors/">vertexColors</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Defines whether vertex coloring is used. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.vertexShader/" target=/"_parent/" title=/"ShaderMaterial.vertexShader/" href=/"./index.html#api/en/materials/ShaderMaterial.vertexShader/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.vertexShader/" id=/"vertexShader/" href=/"./index.html#api/en/materials/ShaderMaterial.vertexShader/">vertexShader</a>  : <span class=/"param/">String</span></h3>
+		<p>
+			Vertex shader GLSL code. This is the actual code for the shader. In the
+			example above, the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">vertexShader</span></code> and <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">fragmentShader</span></code> code is extracted
+			from the DOM; it could be passed as a string directly or loaded via AJAX
+			instead.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.wireframe/" target=/"_parent/" title=/"ShaderMaterial.wireframe/" href=/"./index.html#api/en/materials/ShaderMaterial.wireframe/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.wireframe/" id=/"wireframe/" href=/"./index.html#api/en/materials/ShaderMaterial.wireframe/">wireframe</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Render geometry as wireframe (using GL_LINES instead of GL_TRIANGLES).
+			Default is false (i.e. render as flat polygons).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.wireframeLinewidth/" target=/"_parent/" title=/"ShaderMaterial.wireframeLinewidth/" href=/"./index.html#api/en/materials/ShaderMaterial.wireframeLinewidth/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.wireframeLinewidth/" id=/"wireframeLinewidth/" href=/"./index.html#api/en/materials/ShaderMaterial.wireframeLinewidth/">wireframeLinewidth</a>  : <span class=/"param/">Float</span></h3>
+		<p>
+			Controls wireframe thickness. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br><br>
+
+			Due to limitations of the
+			<a href=/"https://www.khronos.org/registry/OpenGL/specs/gl/glspec46.core.pdf/" target=/"_blank/">OpenGL Core Profile</a> 
+			with the <a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGL</a> renderer on most
+			platforms linewidth will always be <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code> regardless of the set value.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> class for common methods.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShaderMaterial.clone/" target=/"_parent/" title=/"ShaderMaterial.clone/" href=/"./index.html#api/en/materials/ShaderMaterial.clone/">#</a> .<a class=/"links/" data-fragment=/"ShaderMaterial.clone/" id=/"clone/" href=/"./index.html#api/en/materials/ShaderMaterial.clone/">clone</a> () : <a class=/"param links/" data-fragment=/"ShaderMaterial/" href=/"./index.html#api/en/materials/ShaderMaterial/">ShaderMaterial</a></h3>
+		<p>
+			Generates a shallow copy of this material. Note that the vertexShader and
+			fragmentShader are copied <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">by</span><span class=/"pln/"> reference</span></code>, as are the definitions of the
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">attributes</span></code>; this means that clones of the material will share the same
+			compiled <a class=/"links/" data-fragment=/"WebGLProgram/" title=/"WebGLProgram/" href=/"./index.html#api/en/renderers/webgl/WebGLProgram/">WebGLProgram</a>. However, the <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">uniforms</span></code> are copied <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">by</span><span class=/"pln/"> value</span></code>, which allows you to have different sets of uniforms for different
+			copies of the material.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/materials/ShaderMaterial.js/" target=/"_blank/">src/materials/ShaderMaterial.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

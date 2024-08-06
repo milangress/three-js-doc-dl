@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><title>SkeletonHelper – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> → <a class="links" data-fragment="Line" title="Line" href="./index.html#api/en/objects/Line">Line</a> → <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> →
+
+		<h1>SkeletonHelper</h1>
+
+		<p class="desc">
+			A helper object to assist with visualizing a <a class="links" data-fragment="Skeleton" title="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a>. The
+			helper is rendered using a <a class="links" data-fragment="LineBasicMaterial" title="LineBasicMaterial" href="./index.html#api/en/materials/LineBasicMaterial">LineBasicMaterial</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> helper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">SkeletonHelper</span><span class="pun">(</span><span class="pln"> skinnedMesh </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> helper </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#webgl_animation_skinning_blending" target="_blank">WebGL / animation / skinning / blending</a><br>
+			<a href="../examples/#webgl_animation_skinning_morph" target="_blank">WebGL / animation / skinning / morph</a><br>
+			<a href="../examples/#webgl_loader_bvh" target="_blank">WebGL / loader / bvh </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>SkeletonHelper( object : <a class="param links" data-fragment="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> )</h3>
+		<p>
+			object -- Usually an instance of <a class="links" data-fragment="SkinnedMesh" title="SkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh">SkinnedMesh</a>. However, any instance
+			of <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> can be used if it represents a hierarchy of <a class="links" data-fragment="Bone" title="Bone" href="./index.html#api/en/objects/Bone">Bone</a>s (via <a class="links" data-fragment="Object3D.children" title="Object3D.children" href="./index.html#api/en/core/Object3D.children">Object3D.children</a>).
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="SkeletonHelper.bones" target="_parent" title="SkeletonHelper.bones" href="./index.html#api/en/helpers/SkeletonHelper.bones">#</a> .<a class="links" data-fragment="SkeletonHelper.bones" id="bones" href="./index.html#api/en/helpers/SkeletonHelper.bones">bones</a>  : <span class="param">Array</span></h3>
+		<p>The list of bones that the helper renders as <a class="links" data-fragment="Line" title="Line" href="./index.html#api/en/objects/Line">Lines</a>.</p>
+
+		<h3><a class="permalink links" data-fragment="SkeletonHelper.isSkeletonHelper" target="_parent" title="SkeletonHelper.isSkeletonHelper" href="./index.html#api/en/helpers/SkeletonHelper.isSkeletonHelper">#</a> .<a class="links" data-fragment="SkeletonHelper.isSkeletonHelper" id="isSkeletonHelper" href="./index.html#api/en/helpers/SkeletonHelper.isSkeletonHelper">isSkeletonHelper</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type SkeletonHelper.</p>
+
+		<h3><a class="permalink links" data-fragment="SkeletonHelper.root" target="_parent" title="SkeletonHelper.root" href="./index.html#api/en/helpers/SkeletonHelper.root">#</a> .<a class="links" data-fragment="SkeletonHelper.root" id="root" href="./index.html#api/en/helpers/SkeletonHelper.root">root</a>  : <a class="param links" data-fragment="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a></h3>
+		<p>The object passed in the constructor.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="SkeletonHelper.dispose" target="_parent" title="SkeletonHelper.dispose" href="./index.html#api/en/helpers/SkeletonHelper.dispose">#</a> .<a class="links" data-fragment="SkeletonHelper.dispose" id="dispose" href="./index.html#api/en/helpers/SkeletonHelper.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/helpers/SkeletonHelper.js" target="_blank">src/helpers/SkeletonHelper.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

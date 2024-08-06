@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><title>ImageLoader – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> →
+
+		<h1>ImageLoader</h1>
+
+		<p class=/"desc/">
+			A loader for loading an <a class=/"links/" data-fragment=/"Image/" title=/"Image/">Image</a>. This is used internally by the
+			<a class=/"links/" data-fragment=/"CubeTextureLoader/" title=/"CubeTextureLoader/" href=/"./index.html#api/en/loaders/CubeTextureLoader/">CubeTextureLoader</a>, <a class=/"links/" data-fragment=/"ObjectLoader/" title=/"ObjectLoader/" href=/"./index.html#api/en/loaders/ObjectLoader/">ObjectLoader</a> and <a class=/"links/" data-fragment=/"TextureLoader/" title=/"TextureLoader/" href=/"./index.html#api/en/loaders/TextureLoader/">TextureLoader</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// instantiate a loader</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> loader </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">ImageLoader</span><span class=/"pun/">();</span><span class=/"pln/">
+
+</span><span class=/"com/">// load a image resource</span><span class=/"pln/">
+loader</span><span class=/"pun/">.</span><span class=/"pln/">load</span><span class=/"pun/">(</span><span class=/"pln/">
+	</span><span class=/"com/">// resource URL</span><span class=/"pln/">
+	</span><span class=/"str/">'textures/skyboxsun25degtest.png'</span><span class=/"pun/">,</span><span class=/"pln/">
+
+	</span><span class=/"com/">// onLoad callback</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">(</span><span class=/"pln/"> image </span><span class=/"pun/">)</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+		</span><span class=/"com/">// use the image, e.g. draw part of it on a canvas</span><span class=/"pln/">
+		</span><span class=/"kwd/">const</span><span class=/"pln/"> canvas </span><span class=/"pun/">=</span><span class=/"pln/"> document</span><span class=/"pun/">.</span><span class=/"pln/">createElement</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'canvas'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+		</span><span class=/"kwd/">const</span><span class=/"pln/"> context </span><span class=/"pun/">=</span><span class=/"pln/"> canvas</span><span class=/"pun/">.</span><span class=/"pln/">getContext</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'2d'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+		context</span><span class=/"pun/">.</span><span class=/"pln/">drawImage</span><span class=/"pun/">(</span><span class=/"pln/"> image</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">100</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">100</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+	</span><span class=/"pun/">},</span><span class=/"pln/">
+
+	</span><span class=/"com/">// onProgress callback currently not supported</span><span class=/"pln/">
+	</span><span class=/"kwd/">undefined</span><span class=/"pun/">,</span><span class=/"pln/">
+
+	</span><span class=/"com/">// onError callback</span><span class=/"pln/">
+	</span><span class=/"kwd/">function</span><span class=/"pln/"> </span><span class=/"pun/">()</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">
+		console</span><span class=/"pun/">.</span><span class=/"pln/">error</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"str/">'An error happened.'</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+	</span><span class=/"pun/">}</span><span class=/"pln/">
+</span><span class=/"pun/">);</span></code>
+
+		<p>
+			Please note three.js r84 dropped support for ImageLoader progress events.
+			For an ImageLoader that supports progress events, see
+			<a href=/"https://github.com/mrdoob/three.js/issues/10439#issuecomment-275785639/" target=/"_blank/">this thread</a>.
+		</p>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href=/"../examples/#webgl_loader_obj/" target=/"_blank/">WebGL / loader / obj</a><br>
+			<a href=/"../examples/#webgl_shaders_ocean/" target=/"_blank/">WebGL / shaders / ocean</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>ImageLoader( manager : <a class=/"param links/" data-fragment=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">LoadingManager</a> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">manager</a> — The <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">loadingManager</a>
+			for the loader to use. Default is <a class=/"links/" data-fragment=/"LoadingManager/" title=/"LoadingManager/" href=/"./index.html#api/en/loaders/managers/LoadingManager/">THREE.DefaultLoadingManager</a>.<br><br>
+
+			Creates a new ImageLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Loader/" title=/"Loader/" href=/"./index.html#api/en/loaders/Loader/">Loader</a> class for common methods.</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"ImageLoader.load/" target=/"_parent/" title=/"ImageLoader.load/" href=/"./index.html#api/en/loaders/ImageLoader.load/">#</a> .<a class=/"links/" data-fragment=/"ImageLoader.load/" id=/"load/" href=/"./index.html#api/en/loaders/ImageLoader.load/">load</a> ( url : <span class=/"param/">String</span>, onLoad : <a class=/"param links/" data-fragment=/"Function/">Function</a>, onProgress : <a class=/"param links/" data-fragment=/"Function/">Function</a>, onError : <a class=/"param links/" data-fragment=/"Function/">Function</a> ) : <a class=/"param links/" data-fragment=/"HTMLImageElement/">HTMLImageElement</a>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"String/" title=/"String/">url</a> — the path or URL to the file. This can also be a
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs/" target=/"_blank/">Data URI</a>.<br>
+			<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onLoad</a> — Will be called when load completes. The argument
+			will be the loaded <a class=/"links/" data-fragment=/"Image/" title=/"Image/">image</a>.<br>
+			<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onProgress</a> (optional) — This callback function is
+			currently not supported.<br>
+			<a class=/"links/" data-fragment=/"Function/" title=/"Function/">onError</a> (optional) — Will be called when load errors.<br>
+		</p>
+		<p>
+			Begin loading from url and return the <a class=/"links/" data-fragment=/"Image/" title=/"Image/">image</a> object that will
+			contain the data.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/loaders/ImageLoader.js/" target=/"_blank/">src/loaders/ImageLoader.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

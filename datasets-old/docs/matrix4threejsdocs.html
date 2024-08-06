@@ -1,0 +1,986 @@
+<!DOCTYPE html><html><head><title>Matrix4 – three.js docs</title></head><body><body>
+		<h1>Matrix4</h1>
+
+		<p class="desc">
+			A class representing a 4x4
+			<a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)" target="_blank">matrix</a>.<br><br>
+
+			The most common use of a 4x4 matrix in 3D computer graphics is as a
+			<a href="https://en.wikipedia.org/wiki/Transformation_matrix" target="_blank">Transformation Matrix</a>. 
+			For an introduction to transformation matrices as used in WebGL,
+			check out
+			<a href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices" target="_blank">this tutorial</a>.<br><br>
+
+			This allows a <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> representing a point in 3D space to undergo
+			transformations such as translation, rotation, shear, scale, reflection,
+			orthogonal or perspective projection and so on, by being multiplied by the
+			matrix. This is known as <code class="inline prettyprint" translate="no"><span class="pln">applying</span></code> the matrix to the vector.<br><br>
+
+			Every <a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> has three associated Matrix4s:
+		</p>
+		<ul>
+			<li>
+				<a class="links" data-fragment="Object3D.matrix" title="Object3D.matrix" href="./index.html#api/en/core/Object3D.matrix">Object3D.matrix</a>: This stores the local transform of the object.
+				This is the object's transformation relative to its parent.
+			</li>
+			<li>
+				<a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">Object3D.matrixWorld</a>: The global or world transform of the
+				object. If the object has no parent, then this is identical to the local
+				transform stored in <a class="links" data-fragment="Object3D.matrix" title="Object3D.matrix" href="./index.html#api/en/core/Object3D.matrix">matrix</a>.
+			</li>
+			<li>
+				<a class="links" data-fragment="Object3D.modelViewMatrix" title="Object3D.modelViewMatrix" href="./index.html#api/en/core/Object3D.modelViewMatrix">Object3D.modelViewMatrix</a>: This represents the object's
+				transformation relative to the camera's coordinate system. An object's
+				modelViewMatrix is the object's matrixWorld pre-multiplied by the
+				camera's matrixWorldInverse.
+			</li>
+		</ul>
+
+		<a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">Cameras</a> have three additional Matrix4s:
+		<ul>
+			<li>
+				<a class="links" data-fragment="Camera.matrixWorldInverse" title="Camera.matrixWorldInverse" href="./index.html#api/en/cameras/Camera.matrixWorldInverse">Camera.matrixWorldInverse</a>: The view matrix - the inverse of the
+				Camera's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a>.
+			</li>
+			<li>
+				<a class="links" data-fragment="Camera.projectionMatrix" title="Camera.projectionMatrix" href="./index.html#api/en/cameras/Camera.projectionMatrix">Camera.projectionMatrix</a>: Represents the information how to
+				project the scene to clip space.
+			</li>
+			<li>
+				<a class="links" data-fragment="Camera.projectionMatrixInverse" title="Camera.projectionMatrixInverse" href="./index.html#api/en/cameras/Camera.projectionMatrixInverse">Camera.projectionMatrixInverse</a>: The inverse of projectionMatrix.
+			</li>
+		</ul>
+		Note: <a class="links" data-fragment="Object3D.normalMatrix" title="Object3D.normalMatrix" href="./index.html#api/en/core/Object3D.normalMatrix">Object3D.normalMatrix</a> is not a Matrix4, but a <a class="links" data-fragment="Matrix3" title="Matrix3" href="./index.html#api/en/math/Matrix3">Matrix3</a>.
+
+		<h2>A Note on Row-Major and Column-Major Ordering</h2>
+		<p>
+			The constructor and <a class="links" data-fragment="Matrix4.set" title="Matrix4.set" href="./index.html#api/en/math/Matrix4.set">set</a>() method take arguments in
+			<a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order#Column-major_order" target="_blank">row-major</a> 
+			order, while internally they are stored in the <a class="links" data-fragment="Matrix4.elements" title="Matrix4.elements" href="./index.html#api/en/math/Matrix4.elements">elements</a> array in column-major order.<br><br>
+
+			This means that calling
+			<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> m </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Matrix4</span><span class="pun">();</span><span class="pln"> 
+m</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="pln"> </span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">12</span><span class="pun">,</span><span class="pln"> </span><span class="lit">13</span><span class="pun">,</span><span class="pln"> </span><span class="lit">14</span><span class="pun">,</span><span class="pln"> 
+	   </span><span class="lit">21</span><span class="pun">,</span><span class="pln"> </span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">23</span><span class="pun">,</span><span class="pln"> </span><span class="lit">24</span><span class="pun">,</span><span class="pln">
+	   </span><span class="lit">31</span><span class="pun">,</span><span class="pln"> </span><span class="lit">32</span><span class="pun">,</span><span class="pln"> </span><span class="lit">33</span><span class="pun">,</span><span class="pln"> </span><span class="lit">34</span><span class="pun">,</span><span class="pln"> 
+	   </span><span class="lit">41</span><span class="pun">,</span><span class="pln"> </span><span class="lit">42</span><span class="pun">,</span><span class="pln"> </span><span class="lit">43</span><span class="pun">,</span><span class="pln"> </span><span class="lit">44</span><span class="pln"> </span><span class="pun">);</span></code>
+			will result in the <a class="links" data-fragment="Matrix4.elements" title="Matrix4.elements" href="./index.html#api/en/math/Matrix4.elements">elements</a> array containing:
+			<code class=" prettyprint" translate="no"><span class="pln">m</span><span class="pun">.</span><span class="pln">elements </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">21</span><span class="pun">,</span><span class="pln"> </span><span class="lit">31</span><span class="pun">,</span><span class="pln"> </span><span class="lit">41</span><span class="pun">,</span><span class="pln"> 
+			   </span><span class="lit">12</span><span class="pun">,</span><span class="pln"> </span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">32</span><span class="pun">,</span><span class="pln"> </span><span class="lit">42</span><span class="pun">,</span><span class="pln"> 
+			   </span><span class="lit">13</span><span class="pun">,</span><span class="pln"> </span><span class="lit">23</span><span class="pun">,</span><span class="pln"> </span><span class="lit">33</span><span class="pun">,</span><span class="pln"> </span><span class="lit">43</span><span class="pun">,</span><span class="pln"> 
+			   </span><span class="lit">14</span><span class="pun">,</span><span class="pln"> </span><span class="lit">24</span><span class="pun">,</span><span class="pln"> </span><span class="lit">34</span><span class="pun">,</span><span class="pln"> </span><span class="lit">44</span><span class="pln"> </span><span class="pun">];</span></code>
+			and internally all calculations are performed using column-major ordering.
+			However, as the actual ordering makes no difference mathematically and
+			most people are used to thinking about matrices in row-major order, the
+			three.js documentation shows matrices in row-major order. Just bear in
+			mind that if you are reading the source code, you'll have to take the
+			<a href="https://en.wikipedia.org/wiki/Transpose" target="_blank">transpose</a> of any matrices
+			outlined here to make sense of the calculations.
+		</p>
+
+		<h2>Extracting position, rotation and scale</h2>
+		<p>
+			There are several options available for extracting position, rotation and
+			scale from a Matrix4.
+		</p>
+		<ul>
+			<li>
+				<a class="links" data-fragment="Vector3.setFromMatrixPosition" title="Vector3.setFromMatrixPosition" href="./index.html#api/en/math/Vector3.setFromMatrixPosition">Vector3.setFromMatrixPosition</a>: can be used to extract the
+				translation component.
+			</li>
+			<li>
+				<a class="links" data-fragment="Vector3.setFromMatrixScale" title="Vector3.setFromMatrixScale" href="./index.html#api/en/math/Vector3.setFromMatrixScale">Vector3.setFromMatrixScale</a>: can be used to extract the scale
+				component.
+			</li>
+			<li>
+				<a class="links" data-fragment="Quaternion.setFromRotationMatrix" title="Quaternion.setFromRotationMatrix" href="./index.html#api/en/math/Quaternion.setFromRotationMatrix">Quaternion.setFromRotationMatrix</a>,
+				<a class="links" data-fragment="Euler.setFromRotationMatrix" title="Euler.setFromRotationMatrix" href="./index.html#api/en/math/Euler.setFromRotationMatrix">Euler.setFromRotationMatrix</a> or <a class="links" data-fragment="Matrix4.extractRotation" title="Matrix4.extractRotation" href="./index.html#api/en/math/Matrix4.extractRotation">extractRotation</a> 
+				can be used to extract the rotation component from a pure (unscaled) matrix.
+			</li>
+			<li>
+				<a class="links" data-fragment="Matrix4.decompose" title="Matrix4.decompose" href="./index.html#api/en/math/Matrix4.decompose">decompose</a> can be used to extract position, rotation
+				and scale all at once.
+			</li>
+		</ul>
+
+		<h2>Constructor</h2>
+
+		<h3>Matrix4( n11 : <span class="param">Number</span>, n12 : <span class="param">Number</span>, n13 : <span class="param">Number</span>, n14 : <span class="param">Number</span>,
+			n21 : <span class="param">Number</span>, n22 : <span class="param">Number</span>, n23 : <span class="param">Number</span>, n24 : <span class="param">Number</span>,
+			n31 : <span class="param">Number</span>, n32 : <span class="param">Number</span>, n33 : <span class="param">Number</span>, n34 : <span class="param">Number</span>,
+			n41 : <span class="param">Number</span>, n42 : <span class="param">Number</span>, n43 : <span class="param">Number</span>, n44 : <span class="param">Number</span> )</h3>
+
+		<p>
+			Creates a 4x4 matrix with the given arguments in row-major order. If no arguments are provided, the constructor initializes 
+			the Matrix4 to the 4x4 <a href="https://en.wikipedia.org/wiki/Identity_matrix" target="_blank">identity matrix</a>.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.elements" target="_parent" title="Matrix4.elements" href="./index.html#api/en/math/Matrix4.elements">#</a> .<a class="links" data-fragment="Matrix4.elements" id="elements" href="./index.html#api/en/math/Matrix4.elements">elements</a>  : <span class="param">Array</span></h3>
+		<p>
+			A
+			<a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order#Column-major_order" target="_blank">column-major</a> list of matrix values.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.clone" target="_parent" title="Matrix4.clone" href="./index.html#api/en/math/Matrix4.clone">#</a> .<a class="links" data-fragment="Matrix4.clone" id="clone" href="./index.html#api/en/math/Matrix4.clone">clone</a> () : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a></h3>
+		<p>
+			Creates a new Matrix4 with identical <a class="links" data-fragment="Matrix4.elements" title="Matrix4.elements" href="./index.html#api/en/math/Matrix4.elements">elements</a> to this
+			one.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.compose" target="_parent" title="Matrix4.compose" href="./index.html#api/en/math/Matrix4.compose">#</a> .<a class="links" data-fragment="Matrix4.compose" id="compose" href="./index.html#api/en/math/Matrix4.compose">compose</a> ( position : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, quaternion : <a class="param links" data-fragment="Quaternion" href="./index.html#api/en/math/Quaternion">Quaternion</a>, scale : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Sets this matrix to the transformation composed of <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">position</a>, 
+			<a class="links" data-fragment="Quaternion" title="Quaternion" href="./index.html#api/en/math/Quaternion">quaternion</a> and <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">scale</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.copy" target="_parent" title="Matrix4.copy" href="./index.html#api/en/math/Matrix4.copy">#</a> .<a class="links" data-fragment="Matrix4.copy" id="copy" href="./index.html#api/en/math/Matrix4.copy">copy</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span></h3>
+		<p>
+			Copies the <a class="links" data-fragment="Matrix4.elements" title="Matrix4.elements" href="./index.html#api/en/math/Matrix4.elements">elements</a> of matrix <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a> into this
+			matrix.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.copyPosition" target="_parent" title="Matrix4.copyPosition" href="./index.html#api/en/math/Matrix4.copyPosition">#</a> .<a class="links" data-fragment="Matrix4.copyPosition" id="copyPosition" href="./index.html#api/en/math/Matrix4.copyPosition">copyPosition</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span></h3>
+		<p>
+			Copies the translation component of the supplied matrix <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a>
+			into this matrix's translation component.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.decompose" target="_parent" title="Matrix4.decompose" href="./index.html#api/en/math/Matrix4.decompose">#</a> .<a class="links" data-fragment="Matrix4.decompose" id="decompose" href="./index.html#api/en/math/Matrix4.decompose">decompose</a> ( position : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, quaternion : <a class="param links" data-fragment="Quaternion" href="./index.html#api/en/math/Quaternion">Quaternion</a>, scale : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Decomposes this matrix into its <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">position</a>, <a class="links" data-fragment="Quaternion" title="Quaternion" href="./index.html#api/en/math/Quaternion">quaternion</a> 
+			and <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">scale</a> components.<br><br>
+			Note: Not all matrices are decomposable in this way. For example, if an
+			object has a non-uniformly scaled parent, then the object's world matrix
+			may not be decomposable, and this method may not be appropriate.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.determinant" target="_parent" title="Matrix4.determinant" href="./index.html#api/en/math/Matrix4.determinant">#</a> .<a class="links" data-fragment="Matrix4.determinant" id="determinant" href="./index.html#api/en/math/Matrix4.determinant">determinant</a> () : <span class="param">Float</span></h3>
+		<p>
+			Computes and returns the <a href="https://en.wikipedia.org/wiki/Determinant" target="_blank">determinant</a> of this matrix.<br><br>
+
+			Based on the method outlined
+			<a href="http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.html" target="_blank">here</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.equals" target="_parent" title="Matrix4.equals" href="./index.html#api/en/math/Matrix4.equals">#</a> .<a class="links" data-fragment="Matrix4.equals" id="equals" href="./index.html#api/en/math/Matrix4.equals">equals</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">Boolean</span></h3>
+		<p>Return true if this matrix and <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a> are equal.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.extractBasis" target="_parent" title="Matrix4.extractBasis" href="./index.html#api/en/math/Matrix4.extractBasis">#</a> .<a class="links" data-fragment="Matrix4.extractBasis" id="extractBasis" href="./index.html#api/en/math/Matrix4.extractBasis">extractBasis</a> ( xAxis : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, yAxis : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, zAxis : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Extracts the <a href="https://en.wikipedia.org/wiki/Basis_(linear_algebra)" target="_blank">basis</a> 
+			of this matrix into the three axis vectors provided. If this matrix
+			is:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mi>a</mi></mtd>
+						<mtd><mi>b</mi></mtd>
+						<mtd><mi>c</mi></mtd>
+						<mtd><mi>d</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>e</mi></mtd>
+						<mtd><mi>f</mi></mtd>
+						<mtd><mi>g</mi></mtd>
+						<mtd><mi>h</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>i</mi></mtd>
+						<mtd><mi>j</mi></mtd>
+						<mtd><mi>k</mi></mtd>
+						<mtd><mi>l</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>m</mi></mtd>
+						<mtd><mi>n</mi></mtd>
+						<mtd><mi>o</mi></mtd>
+						<mtd><mi>p</mi></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<p>
+			then the <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">xAxis</a>, <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">yAxis</a>, <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">zAxis</a>
+			will be set to:
+		</p>
+
+		<div style="text-align: center">
+			<math>
+				<mrow>
+					<mi>xAxis</mi>
+					<mo>=</mo>
+					<mo>[</mo>
+					<mtable>
+						<mtr><mtd style="height: 1rem"><mi>a</mi></mtd></mtr>
+						<mtr><mtd style="height: 1rem"><mi>e</mi></mtd></mtr>
+						<mtr><mtd style="height: 1rem"><mi>i</mi></mtd></mtr>
+					</mtable>
+					<mo>]</mo>
+				</mrow>
+			</math>,
+
+			<math>
+				<mrow>
+					<mi>yAxis</mi>
+					<mo>=</mo>
+					<mo>[</mo>
+					<mtable>
+						<mtr><mtd style="height: 1rem"><mi>b</mi></mtd></mtr>
+						<mtr><mtd style="height: 1rem"><mi>f</mi></mtd></mtr>
+						<mtr><mtd style="height: 1rem"><mi>j</mi></mtd></mtr>
+					</mtable>
+					<mo>]</mo>
+				</mrow>
+			</math>, and
+
+			<math>
+				<mrow>
+					<mi>zAxis</mi>
+					<mo>=</mo>
+					<mo>[</mo>
+					<mtable>
+						<mtr><mtd style="height: 1rem"><mi>c</mi></mtd></mtr>
+						<mtr><mtd style="height: 1rem"><mi>g</mi></mtd></mtr>
+						<mtr><mtd style="height: 1rem"><mi>k</mi></mtd></mtr>
+					</mtable>
+					<mo>]</mo>
+				</mrow>
+			</math>
+		</div>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.extractRotation" target="_parent" title="Matrix4.extractRotation" href="./index.html#api/en/math/Matrix4.extractRotation">#</a> .<a class="links" data-fragment="Matrix4.extractRotation" id="extractRotation" href="./index.html#api/en/math/Matrix4.extractRotation">extractRotation</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span></h3>
+		<p>
+			Extracts the rotation component of the supplied matrix <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a>
+			into this matrix's rotation component.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.fromArray" target="_parent" title="Matrix4.fromArray" href="./index.html#api/en/math/Matrix4.fromArray">#</a> .<a class="links" data-fragment="Matrix4.fromArray" id="fromArray" href="./index.html#api/en/math/Matrix4.fromArray">fromArray</a> ( array : <span class="param">Array</span>, offset : <span class="param">Integer</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">array</a> - the array to read the elements from.<br>
+			<a class="links" data-fragment="Integer" title="Integer">offset</a> - ( optional ) offset into the array. Default is
+			0.<br><br>
+
+			Sets the elements of this matrix based on an <a class="links" data-fragment="Array" title="Array">array</a> in
+			<a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order#Column-major_order" target="_blank">column-major</a> format.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.invert" target="_parent" title="Matrix4.invert" href="./index.html#api/en/math/Matrix4.invert">#</a> .<a class="links" data-fragment="Matrix4.invert" id="invert" href="./index.html#api/en/math/Matrix4.invert">invert</a> () : <span class="param">this</span></h3>
+		<p>
+			Inverts this matrix, using the
+			<a href="https://en.wikipedia.org/wiki/Invertible_matrix#Analytic_solution" target="_blank">analytic method</a>. 
+			You can not invert with a determinant of zero. If you
+			attempt this, the method produces a zero matrix instead.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.getMaxScaleOnAxis" target="_parent" title="Matrix4.getMaxScaleOnAxis" href="./index.html#api/en/math/Matrix4.getMaxScaleOnAxis">#</a> .<a class="links" data-fragment="Matrix4.getMaxScaleOnAxis" id="getMaxScaleOnAxis" href="./index.html#api/en/math/Matrix4.getMaxScaleOnAxis">getMaxScaleOnAxis</a> () : <span class="param">Float</span></h3>
+		<p>Gets the maximum scale value of the 3 axes.</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.identity" target="_parent" title="Matrix4.identity" href="./index.html#api/en/math/Matrix4.identity">#</a> .<a class="links" data-fragment="Matrix4.identity" id="identity" href="./index.html#api/en/math/Matrix4.identity">identity</a> () : <span class="param">this</span></h3>
+		<p>
+			Resets this matrix to the
+			<a href="https://en.wikipedia.org/wiki/Identity_matrix" target="_blank">identity matrix</a>.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.lookAt" target="_parent" title="Matrix4.lookAt" href="./index.html#api/en/math/Matrix4.lookAt">#</a> .<a class="links" data-fragment="Matrix4.lookAt" id="lookAt" href="./index.html#api/en/math/Matrix4.lookAt">lookAt</a> ( eye : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, up : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Constructs a rotation matrix, looking from <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">eye</a> towards
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">target</a> oriented by the <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">up</a> vector.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.makeRotationAxis" target="_parent" title="Matrix4.makeRotationAxis" href="./index.html#api/en/math/Matrix4.makeRotationAxis">#</a> .<a class="links" data-fragment="Matrix4.makeRotationAxis" id="makeRotationAxis" href="./index.html#api/en/math/Matrix4.makeRotationAxis">makeRotationAxis</a> ( axis : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, theta : <span class="param">Float</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">axis</a> — Rotation axis, should be normalized.<br>
+			<a class="links" data-fragment="Float" title="Float">theta</a> — Rotation angle in radians.<br><br>
+
+			Sets this matrix as rotation transform around <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">axis</a> by
+			<a class="links" data-fragment="Float" title="Float">theta</a> radians.<br>
+
+			This is a somewhat controversial but mathematically sound alternative to
+			rotating via <a class="links" data-fragment="Quaternion" title="Quaternion" href="./index.html#api/en/math/Quaternion">Quaternions</a>. See the discussion
+			<a href="https://www.gamedev.net/articles/programming/math-and-physics/do-we-really-need-quaternions-r1199" target="_blank">here</a>.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.makeBasis" target="_parent" title="Matrix4.makeBasis" href="./index.html#api/en/math/Matrix4.makeBasis">#</a> .<a class="links" data-fragment="Matrix4.makeBasis" id="makeBasis" href="./index.html#api/en/math/Matrix4.makeBasis">makeBasis</a> ( xAxis : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, yAxis : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, zAxis : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Set this to the <a href="https://en.wikipedia.org/wiki/Basis_(linear_algebra)" target="_blank">basis</a> 
+			matrix consisting of the three provided basis vectors:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mi>xAxis.x</mi></mtd>
+						<mtd><mi>yAxis.x</mi></mtd>
+						<mtd><mi>zAxis.x</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>xAxis.y</mi></mtd>
+						<mtd><mi>yAxis.y</mi></mtd>
+						<mtd><mi>zAxis.y</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>xAxis.z</mi></mtd>
+						<mtd><mi>yAxis.z</mi></mtd>
+						<mtd><mi>zAxis.z</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.makePerspective" target="_parent" title="Matrix4.makePerspective" href="./index.html#api/en/math/Matrix4.makePerspective">#</a> .<a class="links" data-fragment="Matrix4.makePerspective" id="makePerspective" href="./index.html#api/en/math/Matrix4.makePerspective">makePerspective</a> ( left : <span class="param">Float</span>, right : <span class="param">Float</span>, top : <span class="param">Float</span>, bottom : <span class="param">Float</span>, near : <span class="param">Float</span>, far : <span class="param">Float</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Creates a
+			<a href="https://en.wikipedia.org/wiki/3D_projection#Perspective_projection" target="_blank">perspective projection</a> 
+			matrix. This is used internally by
+			<a class="links" data-fragment="PerspectiveCamera.updateProjectionMatrix" title="PerspectiveCamera.updateProjectionMatrix" href="./index.html#api/en/cameras/PerspectiveCamera.updateProjectionMatrix">PerspectiveCamera.updateProjectionMatrix</a>()
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.makeOrthographic" target="_parent" title="Matrix4.makeOrthographic" href="./index.html#api/en/math/Matrix4.makeOrthographic">#</a> .<a class="links" data-fragment="Matrix4.makeOrthographic" id="makeOrthographic" href="./index.html#api/en/math/Matrix4.makeOrthographic">makeOrthographic</a> ( left : <span class="param">Float</span>, right : <span class="param">Float</span>, top : <span class="param">Float</span>, bottom : <span class="param">Float</span>, near : <span class="param">Float</span>, far : <span class="param">Float</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Creates an <a href="https://en.wikipedia.org/wiki/Orthographic_projection" target="_blank">orthographic projection</a> 
+			matrix. This is used internally by
+			<a class="links" data-fragment="OrthographicCamera.updateProjectionMatrix" title="OrthographicCamera.updateProjectionMatrix" href="./index.html#api/en/cameras/OrthographicCamera.updateProjectionMatrix">OrthographicCamera.updateProjectionMatrix</a>().
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.makeRotationFromEuler" target="_parent" title="Matrix4.makeRotationFromEuler" href="./index.html#api/en/math/Matrix4.makeRotationFromEuler">#</a> .<a class="links" data-fragment="Matrix4.makeRotationFromEuler" id="makeRotationFromEuler" href="./index.html#api/en/math/Matrix4.makeRotationFromEuler">makeRotationFromEuler</a> ( euler : <a class="param links" data-fragment="Euler" href="./index.html#api/en/math/Euler">Euler</a> ) : <span class="param">this</span></h3>
+		<p>
+			Sets the rotation component (the upper left 3x3 matrix) of this matrix to
+			the rotation specified by the given <a class="links" data-fragment="Euler" title="Euler" href="./index.html#api/en/math/Euler">Euler Angle</a>. The rest of
+			the matrix is set to the identity. Depending on the <a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a> 
+			of the <a class="links" data-fragment="Euler" title="Euler" href="./index.html#api/en/math/Euler">euler</a>, there are six possible outcomes. See
+			<a href="https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix" target="_blank">this page</a> for a complete list.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.makeRotationFromQuaternion" target="_parent" title="Matrix4.makeRotationFromQuaternion" href="./index.html#api/en/math/Matrix4.makeRotationFromQuaternion">#</a> .<a class="links" data-fragment="Matrix4.makeRotationFromQuaternion" id="makeRotationFromQuaternion" href="./index.html#api/en/math/Matrix4.makeRotationFromQuaternion">makeRotationFromQuaternion</a> ( q : <a class="param links" data-fragment="Quaternion" href="./index.html#api/en/math/Quaternion">Quaternion</a> ) : <span class="param">this</span></h3>
+		<p>
+			Sets the rotation component of this matrix to the rotation specified by
+			<a class="links" data-fragment="Quaternion" title="Quaternion" href="./index.html#api/en/math/Quaternion">q</a>, as outlined
+			<a href="https://en.wikipedia.org/wiki/Rotation_matrix#Quaternion" target="_blank">here</a>. The
+			rest of the matrix is set to the identity. So, given <a class="links" data-fragment="Quaternion" title="Quaternion" href="./index.html#api/en/math/Quaternion">q</a> =
+			w + xi + yj + zk, the resulting matrix will be:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd>
+							<mn>1</mn>
+							<mo>-</mo>
+							<mn>2</mn>
+							<msup>
+								<mi>y</mi>
+								<mn>2</mn>
+							</msup>
+							<mo>-</mo>
+							<mn>2</mn>
+							<msup>
+								<mi>z</mi>
+								<mn>2</mn>
+							</msup>
+						</mtd>
+						<mtd>
+							<mn>2</mn>
+							<mi>x</mi>
+							<mi>y</mi>
+							<mo>-</mo>
+							<mn>2</mn>
+							<mi>z</mi>
+							<mi>w</mi>
+						</mtd>
+						<mtd>
+							<mn>2</mn>
+							<mi>x</mi>
+							<mi>z</mi>
+							<mo>+</mo>
+							<mn>2</mn>
+							<mi>y</mi>
+							<mi>w</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd>
+							<mn>2</mn>
+							<mi>x</mi>
+							<mi>y</mi>
+							<mo>+</mo>
+							<mn>2</mn>
+							<mi>z</mi>
+							<mi>w</mi>
+						</mtd>
+						<mtd>
+							<mn>1</mn>
+							<mo>-</mo>
+							<mn>2</mn>
+							<msup>
+								<mi>x</mi>
+								<mn>2</mn>
+							</msup>
+							<mo>-</mo>
+							<mn>2</mn>
+							<msup>
+								<mi>z</mi>
+								<mn>2</mn>
+							</msup>
+						</mtd>
+						<mtd>
+							<mn>2</mn>
+							<mi>y</mi>
+							<mi>z</mi>
+							<mo>-</mo>
+							<mn>2</mn>
+							<mi>x</mi>
+							<mi>w</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd>
+							<mn>2</mn>
+							<mi>x</mi>
+							<mi>z</mi>
+							<mo>-</mo>
+							<mn>2</mn>
+							<mi>y</mi>
+							<mi>w</mi>
+						</mtd>
+						<mtd>
+							<mn>2</mn>
+							<mi>y</mi>
+							<mi>z</mi>
+							<mo>+</mo>
+							<mn>2</mn>
+							<mi>x</mi>
+							<mi>w</mi>
+						</mtd>
+						<mtd>
+							<mn>1</mn>
+							<mo>-</mo>
+							<mn>2</mn>
+							<msup>
+								<mi>x</mi>
+								<mn>2</mn>
+							</msup>
+							<mo>-</mo>
+							<mn>2</mn>
+							<msup>
+								<mi>y</mi>
+								<mn>2</mn>
+							</msup>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.makeRotationX" target="_parent" title="Matrix4.makeRotationX" href="./index.html#api/en/math/Matrix4.makeRotationX">#</a> .<a class="links" data-fragment="Matrix4.makeRotationX" id="makeRotationX" href="./index.html#api/en/math/Matrix4.makeRotationX">makeRotationX</a> ( theta : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">theta</a> — Rotation angle in radians.<br><br>
+
+			Sets this matrix as a rotational transformation around the X axis by
+			<a class="links" data-fragment="Float" title="Float">theta</a> (θ) radians. The resulting matrix will be:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+						<mtd>
+							<mi>cos</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mo>-</mo>
+							<mi>sin</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+						<mtd>
+							<mi>sin</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mi>cos</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.makeRotationY" target="_parent" title="Matrix4.makeRotationY" href="./index.html#api/en/math/Matrix4.makeRotationY">#</a> .<a class="links" data-fragment="Matrix4.makeRotationY" id="makeRotationY" href="./index.html#api/en/math/Matrix4.makeRotationY">makeRotationY</a> ( theta : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">theta</a> — Rotation angle in radians.<br><br>
+
+			Sets this matrix as a rotational transformation around the Y axis by
+			<a class="links" data-fragment="Float" title="Float">theta</a> (θ) radians. The resulting matrix will be:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd>
+							<mi>cos</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+						<mtd>
+							<mi>sin</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd>
+							<mo>-</mo>
+							<mi>sin</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+						<mtd>
+							<mi>cos</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.makeRotationZ" target="_parent" title="Matrix4.makeRotationZ" href="./index.html#api/en/math/Matrix4.makeRotationZ">#</a> .<a class="links" data-fragment="Matrix4.makeRotationZ" id="makeRotationZ" href="./index.html#api/en/math/Matrix4.makeRotationZ">makeRotationZ</a> ( theta : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">theta</a> — Rotation angle in radians.<br><br>
+
+			Sets this matrix as a rotational transformation around the Z axis by
+			<a class="links" data-fragment="Float" title="Float">theta</a> (θ) radians. The resulting matrix will be:
+		</p>
+			
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd>
+							<mi>cos</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mo>-</mo>
+							<mi>sin</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd>
+							<mi>sin</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mi>cos</mi>
+							<mi>θ</mi>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+						<mtd>
+							<mn>0</mn>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.makeScale" target="_parent" title="Matrix4.makeScale" href="./index.html#api/en/math/Matrix4.makeScale">#</a> .<a class="links" data-fragment="Matrix4.makeScale" id="makeScale" href="./index.html#api/en/math/Matrix4.makeScale">makeScale</a> ( x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">x</a> - the amount to scale in the X axis.<br>
+			<a class="links" data-fragment="Float" title="Float">y</a> - the amount to scale in the Y axis.<br>
+			<a class="links" data-fragment="Float" title="Float">z</a> - the amount to scale in the Z axis.<br><br>
+
+			Sets this matrix as scale transform:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mi>x</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mi>y</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mi>z</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.makeShear" target="_parent" title="Matrix4.makeShear" href="./index.html#api/en/math/Matrix4.makeShear">#</a> .<a class="links" data-fragment="Matrix4.makeShear" id="makeShear" href="./index.html#api/en/math/Matrix4.makeShear">makeShear</a> ( xy : <span class="param">Float</span>, xz : <span class="param">Float</span>, yx : <span class="param">Float</span>, 
+			yz : <span class="param">Float</span>, zx : <span class="param">Float</span>, zy : <span class="param">Float</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">xy</a> - the amount to shear X by Y.<br>
+			<a class="links" data-fragment="Float" title="Float">xz</a> - the amount to shear X by Z.<br>
+			<a class="links" data-fragment="Float" title="Float">yx</a> - the amount to shear Y by X.<br>
+			<a class="links" data-fragment="Float" title="Float">yz</a> - the amount to shear Y by Z.<br>
+			<a class="links" data-fragment="Float" title="Float">zx</a> - the amount to shear Z by X.<br>
+			<a class="links" data-fragment="Float" title="Float">zy</a> - the amount to shear Z by Y.<br><br>
+
+			Sets this matrix as a shear transform:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mi>y</mi><mi>x</mi></mtd>
+						<mtd><mi>z</mi><mi>x</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>x</mi><mi>y</mi></mtd>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mi>z</mi><mi>y</mi></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>x</mi><mi>z</mi></mtd>
+						<mtd><mi>y</mi><mi>z</mi></mtd>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.makeTranslation" target="_parent" title="Matrix4.makeTranslation" href="./index.html#api/en/math/Matrix4.makeTranslation">#</a> .<a class="links" data-fragment="Matrix4.makeTranslation" id="makeTranslation" href="./index.html#api/en/math/Matrix4.makeTranslation">makeTranslation</a> ( v : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span></h3>
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.makeTranslation" target="_parent" title="Matrix4.makeTranslation" href="./index.html#api/en/math/Matrix4.makeTranslation">#</a> .<a class="links" data-fragment="Matrix4.makeTranslation" id="makeTranslation" href="./index.html#api/en/math/Matrix4.makeTranslation">makeTranslation</a> ( x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span> ) : <span class="param">this</span> // optional API
+		</h3>
+		<p>
+			Sets this matrix as a translation transform from vector <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">v</a>, or numbers <a class="links" data-fragment="Float" title="Float">x</a>, <a class="links" data-fragment="Float" title="Float">y</a> and <a class="links" data-fragment="Float" title="Float">z</a>:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mi>x</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mi>y</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+						<mtd><mi>z</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>0</mn></mtd>
+						<mtd><mn>1</mn></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.multiply" target="_parent" title="Matrix4.multiply" href="./index.html#api/en/math/Matrix4.multiply">#</a> .<a class="links" data-fragment="Matrix4.multiply" id="multiply" href="./index.html#api/en/math/Matrix4.multiply">multiply</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span></h3>
+		<p>Post-multiplies this matrix by <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a>.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.multiplyMatrices" target="_parent" title="Matrix4.multiplyMatrices" href="./index.html#api/en/math/Matrix4.multiplyMatrices">#</a> .<a class="links" data-fragment="Matrix4.multiplyMatrices" id="multiplyMatrices" href="./index.html#api/en/math/Matrix4.multiplyMatrices">multiplyMatrices</a> ( a : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a>, b : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span>
+		</h3>
+		<p>Sets this matrix to <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">a</a> x <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">b</a>.</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.multiplyScalar" target="_parent" title="Matrix4.multiplyScalar" href="./index.html#api/en/math/Matrix4.multiplyScalar">#</a> .<a class="links" data-fragment="Matrix4.multiplyScalar" id="multiplyScalar" href="./index.html#api/en/math/Matrix4.multiplyScalar">multiplyScalar</a> ( s : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>
+			Multiplies every component of the matrix by a scalar value <a class="links" data-fragment="Float" title="Float">s</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.premultiply" target="_parent" title="Matrix4.premultiply" href="./index.html#api/en/math/Matrix4.premultiply">#</a> .<a class="links" data-fragment="Matrix4.premultiply" id="premultiply" href="./index.html#api/en/math/Matrix4.premultiply">premultiply</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span></h3>
+		<p>Pre-multiplies this matrix by <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a>.</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.scale" target="_parent" title="Matrix4.scale" href="./index.html#api/en/math/Matrix4.scale">#</a> .<a class="links" data-fragment="Matrix4.scale" id="scale" href="./index.html#api/en/math/Matrix4.scale">scale</a> ( v : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span></h3>
+		<p>Multiplies the columns of this matrix by vector <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">v</a>.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.set" target="_parent" title="Matrix4.set" href="./index.html#api/en/math/Matrix4.set">#</a> .<a class="links" data-fragment="Matrix4.set" id="set" href="./index.html#api/en/math/Matrix4.set">set</a> ( n11 : <span class="param">Float</span>, n12 : <span class="param">Float</span>, n13 : <span class="param">Float</span>, n14 : <span class="param">Float</span>, n21 : <span class="param">Float</span>, n22 : <span class="param">Float</span>, n23 : <span class="param">Float</span>, n24 : <span class="param">Float</span>, n31 : <span class="param">Float</span>, n32 : <span class="param">Float</span>,  n33 : <span class="param">Float</span>, n34 : <span class="param">Float</span>, n41 : <span class="param">Float</span>, n42 : <span class="param">Float</span>, n43 : <span class="param">Float</span>, n44 : <span class="param">Float</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			Set the <a class="links" data-fragment="Matrix4.elements" title="Matrix4.elements" href="./index.html#api/en/math/Matrix4.elements">elements</a> of this matrix to the supplied row-major
+			values <a class="links" data-fragment="Float" title="Float">n11</a>, <a class="links" data-fragment="Float" title="Float">n12</a>, ... <a class="links" data-fragment="Float" title="Float">n44</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.setFromMatrix3" target="_parent" title="Matrix4.setFromMatrix3" href="./index.html#api/en/math/Matrix4.setFromMatrix3">#</a> .<a class="links" data-fragment="Matrix4.setFromMatrix3" id="setFromMatrix3" href="./index.html#api/en/math/Matrix4.setFromMatrix3">setFromMatrix3</a> ( m : <a class="param links" data-fragment="Matrix3" href="./index.html#api/en/math/Matrix3">Matrix3</a> ) : <span class="param">this</span></h3>
+		<p>
+			Set the upper 3x3 elements of this matrix to the values of the Matrix3
+			<a class="links" data-fragment="Matrix3" title="Matrix3" href="./index.html#api/en/math/Matrix3">m</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.setPosition" target="_parent" title="Matrix4.setPosition" href="./index.html#api/en/math/Matrix4.setPosition">#</a> .<a class="links" data-fragment="Matrix4.setPosition" id="setPosition" href="./index.html#api/en/math/Matrix4.setPosition">setPosition</a> ( v : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span></h3>
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.setPosition" target="_parent" title="Matrix4.setPosition" href="./index.html#api/en/math/Matrix4.setPosition">#</a> .<a class="links" data-fragment="Matrix4.setPosition" id="setPosition" href="./index.html#api/en/math/Matrix4.setPosition">setPosition</a> ( x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span> ) : <span class="param">this</span> // optional API
+		</h3>
+		<p>
+			Sets the position component for this matrix from vector <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">v</a>,
+			without affecting the rest of the matrix - i.e. if the matrix is
+			currently:
+		</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mi>a</mi></mtd>
+						<mtd><mi>b</mi></mtd>
+						<mtd><mi>c</mi></mtd>
+						<mtd><mi>d</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>e</mi></mtd>
+						<mtd><mi>f</mi></mtd>
+						<mtd><mi>g</mi></mtd>
+						<mtd><mi>h</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>i</mi></mtd>
+						<mtd><mi>j</mi></mtd>
+						<mtd><mi>k</mi></mtd>
+						<mtd><mi>l</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>m</mi></mtd>
+						<mtd><mi>n</mi></mtd>
+						<mtd><mi>o</mi></mtd>
+						<mtd><mi>p</mi></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<p>This becomes:</p>
+
+		<math display="block">
+			<mrow>
+				<mo>[</mo>
+				<mtable>
+					<mtr>
+						<mtd><mi>a</mi></mtd>
+						<mtd><mi>b</mi></mtd>
+						<mtd><mi>c</mi></mtd>
+						<mtd><mi>v.x</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>e</mi></mtd>
+						<mtd><mi>f</mi></mtd>
+						<mtd><mi>g</mi></mtd>
+						<mtd><mi>v.y</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>i</mi></mtd>
+						<mtd><mi>j</mi></mtd>
+						<mtd><mi>k</mi></mtd>
+						<mtd><mi>v.z</mi></mtd>
+					</mtr>
+					<mtr>
+						<mtd><mi>m</mi></mtd>
+						<mtd><mi>n</mi></mtd>
+						<mtd><mi>o</mi></mtd>
+						<mtd><mi>p</mi></mtd>
+					</mtr>
+				</mtable>
+				<mo>]</mo>
+			</mrow>
+		</math>
+
+		<h3>
+			<a class="permalink links" data-fragment="Matrix4.toArray" target="_parent" title="Matrix4.toArray" href="./index.html#api/en/math/Matrix4.toArray">#</a> .<a class="links" data-fragment="Matrix4.toArray" id="toArray" href="./index.html#api/en/math/Matrix4.toArray">toArray</a> ( array : <span class="param">Array</span>, offset : <span class="param">Integer</span> ) : <span class="param">Array</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">array</a> - (optional) array to store the resulting vector in.<br>
+			<a class="links" data-fragment="Integer" title="Integer">offset</a> - (optional) offset in the array at which to put the
+			result.<br><br>
+
+			Writes the elements of this matrix to an array in
+			<a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order#Column-major_order" target="_blank">column-major</a> format.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Matrix4.transpose" target="_parent" title="Matrix4.transpose" href="./index.html#api/en/math/Matrix4.transpose">#</a> .<a class="links" data-fragment="Matrix4.transpose" id="transpose" href="./index.html#api/en/math/Matrix4.transpose">transpose</a> () : <span class="param">this</span></h3>
+		<p>
+			<a href="https://en.wikipedia.org/wiki/Transpose" target="_blank">Transposes</a> this matrix.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Matrix4.js" target="_blank">src/math/Matrix4.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

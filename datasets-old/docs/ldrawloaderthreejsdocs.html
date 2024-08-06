@@ -1,0 +1,219 @@
+<!DOCTYPE html><html><head><title>LDrawLoader – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Loader" title="Loader" href="./index.html#api/en/loaders/Loader">Loader</a> →
+
+		<h1>LDrawLoader</h1>
+
+		<p class="desc"> A loader for <code class="inline prettyprint" translate="no"><span class="typ">LDraw</span></code> resources. <br><br>
+		<a href="https://ldraw.org" target="_blank">LDraw</a> (LEGO Draw) is an
+		<a href="https://ldraw.org/article/218.html" target="_blank">open format specification</a> for describing LEGO
+		and other construction set 3D models.</p>
+
+		<p>An LDraw asset (a text file usually with extension .ldr, .dat or .txt) can describe
+		just a single construction piece, or an entire model.
+		In the case of a model the LDraw file can reference other LDraw files, which are loaded
+		from a library path set with <a class="links" data-fragment="Function" title="Function">setPartsLibraryPath</a>. You usually download
+		the LDraw official parts library, extract to a folder and point setPartsLibraryPath to it.
+		</p>
+
+		<p>Library parts will be loaded by trial and error in subfolders 'parts', 'p' and 'models'.
+		These file accesses are not optimal for web environment, so a script tool has been made
+		to pack an LDraw file with all its dependencies into a single file, which loads much faster.
+		See section 'Packing LDraw models'. The LDrawLoader example loads several packed files.
+		The official parts library is not included due to its large size.</p>
+
+		<h2>Import</h2>
+
+		<p>
+			LDrawLoader is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">LDrawLoader</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/loaders/LDrawLoader.js'</span><span class="pun">;</span></code>
+
+		<h2>Extensions</h2>
+
+		<p>
+			LDrawLoader supports the following extensions:
+		</p>
+
+		<ul>
+			<li>!COLOUR: Color and surface finish declarations.</li>
+			<li>BFC: Back Face Culling specification.</li>
+			<li>!CATEGORY: Model/part category declarations.</li>
+			<li>!KEYWORDS: Model/part keywords declarations.</li>
+		</ul>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="com">// Instantiate a loader</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> loader </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">LDrawLoader</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// Optionally set library parts path</span><span class="pln">
+</span><span class="com">// loader.setPartsLibraryPath( path to library );</span><span class="pln">
+
+</span><span class="com">// Load a LDraw resource</span><span class="pln">
+loader</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="pln">
+	</span><span class="com">// resource URL</span><span class="pln">
+	</span><span class="str">'models/car.ldr_Packed.mpd'</span><span class="pun">,</span><span class="pln">
+	</span><span class="com">// called when the resource is loaded</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> </span><span class="kwd">group</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+		</span><span class="com">// Optionally, use LDrawUtils.mergeObject() from</span><span class="pln">
+		</span><span class="com">// 'examples/jsm/utils/LDrawUtils.js' to merge all</span><span class="pln">
+		</span><span class="com">// geometries by material (it gives better runtime</span><span class="pln">
+		</span><span class="com">// performance, but building steps are lost)</span><span class="pln">
+		</span><span class="com">// group = LDrawUtils.mergeObject( group );</span><span class="pln">
+
+		scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">group</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="pun">},</span><span class="pln">
+	</span><span class="com">// called while loading is progressing</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> xhr </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+		console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> xhr</span><span class="pun">.</span><span class="pln">loaded </span><span class="pun">/</span><span class="pln"> xhr</span><span class="pun">.</span><span class="pln">total </span><span class="pun">*</span><span class="pln"> </span><span class="lit">100</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'% loaded'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="pun">},</span><span class="pln">
+	</span><span class="com">// called when loading has errors</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> error </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+		console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="str">'An error happened'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#webgl_loader_ldraw" target="_blank">webgl_loader_ldraw</a>
+		</p>
+
+		<h2>Packing LDraw models</h2>
+
+		<p>To pack a model with all its referenced files, download the
+		<a href="https://www.ldraw.org/parts/latest-parts.html" target="_blank">Official LDraw parts library</a>
+		and use the following Node script:
+		<a href="https://github.com/mrdoob/three.js/blob/master/utils/packLDrawModel.js" target="_blank">utils/packLDrawModel.js</a>
+		It contains instructions on how to setup the files and execute it.</p>
+
+		<h2>Metadata in .userData</h2>
+
+		<p>LDrawLoader returns a <a class="links" data-fragment="Group" title="Group" href="./index.html#api/en/objects/Group">Group</a> object which contains an object hierarchy. Depending of each subobject
+		type, its .userData member will contain the following members: <br>
+		In a <a class="links" data-fragment="Group" title="Group" href="./index.html#api/en/objects/Group">Group</a>, the userData member will contain: <br>
+		</p><ul>
+			<li>.numBuildingSteps: Only in the root <a class="links" data-fragment="Group" title="Group" href="./index.html#api/en/objects/Group">Group</a>, Indicates total number of building steps in
+			the model. These can be used to set visibility of objects to show different building steps, which is
+			done in the example.</li>
+			<li>.buildingStep: Indicates the building index of this step.</li>
+			<li>.category: Contains, if not null, the <a class="links" data-fragment="String" title="String">String</a> category for this piece or model.</li>
+			<li>.keywords: Contains, if not null, an array of <a class="links" data-fragment="String" title="String">String</a> keywords for this piece or model.</li>
+		</ul>
+		<p></p>
+		<p>In a <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>, the userData member will contain:
+		</p><ul>
+			<li>.code: Indicates the LDraw code for this material.</li>
+			<li>.edgeMaterial: Only in a <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> material, indicates the <a class="links" data-fragment="LineBasicMaterial" title="LineBasicMaterial" href="./index.html#api/en/materials/LineBasicMaterial">LineBasicMaterial</a> belonging to edges
+			of the same color code (in the LDraw format, each surface material is also related to an edge material)</li>
+			<li>.conditionalEdgeMaterial: Only in a <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> material, indicates the <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> belonging
+			to conditional edges of the same color code.</li>
+		</ul>
+		<p></p>
+
+		<br>
+		<hr>
+
+		<h2>Constructor</h2>
+
+		<h3>LDrawLoader( manager : <a class="param links" data-fragment="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		<p>
+		<a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">manager</a> — The <a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">loadingManager</a> for the loader to use. Default is <a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">THREE.DefaultLoadingManager</a>.
+		</p>
+		<p>
+		Creates a new LDrawLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Loader" title="Loader" href="./index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Loader" title="Loader" href="./index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.load" target="_parent" title="LDrawLoader.load" href="./index.html#examples/en/loaders/LDrawLoader.load">#</a> .<a class="links" data-fragment="LDrawLoader.load" id="load" href="./index.html#examples/en/loaders/LDrawLoader.load">load</a> ( url : <span class="param">String</span>, onLoad : <a class="param links" data-fragment="Function">Function</a>, onProgress : <a class="param links" data-fragment="Function">Function</a>, onError : <a class="param links" data-fragment="Function">Function</a> ) : <span class="param">undefined</span></h3>
+		<p>
+		<a class="links" data-fragment="String" title="String">url</a> — A string containing the path/URL of the LDraw file.<br>
+		<a class="links" data-fragment="Function" title="Function">onLoad</a> — A function to be called after the loading is successfully completed. The function receives the loaded JSON response returned from <a class="links" data-fragment="Function" title="Function">parse</a>.<br>
+		<a class="links" data-fragment="Function" title="Function">onProgress</a> — (optional) A function to be called while the loading is in progress. The argument will be the XMLHttpRequest instance, that contains .<a class="links" data-fragment="Integer" title="Integer">total</a> and .<a class="links" data-fragment="Integer" title="Integer">loaded</a> bytes. If the server does not set the Content-Length header; .<a class="links" data-fragment="Integer" title="Integer">total</a> will be 0.<br>
+		<a class="links" data-fragment="Function" title="Function">onError</a> — (optional) A function to be called if an error occurs during loading. The function receives error as an argument.<br>
+		</p>
+		<p>
+		Begin loading from url and call the callback function with the parsed response content.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.setPartsLibraryPath" target="_parent" title="LDrawLoader.setPartsLibraryPath" href="./index.html#examples/en/loaders/LDrawLoader.setPartsLibraryPath">#</a> .<a class="links" data-fragment="LDrawLoader.setPartsLibraryPath" id="setPartsLibraryPath" href="./index.html#examples/en/loaders/LDrawLoader.setPartsLibraryPath">setPartsLibraryPath</a> ( path : <span class="param">String</span> ) : <span class="param">this</span></h3>
+		<p>
+		<a class="links" data-fragment="String" title="String">path</a> —  Path to library parts files to load referenced parts from. This is different from <a class="links" data-fragment="Loader.setPath" title="Loader.setPath" href="./index.html#api/en/loaders/Loader.setPath">Loader.setPath</a>, which indicates the path to load the main asset from.<br>
+		</p>
+		<p>
+		This method must be called prior to <a class="links" data-fragment="LDrawLoader.load" title="LDrawLoader.load" href="./index.html#examples/en/loaders/LDrawLoader.load">.load</a> unless the model to load does not reference library parts (usually it will be a model with all its parts packed in a single file)
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.setFileMap" target="_parent" title="LDrawLoader.setFileMap" href="./index.html#examples/en/loaders/LDrawLoader.setFileMap">#</a> .<a class="links" data-fragment="LDrawLoader.setFileMap" id="setFileMap" href="./index.html#examples/en/loaders/LDrawLoader.setFileMap">setFileMap</a> ( fileMap : <a class="param links" data-fragment="Map">Map</a> ) : <span class="param">this</span></h3>
+		<p>
+		<a class="links" data-fragment="Map" title="Map">map</a> — Set a map from <a class="links" data-fragment="String" title="String">String</a> to <a class="links" data-fragment="String" title="String">String</a> which maps referenced library filenames to new filenames. If a fileMap is not specified (the default), library parts will be accessed by trial and error in subfolders 'parts', 'p' and 'models'.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.parse" target="_parent" title="LDrawLoader.parse" href="./index.html#examples/en/loaders/LDrawLoader.parse">#</a> .<a class="links" data-fragment="LDrawLoader.parse" id="parse" href="./index.html#examples/en/loaders/LDrawLoader.parse">parse</a> ( text : <span class="param">String</span>, path : <span class="param">String</span>, onLoad : <a class="param links" data-fragment="Function">Function</a>, onError : <a class="param links" data-fragment="Function">Function</a> ) : <span class="param">undefined</span></h3>
+		<p>
+		<a class="links" data-fragment="String" title="String">text</a> — LDraw asset to parse, as string.<br>
+		<a class="links" data-fragment="String" title="String">path</a> — The base path from which to find other referenced LDraw asset files.<br>
+		<a class="links" data-fragment="Function" title="Function">onLoad</a> — A function to be called when parse completes.<br>
+		</p>
+		<p>
+		Parse a LDraw file contents as a String and fire <a class="links" data-fragment="Function" title="Function">onLoad</a> callback when complete. The argument to <a class="links" data-fragment="Function" title="Function">onLoad</a> will be an <a class="links" data-fragment="Group" title="Group" href="./index.html#api/en/objects/Group">Group</a> that contains hierarchy of <a class="links" data-fragment="Group" title="Group" href="./index.html#api/en/objects/Group">Group</a>, <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> and <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> (with other part data in .userData fields).
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.getMaterial" target="_parent" title="LDrawLoader.getMaterial" href="./index.html#examples/en/loaders/LDrawLoader.getMaterial">#</a> .<a class="links" data-fragment="LDrawLoader.getMaterial" id="getMaterial" href="./index.html#examples/en/loaders/LDrawLoader.getMaterial">getMaterial</a> ( colourCode : <span class="param">String</span> ) : <a class="param links" data-fragment="Material" href="./index.html#api/en/materials/Material">Material</a></h3>
+		<p>
+		<a class="links" data-fragment="String" title="String">colourCode</a> — Color code to get the associated <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.getMainMaterial" target="_parent" title="LDrawLoader.getMainMaterial" href="./index.html#examples/en/loaders/LDrawLoader.getMainMaterial">#</a> .<a class="links" data-fragment="LDrawLoader.getMainMaterial" id="getMainMaterial" href="./index.html#examples/en/loaders/LDrawLoader.getMainMaterial">getMainMaterial</a> () : <span class="param">String</span></h3>
+		<p>
+		Returns the <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> for the main LDraw color.
+		</p>
+
+		<p>For an already loaded LDraw asset, returns the <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> associated with the main color code.
+		This method can be useful to modify the main material of a model or part that exposes it.
+		</p>
+
+		<p>
+		The main color code is the standard way to color an LDraw part. It is '16' for triangles and '24' for edges. Usually
+		a complete model will not expose the main color (that is, no part uses the code '16' at the top level, because they
+		are assigned other specific colors) An LDraw part file on the other hand will expose the code '16' to be colored, and
+		can have additional fixed colors.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.getMainEdgeMaterial" target="_parent" title="LDrawLoader.getMainEdgeMaterial" href="./index.html#examples/en/loaders/LDrawLoader.getMainEdgeMaterial">#</a> .<a class="links" data-fragment="LDrawLoader.getMainEdgeMaterial" id="getMainEdgeMaterial" href="./index.html#examples/en/loaders/LDrawLoader.getMainEdgeMaterial">getMainEdgeMaterial</a> () : <span class="param">String</span></h3>
+		<p>
+		Returns the <a class="links" data-fragment="Material" title="Material" href="./index.html#api/en/materials/Material">Material</a> for the edges main LDraw color.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="LDrawLoader.preloadMaterials" target="_parent" title="LDrawLoader.preloadMaterials" href="./index.html#examples/en/loaders/LDrawLoader.preloadMaterials">#</a> .<a class="links" data-fragment="LDrawLoader.preloadMaterials" id="preloadMaterials" href="./index.html#examples/en/loaders/LDrawLoader.preloadMaterials">preloadMaterials</a> ( path : <span class="param">String</span> ) : <a class="param links" data-fragment="void">void</a></h3>
+		<p>
+		<a class="links" data-fragment="String" title="String">path</a> — Path of the LDraw materials asset.
+		</p>
+
+		<p>This async method preloads materials from a single LDraw file. In the official parts library there is a special
+		file which is loaded always the first (LDConfig.ldr) and contains all the standard color codes. This method is
+		intended to be used with not packed files, for example in an editor where materials are preloaded and parts are
+		loaded on demand.</p>
+
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/loaders/LDrawLoader.js" target="_blank">examples/jsm/loaders/LDrawLoader.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

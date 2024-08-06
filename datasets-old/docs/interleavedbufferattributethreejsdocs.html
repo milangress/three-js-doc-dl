@@ -1,0 +1,118 @@
+<!DOCTYPE html><html><head><title>InterleavedBufferAttribute – three.js docs</title></head><body><body>
+		<h1>InterleavedBufferAttribute</h1>
+
+		<p class="desc"></p>
+
+		<h2>Constructor</h2>
+		<h3>InterleavedBufferAttribute( interleavedBuffer : <a class="param links" data-fragment="InterleavedBuffer" href="./index.html#api/en/core/InterleavedBuffer">InterleavedBuffer</a>, itemSize : <span class="param">Integer</span>, offset : <span class="param">Integer</span>, normalized : <span class="param">Boolean</span> )</h3>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.data" target="_parent" title="InterleavedBufferAttribute.data" href="./index.html#api/en/core/InterleavedBufferAttribute.data">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.data" id="data" href="./index.html#api/en/core/InterleavedBufferAttribute.data">data</a>  : <a class="param links" data-fragment="InterleavedBuffer" href="./index.html#api/en/core/InterleavedBuffer">InterleavedBuffer</a></h3>
+		<p>
+			The <a class="links" data-fragment="InterleavedBuffer" title="InterleavedBuffer" href="./index.html#api/en/core/InterleavedBuffer">InterleavedBuffer</a> instance passed in the
+			constructor.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.array" target="_parent" title="InterleavedBufferAttribute.array" href="./index.html#api/en/core/InterleavedBufferAttribute.array">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.array" id="array" href="./index.html#api/en/core/InterleavedBufferAttribute.array">array</a>  : <span class="param">TypedArray</span></h3>
+		<p>The value of <a class="links" data-fragment="InterleavedBufferAttribute.data" title="InterleavedBufferAttribute.data" href="./index.html#api/en/core/InterleavedBufferAttribute.data">data</a>.array.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.count" target="_parent" title="InterleavedBufferAttribute.count" href="./index.html#api/en/core/InterleavedBufferAttribute.count">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.count" id="count" href="./index.html#api/en/core/InterleavedBufferAttribute.count">count</a>  : <span class="param">Integer</span></h3>
+		<p>
+			The value of <a class="links" data-fragment="InterleavedBufferAttribute.data" title="InterleavedBufferAttribute.data" href="./index.html#api/en/core/InterleavedBufferAttribute.data">data</a>.count. If the
+			buffer is storing a 3-component item (such as a position, normal, or
+			color), then this will count the number of such items stored.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.isInterleavedBufferAttribute" target="_parent" title="InterleavedBufferAttribute.isInterleavedBufferAttribute" href="./index.html#api/en/core/InterleavedBufferAttribute.isInterleavedBufferAttribute">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.isInterleavedBufferAttribute" id="isInterleavedBufferAttribute" href="./index.html#api/en/core/InterleavedBufferAttribute.isInterleavedBufferAttribute">isInterleavedBufferAttribute</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type InterleavedBufferAttribute.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.itemSize" target="_parent" title="InterleavedBufferAttribute.itemSize" href="./index.html#api/en/core/InterleavedBufferAttribute.itemSize">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.itemSize" id="itemSize" href="./index.html#api/en/core/InterleavedBufferAttribute.itemSize">itemSize</a>  : <span class="param">Integer</span></h3>
+		<p>How many values make up each item.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.name" target="_parent" title="InterleavedBufferAttribute.name" href="./index.html#api/en/core/InterleavedBufferAttribute.name">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.name" id="name" href="./index.html#api/en/core/InterleavedBufferAttribute.name">name</a>  : <span class="param">String</span></h3>
+		<p>
+			Optional name for this attribute instance. Default is an empty string.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.needsUpdate" target="_parent" title="InterleavedBufferAttribute.needsUpdate" href="./index.html#api/en/core/InterleavedBufferAttribute.needsUpdate">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.needsUpdate" id="needsUpdate" href="./index.html#api/en/core/InterleavedBufferAttribute.needsUpdate">needsUpdate</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>. Setting this to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code> will send the entire
+			interleaved buffer (not just the specific attribute data) to the GPU
+			again.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.normalized" target="_parent" title="InterleavedBufferAttribute.normalized" href="./index.html#api/en/core/InterleavedBufferAttribute.normalized">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.normalized" id="normalized" href="./index.html#api/en/core/InterleavedBufferAttribute.normalized">normalized</a>  : <span class="param">Boolean</span></h3>
+		<p>Default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.offset" target="_parent" title="InterleavedBufferAttribute.offset" href="./index.html#api/en/core/InterleavedBufferAttribute.offset">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.offset" id="offset" href="./index.html#api/en/core/InterleavedBufferAttribute.offset">offset</a>  : <span class="param">Integer</span></h3>
+		<p>The offset in the underlying array buffer where an item starts.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.applyMatrix4" target="_parent" title="InterleavedBufferAttribute.applyMatrix4" href="./index.html#api/en/core/InterleavedBufferAttribute.applyMatrix4">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.applyMatrix4" id="applyMatrix4" href="./index.html#api/en/core/InterleavedBufferAttribute.applyMatrix4">applyMatrix4</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span></h3>
+		<p>
+			Applies matrix <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a> to every Vector3 element of this
+			InterleavedBufferAttribute.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.applyNormalMatrix" target="_parent" title="InterleavedBufferAttribute.applyNormalMatrix" href="./index.html#api/en/core/InterleavedBufferAttribute.applyNormalMatrix">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.applyNormalMatrix" id="applyNormalMatrix" href="./index.html#api/en/core/InterleavedBufferAttribute.applyNormalMatrix">applyNormalMatrix</a> ( m : <a class="param links" data-fragment="Matrix3" href="./index.html#api/en/math/Matrix3">Matrix3</a> ) : <span class="param">this</span></h3>
+		<p>
+			Applies normal matrix <a class="links" data-fragment="Matrix3" title="Matrix3" href="./index.html#api/en/math/Matrix3">m</a> to every Vector3 element of this
+			InterleavedBufferAttribute.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.transformDirection" target="_parent" title="InterleavedBufferAttribute.transformDirection" href="./index.html#api/en/core/InterleavedBufferAttribute.transformDirection">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.transformDirection" id="transformDirection" href="./index.html#api/en/core/InterleavedBufferAttribute.transformDirection">transformDirection</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> ) : <span class="param">this</span></h3>
+		<p>
+			Applies matrix <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a> to every Vector3 element of this
+			InterleavedBufferAttribute, interpreting the elements as a direction
+			vectors.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.getComponent" target="_parent" title="InterleavedBufferAttribute.getComponent" href="./index.html#api/en/core/InterleavedBufferAttribute.getComponent">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.getComponent" id="getComponent" href="./index.html#api/en/core/InterleavedBufferAttribute.getComponent">getComponent</a> ( index : <span class="param">Integer</span>, component : <span class="param">Integer</span> ) : <span class="param">Number</span> </h3>
+		<p>Returns the given component of the vector at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.getX" target="_parent" title="InterleavedBufferAttribute.getX" href="./index.html#api/en/core/InterleavedBufferAttribute.getX">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.getX" id="getX" href="./index.html#api/en/core/InterleavedBufferAttribute.getX">getX</a> ( index : <span class="param">Integer</span> ) : <span class="param">Number</span></h3>
+		<p>Returns the x component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.getY" target="_parent" title="InterleavedBufferAttribute.getY" href="./index.html#api/en/core/InterleavedBufferAttribute.getY">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.getY" id="getY" href="./index.html#api/en/core/InterleavedBufferAttribute.getY">getY</a> ( index : <span class="param">Integer</span> ) : <span class="param">Number</span></h3>
+		<p>Returns the y component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.getZ" target="_parent" title="InterleavedBufferAttribute.getZ" href="./index.html#api/en/core/InterleavedBufferAttribute.getZ">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.getZ" id="getZ" href="./index.html#api/en/core/InterleavedBufferAttribute.getZ">getZ</a> ( index : <span class="param">Integer</span> ) : <span class="param">Number</span></h3>
+		<p>Returns the z component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.getW" target="_parent" title="InterleavedBufferAttribute.getW" href="./index.html#api/en/core/InterleavedBufferAttribute.getW">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.getW" id="getW" href="./index.html#api/en/core/InterleavedBufferAttribute.getW">getW</a> ( index : <span class="param">Integer</span> ) : <span class="param">Number</span></h3>
+		<p>Returns the w component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setComponent" target="_parent" title="InterleavedBufferAttribute.setComponent" href="./index.html#api/en/core/InterleavedBufferAttribute.setComponent">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setComponent" id="setComponent" href="./index.html#api/en/core/InterleavedBufferAttribute.setComponent">setComponent</a> ( index : <span class="param">Integer</span>, component : <span class="param">Integer</span>, value : <span class="param">Float</span> ) : <span class="param">Number</span> </h3>
+		<p>Sets the given component of the vector at the given index.</p>
+		
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setX" target="_parent" title="InterleavedBufferAttribute.setX" href="./index.html#api/en/core/InterleavedBufferAttribute.setX">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setX" id="setX" href="./index.html#api/en/core/InterleavedBufferAttribute.setX">setX</a> ( index : <span class="param">Integer</span>, x : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>Sets the x component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setY" target="_parent" title="InterleavedBufferAttribute.setY" href="./index.html#api/en/core/InterleavedBufferAttribute.setY">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setY" id="setY" href="./index.html#api/en/core/InterleavedBufferAttribute.setY">setY</a> ( index : <span class="param">Integer</span>, y : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>Sets the y component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setZ" target="_parent" title="InterleavedBufferAttribute.setZ" href="./index.html#api/en/core/InterleavedBufferAttribute.setZ">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setZ" id="setZ" href="./index.html#api/en/core/InterleavedBufferAttribute.setZ">setZ</a> ( index : <span class="param">Integer</span>, z : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>Sets the z component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setW" target="_parent" title="InterleavedBufferAttribute.setW" href="./index.html#api/en/core/InterleavedBufferAttribute.setW">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setW" id="setW" href="./index.html#api/en/core/InterleavedBufferAttribute.setW">setW</a> ( index : <span class="param">Integer</span>, w : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>Sets the w component of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setXY" target="_parent" title="InterleavedBufferAttribute.setXY" href="./index.html#api/en/core/InterleavedBufferAttribute.setXY">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setXY" id="setXY" href="./index.html#api/en/core/InterleavedBufferAttribute.setXY">setXY</a> ( index : <span class="param">Integer</span>, x : <span class="param">Float</span>, y : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>Sets the x and y components of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setXYZ" target="_parent" title="InterleavedBufferAttribute.setXYZ" href="./index.html#api/en/core/InterleavedBufferAttribute.setXYZ">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setXYZ" id="setXYZ" href="./index.html#api/en/core/InterleavedBufferAttribute.setXYZ">setXYZ</a> ( index : <span class="param">Integer</span>, x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>Sets the x, y and z components of the item at the given index.</p>
+
+		<h3><a class="permalink links" data-fragment="InterleavedBufferAttribute.setXYZW" target="_parent" title="InterleavedBufferAttribute.setXYZW" href="./index.html#api/en/core/InterleavedBufferAttribute.setXYZW">#</a> .<a class="links" data-fragment="InterleavedBufferAttribute.setXYZW" id="setXYZW" href="./index.html#api/en/core/InterleavedBufferAttribute.setXYZW">setXYZW</a> ( index : <span class="param">Integer</span>, x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span>, w : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>Sets the x, y, z and w components of the item at the given index.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/core/InterleavedBufferAttribute.js" target="_blank">src/core/InterleavedBufferAttribute.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

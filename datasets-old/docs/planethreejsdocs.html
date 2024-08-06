@@ -1,0 +1,199 @@
+<!DOCTYPE html><html><head><title>Plane – three.js docs</title></head><body><body>
+		<h1>Plane</h1>
+
+		<p class="desc">
+			A two dimensional surface that extends infinitely in 3d space, represented
+			in <a href="http://mathworld.wolfram.com/HessianNormalForm.html" target="_blank">Hessian normal form</a> 
+			by a unit length normal vector and a constant.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Plane( normal : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, constant : <span class="param">Float</span> )</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> - (optional) a unit length <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> defining
+			the normal of the plane. Default is <code class="inline prettyprint" translate="no"><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span></code>.<br>
+			<a class="links" data-fragment="Float" title="Float">constant</a> - (optional) the signed distance from the origin to
+			the plane. Default is <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="Plane.isPlane" target="_parent" title="Plane.isPlane" href="./index.html#api/en/math/Plane.isPlane">#</a> .<a class="links" data-fragment="Plane.isPlane" id="isPlane" href="./index.html#api/en/math/Plane.isPlane">isPlane</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Plane.</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.normal" target="_parent" title="Plane.normal" href="./index.html#api/en/math/Plane.normal">#</a> .<a class="links" data-fragment="Plane.normal" id="normal" href="./index.html#api/en/math/Plane.normal">normal</a>  : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a></h3>
+
+		<h3><a class="permalink links" data-fragment="Plane.constant" target="_parent" title="Plane.constant" href="./index.html#api/en/math/Plane.constant">#</a> .<a class="links" data-fragment="Plane.constant" id="constant" href="./index.html#api/en/math/Plane.constant">constant</a>  : <span class="param">Float</span></h3>
+
+		<h2>Methods</h2>
+
+		<h3>
+			<a class="permalink links" data-fragment="Plane.applyMatrix4" target="_parent" title="Plane.applyMatrix4" href="./index.html#api/en/math/Plane.applyMatrix4">#</a> .<a class="links" data-fragment="Plane.applyMatrix4" id="applyMatrix4" href="./index.html#api/en/math/Plane.applyMatrix4">applyMatrix4</a> ( matrix : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a>, optionalNormalMatrix : <a class="param links" data-fragment="Matrix3" href="./index.html#api/en/math/Matrix3">Matrix3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">matrix</a> - the <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> to apply.<br>
+			<a class="links" data-fragment="Matrix3" title="Matrix3" href="./index.html#api/en/math/Matrix3">optionalNormalMatrix</a> - (optional) pre-computed normal
+			<a class="links" data-fragment="Matrix3" title="Matrix3" href="./index.html#api/en/math/Matrix3">Matrix3</a> of the Matrix4 being applied.<br><br>
+
+			Apply a Matrix4 to the plane. The matrix must be an affine, homogeneous
+			transform.<br>
+			If supplying an <a class="links" data-fragment="Matrix3" title="Matrix3" href="./index.html#api/en/math/Matrix3">optionalNormalMatrix</a>, it can be created
+			like so:
+			<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> optionalNormalMatrix </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Matrix3</span><span class="pun">().</span><span class="pln">getNormalMatrix</span><span class="pun">(</span><span class="pln"> matrix </span><span class="pun">);</span></code>
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.clone" target="_parent" title="Plane.clone" href="./index.html#api/en/math/Plane.clone">#</a> .<a class="links" data-fragment="Plane.clone" id="clone" href="./index.html#api/en/math/Plane.clone">clone</a> () : <a class="param links" data-fragment="Plane" href="./index.html#api/en/math/Plane">Plane</a></h3>
+		<p>
+			Returns a new plane with the same <a class="links" data-fragment="Plane.normal" title="Plane.normal" href="./index.html#api/en/math/Plane.normal">normal</a> and
+			<a class="links" data-fragment="Plane.constant" title="Plane.constant" href="./index.html#api/en/math/Plane.constant">constant</a> as this one.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.coplanarPoint" target="_parent" title="Plane.coplanarPoint" href="./index.html#api/en/math/Plane.coplanarPoint">#</a> .<a class="links" data-fragment="Plane.coplanarPoint" id="coplanarPoint" href="./index.html#api/en/math/Plane.coplanarPoint">coplanarPoint</a> ( target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a></h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.<br><br>
+
+			Returns a <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> coplanar to the plane, by calculating the
+			projection of the normal vector at the origin onto the plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.copy" target="_parent" title="Plane.copy" href="./index.html#api/en/math/Plane.copy">#</a> .<a class="links" data-fragment="Plane.copy" id="copy" href="./index.html#api/en/math/Plane.copy">copy</a> ( plane : <a class="param links" data-fragment="Plane" href="./index.html#api/en/math/Plane">Plane</a> ) : <span class="param">this</span></h3>
+		<p>
+			Copies the values of the passed plane's <a class="links" data-fragment="Plane.normal" title="Plane.normal" href="./index.html#api/en/math/Plane.normal">normal</a> and
+			<a class="links" data-fragment="Plane.constant" title="Plane.constant" href="./index.html#api/en/math/Plane.constant">constant</a> properties to this plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.distanceToPoint" target="_parent" title="Plane.distanceToPoint" href="./index.html#api/en/math/Plane.distanceToPoint">#</a> .<a class="links" data-fragment="Plane.distanceToPoint" id="distanceToPoint" href="./index.html#api/en/math/Plane.distanceToPoint">distanceToPoint</a> ( point : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">Float</span></h3>
+		<p>
+			Returns the signed distance from the <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">point</a> to the plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.distanceToSphere" target="_parent" title="Plane.distanceToSphere" href="./index.html#api/en/math/Plane.distanceToSphere">#</a> .<a class="links" data-fragment="Plane.distanceToSphere" id="distanceToSphere" href="./index.html#api/en/math/Plane.distanceToSphere">distanceToSphere</a> ( sphere : <a class="param links" data-fragment="Sphere" href="./index.html#api/en/math/Sphere">Sphere</a> ) : <span class="param">Float</span></h3>
+		<p>
+			Returns the signed distance from the <a class="links" data-fragment="Sphere" title="Sphere" href="./index.html#api/en/math/Sphere">sphere</a> to the plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.equals" target="_parent" title="Plane.equals" href="./index.html#api/en/math/Plane.equals">#</a> .<a class="links" data-fragment="Plane.equals" id="equals" href="./index.html#api/en/math/Plane.equals">equals</a> ( plane : <a class="param links" data-fragment="Plane" href="./index.html#api/en/math/Plane">Plane</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			Checks to see if two planes are equal (their <a class="links" data-fragment="Plane.normal" title="Plane.normal" href="./index.html#api/en/math/Plane.normal">normal</a> and
+			<a class="links" data-fragment="Plane.constant" title="Plane.constant" href="./index.html#api/en/math/Plane.constant">constant</a> properties match).
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Plane.intersectLine" target="_parent" title="Plane.intersectLine" href="./index.html#api/en/math/Plane.intersectLine">#</a> .<a class="links" data-fragment="Plane.intersectLine" id="intersectLine" href="./index.html#api/en/math/Plane.intersectLine">intersectLine</a> ( line : <a class="param links" data-fragment="Line3" href="./index.html#api/en/math/Line3">Line3</a>, target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Line3" title="Line3" href="./index.html#api/en/math/Line3">line</a> - the <a class="links" data-fragment="Line3" title="Line3" href="./index.html#api/en/math/Line3">Line3</a> to check for intersection.<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.<br><br>
+
+			Returns the intersection point of the passed line and the plane. Returns
+			null if the line does not intersect. Returns the line's starting point if
+			the line is coplanar with the plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.intersectsBox" target="_parent" title="Plane.intersectsBox" href="./index.html#api/en/math/Plane.intersectsBox">#</a> .<a class="links" data-fragment="Plane.intersectsBox" id="intersectsBox" href="./index.html#api/en/math/Plane.intersectsBox">intersectsBox</a> ( box : <a class="param links" data-fragment="Box3" href="./index.html#api/en/math/Box3">Box3</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="Box3" title="Box3" href="./index.html#api/en/math/Box3">box</a> - the <a class="links" data-fragment="Box3" title="Box3" href="./index.html#api/en/math/Box3">Box3</a> to check for intersection.<br><br>
+
+			Determines whether or not this plane intersects <a class="links" data-fragment="Box3" title="Box3" href="./index.html#api/en/math/Box3">box</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.intersectsLine" target="_parent" title="Plane.intersectsLine" href="./index.html#api/en/math/Plane.intersectsLine">#</a> .<a class="links" data-fragment="Plane.intersectsLine" id="intersectsLine" href="./index.html#api/en/math/Plane.intersectsLine">intersectsLine</a> ( line : <a class="param links" data-fragment="Line3" href="./index.html#api/en/math/Line3">Line3</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="Line3" title="Line3" href="./index.html#api/en/math/Line3">line</a> - the <a class="links" data-fragment="Line3" title="Line3" href="./index.html#api/en/math/Line3">Line3</a> to check for intersection.<br><br>
+
+			Tests whether a line segment intersects with (passes through) the plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.intersectsSphere" target="_parent" title="Plane.intersectsSphere" href="./index.html#api/en/math/Plane.intersectsSphere">#</a> .<a class="links" data-fragment="Plane.intersectsSphere" id="intersectsSphere" href="./index.html#api/en/math/Plane.intersectsSphere">intersectsSphere</a> ( sphere : <a class="param links" data-fragment="Sphere" href="./index.html#api/en/math/Sphere">Sphere</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="Sphere" title="Sphere" href="./index.html#api/en/math/Sphere">sphere</a> - the <a class="links" data-fragment="Sphere" title="Sphere" href="./index.html#api/en/math/Sphere">Sphere</a> to check for intersection.<br><br>
+
+			Determines whether or not this plane intersects <a class="links" data-fragment="Sphere" title="Sphere" href="./index.html#api/en/math/Sphere">sphere</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.negate" target="_parent" title="Plane.negate" href="./index.html#api/en/math/Plane.negate">#</a> .<a class="links" data-fragment="Plane.negate" id="negate" href="./index.html#api/en/math/Plane.negate">negate</a> () : <span class="param">this</span></h3>
+		<p>Negates both the normal vector and the constant.</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.normalize" target="_parent" title="Plane.normalize" href="./index.html#api/en/math/Plane.normalize">#</a> .<a class="links" data-fragment="Plane.normalize" id="normalize" href="./index.html#api/en/math/Plane.normalize">normalize</a> () : <span class="param">this</span></h3>
+		<p>
+			Normalizes the <a class="links" data-fragment="Plane.normal" title="Plane.normal" href="./index.html#api/en/math/Plane.normal">normal</a> vector, and adjusts the
+			<a class="links" data-fragment="Plane.constant" title="Plane.constant" href="./index.html#api/en/math/Plane.constant">constant</a> value accordingly.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Plane.projectPoint" target="_parent" title="Plane.projectPoint" href="./index.html#api/en/math/Plane.projectPoint">#</a> .<a class="links" data-fragment="Plane.projectPoint" id="projectPoint" href="./index.html#api/en/math/Plane.projectPoint">projectPoint</a> ( point : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, target : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">point</a> - the <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> to project onto the plane.<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.<br><br>
+
+			Projects a <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">point</a> onto the plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.set" target="_parent" title="Plane.set" href="./index.html#api/en/math/Plane.set">#</a> .<a class="links" data-fragment="Plane.set" id="set" href="./index.html#api/en/math/Plane.set">set</a> ( normal : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, constant : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> - a unit length <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> defining the normal
+			of the plane.<br>
+			<a class="links" data-fragment="Float" title="Float">constant</a> - the signed distance from the origin to the plane.
+			<br><br>
+
+			Sets this plane's <a class="links" data-fragment="Plane.normal" title="Plane.normal" href="./index.html#api/en/math/Plane.normal">normal</a> and <a class="links" data-fragment="Plane.constant" title="Plane.constant" href="./index.html#api/en/math/Plane.constant">constant</a>
+			properties by copying the values from the given normal.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Plane.setComponents" target="_parent" title="Plane.setComponents" href="./index.html#api/en/math/Plane.setComponents">#</a> .<a class="links" data-fragment="Plane.setComponents" id="setComponents" href="./index.html#api/en/math/Plane.setComponents">setComponents</a> ( x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span>, w : <span class="param">Float</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">x</a> - x value of the unit length normal vector.<br>
+			<a class="links" data-fragment="Float" title="Float">y</a> - y value of the unit length normal vector.<br>
+			<a class="links" data-fragment="Float" title="Float">z</a> - z value of the unit length normal vector.<br>
+			<a class="links" data-fragment="Float" title="Float">w</a> - the value of the plane's <a class="links" data-fragment="Plane.constant" title="Plane.constant" href="./index.html#api/en/math/Plane.constant">constant</a>
+			property.<br><br>
+
+			Set the individual components that define the plane.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Plane.setFromCoplanarPoints" target="_parent" title="Plane.setFromCoplanarPoints" href="./index.html#api/en/math/Plane.setFromCoplanarPoints">#</a> .<a class="links" data-fragment="Plane.setFromCoplanarPoints" id="setFromCoplanarPoints" href="./index.html#api/en/math/Plane.setFromCoplanarPoints">setFromCoplanarPoints</a> ( a : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, b : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, c : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">a</a> - first point on the plane.<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">b</a> - second point on the plane.<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">c</a> - third point on the plane.<br><br>
+
+			Defines the plane based on the 3 provided points. The winding order is
+			assumed to be counter-clockwise, and determines the direction of the
+			<a class="links" data-fragment="Plane.normal" title="Plane.normal" href="./index.html#api/en/math/Plane.normal">normal</a>.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Plane.setFromNormalAndCoplanarPoint" target="_parent" title="Plane.setFromNormalAndCoplanarPoint" href="./index.html#api/en/math/Plane.setFromNormalAndCoplanarPoint">#</a> .<a class="links" data-fragment="Plane.setFromNormalAndCoplanarPoint" id="setFromNormalAndCoplanarPoint" href="./index.html#api/en/math/Plane.setFromNormalAndCoplanarPoint">setFromNormalAndCoplanarPoint</a> ( normal : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, point : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> - a unit length <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> defining the normal
+			of the plane.<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">point</a> - <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a><br><br>
+
+			Sets the plane's properties as defined by a <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> and an
+			arbitrary coplanar <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">point</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Plane.translate" target="_parent" title="Plane.translate" href="./index.html#api/en/math/Plane.translate">#</a> .<a class="links" data-fragment="Plane.translate" id="translate" href="./index.html#api/en/math/Plane.translate">translate</a> ( offset : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">offset</a> - the amount to move the plane by.<br><br>
+
+			Translates the plane by the distance defined by the <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">offset</a>
+			vector. Note that this only affects the plane constant and will not affect
+			the normal vector.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Plane.js" target="_blank">src/math/Plane.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

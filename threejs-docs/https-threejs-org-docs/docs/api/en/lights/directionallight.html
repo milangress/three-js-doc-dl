@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head><title>DirectionalLight – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> → <a class=/"links/" data-fragment=/"Light/" title=/"Light/" href=/"./index.html#api/en/lights/Light/">Light</a> →
+
+		<h1>DirectionalLight</h1>
+
+		<p class=/"desc/">
+			A light that gets emitted in a specific direction. This light will behave
+			as though it is infinitely far away and the rays produced from it are all
+			parallel. The common use case for this is to simulate daylight; the sun is
+			far enough away that its position can be considered to be infinite, and
+			all light rays coming from it are parallel.<br><br>
+
+			This light can cast shadows - see the <a class=/"links/" data-fragment=/"DirectionalLightShadow/" title=/"DirectionalLightShadow/" href=/"./index.html#api/en/lights/shadows/DirectionalLightShadow/">DirectionalLightShadow</a> page
+			for details.
+		</p>
+
+		<h2>A Note about Position, Target and rotation</h2>
+		<p>
+			A common point of confusion for directional lights is that setting the
+			rotation has no effect. This is because three.js's DirectionalLight is the
+			equivalent to what is often called a 'Target Direct Light' in other
+			applications.<br><br>
+
+			This means that its direction is calculated as pointing from the light's
+			<a class=/"links/" data-fragment=/"Object3D.position/" title=/"Object3D.position/" href=/"./index.html#api/en/core/Object3D.position/">position</a> to the <a class=/"links/" data-fragment=/"DirectionalLight.target/" title=/"DirectionalLight.target/" href=/"./index.html#api/en/lights/DirectionalLight.target/">target</a>'s position
+			(as opposed to a 'Free Direct Light' that just has a rotation
+			component).<br><br>
+
+			The reason for this is to allow the light to cast shadows - the
+			<a class=/"links/" data-fragment=/"DirectionalLight.shadow/" title=/"DirectionalLight.shadow/" href=/"./index.html#api/en/lights/DirectionalLight.shadow/">shadow</a> camera needs a position to calculate shadows
+			from.<br><br>
+
+			See the <a class=/"links/" data-fragment=/"DirectionalLight.target/" title=/"DirectionalLight.target/" href=/"./index.html#api/en/lights/DirectionalLight.target/">target</a> property below for details on updating the
+			target.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"com/">// White directional light at half intensity shining from the top.</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> directionalLight </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">DirectionalLight</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0xffffff</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0.5</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> directionalLight </span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href=/"../examples/#misc_controls_fly/" target=/"_blank/">controls / fly </a><br>
+			<a href=/"../examples/#webgl_effects_parallaxbarrier/" target=/"_blank/">effects / parallaxbarrier </a><br>
+			<a href=/"../examples/#webgl_effects_stereo/" target=/"_blank/">effects / stereo </a><br>
+			<a href=/"../examples/#webgl_geometry_extrude_splines/" target=/"_blank/">geometry / extrude / splines </a><br>
+			<a href=/"../examples/#webgl_materials_bumpmap/" target=/"_blank/">materials / bumpmap </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>DirectionalLight( color : <span class=/"param/">Integer</span>, intensity : <span class=/"param/">Float</span> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">color</a> - (optional) hexadecimal color of the light. Default
+			is 0xffffff (white).<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">intensity</a> - (optional) numeric value of the light's
+			strength/intensity. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br><br>
+
+			Creates a new DirectionalLight.
+		</p>
+
+		<h2>Properties</h2>
+
+		<p>See the base <a class=/"links/" data-fragment=/"Light/" title=/"Light/" href=/"./index.html#api/en/lights/Light/">Light</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLight.castShadow/" target=/"_parent/" title=/"DirectionalLight.castShadow/" href=/"./index.html#api/en/lights/DirectionalLight.castShadow/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLight.castShadow/" id=/"castShadow/" href=/"./index.html#api/en/lights/DirectionalLight.castShadow/">castShadow</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>
+			If set to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code> light will cast dynamic shadows. <strong>Warning</strong>: This is
+			expensive and requires tweaking to get shadows looking right. See the
+			<a class=/"links/" data-fragment=/"DirectionalLightShadow/" title=/"DirectionalLightShadow/" href=/"./index.html#api/en/lights/shadows/DirectionalLightShadow/">DirectionalLightShadow</a> for details. The default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLight.isDirectionalLight/" target=/"_parent/" title=/"DirectionalLight.isDirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight.isDirectionalLight/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLight.isDirectionalLight/" id=/"isDirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight.isDirectionalLight/">isDirectionalLight</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type DirectionalLight.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLight.position/" target=/"_parent/" title=/"DirectionalLight.position/" href=/"./index.html#api/en/lights/DirectionalLight.position/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLight.position/" id=/"position/" href=/"./index.html#api/en/lights/DirectionalLight.position/">position</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			This is set equal to <a class=/"links/" data-fragment=/"Object3D.DEFAULT_UP/" title=/"Object3D.DEFAULT_UP/" href=/"./index.html#api/en/core/Object3D.DEFAULT_UP/">Object3D.DEFAULT_UP</a> (0, 1, 0), so that the
+			light shines from the top down.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLight.shadow/" target=/"_parent/" title=/"DirectionalLight.shadow/" href=/"./index.html#api/en/lights/DirectionalLight.shadow/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLight.shadow/" id=/"shadow/" href=/"./index.html#api/en/lights/DirectionalLight.shadow/">shadow</a>  : <a class=/"param links/" data-fragment=/"DirectionalLightShadow/" href=/"./index.html#api/en/lights/shadows/DirectionalLightShadow/">DirectionalLightShadow</a></h3>
+		<p>
+			A <a class=/"links/" data-fragment=/"DirectionalLightShadow/" title=/"DirectionalLightShadow/" href=/"./index.html#api/en/lights/shadows/DirectionalLightShadow/">DirectionalLightShadow</a> used to calculate shadows for this light.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLight.target/" target=/"_parent/" title=/"DirectionalLight.target/" href=/"./index.html#api/en/lights/DirectionalLight.target/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLight.target/" id=/"target/" href=/"./index.html#api/en/lights/DirectionalLight.target/">target</a>  : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a></h3>
+		<p>
+			The DirectionalLight points from its <a class=/"links/" data-fragment=/"DirectionalLight.position/" title=/"DirectionalLight.position/" href=/"./index.html#api/en/lights/DirectionalLight.position/">position</a> to
+			target.position. The default position of the target is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">)</span></code>.<br>
+
+			<strong>Note</strong>: For the target's position to be changed to anything other than the
+			default, it must be added to the <a class=/"links/" data-fragment=/"Scene/" title=/"Scene/" href=/"./index.html#api/en/scenes/Scene/">scene</a> using
+		</p>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> light</span><span class=/"pun/">.</span><span class=/"pln/">target </span><span class=/"pun/">);</span></code>
+		<p>
+			This is so that the target's <a class=/"links/" data-fragment=/"Object3D.matrixWorld/" title=/"Object3D.matrixWorld/" href=/"./index.html#api/en/core/Object3D.matrixWorld/">matrixWorld</a> gets
+			automatically updated each frame.<br><br>
+
+			It is also possible to set the target to be another object in the scene
+			(anything with a <a class=/"links/" data-fragment=/"Object3D.position/" title=/"Object3D.position/" href=/"./index.html#api/en/core/Object3D.position/">position</a> property), like so:
+		</p>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> targetObject </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Object3D</span><span class=/"pun/">();</span><span class=/"pln/"> 
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/">targetObject</span><span class=/"pun/">);</span><span class=/"pln/">
+
+light</span><span class=/"pun/">.</span><span class=/"pln/">target </span><span class=/"pun/">=</span><span class=/"pln/"> targetObject</span><span class=/"pun/">;</span></code>
+		<p>The directionalLight will now track the target object.</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a class=/"links/" data-fragment=/"Light/" title=/"Light/" href=/"./index.html#api/en/lights/Light/">Light</a> class for common methods.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLight.dispose/" target=/"_parent/" title=/"DirectionalLight.dispose/" href=/"./index.html#api/en/lights/DirectionalLight.dispose/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLight.dispose/" id=/"dispose/" href=/"./index.html#api/en/lights/DirectionalLight.dispose/">dispose</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"DirectionalLight.copy/" target=/"_parent/" title=/"DirectionalLight.copy/" href=/"./index.html#api/en/lights/DirectionalLight.copy/">#</a> .<a class=/"links/" data-fragment=/"DirectionalLight.copy/" id=/"copy/" href=/"./index.html#api/en/lights/DirectionalLight.copy/">copy</a> ( source : <a class=/"param links/" data-fragment=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">DirectionalLight</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Copies value of all the properties from the <a class=/"links/" data-fragment=/"DirectionalLight/" title=/"DirectionalLight/" href=/"./index.html#api/en/lights/DirectionalLight/">source</a>
+			to this DirectionalLight.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLight.js/" target=/"_blank/">src/lights/DirectionalLight.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

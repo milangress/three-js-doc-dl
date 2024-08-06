@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><title>GLTFExporter – three.js docs</title></head><body><body>
+		<h1>GLTFExporter</h1>
+
+		<p class="desc">
+		An exporter for <code class="inline prettyprint" translate="no"><span class="pln">glTF</span></code> 2.0.
+		<br><br>
+		<a href="https://www.khronos.org/gltf" target="_blank">glTF</a> (GL Transmission Format) is an
+		<a href="https://github.com/KhronosGroup/glTF/tree/master/specification/2.0" target="_blank">open format specification</a>
+		for efficient delivery and loading of 3D content. Assets may be provided either in JSON (.gltf)
+		or binary (.glb) format. External files store textures (.jpg, .png) and additional binary
+		data (.bin). A glTF asset may deliver one or more scenes, including meshes, materials,
+		textures, skins, skeletons, morph targets, animations, lights, and/or cameras.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			GLTFExporter is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">GLTFExporter</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/exporters/GLTFExporter.js'</span><span class="pun">;</span></code>
+
+		<h2>Extensions</h2>
+
+		<p>
+			GLTFExporter supports the following
+			<a href="https://github.com/KhronosGroup/glTF/tree/master/extensions/" target="_blank">glTF 2.0 extensions</a>:
+		</p>
+
+		<ul>
+			<li>KHR_lights_punctual</li>
+			<li>KHR_materials_clearcoat</li>
+			<li>KHR_materials_dispersion</li>
+			<li>KHR_materials_emissive_strength</li>
+			<li>KHR_materials_ior</li>
+			<li>KHR_materials_iridescence</li>		
+			<li>KHR_materials_specular</li>
+			<li>KHR_materials_sheen</li>
+			<li>KHR_materials_transmission</li>
+			<li>KHR_materials_unlit</li>
+			<li>KHR_materials_volume</li>
+			<li>KHR_mesh_quantization</li>
+			<li>KHR_texture_transform</li>
+		</ul>
+
+		<p>
+			The following glTF 2.0 extension is supported by an external user plugin
+		</p>
+
+		<ul>
+			<li><a href="https://github.com/takahirox/three-gltf-extensions" target="_blank">KHR_materials_variants</a></li>
+		</ul>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="com">// Instantiate a exporter</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> exporter </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">GLTFExporter</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// Parse the input and generate the glTF output</span><span class="pln">
+exporter</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln">
+	scene</span><span class="pun">,</span><span class="pln">
+	</span><span class="com">// called when the gltf has been generated</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> gltf </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+		console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> gltf </span><span class="pun">);</span><span class="pln">
+		downloadJSON</span><span class="pun">(</span><span class="pln"> gltf </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="pun">},</span><span class="pln">
+	</span><span class="com">// called when there is an error in the generation</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> error </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+		console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="str">'An error happened'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="pun">},</span><span class="pln">
+	options
+</span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#misc_exporter_gltf" target="_blank">misc_exporter_gltf</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>GLTFExporter()</h3>
+		<p>
+		</p>
+		<p>
+		Creates a new GLTFExporter.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="GLTFExporter.parse" target="_parent" title="GLTFExporter.parse" href="./index.html#examples/en/exporters/GLTFExporter.parse">#</a> .<a class="links" data-fragment="GLTFExporter.parse" id="parse" href="./index.html#examples/en/exporters/GLTFExporter.parse">parse</a> ( input : <a class="param links" data-fragment="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a>, onCompleted : <a class="param links" data-fragment="Function">Function</a>, onError : <a class="param links" data-fragment="Function">Function</a>, options : <span class="param">Object</span> ) : <span class="param">undefined</span></h3>
+
+		<p>
+		<a class="links" data-fragment="Object" title="Object">input</a> — Scenes or objects to export. Valid options:<br>
+		</p><ul>
+			<li>
+				Export scenes
+				<code class=" prettyprint" translate="no"><span class="pln">exporter</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln"> scene1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">...</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+		exporter</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> scene1</span><span class="pun">,</span><span class="pln"> scene2 </span><span class="pun">],</span><span class="pln"> </span><span class="pun">...</span><span class="pln"> </span><span class="pun">)</span></code>
+			</li>
+			<li>
+				Export objects (It will create a new Scene to hold all the objects)
+				<code class=" prettyprint" translate="no"><span class="pln">exporter</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln"> object1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">...</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+		exporter</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> object1</span><span class="pun">,</span><span class="pln"> object2 </span><span class="pun">],</span><span class="pln"> </span><span class="pun">...</span><span class="pln"> </span><span class="pun">)</span></code>
+			</li>
+			<li>
+				Mix scenes and objects (It will export the scenes as usual but it will create a new scene to hold all the single objects).
+				<code class=" prettyprint" translate="no"><span class="pln">exporter</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> scene1</span><span class="pun">,</span><span class="pln"> object1</span><span class="pun">,</span><span class="pln"> object2</span><span class="pun">,</span><span class="pln"> scene2 </span><span class="pun">],</span><span class="pln"> </span><span class="pun">...</span><span class="pln"> </span><span class="pun">)</span></code>
+			</li>
+		</ul>
+
+		<a class="links" data-fragment="Function" title="Function">onCompleted</a> — Will be called when the export completes. The argument will be the generated glTF JSON or binary ArrayBuffer.<br>
+		<a class="links" data-fragment="Function" title="Function">onError</a> — Will be called if there are any errors during the gltf generation.<br>
+		<a class="links" data-fragment="Options" title="Options">options</a> — Export options<br>
+		<ul>
+			<li><code class="inline prettyprint" translate="no"><span class="pln">trs</span></code> - bool. Export position, rotation and scale instead of matrix per node. Default is false</li>
+			<li><code class="inline prettyprint" translate="no"><span class="pln">onlyVisible</span></code> - bool. Export only visible objects. Default is true.</li>
+			<li><code class="inline prettyprint" translate="no"><span class="pln">binary</span></code> - bool. Export in binary (.glb) format, returning an ArrayBuffer. Default is false.</li>
+			<li><code class="inline prettyprint" translate="no"><span class="pln">maxTextureSize</span></code> - int. Restricts the image maximum size (both width and height) to the given value. Default is Infinity.</li>
+			<li><code class="inline prettyprint" translate="no"><span class="pln">animations</span></code> - Array&lt;<a class="links" data-fragment="AnimationClip" title="AnimationClip" href="./index.html#api/en/animation/AnimationClip">AnimationClip</a>&gt;. List of animations to be included in the export.</li>
+			<li><code class="inline prettyprint" translate="no"><span class="pln">includeCustomExtensions</span></code> - bool. Export custom glTF extensions defined on an object's <code class="inline prettyprint" translate="no"><span class="pln">userData</span><span class="pun">.</span><span class="pln">gltfExtensions</span></code> property. Default is false.</li>
+		</ul>
+		<p></p>
+		<p>
+		Generates a .gltf (JSON) or .glb (binary) output from the input (Scenes or Objects)
+		</p>
+
+		<h3><a class="permalink links" data-fragment="GLTFExporter.parseAsync" target="_parent" title="GLTFExporter.parseAsync" href="./index.html#examples/en/exporters/GLTFExporter.parseAsync">#</a> .<a class="links" data-fragment="GLTFExporter.parseAsync" id="parseAsync" href="./index.html#examples/en/exporters/GLTFExporter.parseAsync">parseAsync</a> ( input : <a class="param links" data-fragment="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a>, options : <span class="param">Object</span> ) : <a class="param links" data-fragment="Promise">Promise</a></h3>
+
+		<p>
+			Generates a .gltf (JSON) or .glb (binary) output from the input (Scenes or Objects).
+		</p>
+		<p>
+			This is just like the <a class="links" data-fragment="GLTFExporter.parse" title="GLTFExporter.parse" href="./index.html#examples/en/exporters/GLTFExporter.parse">.parse</a>() method, but instead of
+			accepting callbacks it returns a promise that resolves with the
+			result, and otherwise accepts the same options.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/exporters/GLTFExporter.js" target="_blank">examples/jsm/exporters/GLTFExporter.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

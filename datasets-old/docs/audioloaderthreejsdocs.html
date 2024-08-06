@@ -1,0 +1,98 @@
+<!DOCTYPE html><html><head><title>AudioLoader – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Loader" title="Loader" href="./index.html#api/en/loaders/Loader">Loader</a> →
+
+		<h1>AudioLoader</h1>
+
+		<p class="desc">
+			Class for loading an
+			<a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer" target="_blank">AudioBuffer</a>. 
+			This uses the <a class="links" data-fragment="FileLoader" title="FileLoader" href="./index.html#api/en/loaders/FileLoader">FileLoader</a> internally for loading
+			files.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="com">// instantiate a listener</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> audioListener </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">AudioListener</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// add the listener to the camera</span><span class="pln">
+camera</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> audioListener </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// instantiate audio object</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> oceanAmbientSound </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Audio</span><span class="pun">(</span><span class="pln"> audioListener </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// add the audio object to the scene</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> oceanAmbientSound </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// instantiate a loader</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> loader </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">AudioLoader</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// load a resource</span><span class="pln">
+loader</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="pln">
+	</span><span class="com">// resource URL</span><span class="pln">
+	</span><span class="str">'audio/ambient_ocean.ogg'</span><span class="pun">,</span><span class="pln">
+
+	</span><span class="com">// onLoad callback</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> audioBuffer </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		</span><span class="com">// set the audio object buffer to the loaded object</span><span class="pln">
+		oceanAmbientSound</span><span class="pun">.</span><span class="pln">setBuffer</span><span class="pun">(</span><span class="pln"> audioBuffer </span><span class="pun">);</span><span class="pln">
+
+		</span><span class="com">// play the audio</span><span class="pln">
+		oceanAmbientSound</span><span class="pun">.</span><span class="pln">play</span><span class="pun">();</span><span class="pln">
+	</span><span class="pun">},</span><span class="pln">
+
+	</span><span class="com">// onProgress callback</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> xhr </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="pun">(</span><span class="pln">xhr</span><span class="pun">.</span><span class="pln">loaded </span><span class="pun">/</span><span class="pln"> xhr</span><span class="pun">.</span><span class="pln">total </span><span class="pun">*</span><span class="pln"> </span><span class="lit">100</span><span class="pun">)</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'% loaded'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+	</span><span class="pun">},</span><span class="pln">
+
+	</span><span class="com">// onError callback</span><span class="pln">
+	</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> err </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="str">'An error happened'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+	</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>AudioLoader( manager : <a class="param links" data-fragment="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		<p>
+			<a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">manager</a> — The <a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">loadingManager</a>
+			for the loader to use. Default is <a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">THREE.DefaultLoadingManager</a>.<br><br>
+
+			Creates a new AudioLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Loader" title="Loader" href="./index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Loader" title="Loader" href="./index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="AudioLoader.load" target="_parent" title="AudioLoader.load" href="./index.html#api/en/loaders/AudioLoader.load">#</a> .<a class="links" data-fragment="AudioLoader.load" id="load" href="./index.html#api/en/loaders/AudioLoader.load">load</a> ( url : <span class="param">String</span>, onLoad : <a class="param links" data-fragment="Function">Function</a>, onProgress : <a class="param links" data-fragment="Function">Function</a>, onError : <a class="param links" data-fragment="Function">Function</a> ) : <span class="param">undefined</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="String" title="String">url</a> — the path or URL to the file. This can also be a
+			<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs" target="_blank">Data URI</a>.<br>
+			<a class="links" data-fragment="Function" title="Function">onLoad</a> — Will be called when load completes. The argument
+			will be the loaded text response.<br>
+			<a class="links" data-fragment="Function" title="Function">onProgress</a> (optional) — Will be called while load
+			progresses. The argument will be the ProgressEvent instance, which
+			contains .<a class="links" data-fragment="Boolean" title="Boolean">lengthComputable</a>, .<a class="links" data-fragment="Integer" title="Integer">total</a> and
+			.<a class="links" data-fragment="Integer" title="Integer">loaded</a>. If the server does not set the Content-Length
+			header; .<a class="links" data-fragment="Integer" title="Integer">total</a> will be 0.<br>
+			<a class="links" data-fragment="Function" title="Function">onError</a> (optional) — Will be called when load errors.<br>
+		</p>
+		<p>
+			Begin loading from url and pass the loaded <a class="links" data-fragment="String" title="String">AudioBuffer</a> to
+			onLoad.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/loaders/AudioLoader.js" target="_blank">src/loaders/AudioLoader.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

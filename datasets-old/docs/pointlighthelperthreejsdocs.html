@@ -1,0 +1,83 @@
+<!DOCTYPE html><html><head><title>PointLightHelper – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> → <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> →
+
+		<h1>PointLightHelper</h1>
+
+		<p class="desc">
+			This displays a helper object consisting of a spherical <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> for
+			visualizing a <a class="links" data-fragment="PointLight" title="PointLight" href="./index.html#api/en/lights/PointLight">PointLight</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> pointLight </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PointLight</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0xff0000</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">100</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+pointLight</span><span class="pun">.</span><span class="pln">position</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">10</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> pointLight </span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> sphereSize </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> pointLightHelper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PointLightHelper</span><span class="pun">(</span><span class="pln"> pointLight</span><span class="pun">,</span><span class="pln"> sphereSize </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> pointLightHelper </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href="../examples/#webgl_helpers" target="_blank">WebGL / helpers</a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			PointLightHelper( light : <a class="param links" data-fragment="PointLight" href="./index.html#api/en/lights/PointLight">PointLight</a>, sphereSize : <span class="param">Float</span>, color : <a class="param links" data-fragment="Hex">Hex</a> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="PointLight" title="PointLight" href="./index.html#api/en/lights/PointLight">light</a> -- The light to be visualized. <br><br>
+
+			<a class="links" data-fragment="Float" title="Float">sphereSize</a> -- (optional) The size of the sphere helper.
+			Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.<br><br>
+
+			<a class="links" data-fragment="Hex" title="Hex">color</a> -- (optional) if this is not the set the helper will take
+			the color of the light.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="PointLightHelper.light" target="_parent" title="PointLightHelper.light" href="./index.html#api/en/helpers/PointLightHelper.light">#</a> .<a class="links" data-fragment="PointLightHelper.light" id="light" href="./index.html#api/en/helpers/PointLightHelper.light">light</a>  : <a class="param links" data-fragment="PointLight" href="./index.html#api/en/lights/PointLight">PointLight</a></h3>
+		<p>The <a class="links" data-fragment="PointLight" title="PointLight" href="./index.html#api/en/lights/PointLight">PointLight</a> that is being visualized.</p>
+
+		<h3><a class="permalink links" data-fragment="PointLightHelper.matrix" target="_parent" title="PointLightHelper.matrix" href="./index.html#api/en/helpers/PointLightHelper.matrix">#</a> .<a class="links" data-fragment="PointLightHelper.matrix" id="matrix" href="./index.html#api/en/helpers/PointLightHelper.matrix">matrix</a>  : <span class="param">Object</span></h3>
+		<p>
+			Reference to the pointLight's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointLightHelper.matrixAutoUpdate" target="_parent" title="PointLightHelper.matrixAutoUpdate" href="./index.html#api/en/helpers/PointLightHelper.matrixAutoUpdate">#</a> .<a class="links" data-fragment="PointLightHelper.matrixAutoUpdate" id="matrixAutoUpdate" href="./index.html#api/en/helpers/PointLightHelper.matrixAutoUpdate">matrixAutoUpdate</a>  : <span class="param">Object</span></h3>
+		<p>
+			See <a class="links" data-fragment="Object3D.matrixAutoUpdate" title="Object3D.matrixAutoUpdate" href="./index.html#api/en/core/Object3D.matrixAutoUpdate">Object3D.matrixAutoUpdate</a>. Set to <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code> here as the helper is
+			using the pointLight's <a class="links" data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="./index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointLightHelper.color" target="_parent" title="PointLightHelper.color" href="./index.html#api/en/helpers/PointLightHelper.color">#</a> .<a class="links" data-fragment="PointLightHelper.color" id="color" href="./index.html#api/en/helpers/PointLightHelper.color">color</a>  : <a class="param links" data-fragment="hex">hex</a></h3>
+		<p>
+			The color parameter passed in the constructor. Default is <code class="inline prettyprint" translate="no"><span class="kwd">undefined</span></code>. If
+			this is changed, the helper's color will update the next time
+			<a class="links" data-fragment="PointLightHelper.update" title="PointLightHelper.update" href="./index.html#api/en/helpers/PointLightHelper.update">update</a> is called.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="PointLightHelper.dispose" target="_parent" title="PointLightHelper.dispose" href="./index.html#api/en/helpers/PointLightHelper.dispose">#</a> .<a class="links" data-fragment="PointLightHelper.dispose" id="dispose" href="./index.html#api/en/helpers/PointLightHelper.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="PointLightHelper.update" target="_parent" title="PointLightHelper.update" href="./index.html#api/en/helpers/PointLightHelper.update">#</a> .<a class="links" data-fragment="PointLightHelper.update" id="update" href="./index.html#api/en/helpers/PointLightHelper.update">update</a> () : <span class="param">undefined</span></h3>
+		<p>Updates the helper to match the position of the <a class="links" data-fragment="PointLightHelper.light" title="PointLightHelper.light" href="./index.html#api/en/helpers/PointLightHelper.light">.light</a>.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/helpers/PointLightHelper.js" target="_blank">src/helpers/PointLightHelper.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

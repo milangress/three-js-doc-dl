@@ -1,0 +1,71 @@
+<!DOCTYPE html><html><head><title>ConeGeometry – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> → <a class=/"links/" data-fragment=/"CylinderGeometry/" title=/"CylinderGeometry/" href=/"./index.html#api/en/geometries/CylinderGeometry/">CylinderGeometry</a> →
+
+		<h1>ConeGeometry</h1>
+
+		<p class=/"desc/">A class for generating cone geometries.</p>
+
+		<iframe id=/"scene/" src=/"scenes/geometry-browser.html#ConeGeometry/"></iframe>
+
+		<script>
+
+		// iOS iframe auto-resize workaround
+
+		if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
+
+			const scene = document.getElementById( 'scene' );
+
+			scene.style.width = getComputedStyle( scene ).width;
+			scene.style.height = getComputedStyle( scene ).height;
+			scene.setAttribute( 'scrolling', 'no' );
+
+		}
+
+		</script>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> geometry </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">ConeGeometry</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">5</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">20</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">32</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/"> 
+</span><span class=/"kwd/">const</span><span class=/"pln/"> material </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">MeshBasicMaterial</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/">color</span><span class=/"pun/">:</span><span class=/"pln/"> </span><span class=/"lit/">0xffff00</span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> cone </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Mesh</span><span class=/"pun/">(</span><span class=/"pln/">geometry</span><span class=/"pun/">,</span><span class=/"pln/"> material </span><span class=/"pun/">);</span><span class=/"pln/"> scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> cone </span><span class=/"pun/">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			ConeGeometry(radius : <span class=/"param/">Float</span>, height : <span class=/"param/">Float</span>, radialSegments : <span class=/"param/">Integer</span>, heightSegments : <span class=/"param/">Integer</span>, openEnded : <span class=/"param/">Boolean</span>, thetaStart : <span class=/"param/">Float</span>, thetaLength : <span class=/"param/">Float</span>)
+		</h3>
+		<p>
+			radius — Radius of the cone base. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br>
+			height — Height of the cone. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br>
+			radialSegments — Number of segmented faces around the circumference of the
+			cone. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">32</span></code><br>
+			heightSegments — Number of rows of faces along the height of the cone.
+			Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br>
+			openEnded — A Boolean indicating whether the base of the cone is open or
+			capped. Default is false, meaning capped.<br>
+			thetaStart — Start angle for first segment, default = 0 (three o'clock
+			position).<br>
+			thetaLength — The central angle, often called theta, of the circular
+			sector. The default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2</span></code>*Pi, which makes for a complete cone.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"CylinderGeometry/" title=/"CylinderGeometry/" href=/"./index.html#api/en/geometries/CylinderGeometry/">CylinderGeometry</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ConeGeometry.parameters/" target=/"_parent/" title=/"ConeGeometry.parameters/" href=/"./index.html#api/en/geometries/ConeGeometry.parameters/">#</a> .<a class=/"links/" data-fragment=/"ConeGeometry.parameters/" id=/"parameters/" href=/"./index.html#api/en/geometries/ConeGeometry.parameters/">parameters</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			An object with a property for each of the constructor parameters. Any
+			modification after instantiation does not change the geometry.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"CylinderGeometry/" title=/"CylinderGeometry/" href=/"./index.html#api/en/geometries/CylinderGeometry/">CylinderGeometry</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/geometries/ConeGeometry.js/" target=/"_blank/">src/geometries/ConeGeometry.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

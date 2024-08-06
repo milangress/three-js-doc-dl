@@ -1,0 +1,132 @@
+<!DOCTYPE html><html><head><title>OrthographicCamera – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> → <a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">Camera</a> →
+
+		<h1>OrthographicCamera</h1>
+		<p class="desc">
+			Camera that uses
+			<a href="https://en.wikipedia.org/wiki/Orthographic_projection" target="_blank">orthographic projection</a>.<br><br>
+
+			In this projection mode, an object's size in the rendered image stays
+			constant regardless of its distance from the camera.<br><br>
+
+			This can be useful for rendering 2D scenes and UI elements, amongst other
+			things.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> camera </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">OrthographicCamera</span><span class="pun">(</span><span class="pln"> width </span><span class="pun">/</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> width </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> height </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> height </span><span class="pun">/</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1000</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> camera </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+		<p>
+			<a href="../examples/#webgl_camera" target="_blank">camera </a><br>
+			<a href="../examples/#webgl_interactive_cubes_ortho" target="_blank">interactive / cubes / ortho </a><br>
+			<a href="../examples/#webgl_materials_cubemap_dynamic" target="_blank">materials / cubemap / dynamic</a><br>
+			<a href="../examples/#webgl_postprocessing_advanced" target="_blank">postprocessing / advanced </a><br>
+			<a href="../examples/#webgl_postprocessing_dof2" target="_blank">postprocessing / dof2 </a><br>
+			<a href="../examples/#webgl_postprocessing_godrays" target="_blank">postprocessing / godrays </a><br>
+			<a href="../examples/#webgl_rtt" target="_blank">rtt </a><br>
+			<a href="../examples/#webgl_shadowmap" target="_blank">shadowmap </a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>OrthographicCamera( left : <span class="param">Number</span>, right : <span class="param">Number</span>, top : <span class="param">Number</span>, bottom : <span class="param">Number</span>, near : <span class="param">Number</span>, far : <span class="param">Number</span> )</h3>
+		<p>
+			left — Camera frustum left plane.<br>
+			right — Camera frustum right plane.<br>
+			top — Camera frustum top plane.<br>
+			bottom — Camera frustum bottom plane.<br>
+			near — Camera frustum near plane.<br>
+			far — Camera frustum far plane.<br><br>
+
+			Together these define the camera's
+			<a href="https://en.wikipedia.org/wiki/Viewing_frustum" target="_blank">viewing frustum</a>.
+		</p>
+
+		<h2>Properties</h2>
+		<p>
+			See the base <a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">Camera</a> class for common properties.<br>
+			Note that after making changes to most of these properties you will have
+			to call <a class="links" data-fragment="OrthographicCamera.updateProjectionMatrix" title="OrthographicCamera.updateProjectionMatrix" href="./index.html#api/en/cameras/OrthographicCamera.updateProjectionMatrix">.updateProjectionMatrix</a> for the changes to take effect.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.bottom" target="_parent" title="OrthographicCamera.bottom" href="./index.html#api/en/cameras/OrthographicCamera.bottom">#</a> .<a class="links" data-fragment="OrthographicCamera.bottom" id="bottom" href="./index.html#api/en/cameras/OrthographicCamera.bottom">bottom</a>  : <span class="param">Float</span></h3>
+		<p>Camera frustum bottom plane.</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.far" target="_parent" title="OrthographicCamera.far" href="./index.html#api/en/cameras/OrthographicCamera.far">#</a> .<a class="links" data-fragment="OrthographicCamera.far" id="far" href="./index.html#api/en/cameras/OrthographicCamera.far">far</a>  : <span class="param">Float</span></h3>
+		<p>
+			Camera frustum far plane. Default is <code class="inline prettyprint" translate="no"><span class="lit">2000</span></code>.<br><br>
+			Must be greater than the current value of <a class="links" data-fragment="OrthographicCamera.near" title="OrthographicCamera.near" href="./index.html#api/en/cameras/OrthographicCamera.near">near</a> plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.isOrthographicCamera" target="_parent" title="OrthographicCamera.isOrthographicCamera" href="./index.html#api/en/cameras/OrthographicCamera.isOrthographicCamera">#</a> .<a class="links" data-fragment="OrthographicCamera.isOrthographicCamera" id="isOrthographicCamera" href="./index.html#api/en/cameras/OrthographicCamera.isOrthographicCamera">isOrthographicCamera</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type OrthographicCamera.</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.left" target="_parent" title="OrthographicCamera.left" href="./index.html#api/en/cameras/OrthographicCamera.left">#</a> .<a class="links" data-fragment="OrthographicCamera.left" id="left" href="./index.html#api/en/cameras/OrthographicCamera.left">left</a>  : <span class="param">Float</span></h3>
+		<p>Camera frustum left plane.</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.near" target="_parent" title="OrthographicCamera.near" href="./index.html#api/en/cameras/OrthographicCamera.near">#</a> .<a class="links" data-fragment="OrthographicCamera.near" id="near" href="./index.html#api/en/cameras/OrthographicCamera.near">near</a>  : <span class="param">Float</span></h3>
+		<p>
+			Camera frustum near plane. Default is <code class="inline prettyprint" translate="no"><span class="lit">0.1</span></code>.<br><br>
+
+			The valid range is between <code class="inline prettyprint" translate="no"><span class="lit">0</span></code> and the current value of the <a class="links" data-fragment="OrthographicCamera.far" title="OrthographicCamera.far" href="./index.html#api/en/cameras/OrthographicCamera.far">far</a> plane. Note that, unlike for the <a class="links" data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="./index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a>, <code class="inline prettyprint" translate="no"><span class="lit">0</span></code> is a
+			valid value for an OrthographicCamera's near plane.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.right" target="_parent" title="OrthographicCamera.right" href="./index.html#api/en/cameras/OrthographicCamera.right">#</a> .<a class="links" data-fragment="OrthographicCamera.right" id="right" href="./index.html#api/en/cameras/OrthographicCamera.right">right</a>  : <span class="param">Float</span></h3>
+		<p>Camera frustum right plane.</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.top" target="_parent" title="OrthographicCamera.top" href="./index.html#api/en/cameras/OrthographicCamera.top">#</a> .<a class="links" data-fragment="OrthographicCamera.top" id="top" href="./index.html#api/en/cameras/OrthographicCamera.top">top</a>  : <span class="param">Float</span></h3>
+		<p>Camera frustum top plane.</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.view" target="_parent" title="OrthographicCamera.view" href="./index.html#api/en/cameras/OrthographicCamera.view">#</a> .<a class="links" data-fragment="OrthographicCamera.view" id="view" href="./index.html#api/en/cameras/OrthographicCamera.view">view</a>  : <span class="param">Object</span></h3>
+		<p>
+			Set by <a class="links" data-fragment="OrthographicCamera.setViewOffset" title="OrthographicCamera.setViewOffset" href="./index.html#api/en/cameras/OrthographicCamera.setViewOffset">setViewOffset</a>. Default is
+			<code class="inline prettyprint" translate="no"><span class="kwd">null</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.zoom" target="_parent" title="OrthographicCamera.zoom" href="./index.html#api/en/cameras/OrthographicCamera.zoom">#</a> .<a class="links" data-fragment="OrthographicCamera.zoom" id="zoom" href="./index.html#api/en/cameras/OrthographicCamera.zoom">zoom</a>  : <span class="param">number</span></h3>
+		<p>Gets or sets the zoom factor of the camera. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">Camera</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.setViewOffset" target="_parent" title="OrthographicCamera.setViewOffset" href="./index.html#api/en/cameras/OrthographicCamera.setViewOffset">#</a> .<a class="links" data-fragment="OrthographicCamera.setViewOffset" id="setViewOffset" href="./index.html#api/en/cameras/OrthographicCamera.setViewOffset">setViewOffset</a> ( fullWidth : <span class="param">Float</span>, fullHeight : <span class="param">Float</span>, x : <span class="param">Float</span>, y : <span class="param">Float</span>, width : <span class="param">Float</span>, height : <span class="param">Float</span> ) : <span class="param">undefined</span></h3>
+		<p>
+			fullWidth — full width of multiview setup<br>
+			fullHeight — full height of multiview setup<br>
+			x — horizontal offset of subcamera<br>
+			y — vertical offset of subcamera<br>
+			width — width of subcamera<br>
+			height — height of subcamera<br><br>
+
+			Sets an offset in a larger
+			<a href="https://en.wikipedia.org/wiki/Viewing_frustum" target="_blank">viewing frustum</a>. This
+			is useful for multi-window or multi-monitor/multi-machine setups. For an
+			example on how to use it see <a class="links" data-fragment="PerspectiveCamera.setViewOffset" title="PerspectiveCamera.setViewOffset" href="./index.html#api/en/cameras/PerspectiveCamera.setViewOffset">PerspectiveCamera</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.clearViewOffset" target="_parent" title="OrthographicCamera.clearViewOffset" href="./index.html#api/en/cameras/OrthographicCamera.clearViewOffset">#</a> .<a class="links" data-fragment="OrthographicCamera.clearViewOffset" id="clearViewOffset" href="./index.html#api/en/cameras/OrthographicCamera.clearViewOffset">clearViewOffset</a> () : <span class="param">undefined</span></h3>
+		<p>Removes any offset set by the .setViewOffset method.</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.updateProjectionMatrix" target="_parent" title="OrthographicCamera.updateProjectionMatrix" href="./index.html#api/en/cameras/OrthographicCamera.updateProjectionMatrix">#</a> .<a class="links" data-fragment="OrthographicCamera.updateProjectionMatrix" id="updateProjectionMatrix" href="./index.html#api/en/cameras/OrthographicCamera.updateProjectionMatrix">updateProjectionMatrix</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Updates the camera projection matrix. Must be called after any change of
+			parameters.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="OrthographicCamera.toJSON" target="_parent" title="OrthographicCamera.toJSON" href="./index.html#api/en/cameras/OrthographicCamera.toJSON">#</a> .<a class="links" data-fragment="OrthographicCamera.toJSON" id="toJSON" href="./index.html#api/en/cameras/OrthographicCamera.toJSON">toJSON</a> (meta : <span class="param">Object</span>) : <span class="param">Object</span></h3>
+		<p>
+			meta -- object containing metadata such as textures or images in objects'
+			descendants.<br>
+			Convert the camera to three.js
+			<a href="https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4" target="_blank">JSON Object/Scene format</a>.
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/cameras/OrthographicCamera.js" target="_blank">src/cameras/OrthographicCamera.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

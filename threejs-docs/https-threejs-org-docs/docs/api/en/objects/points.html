@@ -1,0 +1,80 @@
+<!DOCTYPE html><html><head><title>Points – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> →
+
+		<h1>Points</h1>
+
+		<p class=/"desc/">
+			A class for displaying points. The points are rendered by the
+			<a class=/"links/" data-fragment=/"WebGLRenderer/" title=/"WebGLRenderer/" href=/"./index.html#api/en/renderers/WebGLRenderer/">WebGLRenderer</a> using
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/drawElements/" target=/"_blank/">gl.POINTS</a>.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			Points( geometry : <a class=/"param links/" data-fragment=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a>, material : <a class=/"param links/" data-fragment=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a> )
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">geometry</a> — (optional) an instance of
+			<a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a>. Default is a new <a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a>.<br>
+			<a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">material</a> — (optional) a <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a>. Default is a new
+			<a class=/"links/" data-fragment=/"PointsMaterial/" title=/"PointsMaterial/" href=/"./index.html#api/en/materials/PointsMaterial/">PointsMaterial</a>.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> class for common properties.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Points.geometry/" target=/"_parent/" title=/"Points.geometry/" href=/"./index.html#api/en/objects/Points.geometry/">#</a> .<a class=/"links/" data-fragment=/"Points.geometry/" id=/"geometry/" href=/"./index.html#api/en/objects/Points.geometry/">geometry</a>  : <a class=/"param links/" data-fragment=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a></h3>
+		<p>
+			An instance of <a class=/"links/" data-fragment=/"BufferGeometry/" title=/"BufferGeometry/" href=/"./index.html#api/en/core/BufferGeometry/">BufferGeometry</a> (or derived classes), defining the
+			object's structure.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Points.isPoints/" target=/"_parent/" title=/"Points.isPoints/" href=/"./index.html#api/en/objects/Points.isPoints/">#</a> .<a class=/"links/" data-fragment=/"Points.isPoints/" id=/"isPoints/" href=/"./index.html#api/en/objects/Points.isPoints/">isPoints</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Points.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Points.material/" target=/"_parent/" title=/"Points.material/" href=/"./index.html#api/en/objects/Points.material/">#</a> .<a class=/"links/" data-fragment=/"Points.material/" id=/"material/" href=/"./index.html#api/en/objects/Points.material/">material</a>  : <a class=/"param links/" data-fragment=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a></h3>
+		<p>
+			An instance of <a class=/"links/" data-fragment=/"Material/" title=/"Material/" href=/"./index.html#api/en/materials/Material/">Material</a>, defining the object's appearance. Default
+			is a <a class=/"links/" data-fragment=/"PointsMaterial/" title=/"PointsMaterial/" href=/"./index.html#api/en/materials/PointsMaterial/">PointsMaterial</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Points.morphTargetInfluences/" target=/"_parent/" title=/"Points.morphTargetInfluences/" href=/"./index.html#api/en/objects/Points.morphTargetInfluences/">#</a> .<a class=/"links/" data-fragment=/"Points.morphTargetInfluences/" id=/"morphTargetInfluences/" href=/"./index.html#api/en/objects/Points.morphTargetInfluences/">morphTargetInfluences</a>  : <span class=/"param/">Array</span></h3>
+		<p>
+			An array of weights typically from 0-1 that specify how much of the morph
+			is applied. Undefined by default, but reset to a blank array by
+			<a class=/"links/" data-fragment=/"Points.updateMorphTargets/" title=/"Points.updateMorphTargets/" href=/"./index.html#api/en/objects/Points.updateMorphTargets/">updateMorphTargets</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Points.morphTargetDictionary/" target=/"_parent/" title=/"Points.morphTargetDictionary/" href=/"./index.html#api/en/objects/Points.morphTargetDictionary/">#</a> .<a class=/"links/" data-fragment=/"Points.morphTargetDictionary/" id=/"morphTargetDictionary/" href=/"./index.html#api/en/objects/Points.morphTargetDictionary/">morphTargetDictionary</a>  : <span class=/"param/">Object</span></h3>
+		<p>
+			A dictionary of morphTargets based on the morphTarget.name property.
+			Undefined by default, but rebuilt <a class=/"links/" data-fragment=/"Points.updateMorphTargets/" title=/"Points.updateMorphTargets/" href=/"./index.html#api/en/objects/Points.updateMorphTargets/">updateMorphTargets</a>.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> class for common methods.</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Points.raycast/" target=/"_parent/" title=/"Points.raycast/" href=/"./index.html#api/en/objects/Points.raycast/">#</a> .<a class=/"links/" data-fragment=/"Points.raycast/" id=/"raycast/" href=/"./index.html#api/en/objects/Points.raycast/">raycast</a> ( raycaster : <a class=/"param links/" data-fragment=/"Raycaster/" href=/"./index.html#api/en/core/Raycaster/">Raycaster</a>, intersects : <span class=/"param/">Array</span> ) : <span class=/"param/">undefined</span>
+		</h3>
+		<p>
+			Get intersections between a casted ray and this Points.
+			<a class=/"links/" data-fragment=/"Raycaster.intersectObject/" title=/"Raycaster.intersectObject/" href=/"./index.html#api/en/core/Raycaster.intersectObject/">Raycaster.intersectObject</a> will call this method.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Points.updateMorphTargets/" target=/"_parent/" title=/"Points.updateMorphTargets/" href=/"./index.html#api/en/objects/Points.updateMorphTargets/">#</a> .<a class=/"links/" data-fragment=/"Points.updateMorphTargets/" id=/"updateMorphTargets/" href=/"./index.html#api/en/objects/Points.updateMorphTargets/">updateMorphTargets</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Updates the morphTargets to have no influence on the object. Resets the
+			<a class=/"links/" data-fragment=/"Points.morphTargetInfluences/" title=/"Points.morphTargetInfluences/" href=/"./index.html#api/en/objects/Points.morphTargetInfluences/">morphTargetInfluences</a> and
+			<a class=/"links/" data-fragment=/"Points.morphTargetDictionary/" title=/"Points.morphTargetDictionary/" href=/"./index.html#api/en/objects/Points.morphTargetDictionary/">morphTargetDictionary</a> properties.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/objects/Points.js/" target=/"_blank/">src/objects/Points.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

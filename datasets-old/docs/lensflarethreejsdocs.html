@@ -1,0 +1,65 @@
+<!DOCTYPE html><html><head><title>Lensflare – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> →
+
+		<h1>Lensflare</h1>
+
+		<p class="desc">
+			Creates a simulated lens flare that tracks a light. Lensflare can only be used when setting the <code class="inline prettyprint" translate="no"><span class="pln">alpha</span></code> context parameter of <a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGLRenderer</a> to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			Lensflare is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">Lensflare</span><span class="pun">,</span><span class="pln"> </span><span class="typ">LensflareElement</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/objects/Lensflare.js'</span><span class="pun">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> light </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PointLight</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0xffffff</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2000</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> textureLoader </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">TextureLoader</span><span class="pun">();</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> textureFlare0 </span><span class="pun">=</span><span class="pln"> textureLoader</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="pln"> </span><span class="str">"textures/lensflare/lensflare0.png"</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> textureFlare1 </span><span class="pun">=</span><span class="pln"> textureLoader</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="pln"> </span><span class="str">"textures/lensflare/lensflare2.png"</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> textureFlare2 </span><span class="pun">=</span><span class="pln"> textureLoader</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="pln"> </span><span class="str">"textures/lensflare/lensflare3.png"</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> lensflare </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Lensflare</span><span class="pun">();</span><span class="pln">
+
+lensflare</span><span class="pun">.</span><span class="pln">addElement</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">LensflareElement</span><span class="pun">(</span><span class="pln"> textureFlare0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">512</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+lensflare</span><span class="pun">.</span><span class="pln">addElement</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">LensflareElement</span><span class="pun">(</span><span class="pln"> textureFlare1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">512</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+lensflare</span><span class="pun">.</span><span class="pln">addElement</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">LensflareElement</span><span class="pun">(</span><span class="pln"> textureFlare2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">60</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0.6</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+light</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> lensflare </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#webgl_lensflares" target="_blank">WebGL / lensflares</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+
+		<h3>LensflareElement( texture : <a class="param links" data-fragment="Texture" href="./index.html#api/en/textures/Texture">Texture</a>, size : <span class="param">Float</span>, distance : <span class="param">Float</span>, color : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a> )</h3>
+		<p>
+		<a class="links" data-fragment="Texture" title="Texture" href="./index.html#api/en/textures/Texture">texture</a> - THREE.Texture to use for the flare. <br>
+		<a class="links" data-fragment="Float" title="Float">size</a> - (optional) size in pixels <br>
+		<a class="links" data-fragment="Float" title="Float">distance</a> - (optional) (0-1) from light source (0 = at light source) <br>
+		<a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">color</a> - (optional) the <a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">Color</a> of the lens flare
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">Mesh</a> class for common properties.</p>
+
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/objects/Lensflare.js" target="_blank">examples/jsm/objects/Lensflare.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

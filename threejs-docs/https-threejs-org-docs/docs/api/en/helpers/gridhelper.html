@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><title>GridHelper – three.js docs</title></head><body><body>
+		<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> → <a class=/"links/" data-fragment=/"Line/" title=/"Line/" href=/"./index.html#api/en/objects/Line/">Line</a> → <a class=/"links/" data-fragment=/"LineSegments/" title=/"LineSegments/" href=/"./index.html#api/en/objects/LineSegments/">LineSegments</a> →
+
+		<h1>GridHelper</h1>
+
+		<p class=/"desc/">
+			The GridHelper is an object to define grids. Grids are two-dimensional
+			arrays of lines.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> size </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">10</span><span class=/"pun/">;</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> divisions </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">10</span><span class=/"pun/">;</span><span class=/"pln/">
+
+</span><span class=/"kwd/">const</span><span class=/"pln/"> gridHelper </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">GridHelper</span><span class=/"pun/">(</span><span class=/"pln/"> size</span><span class=/"pun/">,</span><span class=/"pln/"> divisions </span><span class=/"pun/">);</span><span class=/"pln/">
+scene</span><span class=/"pun/">.</span><span class=/"pln/">add</span><span class=/"pun/">(</span><span class=/"pln/"> gridHelper </span><span class=/"pun/">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href=/"../examples/#webgl_helpers/" target=/"_blank/">WebGL / helpers</a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			GridHelper( size : <span class=/"param/">number</span>, divisions : <span class=/"param/">Number</span>, colorCenterLine : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a>, colorGrid : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> )
+		</h3>
+		<p>
+			size -- The size of the grid. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">10</span></code>. <br>
+			divisions -- The number of divisions across the grid. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">10</span></code>.
+			<br>
+			colorCenterLine -- The color of the centerline. This can be a
+			<a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a>, a hexadecimal value and an CSS-Color name. Default is
+			0x444444 <br>
+			colorGrid -- The color of the lines of the grid. This can be a
+			<a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a>, a hexadecimal value and an CSS-Color name. Default is
+			0x888888
+		</p>
+		<p>
+			Creates a new GridHelper of size 'size' and divided into 'divisions' segments
+			per side. Colors are optional.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class=/"links/" data-fragment=/"LineSegments/" title=/"LineSegments/" href=/"./index.html#api/en/objects/LineSegments/">LineSegments</a> class for common methods.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"GridHelper.dispose/" target=/"_parent/" title=/"GridHelper.dispose/" href=/"./index.html#api/en/helpers/GridHelper.dispose/">#</a> .<a class=/"links/" data-fragment=/"GridHelper.dispose/" id=/"dispose/" href=/"./index.html#api/en/helpers/GridHelper.dispose/">dispose</a> () : <span class=/"param/">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/helpers/GridHelper.js/" target=/"_blank/">src/helpers/GridHelper.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

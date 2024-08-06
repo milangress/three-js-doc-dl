@@ -1,0 +1,226 @@
+<!DOCTYPE html><html><head><title>Box2 – three.js docs</title></head><body><body>
+		<h1>Box2</h1>
+
+		<p class="desc">
+			Represents an axis-aligned bounding box (AABB) in 2D space.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Box2( min : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>, max : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> )</h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">min</a> - (optional) <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> representing the lower (x,
+			y) boundary of the box. Default is ( + Infinity, + Infinity ).<br>
+
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">max</a> - (optional) <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> representing the upper (x,
+			y) boundary of the box. Default is ( - Infinity, - Infinity ).<br><br>
+
+			Creates a Box2 bounded by min and max.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="Box2.min" target="_parent" title="Box2.min" href="./index.html#api/en/math/Box2.min">#</a> .<a class="links" data-fragment="Box2.min" id="min" href="./index.html#api/en/math/Box2.min">min</a>  : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> representing the lower (x, y) boundary of the box.<br>
+			Default is ( + Infinity, + Infinity ).
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.max" target="_parent" title="Box2.max" href="./index.html#api/en/math/Box2.max">#</a> .<a class="links" data-fragment="Box2.max" id="max" href="./index.html#api/en/math/Box2.max">max</a>  : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> representing the lower upper (x, y) boundary of the box.<br>
+			Default is ( - Infinity, - Infinity ).
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3>
+			<a class="permalink links" data-fragment="Box2.clampPoint" target="_parent" title="Box2.clampPoint" href="./index.html#api/en/math/Box2.clampPoint">#</a> .<a class="links" data-fragment="Box2.clampPoint" id="clampPoint" href="./index.html#api/en/math/Box2.clampPoint">clampPoint</a> ( point : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>, target : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> - <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> to clamp. <br>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">target</a> — the result will be copied into this Vector2.<br><br>
+
+			<a href="https://en.wikipedia.org/wiki/Clamping_(graphics)" target="_blank">Clamps</a> the
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> within the bounds of this box.<br>
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.clone" target="_parent" title="Box2.clone" href="./index.html#api/en/math/Box2.clone">#</a> .<a class="links" data-fragment="Box2.clone" id="clone" href="./index.html#api/en/math/Box2.clone">clone</a> () : <a class="param links" data-fragment="Box2" href="./index.html#api/en/math/Box2">Box2</a></h3>
+		<p>
+			Returns a new <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">Box2</a> with the same <a class="links" data-fragment="Box2.min" title="Box2.min" href="./index.html#api/en/math/Box2.min">min</a> and <a class="links" data-fragment="Box2.max" title="Box2.max" href="./index.html#api/en/math/Box2.max">max</a> as this one.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.containsBox" target="_parent" title="Box2.containsBox" href="./index.html#api/en/math/Box2.containsBox">#</a> .<a class="links" data-fragment="Box2.containsBox" id="containsBox" href="./index.html#api/en/math/Box2.containsBox">containsBox</a> ( box : <a class="param links" data-fragment="Box2" href="./index.html#api/en/math/Box2">Box2</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> - <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">Box2</a> to test for inclusion.<br><br>
+
+			Returns true if this box includes the entirety of <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a>. If this
+			and <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> are identical, <br>
+			this function also returns true.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.containsPoint" target="_parent" title="Box2.containsPoint" href="./index.html#api/en/math/Box2.containsPoint">#</a> .<a class="links" data-fragment="Box2.containsPoint" id="containsPoint" href="./index.html#api/en/math/Box2.containsPoint">containsPoint</a> ( point : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> - <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> to check for inclusion.<br><br>
+
+			Returns true if the specified <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> lies within or on the
+			boundaries of this box.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.copy" target="_parent" title="Box2.copy" href="./index.html#api/en/math/Box2.copy">#</a> .<a class="links" data-fragment="Box2.copy" id="copy" href="./index.html#api/en/math/Box2.copy">copy</a> ( box : <a class="param links" data-fragment="Box2" href="./index.html#api/en/math/Box2">Box2</a> ) : <span class="param">this</span></h3>
+		<p>
+			Copies the <a class="links" data-fragment="Box2.min" title="Box2.min" href="./index.html#api/en/math/Box2.min">min</a> and <a class="links" data-fragment="Box2.max" title="Box2.max" href="./index.html#api/en/math/Box2.max">max</a> from <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> to
+			this box.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.distanceToPoint" target="_parent" title="Box2.distanceToPoint" href="./index.html#api/en/math/Box2.distanceToPoint">#</a> .<a class="links" data-fragment="Box2.distanceToPoint" id="distanceToPoint" href="./index.html#api/en/math/Box2.distanceToPoint">distanceToPoint</a> ( point : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <span class="param">Float</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> - <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> to measure distance to.<br><br>
+
+			Returns the distance from any edge of this box to the specified point. If
+			the <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> lies inside of this box, the distance will be <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.equals" target="_parent" title="Box2.equals" href="./index.html#api/en/math/Box2.equals">#</a> .<a class="links" data-fragment="Box2.equals" id="equals" href="./index.html#api/en/math/Box2.equals">equals</a> ( box : <a class="param links" data-fragment="Box2" href="./index.html#api/en/math/Box2">Box2</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> - Box to compare with this one.<br><br>
+
+			Returns true if this box and <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> share the same lower and
+			upper bounds.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.expandByPoint" target="_parent" title="Box2.expandByPoint" href="./index.html#api/en/math/Box2.expandByPoint">#</a> .<a class="links" data-fragment="Box2.expandByPoint" id="expandByPoint" href="./index.html#api/en/math/Box2.expandByPoint">expandByPoint</a> ( point : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> - <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> that should be included in the
+			box.<br><br>
+
+			Expands the boundaries of this box to include <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.expandByScalar" target="_parent" title="Box2.expandByScalar" href="./index.html#api/en/math/Box2.expandByScalar">#</a> .<a class="links" data-fragment="Box2.expandByScalar" id="expandByScalar" href="./index.html#api/en/math/Box2.expandByScalar">expandByScalar</a> ( scalar : <span class="param">Float</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">scalar</a> - Distance to expand the box by.<br><br>
+
+			Expands each dimension of the box by <a class="links" data-fragment="Float" title="Float">scalar</a>. If negative, the
+			dimensions of the box will be contracted.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.expandByVector" target="_parent" title="Box2.expandByVector" href="./index.html#api/en/math/Box2.expandByVector">#</a> .<a class="links" data-fragment="Box2.expandByVector" id="expandByVector" href="./index.html#api/en/math/Box2.expandByVector">expandByVector</a> ( vector : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">vector</a> - <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> to expand the box by.<br><br>
+
+			Expands this box equilaterally by <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">vector</a>. The width of this
+			box will be expanded by the x component of <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">vector</a> in both
+			directions. The height of this box will be expanded by the y component of
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">vector</a> in both directions.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.getCenter" target="_parent" title="Box2.getCenter" href="./index.html#api/en/math/Box2.getCenter">#</a> .<a class="links" data-fragment="Box2.getCenter" id="getCenter" href="./index.html#api/en/math/Box2.getCenter">getCenter</a> ( target : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">target</a> — the result will be copied into this Vector2.<br><br>
+
+			Returns the center point of the box as a <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Box2.getParameter" target="_parent" title="Box2.getParameter" href="./index.html#api/en/math/Box2.getParameter">#</a> .<a class="links" data-fragment="Box2.getParameter" id="getParameter" href="./index.html#api/en/math/Box2.getParameter">getParameter</a> ( point : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>, target : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">point</a> - <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>.<br>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">target</a> — the result will be copied into this Vector2.<br><br>
+
+			Returns a point as a proportion of this box's width and height.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.getSize" target="_parent" title="Box2.getSize" href="./index.html#api/en/math/Box2.getSize">#</a> .<a class="links" data-fragment="Box2.getSize" id="getSize" href="./index.html#api/en/math/Box2.getSize">getSize</a> ( target : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">target</a> — the result will be copied into this Vector2.<br><br>
+
+			Returns the width and height of this box.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.intersect" target="_parent" title="Box2.intersect" href="./index.html#api/en/math/Box2.intersect">#</a> .<a class="links" data-fragment="Box2.intersect" id="intersect" href="./index.html#api/en/math/Box2.intersect">intersect</a> ( box : <a class="param links" data-fragment="Box2" href="./index.html#api/en/math/Box2">Box2</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> - Box to intersect with.<br><br>
+
+			Returns the intersection of this and <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a>, setting the upper
+			bound of this box to the lesser of the two boxes' upper bounds and the
+			lower bound of this box to the greater of the two boxes' lower bounds.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.intersectsBox" target="_parent" title="Box2.intersectsBox" href="./index.html#api/en/math/Box2.intersectsBox">#</a> .<a class="links" data-fragment="Box2.intersectsBox" id="intersectsBox" href="./index.html#api/en/math/Box2.intersectsBox">intersectsBox</a> ( box : <a class="param links" data-fragment="Box2" href="./index.html#api/en/math/Box2">Box2</a> ) : <span class="param">Boolean</span></h3>
+		<p>
+			<a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> - Box to check for intersection against.<br><br>
+
+			Determines whether or not this box intersects <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.isEmpty" target="_parent" title="Box2.isEmpty" href="./index.html#api/en/math/Box2.isEmpty">#</a> .<a class="links" data-fragment="Box2.isEmpty" id="isEmpty" href="./index.html#api/en/math/Box2.isEmpty">isEmpty</a> () : <span class="param">Boolean</span></h3>
+		<p>
+			Returns true if this box includes zero points within its bounds.<br>
+			Note that a box with equal lower and upper bounds still includes one
+			point, the one both bounds share.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.makeEmpty" target="_parent" title="Box2.makeEmpty" href="./index.html#api/en/math/Box2.makeEmpty">#</a> .<a class="links" data-fragment="Box2.makeEmpty" id="makeEmpty" href="./index.html#api/en/math/Box2.makeEmpty">makeEmpty</a> () : <span class="param">this</span></h3>
+		<p>Makes this box empty.</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.set" target="_parent" title="Box2.set" href="./index.html#api/en/math/Box2.set">#</a> .<a class="links" data-fragment="Box2.set" id="set" href="./index.html#api/en/math/Box2.set">set</a> ( min : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>, max : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">min</a> - (required ) <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> representing the lower (x,
+			y) boundary of the box. <br>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">max</a> - (required) <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> representing the upper (x,
+			y) boundary of the box. <br><br>
+
+			Sets the lower and upper (x, y) boundaries of this box.<br>
+			Please note that this method only copies the values from the given
+			objects.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Box2.setFromCenterAndSize" target="_parent" title="Box2.setFromCenterAndSize" href="./index.html#api/en/math/Box2.setFromCenterAndSize">#</a> .<a class="links" data-fragment="Box2.setFromCenterAndSize" id="setFromCenterAndSize" href="./index.html#api/en/math/Box2.setFromCenterAndSize">setFromCenterAndSize</a> ( center : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>, size : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">center</a> - Desired center position of the box
+			(<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>). <br>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">size</a> - Desired x and y dimensions of the box
+			(<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>).<br><br>
+
+			Centers this box on <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">center</a> and sets this box's width and
+			height to the values specified in <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">size</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.setFromPoints" target="_parent" title="Box2.setFromPoints" href="./index.html#api/en/math/Box2.setFromPoints">#</a> .<a class="links" data-fragment="Box2.setFromPoints" id="setFromPoints" href="./index.html#api/en/math/Box2.setFromPoints">setFromPoints</a> ( points : <span class="param">Array</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">points</a> - Array of <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2s</a> that the resulting
+			box will contain.<br><br>
+
+			Sets the upper and lower bounds of this box to include all of the points
+			in <a class="links" data-fragment="Array" title="Array">points</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.translate" target="_parent" title="Box2.translate" href="./index.html#api/en/math/Box2.translate">#</a> .<a class="links" data-fragment="Box2.translate" id="translate" href="./index.html#api/en/math/Box2.translate">translate</a> ( offset : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">offset</a> - Direction and distance of offset.<br><br>
+
+			Adds <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">offset</a> to both the upper and lower bounds of this box,
+			effectively moving this box <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">offset</a> units in 2D space.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Box2.union" target="_parent" title="Box2.union" href="./index.html#api/en/math/Box2.union">#</a> .<a class="links" data-fragment="Box2.union" id="union" href="./index.html#api/en/math/Box2.union">union</a> ( box : <a class="param links" data-fragment="Box2" href="./index.html#api/en/math/Box2">Box2</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a> - Box that will be unioned with this box.<br><br>
+
+			Unions this box with <a class="links" data-fragment="Box2" title="Box2" href="./index.html#api/en/math/Box2">box</a>, setting the upper bound of this box
+			to the greater of the two boxes' upper bounds and the lower bound of this
+			box to the lesser of the two boxes' lower bounds.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Box2.js" target="_blank">src/math/Box2.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html><html><head><title>TextGeometry – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> → <a class="links" data-fragment="ExtrudeGeometry" title="ExtrudeGeometry" href="./index.html#api/en/geometries/ExtrudeGeometry">ExtrudeGeometry</a> →
+
+		<h1>TextGeometry</h1>
+
+		<p class="desc">
+			A class for generating text as a single geometry. It is constructed by providing a string of text, and a set of
+			parameters consisting of a loaded font and settings for the geometry's parent <a class="links" data-fragment="ExtrudeGeometry" title="ExtrudeGeometry" href="./index.html#api/en/geometries/ExtrudeGeometry">ExtrudeGeometry</a>.
+			See the <a class="links" data-fragment="FontLoader" title="FontLoader" href="./index.html#examples/en/loaders/FontLoader">FontLoader</a> page for additional details.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			TextGeometry is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">TextGeometry</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/geometries/TextGeometry.js'</span><span class="pun">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> loader </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FontLoader</span><span class="pun">();</span><span class="pln">
+
+loader</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="pln"> </span><span class="str">'fonts/helvetiker_regular.typeface.json'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> font </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	</span><span class="kwd">const</span><span class="pln"> geometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextGeometry</span><span class="pun">(</span><span class="pln"> </span><span class="str">'Hello three.js!'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		font</span><span class="pun">:</span><span class="pln"> font</span><span class="pun">,</span><span class="pln">
+		size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">80</span><span class="pun">,</span><span class="pln">
+		depth</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln">
+		curveSegments</span><span class="pun">:</span><span class="pln"> </span><span class="lit">12</span><span class="pun">,</span><span class="pln">
+		bevelEnabled</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+		bevelThickness</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln">
+		bevelSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln">
+		bevelOffset</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln">
+		bevelSegments</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5</span><span class="pln">
+	</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+		<a href="../examples/#webgl_geometry_text" target="_blank">geometry / text </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>TextGeometry(text : <span class="param">String</span>, parameters : <span class="param">Object</span>)</h3>
+		<p>
+		text — The text that needs to be shown. <br>
+		parameters — Object that can contains the following parameters.
+		</p><ul>
+			<li>font — an instance of THREE.Font.</li>
+			<li>size — Float. Size of the text. Default is 100.</li>
+			<li>depth — Float. Thickness to extrude text.  Default is 50.</li>
+			<li>curveSegments — Integer. Number of points on the curves. Default is 12.</li>
+			<li>bevelEnabled — Boolean. Turn on bevel. Default is False.</li>
+			<li>bevelThickness — Float. How deep into text bevel goes. Default is 10.</li>
+			<li>bevelSize — Float. How far from text outline is bevel. Default is 8.</li>
+			<li>bevelOffset — Float. How far from text outline bevel starts. Default is 0.</li>
+			<li>bevelSegments — Integer. Number of bevel segments. Default is 3.</li>
+		</ul>
+		<p></p>
+
+		<h2>Available Fonts</h2>
+
+		<p>
+		TextGeometry uses <a href="http://gero3.github.io/facetype.js/" target="_top">typeface.json</a> generated fonts.
+		Some existing fonts can be found located in <b>/examples/fonts</b> and must be included in the page.
+		</p>
+		<table>
+			<tbody><tr>
+				<th>Font</th>
+				<th>Weight</th>
+				<th>Style</th>
+				<th>File Path</th>
+			</tr>
+			<tr>
+				<td>helvetiker</td>
+				<td>normal</td>
+				<td>normal</td>
+				<td>/examples/fonts/helvetiker_regular.typeface.json</td>
+			</tr>
+			<tr>
+				<td>helvetiker</td>
+				<td>bold</td>
+				<td>normal</td>
+				<td>/examples/fonts/helvetiker_bold.typeface.json</td>
+			</tr>
+			<tr>
+				<td>optimer</td>
+				<td>normal</td>
+				<td>normal</td>
+				<td>/examples/fonts/optimer_regular.typeface.json</td>
+			</tr>
+			<tr>
+				<td>optimer</td>
+				<td>bold</td>
+				<td>normal</td>
+				<td>/examples/fonts/optimer_bold.typeface.json</td>
+			</tr>
+			<tr>
+				<td>gentilis</td>
+				<td>normal</td>
+				<td>normal</td>
+				<td>/examples/fonts/gentilis_regular.typeface.json</td>
+			</tr>
+			<tr>
+				<td>gentilis</td>
+				<td>bold</td>
+				<td>normal</td>
+				<td>/examples/fonts/gentilis_bold.typeface.json</td>
+			</tr>
+			<tr>
+				<td>droid sans</td>
+				<td>normal</td>
+				<td>normal</td>
+				<td>/examples/fonts/droid/droid_sans_regular.typeface.json</td>
+			</tr>
+			<tr>
+				<td>droid sans</td>
+				<td>bold</td>
+				<td>normal</td>
+				<td>/examples/fonts/droid/droid_sans_bold.typeface.json</td>
+			</tr>
+			<tr>
+				<td>droid serif</td>
+				<td>normal</td>
+				<td>normal</td>
+				<td>/examples/fonts/droid/droid_serif_regular.typeface.json</td>
+			</tr>
+			<tr>
+				<td>droid serif</td>
+				<td>bold</td>
+				<td>normal</td>
+				<td>/examples/fonts/droid/droid_serif_bold.typeface.json</td>
+			</tr>
+		</tbody></table>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="ExtrudeGeometry" title="ExtrudeGeometry" href="./index.html#api/en/geometries/ExtrudeGeometry">ExtrudeGeometry</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="TextGeometry.parameters" target="_parent" title="TextGeometry.parameters" href="./index.html#examples/en/geometries/TextGeometry.parameters">#</a> .<a class="links" data-fragment="TextGeometry.parameters" id="parameters" href="./index.html#examples/en/geometries/TextGeometry.parameters">parameters</a>  : <span class="param">Object</span></h3>
+		<p>
+		An object with a property for each of the constructor parameters. Any modification after instantiation does not change the geometry.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="ExtrudeGeometry" title="ExtrudeGeometry" href="./index.html#api/en/geometries/ExtrudeGeometry">ExtrudeGeometry</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/geometries/TextGeometry.js" target="_blank">examples/jsm/geometries/TextGeometry.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

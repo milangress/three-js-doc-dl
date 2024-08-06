@@ -1,0 +1,153 @@
+<!DOCTYPE html><html><head><title>DragControls – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="EventDispatcher" title="EventDispatcher" href="./index.html#api/en/core/EventDispatcher">EventDispatcher</a> →
+
+		<h1>DragControls</h1>
+
+		<p class="desc">
+			This class can be used to provide a drag'n'drop interaction.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			DragControls is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">DragControls</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/controls/DragControls.js'</span><span class="pun">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> controls </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">DragControls</span><span class="pun">(</span><span class="pln"> objects</span><span class="pun">,</span><span class="pln"> camera</span><span class="pun">,</span><span class="pln"> renderer</span><span class="pun">.</span><span class="pln">domElement </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// add event listener to highlight dragged objects</span><span class="pln">
+
+controls</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="pln"> </span><span class="str">'dragstart'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> </span><span class="kwd">event</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	</span><span class="kwd">event</span><span class="pun">.</span><span class="kwd">object</span><span class="pun">.</span><span class="pln">material</span><span class="pun">.</span><span class="pln">emissive</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0xaaaaaa</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+controls</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="pln"> </span><span class="str">'dragend'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> </span><span class="kwd">event</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	</span><span class="kwd">event</span><span class="pun">.</span><span class="kwd">object</span><span class="pun">.</span><span class="pln">material</span><span class="pun">.</span><span class="pln">emissive</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0x000000</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href="../examples/#misc_controls_drag" target="_blank">misc / controls / drag </a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>DragControls( objects : <span class="param">Array</span>, camera : <a class="param links" data-fragment="Camera" href="./index.html#api/en/cameras/Camera">Camera</a>, domElement : <a class="param links" data-fragment="HTMLDOMElement">HTMLDOMElement</a> )</h3>
+			<p>
+				<a class="links" data-fragment="Array" title="Array">objects</a>: An array of draggable 3D objects.
+			</p>
+			<p>
+			<a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">camera</a>: The camera of the rendered scene.
+			</p>
+			<p>
+			<a class="links" data-fragment="HTMLDOMElement" title="HTMLDOMElement">domElement</a>: The HTML element used for event listeners.
+			</p>
+			<p>
+				Creates a new instance of DragControls.
+			</p>
+
+		<h2>Events</h2>
+
+		<h3>dragstart</h3>
+		<p>
+			Fires when the user starts to drag a 3D object.
+		</p>
+
+		<h3>drag</h3>
+		<p>
+			Fires when the user drags a 3D object.
+		</p>
+
+		<h3>dragend</h3>
+		<p>
+			Fires when the user has finished dragging a 3D object.
+		</p>
+
+		<h3>hoveron</h3>
+		<p>
+			Fires when the pointer is moved onto a 3D object, or onto one of its children.
+		</p>
+
+		<h3>hoveroff</h3>
+		<p>
+			Fires when the pointer is moved out of a 3D object.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="DragControls.enabled" target="_parent" title="DragControls.enabled" href="./index.html#examples/en/controls/DragControls.enabled">#</a> .<a class="links" data-fragment="DragControls.enabled" id="enabled" href="./index.html#examples/en/controls/DragControls.enabled">enabled</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Whether or not the controls are enabled.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.recursive" target="_parent" title="DragControls.recursive" href="./index.html#examples/en/controls/DragControls.recursive">#</a> .<a class="links" data-fragment="DragControls.recursive" id="recursive" href="./index.html#examples/en/controls/DragControls.recursive">recursive</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			Whether children of draggable objects can be dragged independently from their parent. Default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.transformGroup" target="_parent" title="DragControls.transformGroup" href="./index.html#examples/en/controls/DragControls.transformGroup">#</a> .<a class="links" data-fragment="DragControls.transformGroup" id="transformGroup" href="./index.html#examples/en/controls/DragControls.transformGroup">transformGroup</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			This option only works if the <a class="links" data-fragment="DragControls.objects" title="DragControls.objects" href="./index.html#examples/en/controls/DragControls.objects">DragControls.objects</a> array contains a single draggable group object.
+			If set to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>, DragControls does not transform individual objects but the entire group. Default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.mode" target="_parent" title="DragControls.mode" href="./index.html#examples/en/controls/DragControls.mode">#</a> .<a class="links" data-fragment="DragControls.mode" id="mode" href="./index.html#examples/en/controls/DragControls.mode">mode</a>  : <span class="param">String</span></h3>
+		<p>
+			The current transformation mode. Possible values are <code class="inline prettyprint" translate="no"><span class="pln">translate</span></code>, and <code class="inline prettyprint" translate="no"><span class="pln">rotate</span></code>. Default is <code class="inline prettyprint" translate="no"><span class="pln">translate</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.rotateSpeed" target="_parent" title="DragControls.rotateSpeed" href="./index.html#examples/en/controls/DragControls.rotateSpeed">#</a> .<a class="links" data-fragment="DragControls.rotateSpeed" id="rotateSpeed" href="./index.html#examples/en/controls/DragControls.rotateSpeed">rotateSpeed</a>  : <span class="param">Float</span></h3>
+		<p>
+			The speed at which the object will rotate when dragged in <code class="inline prettyprint" translate="no"><span class="pln">rotate</span></code> mode. The higher the number the faster the rotation. Default is <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.
+		</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a class="links" data-fragment="EventDispatcher" title="EventDispatcher" href="./index.html#api/en/core/EventDispatcher">EventDispatcher</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.activate" target="_parent" title="DragControls.activate" href="./index.html#examples/en/controls/DragControls.activate">#</a> .<a class="links" data-fragment="DragControls.activate" id="activate" href="./index.html#examples/en/controls/DragControls.activate">activate</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Adds the event listeners of the controls.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.deactivate" target="_parent" title="DragControls.deactivate" href="./index.html#examples/en/controls/DragControls.deactivate">#</a> .<a class="links" data-fragment="DragControls.deactivate" id="deactivate" href="./index.html#examples/en/controls/DragControls.deactivate">deactivate</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Removes the event listeners of the controls.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.dispose" target="_parent" title="DragControls.dispose" href="./index.html#examples/en/controls/DragControls.dispose">#</a> .<a class="links" data-fragment="DragControls.dispose" id="dispose" href="./index.html#examples/en/controls/DragControls.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Should be called if the controls is no longer required.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.getObjects" target="_parent" title="DragControls.getObjects" href="./index.html#examples/en/controls/DragControls.getObjects">#</a> .<a class="links" data-fragment="DragControls.getObjects" id="getObjects" href="./index.html#examples/en/controls/DragControls.getObjects">getObjects</a> () : <span class="param">Array</span></h3>
+		<p>
+			Returns the array of draggable objects.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.getRaycaster" target="_parent" title="DragControls.getRaycaster" href="./index.html#examples/en/controls/DragControls.getRaycaster">#</a> .<a class="links" data-fragment="DragControls.getRaycaster" id="getRaycaster" href="./index.html#examples/en/controls/DragControls.getRaycaster">getRaycaster</a> () : <a class="param links" data-fragment="Raycaster" href="./index.html#api/en/core/Raycaster">Raycaster</a></h3>
+		<p>
+			Returns the internal <a class="links" data-fragment="Raycaster" title="Raycaster" href="./index.html#api/en/core/Raycaster">Raycaster</a> instance that is used for intersection tests.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="DragControls.setObjects" target="_parent" title="DragControls.setObjects" href="./index.html#examples/en/controls/DragControls.setObjects">#</a> .<a class="links" data-fragment="DragControls.setObjects" id="setObjects" href="./index.html#examples/en/controls/DragControls.setObjects">setObjects</a> ( objects : <span class="param">Array</span> ) : <span class="param">undefined</span></h3>
+		<p>
+			Sets an array of draggable objects by overwriting the existing one.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/controls/DragControls.js" target="_blank">examples/jsm/controls/DragControls.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

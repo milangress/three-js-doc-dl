@@ -1,0 +1,336 @@
+<!DOCTYPE html><html><head><title>Box3 – three.js docs</title></head><body><body>
+		<h1>Box3</h1>
+
+		<p class=/"desc/">
+			Represents an axis-aligned bounding box (AABB) in 3D space.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> box </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Box3</span><span class=/"pun/">();</span><span class=/"pln/">
+
+</span><span class=/"kwd/">const</span><span class=/"pln/"> mesh </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Mesh</span><span class=/"pun/">(</span><span class=/"pln/">
+	</span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">SphereGeometry</span><span class=/"pun/">(),</span><span class=/"pln/">
+	</span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">MeshBasicMaterial</span><span class=/"pun/">()</span><span class=/"pln/">
+</span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">// ensure the bounding box is computed for its geometry</span><span class=/"pln/">
+</span><span class=/"com/">// this should be done only once (assuming static geometries)</span><span class=/"pln/">
+mesh</span><span class=/"pun/">.</span><span class=/"pln/">geometry</span><span class=/"pun/">.</span><span class=/"pln/">computeBoundingBox</span><span class=/"pun/">();</span><span class=/"pln/">
+
+</span><span class=/"com/">// ...</span><span class=/"pln/">
+
+</span><span class=/"com/">// in the animation loop, compute the current bounding box with the world matrix</span><span class=/"pln/">
+box</span><span class=/"pun/">.</span><span class=/"pln/">copy</span><span class=/"pun/">(</span><span class=/"pln/"> mesh</span><span class=/"pun/">.</span><span class=/"pln/">geometry</span><span class=/"pun/">.</span><span class=/"pln/">boundingBox </span><span class=/"pun/">).</span><span class=/"pln/">applyMatrix4</span><span class=/"pun/">(</span><span class=/"pln/"> mesh</span><span class=/"pun/">.</span><span class=/"pln/">matrixWorld </span><span class=/"pun/">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>Box3( min : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, max : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> )</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">min</a> - (optional) <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> representing the lower (x,
+			y, z) boundary of the box. Default is ( + Infinity, + Infinity, + Infinity
+			).<br>
+
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">max</a> - (optional) <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> representing the upper (x,
+			y, z) boundary of the box. Default is ( - Infinity, - Infinity, - Infinity
+			).<br><br>
+
+			Creates a Box3 bounded by min and max.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.isBox3/" target=/"_parent/" title=/"Box3.isBox3/" href=/"./index.html#api/en/math/Box3.isBox3/">#</a> .<a class=/"links/" data-fragment=/"Box3.isBox3/" id=/"isBox3/" href=/"./index.html#api/en/math/Box3.isBox3/">isBox3</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Box3.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.min/" target=/"_parent/" title=/"Box3.min/" href=/"./index.html#api/en/math/Box3.min/">#</a> .<a class=/"links/" data-fragment=/"Box3.min/" id=/"min/" href=/"./index.html#api/en/math/Box3.min/">min</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> representing the lower (x, y, z) boundary of the box.<br>
+			Default is ( + Infinity, + Infinity, + Infinity ).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.max/" target=/"_parent/" title=/"Box3.max/" href=/"./index.html#api/en/math/Box3.max/">#</a> .<a class=/"links/" data-fragment=/"Box3.max/" id=/"max/" href=/"./index.html#api/en/math/Box3.max/">max</a>  : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> representing the upper (x, y, z) boundary of the box.<br>
+			Default is ( - Infinity, - Infinity, - Infinity ).
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.applyMatrix4/" target=/"_parent/" title=/"Box3.applyMatrix4/" href=/"./index.html#api/en/math/Box3.applyMatrix4/">#</a> .<a class=/"links/" data-fragment=/"Box3.applyMatrix4/" id=/"applyMatrix4/" href=/"./index.html#api/en/math/Box3.applyMatrix4/">applyMatrix4</a> ( matrix : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">matrix</a> - The <a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> to apply<br><br>
+
+			Transforms this Box3 with the supplied matrix.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Box3.clampPoint/" target=/"_parent/" title=/"Box3.clampPoint/" href=/"./index.html#api/en/math/Box3.clampPoint/">#</a> .<a class=/"links/" data-fragment=/"Box3.clampPoint/" id=/"clampPoint/" href=/"./index.html#api/en/math/Box3.clampPoint/">clampPoint</a> ( point : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, target : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> to clamp. <br>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">target</a> — the result will be copied into this Vector3.<br><br>
+
+			<a href=/"https://en.wikipedia.org/wiki/Clamping_(graphics)/" target=/"_blank/">Clamps</a> the
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> within the bounds of this box.<br>
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.clone/" target=/"_parent/" title=/"Box3.clone/" href=/"./index.html#api/en/math/Box3.clone/">#</a> .<a class=/"links/" data-fragment=/"Box3.clone/" id=/"clone/" href=/"./index.html#api/en/math/Box3.clone/">clone</a> () : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a></h3>
+		<p>
+			Returns a new <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> with the same <a class=/"links/" data-fragment=/"Box3.min/" title=/"Box3.min/" href=/"./index.html#api/en/math/Box3.min/">min</a> and <a class=/"links/" data-fragment=/"Box3.max/" title=/"Box3.max/" href=/"./index.html#api/en/math/Box3.max/">max</a> as this one.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.containsBox/" target=/"_parent/" title=/"Box3.containsBox/" href=/"./index.html#api/en/math/Box3.containsBox/">#</a> .<a class=/"links/" data-fragment=/"Box3.containsBox/" id=/"containsBox/" href=/"./index.html#api/en/math/Box3.containsBox/">containsBox</a> ( box : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> - <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> to test for inclusion.<br><br>
+
+			Returns true if this box includes the entirety of <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a>. If this
+			and <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> are identical, <br>
+			this function also returns true.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.containsPoint/" target=/"_parent/" title=/"Box3.containsPoint/" href=/"./index.html#api/en/math/Box3.containsPoint/">#</a> .<a class=/"links/" data-fragment=/"Box3.containsPoint/" id=/"containsPoint/" href=/"./index.html#api/en/math/Box3.containsPoint/">containsPoint</a> ( point : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> to check for inclusion.<br><br>
+
+			Returns true if the specified <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> lies within or on the
+			boundaries of this box.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.copy/" target=/"_parent/" title=/"Box3.copy/" href=/"./index.html#api/en/math/Box3.copy/">#</a> .<a class=/"links/" data-fragment=/"Box3.copy/" id=/"copy/" href=/"./index.html#api/en/math/Box3.copy/">copy</a> ( box : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> - <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> to copy.<br><br>
+
+			Copies the <a class=/"links/" data-fragment=/"Box3.min/" title=/"Box3.min/" href=/"./index.html#api/en/math/Box3.min/">min</a> and <a class=/"links/" data-fragment=/"Box3.max/" title=/"Box3.max/" href=/"./index.html#api/en/math/Box3.max/">max</a> from <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> to
+			this box.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.distanceToPoint/" target=/"_parent/" title=/"Box3.distanceToPoint/" href=/"./index.html#api/en/math/Box3.distanceToPoint/">#</a> .<a class=/"links/" data-fragment=/"Box3.distanceToPoint/" id=/"distanceToPoint/" href=/"./index.html#api/en/math/Box3.distanceToPoint/">distanceToPoint</a> ( point : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">Float</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> to measure distance to.<br><br>
+
+			Returns the distance from any edge of this box to the specified point. If
+			the <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> lies inside of this box, the distance will be <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.equals/" target=/"_parent/" title=/"Box3.equals/" href=/"./index.html#api/en/math/Box3.equals/">#</a> .<a class=/"links/" data-fragment=/"Box3.equals/" id=/"equals/" href=/"./index.html#api/en/math/Box3.equals/">equals</a> ( box : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> - Box to compare with this one.<br><br>
+
+			Returns true if this box and <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> share the same lower and
+			upper bounds.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Box3.expandByObject/" target=/"_parent/" title=/"Box3.expandByObject/" href=/"./index.html#api/en/math/Box3.expandByObject/">#</a> .<a class=/"links/" data-fragment=/"Box3.expandByObject/" id=/"expandByObject/" href=/"./index.html#api/en/math/Box3.expandByObject/">expandByObject</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, precise : <span class=/"param/">Boolean</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">object</a> - <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> to expand the box by.<br>
+			precise - (optional) expand the bounding box as little as necessary at the
+			expense of more computation. Default is false.<br><br>
+
+			Expands the boundaries of this box to include <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">object</a> and
+			its children, accounting for the object's, and children's, world
+			transforms. The function may result in a larger box than strictly
+			necessary (unless the precise parameter is set to true).
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.expandByPoint/" target=/"_parent/" title=/"Box3.expandByPoint/" href=/"./index.html#api/en/math/Box3.expandByPoint/">#</a> .<a class=/"links/" data-fragment=/"Box3.expandByPoint/" id=/"expandByPoint/" href=/"./index.html#api/en/math/Box3.expandByPoint/">expandByPoint</a> ( point : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> that should be included in the
+			box.<br><br>
+
+			Expands the boundaries of this box to include <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.expandByScalar/" target=/"_parent/" title=/"Box3.expandByScalar/" href=/"./index.html#api/en/math/Box3.expandByScalar/">#</a> .<a class=/"links/" data-fragment=/"Box3.expandByScalar/" id=/"expandByScalar/" href=/"./index.html#api/en/math/Box3.expandByScalar/">expandByScalar</a> ( scalar : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">scalar</a> - Distance to expand the box by.<br><br>
+
+			Expands each dimension of the box by <a class=/"links/" data-fragment=/"Float/" title=/"Float/">scalar</a>. If negative, the
+			dimensions of the box will be contracted.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.expandByVector/" target=/"_parent/" title=/"Box3.expandByVector/" href=/"./index.html#api/en/math/Box3.expandByVector/">#</a> .<a class=/"links/" data-fragment=/"Box3.expandByVector/" id=/"expandByVector/" href=/"./index.html#api/en/math/Box3.expandByVector/">expandByVector</a> ( vector : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">vector</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> to expand the box by.<br><br>
+
+			Expands this box equilaterally by <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">vector</a>. The width of this
+			box will be expanded by the x component of <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">vector</a> in both
+			directions. The height of this box will be expanded by the y component of
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">vector</a> in both directions. The depth of this box will be
+			expanded by the z component of <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">vector</span></code> in both directions.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.getBoundingSphere/" target=/"_parent/" title=/"Box3.getBoundingSphere/" href=/"./index.html#api/en/math/Box3.getBoundingSphere/">#</a> .<a class=/"links/" data-fragment=/"Box3.getBoundingSphere/" id=/"getBoundingSphere/" href=/"./index.html#api/en/math/Box3.getBoundingSphere/">getBoundingSphere</a> ( target : <a class=/"param links/" data-fragment=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">Sphere</a> ) : <a class=/"param links/" data-fragment=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">Sphere</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Sphere/" title=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">target</a> — the result will be copied into this Sphere.<br><br>
+
+			Gets a <a class=/"links/" data-fragment=/"Sphere/" title=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">Sphere</a> that bounds the box.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.getCenter/" target=/"_parent/" title=/"Box3.getCenter/" href=/"./index.html#api/en/math/Box3.getCenter/">#</a> .<a class=/"links/" data-fragment=/"Box3.getCenter/" id=/"getCenter/" href=/"./index.html#api/en/math/Box3.getCenter/">getCenter</a> ( target : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">target</a> — the result will be copied into this Vector3.<br><br>
+
+			Returns the center point of the box as a <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Box3.getParameter/" target=/"_parent/" title=/"Box3.getParameter/" href=/"./index.html#api/en/math/Box3.getParameter/">#</a> .<a class=/"links/" data-fragment=/"Box3.getParameter/" id=/"getParameter/" href=/"./index.html#api/en/math/Box3.getParameter/">getParameter</a> ( point : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, target : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">point</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>.<br>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">target</a> — the result will be copied into this Vector3.<br><br>
+
+			Returns a point as a proportion of this box's width, height and depth.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.getSize/" target=/"_parent/" title=/"Box3.getSize/" href=/"./index.html#api/en/math/Box3.getSize/">#</a> .<a class=/"links/" data-fragment=/"Box3.getSize/" id=/"getSize/" href=/"./index.html#api/en/math/Box3.getSize/">getSize</a> ( target : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">target</a> — the result will be copied into this Vector3.<br><br>
+
+			Returns the width, height and depth of this box.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.intersect/" target=/"_parent/" title=/"Box3.intersect/" href=/"./index.html#api/en/math/Box3.intersect/">#</a> .<a class=/"links/" data-fragment=/"Box3.intersect/" id=/"intersect/" href=/"./index.html#api/en/math/Box3.intersect/">intersect</a> ( box : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> - Box to intersect with.<br><br>
+
+			Computes the intersection of this and <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a>, setting the upper
+			bound of this box to the lesser of the two boxes' upper bounds and the
+			lower bound of this box to the greater of the two boxes' lower bounds. If
+			there's no overlap, makes this box empty.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.intersectsBox/" target=/"_parent/" title=/"Box3.intersectsBox/" href=/"./index.html#api/en/math/Box3.intersectsBox/">#</a> .<a class=/"links/" data-fragment=/"Box3.intersectsBox/" id=/"intersectsBox/" href=/"./index.html#api/en/math/Box3.intersectsBox/">intersectsBox</a> ( box : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> - Box to check for intersection against.<br><br>
+
+			Determines whether or not this box intersects <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.intersectsPlane/" target=/"_parent/" title=/"Box3.intersectsPlane/" href=/"./index.html#api/en/math/Box3.intersectsPlane/">#</a> .<a class=/"links/" data-fragment=/"Box3.intersectsPlane/" id=/"intersectsPlane/" href=/"./index.html#api/en/math/Box3.intersectsPlane/">intersectsPlane</a> ( plane : <a class=/"param links/" data-fragment=/"Plane/" href=/"./index.html#api/en/math/Plane/">Plane</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Plane/" title=/"Plane/" href=/"./index.html#api/en/math/Plane/">plane</a> - <a class=/"links/" data-fragment=/"Plane/" title=/"Plane/" href=/"./index.html#api/en/math/Plane/">Plane</a> to check for intersection against.<br><br>
+
+			Determines whether or not this box intersects <a class=/"links/" data-fragment=/"Plane/" title=/"Plane/" href=/"./index.html#api/en/math/Plane/">plane</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.intersectsSphere/" target=/"_parent/" title=/"Box3.intersectsSphere/" href=/"./index.html#api/en/math/Box3.intersectsSphere/">#</a> .<a class=/"links/" data-fragment=/"Box3.intersectsSphere/" id=/"intersectsSphere/" href=/"./index.html#api/en/math/Box3.intersectsSphere/">intersectsSphere</a> ( sphere : <a class=/"param links/" data-fragment=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">Sphere</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Sphere/" title=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">sphere</a> - <a class=/"links/" data-fragment=/"Sphere/" title=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">Sphere</a> to check for intersection against.<br><br>
+
+			Determines whether or not this box intersects <a class=/"links/" data-fragment=/"Sphere/" title=/"Sphere/" href=/"./index.html#api/en/math/Sphere/">sphere</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.intersectsTriangle/" target=/"_parent/" title=/"Box3.intersectsTriangle/" href=/"./index.html#api/en/math/Box3.intersectsTriangle/">#</a> .<a class=/"links/" data-fragment=/"Box3.intersectsTriangle/" id=/"intersectsTriangle/" href=/"./index.html#api/en/math/Box3.intersectsTriangle/">intersectsTriangle</a> ( triangle : <a class=/"param links/" data-fragment=/"Triangle/" href=/"./index.html#api/en/math/Triangle/">Triangle</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Triangle/" title=/"Triangle/" href=/"./index.html#api/en/math/Triangle/">triangle</a> - <a class=/"links/" data-fragment=/"Triangle/" title=/"Triangle/" href=/"./index.html#api/en/math/Triangle/">Triangle</a> to check for intersection
+			against.<br><br>
+
+			Determines whether or not this box intersects <a class=/"links/" data-fragment=/"Triangle/" title=/"Triangle/" href=/"./index.html#api/en/math/Triangle/">triangle</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.isEmpty/" target=/"_parent/" title=/"Box3.isEmpty/" href=/"./index.html#api/en/math/Box3.isEmpty/">#</a> .<a class=/"links/" data-fragment=/"Box3.isEmpty/" id=/"isEmpty/" href=/"./index.html#api/en/math/Box3.isEmpty/">isEmpty</a> () : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Returns true if this box includes zero points within its bounds.<br>
+			Note that a box with equal lower and upper bounds still includes one
+			point, the one both bounds share.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.makeEmpty/" target=/"_parent/" title=/"Box3.makeEmpty/" href=/"./index.html#api/en/math/Box3.makeEmpty/">#</a> .<a class=/"links/" data-fragment=/"Box3.makeEmpty/" id=/"makeEmpty/" href=/"./index.html#api/en/math/Box3.makeEmpty/">makeEmpty</a> () : <span class=/"param/">this</span></h3>
+		<p>Makes this box empty.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.set/" target=/"_parent/" title=/"Box3.set/" href=/"./index.html#api/en/math/Box3.set/">#</a> .<a class=/"links/" data-fragment=/"Box3.set/" id=/"set/" href=/"./index.html#api/en/math/Box3.set/">set</a> ( min : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, max : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">min</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> representing the lower (x, y, z)
+			boundary of the box.<br>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">max</a> - <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> representing the upper (x, y, z)
+			boundary of the box.<br><br>
+
+			Sets the lower and upper (x, y, z) boundaries of this box.<br>
+			Please note that this method only copies the values from the given
+			objects.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.setFromArray/" target=/"_parent/" title=/"Box3.setFromArray/" href=/"./index.html#api/en/math/Box3.setFromArray/">#</a> .<a class=/"links/" data-fragment=/"Box3.setFromArray/" id=/"setFromArray/" href=/"./index.html#api/en/math/Box3.setFromArray/">setFromArray</a> ( array : <span class=/"param/">Array</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			array -- An array of position data that the resulting box will envelop.<br><br>
+
+			Sets the upper and lower bounds of this box to include all of the data in
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">array</span></code>.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Box3.setFromBufferAttribute/" target=/"_parent/" title=/"Box3.setFromBufferAttribute/" href=/"./index.html#api/en/math/Box3.setFromBufferAttribute/">#</a> .<a class=/"links/" data-fragment=/"Box3.setFromBufferAttribute/" id=/"setFromBufferAttribute/" href=/"./index.html#api/en/math/Box3.setFromBufferAttribute/">setFromBufferAttribute</a> ( attribute : <a class=/"param links/" data-fragment=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">attribute</a> - A buffer attribute of position data
+			that the resulting box will envelop.<br><br>
+
+			Sets the upper and lower bounds of this box to include all of the data in
+			<a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">attribute</a>.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Box3.setFromCenterAndSize/" target=/"_parent/" title=/"Box3.setFromCenterAndSize/" href=/"./index.html#api/en/math/Box3.setFromCenterAndSize/">#</a> .<a class=/"links/" data-fragment=/"Box3.setFromCenterAndSize/" id=/"setFromCenterAndSize/" href=/"./index.html#api/en/math/Box3.setFromCenterAndSize/">setFromCenterAndSize</a> ( center : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a>, size : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">center</a>, - Desired center position of the box. <br>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">size</a> - Desired x, y and z dimensions of the box.<br><br>
+
+			Centers this box on <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">center</a> and sets this box's width,
+			height and depth to the values specified <br>
+			in <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">size</a>
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Box3.setFromObject/" target=/"_parent/" title=/"Box3.setFromObject/" href=/"./index.html#api/en/math/Box3.setFromObject/">#</a> .<a class=/"links/" data-fragment=/"Box3.setFromObject/" id=/"setFromObject/" href=/"./index.html#api/en/math/Box3.setFromObject/">setFromObject</a> ( object : <a class=/"param links/" data-fragment=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>, precise : <span class=/"param/">Boolean</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">object</a> - <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a> to compute the bounding box
+			of.<br>
+			precise - (optional) compute the smallest world-axis-aligned bounding box
+			at the expense of more computation. Default is false.<br><br>
+
+			Computes the world-axis-aligned bounding box of an <a class=/"links/" data-fragment=/"Object3D/" title=/"Object3D/" href=/"./index.html#api/en/core/Object3D/">Object3D</a>
+			(including its children), accounting for the object's, and children's,
+			world transforms. The function may result in a larger box than strictly
+			necessary.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.setFromPoints/" target=/"_parent/" title=/"Box3.setFromPoints/" href=/"./index.html#api/en/math/Box3.setFromPoints/">#</a> .<a class=/"links/" data-fragment=/"Box3.setFromPoints/" id=/"setFromPoints/" href=/"./index.html#api/en/math/Box3.setFromPoints/">setFromPoints</a> ( points : <span class=/"param/">Array</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Array/" title=/"Array/">points</a> - Array of <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3s</a> that the resulting
+			box will contain.<br><br>
+
+			Sets the upper and lower bounds of this box to include all of the points
+			in <a class=/"links/" data-fragment=/"Array/" title=/"Array/">points</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.translate/" target=/"_parent/" title=/"Box3.translate/" href=/"./index.html#api/en/math/Box3.translate/">#</a> .<a class=/"links/" data-fragment=/"Box3.translate/" id=/"translate/" href=/"./index.html#api/en/math/Box3.translate/">translate</a> ( offset : <a class=/"param links/" data-fragment=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">Vector3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">offset</a> - Direction and distance of offset.<br><br>
+
+			Adds <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">offset</a> to both the upper and lower bounds of this box,
+			effectively moving this box <a class=/"links/" data-fragment=/"Vector3/" title=/"Vector3/" href=/"./index.html#api/en/math/Vector3/">offset</a> units in 3D space.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Box3.union/" target=/"_parent/" title=/"Box3.union/" href=/"./index.html#api/en/math/Box3.union/">#</a> .<a class=/"links/" data-fragment=/"Box3.union/" id=/"union/" href=/"./index.html#api/en/math/Box3.union/">union</a> ( box : <a class=/"param links/" data-fragment=/"Box3/" href=/"./index.html#api/en/math/Box3/">Box3</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a> - Box that will be unioned with this box.<br><br>
+
+			Computes the union of this box and <a class=/"links/" data-fragment=/"Box3/" title=/"Box3/" href=/"./index.html#api/en/math/Box3/">box</a>, setting the upper
+			bound of this box to the greater of the two boxes' upper bounds and the
+			lower bound of this box to the lesser of the two boxes' lower bounds.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/math/Box3.js/" target=/"_blank/">src/math/Box3.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

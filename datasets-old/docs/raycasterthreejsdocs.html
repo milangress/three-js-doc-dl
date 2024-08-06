@@ -1,0 +1,224 @@
+<!DOCTYPE html><html><head><title>Raycaster – three.js docs</title></head><body><body>
+		<h1>Raycaster</h1>
+
+		<p class="desc">
+			This class is designed to assist with
+			<a href="https://en.wikipedia.org/wiki/Ray_casting" target="_blank">raycasting</a>. Raycasting is
+			used for mouse picking (working out what objects in the 3d space the mouse
+			is over) amongst other things.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> raycaster </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Raycaster</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> pointer </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Vector2</span><span class="pun">();</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> onPointerMove</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">event</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	</span><span class="com">// calculate pointer position in normalized device coordinates</span><span class="pln">
+	</span><span class="com">// (-1 to +1) for both components</span><span class="pln">
+
+	pointer</span><span class="pun">.</span><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> </span><span class="kwd">event</span><span class="pun">.</span><span class="pln">clientX </span><span class="pun">/</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerWidth </span><span class="pun">)</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+	pointer</span><span class="pun">.</span><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> </span><span class="kwd">event</span><span class="pun">.</span><span class="pln">clientY </span><span class="pun">/</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerHeight </span><span class="pun">)</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> render</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+	</span><span class="com">// update the picking ray with the camera and pointer position</span><span class="pln">
+	raycaster</span><span class="pun">.</span><span class="pln">setFromCamera</span><span class="pun">(</span><span class="pln"> pointer</span><span class="pun">,</span><span class="pln"> camera </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="com">// calculate objects intersecting the picking ray</span><span class="pln">
+	</span><span class="kwd">const</span><span class="pln"> intersects </span><span class="pun">=</span><span class="pln"> raycaster</span><span class="pun">.</span><span class="pln">intersectObjects</span><span class="pun">(</span><span class="pln"> scene</span><span class="pun">.</span><span class="pln">children </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> let i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> intersects</span><span class="pun">.</span><span class="pln">length</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">++</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+		intersects</span><span class="pun">[</span><span class="pln"> i </span><span class="pun">].</span><span class="kwd">object</span><span class="pun">.</span><span class="pln">material</span><span class="pun">.</span><span class="pln">color</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0xff0000</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+	</span><span class="pun">}</span><span class="pln">
+
+	renderer</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln"> scene</span><span class="pun">,</span><span class="pln"> camera </span><span class="pun">);</span><span class="pln">
+
+</span><span class="pun">}</span><span class="pln">
+
+window</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="pln"> </span><span class="str">'pointermove'</span><span class="pun">,</span><span class="pln"> onPointerMove </span><span class="pun">);</span><span class="pln">
+
+window</span><span class="pun">.</span><span class="pln">requestAnimationFrame</span><span class="pun">(</span><span class="pln">render</span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#webgl_interactive_cubes" target="_blank">Raycasting to a Mesh</a><br>
+			<a href="../examples/#webgl_interactive_cubes_ortho" target="_blank">Raycasting to a Mesh in using an OrthographicCamera</a><br>
+			<a href="../examples/#webgl_interactive_buffergeometry" target="_blank">Raycasting to a Mesh with BufferGeometry</a><br>
+			<a href="../examples/#webgl_instancing_raycast" target="_blank">Raycasting to a InstancedMesh</a><br>
+			<a href="../examples/#webgl_interactive_lines" target="_blank">Raycasting to a Line</a><br>
+			<a href="../examples/#webgl_interactive_raycasting_points" target="_blank">Raycasting to Points</a><br>
+			<a href="../examples/#webgl_geometry_terrain_raycast" target="_blank">Terrain raycasting</a><br>
+			<a href="../examples/#webgl_interactive_voxelpainter" target="_blank">Raycasting to paint voxels</a><br>
+			<a href="../examples/#webgl_raycaster_texture" target="_blank">Raycast to a Texture</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Raycaster( origin : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, direction : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, near : <span class="param">Float</span>, far : <span class="param">Float</span> )</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">origin</a> — The origin vector where the ray casts from.<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">direction</a> — The direction vector that gives direction to
+			the ray. Should be normalized.<br>
+			<a class="links" data-fragment="Float" title="Float">near</a> — All results returned are further away than near. Near
+			can't be negative. Default value is <code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.<br>
+			<a class="links" data-fragment="Float" title="Float">far</a> — All results returned are closer than far. Far can't be
+			lower than near. Default value is Infinity.
+		</p>
+		<p>This creates a new raycaster object.<br></p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.far" target="_parent" title="Raycaster.far" href="./index.html#api/en/core/Raycaster.far">#</a> .<a class="links" data-fragment="Raycaster.far" id="far" href="./index.html#api/en/core/Raycaster.far">far</a>  : <span class="param">Float</span></h3>
+		<p>
+			The far factor of the raycaster. This value indicates which objects can be
+			discarded based on the distance. This value shouldn't be negative and
+			should be larger than the near property.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.near" target="_parent" title="Raycaster.near" href="./index.html#api/en/core/Raycaster.near">#</a> .<a class="links" data-fragment="Raycaster.near" id="near" href="./index.html#api/en/core/Raycaster.near">near</a>  : <span class="param">Float</span></h3>
+		<p>
+			The near factor of the raycaster. This value indicates which objects can
+			be discarded based on the distance. This value shouldn't be negative and
+			should be smaller than the far property.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.camera" target="_parent" title="Raycaster.camera" href="./index.html#api/en/core/Raycaster.camera">#</a> .<a class="links" data-fragment="Raycaster.camera" id="camera" href="./index.html#api/en/core/Raycaster.camera">camera</a>  : <a class="param links" data-fragment="Camera" href="./index.html#api/en/cameras/Camera">Camera</a></h3>
+		<p>
+			The camera to use when raycasting against view-dependent objects such as
+			billboarded objects like <a class="links" data-fragment="Sprites" title="Sprites">Sprites</a>. This field can be set manually or
+			is set when calling "setFromCamera". Defaults to null.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.layers" target="_parent" title="Raycaster.layers" href="./index.html#api/en/core/Raycaster.layers">#</a> .<a class="links" data-fragment="Raycaster.layers" id="layers" href="./index.html#api/en/core/Raycaster.layers">layers</a>  : <a class="param links" data-fragment="Layers" href="./index.html#api/en/core/Layers">Layers</a></h3>
+		<p>
+			Used by Raycaster to selectively ignore 3D objects when performing
+			intersection tests. The following code example ensures that only 3D
+			objects on layer <code class="inline prettyprint" translate="no"><span class="lit">1</span></code> will be honored by the instance of Raycaster.
+
+			<code class=" prettyprint" translate="no"><span class="pln">raycaster</span><span class="pun">.</span><span class="pln">layers</span><span class="pun">.</span><span class="kwd">set</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">object</span><span class="pun">.</span><span class="pln">layers</span><span class="pun">.</span><span class="pln">enable</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">);</span></code>
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.params" target="_parent" title="Raycaster.params" href="./index.html#api/en/core/Raycaster.params">#</a> .<a class="links" data-fragment="Raycaster.params" id="params" href="./index.html#api/en/core/Raycaster.params">params</a>  : <span class="param">Object</span></h3>
+		<p>
+			An object with the following properties:
+
+			<code class=" prettyprint" translate="no"><span class="pun">{</span><span class="pln">
+	</span><span class="typ">Mesh</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{},</span><span class="pln">
+	</span><span class="typ">Line</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> threshold</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">},</span><span class="pln">
+	LOD</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{},</span><span class="pln">
+	</span><span class="typ">Points</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> threshold</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">},</span><span class="pln">
+	</span><span class="typ">Sprite</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{}</span><span class="pln">
+</span><span class="pun">}</span></code>
+
+			Where threshold is the precision of the raycaster when intersecting
+			objects, in world units.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.ray" target="_parent" title="Raycaster.ray" href="./index.html#api/en/core/Raycaster.ray">#</a> .<a class="links" data-fragment="Raycaster.ray" id="ray" href="./index.html#api/en/core/Raycaster.ray">ray</a>  : <a class="param links" data-fragment="Ray" href="./index.html#api/en/math/Ray">Ray</a></h3>
+		<p>The <a class="links" data-fragment="Ray" title="Ray" href="./index.html#api/en/math/Ray">Ray</a> used for the raycasting.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.set" target="_parent" title="Raycaster.set" href="./index.html#api/en/core/Raycaster.set">#</a> .<a class="links" data-fragment="Raycaster.set" id="set" href="./index.html#api/en/core/Raycaster.set">set</a> ( origin : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, direction : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>) : <span class="param">undefined</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">origin</a> — The origin vector where the ray casts from.<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">direction</a> — The normalized direction vector that gives
+			direction to the ray.
+		</p>
+		<p>
+			Updates the ray with a new origin and direction. Please note that this
+			method only copies the values from the arguments.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.setFromCamera" target="_parent" title="Raycaster.setFromCamera" href="./index.html#api/en/core/Raycaster.setFromCamera">#</a> .<a class="links" data-fragment="Raycaster.setFromCamera" id="setFromCamera" href="./index.html#api/en/core/Raycaster.setFromCamera">setFromCamera</a> ( coords : <a class="param links" data-fragment="Vector2" href="./index.html#api/en/math/Vector2">Vector2</a>, camera : <a class="param links" data-fragment="Camera" href="./index.html#api/en/cameras/Camera">Camera</a> ) : <span class="param">undefined</span></h3>
+		<p>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">coords</a> — 2D coordinates of the mouse, in normalized device
+			coordinates (NDC)---X and Y components should be between <code class="inline prettyprint" translate="no"><span class="pun">-</span><span class="lit">1</span></code> and <code class="inline prettyprint" translate="no"><span class="lit">1</span></code>.<br>
+			<a class="links" data-fragment="Camera" title="Camera" href="./index.html#api/en/cameras/Camera">camera</a> — camera from which the ray should originate
+		</p>
+		<p>Updates the ray with a new origin and direction.</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.setFromXRController" target="_parent" title="Raycaster.setFromXRController" href="./index.html#api/en/core/Raycaster.setFromXRController">#</a> .<a class="links" data-fragment="Raycaster.setFromXRController" id="setFromXRController" href="./index.html#api/en/core/Raycaster.setFromXRController">setFromXRController</a> ( controller : <a class="param links" data-fragment="WebXRController">WebXRController</a> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="WebXRController" title="WebXRController">controller</a> — The controller to copy the position and direction from.
+		</p>
+		<p>Updates the ray with a new origin and direction.</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.intersectObject" target="_parent" title="Raycaster.intersectObject" href="./index.html#api/en/core/Raycaster.intersectObject">#</a> .<a class="links" data-fragment="Raycaster.intersectObject" id="intersectObject" href="./index.html#api/en/core/Raycaster.intersectObject">intersectObject</a> ( object : <a class="param links" data-fragment="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a>, recursive : <span class="param">Boolean</span>, optionalTarget : <span class="param">Array</span> ) : <span class="param">Array</span></h3>
+		<p>
+			<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">object</a> — The object to check for intersection with the
+			ray.<br>
+			<a class="links" data-fragment="Boolean" title="Boolean">recursive</a> — If true, it also checks all descendants.
+			Otherwise it only checks intersection with the object. Default is true.<br>
+			<a class="links" data-fragment="Array" title="Array">optionalTarget</a> — (optional) target to set the result.
+			Otherwise a new <a class="links" data-fragment="Array" title="Array">Array</a> is instantiated. If set, you must clear this
+			array prior to each call (i.e., array.length = 0;).
+		</p>
+		<p>
+			Checks all intersection between the ray and the object with or without the
+			descendants. Intersections are returned sorted by distance, closest first.
+			An array of intersections is returned...
+		</p>
+		<code class=" prettyprint" translate="no"><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> distance</span><span class="pun">,</span><span class="pln"> point</span><span class="pun">,</span><span class="pln"> face</span><span class="pun">,</span><span class="pln"> faceIndex</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">object</span><span class="pln"> </span><span class="pun">},</span><span class="pln"> </span><span class="pun">...</span><span class="pln"> </span><span class="pun">]</span><span class="pln"> </span></code>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">distance</a> – distance between the origin of the ray and the
+			intersection<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">point</a> – point of intersection, in world coordinates<br>
+			<a class="links" data-fragment="Object" title="Object">face</a> – intersected face<br>
+			<a class="links" data-fragment="Integer" title="Integer">faceIndex</a> – index of the intersected face<br>
+			<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">object</a> – the intersected object<br>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">uv</a> - U,V coordinates at point of intersection<br>
+			<a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">uv1</a> - Second set of U,V coordinates at point of
+			intersection<br>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">normal</a> - interpolated normal vector at point of
+			intersection<br>
+			<a class="links" data-fragment="Integer" title="Integer">instanceId</a> – The index number of the instance where the ray
+			intersects the InstancedMesh
+		</p>
+		<p>
+			<code class="inline prettyprint" translate="no"><span class="typ">Raycaster</span></code> delegates to the <a class="links" data-fragment="Object3D.raycast" title="Object3D.raycast" href="./index.html#api/en/core/Object3D.raycast">raycast</a> method of the
+			passed object, when evaluating whether the ray intersects the object or
+			not. This allows <a class="links" data-fragment="Mesh" title="Mesh" href="./index.html#api/en/objects/Mesh">meshes</a> to respond differently to ray casting
+			than <a class="links" data-fragment="Line" title="Line" href="./index.html#api/en/objects/Line">lines</a> and <a class="links" data-fragment="Points" title="Points" href="./index.html#api/en/objects/Points">pointclouds</a>.
+		</p>
+		<p>
+			<strong>Note</strong> that for meshes, faces must be pointed towards the origin of the
+			<a class="links" data-fragment="Raycaster.ray" title="Raycaster.ray" href="./index.html#api/en/core/Raycaster.ray">ray</a> in order to be detected; intersections of the ray passing
+			through the back of a face will not be detected. To raycast against both
+			faces of an object, you'll want to set the <a class="links" data-fragment="Mesh.material" title="Mesh.material" href="./index.html#api/en/objects/Mesh.material">material</a>'s
+			<a class="links" data-fragment="Material.side" title="Material.side" href="./index.html#api/en/materials/Material.side">side</a> property to <code class="inline prettyprint" translate="no"><span class="pln">THREE</span><span class="pun">.</span><span class="typ">DoubleSide</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Raycaster.intersectObjects" target="_parent" title="Raycaster.intersectObjects" href="./index.html#api/en/core/Raycaster.intersectObjects">#</a> .<a class="links" data-fragment="Raycaster.intersectObjects" id="intersectObjects" href="./index.html#api/en/core/Raycaster.intersectObjects">intersectObjects</a> ( objects : <span class="param">Array</span>, recursive : <span class="param">Boolean</span>, optionalTarget : <span class="param">Array</span> ) : <span class="param">Array</span></h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">objects</a> — The objects to check for intersection with the
+			ray.<br>
+			<a class="links" data-fragment="Boolean" title="Boolean">recursive</a> — If true, it also checks all descendants of the
+			objects. Otherwise it only checks intersection with the objects. Default
+			is true.<br>
+			<a class="links" data-fragment="Array" title="Array">optionalTarget</a> — (optional) target to set the result.
+			Otherwise a new <a class="links" data-fragment="Array" title="Array">Array</a> is instantiated. If set, you must clear this
+			array prior to each call (i.e., array.length = 0;).
+		</p>
+		<p>
+			Checks all intersection between the ray and the objects with or without
+			the descendants. Intersections are returned sorted by distance, closest
+			first. Intersections are of the same form as those returned by
+			<a class="links" data-fragment="Raycaster.intersectObject" title="Raycaster.intersectObject" href="./index.html#api/en/core/Raycaster.intersectObject">.intersectObject</a>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/core/Raycaster.js" target="_blank">src/core/Raycaster.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

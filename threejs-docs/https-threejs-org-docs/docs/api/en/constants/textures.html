@@ -1,0 +1,592 @@
+<!DOCTYPE html><html><head><title>Textures – three.js docs</title></head><body><body>
+		<h1>Texture Constants</h1>
+
+		<h2>Mapping Modes</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">UVMapping</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">CubeReflectionMapping</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">CubeRefractionMapping</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">EquirectangularReflectionMapping</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">EquirectangularRefractionMapping</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">CubeUVReflectionMapping</span></code>
+
+		<p>
+			These define the texture's mapping mode.<br>
+			<a class=/"links/" data-fragment=/"Constant/" title=/"Constant/">UVMapping</a> is the default, and maps the texture using the
+			mesh's UV coordinates.<br><br>
+			The rest define environment mapping types.<br><br>
+			<a class=/"links/" data-fragment=/"Constant/" title=/"Constant/">CubeReflectionMapping</a> and <a class=/"links/" data-fragment=/"Constant/" title=/"Constant/">CubeRefractionMapping</a> are for use with a <a class=/"links/" data-fragment=/"CubeTexture/" title=/"CubeTexture/" href=/"./index.html#api/en/textures/CubeTexture/">CubeTexture</a>,
+			which is made up of six textures, one for each face of the cube.
+			<a class=/"links/" data-fragment=/"Constant/" title=/"Constant/">CubeReflectionMapping</a> is the default for a
+			<a class=/"links/" data-fragment=/"CubeTexture/" title=/"CubeTexture/" href=/"./index.html#api/en/textures/CubeTexture/">CubeTexture</a>. <br><br>
+			<a class=/"links/" data-fragment=/"Constant/" title=/"Constant/">EquirectangularReflectionMapping</a> and <a class=/"links/" data-fragment=/"Constant/" title=/"Constant/">EquirectangularRefractionMapping</a> are for use with an equirectangular
+			environment map. Also called a lat-long map, an equirectangular texture
+			represents a 360-degree view along the horizontal centerline, and a
+			180-degree view along the vertical axis, with the top and bottom edges of
+			the image corresponding to the north and south poles of a mapped
+			sphere.<br><br>
+			See the <a href=/"../examples/#webgl_materials_envmaps/" target=/"_blank/">materials / envmaps</a> example.
+		</p>
+
+		<h2>Wrapping Modes</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">RepeatWrapping</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">ClampToEdgeWrapping</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">MirroredRepeatWrapping</span></code>
+		<p>
+			These define the texture's <a class=/"links/" data-fragment=/"Texture.wrapS/" title=/"Texture.wrapS/" href=/"./index.html#api/en/textures/Texture.wrapS/">wrapS</a> and
+			<a class=/"links/" data-fragment=/"Texture.wrapT/" title=/"Texture.wrapT/" href=/"./index.html#api/en/textures/Texture.wrapT/">wrapT</a> properties, which define horizontal and
+			vertical texture wrapping.<br><br>
+			With <a class=/"links/" data-fragment=/"constant/" title=/"constant/">RepeatWrapping</a> the texture will simply repeat to
+			infinity.<br><br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">ClampToEdgeWrapping</a> is the default. The last pixel of the
+			texture stretches to the edge of the mesh.<br><br>
+			With <a class=/"links/" data-fragment=/"constant/" title=/"constant/">MirroredRepeatWrapping</a> the texture will repeats to
+			infinity, mirroring on each repeat.
+		</p>
+
+		<h2>Magnification Filters</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">NearestFilter</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LinearFilter</span></code>
+
+		<p>
+			For use with a texture's <a class=/"links/" data-fragment=/"Texture.magFilter/" title=/"Texture.magFilter/" href=/"./index.html#api/en/textures/Texture.magFilter/">magFilter</a> property,
+			these define the texture magnification function to be used when the pixel
+			being textured maps to an area less than or equal to one texture element
+			(texel).<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">NearestFilter</a> returns the value of the texture element
+			that is nearest (in Manhattan distance) to the specified texture
+			coordinates.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">LinearFilter</a> is the default and returns the weighted
+			average of the four texture elements that are closest to the specified
+			texture coordinates, and can include items wrapped or repeated from other
+			parts of a texture, depending on the values of <a class=/"links/" data-fragment=/"Texture.wrapS/" title=/"Texture.wrapS/" href=/"./index.html#api/en/textures/Texture.wrapS/">wrapS</a>
+			and <a class=/"links/" data-fragment=/"Texture.wrapT/" title=/"Texture.wrapT/" href=/"./index.html#api/en/textures/Texture.wrapT/">wrapT</a>, and on the exact mapping.
+		</p>
+
+		<h2>Minification Filters</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">NearestFilter</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">NearestMipmapNearestFilter</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">NearestMipmapLinearFilter</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LinearFilter</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LinearMipmapNearestFilter</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LinearMipmapLinearFilter</span></code>
+
+		<p>
+			For use with a texture's <a class=/"links/" data-fragment=/"Texture.minFilter/" title=/"Texture.minFilter/" href=/"./index.html#api/en/textures/Texture.minFilter/">minFilter</a> property,
+			these define the texture minifying function that is used whenever the
+			pixel being textured maps to an area greater than one texture element
+			(texel).<br><br>
+
+			In addition to <a class=/"links/" data-fragment=/"constant/" title=/"constant/">NearestFilter</a> and <a class=/"links/" data-fragment=/"constant/" title=/"constant/">LinearFilter</a>, the following four functions can be used for
+			minification:<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">NearestMipmapNearestFilter</a> chooses the mipmap that most
+			closely matches the size of the pixel being textured and uses the
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">NearestFilter</a> criterion (the texel nearest to the center
+			of the pixel) to produce a texture value.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">NearestMipmapLinearFilter</a> chooses the two mipmaps that
+			most closely match the size of the pixel being textured and uses the
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">NearestFilter</a> criterion to produce a texture value from
+			each mipmap. The final texture value is a weighted average of those two
+			values.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">LinearMipmapNearestFilter</a> chooses the mipmap that most
+			closely matches the size of the pixel being textured and uses the
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">LinearFilter</a> criterion (a weighted average of the four
+			texels that are closest to the center of the pixel) to produce a texture
+			value.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">LinearMipmapLinearFilter</a> is the default and chooses the
+			two mipmaps that most closely match the size of the pixel being textured
+			and uses the <a class=/"links/" data-fragment=/"constant/" title=/"constant/">LinearFilter</a> criterion to produce a texture
+			value from each mipmap. The final texture value is a weighted average of
+			those two values.<br><br>
+
+			See the <a href=/"../examples/#webgl_materials_texture_filters/" target=/"_blank/">materials / texture / filters</a> example.
+		</p>
+
+		<h2>Types</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">UnsignedByteType</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">ByteType</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">ShortType</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">UnsignedShortType</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">IntType</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">UnsignedIntType</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">FloatType</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">HalfFloatType</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">UnsignedShort4444Type</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">UnsignedShort5551Type</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">UnsignedInt248Type</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">UnsignedInt5999Type</span></code>
+		<p>
+			For use with a texture's <a class=/"links/" data-fragment=/"Texture.type/" title=/"Texture.type/" href=/"./index.html#api/en/textures/Texture.type/">type</a> property, which must
+			correspond to the correct format. See below for details.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">UnsignedByteType</a> is the default.
+		</p>
+
+		<h2>Formats</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">AlphaFormat</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RedFormat</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RedIntegerFormat</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RGFormat</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RGIntegerFormat</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RGBFormat</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RGBAFormat</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RGBAIntegerFormat</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LuminanceFormat</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LuminanceAlphaFormat</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">DepthFormat</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">DepthStencilFormat</span></code>
+		<p>
+			For use with a texture's <a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a> property, these
+			define how elements of a 2d texture, or <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">texels</span></code>, are read by shaders.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">AlphaFormat</a> discards the red, green and blue components
+			and reads just the alpha component.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RedFormat</a> discards the green and blue components and reads
+			just the red component.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RedIntegerFormat</a> discards the green and blue components
+			and reads just the red component. The texels are read as integers instead
+			of floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGFormat</a> discards the alpha, and blue components and reads
+			the red, and green components.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGIntegerFormat</a> discards the alpha, and blue components
+			and reads the red, and green components. The texels are read as integers
+			instead of floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBAFormat</a> is the default and reads the red, green, blue
+			and alpha components.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBAIntegerFormat</a> is the default and reads the red, green,
+			blue and alpha components. The texels are read as integers instead of
+			floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">LuminanceFormat</a> reads each element as a single luminance
+			component. This is then converted to a floating point, clamped to the
+			range [0,1], and then assembled into an RGBA element by placing the
+			luminance value in the red, green and blue channels, and attaching 1.0 to
+			the alpha channel.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">LuminanceAlphaFormat</a> reads each element as a
+			luminance/alpha double. The same process occurs as for the <a class=/"links/" data-fragment=/"constant/" title=/"constant/">LuminanceFormat</a>, except that the alpha channel may have values other than
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1.0</span></code>.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DepthFormat</a> reads each element as a single depth value,
+			converts it to floating point, and clamps to the range [0,1]. This is the
+			default for <a class=/"links/" data-fragment=/"DepthTexture/" title=/"DepthTexture/" href=/"./index.html#api/en/textures/DepthTexture/">DepthTexture</a>.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DepthStencilFormat</a> reads each element is a pair of depth
+			and stencil values. The depth component of the pair is interpreted as in
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DepthFormat</a>. The stencil component is interpreted based on
+			the depth + stencil internal format.
+			<br><br>
+
+			Note that the texture must have the correct <a class=/"links/" data-fragment=/"Texture.type/" title=/"Texture.type/" href=/"./index.html#api/en/textures/Texture.type/">type</a> set,
+			as described above. See
+			<a href=/"https://developer.mozilla.org/en/docs/Web/API/WebGLRenderingContext/texImage2D/" target=/"_blank/">WebGLRenderingContext.texImage2D</a> for details.
+		</p>
+
+		<h2>DDS / ST3C Compressed Texture Formats</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGB_S3TC_DXT1_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_S3TC_DXT1_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_S3TC_DXT3_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_S3TC_DXT5_Format</span></code>
+		<p>
+			For use with a <a class=/"links/" data-fragment=/"CompressedTexture/" title=/"CompressedTexture/" href=/"./index.html#api/en/textures/CompressedTexture/">CompressedTexture</a>'s
+			<a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a> property, these require support for the
+			<a href=/"https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc//" target=/"_blank/">WEBGL_compressed_texture_s3tc</a> extension. <br><br>
+
+			There are four <a href=/"https://en.wikipedia.org/wiki/S3_Texture_Compression/" target=/"_blank/">S3TC</a> formats available via this extension. These are:<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB_S3TC_DXT1_Format</a>: A DXT1-compressed image in an RGB
+			image format.<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA_S3TC_DXT1_Format</a>: A DXT1-compressed image in an RGB
+			image format with a simple on/off alpha value.<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA_S3TC_DXT3_Format</a>: A DXT3-compressed image in an RGBA
+			image format. Compared to a 32-bit RGBA texture, it offers 4:1
+			compression.<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA_S3TC_DXT5_Format</a>: A DXT5-compressed image in an RGBA
+			image format. It also provides a 4:1 compression, but differs to the DXT3
+			compression in how the alpha compression is done.<br>
+		</p>
+
+		<h2>PVRTC Compressed Texture Formats</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGB_PVRTC_4BPPV1_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGB_PVRTC_2BPPV1_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_PVRTC_4BPPV1_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_PVRTC_2BPPV1_Format</span></code>
+		<p>
+			For use with a <a class=/"links/" data-fragment=/"CompressedTexture/" title=/"CompressedTexture/" href=/"./index.html#api/en/textures/CompressedTexture/">CompressedTexture</a>'s
+			<a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a> property, these require support for the
+			[link:https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_pvrtc/	WEBGL_compressed_texture_pvrtc] extension. <br>
+			PVRTC is typically only available on mobile devices with PowerVR chipsets,
+			which are mainly Apple devices.<br><br>
+
+			There are four <a href=/"https://en.wikipedia.org/wiki/PVRTC/" target=/"_blank/">PVRTC</a> formats
+			available via this extension. These are:<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB_PVRTC_4BPPV1_Format</a>: RGB compression in 4-bit mode.
+			One block for each 4×4 pixels.<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB_PVRTC_2BPPV1_Format</a>: RGB compression in 2-bit mode.
+			One block for each 8×4 pixels.<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA_PVRTC_4BPPV1_Format</a>: RGBA compression in 4-bit mode.
+			One block for each 4×4 pixels.<br>
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA_PVRTC_2BPPV1_Format</a>: RGBA compression in 2-bit mode.
+			One block for each 8×4 pixels.<br>
+		</p>
+
+		<h2>ETC Compressed Texture Format</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGB_ETC1_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGB_ETC2_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ETC2_EAC_Format</span></code>
+		<p>
+			For use with a <a class=/"links/" data-fragment=/"CompressedTexture/" title=/"CompressedTexture/" href=/"./index.html#api/en/textures/CompressedTexture/">CompressedTexture</a>'s
+			<a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a> property, these require support for the
+			<a href=/"https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_etc1//" target=/"_blank/">WEBGL_compressed_texture_etc1</a> (ETC1) or
+			<a href=/"https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_etc//" target=/"_blank/">WEBGL_compressed_texture_etc</a> (ETC2) extensions. <br><br>
+		</p>
+
+		<h2>ASTC Compressed Texture Format</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_4x4_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_5x4_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_5x5_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_6x5_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_6x6_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_8x5_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_8x6_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_8x8_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_10x5_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_10x6_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_10x8_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_10x10_Format
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_12x10_Format 
+THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_ASTC_12x12_Format</span></code>
+		<p>
+			For use with a <a class=/"links/" data-fragment=/"CompressedTexture/" title=/"CompressedTexture/" href=/"./index.html#api/en/textures/CompressedTexture/">CompressedTexture</a>'s
+			<a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a> property, these require support for the
+			<a href=/"https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_astc//" target=/"_blank/">WEBGL_compressed_texture_astc</a> extension. <br><br>
+		</p>
+
+		<h2>BPTC Compressed Texture Format</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"pln/">RGBA_BPTC_Format</span></code>
+		<p>
+			For use with a <a class=/"links/" data-fragment=/"CompressedTexture/" title=/"CompressedTexture/" href=/"./index.html#api/en/textures/CompressedTexture/">CompressedTexture</a>'s
+			<a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a> property, these require support for the
+			<a href=/"https://www.khronos.org/registry/webgl/extensions/EXT_texture_compression_bptc//" target=/"_blank/">EXT_texture_compression_bptc</a> extension. <br><br>
+		</p>
+
+		<h2>Texture Comparison functions</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">NeverCompare</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LessCompare</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">EqualCompare</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LessEqualCompare</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">GreaterCompare</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">NotEqualCompare</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">GreaterEqualCompare</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">AlwaysCompare</span></code>
+
+		<h2>Internal Formats</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"str/">'ALPHA'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA'</span><span class=/"pln/">
+</span><span class=/"str/">'LUMINANCE'</span><span class=/"pln/">
+</span><span class=/"str/">'LUMINANCE_ALPHA'</span><span class=/"pln/">
+</span><span class=/"str/">'RED_INTEGER'</span><span class=/"pln/">
+</span><span class=/"str/">'R8'</span><span class=/"pln/">
+</span><span class=/"str/">'R8_SNORM'</span><span class=/"pln/">
+</span><span class=/"str/">'R8I'</span><span class=/"pln/">
+</span><span class=/"str/">'R8UI'</span><span class=/"pln/">
+</span><span class=/"str/">'R16I'</span><span class=/"pln/">
+</span><span class=/"str/">'R16UI'</span><span class=/"pln/">
+</span><span class=/"str/">'R16F'</span><span class=/"pln/">
+</span><span class=/"str/">'R32I'</span><span class=/"pln/">
+</span><span class=/"str/">'R32UI'</span><span class=/"pln/">
+</span><span class=/"str/">'R32F'</span><span class=/"pln/">
+</span><span class=/"str/">'RG8'</span><span class=/"pln/">
+</span><span class=/"str/">'RG8_SNORM'</span><span class=/"pln/">
+</span><span class=/"str/">'RG8I'</span><span class=/"pln/">
+</span><span class=/"str/">'RG8UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RG16I'</span><span class=/"pln/">
+</span><span class=/"str/">'RG16UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RG16F'</span><span class=/"pln/">
+</span><span class=/"str/">'RG32I'</span><span class=/"pln/">
+</span><span class=/"str/">'RG32UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RG32F'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB565'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB8'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB8_SNORM'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB8I'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB8UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB16I'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB16UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB16F'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB32I'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB32UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB32F'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB9_E5'</span><span class=/"pln/">
+</span><span class=/"str/">'SRGB8'</span><span class=/"pln/">
+</span><span class=/"str/">'R11F_G11F_B10F'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA4'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA8'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA8_SNORM'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA8I'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA8UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA16I'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA16UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA16F'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA32I'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA32UI'</span><span class=/"pln/">
+</span><span class=/"str/">'RGBA32F'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB5_A1'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB10_A2'</span><span class=/"pln/">
+</span><span class=/"str/">'RGB10_A2UI'</span><span class=/"pln/">
+</span><span class=/"str/">'SRGB8_ALPHA8'</span><span class=/"pln/">
+</span><span class=/"str/">'DEPTH_COMPONENT16'</span><span class=/"pln/">
+</span><span class=/"str/">'DEPTH_COMPONENT24'</span><span class=/"pln/">
+</span><span class=/"str/">'DEPTH_COMPONENT32F'</span><span class=/"pln/">
+</span><span class=/"str/">'DEPTH24_STENCIL8'</span><span class=/"pln/">
+</span><span class=/"str/">'DEPTH32F_STENCIL8'</span></code>
+
+		<p>
+			For use with a texture's <a class=/"links/" data-fragment=/"Texture.internalFormat/" title=/"Texture.internalFormat/" href=/"./index.html#api/en/textures/Texture.internalFormat/">internalFormat</a>
+			property, these define how elements of a texture, or <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">texels</span></code>, are stored
+			on the GPU.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R8</a> stores the red component on 8 bits.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R8_SNORM</a> stores the red component on 8 bits. The component
+			is stored as normalized. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R8I</a> stores the red component on 8 bits. The component is
+			stored as an integer. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R8UI</a> stores the red component on 8 bits. The component is
+			stored as an unsigned integer. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R16I</a> stores the red component on 16 bits. The component is
+			stored as an integer. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R16UI</a> stores the red component on 16 bits. The component
+			is stored as an unsigned integer. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R16F</a> stores the red component on 16 bits. The component is
+			stored as floating point. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R32I</a> stores the red component on 32 bits. The component is
+			stored as an integer. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R32UI</a> stores the red component on 32 bits. The component
+			is stored as an unsigned integer. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R32F</a> stores the red component on 32 bits. The component is
+			stored as floating point. <br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG8</a> stores the red and green components on 8 bits each.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG8_SNORM</a> stores the red and green components on 8 bits
+			each. Every component is stored as normalized.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG8I</a> stores the red and green components on 8 bits each.
+			Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG8UI</a> stores the red and green components on 8 bits each.
+			Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG16I</a> stores the red and green components on 16 bits each.
+			Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG16UI</a> stores the red and green components on 16 bits
+			each. Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG16F</a> stores the red and green components on 16 bits each.
+			Every component is stored as floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG32I</a> stores the red and green components on 32 bits each.
+			Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG32UI</a> stores the red and green components on 32 bits.
+			Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RG32F</a> stores the red and green components on 32 bits.
+			Every component is stored as floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB8</a> stores the red, green, and blue components on 8 bits
+			each. <a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB8_SNORM</a> stores the red, green, and blue
+			components on 8 bits each. Every component is stored as normalized.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB8I</a> stores the red, green, and blue components on 8 bits
+			each. Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB8UI</a> stores the red, green, and blue components on 8
+			bits each. Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB16I</a> stores the red, green, and blue components on 16
+			bits each. Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB16UI</a> stores the red, green, and blue components on 16
+			bits each. Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB16F</a> stores the red, green, and blue components on 16
+			bits each. Every component is stored as floating point
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB32I</a> stores the red, green, and blue components on 32
+			bits each. Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB32UI</a> stores the red, green, and blue components on 32
+			bits each. Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB32F</a> stores the red, green, and blue components on 32
+			bits each. Every component is stored as floating point
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">R11F_G11F_B10F</a> stores the red, green, and blue components
+			respectively on 11 bits, 11 bits, and 10bits. Every component is stored as
+			floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB565</a> stores the red, green, and blue components
+			respectively on 5 bits, 6 bits, and 5 bits.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB9_E5</a> stores the red, green, and blue components on 9
+			bits each.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA8</a> stores the red, green, blue, and alpha components on
+			8 bits each.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA8_SNORM</a> stores the red, green, blue, and alpha
+			components on 8 bits. Every component is stored as normalized.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA8I</a> stores the red, green, blue, and alpha components
+			on 8 bits each. Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA8UI</a> stores the red, green, blue, and alpha components
+			on 8 bits. Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA16I</a> stores the red, green, blue, and alpha components
+			on 16 bits. Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA16UI</a> stores the red, green, blue, and alpha components
+			on 16 bits. Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA16F</a> stores the red, green, blue, and alpha components
+			on 16 bits. Every component is stored as floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA32I</a> stores the red, green, blue, and alpha components
+			on 32 bits. Every component is stored as an integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA32UI</a> stores the red, green, blue, and alpha components
+			on 32 bits. Every component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGBA32F</a> stores the red, green, blue, and alpha components
+			on 32 bits. Every component is stored as floating point.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB5_A1</a> stores the red, green, blue, and alpha components
+			respectively on 5 bits, 5 bits, 5 bits, and 1 bit.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB10_A2</a> stores the red, green, blue, and alpha components
+			respectively on 10 bits, 10 bits, 10 bits and 2 bits.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">RGB10_A2UI</a> stores the red, green, blue, and alpha
+			components respectively on 10 bits, 10 bits, 10 bits and 2 bits. Every
+			component is stored as an unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">SRGB8</a> stores the red, green, and blue components on 8 bits
+			each.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">SRGB8_ALPHA8</a> stores the red, green, blue, and alpha
+			components on 8 bits each.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DEPTH_COMPONENT16</a> stores the depth component on 16bits.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DEPTH_COMPONENT24</a> stores the depth component on 24bits.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DEPTH_COMPONENT32F</a> stores the depth component on 32bits.
+			The component is stored as floating point.<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DEPTH24_STENCIL8</a> stores the depth, and stencil components
+			respectively on 24 bits and 8 bits. The stencil component is stored as an
+			unsigned integer.
+			<br><br>
+
+			<a class=/"links/" data-fragment=/"constant/" title=/"constant/">DEPTH32F_STENCIL8</a> stores the depth, and stencil components
+			respectively on 32 bits and 8 bits. The depth component is stored as
+			floating point, and the stencil component as an unsigned integer.
+			<br><br>
+
+			Note that the texture must have the correct <a class=/"links/" data-fragment=/"Texture.type/" title=/"Texture.type/" href=/"./index.html#api/en/textures/Texture.type/">type</a> set,
+			as well as the correct <a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a>. See
+			<a href=/"https://developer.mozilla.org/en/docs/Web/API/WebGLRenderingContext/texImage2D/" target=/"_blank/">WebGLRenderingContext.texImage2D</a>, and
+			<a href=/"https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texImage3D/" target=/"_blank/">WebGL2RenderingContext.texImage3D</a>, for more details regarding the
+			possible combination of <a class=/"links/" data-fragment=/"Texture.format/" title=/"Texture.format/" href=/"./index.html#api/en/textures/Texture.format/">format</a>,
+			<a class=/"links/" data-fragment=/"Texture.internalFormat/" title=/"Texture.internalFormat/" href=/"./index.html#api/en/textures/Texture.internalFormat/">internalFormat</a>, and <a class=/"links/" data-fragment=/"Texture.type/" title=/"Texture.type/" href=/"./index.html#api/en/textures/Texture.type/">type</a>.<br><br>
+
+			For more in-depth information regarding internal formats, you can also
+			refer directly to the
+			<a href=/"https://www.khronos.org/registry/webgl/specs/latest/2.0//" target=/"_blank/">WebGL2 Specification</a> and to the
+			<a href=/"https://www.khronos.org/registry/OpenGL/specs/es/3.0/es_spec_3.0.pdf/" target=/"_blank/">OpenGL ES 3.0 Specification</a>.
+		</p>
+
+		<h2>Depth Packing</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">BasicDepthPacking</span><span class=/"pln/"> 
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">RGBADepthPacking</span></code>
+		<p>
+			For use with the <a class=/"links/" data-fragment=/"MeshDepthMaterial.depthPacking/" title=/"MeshDepthMaterial.depthPacking/" href=/"./index.html#api/en/materials/MeshDepthMaterial.depthPacking/">depthPacking</a>
+			property of <code class=/"inline prettyprint/" translate=/"no/"><span class=/"typ/">MeshDepthMaterial</span></code>.
+		</p>
+
+		<h2>Color Space</h2>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/">THREE</span><span class=/"pun/">.</span><span class=/"typ/">NoColorSpace</span><span class=/"pln/"> </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"str/">/"/"</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">SRGBColorSpace</span><span class=/"pln/"> </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"str/">/"srgb/"</span><span class=/"pln/">
+THREE</span><span class=/"pun/">.</span><span class=/"typ/">LinearSRGBColorSpace</span><span class=/"pln/"> </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"str/">/"srgb-linear/"</span></code>
+		<p>
+			Used to define the color space of textures (and the output color space of
+			the renderer).<br><br>
+
+			If the color space type is changed after the texture has already been used
+			by a material, you will need to set <a class=/"links/" data-fragment=/"Material.needsUpdate/" title=/"Material.needsUpdate/" href=/"./index.html#api/en/materials/Material.needsUpdate/">Material.needsUpdate</a> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code> to make the material recompile.<br><br>
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/constants.js/" target=/"_blank/">src/constants.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

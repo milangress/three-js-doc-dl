@@ -1,0 +1,89 @@
+<!DOCTYPE html><html><head><title>FramebufferTexture – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Texture" title="Texture" href="./index.html#api/en/textures/Texture">Texture</a> →
+
+		<h1>FramebufferTexture</h1>
+
+		<p class="desc">
+			This class can only be used in combination with
+			<a class="links" data-fragment="WebGLRenderer.copyFramebufferToTexture" title="WebGLRenderer.copyFramebufferToTexture" href="./index.html#api/en/renderers/WebGLRenderer.copyFramebufferToTexture">WebGLRenderer.copyFramebufferToTexture</a>().
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> pixelRatio </span><span class="pun">=</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">devicePixelRatio</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> textureSize </span><span class="pun">=</span><span class="pln"> </span><span class="lit">128</span><span class="pln"> </span><span class="pun">*</span><span class="pln"> pixelRatio</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">// instantiate a framebuffer texture</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> frameTexture </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FramebufferTexture</span><span class="pun">(</span><span class="pln"> textureSize</span><span class="pun">,</span><span class="pln"> textureSize </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// calculate start position for copying part of the frame data</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> vector </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Vector2</span><span class="pun">();</span><span class="pln">
+vector</span><span class="pun">.</span><span class="pln">x </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerWidth </span><span class="pun">*</span><span class="pln"> pixelRatio </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> textureSize </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+vector</span><span class="pun">.</span><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> window</span><span class="pun">.</span><span class="pln">innerHeight </span><span class="pun">*</span><span class="pln"> pixelRatio </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> textureSize </span><span class="pun">/</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// render the scene</span><span class="pln">
+renderer</span><span class="pun">.</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+renderer</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln"> scene</span><span class="pun">,</span><span class="pln"> camera </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// copy part of the rendered frame into the framebuffer texture</span><span class="pln">
+renderer</span><span class="pun">.</span><span class="pln">copyFramebufferToTexture</span><span class="pun">(</span><span class="pln"> frameTexture</span><span class="pun">,</span><span class="pln"> vector </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href="../examples/#webgl_framebuffer_texture" target="_blank">webgl_framebuffer_texture</a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			FramebufferTexture( width : <span class="param">Number</span>, height : <span class="param">Number</span> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="Number" title="Number">width</a> -- The width of the texture.<br>
+
+			<a class="links" data-fragment="Number" title="Number">height</a> -- The height of the texture.
+		</p>
+
+		<h2>Properties</h2>
+
+		<p>See the base <a class="links" data-fragment="Texture" title="Texture" href="./index.html#api/en/textures/Texture">Texture</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="FramebufferTexture.generateMipmaps" target="_parent" title="FramebufferTexture.generateMipmaps" href="./index.html#api/en/textures/FramebufferTexture.generateMipmaps">#</a> .<a class="links" data-fragment="FramebufferTexture.generateMipmaps" id="generateMipmaps" href="./index.html#api/en/textures/FramebufferTexture.generateMipmaps">generateMipmaps</a>  : <span class="param">Boolean</span></h3>
+		<p>Whether to generate mipmaps for the FramebufferTexture. Default value is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>.</p>
+
+		<h3><a class="permalink links" data-fragment="FramebufferTexture.isFramebufferTexture" target="_parent" title="FramebufferTexture.isFramebufferTexture" href="./index.html#api/en/textures/FramebufferTexture.isFramebufferTexture">#</a> .<a class="links" data-fragment="FramebufferTexture.isFramebufferTexture" id="isFramebufferTexture" href="./index.html#api/en/textures/FramebufferTexture.isFramebufferTexture">isFramebufferTexture</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type FramebufferTexture.</p>
+
+		<h3><a class="permalink links" data-fragment="FramebufferTexture.magFilter" target="_parent" title="FramebufferTexture.magFilter" href="./index.html#api/en/textures/FramebufferTexture.magFilter">#</a> .<a class="links" data-fragment="FramebufferTexture.magFilter" id="magFilter" href="./index.html#api/en/textures/FramebufferTexture.magFilter">magFilter</a>  : <span class="param">number</span></h3>
+		<p>
+			How the texture is sampled when a texel covers more than one pixel. The
+			default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.NearestFilter</a>, which uses the value of
+			the closest texel.
+			<br><br>
+
+			See <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">texture constants</a> for details.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="FramebufferTexture.minFilter" target="_parent" title="FramebufferTexture.minFilter" href="./index.html#api/en/textures/FramebufferTexture.minFilter">#</a> .<a class="links" data-fragment="FramebufferTexture.minFilter" id="minFilter" href="./index.html#api/en/textures/FramebufferTexture.minFilter">minFilter</a>  : <span class="param">number</span></h3>
+		<p>
+			How the texture is sampled when a texel covers less than one pixel. The
+			default is <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">THREE.NearestFilter</a>, which uses the value of
+			the closest texel.
+			<br><br>
+
+			See <a class="links" data-fragment="Textures" title="Textures" href="./index.html#api/en/constants/Textures">texture constants</a> for details.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="FramebufferTexture.needsUpdate" target="_parent" title="FramebufferTexture.needsUpdate" href="./index.html#api/en/textures/FramebufferTexture.needsUpdate">#</a> .<a class="links" data-fragment="FramebufferTexture.needsUpdate" id="needsUpdate" href="./index.html#api/en/textures/FramebufferTexture.needsUpdate">needsUpdate</a>  : <span class="param">Boolean</span></h3>
+
+		<p>True by default. This is required so that the canvas data is loaded.</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a class="links" data-fragment="Texture" title="Texture" href="./index.html#api/en/textures/Texture">Texture</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/textures/FramebufferTexture.js" target="_blank">src/textures/FramebufferTexture.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

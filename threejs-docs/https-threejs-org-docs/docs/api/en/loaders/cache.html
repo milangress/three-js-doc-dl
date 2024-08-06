@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head><title>Cache – three.js docs</title></head><body><body>
+		<h1>Cache</h1>
+
+		<p class=/"desc/">
+			A simple caching system, used internally by <a class=/"links/" data-fragment=/"FileLoader/" title=/"FileLoader/" href=/"./index.html#api/en/loaders/FileLoader/">FileLoader</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p>To enable caching across all loaders that use <a class=/"links/" data-fragment=/"FileLoader/" title=/"FileLoader/" href=/"./index.html#api/en/loaders/FileLoader/">FileLoader</a>, set</p>
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Cache</span><span class=/"pun/">.</span><span class=/"pln/">enabled </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">true</span><span class=/"pun/">.</span><span class=/"pln/"> </span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href=/"../examples/#webgl_geometry_text/" target=/"_blank/">WebGL / geometry / text </a><br>
+			<a href=/"../examples/#webgl_interactive_instances_gpu/" target=/"_blank/">WebGL / interactive / instances / gpu</a><br>
+			<a href=/"../examples/#webgl_loader_ttf/" target=/"_blank/">WebGL / loader / ttf</a>
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Cache.enabled/" target=/"_parent/" title=/"Cache.enabled/" href=/"./index.html#api/en/loaders/Cache.enabled/">#</a> .<a class=/"links/" data-fragment=/"Cache.enabled/" id=/"enabled/" href=/"./index.html#api/en/loaders/Cache.enabled/">enabled</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Whether caching is enabled. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Cache.files/" target=/"_parent/" title=/"Cache.files/" href=/"./index.html#api/en/loaders/Cache.files/">#</a> .<a class=/"links/" data-fragment=/"Cache.files/" id=/"files/" href=/"./index.html#api/en/loaders/Cache.files/">files</a>  : <span class=/"param/">Object</span></h3>
+		<p>An <a class=/"links/" data-fragment=/"Object/" title=/"Object/">object</a> that holds cached files.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Cache.add/" target=/"_parent/" title=/"Cache.add/" href=/"./index.html#api/en/loaders/Cache.add/">#</a> .<a class=/"links/" data-fragment=/"Cache.add/" id=/"add/" href=/"./index.html#api/en/loaders/Cache.add/">add</a> ( key : <span class=/"param/">String</span>, file : <span class=/"param/">Object</span> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"String/" title=/"String/">key</a> — the <a class=/"links/" data-fragment=/"String/" title=/"String/">key</a> to reference the cached file
+			by.<br>
+			<a class=/"links/" data-fragment=/"Object/" title=/"Object/">file</a> — The file to be cached.<br><br>
+
+			Adds a cache entry with a key to reference the file. If this key already
+			holds a file, it is overwritten.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Cache.get/" target=/"_parent/" title=/"Cache.get/" href=/"./index.html#api/en/loaders/Cache.get/">#</a> .<a class=/"links/" data-fragment=/"Cache.get/" id=/"get/" href=/"./index.html#api/en/loaders/Cache.get/">get</a> ( key : <span class=/"param/">String</span> ) : <a class=/"param links/" data-fragment=/"Any/">Any</a></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"String/" title=/"String/">key</a> — A string key <br><br>
+
+			Get the value of <a class=/"links/" data-fragment=/"String/" title=/"String/">key</a>. If the key does not exist <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">undefined</span></code>
+			is returned.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Cache.remove/" target=/"_parent/" title=/"Cache.remove/" href=/"./index.html#api/en/loaders/Cache.remove/">#</a> .<a class=/"links/" data-fragment=/"Cache.remove/" id=/"remove/" href=/"./index.html#api/en/loaders/Cache.remove/">remove</a> ( key : <span class=/"param/">String</span> ) : <span class=/"param/">undefined</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"String/" title=/"String/">key</a> — A string key that references a cached file.<br><br>
+
+			Remove the cached file associated with the key.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Cache.clear/" target=/"_parent/" title=/"Cache.clear/" href=/"./index.html#api/en/loaders/Cache.clear/">#</a> .<a class=/"links/" data-fragment=/"Cache.clear/" id=/"clear/" href=/"./index.html#api/en/loaders/Cache.clear/">clear</a> () : <span class=/"param/">undefined</span></h3>
+		<p>Remove all values from the cache.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/loaders/Cache.js/" target=/"_blank/">src/loaders/Cache.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

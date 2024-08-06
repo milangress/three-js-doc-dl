@@ -1,0 +1,168 @@
+<!DOCTYPE html><html><head><title>Euler – three.js docs</title></head><body><body>
+		<h1>Euler</h1>
+
+		<p class="desc">
+			A class representing <a href="http://en.wikipedia.org/wiki/Euler_angles" target="_blank">Euler Angles</a>.<br><br>
+
+			Euler angles describe a rotational transformation by rotating an object on
+			its various axes in specified amounts per axis, and a specified axis
+			order.
+		</p>
+
+		<p>
+			Iterating through a Euler instance will yield its components (x, y, z,
+			order) in the corresponding order.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Euler</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.57</span><span class="pun">,</span><span class="pln"> </span><span class="str">'XYZ'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> b </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Vector3</span><span class="pun">(</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+b</span><span class="pun">.</span><span class="pln">applyEuler</span><span class="pun">(</span><span class="pln">a</span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			Euler( x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span>, order : <span class="param">String</span> )
+		</h3>
+		<p>
+			<a class="links" data-fragment="Float" title="Float">x</a> - (optional) the angle of the x axis in radians. Default is
+			<code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.<br>
+			<a class="links" data-fragment="Float" title="Float">y</a> - (optional) the angle of the y axis in radians. Default is
+			<code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.<br>
+			<a class="links" data-fragment="Float" title="Float">z</a> - (optional) the angle of the z axis in radians. Default is
+			<code class="inline prettyprint" translate="no"><span class="lit">0</span></code>.<br>
+			<a class="links" data-fragment="String" title="String">order</a> - (optional) a string representing the order that the
+			rotations are applied, defaults to 'XYZ' (must be upper case).<br><br>
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="Euler.isEuler" target="_parent" title="Euler.isEuler" href="./index.html#api/en/math/Euler.isEuler">#</a> .<a class="links" data-fragment="Euler.isEuler" id="isEuler" href="./index.html#api/en/math/Euler.isEuler">isEuler</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Euler.</p>
+
+		<h3><a class="permalink links" data-fragment="Euler.order" target="_parent" title="Euler.order" href="./index.html#api/en/math/Euler.order">#</a> .<a class="links" data-fragment="Euler.order" id="order" href="./index.html#api/en/math/Euler.order">order</a>  : <span class="param">String</span></h3>
+		<p>
+			The order in which to apply rotations. Default is 'XYZ', which means that
+			the object will first be rotated around its X axis, then its Y axis and
+			finally its Z axis. Other possibilities are: 'YZX', 'ZXY', 'XZY', 'YXZ'
+			and 'ZYX'. These must be in upper case.<br><br>
+
+			Three.js uses <code class="inline prettyprint" translate="no"><span class="pln">intrinsic</span></code> Tait-Bryan angles. This means that rotations are
+			performed with respect to the <code class="inline prettyprint" translate="no"><span class="kwd">local</span></code> coordinate system. That is, for
+			order 'XYZ', the rotation is first around the local-X axis (which is the
+			same as the world-X axis), then around local-Y (which may now be different
+			from the world Y-axis), then local-Z (which may be different from the
+			world Z-axis).<br><br>
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Euler.x" target="_parent" title="Euler.x" href="./index.html#api/en/math/Euler.x">#</a> .<a class="links" data-fragment="Euler.x" id="x" href="./index.html#api/en/math/Euler.x">x</a>  : <span class="param">Float</span></h3>
+		<p>The current value of the x component.<br><br></p>
+
+		<h3><a class="permalink links" data-fragment="Euler.y" target="_parent" title="Euler.y" href="./index.html#api/en/math/Euler.y">#</a> .<a class="links" data-fragment="Euler.y" id="y" href="./index.html#api/en/math/Euler.y">y</a>  : <span class="param">Float</span></h3>
+		<p>The current value of the y component.<br><br></p>
+
+		<h3><a class="permalink links" data-fragment="Euler.z" target="_parent" title="Euler.z" href="./index.html#api/en/math/Euler.z">#</a> .<a class="links" data-fragment="Euler.z" id="z" href="./index.html#api/en/math/Euler.z">z</a>  : <span class="param">Float</span></h3>
+		<p>The current value of the z component.<br><br></p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="Euler.copy" target="_parent" title="Euler.copy" href="./index.html#api/en/math/Euler.copy">#</a> .<a class="links" data-fragment="Euler.copy" id="copy" href="./index.html#api/en/math/Euler.copy">copy</a> ( euler : <a class="param links" data-fragment="Euler" href="./index.html#api/en/math/Euler">Euler</a> ) : <span class="param">this</span></h3>
+		<p>Copies value of <a class="links" data-fragment="Euler" title="Euler" href="./index.html#api/en/math/Euler">euler</a> to this euler.</p>
+
+		<h3><a class="permalink links" data-fragment="Euler.clone" target="_parent" title="Euler.clone" href="./index.html#api/en/math/Euler.clone">#</a> .<a class="links" data-fragment="Euler.clone" id="clone" href="./index.html#api/en/math/Euler.clone">clone</a> () : <a class="param links" data-fragment="Euler" href="./index.html#api/en/math/Euler">Euler</a></h3>
+		<p>Returns a new Euler with the same parameters as this one.</p>
+
+		<h3><a class="permalink links" data-fragment="Euler.equals" target="_parent" title="Euler.equals" href="./index.html#api/en/math/Euler.equals">#</a> .<a class="links" data-fragment="Euler.equals" id="equals" href="./index.html#api/en/math/Euler.equals">equals</a> ( euler : <a class="param links" data-fragment="Euler" href="./index.html#api/en/math/Euler">Euler</a> ) : <span class="param">Boolean</span></h3>
+		<p>Checks for strict equality of this euler and <a class="links" data-fragment="Euler" title="Euler" href="./index.html#api/en/math/Euler">euler</a>.</p>
+
+		<h3><a class="permalink links" data-fragment="Euler.fromArray" target="_parent" title="Euler.fromArray" href="./index.html#api/en/math/Euler.fromArray">#</a> .<a class="links" data-fragment="Euler.fromArray" id="fromArray" href="./index.html#api/en/math/Euler.fromArray">fromArray</a> ( array : <span class="param">Array</span> ) : <span class="param">this</span></h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">array</a> of length 3 or 4. The optional 4th argument corresponds
+			to the <a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a>.<br><br>
+
+			Assigns this euler's <a class="links" data-fragment="Euler.x" title="Euler.x" href="./index.html#api/en/math/Euler.x">x</a> angle to <code class="inline prettyprint" translate="no"><span class="pln">array</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span></code>. <br>
+			Assigns this euler's <a class="links" data-fragment="Euler.y" title="Euler.y" href="./index.html#api/en/math/Euler.y">y</a> angle to <code class="inline prettyprint" translate="no"><span class="pln">array</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span></code>. <br>
+			Assigns this euler's <a class="links" data-fragment="Euler.z" title="Euler.z" href="./index.html#api/en/math/Euler.z">z</a> angle to <code class="inline prettyprint" translate="no"><span class="pln">array</span><span class="pun">[</span><span class="lit">2</span><span class="pun">]</span></code>. <br>
+			Optionally assigns this euler's <a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a> to <code class="inline prettyprint" translate="no"><span class="pln">array</span><span class="pun">[</span><span class="lit">3</span><span class="pun">]</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Euler.reorder" target="_parent" title="Euler.reorder" href="./index.html#api/en/math/Euler.reorder">#</a> .<a class="links" data-fragment="Euler.reorder" id="reorder" href="./index.html#api/en/math/Euler.reorder">reorder</a> ( newOrder : <span class="param">String</span> ) : <span class="param">this</span></h3>
+		<p>
+			Resets the euler angle with a new order by creating a quaternion from this
+			euler angle and then setting this euler angle with the quaternion and the
+			new order. <br><br>
+
+			<em><strong>Warning</strong>: this discards revolution information.</em>
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Euler.set" target="_parent" title="Euler.set" href="./index.html#api/en/math/Euler.set">#</a> .<a class="links" data-fragment="Euler.set" id="set" href="./index.html#api/en/math/Euler.set">set</a> ( x : <span class="param">Float</span>, y : <span class="param">Float</span>, z : <span class="param">Float</span>, order : <span class="param">String</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Euler.x" title="Euler.x" href="./index.html#api/en/math/Euler.x">x</a> - the angle of the x axis in radians.<br>
+			<a class="links" data-fragment="Euler.y" title="Euler.y" href="./index.html#api/en/math/Euler.y">y</a> - the angle of the y axis in radians.<br>
+			<a class="links" data-fragment="Euler.z" title="Euler.z" href="./index.html#api/en/math/Euler.z">z</a> - the angle of the z axis in radians.<br>
+			<a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a> - (optional) a string representing the order that the
+			rotations are applied.<br><br>
+
+			Sets the angles of this euler transform and optionally the <a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a>.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Euler.setFromRotationMatrix" target="_parent" title="Euler.setFromRotationMatrix" href="./index.html#api/en/math/Euler.setFromRotationMatrix">#</a> .<a class="links" data-fragment="Euler.setFromRotationMatrix" id="setFromRotationMatrix" href="./index.html#api/en/math/Euler.setFromRotationMatrix">setFromRotationMatrix</a> ( m : <a class="param links" data-fragment="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a>, order : <span class="param">String</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">m</a> - a <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4</a> of which the upper 3x3 of matrix is a
+			pure <a href="https://en.wikipedia.org/wiki/Rotation_matrix" target="_blank">rotation matrix</a>
+			(i.e. unscaled).<br>
+			<a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a> - (optional) a string representing the order that the
+			rotations are applied.<br>
+
+			Sets the angles of this euler transform from a pure rotation matrix based
+			on the orientation specified by order.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Euler.setFromQuaternion" target="_parent" title="Euler.setFromQuaternion" href="./index.html#api/en/math/Euler.setFromQuaternion">#</a> .<a class="links" data-fragment="Euler.setFromQuaternion" id="setFromQuaternion" href="./index.html#api/en/math/Euler.setFromQuaternion">setFromQuaternion</a> ( q : <a class="param links" data-fragment="Quaternion" href="./index.html#api/en/math/Quaternion">Quaternion</a>, order : <span class="param">String</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Quaternion" title="Quaternion" href="./index.html#api/en/math/Quaternion">q</a> - a normalized quaternion.<br>
+			<a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a> - (optional) a string representing the order that the
+			rotations are applied.<br>
+
+			Sets the angles of this euler transform from a normalized quaternion based
+			on the orientation specified by <a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a>.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Euler.setFromVector3" target="_parent" title="Euler.setFromVector3" href="./index.html#api/en/math/Euler.setFromVector3">#</a> .<a class="links" data-fragment="Euler.setFromVector3" id="setFromVector3" href="./index.html#api/en/math/Euler.setFromVector3">setFromVector3</a> ( vector : <a class="param links" data-fragment="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>, order : <span class="param">String</span> ) : <span class="param">this</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">vector</a> - <a class="links" data-fragment="Vector3" title="Vector3" href="./index.html#api/en/math/Vector3">Vector3</a>.<br>
+			<a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a> - (optional) a string representing the order that the
+			rotations are applied.<br><br>
+
+			Set the <a class="links" data-fragment="Euler.x" title="Euler.x" href="./index.html#api/en/math/Euler.x">x</a>, <a class="links" data-fragment="Euler.y" title="Euler.y" href="./index.html#api/en/math/Euler.y">y</a> and <a class="links" data-fragment="Euler.z" title="Euler.z" href="./index.html#api/en/math/Euler.z">z</a>, and optionally update
+			the <a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order</a>.
+		</p>
+
+		<h3>
+			<a class="permalink links" data-fragment="Euler.toArray" target="_parent" title="Euler.toArray" href="./index.html#api/en/math/Euler.toArray">#</a> .<a class="links" data-fragment="Euler.toArray" id="toArray" href="./index.html#api/en/math/Euler.toArray">toArray</a> ( array : <span class="param">Array</span>, offset : <span class="param">Integer</span> ) : <span class="param">Array</span>
+		</h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">array</a> - (optional) array to store the euler in.<br>
+			<a class="links" data-fragment="Integer" title="Integer">offset</a> (optional) offset in the array.<br>
+
+			Returns an array of the form [<a class="links" data-fragment="Euler.x" title="Euler.x" href="./index.html#api/en/math/Euler.x">x</a>, <a class="links" data-fragment="Euler.y" title="Euler.y" href="./index.html#api/en/math/Euler.y">y</a>, <a class="links" data-fragment="Euler.z" title="Euler.z" href="./index.html#api/en/math/Euler.z">z</a>,
+			<a class="links" data-fragment="Euler.order" title="Euler.order" href="./index.html#api/en/math/Euler.order">order </a>].
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Euler.js" target="_blank">src/math/Euler.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html><html><head><title>ShapePath – three.js docs</title></head><body><body>
+		<h1>ShapePath</h1>
+
+		<p class=/"desc/">
+			This class is used to convert a series of shapes to an array of
+			<a class=/"links/" data-fragment=/"Path/" title=/"Path/" href=/"./index.html#api/en/extras/core/Path/">Path</a>s, for example an SVG shape to a path.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>ShapePath( )</h3>
+		<p>
+			Creates a new ShapePath. Unlike a <a class=/"links/" data-fragment=/"Path/" title=/"Path/" href=/"./index.html#api/en/extras/core/Path/">Path</a>, no points are passed in as
+			the ShapePath is designed to be generated after creation.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShapePath.subPaths/" target=/"_parent/" title=/"ShapePath.subPaths/" href=/"./index.html#api/en/extras/core/ShapePath.subPaths/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.subPaths/" id=/"subPaths/" href=/"./index.html#api/en/extras/core/ShapePath.subPaths/">subPaths</a>  : <span class=/"param/">Array</span></h3>
+		<p>Array of <a class=/"links/" data-fragment=/"Path/" title=/"Path/" href=/"./index.html#api/en/extras/core/Path/">Path</a>s.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShapePath.currentPath/" target=/"_parent/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.currentPath/" id=/"currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a>  : <span class=/"param/">Array</span></h3>
+		<p>The current <a class=/"links/" data-fragment=/"Path/" title=/"Path/" href=/"./index.html#api/en/extras/core/Path/">Path</a> that is being generated.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShapePath.color/" target=/"_parent/" title=/"ShapePath.color/" href=/"./index.html#api/en/extras/core/ShapePath.color/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.color/" id=/"color/" href=/"./index.html#api/en/extras/core/ShapePath.color/">color</a>  : <a class=/"param links/" data-fragment=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a></h3>
+		<p><a class=/"links/" data-fragment=/"Color/" title=/"Color/" href=/"./index.html#api/en/math/Color/">Color</a> of the shape, by default set to white (0xffffff).</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShapePath.moveTo/" target=/"_parent/" title=/"ShapePath.moveTo/" href=/"./index.html#api/en/extras/core/ShapePath.moveTo/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.moveTo/" id=/"moveTo/" href=/"./index.html#api/en/extras/core/ShapePath.moveTo/">moveTo</a> ( x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Starts a new <a class=/"links/" data-fragment=/"Path/" title=/"Path/" href=/"./index.html#api/en/extras/core/Path/">Path</a> and calls <a class=/"links/" data-fragment=/"Path.moveTo/" title=/"Path.moveTo/" href=/"./index.html#api/en/extras/core/Path.moveTo/">Path.moveTo</a>( x, y ) on that
+			<a class=/"links/" data-fragment=/"Path/" title=/"Path/" href=/"./index.html#api/en/extras/core/Path/">Path</a>. Also points <a class=/"links/" data-fragment=/"ShapePath.currentPath/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a> to that
+			<a class=/"links/" data-fragment=/"Path/" title=/"Path/" href=/"./index.html#api/en/extras/core/Path/">Path</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShapePath.lineTo/" target=/"_parent/" title=/"ShapePath.lineTo/" href=/"./index.html#api/en/extras/core/ShapePath.lineTo/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.lineTo/" id=/"lineTo/" href=/"./index.html#api/en/extras/core/ShapePath.lineTo/">lineTo</a> ( x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			This creates a line from the <a class=/"links/" data-fragment=/"ShapePath.currentPath/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a>'s
+			offset to X and Y and updates the offset to X and Y.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"ShapePath.quadraticCurveTo/" target=/"_parent/" title=/"ShapePath.quadraticCurveTo/" href=/"./index.html#api/en/extras/core/ShapePath.quadraticCurveTo/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.quadraticCurveTo/" id=/"quadraticCurveTo/" href=/"./index.html#api/en/extras/core/ShapePath.quadraticCurveTo/">quadraticCurveTo</a> ( cpX : <span class=/"param/">Float</span>, cpY : <span class=/"param/">Float</span>, x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			This creates a quadratic curve from the <a class=/"links/" data-fragment=/"ShapePath.currentPath/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a>'s offset to x and y with cpX and cpY as control point and
+			updates the <a class=/"links/" data-fragment=/"ShapePath.currentPath/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a>'s offset to x and y.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"ShapePath.bezierCurveTo/" target=/"_parent/" title=/"ShapePath.bezierCurveTo/" href=/"./index.html#api/en/extras/core/ShapePath.bezierCurveTo/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.bezierCurveTo/" id=/"bezierCurveTo/" href=/"./index.html#api/en/extras/core/ShapePath.bezierCurveTo/">bezierCurveTo</a> ( cp1X : <span class=/"param/">Float</span>, cp1Y : <span class=/"param/">Float</span>, cp2X : <span class=/"param/">Float</span>, cp2Y : <span class=/"param/">Float</span>, x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			This creates a bezier curve from the <a class=/"links/" data-fragment=/"ShapePath.currentPath/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a>'s offset to x and y with cp1X, cp1Y and cp2X, cp2Y as control
+			points and updates the <a class=/"links/" data-fragment=/"ShapePath.currentPath/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a>'s offset
+			to x and y.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShapePath.splineThru/" target=/"_parent/" title=/"ShapePath.splineThru/" href=/"./index.html#api/en/extras/core/ShapePath.splineThru/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.splineThru/" id=/"splineThru/" href=/"./index.html#api/en/extras/core/ShapePath.splineThru/">splineThru</a> ( points : <span class=/"param/">Array</span> ) : <span class=/"param/">this</span></h3>
+		<p>points - An array of <a class=/"links/" data-fragment=/"Vector2/" title=/"Vector2/" href=/"./index.html#api/en/math/Vector2/">Vector2</a>s</p>
+		<p>
+			Connects a new <a class=/"links/" data-fragment=/"SplineCurve/" title=/"SplineCurve/" href=/"./index.html#api/en/extras/curves/SplineCurve/">SplineCurve</a> onto the <a class=/"links/" data-fragment=/"ShapePath.currentPath/" title=/"ShapePath.currentPath/" href=/"./index.html#api/en/extras/core/ShapePath.currentPath/">currentPath</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"ShapePath.toShapes/" target=/"_parent/" title=/"ShapePath.toShapes/" href=/"./index.html#api/en/extras/core/ShapePath.toShapes/">#</a> .<a class=/"links/" data-fragment=/"ShapePath.toShapes/" id=/"toShapes/" href=/"./index.html#api/en/extras/core/ShapePath.toShapes/">toShapes</a> ( isCCW : <span class=/"param/">Boolean</span> ) : <span class=/"param/">Array</span></h3>
+		<p>isCCW -- Changes how solids and holes are generated</p>
+		<p>
+			Converts the <a class=/"links/" data-fragment=/"ShapePath.subPaths/" title=/"ShapePath.subPaths/" href=/"./index.html#api/en/extras/core/ShapePath.subPaths/">subPaths</a> array into an array of
+			Shapes. By default solid shapes are defined clockwise (CW) and holes are
+			defined counterclockwise (CCW). If isCCW is set to true, then those are
+			flipped.
+			<br>
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/extras/core/ShapePath.js/" target=/"_blank/">src/extras/core/ShapePath.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

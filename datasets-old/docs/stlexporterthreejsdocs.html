@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><title>STLExporter – three.js docs</title></head><body><body>
+		<h1>STLExporter</h1>
+
+		<p class="desc">
+			An exporter for the STL file format. <br><br>
+			<a href="https://en.wikipedia.org/wiki/STL_(file_format)" target="_blank">STL</a> files describe only the surface geometry
+			of a three-dimensional object without any representation of color, texture or other common model attributes.
+			The STL format specifies both ASCII and binary representations, with binary being more compact. 
+			STL files contain no scale information or indexes, and the units are arbitrary.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			STLExporter is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">STLExporter</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/exporters/STLExporter.js'</span><span class="pun">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="com">// Instantiate an exporter</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> exporter </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">STLExporter</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// Configure export options</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> options </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> binary</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// Parse the input and generate the STL encoded output</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> exporter</span><span class="pun">.</span><span class="pln">parse</span><span class="pun">(</span><span class="pln"> mesh</span><span class="pun">,</span><span class="pln"> options </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#misc_exporter_stl" target="_blank">misc_exporter_stl</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>STLExporter()</h3>
+		<p>
+		Creates a new STLExporter.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="STLExporter.parse" target="_parent" title="STLExporter.parse" href="./index.html#examples/en/exporters/STLExporter.parse">#</a> .<a class="links" data-fragment="STLExporter.parse" id="parse" href="./index.html#examples/en/exporters/STLExporter.parse">parse</a> ( scene : <a class="param links" data-fragment="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a>, options : <span class="param">Object</span> ) : <span class="param">Object</span></h3>
+
+		<p>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">scene</a> — Scene, Mesh, or other Object3D based class containing Meshes to encode.<br>
+		<a class="links" data-fragment="Options" title="Options">options</a> — Optional export options<br>
+		</p><ul>
+			<li>binary - bool. Return an ASCII encoded string or binary data buffer. Default is <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>.</li>
+		</ul>
+		<p></p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/exporters/STLExporter.js" target="_blank">examples/jsm/exporters/STLExporter.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

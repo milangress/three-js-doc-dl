@@ -1,0 +1,31 @@
+{
+  "name": "doc-dl-ai",
+  "version": "1.0.0",
+  "description": "A general-purpose website crawler and saver",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "doc-dl-ai": "src/cli.js"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "crawlee": "^3.0.0",
+    "glob": "^11.0.0",
+    "jsdom": "^24.1.1",
+    "playwright": "*",
+    "turndown": "^7.2.0",
+    "yargs": "^17.7.2"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "threejs": "node src/threejs-dl.js",
+    "crawl": "node src/cli.js crawl",
+    "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1",
+    "postinstall": "npx crawlee install-playwright-browsers"
+  },
+  "author": "Milan Gress",
+  "license": "MIT",
+  "volta": {
+    "node": "20.16.0"
+  }
+}

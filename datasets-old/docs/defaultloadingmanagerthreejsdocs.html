@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><title>DefaultLoadingManager – three.js docs</title></head><body><body>
+		<h1>DefaultLoadingManager</h1>
+
+		<p class="desc">
+			A global instance of the <a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a>, used by
+			most loaders when no custom manager has been specified.<br><br>
+
+			This will be sufficient for most purposes, however there may be times when
+			you desire separate loading managers for say, textures and models.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p>
+			You can optionally set the <a class="links" data-fragment="LoadingManager.onStart" title="LoadingManager.onStart" href="./index.html#api/en/loaders/managers/LoadingManager.onStart">onStart</a>,
+			<a class="links" data-fragment="LoadingManager.onLoad" title="LoadingManager.onLoad" href="./index.html#api/en/loaders/managers/LoadingManager.onLoad">onLoad</a>, <a class="links" data-fragment="LoadingManager.onProgress" title="LoadingManager.onProgress" href="./index.html#api/en/loaders/managers/LoadingManager.onProgress">onProgress</a>, 
+			<a class="links" data-fragment="LoadingManager.onStart" title="LoadingManager.onStart" href="./index.html#api/en/loaders/managers/LoadingManager.onStart">onError</a> functions for the
+			manager. These will then apply to any loaders using the
+			DefaultLoadingManager.<br><br>
+
+			Note that these shouldn't be confused with the similarly named functions
+			of individual loaders, as they are intended for displaying information
+			about the overall status of loading, rather than dealing with the data
+			that has been loaded.
+		</p>
+		<code class=" prettyprint" translate="no"><span class="pln">THREE</span><span class="pun">.</span><span class="typ">DefaultLoadingManager</span><span class="pun">.</span><span class="pln">onStart </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> url</span><span class="pun">,</span><span class="pln"> itemsLoaded</span><span class="pun">,</span><span class="pln"> itemsTotal </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="str">'Started loading file: '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> url </span><span class="pun">+</span><span class="pln"> </span><span class="str">'.\nLoaded '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> itemsLoaded </span><span class="pun">+</span><span class="pln"> </span><span class="str">' of '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> itemsTotal </span><span class="pun">+</span><span class="pln"> </span><span class="str">' files.'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+THREE</span><span class="pun">.</span><span class="typ">DefaultLoadingManager</span><span class="pun">.</span><span class="pln">onLoad </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="str">'Loading Complete!'</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+THREE</span><span class="pun">.</span><span class="typ">DefaultLoadingManager</span><span class="pun">.</span><span class="pln">onProgress </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> url</span><span class="pun">,</span><span class="pln"> itemsLoaded</span><span class="pun">,</span><span class="pln"> itemsTotal </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="str">'Loading file: '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> url </span><span class="pun">+</span><span class="pln"> </span><span class="str">'.\nLoaded '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> itemsLoaded </span><span class="pun">+</span><span class="pln"> </span><span class="str">' of '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> itemsTotal </span><span class="pun">+</span><span class="pln"> </span><span class="str">' files.'</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+
+THREE</span><span class="pun">.</span><span class="typ">DefaultLoadingManager</span><span class="pun">.</span><span class="pln">onError </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln"> url </span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln"> </span><span class="str">'There was an error loading '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> url </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">};</span></code>
+
+		<h2>Properties</h2>
+		<p>
+			See the <a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> page for details of
+			properties.
+		</p>
+
+		<h2>Methods</h2>
+		<p>
+			See the <a class="links" data-fragment="LoadingManager" title="LoadingManager" href="./index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> page for details of methods.
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/loaders/LoadingManager.js" target="_blank">src/loaders/LoadingManager.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

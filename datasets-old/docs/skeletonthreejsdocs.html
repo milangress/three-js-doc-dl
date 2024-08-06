@@ -1,0 +1,119 @@
+<!DOCTYPE html><html><head><title>Skeleton – three.js docs</title></head><body><body>
+		<h1>Skeleton</h1>
+
+		<p class="desc">
+			Use an array of <a class="links" data-fragment="Bone" title="Bone" href="./index.html#api/en/objects/Bone">bones</a> to create a skeleton that can be used by
+			a <a class="links" data-fragment="SkinnedMesh" title="SkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh">SkinnedMesh</a>.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=" prettyprint" translate="no"><span class="com">// Create a simple "arm"</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> bones </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> shoulder </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Bone</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> elbow </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Bone</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> hand </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Bone</span><span class="pun">();</span><span class="pln">
+
+shoulder</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> elbow </span><span class="pun">);</span><span class="pln">
+elbow</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> hand </span><span class="pun">);</span><span class="pln">
+
+bones</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln"> shoulder </span><span class="pun">);</span><span class="pln">
+bones</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln"> elbow </span><span class="pun">);</span><span class="pln">
+bones</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln"> hand </span><span class="pun">);</span><span class="pln">
+
+shoulder</span><span class="pun">.</span><span class="pln">position</span><span class="pun">.</span><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="pun">-</span><span class="lit">5</span><span class="pun">;</span><span class="pln">
+elbow</span><span class="pun">.</span><span class="pln">position</span><span class="pun">.</span><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+hand</span><span class="pun">.</span><span class="pln">position</span><span class="pun">.</span><span class="pln">y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> armSkeleton </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Skeleton</span><span class="pun">(</span><span class="pln"> bones </span><span class="pun">);</span></code>
+
+		<p>
+			See the <a class="links" data-fragment="SkinnedMesh" title="SkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh">SkinnedMesh</a> page for an example of usage with standard
+			<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a>.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Skeleton( bones : <span class="param">Array</span>, boneInverses : <span class="param">Array</span> )</h3>
+		<p>
+			<a class="links" data-fragment="Array" title="Array">bones</a> - The array of <a class="links" data-fragment="Bone" title="Bone" href="./index.html#api/en/objects/Bone">bones</a>. Default is an empty
+			array.<br>
+			<a class="links" data-fragment="Array" title="Array">boneInverses</a> - (optional) An array of <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4s</a>.<br><br>
+
+			Creates a new Skeleton.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.bones" target="_parent" title="Skeleton.bones" href="./index.html#api/en/objects/Skeleton.bones">#</a> .<a class="links" data-fragment="Skeleton.bones" id="bones" href="./index.html#api/en/objects/Skeleton.bones">bones</a>  : <span class="param">Array</span></h3>
+		<p>
+			The array of <a class="links" data-fragment="bone" title="bone">bones</a>. Note this is a copy of the original array,
+			not a reference, so you can modify the original array without effecting
+			this one.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.boneInverses" target="_parent" title="Skeleton.boneInverses" href="./index.html#api/en/objects/Skeleton.boneInverses">#</a> .<a class="links" data-fragment="Skeleton.boneInverses" id="boneInverses" href="./index.html#api/en/objects/Skeleton.boneInverses">boneInverses</a>  : <span class="param">Array</span></h3>
+		<p>
+			An array of <a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">Matrix4s</a> that represent the inverse of the
+			<a class="links" data-fragment="Matrix4" title="Matrix4" href="./index.html#api/en/math/Matrix4">matrixWorld</a> of the individual bones.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.boneMatrices" target="_parent" title="Skeleton.boneMatrices" href="./index.html#api/en/objects/Skeleton.boneMatrices">#</a> .<a class="links" data-fragment="Skeleton.boneMatrices" id="boneMatrices" href="./index.html#api/en/objects/Skeleton.boneMatrices">boneMatrices</a>  : <a class="param links" data-fragment="Float32Array">Float32Array</a></h3>
+		<p>The array buffer holding the bone data when using a vertex texture.</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.boneTexture" target="_parent" title="Skeleton.boneTexture" href="./index.html#api/en/objects/Skeleton.boneTexture">#</a> .<a class="links" data-fragment="Skeleton.boneTexture" id="boneTexture" href="./index.html#api/en/objects/Skeleton.boneTexture">boneTexture</a>  : <a class="param links" data-fragment="DataTexture" href="./index.html#api/en/textures/DataTexture">DataTexture</a></h3>
+		<p>
+			The <a class="links" data-fragment="DataTexture" title="DataTexture" href="./index.html#api/en/textures/DataTexture">DataTexture</a> holding the bone data when using a vertex texture.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.clone" target="_parent" title="Skeleton.clone" href="./index.html#api/en/objects/Skeleton.clone">#</a> .<a class="links" data-fragment="Skeleton.clone" id="clone" href="./index.html#api/en/objects/Skeleton.clone">clone</a> () : <a class="param links" data-fragment="Skeleton" href="./index.html#api/en/objects/Skeleton">Skeleton</a></h3>
+		<p>Returns a clone of this Skeleton object.</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.calculateInverses" target="_parent" title="Skeleton.calculateInverses" href="./index.html#api/en/objects/Skeleton.calculateInverses">#</a> .<a class="links" data-fragment="Skeleton.calculateInverses" id="calculateInverses" href="./index.html#api/en/objects/Skeleton.calculateInverses">calculateInverses</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Generates the <a class="links" data-fragment="Skeleton.boneInverses" title="Skeleton.boneInverses" href="./index.html#api/en/objects/Skeleton.boneInverses">boneInverses</a> array if not provided in
+			the constructor.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.computeBoneTexture" target="_parent" title="Skeleton.computeBoneTexture" href="./index.html#api/en/objects/Skeleton.computeBoneTexture">#</a> .<a class="links" data-fragment="Skeleton.computeBoneTexture" id="computeBoneTexture" href="./index.html#api/en/objects/Skeleton.computeBoneTexture">computeBoneTexture</a> () : <span class="param">this</span></h3>
+		<p>
+			Computes an instance of <a class="links" data-fragment="DataTexture" title="DataTexture" href="./index.html#api/en/textures/DataTexture">DataTexture</a> in order to pass the bone data
+			more efficiently to the shader. The texture is assigned to
+			<a class="links" data-fragment="Skeleton.boneTexture" title="Skeleton.boneTexture" href="./index.html#api/en/objects/Skeleton.boneTexture">boneTexture</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.pose" target="_parent" title="Skeleton.pose" href="./index.html#api/en/objects/Skeleton.pose">#</a> .<a class="links" data-fragment="Skeleton.pose" id="pose" href="./index.html#api/en/objects/Skeleton.pose">pose</a> () : <span class="param">undefined</span></h3>
+		<p>Returns the skeleton to the base pose.</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.update" target="_parent" title="Skeleton.update" href="./index.html#api/en/objects/Skeleton.update">#</a> .<a class="links" data-fragment="Skeleton.update" id="update" href="./index.html#api/en/objects/Skeleton.update">update</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Updates the <a class="links" data-fragment="Float32Array" title="Float32Array">boneMatrices</a> and <a class="links" data-fragment="DataTexture" title="DataTexture" href="./index.html#api/en/textures/DataTexture">boneTexture</a> 
+			after changing the bones. This is called automatically by the
+			<a class="links" data-fragment="WebGLRenderer" title="WebGLRenderer" href="./index.html#api/en/renderers/WebGLRenderer">WebGLRenderer</a> if the skeleton is used with a <a class="links" data-fragment="SkinnedMesh" title="SkinnedMesh" href="./index.html#api/en/objects/SkinnedMesh">SkinnedMesh</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.getBoneByName" target="_parent" title="Skeleton.getBoneByName" href="./index.html#api/en/objects/Skeleton.getBoneByName">#</a> .<a class="links" data-fragment="Skeleton.getBoneByName" id="getBoneByName" href="./index.html#api/en/objects/Skeleton.getBoneByName">getBoneByName</a> ( name : <span class="param">String</span> ) : <a class="param links" data-fragment="Bone" href="./index.html#api/en/objects/Bone">Bone</a></h3>
+		<p>
+			name -- String to match to the Bone's .name property. <br><br>
+
+			Searches through the skeleton's bone array and returns the first with a
+			matching name.<br>
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Skeleton.dispose" target="_parent" title="Skeleton.dispose" href="./index.html#api/en/objects/Skeleton.dispose">#</a> .<a class="links" data-fragment="Skeleton.dispose" id="dispose" href="./index.html#api/en/objects/Skeleton.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/objects/Skeleton.js" target="_blank">src/objects/Skeleton.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

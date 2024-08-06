@@ -1,0 +1,99 @@
+<!DOCTYPE html><html><head><title>Shape – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Curve" title="Curve" href="./index.html#api/en/extras/core/Curve">Curve</a> → <a class="links" data-fragment="CurvePath" title="CurvePath" href="./index.html#api/en/extras/core/CurvePath">CurvePath</a> → <a class="links" data-fragment="Path" title="Path" href="./index.html#api/en/extras/core/Path">Path</a> →
+
+		<h1>Shape</h1>
+
+		<p class="desc">
+			Defines an arbitrary 2d shape plane using paths with optional holes. It
+			can be used with <a class="links" data-fragment="ExtrudeGeometry" title="ExtrudeGeometry" href="./index.html#api/en/geometries/ExtrudeGeometry">ExtrudeGeometry</a>, <a class="links" data-fragment="ShapeGeometry" title="ShapeGeometry" href="./index.html#api/en/geometries/ShapeGeometry">ShapeGeometry</a>, to get
+			points, or to get triangulated faces.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> heartShape </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Shape</span><span class="pun">();</span><span class="pln">
+
+heartShape</span><span class="pun">.</span><span class="pln">moveTo</span><span class="pun">(</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+heartShape</span><span class="pun">.</span><span class="pln">bezierCurveTo</span><span class="pun">(</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+heartShape</span><span class="pun">.</span><span class="pln">bezierCurveTo</span><span class="pun">(</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">35</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">35</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+heartShape</span><span class="pun">.</span><span class="pln">bezierCurveTo</span><span class="pun">(</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">55</span><span class="pun">,</span><span class="pln"> </span><span class="pun">-</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">77</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">95</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+heartShape</span><span class="pun">.</span><span class="pln">bezierCurveTo</span><span class="pun">(</span><span class="pln"> </span><span class="lit">60</span><span class="pun">,</span><span class="pln"> </span><span class="lit">77</span><span class="pun">,</span><span class="pln"> </span><span class="lit">80</span><span class="pun">,</span><span class="pln"> </span><span class="lit">55</span><span class="pun">,</span><span class="pln"> </span><span class="lit">80</span><span class="pun">,</span><span class="pln"> </span><span class="lit">35</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+heartShape</span><span class="pun">.</span><span class="pln">bezierCurveTo</span><span class="pun">(</span><span class="pln"> </span><span class="lit">80</span><span class="pun">,</span><span class="pln"> </span><span class="lit">35</span><span class="pun">,</span><span class="pln"> </span><span class="lit">80</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">50</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+heartShape</span><span class="pun">.</span><span class="pln">bezierCurveTo</span><span class="pun">(</span><span class="pln"> </span><span class="lit">35</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> extrudeSettings </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
+	depth</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln"> 
+	bevelEnabled</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"> 
+	bevelSegments</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> 
+	steps</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> 
+	bevelSize</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> 
+	bevelThickness</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> 
+</span><span class="pun">};</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> geometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">ExtrudeGeometry</span><span class="pun">(</span><span class="pln"> heartShape</span><span class="pun">,</span><span class="pln"> extrudeSettings </span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> mesh </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Mesh</span><span class="pun">(</span><span class="pln"> geometry</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">MeshPhongMaterial</span><span class="pun">()</span><span class="pln"> </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p>
+			<a href="../examples/#webgl_geometry_shapes" target="_blank">geometry / shapes </a><br>
+			<a href="../examples/#webgl_geometry_extrude_shapes" target="_blank">geometry / extrude / shapes </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Shape( points : <span class="param">Array</span> )</h3>
+		<p>
+			points -- (optional) array of <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2s</a>.<br><br>
+
+			Creates a Shape from the points. The first point defines the offset, then
+			successive points are added to the <a class="links" data-fragment="CurvePath.curves" title="CurvePath.curves" href="./index.html#api/en/extras/core/CurvePath.curves">curves</a> array as
+			<a class="links" data-fragment="LineCurve" title="LineCurve" href="./index.html#api/en/extras/curves/LineCurve">LineCurves</a>.<br><br>
+
+			If no points are specified, an empty shape is created and the
+			<a class="links" data-fragment="Shape.currentPoint" title="Shape.currentPoint" href="./index.html#api/en/extras/core/Shape.currentPoint">.currentPoint</a> is set to the origin.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="Path" title="Path" href="./index.html#api/en/extras/core/Path">Path</a> class for common properties.</p>
+
+		<h3><a class="permalink links" data-fragment="Shape.uuid" target="_parent" title="Shape.uuid" href="./index.html#api/en/extras/core/Shape.uuid">#</a> .<a class="links" data-fragment="Shape.uuid" id="uuid" href="./index.html#api/en/extras/core/Shape.uuid">uuid</a>  : <span class="param">String</span></h3>
+		<p>
+			<a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a> of
+			this instance. This gets automatically assigned, so this shouldn't be
+			edited.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Shape.holes" target="_parent" title="Shape.holes" href="./index.html#api/en/extras/core/Shape.holes">#</a> .<a class="links" data-fragment="Shape.holes" id="holes" href="./index.html#api/en/extras/core/Shape.holes">holes</a>  : <span class="param">Array</span></h3>
+		<p>An array of <a class="links" data-fragment="Path" title="Path" href="./index.html#api/en/extras/core/Path">paths</a> that define the holes in the shape.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="Path" title="Path" href="./index.html#api/en/extras/core/Path">Path</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="Shape.extractPoints" target="_parent" title="Shape.extractPoints" href="./index.html#api/en/extras/core/Shape.extractPoints">#</a> .<a class="links" data-fragment="Shape.extractPoints" id="extractPoints" href="./index.html#api/en/extras/core/Shape.extractPoints">extractPoints</a> ( divisions : <span class="param">Integer</span> ) : <span class="param">Array</span></h3>
+		<p>
+			divisions -- The fineness of the result.<br><br>
+
+			Call <a class="links" data-fragment="Curve.getPoints" title="Curve.getPoints" href="./index.html#api/en/extras/core/Curve.getPoints">getPoints</a> on the shape and the <a class="links" data-fragment="Shape.holes" title="Shape.holes" href="./index.html#api/en/extras/core/Shape.holes">.holes</a>
+			array, and return an object of the form:
+			<code class=" prettyprint" translate="no"><span class="pln"> </span><span class="pun">{</span><span class="pln"> shape holes </span><span class="pun">}</span><span class="pln"> </span></code>
+			where shape and holes are arrays of <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2s</a>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Shape.getPointsHoles" target="_parent" title="Shape.getPointsHoles" href="./index.html#api/en/extras/core/Shape.getPointsHoles">#</a> .<a class="links" data-fragment="Shape.getPointsHoles" id="getPointsHoles" href="./index.html#api/en/extras/core/Shape.getPointsHoles">getPointsHoles</a> ( divisions : <span class="param">Integer</span> ) : <span class="param">Array</span></h3>
+		<p>
+			divisions -- The fineness of the result.<br><br>
+
+			Get an array of <a class="links" data-fragment="Vector2" title="Vector2" href="./index.html#api/en/math/Vector2">Vector2s</a> that represent the holes in the
+			shape.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/extras/core/Shape.js" target="_blank">src/extras/core/Shape.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

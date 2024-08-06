@@ -1,0 +1,392 @@
+<!DOCTYPE html><html><head><title>Vector4 – three.js docs</title></head><body><body>
+		<h1>Vector4</h1>
+
+		<p class=/"desc/">
+			Class representing a 4D <a href=/"https://en.wikipedia.org/wiki/Vector_space/" target=/"_blank/">vector</a>. 
+			A 4D vector is an ordered quadruplet of numbers (labeled x, y, z,
+			and w), which can be used to represent a number of things, such as:
+		</p>
+
+		<ul>
+			<li>A point in 4D space.</li>
+			<li>
+				A direction and length in 4D space. In three.js the length will always
+				be the <a href=/"https://en.wikipedia.org/wiki/Euclidean_distance/" target=/"_blank/">Euclidean distance</a> 
+				(straight-line distance) from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">)</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"pln/">x</span><span class=/"pun/">,</span><span class=/"pln/"> y</span><span class=/"pun/">,</span><span class=/"pln/"> z</span><span class=/"pun/">,</span><span class=/"pln/"> w</span><span class=/"pun/">)</span></code>
+				and the direction is also measured from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">)</span></code> towards <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"pln/">x</span><span class=/"pun/">,</span><span class=/"pln/"> y</span><span class=/"pun/">,</span><span class=/"pln/"> z</span><span class=/"pun/">,</span><span class=/"pln/"> w</span><span class=/"pun/">)</span></code>.
+			</li>
+			<li>Any arbitrary ordered quadruplet of numbers.</li>
+		</ul>
+
+		<p>
+			There are other things a 4D vector can be used to represent, however these
+			are the most common uses in <strong>three.js</strong>.
+		</p>
+
+		<p>
+			Iterating through a Vector4 instance will yield its components <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"pln/">x</span><span class=/"pun/">,</span><span class=/"pln/"> y</span><span class=/"pun/">,</span><span class=/"pln/"> z</span><span class=/"pun/">,</span><span class=/"pln/"> w</span><span class=/"pun/">)</span></code> in the corresponding order.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">const</span><span class=/"pln/"> a </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Vector4</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"com/">//no arguments; will be initialised to (0, 0, 0, 1)</span><span class=/"pln/">
+</span><span class=/"kwd/">const</span><span class=/"pln/"> b </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"kwd/">new</span><span class=/"pln/"> THREE</span><span class=/"pun/">.</span><span class=/"typ/">Vector4</span><span class=/"pun/">(</span><span class=/"pln/"> </span><span class=/"pun/">);</span><span class=/"pln/">
+
+</span><span class=/"kwd/">const</span><span class=/"pln/"> d </span><span class=/"pun/">=</span><span class=/"pln/"> a</span><span class=/"pun/">.</span><span class=/"pln/">dot</span><span class=/"pun/">(</span><span class=/"pln/"> b </span><span class=/"pun/">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			Vector4( x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span>, z : <span class=/"param/">Float</span>, w : <span class=/"param/">Float</span> )
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">x</a> - the x value of this vector. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">y</a> - the y value of this vector. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">z</a> - the z value of this vector. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">w</a> - the w value of this vector. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.<br><br>
+
+			Creates a new Vector4.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.isVector4/" target=/"_parent/" title=/"Vector4.isVector4/" href=/"./index.html#api/en/math/Vector4.isVector4/">#</a> .<a class=/"links/" data-fragment=/"Vector4.isVector4/" id=/"isVector4/" href=/"./index.html#api/en/math/Vector4.isVector4/">isVector4</a>  : <span class=/"param/">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Vector4.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.x/" target=/"_parent/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">#</a> .<a class=/"links/" data-fragment=/"Vector4.x/" id=/"x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>  : <span class=/"param/">Float</span></h3>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.y/" target=/"_parent/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">#</a> .<a class=/"links/" data-fragment=/"Vector4.y/" id=/"y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>  : <span class=/"param/">Float</span></h3>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.z/" target=/"_parent/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">#</a> .<a class=/"links/" data-fragment=/"Vector4.z/" id=/"z/" href=/"./index.html#api/en/math/Vector4.z/">z</a>  : <span class=/"param/">Float</span></h3>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.w/" target=/"_parent/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">#</a> .<a class=/"links/" data-fragment=/"Vector4.w/" id=/"w/" href=/"./index.html#api/en/math/Vector4.w/">w</a>  : <span class=/"param/">Float</span></h3>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.width/" target=/"_parent/" title=/"Vector4.width/" href=/"./index.html#api/en/math/Vector4.width/">#</a> .<a class=/"links/" data-fragment=/"Vector4.width/" id=/"width/" href=/"./index.html#api/en/math/Vector4.width/">width</a>  : <span class=/"param/">Float</span></h3>
+		<p>Alias for <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.height/" target=/"_parent/" title=/"Vector4.height/" href=/"./index.html#api/en/math/Vector4.height/">#</a> .<a class=/"links/" data-fragment=/"Vector4.height/" id=/"height/" href=/"./index.html#api/en/math/Vector4.height/">height</a>  : <span class=/"param/">Float</span></h3>
+		<p>Alias for <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a>.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.add/" target=/"_parent/" title=/"Vector4.add/" href=/"./index.html#api/en/math/Vector4.add/">#</a> .<a class=/"links/" data-fragment=/"Vector4.add/" id=/"add/" href=/"./index.html#api/en/math/Vector4.add/">add</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>Adds <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a> to this vector.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.addScalar/" target=/"_parent/" title=/"Vector4.addScalar/" href=/"./index.html#api/en/math/Vector4.addScalar/">#</a> .<a class=/"links/" data-fragment=/"Vector4.addScalar/" id=/"addScalar/" href=/"./index.html#api/en/math/Vector4.addScalar/">addScalar</a> ( s : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Adds the scalar value s to this vector's <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>,
+			<a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> values.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.addScaledVector/" target=/"_parent/" title=/"Vector4.addScaledVector/" href=/"./index.html#api/en/math/Vector4.addScaledVector/">#</a> .<a class=/"links/" data-fragment=/"Vector4.addScaledVector/" id=/"addScaledVector/" href=/"./index.html#api/en/math/Vector4.addScaledVector/">addScaledVector</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>, s : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Adds the multiple of <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a> and <a class=/"links/" data-fragment=/"Float/" title=/"Float/">s</a> to this vector.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.addVectors/" target=/"_parent/" title=/"Vector4.addVectors/" href=/"./index.html#api/en/math/Vector4.addVectors/">#</a> .<a class=/"links/" data-fragment=/"Vector4.addVectors/" id=/"addVectors/" href=/"./index.html#api/en/math/Vector4.addVectors/">addVectors</a> ( a : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>, b : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>Sets this vector to <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">a</a> + <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">b</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.applyMatrix4/" target=/"_parent/" title=/"Vector4.applyMatrix4/" href=/"./index.html#api/en/math/Vector4.applyMatrix4/">#</a> .<a class=/"links/" data-fragment=/"Vector4.applyMatrix4/" id=/"applyMatrix4/" href=/"./index.html#api/en/math/Vector4.applyMatrix4/">applyMatrix4</a> ( m : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span></h3>
+		<p>Multiplies this vector by 4 x 4 <a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">m</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.ceil/" target=/"_parent/" title=/"Vector4.ceil/" href=/"./index.html#api/en/math/Vector4.ceil/">#</a> .<a class=/"links/" data-fragment=/"Vector4.ceil/" id=/"ceil/" href=/"./index.html#api/en/math/Vector4.ceil/">ceil</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			The <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>, <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> components of
+			this vector are rounded up to the nearest integer value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.clamp/" target=/"_parent/" title=/"Vector4.clamp/" href=/"./index.html#api/en/math/Vector4.clamp/">#</a> .<a class=/"links/" data-fragment=/"Vector4.clamp/" id=/"clamp/" href=/"./index.html#api/en/math/Vector4.clamp/">clamp</a> ( min : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>, max : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">min</a> - the minimum <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>, <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and
+			<a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> values.<br>
+			<a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">max</a> - the maximum <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>, <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and
+			<a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> values in the desired range<br><br>
+
+			If this vector's x, y, z or w value is greater than the max vector's x, y,
+			z or w value, it is replaced by the corresponding value. <br><br>
+			If this vector's x, y, z or w value is less than the min vector's x, y, z
+			or w value, it is replaced by the corresponding value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.clampLength/" target=/"_parent/" title=/"Vector4.clampLength/" href=/"./index.html#api/en/math/Vector4.clampLength/">#</a> .<a class=/"links/" data-fragment=/"Vector4.clampLength/" id=/"clampLength/" href=/"./index.html#api/en/math/Vector4.clampLength/">clampLength</a> ( min : <span class=/"param/">Float</span>, max : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">min</a> - the minimum value the length will be clamped to <br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">max</a> - the maximum value the length will be clamped to<br><br>
+
+			If this vector's length is greater than the max value, it is replaced by
+			the max value. <br><br>
+			If this vector's length is less than the min value, it is replaced by the
+			min value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.clampScalar/" target=/"_parent/" title=/"Vector4.clampScalar/" href=/"./index.html#api/en/math/Vector4.clampScalar/">#</a> .<a class=/"links/" data-fragment=/"Vector4.clampScalar/" id=/"clampScalar/" href=/"./index.html#api/en/math/Vector4.clampScalar/">clampScalar</a> ( min : <span class=/"param/">Float</span>, max : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">min</a> - the minimum value the components will be clamped to
+			<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">max</a> - the maximum value the components will be clamped to<br><br>
+
+			If this vector's x, y, z or w values are greater than the max value, they
+			are replaced by the max value. <br><br>
+			If this vector's x, y, z or w values are less than the min value, they are
+			replaced by the min value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.clone/" target=/"_parent/" title=/"Vector4.clone/" href=/"./index.html#api/en/math/Vector4.clone/">#</a> .<a class=/"links/" data-fragment=/"Vector4.clone/" id=/"clone/" href=/"./index.html#api/en/math/Vector4.clone/">clone</a> () : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a></h3>
+		<p>
+			Returns a new Vector4 with the same <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>, <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a>
+			and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> values as this one.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.copy/" target=/"_parent/" title=/"Vector4.copy/" href=/"./index.html#api/en/math/Vector4.copy/">#</a> .<a class=/"links/" data-fragment=/"Vector4.copy/" id=/"copy/" href=/"./index.html#api/en/math/Vector4.copy/">copy</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Copies the values of the passed Vector4's <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>,
+			<a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> properties to this Vector4.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.divideScalar/" target=/"_parent/" title=/"Vector4.divideScalar/" href=/"./index.html#api/en/math/Vector4.divideScalar/">#</a> .<a class=/"links/" data-fragment=/"Vector4.divideScalar/" id=/"divideScalar/" href=/"./index.html#api/en/math/Vector4.divideScalar/">divideScalar</a> ( s : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Divides this vector by scalar <a class=/"links/" data-fragment=/"Float/" title=/"Float/">s</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.dot/" target=/"_parent/" title=/"Vector4.dot/" href=/"./index.html#api/en/math/Vector4.dot/">#</a> .<a class=/"links/" data-fragment=/"Vector4.dot/" id=/"dot/" href=/"./index.html#api/en/math/Vector4.dot/">dot</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">Float</span></h3>
+		<p>
+			Calculates the <a href=/"https://en.wikipedia.org/wiki/Dot_product/" target=/"_blank/">dot product</a> 
+			of this vector and <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.equals/" target=/"_parent/" title=/"Vector4.equals/" href=/"./index.html#api/en/math/Vector4.equals/">#</a> .<a class=/"links/" data-fragment=/"Vector4.equals/" id=/"equals/" href=/"./index.html#api/en/math/Vector4.equals/">equals</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">Boolean</span></h3>
+		<p>
+			Returns <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">true</span></code> if the components of this vector and <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a> are
+			strictly equal; <code class=/"inline prettyprint/" translate=/"no/"><span class=/"kwd/">false</span></code> otherwise.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.floor/" target=/"_parent/" title=/"Vector4.floor/" href=/"./index.html#api/en/math/Vector4.floor/">#</a> .<a class=/"links/" data-fragment=/"Vector4.floor/" id=/"floor/" href=/"./index.html#api/en/math/Vector4.floor/">floor</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			The components of this vector are rounded down to the nearest integer
+			value.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Vector4.fromArray/" target=/"_parent/" title=/"Vector4.fromArray/" href=/"./index.html#api/en/math/Vector4.fromArray/">#</a> .<a class=/"links/" data-fragment=/"Vector4.fromArray/" id=/"fromArray/" href=/"./index.html#api/en/math/Vector4.fromArray/">fromArray</a> ( array : <span class=/"param/">Array</span>, offset : <span class=/"param/">Integer</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Array/" title=/"Array/">array</a> - the source array.<br>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">offset</a> - (optional) offset into the array. Default is <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>.<br><br>
+
+			Sets this vector's <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a> value to be <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">array</span><span class=/"pun/">[</span><span class=/"pln/"> offset </span><span class=/"pun/">+</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pln/"> </span><span class=/"pun/">]</span></code>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a> 
+			value to be <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">array</span><span class=/"pun/">[</span><span class=/"pln/"> offset </span><span class=/"pun/">+</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pln/"> </span><span class=/"pun/">]</span></code> <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> value to be <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">array</span><span class=/"pun/">[</span><span class=/"pln/"> offset </span><span class=/"pun/">+</span><span class=/"pln/"> </span><span class=/"lit/">2</span><span class=/"pln/"> </span><span class=/"pun/">]</span></code> 
+			and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w </a> value to be <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">array</span><span class=/"pun/">[</span><span class=/"pln/"> offset </span><span class=/"pun/">+</span><span class=/"pln/"> </span><span class=/"lit/">3</span><span class=/"pln/"> </span><span class=/"pun/">]</span></code>.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Vector4.fromBufferAttribute/" target=/"_parent/" title=/"Vector4.fromBufferAttribute/" href=/"./index.html#api/en/math/Vector4.fromBufferAttribute/">#</a> .<a class=/"links/" data-fragment=/"Vector4.fromBufferAttribute/" id=/"fromBufferAttribute/" href=/"./index.html#api/en/math/Vector4.fromBufferAttribute/">fromBufferAttribute</a> ( attribute : <a class=/"param links/" data-fragment=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">BufferAttribute</a>, index : <span class=/"param/">Integer</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">attribute</a> - the source attribute.<br>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">index</a> - index in the attribute.<br><br>
+
+			Sets this vector's <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>, <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a>
+			values from the <a class=/"links/" data-fragment=/"BufferAttribute/" title=/"BufferAttribute/" href=/"./index.html#api/en/core/BufferAttribute/">attribute</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.getComponent/" target=/"_parent/" title=/"Vector4.getComponent/" href=/"./index.html#api/en/math/Vector4.getComponent/">#</a> .<a class=/"links/" data-fragment=/"Vector4.getComponent/" id=/"getComponent/" href=/"./index.html#api/en/math/Vector4.getComponent/">getComponent</a> ( index : <span class=/"param/">Integer</span> ) : <span class=/"param/">Float</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">index</a> - <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2</span></code> or <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">3</span></code>.<br><br>
+
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code> returns the <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a> value. <br>
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code> returns the <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a> value. <br>
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2</span></code> returns the <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> value.<br>
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">3</span></code> returns the <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.length/" target=/"_parent/" title=/"Vector4.length/" href=/"./index.html#api/en/math/Vector4.length/">#</a> .<a class=/"links/" data-fragment=/"Vector4.length/" id=/"length/" href=/"./index.html#api/en/math/Vector4.length/">length</a> () : <span class=/"param/">Float</span></h3>
+		<p>
+			Computes the <a href=/"https://en.wikipedia.org/wiki/Euclidean_distance/" target=/"_blank/">Euclidean length</a> 
+			(straight-line length) from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">)</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"pln/">x</span><span class=/"pun/">,</span><span class=/"pln/"> y</span><span class=/"pun/">,</span><span class=/"pln/"> z</span><span class=/"pun/">,</span><span class=/"pln/"> w</span><span class=/"pun/">)</span></code>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.manhattanLength/" target=/"_parent/" title=/"Vector4.manhattanLength/" href=/"./index.html#api/en/math/Vector4.manhattanLength/">#</a> .<a class=/"links/" data-fragment=/"Vector4.manhattanLength/" id=/"manhattanLength/" href=/"./index.html#api/en/math/Vector4.manhattanLength/">manhattanLength</a> () : <span class=/"param/">Float</span></h3>
+		<p>
+			Computes the <a href=/"http://en.wikipedia.org/wiki/Taxicab_geometry/" target=/"_blank/">Manhattan length</a> of this vector.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.lengthSq/" target=/"_parent/" title=/"Vector4.lengthSq/" href=/"./index.html#api/en/math/Vector4.lengthSq/">#</a> .<a class=/"links/" data-fragment=/"Vector4.lengthSq/" id=/"lengthSq/" href=/"./index.html#api/en/math/Vector4.lengthSq/">lengthSq</a> () : <span class=/"param/">Float</span></h3>
+		<p>
+			Computes the square of the
+			<a href=/"https://en.wikipedia.org/wiki/Euclidean_distance/" target=/"_blank/">Euclidean length</a>
+			(straight-line length) from <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">0</span><span class=/"pun/">)</span></code> to <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">(</span><span class=/"pln/">x</span><span class=/"pun/">,</span><span class=/"pln/"> y</span><span class=/"pun/">,</span><span class=/"pln/"> z</span><span class=/"pun/">,</span><span class=/"pln/"> w</span><span class=/"pun/">)</span></code>. If you are
+			comparing the lengths of vectors, you should compare the length squared
+			instead as it is slightly more efficient to calculate.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.lerp/" target=/"_parent/" title=/"Vector4.lerp/" href=/"./index.html#api/en/math/Vector4.lerp/">#</a> .<a class=/"links/" data-fragment=/"Vector4.lerp/" id=/"lerp/" href=/"./index.html#api/en/math/Vector4.lerp/">lerp</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>, alpha : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a> - <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> to interpolate towards.<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">alpha</a> - interpolation factor, typically in the closed
+			interval <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">[</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">]</span></code>.<br><br>
+
+			Linearly interpolates between this vector and <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a>, where
+			alpha is the percent distance along the line - <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">alpha </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">0</span></code> will be this
+			vector, and <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pln/">alpha </span><span class=/"pun/">=</span><span class=/"pln/"> </span><span class=/"lit/">1</span></code> will be <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a>.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Vector4.lerpVectors/" target=/"_parent/" title=/"Vector4.lerpVectors/" href=/"./index.html#api/en/math/Vector4.lerpVectors/">#</a> .<a class=/"links/" data-fragment=/"Vector4.lerpVectors/" id=/"lerpVectors/" href=/"./index.html#api/en/math/Vector4.lerpVectors/">lerpVectors</a> ( v1 : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>, v2 : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>, alpha : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v1</a> - the starting <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>.<br>
+			<a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v2</a> - <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> to interpolate towards.<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">alpha</a> - interpolation factor, typically in the closed
+			interval <code class=/"inline prettyprint/" translate=/"no/"><span class=/"pun/">[</span><span class=/"lit/">0</span><span class=/"pun/">,</span><span class=/"pln/"> </span><span class=/"lit/">1</span><span class=/"pun/">]</span></code>.<br><br>
+
+			Sets this vector to be the vector linearly interpolated between
+			<a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v1</a> and <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v2</a> where alpha is the percent
+			distance along the line connecting the two vectors - alpha = 0 will be
+			<a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v1</a>, and alpha = 1 will be <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v2</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.negate/" target=/"_parent/" title=/"Vector4.negate/" href=/"./index.html#api/en/math/Vector4.negate/">#</a> .<a class=/"links/" data-fragment=/"Vector4.negate/" id=/"negate/" href=/"./index.html#api/en/math/Vector4.negate/">negate</a> () : <span class=/"param/">this</span></h3>
+		<p>Inverts this vector - i.e. sets x = -x, y = -y, z = -z and w = -w.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.normalize/" target=/"_parent/" title=/"Vector4.normalize/" href=/"./index.html#api/en/math/Vector4.normalize/">#</a> .<a class=/"links/" data-fragment=/"Vector4.normalize/" id=/"normalize/" href=/"./index.html#api/en/math/Vector4.normalize/">normalize</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			Converts this vector to a <a href=/"https://en.wikipedia.org/wiki/Unit_vector/" target=/"_blank/">unit vector</a> 
+			- that is, sets it equal to a vector with the same direction
+			as this one, but <a class=/"links/" data-fragment=/"Vector4.length/" title=/"Vector4.length/" href=/"./index.html#api/en/math/Vector4.length/">length</a> 1.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.max/" target=/"_parent/" title=/"Vector4.max/" href=/"./index.html#api/en/math/Vector4.max/">#</a> .<a class=/"links/" data-fragment=/"Vector4.max/" id=/"max/" href=/"./index.html#api/en/math/Vector4.max/">max</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			If this vector's x, y, z or w value is less than <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a>'s x, y,
+			z or w value, replace that value with the corresponding max value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.min/" target=/"_parent/" title=/"Vector4.min/" href=/"./index.html#api/en/math/Vector4.min/">#</a> .<a class=/"links/" data-fragment=/"Vector4.min/" id=/"min/" href=/"./index.html#api/en/math/Vector4.min/">min</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			If this vector's x, y, z or w value is greater than <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a>'s x,
+			y, z or w value, replace that value with the corresponding min value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.multiply/" target=/"_parent/" title=/"Vector4.multiply/" href=/"./index.html#api/en/math/Vector4.multiply/">#</a> .<a class=/"links/" data-fragment=/"Vector4.multiply/" id=/"multiply/" href=/"./index.html#api/en/math/Vector4.multiply/">multiply</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>Multiplies this vector by <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.multiplyScalar/" target=/"_parent/" title=/"Vector4.multiplyScalar/" href=/"./index.html#api/en/math/Vector4.multiplyScalar/">#</a> .<a class=/"links/" data-fragment=/"Vector4.multiplyScalar/" id=/"multiplyScalar/" href=/"./index.html#api/en/math/Vector4.multiplyScalar/">multiplyScalar</a> ( s : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Multiplies this vector by scalar <a class=/"links/" data-fragment=/"Float/" title=/"Float/">s</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.round/" target=/"_parent/" title=/"Vector4.round/" href=/"./index.html#api/en/math/Vector4.round/">#</a> .<a class=/"links/" data-fragment=/"Vector4.round/" id=/"round/" href=/"./index.html#api/en/math/Vector4.round/">round</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			The components of this vector are rounded to the nearest integer value.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.roundToZero/" target=/"_parent/" title=/"Vector4.roundToZero/" href=/"./index.html#api/en/math/Vector4.roundToZero/">#</a> .<a class=/"links/" data-fragment=/"Vector4.roundToZero/" id=/"roundToZero/" href=/"./index.html#api/en/math/Vector4.roundToZero/">roundToZero</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			The components of this vector are rounded towards zero (up if negative,
+			down if positive) to an integer value.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Vector4.set/" target=/"_parent/" title=/"Vector4.set/" href=/"./index.html#api/en/math/Vector4.set/">#</a> .<a class=/"links/" data-fragment=/"Vector4.set/" id=/"set/" href=/"./index.html#api/en/math/Vector4.set/">set</a> ( x : <span class=/"param/">Float</span>, y : <span class=/"param/">Float</span>, z : <span class=/"param/">Float</span>, w : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			Sets the <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>, <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> components
+			of this vector.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setAxisAngleFromQuaternion/" target=/"_parent/" title=/"Vector4.setAxisAngleFromQuaternion/" href=/"./index.html#api/en/math/Vector4.setAxisAngleFromQuaternion/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setAxisAngleFromQuaternion/" id=/"setAxisAngleFromQuaternion/" href=/"./index.html#api/en/math/Vector4.setAxisAngleFromQuaternion/">setAxisAngleFromQuaternion</a> ( q : <a class=/"param links/" data-fragment=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Quaternion/" title=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">q</a> - a normalized <a class=/"links/" data-fragment=/"Quaternion/" title=/"Quaternion/" href=/"./index.html#api/en/math/Quaternion/">Quaternion</a><br><br>
+
+			Sets the <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a> and <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> components of this
+			vector to the quaternion's axis and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> to the angle.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setAxisAngleFromRotationMatrix/" target=/"_parent/" title=/"Vector4.setAxisAngleFromRotationMatrix/" href=/"./index.html#api/en/math/Vector4.setAxisAngleFromRotationMatrix/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setAxisAngleFromRotationMatrix/" id=/"setAxisAngleFromRotationMatrix/" href=/"./index.html#api/en/math/Vector4.setAxisAngleFromRotationMatrix/">setAxisAngleFromRotationMatrix</a> ( m : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">m</a> - a <a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> of which the upper left 3x3 matrix is
+			a pure rotation matrix.<br><br>
+
+			Sets the <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a> and <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> to the axis of rotation
+			and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> to the angle.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setFromMatrixPosition/" target=/"_parent/" title=/"Vector4.setFromMatrixPosition/" href=/"./index.html#api/en/math/Vector4.setFromMatrixPosition/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setFromMatrixPosition/" id=/"setFromMatrixPosition/" href=/"./index.html#api/en/math/Vector4.setFromMatrixPosition/">setFromMatrixPosition</a> ( m : <a class=/"param links/" data-fragment=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">Matrix4</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Sets this vector to the position elements of the
+			<a href=/"https://en.wikipedia.org/wiki/Transformation_matrix/" target=/"_blank/">transformation matrix</a> <a class=/"links/" data-fragment=/"Matrix4/" title=/"Matrix4/" href=/"./index.html#api/en/math/Matrix4/">m</a>.
+		</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Vector4.setComponent/" target=/"_parent/" title=/"Vector4.setComponent/" href=/"./index.html#api/en/math/Vector4.setComponent/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setComponent/" id=/"setComponent/" href=/"./index.html#api/en/math/Vector4.setComponent/">setComponent</a> ( index : <span class=/"param/">Integer</span>, value : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">index</a> - <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>, <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2</span></code> or <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">3</span></code>.<br>
+			<a class=/"links/" data-fragment=/"Float/" title=/"Float/">value</a> - <a class=/"links/" data-fragment=/"Float/" title=/"Float/">Float</a><br><br>
+
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code> set <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a> to <a class=/"links/" data-fragment=/"Float/" title=/"Float/">value</a>.<br>
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code> set <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a> to <a class=/"links/" data-fragment=/"Float/" title=/"Float/">value</a>.<br>
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">2</span></code> set <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> to <a class=/"links/" data-fragment=/"Float/" title=/"Float/">value</a>.<br>
+			If index equals <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">3</span></code> set <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> to <a class=/"links/" data-fragment=/"Float/" title=/"Float/">value</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setLength/" target=/"_parent/" title=/"Vector4.setLength/" href=/"./index.html#api/en/math/Vector4.setLength/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setLength/" id=/"setLength/" href=/"./index.html#api/en/math/Vector4.setLength/">setLength</a> ( l : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Sets this vector to a vector with the same direction as this one, but
+			<a class=/"links/" data-fragment=/"Vector4.length/" title=/"Vector4.length/" href=/"./index.html#api/en/math/Vector4.length/">length</a> <a class=/"links/" data-fragment=/"Float/" title=/"Float/">l</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setScalar/" target=/"_parent/" title=/"Vector4.setScalar/" href=/"./index.html#api/en/math/Vector4.setScalar/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setScalar/" id=/"setScalar/" href=/"./index.html#api/en/math/Vector4.setScalar/">setScalar</a> ( scalar : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Sets the <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>, <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> values of
+			this vector both equal to <a class=/"links/" data-fragment=/"Float/" title=/"Float/">scalar</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setX/" target=/"_parent/" title=/"Vector4.setX/" href=/"./index.html#api/en/math/Vector4.setX/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setX/" id=/"setX/" href=/"./index.html#api/en/math/Vector4.setX/">setX</a> ( x : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Replaces this vector's <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a> value with <a class=/"links/" data-fragment=/"Float/" title=/"Float/">x</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setY/" target=/"_parent/" title=/"Vector4.setY/" href=/"./index.html#api/en/math/Vector4.setY/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setY/" id=/"setY/" href=/"./index.html#api/en/math/Vector4.setY/">setY</a> ( y : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Replaces this vector's <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a> value with <a class=/"links/" data-fragment=/"Float/" title=/"Float/">y</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setZ/" target=/"_parent/" title=/"Vector4.setZ/" href=/"./index.html#api/en/math/Vector4.setZ/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setZ/" id=/"setZ/" href=/"./index.html#api/en/math/Vector4.setZ/">setZ</a> ( z : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Replaces this vector's <a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> value with <a class=/"links/" data-fragment=/"Float/" title=/"Float/">z</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.setW/" target=/"_parent/" title=/"Vector4.setW/" href=/"./index.html#api/en/math/Vector4.setW/">#</a> .<a class=/"links/" data-fragment=/"Vector4.setW/" id=/"setW/" href=/"./index.html#api/en/math/Vector4.setW/">setW</a> ( w : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>Replaces this vector's <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> value with <a class=/"links/" data-fragment=/"Float/" title=/"Float/">w</a>.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.sub/" target=/"_parent/" title=/"Vector4.sub/" href=/"./index.html#api/en/math/Vector4.sub/">#</a> .<a class=/"links/" data-fragment=/"Vector4.sub/" id=/"sub/" href=/"./index.html#api/en/math/Vector4.sub/">sub</a> ( v : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>Subtracts <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">v</a> from this vector.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.subScalar/" target=/"_parent/" title=/"Vector4.subScalar/" href=/"./index.html#api/en/math/Vector4.subScalar/">#</a> .<a class=/"links/" data-fragment=/"Vector4.subScalar/" id=/"subScalar/" href=/"./index.html#api/en/math/Vector4.subScalar/">subScalar</a> ( s : <span class=/"param/">Float</span> ) : <span class=/"param/">this</span></h3>
+		<p>
+			Subtracts <a class=/"links/" data-fragment=/"Float/" title=/"Float/">s</a> from this vector's <a class=/"links/" data-fragment=/"Vector4.x/" title=/"Vector4.x/" href=/"./index.html#api/en/math/Vector4.x/">x</a>, <a class=/"links/" data-fragment=/"Vector4.y/" title=/"Vector4.y/" href=/"./index.html#api/en/math/Vector4.y/">y</a>,
+			<a class=/"links/" data-fragment=/"Vector4.z/" title=/"Vector4.z/" href=/"./index.html#api/en/math/Vector4.z/">z</a> and <a class=/"links/" data-fragment=/"Vector4.w/" title=/"Vector4.w/" href=/"./index.html#api/en/math/Vector4.w/">w</a> components.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.subVectors/" target=/"_parent/" title=/"Vector4.subVectors/" href=/"./index.html#api/en/math/Vector4.subVectors/">#</a> .<a class=/"links/" data-fragment=/"Vector4.subVectors/" id=/"subVectors/" href=/"./index.html#api/en/math/Vector4.subVectors/">subVectors</a> ( a : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a>, b : <a class=/"param links/" data-fragment=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">Vector4</a> ) : <span class=/"param/">this</span></h3>
+		<p>Sets this vector to <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">a</a> - <a class=/"links/" data-fragment=/"Vector4/" title=/"Vector4/" href=/"./index.html#api/en/math/Vector4/">b</a>.</p>
+
+		<h3>
+			<a class=/"permalink links/" data-fragment=/"Vector4.toArray/" target=/"_parent/" title=/"Vector4.toArray/" href=/"./index.html#api/en/math/Vector4.toArray/">#</a> .<a class=/"links/" data-fragment=/"Vector4.toArray/" id=/"toArray/" href=/"./index.html#api/en/math/Vector4.toArray/">toArray</a> ( array : <span class=/"param/">Array</span>, offset : <span class=/"param/">Integer</span> ) : <span class=/"param/">Array</span>
+		</h3>
+		<p>
+			<a class=/"links/" data-fragment=/"Array/" title=/"Array/">array</a> - (optional) array to store this vector to. If this is
+			not provided, a new array will be created.<br>
+			<a class=/"links/" data-fragment=/"Integer/" title=/"Integer/">offset</a> - (optional) optional offset into the array.<br><br>
+
+			Returns an array [x, y, z, w], or copies x, y, z and w into the provided
+			<a class=/"links/" data-fragment=/"Array/" title=/"Array/">array</a>.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"Vector4.random/" target=/"_parent/" title=/"Vector4.random/" href=/"./index.html#api/en/math/Vector4.random/">#</a> .<a class=/"links/" data-fragment=/"Vector4.random/" id=/"random/" href=/"./index.html#api/en/math/Vector4.random/">random</a> () : <span class=/"param/">this</span></h3>
+		<p>
+			Sets each component of this vector to a pseudo-random value between <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">0</span></code> and
+			<code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>, excluding <code class=/"inline prettyprint/" translate=/"no/"><span class=/"lit/">1</span></code>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/src/math/Vector4.js/" target=/"_blank/">src/math/Vector4.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><title>HalfEdge – three.js docs</title></head><body><body>
+		<h1>HalfEdge</h1>
+
+		<p class=/"desc/">
+			The basis for a half-edge data structure, also known as doubly connected edge list (DCEL).
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			HalfEdge is an add-on, and must be imported explicitly.
+			See <a href=/"#manual/introduction/Installation/" target=/"_blank/">Installation / Addons</a>.
+		</p>
+
+		<code class=/" prettyprint/" translate=/"no/"><span class=/"kwd/">import</span><span class=/"pln/"> </span><span class=/"pun/">{</span><span class=/"pln/"> </span><span class=/"typ/">HalfEdge</span><span class=/"pln/"> </span><span class=/"pun/">}</span><span class=/"pln/"> </span><span class=/"kwd/">from</span><span class=/"pln/"> </span><span class=/"str/">'three/addons/math/ConvexHull.js'</span><span class=/"pun/">;</span></code>
+
+
+		<h2>Constructor</h2>
+
+
+		<h3>HalfEdge( vertex : <a class=/"param links/" data-fragment=/"VertexNode/" href=/"./index.html#examples/en/math/convexhull/VertexNode/">VertexNode</a>, face : <a class=/"param links/" data-fragment=/"Face/" href=/"./index.html#examples/en/math/convexhull/Face/">Face</a> )</h3>
+		<p>
+		<a class=/"links/" data-fragment=/"VertexNode/" title=/"VertexNode/" href=/"./index.html#examples/en/math/convexhull/VertexNode/">vertex</a> - <a class=/"links/" data-fragment=/"VertexNode/" title=/"VertexNode/" href=/"./index.html#examples/en/math/convexhull/VertexNode/">VertexNode</a> A reference to its destination vertex.<br>
+		<a class=/"links/" data-fragment=/"Face/" title=/"Face/" href=/"./index.html#examples/en/math/convexhull/Face/">face</a> - <a class=/"links/" data-fragment=/"Face/" title=/"Face/" href=/"./index.html#examples/en/math/convexhull/Face/">Face</a> A reference to its face.<br><br>
+
+		Creates a new instance of HalfEdge.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.vertex/" target=/"_parent/" title=/"HalfEdge.vertex/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.vertex/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.vertex/" id=/"vertex/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.vertex/">vertex</a>  : <a class=/"param links/" data-fragment=/"VertexNode/" href=/"./index.html#examples/en/math/convexhull/VertexNode/">VertexNode</a></h3>
+		<p>
+			Reference to the destination vertex. The origin vertex can be obtained by querying the destination of its twin, or of the previous half-edge. Default is undefined.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.prev/" target=/"_parent/" title=/"HalfEdge.prev/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.prev/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.prev/" id=/"prev/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.prev/">prev</a>  : <a class=/"param links/" data-fragment=/"HalfEdge/" href=/"./index.html#examples/en/math/convexhull/HalfEdge/">HalfEdge</a></h3>
+		<p>
+			Reference to the previous half-edge of the same face. Default is null.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.next/" target=/"_parent/" title=/"HalfEdge.next/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.next/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.next/" id=/"next/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.next/">next</a>  : <a class=/"param links/" data-fragment=/"HalfEdge/" href=/"./index.html#examples/en/math/convexhull/HalfEdge/">HalfEdge</a></h3>
+		<p>
+			Reference to the next half-edge of the same face. Default is null.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.twin/" target=/"_parent/" title=/"HalfEdge.twin/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.twin/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.twin/" id=/"twin/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.twin/">twin</a>  : <a class=/"param links/" data-fragment=/"HalfEdge/" href=/"./index.html#examples/en/math/convexhull/HalfEdge/">HalfEdge</a></h3>
+		<p>
+			Reference to the twin half-edge to reach the opposite face. Default is null.
+		</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.face/" target=/"_parent/" title=/"HalfEdge.face/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.face/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.face/" id=/"face/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.face/">face</a>  : <a class=/"param links/" data-fragment=/"Face/" href=/"./index.html#examples/en/math/convexhull/Face/">Face</a></h3>
+		<p>
+			 Each half-edge bounds a single face and thus has a reference to that face. Default is undefined.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.head/" target=/"_parent/" title=/"HalfEdge.head/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.head/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.head/" id=/"head/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.head/">head</a> () : <a class=/"param links/" data-fragment=/"VertexNode/" href=/"./index.html#examples/en/math/convexhull/VertexNode/">VertexNode</a></h3>
+		<p>Returns the destination vertex.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.tail/" target=/"_parent/" title=/"HalfEdge.tail/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.tail/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.tail/" id=/"tail/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.tail/">tail</a> () : <a class=/"param links/" data-fragment=/"VertexNode/" href=/"./index.html#examples/en/math/convexhull/VertexNode/">VertexNode</a></h3>
+		<p>Returns the origin vertex.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.length/" target=/"_parent/" title=/"HalfEdge.length/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.length/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.length/" id=/"length/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.length/">length</a> () : <span class=/"param/">Float</span></h3>
+		<p>Returns the <a href=/"https://en.wikipedia.org/wiki/Euclidean_distance/" target=/"_blank/">Euclidean length</a>
+		(straight-line length) of the edge.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.lengthSquared/" target=/"_parent/" title=/"HalfEdge.lengthSquared/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.lengthSquared/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.lengthSquared/" id=/"lengthSquared/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.lengthSquared/">lengthSquared</a> () : <span class=/"param/">Float</span></h3>
+		<p>Returns the square of the <a href=/"https://en.wikipedia.org/wiki/Euclidean_distance/" target=/"_blank/">Euclidean length</a>
+		(straight-line length) of the edge.</p>
+
+		<h3><a class=/"permalink links/" data-fragment=/"HalfEdge.setTwin/" target=/"_parent/" title=/"HalfEdge.setTwin/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.setTwin/">#</a> .<a class=/"links/" data-fragment=/"HalfEdge.setTwin/" id=/"setTwin/" href=/"./index.html#examples/en/math/convexhull/HalfEdge.setTwin/">setTwin</a> ( edge : <a class=/"param links/" data-fragment=/"HalfEdge/" href=/"./index.html#examples/en/math/convexhull/HalfEdge/">HalfEdge</a> ) : <span class=/"param/">this</span></h3>
+		<p>
+			<a class=/"links/" data-fragment=/"HalfEdge/" title=/"HalfEdge/" href=/"./index.html#examples/en/math/convexhull/HalfEdge/">edge</a> - Any half-edge.<br><br>
+
+			Sets the twin edge of this half-edge. It also ensures that the twin reference of the given half-edge is correctly set.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href=/"https://github.com/mrdoob/three.js/blob/master/examples/jsm/math/ConvexHull.js/" target=/"_blank/">examples/jsm/math/ConvexHull.js</a>
+		</p>
+	
+
+<div id=/"button/"><img src=/"../files/ic_mode_edit_black_24dp.svg/"></div></body></body></html>

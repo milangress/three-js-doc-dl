@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><title>Source – three.js docs</title></head><body><body>
+		<h1>Source</h1>
+
+		<p class="desc">Represents the data source of a texture.</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Source( data : <a class="param links" data-fragment="Any">Any</a> )</h3>
+		<p>
+			<a class="links" data-fragment="Any" title="Any">data</a> -- The data definition of a texture. Default is <code class="inline prettyprint" translate="no"><span class="kwd">null</span></code>.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a class="permalink links" data-fragment="Source.data" target="_parent" title="Source.data" href="./index.html#api/en/textures/Source.data">#</a> .<a class="links" data-fragment="Source.data" id="data" href="./index.html#api/en/textures/Source.data">data</a>  : <a class="param links" data-fragment="Any">Any</a></h3>
+		<p>
+			The actual data of a texture. The type of this property depends on the
+			texture that uses this instance.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Source.isSource" target="_parent" title="Source.isSource" href="./index.html#api/en/textures/Source.isSource">#</a> .<a class="links" data-fragment="Source.isSource" id="isSource" href="./index.html#api/en/textures/Source.isSource">isSource</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Source.</p>
+
+		<h3><a class="permalink links" data-fragment="Source.needsUpdate" target="_parent" title="Source.needsUpdate" href="./index.html#api/en/textures/Source.needsUpdate">#</a> .<a class="links" data-fragment="Source.needsUpdate" id="needsUpdate" href="./index.html#api/en/textures/Source.needsUpdate">needsUpdate</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			When the property is set to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>, the engine allocates the memory for the texture (if necessary) and triggers the actual texture upload to the GPU next time the source is used.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Source.dataReady" target="_parent" title="Source.dataReady" href="./index.html#api/en/textures/Source.dataReady">#</a> .<a class="links" data-fragment="Source.dataReady" id="dataReady" href="./index.html#api/en/textures/Source.dataReady">dataReady</a>  : <span class="param">Boolean</span></h3>
+		<p>
+			This property is only relevant when <a class="links" data-fragment="Source.needUpdate" title="Source.needUpdate" href="./index.html#api/en/textures/Source.needUpdate">.needUpdate</a> is set to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code> and provides more control on how texture data should be processed.
+			When <code class="inline prettyprint" translate="no"><span class="pln">dataReady</span></code> is set to <code class="inline prettyprint" translate="no"><span class="kwd">false</span></code>, the engine performs the memory allocation (if necessary) but does not transfer the data into the GPU memory. Default is <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Source.uuid" target="_parent" title="Source.uuid" href="./index.html#api/en/textures/Source.uuid">#</a> .<a class="links" data-fragment="Source.uuid" id="uuid" href="./index.html#api/en/textures/Source.uuid">uuid</a>  : <span class="param">String</span></h3>
+		<p>
+			<a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a> of
+			this object instance. This gets automatically assigned, so this shouldn't
+			be edited.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="Source.version" target="_parent" title="Source.version" href="./index.html#api/en/textures/Source.version">#</a> .<a class="links" data-fragment="Source.version" id="version" href="./index.html#api/en/textures/Source.version">version</a>  : <span class="param">Integer</span></h3>
+		<p>
+			This starts at <code class="inline prettyprint" translate="no"><span class="lit">0</span></code> and counts how many times <a class="links" data-fragment="Source.needsUpdate" title="Source.needsUpdate" href="./index.html#api/en/textures/Source.needsUpdate">.needsUpdate</a> is set to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a class="permalink links" data-fragment="Source.toJSON" target="_parent" title="Source.toJSON" href="./index.html#api/en/textures/Source.toJSON">#</a> .<a class="links" data-fragment="Source.toJSON" id="toJSON" href="./index.html#api/en/textures/Source.toJSON">toJSON</a> ( meta : <span class="param">Object</span> ) : <span class="param">Object</span></h3>
+		<p>
+			meta -- optional object containing metadata.<br>
+			Convert the data source to three.js
+			<a href="https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4" target="_blank">JSON Object/Scene format</a>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/textures/Source.js" target="_blank">src/textures/Source.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

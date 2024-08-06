@@ -1,0 +1,97 @@
+<!DOCTYPE html><html><head><title>SpotLightShadow – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="LightShadow" title="LightShadow" href="./index.html#api/en/lights/shadows/LightShadow">LightShadow</a> →
+
+		<h1>SpotLightShadow</h1>
+
+		<p class="desc">
+			This is used internally by <a class="links" data-fragment="SpotLight" title="SpotLight" href="./index.html#api/en/lights/SpotLight">SpotLights</a> for calculating
+			shadows.
+		</p>
+
+		<h2>Code Example</h2>
+		<code class=" prettyprint" translate="no"><span class="com">//Create a WebGLRenderer and turn on shadows in the renderer</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> renderer </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">WebGLRenderer</span><span class="pun">();</span><span class="pln">
+renderer</span><span class="pun">.</span><span class="pln">shadowMap</span><span class="pun">.</span><span class="pln">enabled </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+renderer</span><span class="pun">.</span><span class="pln">shadowMap</span><span class="pun">.</span><span class="pln">type </span><span class="pun">=</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PCFSoftShadowMap</span><span class="pun">;</span><span class="pln"> </span><span class="com">// default THREE.PCFShadowMap</span><span class="pln">
+
+</span><span class="com">//Create a SpotLight and turn on shadows for the light</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> light </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">SpotLight</span><span class="pun">(</span><span class="pln"> </span><span class="lit">0xffffff</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+light</span><span class="pun">.</span><span class="pln">castShadow </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln"> </span><span class="com">// default false</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> light </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">//Set up shadow properties for the light</span><span class="pln">
+light</span><span class="pun">.</span><span class="pln">shadow</span><span class="pun">.</span><span class="pln">mapSize</span><span class="pun">.</span><span class="pln">width </span><span class="pun">=</span><span class="pln"> </span><span class="lit">512</span><span class="pun">;</span><span class="pln"> </span><span class="com">// default</span><span class="pln">
+light</span><span class="pun">.</span><span class="pln">shadow</span><span class="pun">.</span><span class="pln">mapSize</span><span class="pun">.</span><span class="pln">height </span><span class="pun">=</span><span class="pln"> </span><span class="lit">512</span><span class="pun">;</span><span class="pln"> </span><span class="com">// default</span><span class="pln">
+light</span><span class="pun">.</span><span class="pln">shadow</span><span class="pun">.</span><span class="pln">camera</span><span class="pun">.</span><span class="pln">near </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0.5</span><span class="pun">;</span><span class="pln"> </span><span class="com">// default</span><span class="pln">
+light</span><span class="pun">.</span><span class="pln">shadow</span><span class="pun">.</span><span class="pln">camera</span><span class="pun">.</span><span class="pln">far </span><span class="pun">=</span><span class="pln"> </span><span class="lit">500</span><span class="pun">;</span><span class="pln"> </span><span class="com">// default</span><span class="pln">
+light</span><span class="pun">.</span><span class="pln">shadow</span><span class="pun">.</span><span class="pln">focus </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">;</span><span class="pln"> </span><span class="com">// default</span><span class="pln">
+
+</span><span class="com">//Create a sphere that cast shadows (but does not receive them)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> sphereGeometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">SphereGeometry</span><span class="pun">(</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">32</span><span class="pun">,</span><span class="pln"> </span><span class="lit">32</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> sphereMaterial </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">MeshStandardMaterial</span><span class="pun">(</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> color</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0xff0000</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> sphere </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Mesh</span><span class="pun">(</span><span class="pln"> sphereGeometry</span><span class="pun">,</span><span class="pln"> sphereMaterial </span><span class="pun">);</span><span class="pln">
+sphere</span><span class="pun">.</span><span class="pln">castShadow </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln"> </span><span class="com">//default is false</span><span class="pln">
+sphere</span><span class="pun">.</span><span class="pln">receiveShadow </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln"> </span><span class="com">//default</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> sphere </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">//Create a plane that receives shadows (but does not cast them)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> planeGeometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PlaneGeometry</span><span class="pun">(</span><span class="pln"> </span><span class="lit">20</span><span class="pun">,</span><span class="pln"> </span><span class="lit">20</span><span class="pun">,</span><span class="pln"> </span><span class="lit">32</span><span class="pun">,</span><span class="pln"> </span><span class="lit">32</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> planeMaterial </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">MeshStandardMaterial</span><span class="pun">(</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> color</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0x00ff00</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> plane </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Mesh</span><span class="pun">(</span><span class="pln"> planeGeometry</span><span class="pun">,</span><span class="pln"> planeMaterial </span><span class="pun">);</span><span class="pln">
+plane</span><span class="pun">.</span><span class="pln">receiveShadow </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> plane </span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">//Create a helper for the shadow camera (optional)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> helper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">CameraHelper</span><span class="pun">(</span><span class="pln"> light</span><span class="pun">.</span><span class="pln">shadow</span><span class="pun">.</span><span class="pln">camera </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> helper </span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<p>
+			The constructor creates a PerspectiveCamera : <a class="param links" data-fragment="PerspectiveCamera" href="./index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a> to
+			manage the shadow's view of the world.
+		</p>
+
+		<h2>Properties</h2>
+		<p>
+			See the base <a class="links" data-fragment="LightShadow" title="LightShadow" href="./index.html#api/en/lights/shadows/LightShadow">LightShadow</a> class for common properties.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SpotLightShadow.camera" target="_parent" title="SpotLightShadow.camera" href="./index.html#api/en/lights/shadows/SpotLightShadow.camera">#</a> .<a class="links" data-fragment="SpotLightShadow.camera" id="camera" href="./index.html#api/en/lights/shadows/SpotLightShadow.camera">camera</a>  : <a class="param links" data-fragment="Camera" href="./index.html#api/en/cameras/Camera">Camera</a></h3>
+		<p>
+			The light's view of the world. This is used to generate a depth map of the
+			scene; objects behind other objects from the light's perspective will be
+			in shadow.<br><br>
+
+			The default is a <a class="links" data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="./index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a> with
+			<a class="links" data-fragment="PerspectiveCamera.near" title="PerspectiveCamera.near" href="./index.html#api/en/cameras/PerspectiveCamera.near">near</a> clipping plane at <code class="inline prettyprint" translate="no"><span class="lit">0.5</span></code>. The
+			<a class="links" data-fragment="PerspectiveCamera.fov" title="PerspectiveCamera.fov" href="./index.html#api/en/cameras/PerspectiveCamera.fov">fov</a> will track the <a class="links" data-fragment="SpotLight.angle" title="SpotLight.angle" href="./index.html#api/en/lights/SpotLight.angle">angle</a> 
+			property of the owning <a class="links" data-fragment="SpotLight" title="SpotLight" href="./index.html#api/en/lights/SpotLight">SpotLight</a> via the
+			<a class="links" data-fragment="SpotLightShadow.update" title="SpotLightShadow.update" href="./index.html#api/en/lights/shadows/SpotLightShadow.update">update</a> method. Similarly, the
+			<a class="links" data-fragment="PerspectiveCamera.aspect" title="PerspectiveCamera.aspect" href="./index.html#api/en/cameras/PerspectiveCamera.aspect">aspect</a> property will track the aspect of
+			the <a class="links" data-fragment="LightShadow.mapSize" title="LightShadow.mapSize" href="./index.html#api/en/lights/shadows/LightShadow.mapSize">mapSize</a>. If the <a class="links" data-fragment="SpotLight.distance" title="SpotLight.distance" href="./index.html#api/en/lights/SpotLight.distance">distance</a> 
+			property of the light is set, the <a class="links" data-fragment="PerspectiveCamera.far" title="PerspectiveCamera.far" href="./index.html#api/en/cameras/PerspectiveCamera.far">far</a> 
+			clipping plane will track that, otherwise it defaults to <code class="inline prettyprint" translate="no"><span class="lit">500</span></code>.
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SpotLightShadow.focus" target="_parent" title="SpotLightShadow.focus" href="./index.html#api/en/lights/shadows/SpotLightShadow.focus">#</a> .<a class="links" data-fragment="SpotLightShadow.focus" id="focus" href="./index.html#api/en/lights/shadows/SpotLightShadow.focus">focus</a>  : <span class="param">Number</span></h3>
+		<p>
+			Used to focus the shadow camera. The camera's field of view is set as a
+			percentage of the spotlight's field-of-view. Range is <code class="inline prettyprint" translate="no"><span class="pun">[</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">]</span></code>. Default is
+			<code class="inline prettyprint" translate="no"><span class="lit">1.0</span></code>.<br>
+		</p>
+
+		<h3><a class="permalink links" data-fragment="SpotLightShadow.isSpotLightShadow" target="_parent" title="SpotLightShadow.isSpotLightShadow" href="./index.html#api/en/lights/shadows/SpotLightShadow.isSpotLightShadow">#</a> .<a class="links" data-fragment="SpotLightShadow.isSpotLightShadow" id="isSpotLightShadow" href="./index.html#api/en/lights/shadows/SpotLightShadow.isSpotLightShadow">isSpotLightShadow</a>  : <span class="param">Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type SpotLightShadow.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="LightShadow" title="LightShadow" href="./index.html#api/en/lights/shadows/LightShadow">LightShadow</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/lights/SpotLightShadow.js" target="_blank">src/lights/SpotLightShadow.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

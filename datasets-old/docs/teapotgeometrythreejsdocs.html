@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><title>TeapotGeometry – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> →
+
+		<h1>TeapotGeometry</h1>
+
+		<p class="desc">
+			TeapotGeometry tesselates the famous Utah teapot database by Martin Newell.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			TeapotGeometry is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">TeapotGeometry</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'three/addons/geometries/TeapotGeometry.js'</span><span class="pun">;</span></code>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> geometry </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TeapotGeometry</span><span class="pun">(</span><span class="pln"> </span><span class="lit">50</span><span class="pun">,</span><span class="pln"> </span><span class="lit">18</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> material </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">MeshBasicMaterial</span><span class="pun">(</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> color</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0x00ff00</span><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> teapot </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">Mesh</span><span class="pun">(</span><span class="pln"> geometry</span><span class="pun">,</span><span class="pln"> material </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> teapot </span><span class="pun">);</span></code>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			TeapotGeometry(size : <span class="param">Integer</span>, segments : <span class="param">Integer</span>, bottom : <span class="param">Boolean</span>, lid : <span class="param">Boolean</span>, body : <span class="param">Boolean</span>, 
+			fitLid : <span class="param">Boolean</span>, blinn : <span class="param">Boolean</span>)
+		</h3>
+		<p>
+			size — Relative scale of the teapot. Optional; Defaults to <code class="inline prettyprint" translate="no"><span class="lit">50</span></code>.<br>
+			segments — Number of line segments to subdivide each patch edge. Optional; Defaults to <code class="inline prettyprint" translate="no"><span class="lit">10</span></code>.<br>
+			bottom — Whether the bottom of the teapot is generated or not. Optional; Defaults to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.<br>
+			lid — Whether the lid is generated or not. Optional; Defaults to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.<br>
+			body — Whether the body is generated or not. Optional; Defaults to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.<br>
+			fitLid — Whether the lid is slightly stretched to prevent gaps between the body and lid or not. Optional; Defaults to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.<br>
+			blinn — Whether the teapot is scaled vertically for better aesthetics or not. Optional; Defaults to <code class="inline prettyprint" translate="no"><span class="kwd">true</span></code>.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="BufferGeometry" title="BufferGeometry" href="./index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/geometries/TeapotGeometry.js" target="_blank">
+			examples/jsm/geometries/TeapotGeometry.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>

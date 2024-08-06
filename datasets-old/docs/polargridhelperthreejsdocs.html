@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><title>PolarGridHelper – three.js docs</title></head><body><body>
+		<a class="links" data-fragment="Object3D" title="Object3D" href="./index.html#api/en/core/Object3D">Object3D</a> → <a class="links" data-fragment="Line" title="Line" href="./index.html#api/en/objects/Line">Line</a> → <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> →
+
+		<h1>PolarGridHelper</h1>
+
+		<p class="desc">
+			The PolarGridHelper is an object to define polar grids. Grids are
+			two-dimensional arrays of lines.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<code class=" prettyprint" translate="no"><span class="kwd">const</span><span class="pln"> radius </span><span class="pun">=</span><span class="pln"> </span><span class="lit">10</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> sectors </span><span class="pun">=</span><span class="pln"> </span><span class="lit">16</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> rings </span><span class="pun">=</span><span class="pln"> </span><span class="lit">8</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> divisions </span><span class="pun">=</span><span class="pln"> </span><span class="lit">64</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">const</span><span class="pln"> helper </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> THREE</span><span class="pun">.</span><span class="typ">PolarGridHelper</span><span class="pun">(</span><span class="pln"> radius</span><span class="pun">,</span><span class="pln"> sectors</span><span class="pun">,</span><span class="pln"> rings</span><span class="pun">,</span><span class="pln"> divisions </span><span class="pun">);</span><span class="pln">
+scene</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln"> helper </span><span class="pun">);</span></code>
+
+		<h2>Examples</h2>
+
+		<p><a href="../examples/#webgl_helpers" target="_blank">WebGL / helpers</a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			PolarGridHelper( radius : <span class="param">Number</span>, sectors : <span class="param">Number</span>, rings : <span class="param">Number</span>, divisions : <span class="param">Number</span>, color1 : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a>, color2 : <a class="param links" data-fragment="Color" href="./index.html#api/en/math/Color">Color</a> )
+		</h3>
+		<p>
+			radius -- The radius of the polar grid. This can be any positive number.
+			Default is <code class="inline prettyprint" translate="no"><span class="lit">10</span></code>.<br>
+			sectors -- The number of sectors the grid will be divided into. This can
+			be any positive integer. Default is <code class="inline prettyprint" translate="no"><span class="lit">16</span></code>.<br>
+			rings -- The number of rings. This can be any positive integer. Default is
+			8.<br>
+			divisions -- The number of line segments used for each circle. This can be
+			any positive integer that is 3 or greater. Default is <code class="inline prettyprint" translate="no"><span class="lit">64</span></code>.<br>
+			color1 -- The first color used for grid elements. This can be a
+			<a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">Color</a>, a hexadecimal value and an CSS-Color name. Default is
+			0x444444 <br>
+			color2 -- The second color used for grid elements. This can be a
+			<a class="links" data-fragment="Color" title="Color" href="./index.html#api/en/math/Color">Color</a>, a hexadecimal value and an CSS-Color name. Default is
+			0x888888
+		</p>
+		<p>
+			Creates a new PolarGridHelper of radius 'radius' with 'sectors' number of sectors
+			and 'rings' number of rings, where each circle is smoothed into
+			'divisions' number of line segments. Colors are optional.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a class="links" data-fragment="LineSegments" title="LineSegments" href="./index.html#api/en/objects/LineSegments">LineSegments</a> class for common methods.</p>
+
+		<h3><a class="permalink links" data-fragment="PolarGridHelper.dispose" target="_parent" title="PolarGridHelper.dispose" href="./index.html#api/en/helpers/PolarGridHelper.dispose">#</a> .<a class="links" data-fragment="PolarGridHelper.dispose" id="dispose" href="./index.html#api/en/helpers/PolarGridHelper.dispose">dispose</a> () : <span class="param">undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/helpers/PolarGridHelper.js" target="_blank">src/helpers/PolarGridHelper.js</a>
+		</p>
+	
+
+<div id="button"><img src="../files/ic_mode_edit_black_24dp.svg"></div></body></body></html>
