@@ -1,11 +1,11 @@
 {
-  "name": "doc-dl-ai",
-  "version": "1.0.0",
-  "description": "A general-purpose website crawler and saver",
+  "name": "web-crawl-doc-ai",
+  "version": "0.0.2",
+  "description": "Crawls websites and save markdown files for ai embedding",
   "main": "src/index.js",
   "type": "module",
   "bin": {
-    "doc-dl-ai": "src/cli.js"
+    "web-crawl": "src/cli.js"
   },
   "dependencies": {
     "@mozilla/readability": "^0.5.0",
