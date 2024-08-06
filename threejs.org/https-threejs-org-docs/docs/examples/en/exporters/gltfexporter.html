@@ -1,0 +1,151 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<div><p>
+		An exporter for <code translate="no"><span>glTF</span></code> 2.0.
+		</p><p>
+		<a href="https://www.khronos.org/gltf" target="_blank">glTF</a> (GL Transmission Format) is an
+		<a href="https://github.com/KhronosGroup/glTF/tree/master/specification/2.0" target="_blank">open format specification</a>
+		for efficient delivery and loading of 3D content. Assets may be provided either in JSON (.gltf)
+		or binary (.glb) format. External files store textures (.jpg, .png) and additional binary
+		data (.bin). A glTF asset may deliver one or more scenes, including meshes, materials,
+		textures, skins, skeletons, morph targets, animations, lights, and/or cameras.
+		</p></div>
+
+		<h2>Import</h2>
+
+		<p>
+			GLTFExporter is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>GLTFExporter</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/exporters/GLTFExporter.js'</span><span>;</span></code></p><h2>Extensions</h2>
+
+		<p>
+			GLTFExporter supports the following
+			<a href="https://github.com/KhronosGroup/glTF/tree/master/extensions/" target="_blank">glTF 2.0 extensions</a>:
+		</p>
+
+		<ul>
+			<li>KHR_lights_punctual</li>
+			<li>KHR_materials_clearcoat</li>
+			<li>KHR_materials_dispersion</li>
+			<li>KHR_materials_emissive_strength</li>
+			<li>KHR_materials_ior</li>
+			<li>KHR_materials_iridescence</li>		
+			<li>KHR_materials_specular</li>
+			<li>KHR_materials_sheen</li>
+			<li>KHR_materials_transmission</li>
+			<li>KHR_materials_unlit</li>
+			<li>KHR_materials_volume</li>
+			<li>KHR_mesh_quantization</li>
+			<li>KHR_texture_transform</li>
+		</ul>
+
+		<p>
+			The following glTF 2.0 extension is supported by an external user plugin
+		</p>
+
+		<ul>
+			<li><a href="https://github.com/takahirox/three-gltf-extensions" target="_blank">KHR_materials_variants</a></li>
+		</ul>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>// Instantiate a exporter</span><span>
+</span><span>const</span><span> exporter </span><span>=</span><span> </span><span>new</span><span> </span><span>GLTFExporter</span><span>();</span><span>
+
+</span><span>// Parse the input and generate the glTF output</span><span>
+exporter</span><span>.</span><span>parse</span><span>(</span><span>
+	scene</span><span>,</span><span>
+	</span><span>// called when the gltf has been generated</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> gltf </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> gltf </span><span>);</span><span>
+		downloadJSON</span><span>(</span><span> gltf </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	</span><span>// called when there is an error in the generation</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> error </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>'An error happened'</span><span> </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	options
+</span><span>);</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#misc_exporter_gltf" target="_blank">misc_exporter_gltf</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>GLTFExporter()</h3>
+		
+		<p>
+		Creates a new GLTFExporter.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="GLTFExporter.parse" target="_parent" title="GLTFExporter.parse" href="https://threejs.org/docs/index.html#examples/en/exporters/GLTFExporter.parse">#</a> .<a data-fragment="GLTFExporter.parse" id="parse" href="https://threejs.org/docs/index.html#examples/en/exporters/GLTFExporter.parse">parse</a> ( input : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a>, onCompleted : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a>, options : <span>Object</span> ) : <span>undefined</span></h3>
+
+		<p>
+		<a data-fragment="Object" title="Object">input</a> — Scenes or objects to export. Valid options:<br>
+		</p><ul>
+			<li>
+				Export scenes
+				<code translate="no"><span>exporter</span><span>.</span><span>parse</span><span>(</span><span> scene1</span><span>,</span><span> </span><span>...</span><span> </span><span>)</span><span>
+		exporter</span><span>.</span><span>parse</span><span>(</span><span> </span><span>[</span><span> scene1</span><span>,</span><span> scene2 </span><span>],</span><span> </span><span>...</span><span> </span><span>)</span></code>
+			</li>
+			<li>
+				Export objects (It will create a new Scene to hold all the objects)
+				<code translate="no"><span>exporter</span><span>.</span><span>parse</span><span>(</span><span> object1</span><span>,</span><span> </span><span>...</span><span> </span><span>)</span><span>
+		exporter</span><span>.</span><span>parse</span><span>(</span><span> </span><span>[</span><span> object1</span><span>,</span><span> object2 </span><span>],</span><span> </span><span>...</span><span> </span><span>)</span></code>
+			</li>
+			<li>
+				Mix scenes and objects (It will export the scenes as usual but it will create a new scene to hold all the single objects).
+				<code translate="no"><span>exporter</span><span>.</span><span>parse</span><span>(</span><span> </span><span>[</span><span> scene1</span><span>,</span><span> object1</span><span>,</span><span> object2</span><span>,</span><span> scene2 </span><span>],</span><span> </span><span>...</span><span> </span><span>)</span></code>
+			</li>
+		</ul>
+
+		<p><a data-fragment="Function" title="Function">onCompleted</a> — Will be called when the export completes. The argument will be the generated glTF JSON or binary ArrayBuffer.<br>
+		<a data-fragment="Function" title="Function">onError</a> — Will be called if there are any errors during the gltf generation.<br>
+		<a data-fragment="Options" title="Options">options</a> — Export options</p><ul>
+			<li><code translate="no"><span>trs</span></code> - bool. Export position, rotation and scale instead of matrix per node. Default is false</li>
+			<li><code translate="no"><span>onlyVisible</span></code> - bool. Export only visible objects. Default is true.</li>
+			<li><code translate="no"><span>binary</span></code> - bool. Export in binary (.glb) format, returning an ArrayBuffer. Default is false.</li>
+			<li><code translate="no"><span>maxTextureSize</span></code> - int. Restricts the image maximum size (both width and height) to the given value. Default is Infinity.</li>
+			<li><code translate="no"><span>animations</span></code> - Array&lt;<a data-fragment="AnimationClip" title="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClip</a>&gt;. List of animations to be included in the export.</li>
+			<li><code translate="no"><span>includeCustomExtensions</span></code> - bool. Export custom glTF extensions defined on an object's <code translate="no"><span>userData</span><span>.</span><span>gltfExtensions</span></code> property. Default is false.</li>
+		</ul>
+		
+		<p>
+		Generates a .gltf (JSON) or .glb (binary) output from the input (Scenes or Objects)
+		</p>
+
+		<h3><a data-fragment="GLTFExporter.parseAsync" target="_parent" title="GLTFExporter.parseAsync" href="https://threejs.org/docs/index.html#examples/en/exporters/GLTFExporter.parseAsync">#</a> .<a data-fragment="GLTFExporter.parseAsync" id="parseAsync" href="https://threejs.org/docs/index.html#examples/en/exporters/GLTFExporter.parseAsync">parseAsync</a> ( input : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a>, options : <span>Object</span> ) : <a data-fragment="Promise">Promise</a></h3>
+
+		<p>
+			Generates a .gltf (JSON) or .glb (binary) output from the input (Scenes or Objects).
+		</p>
+		<p>
+			This is just like the <a data-fragment="GLTFExporter.parse" title="GLTFExporter.parse" href="https://threejs.org/docs/index.html#examples/en/exporters/GLTFExporter.parse">.parse</a>() method, but instead of
+			accepting callbacks it returns a promise that resolves with the
+			result, and otherwise accepts the same options.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/exporters/GLTFExporter.js" target="_blank">examples/jsm/exporters/GLTFExporter.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

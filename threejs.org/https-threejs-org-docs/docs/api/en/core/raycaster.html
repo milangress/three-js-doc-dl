@@ -1,0 +1,227 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			This class is designed to assist with
+			<a href="https://en.wikipedia.org/wiki/Ray_casting" target="_blank">raycasting</a>. Raycasting is
+			used for mouse picking (working out what objects in the 3d space the mouse
+			is over) amongst other things.
+		</p>
+
+		<h2>Code Example</h2>
+		<p><code translate="no"><span>const</span><span> raycaster </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Raycaster</span><span>();</span><span>
+</span><span>const</span><span> pointer </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Vector2</span><span>();</span><span>
+
+</span><span>function</span><span> onPointerMove</span><span>(</span><span> </span><span>event</span><span> </span><span>)</span><span> </span><span>{</span><span>
+
+	</span><span>// calculate pointer position in normalized device coordinates</span><span>
+	</span><span>// (-1 to +1) for both components</span><span>
+
+	pointer</span><span>.</span><span>x </span><span>=</span><span> </span><span>(</span><span> </span><span>event</span><span>.</span><span>clientX </span><span>/</span><span> window</span><span>.</span><span>innerWidth </span><span>)</span><span> </span><span>*</span><span> </span><span>2</span><span> </span><span>-</span><span> </span><span>1</span><span>;</span><span>
+	pointer</span><span>.</span><span>y </span><span>=</span><span> </span><span>-</span><span> </span><span>(</span><span> </span><span>event</span><span>.</span><span>clientY </span><span>/</span><span> window</span><span>.</span><span>innerHeight </span><span>)</span><span> </span><span>*</span><span> </span><span>2</span><span> </span><span>+</span><span> </span><span>1</span><span>;</span><span>
+
+</span><span>}</span><span>
+
+</span><span>function</span><span> render</span><span>()</span><span> </span><span>{</span><span>
+
+	</span><span>// update the picking ray with the camera and pointer position</span><span>
+	raycaster</span><span>.</span><span>setFromCamera</span><span>(</span><span> pointer</span><span>,</span><span> camera </span><span>);</span><span>
+
+	</span><span>// calculate objects intersecting the picking ray</span><span>
+	</span><span>const</span><span> intersects </span><span>=</span><span> raycaster</span><span>.</span><span>intersectObjects</span><span>(</span><span> scene</span><span>.</span><span>children </span><span>);</span><span>
+
+	</span><span>for</span><span> </span><span>(</span><span> let i </span><span>=</span><span> </span><span>0</span><span>;</span><span> i </span><span>&lt;</span><span> intersects</span><span>.</span><span>length</span><span>;</span><span> i </span><span>++</span><span> </span><span>)</span><span> </span><span>{</span><span>
+
+		intersects</span><span>[</span><span> i </span><span>].</span><span>object</span><span>.</span><span>material</span><span>.</span><span>color</span><span>.</span><span>set</span><span>(</span><span> </span><span>0xff0000</span><span> </span><span>);</span><span>
+
+	</span><span>}</span><span>
+
+	renderer</span><span>.</span><span>render</span><span>(</span><span> scene</span><span>,</span><span> camera </span><span>);</span><span>
+
+</span><span>}</span><span>
+
+window</span><span>.</span><span>addEventListener</span><span>(</span><span> </span><span>'pointermove'</span><span>,</span><span> onPointerMove </span><span>);</span><span>
+
+window</span><span>.</span><span>requestAnimationFrame</span><span>(</span><span>render</span><span>);</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#webgl_interactive_cubes" target="_blank">Raycasting to a Mesh</a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_cubes_ortho" target="_blank">Raycasting to a Mesh in using an OrthographicCamera</a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_buffergeometry" target="_blank">Raycasting to a Mesh with BufferGeometry</a><br>
+			<a href="https://threejs.org/examples/#webgl_instancing_raycast" target="_blank">Raycasting to a InstancedMesh</a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_lines" target="_blank">Raycasting to a Line</a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_raycasting_points" target="_blank">Raycasting to Points</a><br>
+			<a href="https://threejs.org/examples/#webgl_geometry_terrain_raycast" target="_blank">Terrain raycasting</a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_voxelpainter" target="_blank">Raycasting to paint voxels</a><br>
+			<a href="https://threejs.org/examples/#webgl_raycaster_texture" target="_blank">Raycast to a Texture</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Raycaster( origin : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, direction : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, near : <span>Float</span>, far : <span>Float</span> )</h3>
+		<p>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">origin</a> — The origin vector where the ray casts from.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">direction</a> — The direction vector that gives direction to
+			the ray. Should be normalized.<br>
+			<a data-fragment="Float" title="Float">near</a> — All results returned are further away than near. Near
+			can't be negative. Default value is <code translate="no"><span>0</span></code>.<br>
+			<a data-fragment="Float" title="Float">far</a> — All results returned are closer than far. Far can't be
+			lower than near. Default value is Infinity.
+		</p>
+		<p>This creates a new raycaster object.<br></p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="Raycaster.far" target="_parent" title="Raycaster.far" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.far">#</a> .<a data-fragment="Raycaster.far" id="far" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.far">far</a>  : <span>Float</span></h3>
+		<p>
+			The far factor of the raycaster. This value indicates which objects can be
+			discarded based on the distance. This value shouldn't be negative and
+			should be larger than the near property.
+		</p>
+
+		<h3><a data-fragment="Raycaster.near" target="_parent" title="Raycaster.near" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.near">#</a> .<a data-fragment="Raycaster.near" id="near" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.near">near</a>  : <span>Float</span></h3>
+		<p>
+			The near factor of the raycaster. This value indicates which objects can
+			be discarded based on the distance. This value shouldn't be negative and
+			should be smaller than the far property.
+		</p>
+
+		<h3><a data-fragment="Raycaster.camera" target="_parent" title="Raycaster.camera" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.camera">#</a> .<a data-fragment="Raycaster.camera" id="camera" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.camera">camera</a>  : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a></h3>
+		<p>
+			The camera to use when raycasting against view-dependent objects such as
+			billboarded objects like <a data-fragment="Sprites" title="Sprites">Sprites</a>. This field can be set manually or
+			is set when calling "setFromCamera". Defaults to null.
+		</p>
+
+		<h3><a data-fragment="Raycaster.layers" target="_parent" title="Raycaster.layers" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.layers">#</a> .<a data-fragment="Raycaster.layers" id="layers" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.layers">layers</a>  : <a data-fragment="Layers" href="https://threejs.org/docs/index.html#api/en/core/Layers">Layers</a></h3>
+		<p>
+			Used by Raycaster to selectively ignore 3D objects when performing
+			intersection tests. The following code example ensures that only 3D
+			objects on layer <code translate="no"><span>1</span></code> will be honored by the instance of Raycaster.
+
+			<code translate="no"><span>raycaster</span><span>.</span><span>layers</span><span>.</span><span>set</span><span>(</span><span> </span><span>1</span><span> </span><span>);</span><span>
+</span><span>object</span><span>.</span><span>layers</span><span>.</span><span>enable</span><span>(</span><span> </span><span>1</span><span> </span><span>);</span></code>
+		</p>
+
+		<h3><a data-fragment="Raycaster.params" target="_parent" title="Raycaster.params" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.params">#</a> .<a data-fragment="Raycaster.params" id="params" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.params">params</a>  : <span>Object</span></h3>
+		<p>
+			An object with the following properties:
+
+			<code translate="no"><span>{</span><span>
+	</span><span>Mesh</span><span>:</span><span> </span><span>{},</span><span>
+	</span><span>Line</span><span>:</span><span> </span><span>{</span><span> threshold</span><span>:</span><span> </span><span>1</span><span> </span><span>},</span><span>
+	LOD</span><span>:</span><span> </span><span>{},</span><span>
+	</span><span>Points</span><span>:</span><span> </span><span>{</span><span> threshold</span><span>:</span><span> </span><span>1</span><span> </span><span>},</span><span>
+	</span><span>Sprite</span><span>:</span><span> </span><span>{}</span><span>
+</span><span>}</span></code>
+
+			Where threshold is the precision of the raycaster when intersecting
+			objects, in world units.
+		</p>
+
+		<h3><a data-fragment="Raycaster.ray" target="_parent" title="Raycaster.ray" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.ray">#</a> .<a data-fragment="Raycaster.ray" id="ray" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.ray">ray</a>  : <a data-fragment="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a></h3>
+		<p>The <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> used for the raycasting.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="Raycaster.set" target="_parent" title="Raycaster.set" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.set">#</a> .<a data-fragment="Raycaster.set" id="set" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.set">set</a> ( origin : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, direction : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>) : <span>undefined</span></h3>
+		<p>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">origin</a> — The origin vector where the ray casts from.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">direction</a> — The normalized direction vector that gives
+			direction to the ray.
+		</p>
+		<p>
+			Updates the ray with a new origin and direction. Please note that this
+			method only copies the values from the arguments.
+		</p>
+
+		<h3><a data-fragment="Raycaster.setFromCamera" target="_parent" title="Raycaster.setFromCamera" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.setFromCamera">#</a> .<a data-fragment="Raycaster.setFromCamera" id="setFromCamera" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.setFromCamera">setFromCamera</a> ( coords : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, camera : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a> ) : <span>undefined</span></h3>
+		<p>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">coords</a> — 2D coordinates of the mouse, in normalized device
+			coordinates (NDC)---X and Y components should be between <code translate="no"><span>-</span><span>1</span></code> and <code translate="no"><span>1</span></code>.<br>
+			<a data-fragment="Camera" title="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">camera</a> — camera from which the ray should originate
+		</p>
+		<p>Updates the ray with a new origin and direction.</p>
+
+		<h3><a data-fragment="Raycaster.setFromXRController" target="_parent" title="Raycaster.setFromXRController" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.setFromXRController">#</a> .<a data-fragment="Raycaster.setFromXRController" id="setFromXRController" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.setFromXRController">setFromXRController</a> ( controller : <a data-fragment="WebXRController">WebXRController</a> ) : <span>this</span></h3>
+		<p>
+			<a data-fragment="WebXRController" title="WebXRController">controller</a> — The controller to copy the position and direction from.
+		</p>
+		<p>Updates the ray with a new origin and direction.</p>
+
+		<h3><a data-fragment="Raycaster.intersectObject" target="_parent" title="Raycaster.intersectObject" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.intersectObject">#</a> .<a data-fragment="Raycaster.intersectObject" id="intersectObject" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.intersectObject">intersectObject</a> ( object : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a>, recursive : <span>Boolean</span>, optionalTarget : <span>Array</span> ) : <span>Array</span></h3>
+		<p>
+			<a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">object</a> — The object to check for intersection with the
+			ray.<br>
+			<a data-fragment="Boolean" title="Boolean">recursive</a> — If true, it also checks all descendants.
+			Otherwise it only checks intersection with the object. Default is true.<br>
+			<a data-fragment="Array" title="Array">optionalTarget</a> — (optional) target to set the result.
+			Otherwise a new <a data-fragment="Array" title="Array">Array</a> is instantiated. If set, you must clear this
+			array prior to each call (i.e., array.length = 0;).
+		</p>
+		<p>
+			Checks all intersection between the ray and the object with or without the
+			descendants. Intersections are returned sorted by distance, closest first.
+			An array of intersections is returned...
+		</p>
+		<p><code translate="no"><span> </span><span>[</span><span> </span><span>{</span><span> distance</span><span>,</span><span> point</span><span>,</span><span> face</span><span>,</span><span> faceIndex</span><span>,</span><span> </span><span>object</span><span> </span><span>},</span><span> </span><span>...</span><span> </span><span>]</span><span> </span></code></p><p>
+			<a data-fragment="Float" title="Float">distance</a> – distance between the origin of the ray and the
+			intersection<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">point</a> – point of intersection, in world coordinates<br>
+			<a data-fragment="Object" title="Object">face</a> – intersected face<br>
+			<a data-fragment="Integer" title="Integer">faceIndex</a> – index of the intersected face<br>
+			<a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">object</a> – the intersected object<br>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">uv</a> - U,V coordinates at point of intersection<br>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">uv1</a> - Second set of U,V coordinates at point of
+			intersection<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">normal</a> - interpolated normal vector at point of
+			intersection<br>
+			<a data-fragment="Integer" title="Integer">instanceId</a> – The index number of the instance where the ray
+			intersects the InstancedMesh
+		</p>
+		<p>
+			<code translate="no"><span>Raycaster</span></code> delegates to the <a data-fragment="Object3D.raycast" title="Object3D.raycast" href="https://threejs.org/docs/index.html#api/en/core/Object3D.raycast">raycast</a> method of the
+			passed object, when evaluating whether the ray intersects the object or
+			not. This allows <a data-fragment="Mesh" title="Mesh" href="https://threejs.org/docs/index.html#api/en/objects/Mesh">meshes</a> to respond differently to ray casting
+			than <a data-fragment="Line" title="Line" href="https://threejs.org/docs/index.html#api/en/objects/Line">lines</a> and <a data-fragment="Points" title="Points" href="https://threejs.org/docs/index.html#api/en/objects/Points">pointclouds</a>.
+		</p>
+		<p>
+			<strong>Note</strong> that for meshes, faces must be pointed towards the origin of the
+			<a data-fragment="Raycaster.ray" title="Raycaster.ray" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.ray">ray</a> in order to be detected; intersections of the ray passing
+			through the back of a face will not be detected. To raycast against both
+			faces of an object, you'll want to set the <a data-fragment="Mesh.material" title="Mesh.material" href="https://threejs.org/docs/index.html#api/en/objects/Mesh.material">material</a>'s
+			<a data-fragment="Material.side" title="Material.side" href="https://threejs.org/docs/index.html#api/en/materials/Material.side">side</a> property to <code translate="no"><span>THREE</span><span>.</span><span>DoubleSide</span></code>.
+		</p>
+
+		<h3><a data-fragment="Raycaster.intersectObjects" target="_parent" title="Raycaster.intersectObjects" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.intersectObjects">#</a> .<a data-fragment="Raycaster.intersectObjects" id="intersectObjects" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.intersectObjects">intersectObjects</a> ( objects : <span>Array</span>, recursive : <span>Boolean</span>, optionalTarget : <span>Array</span> ) : <span>Array</span></h3>
+		<p>
+			<a data-fragment="Array" title="Array">objects</a> — The objects to check for intersection with the
+			ray.<br>
+			<a data-fragment="Boolean" title="Boolean">recursive</a> — If true, it also checks all descendants of the
+			objects. Otherwise it only checks intersection with the objects. Default
+			is true.<br>
+			<a data-fragment="Array" title="Array">optionalTarget</a> — (optional) target to set the result.
+			Otherwise a new <a data-fragment="Array" title="Array">Array</a> is instantiated. If set, you must clear this
+			array prior to each call (i.e., array.length = 0;).
+		</p>
+		<p>
+			Checks all intersection between the ray and the objects with or without
+			the descendants. Intersections are returned sorted by distance, closest
+			first. Intersections are of the same form as those returned by
+			<a data-fragment="Raycaster.intersectObject" title="Raycaster.intersectObject" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.intersectObject">.intersectObject</a>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/core/Raycaster.js" target="_blank">src/core/Raycaster.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

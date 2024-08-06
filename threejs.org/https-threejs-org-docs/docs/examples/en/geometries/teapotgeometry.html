@@ -1,0 +1,58 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> →
+
+		</p>
+
+		<p>
+			TeapotGeometry tesselates the famous Utah teapot database by Martin Newell.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			TeapotGeometry is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>TeapotGeometry</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/geometries/TeapotGeometry.js'</span><span>;</span></code></p><h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> geometry </span><span>=</span><span> </span><span>new</span><span> </span><span>TeapotGeometry</span><span>(</span><span> </span><span>50</span><span>,</span><span> </span><span>18</span><span> </span><span>);</span><span>
+</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshBasicMaterial</span><span>(</span><span> </span><span>{</span><span> color</span><span>:</span><span> </span><span>0x00ff00</span><span> </span><span>}</span><span> </span><span>);</span><span>
+</span><span>const</span><span> teapot </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> geometry</span><span>,</span><span> material </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> teapot </span><span>);</span></code></p><h2>Constructor</h2>
+
+		<h3>
+			TeapotGeometry(size : <span>Integer</span>, segments : <span>Integer</span>, bottom : <span>Boolean</span>, lid : <span>Boolean</span>, body : <span>Boolean</span>, 
+			fitLid : <span>Boolean</span>, blinn : <span>Boolean</span>)
+		</h3>
+		<p>
+			size — Relative scale of the teapot. Optional; Defaults to <code translate="no"><span>50</span></code>.<br>
+			segments — Number of line segments to subdivide each patch edge. Optional; Defaults to <code translate="no"><span>10</span></code>.<br>
+			bottom — Whether the bottom of the teapot is generated or not. Optional; Defaults to <code translate="no"><span>true</span></code>.<br>
+			lid — Whether the lid is generated or not. Optional; Defaults to <code translate="no"><span>true</span></code>.<br>
+			body — Whether the body is generated or not. Optional; Defaults to <code translate="no"><span>true</span></code>.<br>
+			fitLid — Whether the lid is slightly stretched to prevent gaps between the body and lid or not. Optional; Defaults to <code translate="no"><span>true</span></code>.<br>
+			blinn — Whether the teapot is scaled vertically for better aesthetics or not. Optional; Defaults to <code translate="no"><span>true</span></code>.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/geometries/TeapotGeometry.js" target="_blank">
+			examples/jsm/geometries/TeapotGeometry.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

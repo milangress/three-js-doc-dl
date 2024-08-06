@@ -1,0 +1,146 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Curve" title="Curve" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve">Curve</a> → <a data-fragment="CurvePath" title="CurvePath" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath">CurvePath</a> →
+
+		</p>
+
+		<p>
+			A 2D path representation. The class provides methods for creating paths
+			and contours of 2D shapes similar to the 2D Canvas API.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> path </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Path</span><span>();</span><span>
+
+path</span><span>.</span><span>lineTo</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>0.8</span><span> </span><span>);</span><span>
+path</span><span>.</span><span>quadraticCurveTo</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>0.2</span><span>,</span><span> </span><span>1</span><span> </span><span>);</span><span>
+path</span><span>.</span><span>lineTo</span><span>(</span><span> </span><span>1</span><span>,</span><span> </span><span>1</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> points </span><span>=</span><span> path</span><span>.</span><span>getPoints</span><span>();</span><span>
+
+</span><span>const</span><span> geometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>BufferGeometry</span><span>().</span><span>setFromPoints</span><span>(</span><span> points </span><span>);</span><span>
+</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>LineBasicMaterial</span><span>(</span><span> </span><span>{</span><span> color</span><span>:</span><span> </span><span>0xffffff</span><span> </span><span>}</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> line </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Line</span><span>(</span><span> geometry</span><span>,</span><span> material </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> line </span><span>);</span></code></p><h2>Constructor</h2>
+
+		<h3>Path( points : <span>Array</span> )</h3>
+		<div><p>
+			points -- (optional) array of <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2s</a>.</p><p>
+
+			Creates a Path from the points. The first point defines the offset, then
+			successive points are added to the <a data-fragment="CurvePath.curves" title="CurvePath.curves" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath.curves">curves</a> array as
+			<a data-fragment="LineCurve" title="LineCurve" href="https://threejs.org/docs/index.html#api/en/extras/curves/LineCurve">LineCurves</a>.</p><p>
+
+			If no points are specified, an empty path is created and the
+			<a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a> is set to the origin.
+		</p></div>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="CurvePath" title="CurvePath" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath">CurvePath</a> class for common properties.</p>
+
+		<h3><a data-fragment="Path.currentPoint" target="_parent" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">#</a> .<a data-fragment="Path.currentPoint" id="currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">currentPoint</a>  : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			The current offset of the path. Any new <a data-fragment="Curve" title="Curve" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve">Curve</a> added will start
+			here.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="CurvePath" title="CurvePath" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath">CurvePath</a> class for common methods.</p>
+
+		<h3><a data-fragment="Path.absarc" target="_parent" title="Path.absarc" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.absarc">#</a> .<a data-fragment="Path.absarc" id="absarc" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.absarc">absarc</a> ( x : <span>Float</span>, y : <span>Float</span>, radius : <span>Float</span>, startAngle : <span>Float</span>, endAngle : <span>Float</span>, clockwise : <span>Boolean</span> ) : <span>this</span></h3>
+		<div><p>
+			x, y -- The absolute center of the arc.<br>
+			radius -- The radius of the arc.<br>
+			startAngle -- The start angle in radians.<br>
+			endAngle -- The end angle in radians.<br>
+			clockwise -- Sweep the arc clockwise. Defaults to <code translate="no"><span>false</span></code>.</p><p>
+
+			Adds an absolutely positioned <a data-fragment="EllipseCurve" title="EllipseCurve" href="https://threejs.org/docs/index.html#api/en/extras/curves/EllipseCurve">EllipseCurve</a> to the
+			path.
+		</p></div>
+
+		<h3><a data-fragment="Path.absellipse" target="_parent" title="Path.absellipse" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.absellipse">#</a> .<a data-fragment="Path.absellipse" id="absellipse" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.absellipse">absellipse</a> ( x : <span>Float</span>, y : <span>Float</span>, xRadius : <span>Float</span>, yRadius : <span>Float</span>, startAngle : <span>Float</span>, endAngle : <span>Float</span>, clockwise : <span>Boolean</span>, rotation : <span>Float</span> ) : <span>this</span></h3>
+		<div><p>
+			x, y -- The absolute center of the ellipse.<br>
+			xRadius -- The radius of the ellipse in the x axis.<br>
+			yRadius -- The radius of the ellipse in the y axis.<br>
+			startAngle -- The start angle in radians.<br>
+			endAngle -- The end angle in radians.<br>
+			clockwise -- Sweep the ellipse clockwise. Defaults to false.<br>
+			rotation -- The rotation angle of the ellipse in radians, counterclockwise
+			from the positive X axis. Optional, defaults to <code translate="no"><span>0</span></code>.</p><p>
+
+			Adds an absolutely positioned <a data-fragment="EllipseCurve" title="EllipseCurve" href="https://threejs.org/docs/index.html#api/en/extras/curves/EllipseCurve">EllipseCurve</a> to the
+			path.
+		</p></div>
+
+		<h3><a data-fragment="Path.arc" target="_parent" title="Path.arc" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.arc">#</a> .<a data-fragment="Path.arc" id="arc" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.arc">arc</a> ( x : <span>Float</span>, y : <span>Float</span>, radius : <span>Float</span>, startAngle : <span>Float</span>, endAngle : <span>Float</span>, clockwise : <span>Boolean</span> ) : <span>this</span></h3>
+		<div><p>
+			x, y -- The center of the arc offset from the last call.<br>
+			radius -- The radius of the arc.<br>
+			startAngle -- The start angle in radians.<br>
+			endAngle -- The end angle in radians.<br>
+			clockwise -- Sweep the arc clockwise. Defaults to <code translate="no"><span>false</span></code>.</p><p>
+
+			Adds an <a data-fragment="EllipseCurve" title="EllipseCurve" href="https://threejs.org/docs/index.html#api/en/extras/curves/EllipseCurve">EllipseCurve</a> to the path, positioned relative
+			to <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a>.
+		</p></div>
+
+		<h3><a data-fragment="Path.bezierCurveTo" target="_parent" title="Path.bezierCurveTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.bezierCurveTo">#</a> .<a data-fragment="Path.bezierCurveTo" id="bezierCurveTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.bezierCurveTo">bezierCurveTo</a> ( cp1X : <span>Float</span>, cp1Y : <span>Float</span>, cp2X : <span>Float</span>, cp2Y : <span>Float</span>, x : <span>Float</span>, y : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			This creates a bezier curve from <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a> with (cp1X, cp1Y)
+			and (cp2X, cp2Y) as control points and updates <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a> to x
+			and y.
+		</p>
+
+		<h3><a data-fragment="Path.ellipse" target="_parent" title="Path.ellipse" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.ellipse">#</a> .<a data-fragment="Path.ellipse" id="ellipse" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.ellipse">ellipse</a> ( x : <span>Float</span>, y : <span>Float</span>, xRadius : <span>Float</span>, yRadius : <span>Float</span>, startAngle : <span>Float</span>, endAngle : <span>Float</span>, clockwise : <span>Boolean</span>, rotation : <span>Float</span> ) : <span>this</span></h3>
+		<div><p>
+			x, y -- The center of the ellipse offset from the last call.<br>
+			xRadius -- The radius of the ellipse in the x axis.<br>
+			yRadius -- The radius of the ellipse in the y axis.<br>
+			startAngle -- The start angle in radians.<br>
+			endAngle -- The end angle in radians.<br>
+			clockwise -- Sweep the ellipse clockwise. Defaults to <code translate="no"><span>false</span></code>.<br>
+			rotation -- The rotation angle of the ellipse in radians, counterclockwise
+			from the positive X axis. Optional, defaults to <code translate="no"><span>0</span></code>.</p><p>
+
+			Adds an <a data-fragment="EllipseCurve" title="EllipseCurve" href="https://threejs.org/docs/index.html#api/en/extras/curves/EllipseCurve">EllipseCurve</a> to the path, positioned relative
+			to <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a>.
+		</p></div>
+
+		<h3><a data-fragment="Path.lineTo" target="_parent" title="Path.lineTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.lineTo">#</a> .<a data-fragment="Path.lineTo" id="lineTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.lineTo">lineTo</a> ( x : <span>Float</span>, y : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Connects a <a data-fragment="LineCurve" title="LineCurve" href="https://threejs.org/docs/index.html#api/en/extras/curves/LineCurve">LineCurve</a> from <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a> to x, y onto the
+			path.
+		</p>
+
+		<h3><a data-fragment="Path.moveTo" target="_parent" title="Path.moveTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.moveTo">#</a> .<a data-fragment="Path.moveTo" id="moveTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.moveTo">moveTo</a> ( x : <span>Float</span>, y : <span>Float</span> ) : <span>this</span></h3>
+		<p>Move the <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a> to x, y.</p>
+
+		<h3><a data-fragment="Path.quadraticCurveTo" target="_parent" title="Path.quadraticCurveTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.quadraticCurveTo">#</a> .<a data-fragment="Path.quadraticCurveTo" id="quadraticCurveTo" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.quadraticCurveTo">quadraticCurveTo</a> ( cpX : <span>Float</span>, cpY : <span>Float</span>, x : <span>Float</span>, y : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Creates a quadratic curve from <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a> with cpX and cpY as
+			control point and updates <a data-fragment="Path.currentPoint" title="Path.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.currentPoint">.currentPoint</a> to x and y.
+		</p>
+
+		<h3><a data-fragment="Path.setFromPoints" target="_parent" title="Path.setFromPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.setFromPoints">#</a> .<a data-fragment="Path.setFromPoints" id="setFromPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.setFromPoints">setFromPoints</a> ( vector2s : <span>Array</span> ) : <span>this</span></h3>
+		
+
+		<h3><a data-fragment="Path.splineThru" target="_parent" title="Path.splineThru" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.splineThru">#</a> .<a data-fragment="Path.splineThru" id="splineThru" href="https://threejs.org/docs/index.html#api/en/extras/core/Path.splineThru">splineThru</a> ( points : <span>Array</span> ) : <span>this</span></h3>
+		
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/extras/core/Path.js" target="_blank">src/extras/core/Path.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,206 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>An object with several math utility functions.</p>
+
+		<h2>Functions</h2>
+
+		<h3>
+			<a data-fragment="MathUtils.clamp" target="_parent" title="MathUtils.clamp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.clamp">#</a> .<a data-fragment="MathUtils.clamp" id="clamp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.clamp">clamp</a> ( value : <span>Float</span>, min : <span>Float</span>, max : <span>Float</span> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">value</a> — Value to be clamped.<br>
+			<a data-fragment="Float" title="Float">min</a> — Minimum value.<br>
+			<a data-fragment="Float" title="Float">max</a> — Maximum value.</p><p>
+
+			Clamps the <a data-fragment="Float" title="Float">value</a> to be between <a data-fragment="Float" title="Float">min</a> and
+			<a data-fragment="Float" title="Float">max</a>.
+		</p></div>
+
+		<h3><a data-fragment="MathUtils.degToRad" target="_parent" title="MathUtils.degToRad" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.degToRad">#</a> .<a data-fragment="MathUtils.degToRad" id="degToRad" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.degToRad">degToRad</a> ( degrees : <span>Float</span> ) : <span>Float</span></h3>
+		<p>Converts degrees to radians.</p>
+
+		<h3>
+			<a data-fragment="MathUtils.euclideanModulo" target="_parent" title="MathUtils.euclideanModulo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.euclideanModulo">#</a> .<a data-fragment="MathUtils.euclideanModulo" id="euclideanModulo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.euclideanModulo">euclideanModulo</a> ( n : <span>Integer</span>, m : <span>Integer</span> ) : <span>Integer</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Integer" title="Integer">n</a>, <a data-fragment="Integer" title="Integer">m</a> - Integers</p><p>
+
+			Computes the Euclidean modulo of <a data-fragment="Integer" title="Integer">m</a> % <a data-fragment="Integer" title="Integer">n</a>, that
+			is:
+			<code translate="no"><span>(</span><span> </span><span>(</span><span> n </span><span>%</span><span> m </span><span>)</span><span> </span><span>+</span><span> m </span><span>)</span><span> </span><span>%</span><span> m</span></code></p></div>
+
+		<h3><a data-fragment="MathUtils.generateUUID" target="_parent" title="MathUtils.generateUUID" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.generateUUID">#</a> .<a data-fragment="MathUtils.generateUUID" id="generateUUID" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.generateUUID">generateUUID</a> ( ) : <a data-fragment="UUID">UUID</a></h3>
+		<p>
+			Generate a
+			<a href="https://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a>
+			(universally unique identifier).
+		</p>
+
+		<h3><a data-fragment="MathUtils.isPowerOfTwo" target="_parent" title="MathUtils.isPowerOfTwo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.isPowerOfTwo">#</a> .<a data-fragment="MathUtils.isPowerOfTwo" id="isPowerOfTwo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.isPowerOfTwo">isPowerOfTwo</a> ( n : <span>Number</span> ) : <span>Boolean</span></h3>
+		<p>Return <code translate="no"><span>true</span></code> if <a data-fragment="Number" title="Number">n</a> is a power of 2.</p>
+
+		<h3>
+			<a data-fragment="MathUtils.inverseLerp" target="_parent" title="MathUtils.inverseLerp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.inverseLerp">#</a> .<a data-fragment="MathUtils.inverseLerp" id="inverseLerp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.inverseLerp">inverseLerp</a> ( x : <span>Float</span>, y : <span>Float</span>, value : <span>Float</span> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> - Start point.<br>
+			<a data-fragment="Float" title="Float">y</a> - End point.<br>
+			<a data-fragment="Float" title="Float">value</a> - A value between start and end.</p><p>
+
+			Returns the percentage in the closed interval <code translate="no"><span>[</span><span>0</span><span>,</span><span> </span><span>1</span><span>]</span></code> of the given value
+			between the start and end point.
+		</p></div>
+
+		<h3>
+			<a data-fragment="MathUtils.lerp" target="_parent" title="MathUtils.lerp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.lerp">#</a> .<a data-fragment="MathUtils.lerp" id="lerp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.lerp">lerp</a> ( x : <span>Float</span>, y : <span>Float</span>, t : <span>Float</span> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> - Start point. <br>
+			<a data-fragment="Float" title="Float">y</a> - End point. <br>
+			<a data-fragment="Float" title="Float">t</a> - interpolation factor in the closed interval <code translate="no"><span>[</span><span>0</span><span>,</span><span> </span><span>1</span><span>]</span></code>.</p><p>
+
+			Returns a value <a href="https://en.wikipedia.org/wiki/Linear_interpolation" target="_blank">linearly interpolated</a> 
+			from two known points based on the given interval -
+			<a data-fragment="Float" title="Float">t</a> = 0 will return <a data-fragment="Float" title="Float">x</a> and <a data-fragment="Float" title="Float">t</a> = 1 will
+			return <a data-fragment="Float" title="Float">y</a>.
+		</p></div>
+
+		<h3>
+			<a data-fragment="MathUtils.damp" target="_parent" title="MathUtils.damp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.damp">#</a> .<a data-fragment="MathUtils.damp" id="damp" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.damp">damp</a> ( x : <span>Float</span>, y : <span>Float</span>, lambda : <span>Float</span>, dt : <span>Float</span> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> - Current point. <br>
+			<a data-fragment="Float" title="Float">y</a> - Target point. <br>
+			<a data-fragment="Float" title="Float">lambda</a> - A higher lambda value will make the movement more
+			sudden, and a lower value will make the movement more gradual. <br>
+			<a data-fragment="Float" title="Float">dt</a> - Delta time in seconds.</p><p>
+
+			Smoothly interpolate a number from <a data-fragment="Float" title="Float">x</a> toward <a data-fragment="Float" title="Float">y</a> in
+			a spring-like manner using the <a data-fragment="Float" title="Float">dt</a> to maintain frame rate
+			independent movement. For details, see
+			<a href="http://www.rorydriscoll.com/2016/03/07/frame-rate-independent-damping-using-lerp/" target="_blank">Frame rate independent damping using lerp</a>.
+		</p></div>
+
+		<h3>
+			<a data-fragment="MathUtils.mapLinear" target="_parent" title="MathUtils.mapLinear" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.mapLinear">#</a> .<a data-fragment="MathUtils.mapLinear" id="mapLinear" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.mapLinear">mapLinear</a> ( x : <span>Float</span>, a1 : <span>Float</span>, a2 : <span>Float</span>, b1 : <span>Float</span>, b2 : <span>Float</span> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> — Value to be mapped.<br>
+			<a data-fragment="Float" title="Float">a1</a> — Minimum value for range A.<br>
+			<a data-fragment="Float" title="Float">a2</a> — Maximum value for range A.<br>
+			<a data-fragment="Float" title="Float">b1</a> — Minimum value for range B.<br>
+			<a data-fragment="Float" title="Float">b2</a> — Maximum value for range B.</p><p>
+
+			Linear mapping of <a data-fragment="Float" title="Float">x</a> from range [<a data-fragment="Float" title="Float">a1</a>, <a data-fragment="Float" title="Float">a2</a>] to range [<a data-fragment="Float" title="Float">b1</a>, <a data-fragment="Float" title="Float">b2</a>].
+		</p></div>
+
+		<h3><a data-fragment="MathUtils.pingpong" target="_parent" title="MathUtils.pingpong" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.pingpong">#</a> .<a data-fragment="MathUtils.pingpong" id="pingpong" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.pingpong">pingpong</a> ( x : <span>Float</span>, length : <span>Float</span> ) : <span>Float</span></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> — The value to pingpong.<br>
+			<a data-fragment="Float" title="Float">length</a> — The positive value the function will pingpong to.
+			Default is <code translate="no"><span>1</span></code>.</p><p>
+
+			Returns a value that alternates between <code translate="no"><span>0</span></code> and length : <span>Float</span>.
+		</p></div>
+
+		<h3><a data-fragment="MathUtils.ceilPowerOfTwo" target="_parent" title="MathUtils.ceilPowerOfTwo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.ceilPowerOfTwo">#</a> .<a data-fragment="MathUtils.ceilPowerOfTwo" id="ceilPowerOfTwo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.ceilPowerOfTwo">ceilPowerOfTwo</a> ( n : <span>Number</span> ) : <span>Integer</span></h3>
+		<p>
+			Returns the smallest power of 2 that is greater than or equal to
+			<a data-fragment="Number" title="Number">n</a>.
+		</p>
+
+		<h3><a data-fragment="MathUtils.floorPowerOfTwo" target="_parent" title="MathUtils.floorPowerOfTwo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.floorPowerOfTwo">#</a> .<a data-fragment="MathUtils.floorPowerOfTwo" id="floorPowerOfTwo" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.floorPowerOfTwo">floorPowerOfTwo</a> ( n : <span>Number</span> ) : <span>Integer</span></h3>
+		<p>
+			Returns the largest power of <code translate="no"><span>2</span></code> that is less than or equal to <a data-fragment="Number" title="Number">n</a>.
+		</p>
+
+		<h3><a data-fragment="MathUtils.radToDeg" target="_parent" title="MathUtils.radToDeg" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.radToDeg">#</a> .<a data-fragment="MathUtils.radToDeg" id="radToDeg" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.radToDeg">radToDeg</a> ( radians : <span>Float</span> ) : <span>Float</span></h3>
+		<p>Converts radians to degrees.</p>
+
+		<h3><a data-fragment="MathUtils.randFloat" target="_parent" title="MathUtils.randFloat" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.randFloat">#</a> .<a data-fragment="MathUtils.randFloat" id="randFloat" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.randFloat">randFloat</a> ( low : <span>Float</span>, high : <span>Float</span> ) : <span>Float</span></h3>
+		<p>Random float in the interval [<a data-fragment="Float" title="Float">low</a>, <a data-fragment="Float" title="Float">high</a>].</p>
+
+		<h3><a data-fragment="MathUtils.randFloatSpread" target="_parent" title="MathUtils.randFloatSpread" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.randFloatSpread">#</a> .<a data-fragment="MathUtils.randFloatSpread" id="randFloatSpread" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.randFloatSpread">randFloatSpread</a> ( range : <span>Float</span> ) : <span>Float</span></h3>
+		<p>
+			Random float in the interval [- <a data-fragment="Float" title="Float">range</a> / 2, <a data-fragment="Float" title="Float">range</a>
+			/ 2].
+		</p>
+
+		<h3>
+			<a data-fragment="MathUtils.randInt" target="_parent" title="MathUtils.randInt" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.randInt">#</a> .<a data-fragment="MathUtils.randInt" id="randInt" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.randInt">randInt</a> ( low : <span>Integer</span>, high : <span>Integer</span> ) : <span>Integer</span>
+		</h3>
+		<p>Random integer in the interval [<a data-fragment="Float" title="Float">low</a>, <a data-fragment="Float" title="Float">high</a>].</p>
+
+		<h3><a data-fragment="MathUtils.seededRandom" target="_parent" title="MathUtils.seededRandom" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.seededRandom">#</a> .<a data-fragment="MathUtils.seededRandom" id="seededRandom" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.seededRandom">seededRandom</a> ( seed : <span>Integer</span> ) : <span>Float</span></h3>
+		<p>
+			Deterministic pseudo-random float in the interval <code translate="no"><span>[</span><span>0</span><span>,</span><span> </span><span>1</span><span>]</span></code>. The integer
+			<a data-fragment="Integer" title="Integer">seed</a> is optional.
+		</p>
+
+		<h3>
+			<a data-fragment="MathUtils.smoothstep" target="_parent" title="MathUtils.smoothstep" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.smoothstep">#</a> .<a data-fragment="MathUtils.smoothstep" id="smoothstep" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.smoothstep">smoothstep</a> ( x : <span>Float</span>, min : <span>Float</span>, max : <span>Float</span> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> - The value to evaluate based on its position between min
+			and max. <br>
+			<a data-fragment="Float" title="Float">min</a> - Any x value below min will be <code translate="no"><span>0</span></code>.<br>
+			<a data-fragment="Float" title="Float">max</a> - Any x value above max will be <code translate="no"><span>1</span></code>.</p><p>
+
+			Returns a value between 0-1 that represents the percentage that x has
+			moved between min and max, but smoothed or slowed down the closer X is to
+			the min and max.</p><p>
+
+			See <a href="http://en.wikipedia.org/wiki/Smoothstep" target="_blank">Smoothstep</a> for details.
+		</p></div>
+
+		<h3>
+			<a data-fragment="MathUtils.smootherstep" target="_parent" title="MathUtils.smootherstep" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.smootherstep">#</a> .<a data-fragment="MathUtils.smootherstep" id="smootherstep" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.smootherstep">smootherstep</a> ( x : <span>Float</span>, min : <span>Float</span>, max : <span>Float</span> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> - The value to evaluate based on its position between min
+			and max. <br>
+			<a data-fragment="Float" title="Float">min</a> - Any x value below min will be <code translate="no"><span>0</span></code>.<br>
+			<a data-fragment="Float" title="Float">max</a> - Any x value above max will be <code translate="no"><span>1</span></code>.</p><p>
+
+			Returns a value between 0-1. A
+			<a href="https://en.wikipedia.org/wiki/Smoothstep#Variations" target="_blank">variation on smoothstep</a> 
+			that has zero 1st and 2nd order derivatives at x=0 and x=1.
+		</p></div>
+
+		<h3>
+			<a data-fragment="MathUtils.setQuaternionFromProperEuler" target="_parent" title="MathUtils.setQuaternionFromProperEuler" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.setQuaternionFromProperEuler">#</a> .<a data-fragment="MathUtils.setQuaternionFromProperEuler" id="setQuaternionFromProperEuler" href="https://threejs.org/docs/index.html#api/en/math/MathUtils.setQuaternionFromProperEuler">setQuaternionFromProperEuler</a> ( q : <a data-fragment="Quaternion" href="https://threejs.org/docs/index.html#api/en/math/Quaternion">Quaternion</a>, a : <span>Float</span>, b : <span>Float</span>, c : <span>Float</span>, order : <span>String</span> ) : <span>undefined</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Quaternion" title="Quaternion" href="https://threejs.org/docs/index.html#api/en/math/Quaternion">q</a> - the quaternion to be set<br>
+			<a data-fragment="Float" title="Float">a</a> - the rotation applied to the first axis, in radians <br>
+			<a data-fragment="Float" title="Float">b</a> - the rotation applied to the second axis, in radians
+			<br>
+			<a data-fragment="Float" title="Float">c</a> - the rotation applied to the third axis, in radians <br>
+			<a data-fragment="String" title="String">order</a> - a string specifying the axes order: 'XYX', 'XZX',
+			'YXY', 'YZY', 'ZXZ', or 'ZYZ'</p><p>
+
+			Sets quaternion <a data-fragment="Quaternion" title="Quaternion" href="https://threejs.org/docs/index.html#api/en/math/Quaternion">q</a> from the
+			<a href="http://en.wikipedia.org/wiki/Euler_angles" target="_blank">intrinsic Proper Euler Angles</a> 
+			defined by angles <a data-fragment="Float" title="Float">a</a>, <a data-fragment="Float" title="Float">b</a>, and <a data-fragment="Float" title="Float">c</a>, 
+			and order <a data-fragment="String" title="String">order</a>.<br>
+
+			Rotations are applied to the axes in the order specified by <a data-fragment="String" title="String">order</a>: 
+			rotation by angle <a data-fragment="Float" title="Float">a</a> is applied first, then by angle
+			<a data-fragment="Float" title="Float">b</a>, then by angle <a data-fragment="Float" title="Float">c</a>. Angles are in radians.
+		</p></div>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/MathUtils.js" target="_blank">src/math/MathUtils.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

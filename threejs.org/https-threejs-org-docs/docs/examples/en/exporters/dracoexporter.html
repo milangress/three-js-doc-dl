@@ -1,0 +1,76 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<div><p>
+			An exporter to compress geometry with the Draco library. </p><p>
+			<a href="https://google.github.io/draco/" target="_blank">Draco</a> is an open source library for compressing and
+			decompressing 3D meshes and point clouds. Compressed geometry can be significantly smaller,
+			at the cost of additional decoding time on the client device.
+		</p></div>
+
+		<p>
+			Standalone Draco files have a <code translate="no"><span>.</span><span>drc</span></code> extension, and contain vertex positions,
+			normals, colors, and other attributes. Draco files <strong>do not</strong> contain materials,
+			textures, animation, or node hierarchies – to use these features, embed Draco geometry
+			inside of a glTF file. A normal glTF file can be converted to a Draco-compressed glTF file
+			using <a href="https://github.com/AnalyticalGraphicsInc/gltf-pipeline" target="_blank">glTF-Pipeline</a>.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			DRACOExporter is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>DRACOExporter</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/exporters/DRACOExporter.js'</span><span>;</span></code></p><h2>Code Example</h2>
+
+		<p><code translate="no"><span>// Instantiate a exporter</span><span>
+</span><span>const</span><span> exporter </span><span>=</span><span> </span><span>new</span><span> </span><span>DRACOExporter</span><span>();</span><span>
+
+</span><span>// Parse the input and generate the DRACO encoded output</span><span>
+</span><span>const</span><span> binaryData </span><span>=</span><span> exporter</span><span>.</span><span>parse</span><span>(</span><span> mesh</span><span>,</span><span> options </span><span>);</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#misc_exporter_draco" target="_blank">misc_exporter_draco</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>DRACOExporter()</h3>
+		<p>
+		Creates a new DRACOExporter.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="DRACOExporter.parse" target="_parent" title="DRACOExporter.parse" href="https://threejs.org/docs/index.html#examples/en/exporters/DRACOExporter.parse">#</a> .<a data-fragment="DRACOExporter.parse" id="parse" href="https://threejs.org/docs/index.html#examples/en/exporters/DRACOExporter.parse">parse</a> ( object : <a data-fragment="Mesh" href="https://threejs.org/docs/index.html#api/en/objects/Mesh">Mesh</a> | object : <a data-fragment="Points" href="https://threejs.org/docs/index.html#api/en/objects/Points">Points</a>, options : <span>Object</span> ) : <a data-fragment="Int8Array">Int8Array</a></h3>
+
+		<p>
+		<a data-fragment="Mesh" title="Mesh" href="https://threejs.org/docs/index.html#api/en/objects/Mesh">object</a> | <a data-fragment="Points" title="Points" href="https://threejs.org/docs/index.html#api/en/objects/Points">object</a> — Mesh or Points to encode.<br>
+		<a data-fragment="Options" title="Options">options</a> — Optional export options<br>
+		</p><ul>
+			<li>decodeSpeed - int. Indicates how to tune the encoder regarding decode speed (0 gives better speed but worst quality). Default is 5</li>
+			<li>encodeSpeed - int. Indicates how to tune the encoder parameters (0 gives better speed but worst quality). Default is 5.</li>
+			<li>encoderMethod - int. Either sequential (very little compression) or Edgebreaker. Edgebreaker traverses the triangles of the mesh in a deterministic, spiral-like way which provides most of the benefits of this data format. Default is DRACOExporter.MESH_EDGEBREAKER_ENCODING.</li>
+			<li>quantization - Array of int. Indicates the presision of each type of data stored in the draco file in the order (POSITION, NORMAL, COLOR, TEX_COORD, GENERIC). Default is [ 16, 8, 8, 8, 8 ]</li>
+			<li>exportUvs - bool. Default is true.</li>
+			<li>exportNormals - bool. Default is true.</li>
+			<li>exportColor - bool. Default is false.</li>
+		</ul>
+		
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/exporters/DRACOExporter.js" target="_blank">examples/jsm/exporters/DRACOExporter.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

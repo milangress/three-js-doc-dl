@@ -1,0 +1,141 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			An abstract base class for creating a Curve object that contains methods
+			for interpolation. For an array of Curves see <a data-fragment="CurvePath" title="CurvePath" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath">CurvePath</a>.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Curve()</h3>
+		<p>This constructor creates a new Curve.</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="Curve.arcLengthDivisions" target="_parent" title="Curve.arcLengthDivisions" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.arcLengthDivisions">#</a> .<a data-fragment="Curve.arcLengthDivisions" id="arcLengthDivisions" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.arcLengthDivisions">arcLengthDivisions</a>  : <span>Integer</span></h3>
+		<p>
+			This value determines the amount of divisions when calculating the
+			cumulative segment lengths of a curve via <a data-fragment="Curve.getLengths" title="Curve.getLengths" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getLengths">.getLengths</a>. To ensure
+			precision when using methods like <a data-fragment="Curve.getSpacedPoints" title="Curve.getSpacedPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getSpacedPoints">.getSpacedPoints</a>, it is
+			recommended to increase <a data-fragment="Curve.arcLengthDivisions" title="Curve.arcLengthDivisions" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.arcLengthDivisions">.arcLengthDivisions</a> if the curve is very
+			large. Default is <code translate="no"><span>200</span></code>.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="Curve.getPoint" target="_parent" title="Curve.getPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPoint">#</a> .<a data-fragment="Curve.getPoint" id="getPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPoint">getPoint</a> ( t : <span>Float</span>, optionalTarget : <a data-fragment="Vector">Vector</a> ) : <a data-fragment="Vector">Vector</a></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">t</a> - A position on the curve. Must be in the range [ 0, 1 ].
+			<br>
+			<a data-fragment="Vector" title="Vector">optionalTarget</a> — (optional) If specified, the result will be
+			copied into this Vector, otherwise a new Vector will be created.
+			</p><p>
+
+			Returns a vector for a given position on the curve.
+		</p></div>
+
+		<h3><a data-fragment="Curve.getPointAt" target="_parent" title="Curve.getPointAt" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPointAt">#</a> .<a data-fragment="Curve.getPointAt" id="getPointAt" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPointAt">getPointAt</a> ( u : <span>Float</span>, optionalTarget : <a data-fragment="Vector">Vector</a> ) : <a data-fragment="Vector">Vector</a></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">u</a> - A position on the curve according to the arc length. Must
+			be in the range [ 0, 1 ]. <br>
+			<a data-fragment="Vector" title="Vector">optionalTarget</a> — (optional) If specified, the result will be
+			copied into this Vector, otherwise a new Vector will be created.
+			</p><p>
+
+			Returns a vector for a given position on the curve according to the arc
+			length.
+		</p></div>
+
+		<h3><a data-fragment="Curve.getPoints" target="_parent" title="Curve.getPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPoints">#</a> .<a data-fragment="Curve.getPoints" id="getPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPoints">getPoints</a> ( divisions : <span>Integer</span> ) : <span>Array</span></h3>
+		<div><p>
+			divisions -- number of pieces to divide the curve into. Default is <code translate="no"><span>5</span></code>.</p><p>
+
+			Returns a set of divisions + 1 points using getPoint( t ).
+		</p></div>
+
+		<h3><a data-fragment="Curve.getSpacedPoints" target="_parent" title="Curve.getSpacedPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getSpacedPoints">#</a> .<a data-fragment="Curve.getSpacedPoints" id="getSpacedPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getSpacedPoints">getSpacedPoints</a> ( divisions : <span>Integer</span> ) : <span>Array</span></h3>
+		<div><p>
+			divisions -- number of pieces to divide the curve into. Default is <code translate="no"><span>5</span></code>.</p><p>
+
+			Returns a set of divisions + 1 equi-spaced points using getPointAt( u ).
+		</p></div>
+
+		<h3><a data-fragment="Curve.getLength" target="_parent" title="Curve.getLength" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getLength">#</a> .<a data-fragment="Curve.getLength" id="getLength" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getLength">getLength</a> () : <span>Float</span></h3>
+		<p>Get total curve arc length.</p>
+
+		<h3><a data-fragment="Curve.getLengths" target="_parent" title="Curve.getLengths" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getLengths">#</a> .<a data-fragment="Curve.getLengths" id="getLengths" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getLengths">getLengths</a> ( divisions : <span>Integer</span> ) : <span>Array</span></h3>
+		<p>Get list of cumulative segment lengths.</p>
+
+		<h3><a data-fragment="Curve.updateArcLengths" target="_parent" title="Curve.updateArcLengths" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.updateArcLengths">#</a> .<a data-fragment="Curve.updateArcLengths" id="updateArcLengths" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.updateArcLengths">updateArcLengths</a> () : <span>undefined</span></h3>
+		<p>
+			Update the cumulative segment distance cache. The method must be called
+			every time curve parameters are changed. If an updated curve is part of a
+			composed curve like <a data-fragment="CurvePath" title="CurvePath" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath">CurvePath</a>, <a data-fragment="Curve.updateArcLengths" title="Curve.updateArcLengths" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.updateArcLengths">.updateArcLengths</a>() must be
+			called on the composed curve, too.
+		</p>
+
+		<h3><a data-fragment="Curve.getUtoTmapping" target="_parent" title="Curve.getUtoTmapping" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getUtoTmapping">#</a> .<a data-fragment="Curve.getUtoTmapping" id="getUtoTmapping" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getUtoTmapping">getUtoTmapping</a> ( u : <span>Float</span>, distance : <span>Float</span> ) : <span>Float</span></h3>
+		<p>
+			Given u in the range ( 0 .. 1 ), returns <a data-fragment="Float" title="Float">t</a> also in the range
+			( 0 .. 1 ). u and t can then be used to give you points which are
+			equidistant from the ends of the curve, using <a data-fragment="Curve.getPoint" title="Curve.getPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPoint">.getPoint</a>.
+		</p>
+
+		<h3><a data-fragment="Curve.getTangent" target="_parent" title="Curve.getTangent" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getTangent">#</a> .<a data-fragment="Curve.getTangent" id="getTangent" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getTangent">getTangent</a> ( t : <span>Float</span>, optionalTarget : <a data-fragment="Vector">Vector</a> ) : <a data-fragment="Vector">Vector</a></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">t</a> - A position on the curve. Must be in the range [ 0, 1 ].
+			<br>
+			<a data-fragment="Vector" title="Vector">optionalTarget</a> — (optional) If specified, the result will be
+			copied into this Vector, otherwise a new Vector will be created.
+			</p><p>
+
+			Returns a unit vector tangent at t. If the derived curve does not
+			implement its tangent derivation, two points a small delta apart will be
+			used to find its gradient which seems to give a reasonable approximation.
+		</p></div>
+
+		<h3><a data-fragment="Curve.getTangentAt" target="_parent" title="Curve.getTangentAt" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getTangentAt">#</a> .<a data-fragment="Curve.getTangentAt" id="getTangentAt" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getTangentAt">getTangentAt</a> ( u : <span>Float</span>, optionalTarget : <a data-fragment="Vector">Vector</a> ) : <a data-fragment="Vector">Vector</a></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">u</a> - A position on the curve according to the arc length. Must
+			be in the range [ 0, 1 ]. <br>
+			<a data-fragment="Vector" title="Vector">optionalTarget</a> — (optional) If specified, the result will be
+			copied into this Vector, otherwise a new Vector will be created.
+			</p><p>
+
+			Returns tangent at a point which is equidistant to the ends of the curve
+			from the point given in <a data-fragment="Curve.getTangent" title="Curve.getTangent" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getTangent">.getTangent</a>.
+		</p></div>
+
+		<h3><a data-fragment="Curve.computeFrenetFrames" target="_parent" title="Curve.computeFrenetFrames" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.computeFrenetFrames">#</a> .<a data-fragment="Curve.computeFrenetFrames" id="computeFrenetFrames" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.computeFrenetFrames">computeFrenetFrames</a> ( segments : <span>Integer</span>, closed : <span>Boolean</span> ) : <span>Object</span></h3>
+		<p>
+			Generates the Frenet Frames. Requires a curve definition in 3D space. Used
+			in geometries like <a data-fragment="TubeGeometry" title="TubeGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/TubeGeometry">TubeGeometry</a> or <a data-fragment="ExtrudeGeometry" title="ExtrudeGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry">ExtrudeGeometry</a>.
+		</p>
+
+		<h3><a data-fragment="Curve.clone" target="_parent" title="Curve.clone" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.clone">#</a> .<a data-fragment="Curve.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.clone">clone</a> () : <a data-fragment="Curve" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve">Curve</a></h3>
+		<p>Creates a clone of this instance.</p>
+
+		<h3><a data-fragment="Curve.copy" target="_parent" title="Curve.copy" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.copy">#</a> .<a data-fragment="Curve.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.copy">copy</a> ( source : <a data-fragment="Curve" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve">Curve</a> ) : <span>this</span></h3>
+		<p>Copies another Curve object to this instance.</p>
+
+		<h3><a data-fragment="Curve.toJSON" target="_parent" title="Curve.toJSON" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.toJSON">#</a> .<a data-fragment="Curve.toJSON" id="toJSON" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.toJSON">toJSON</a> () : <span>Object</span></h3>
+		<p>Returns a JSON object representation of this instance.</p>
+
+		<h3><a data-fragment="Curve.fromJSON" target="_parent" title="Curve.fromJSON" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.fromJSON">#</a> .<a data-fragment="Curve.fromJSON" id="fromJSON" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.fromJSON">fromJSON</a> ( json : <span>Object</span> ) : <span>this</span></h3>
+		<p>Copies the data from the given JSON object to this instance.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/extras/core/Curve.js" target="_blank">src/extras/core/Curve.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

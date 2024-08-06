@@ -1,0 +1,98 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> →
+
+		</p>
+
+		<p>An 3D arrow object for visualizing directions.</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> dir </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Vector3</span><span>(</span><span> </span><span>1</span><span>,</span><span> </span><span>2</span><span>,</span><span> </span><span>0</span><span> </span><span>);</span><span>
+
+</span><span>//normalize the direction vector (convert to vector of length 1)</span><span>
+dir</span><span>.</span><span>normalize</span><span>();</span><span>
+
+</span><span>const</span><span> origin </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Vector3</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span> </span><span>);</span><span>
+</span><span>const</span><span> length </span><span>=</span><span> </span><span>1</span><span>;</span><span>
+</span><span>const</span><span> hex </span><span>=</span><span> </span><span>0xffff00</span><span>;</span><span>
+
+</span><span>const</span><span> arrowHelper </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>ArrowHelper</span><span>(</span><span> dir</span><span>,</span><span> origin</span><span>,</span><span> length</span><span>,</span><span> hex </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> arrowHelper </span><span>);</span></code></p><h2>Examples</h2>
+
+		<p><a href="https://threejs.org/examples/#webgl_shadowmesh" target="_blank">WebGL / shadowmesh</a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			ArrowHelper(dir : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, origin : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, length : <span>Number</span>,
+			hex : <span>Number</span>, headLength : <span>Number</span>, headWidth : <span>Number</span> )
+		</h3>
+		<p>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">dir</a> -- direction from origin. Must be a unit vector. <br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">origin</a> -- Point at which the arrow starts.<br>
+			<a data-fragment="Number" title="Number">length</a> -- length of the arrow. Default is <code translate="no"><span>1</span></code>.<br>
+			<a data-fragment="Number" title="Number">hex</a> -- hexadecimal value to define color. Default is
+			0xffff00.<br>
+			<a data-fragment="Number" title="Number">headLength</a> -- The length of the head of the arrow. Default
+			is <code translate="no"><span>0.2</span></code> * length.<br>
+			<a data-fragment="Number" title="Number">headWidth</a> -- The width of the head of the arrow. Default is
+			<code translate="no"><span>0.2</span></code> * headLength.<br>
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a data-fragment="ArrowHelper.line" target="_parent" title="ArrowHelper.line" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.line">#</a> .<a data-fragment="ArrowHelper.line" id="line" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.line">line</a>  : <a data-fragment="Line" href="https://threejs.org/docs/index.html#api/en/objects/Line">Line</a></h3>
+		<p>Contains the line part of the arrowHelper.</p>
+
+		<h3><a data-fragment="ArrowHelper.cone" target="_parent" title="ArrowHelper.cone" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.cone">#</a> .<a data-fragment="ArrowHelper.cone" id="cone" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.cone">cone</a>  : <a data-fragment="Mesh" href="https://threejs.org/docs/index.html#api/en/objects/Mesh">Mesh</a></h3>
+		<p>Contains the cone part of the arrowHelper.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h3><a data-fragment="ArrowHelper.setColor" target="_parent" title="ArrowHelper.setColor" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.setColor">#</a> .<a data-fragment="ArrowHelper.setColor" id="setColor" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.setColor">setColor</a> (color : <a data-fragment="Color" href="https://threejs.org/docs/index.html#api/en/math/Color">Color</a>) : <span>undefined</span></h3>
+		<div><p>
+			color -- The desired color.</p><p>
+
+			Sets the color of the arrowHelper.
+		</p></div>
+
+		<h3>
+			<a data-fragment="ArrowHelper.setLength" target="_parent" title="ArrowHelper.setLength" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.setLength">#</a> .<a data-fragment="ArrowHelper.setLength" id="setLength" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.setLength">setLength</a> (length : <span>Number</span>, headLength : <span>Number</span>, headWidth : <span>Number</span>) : <span>undefined</span>
+		</h3>
+		<div><p>
+			length -- The desired length.<br>
+			headLength -- The length of the head of the arrow.<br>
+			headWidth -- The width of the head of the arrow.</p><p>
+
+			Sets the length of the arrowhelper.
+		</p></div>
+
+		<h3><a data-fragment="ArrowHelper.setDirection" target="_parent" title="ArrowHelper.setDirection" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.setDirection">#</a> .<a data-fragment="ArrowHelper.setDirection" id="setDirection" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.setDirection">setDirection</a> (dir : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>) : <span>undefined</span></h3>
+		<div><p>
+			dir -- The desired direction. Must be a unit vector.</p><p>
+
+			Sets the direction of the arrowhelper.
+		</p></div>
+
+		<h3><a data-fragment="ArrowHelper.dispose" target="_parent" title="ArrowHelper.dispose" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.dispose">#</a> .<a data-fragment="ArrowHelper.dispose" id="dispose" href="https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/helpers/ArrowHelper.js" target="_blank">src/helpers/ArrowHelper.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

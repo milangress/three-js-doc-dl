@@ -1,0 +1,66 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> → <a data-fragment="ShaderMaterial" title="ShaderMaterial" href="https://threejs.org/docs/index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a> →
+
+		</p><h2>RawShaderMaterial</h2>
+
+		<p>
+			This class works just like <a data-fragment="ShaderMaterial" title="ShaderMaterial" href="https://threejs.org/docs/index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a>, except that definitions
+			of built-in uniforms and attributes are not automatically prepended to the
+			GLSL shader code.
+		</p>
+
+		<h2>Code Example</h2>
+		<p><code translate="no"><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>RawShaderMaterial</span><span>(</span><span> </span><span>{</span><span>
+
+	uniforms</span><span>:</span><span> </span><span>{</span><span>
+		time</span><span>:</span><span> </span><span>{</span><span> value</span><span>:</span><span> </span><span>1.0</span><span> </span><span>}</span><span>
+	</span><span>},</span><span>
+	vertexShader</span><span>:</span><span> document</span><span>.</span><span>getElementById</span><span>(</span><span> </span><span>'vertexShader'</span><span> </span><span>).</span><span>textContent</span><span>,</span><span>
+	fragmentShader</span><span>:</span><span> document</span><span>.</span><span>getElementById</span><span>(</span><span> </span><span>'fragmentShader'</span><span> </span><span>).</span><span>textContent</span><span>,</span><span>
+
+</span><span>}</span><span> </span><span>);</span></code></p><h2>Examples</h2>
+		<p>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_rawshader" target="_blank">WebGL / buffergeometry / rawshader</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_instancing_billboards" target="_blank">WebGL / buffergeometry / instancing / billboards</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_instancing" target="_blank">WebGL / buffergeometry / instancing</a><br>
+			<a href="https://threejs.org/examples/#webgl_raymarching_reflect" target="_blank">WebGL / raymarching / reflect</a><br>
+			<a href="https://threejs.org/examples/#webgl_volume_cloud" target="_blank">WebGL / volume / cloud</a><br>
+			<a href="https://threejs.org/examples/#webgl_volume_instancing" target="_blank">WebGL / volume / instancing</a><br>
+			<a href="https://threejs.org/examples/#webgl_volume_perlin" target="_blank">WebGL / volume / perlin</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>RawShaderMaterial( parameters : <span>Object</span> )</h3>
+		<div>
+			<p><a data-fragment="Object" title="Object">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> and
+			<a data-fragment="ShaderMaterial" title="ShaderMaterial" href="https://threejs.org/docs/index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a>) can be passed in here.</p></div>
+
+		<h2>Properties</h2>
+		<p>
+			See the base <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> and <a data-fragment="ShaderMaterial" title="ShaderMaterial" href="https://threejs.org/docs/index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a> classes for common
+			properties.
+		</p>
+
+		<h2>Methods</h2>
+		<p>
+			See the base <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> and <a data-fragment="ShaderMaterial" title="ShaderMaterial" href="https://threejs.org/docs/index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a> classes for common
+			methods.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/materials/RawShaderMaterial.js" target="_blank">src/materials/RawShaderMaterial.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

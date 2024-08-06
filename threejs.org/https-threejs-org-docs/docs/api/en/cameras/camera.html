@@ -1,0 +1,78 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> →
+
+		</p>
+
+		<p>
+			Abstract base class for cameras. This class should always be inherited
+			when you build a new camera.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Camera()</h3>
+		<p>
+			Creates a new Camera. Note that this class is not intended to be called
+			directly; you probably want a <a data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a> or
+			<a data-fragment="OrthographicCamera" title="OrthographicCamera" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera">OrthographicCamera</a> instead.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a data-fragment="Camera.isCamera" target="_parent" title="Camera.isCamera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.isCamera">#</a> .<a data-fragment="Camera.isCamera" id="isCamera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.isCamera">isCamera</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Camera.</p>
+
+		<h3><a data-fragment="Camera.layers" target="_parent" title="Camera.layers" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.layers">#</a> .<a data-fragment="Camera.layers" id="layers" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.layers">layers</a>  : <a data-fragment="Layers" href="https://threejs.org/docs/index.html#api/en/core/Layers">Layers</a></h3>
+		<div><p>
+			The <a data-fragment="Layers" title="Layers" href="https://threejs.org/docs/index.html#api/en/core/Layers">layers</a> that the camera is a member of. This is an
+			inherited property from <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a>.</p><p>
+
+			Objects must share at least one layer with the camera to be seen when the
+			camera's viewpoint is rendered.
+		</p></div>
+
+		<h3><a data-fragment="Camera.matrixWorldInverse" target="_parent" title="Camera.matrixWorldInverse" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.matrixWorldInverse">#</a> .<a data-fragment="Camera.matrixWorldInverse" id="matrixWorldInverse" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.matrixWorldInverse">matrixWorldInverse</a>  : <a data-fragment="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">Matrix4</a></h3>
+		<p>
+			This is the inverse of matrixWorld. MatrixWorld contains the Matrix which
+			has the world transform of the Camera.
+		</p>
+
+		<h3><a data-fragment="Camera.projectionMatrix" target="_parent" title="Camera.projectionMatrix" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.projectionMatrix">#</a> .<a data-fragment="Camera.projectionMatrix" id="projectionMatrix" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.projectionMatrix">projectionMatrix</a>  : <a data-fragment="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">Matrix4</a></h3>
+		<p>This is the matrix which contains the projection.</p>
+
+		<h3><a data-fragment="Camera.projectionMatrixInverse" target="_parent" title="Camera.projectionMatrixInverse" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.projectionMatrixInverse">#</a> .<a data-fragment="Camera.projectionMatrixInverse" id="projectionMatrixInverse" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.projectionMatrixInverse">projectionMatrixInverse</a>  : <a data-fragment="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">Matrix4</a></h3>
+		<p>The inverse of projectionMatrix.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h3><a data-fragment="Camera.clone" target="_parent" title="Camera.clone" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.clone">#</a> .<a data-fragment="Camera.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.clone">clone</a> ( ) : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a></h3>
+		<p>Return a new camera with the same properties as this one.</p>
+
+		<h3><a data-fragment="Camera.copy" target="_parent" title="Camera.copy" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.copy">#</a> .<a data-fragment="Camera.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.copy">copy</a> ( source : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a>, recursive : <span>Boolean</span> ) : <span>this</span></h3>
+		<p>Copy the properties from the source camera into this one.</p>
+
+		<h3><a data-fragment="Camera.getWorldDirection" target="_parent" title="Camera.getWorldDirection" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.getWorldDirection">#</a> .<a data-fragment="Camera.getWorldDirection" id="getWorldDirection" href="https://threejs.org/docs/index.html#api/en/cameras/Camera.getWorldDirection">getWorldDirection</a> ( target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a></h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.
+			</p><p>
+
+			Returns a <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> representing the world space direction in which
+			the camera is looking. (Note: A camera looks down its local, negative
+			z-axis).</p></div>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/cameras/Camera.js" target="_blank">src/cameras/Camera.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

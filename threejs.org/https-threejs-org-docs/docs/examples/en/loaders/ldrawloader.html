@@ -1,0 +1,218 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> →
+
+		</p>
+
+		
+
+		<p>An LDraw asset (a text file usually with extension .ldr, .dat or .txt) can describe
+		just a single construction piece, or an entire model.
+		In the case of a model the LDraw file can reference other LDraw files, which are loaded
+		from a library path set with <a data-fragment="Function" title="Function">setPartsLibraryPath</a>. You usually download
+		the LDraw official parts library, extract to a folder and point setPartsLibraryPath to it.
+		</p>
+
+		<p>Library parts will be loaded by trial and error in subfolders 'parts', 'p' and 'models'.
+		These file accesses are not optimal for web environment, so a script tool has been made
+		to pack an LDraw file with all its dependencies into a single file, which loads much faster.
+		See section 'Packing LDraw models'. The LDrawLoader example loads several packed files.
+		The official parts library is not included due to its large size.</p>
+
+		<h2>Import</h2>
+
+		<p>
+			LDrawLoader is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>LDrawLoader</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/loaders/LDrawLoader.js'</span><span>;</span></code></p><h2>Extensions</h2>
+
+		<p>
+			LDrawLoader supports the following extensions:
+		</p>
+
+		<ul>
+			<li>!COLOUR: Color and surface finish declarations.</li>
+			<li>BFC: Back Face Culling specification.</li>
+			<li>!CATEGORY: Model/part category declarations.</li>
+			<li>!KEYWORDS: Model/part keywords declarations.</li>
+		</ul>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>// Instantiate a loader</span><span>
+</span><span>const</span><span> loader </span><span>=</span><span> </span><span>new</span><span> </span><span>LDrawLoader</span><span>();</span><span>
+
+</span><span>// Optionally set library parts path</span><span>
+</span><span>// loader.setPartsLibraryPath( path to library );</span><span>
+
+</span><span>// Load a LDraw resource</span><span>
+loader</span><span>.</span><span>load</span><span>(</span><span>
+	</span><span>// resource URL</span><span>
+	</span><span>'models/car.ldr_Packed.mpd'</span><span>,</span><span>
+	</span><span>// called when the resource is loaded</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> </span><span>group</span><span> </span><span>)</span><span> </span><span>{</span><span>
+
+		</span><span>// Optionally, use LDrawUtils.mergeObject() from</span><span>
+		</span><span>// 'examples/jsm/utils/LDrawUtils.js' to merge all</span><span>
+		</span><span>// geometries by material (it gives better runtime</span><span>
+		</span><span>// performance, but building steps are lost)</span><span>
+		</span><span>// group = LDrawUtils.mergeObject( group );</span><span>
+
+		scene</span><span>.</span><span>add</span><span>(</span><span> </span><span>group</span><span> </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	</span><span>// called while loading is progressing</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> xhr </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>(</span><span> xhr</span><span>.</span><span>loaded </span><span>/</span><span> xhr</span><span>.</span><span>total </span><span>*</span><span> </span><span>100</span><span> </span><span>)</span><span> </span><span>+</span><span> </span><span>'% loaded'</span><span> </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	</span><span>// called when loading has errors</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> error </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>'An error happened'</span><span> </span><span>);</span><span>
+
+	</span><span>}</span><span>
+</span><span>);</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#webgl_loader_ldraw" target="_blank">webgl_loader_ldraw</a>
+		</p>
+
+		<h2>Packing LDraw models</h2>
+
+		<p>To pack a model with all its referenced files, download the
+		<a href="https://www.ldraw.org/parts/latest-parts.html" target="_blank">Official LDraw parts library</a>
+		and use the following Node script:
+		<a href="https://github.com/mrdoob/three.js/blob/master/utils/packLDrawModel.js" target="_blank">utils/packLDrawModel.js</a>
+		It contains instructions on how to setup the files and execute it.</p>
+
+		<h2>Metadata in .userData</h2>
+
+		<p>LDrawLoader returns a <a data-fragment="Group" title="Group" href="https://threejs.org/docs/index.html#api/en/objects/Group">Group</a> object which contains an object hierarchy. Depending of each subobject
+		type, its .userData member will contain the following members: <br>
+		In a <a data-fragment="Group" title="Group" href="https://threejs.org/docs/index.html#api/en/objects/Group">Group</a>, the userData member will contain: <br>
+		</p><ul>
+			<li>.numBuildingSteps: Only in the root <a data-fragment="Group" title="Group" href="https://threejs.org/docs/index.html#api/en/objects/Group">Group</a>, Indicates total number of building steps in
+			the model. These can be used to set visibility of objects to show different building steps, which is
+			done in the example.</li>
+			<li>.buildingStep: Indicates the building index of this step.</li>
+			<li>.category: Contains, if not null, the <a data-fragment="String" title="String">String</a> category for this piece or model.</li>
+			<li>.keywords: Contains, if not null, an array of <a data-fragment="String" title="String">String</a> keywords for this piece or model.</li>
+		</ul>
+		
+		<p>In a <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a>, the userData member will contain:
+		</p><ul>
+			<li>.code: Indicates the LDraw code for this material.</li>
+			<li>.edgeMaterial: Only in a <a data-fragment="Mesh" title="Mesh" href="https://threejs.org/docs/index.html#api/en/objects/Mesh">Mesh</a> material, indicates the <a data-fragment="LineBasicMaterial" title="LineBasicMaterial" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial">LineBasicMaterial</a> belonging to edges
+			of the same color code (in the LDraw format, each surface material is also related to an edge material)</li>
+			<li>.conditionalEdgeMaterial: Only in a <a data-fragment="LineSegments" title="LineSegments" href="https://threejs.org/docs/index.html#api/en/objects/LineSegments">LineSegments</a> material, indicates the <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> belonging
+			to conditional edges of the same color code.</li>
+		</ul>
+		
+
+		<br>
+		<hr>
+
+		<h2>Constructor</h2>
+
+		<h3>LDrawLoader( manager : <a data-fragment="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		<p>
+		<a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">manager</a> — The <a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">loadingManager</a> for the loader to use. Default is <a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">THREE.DefaultLoadingManager</a>.
+		</p>
+		<p>
+		Creates a new LDrawLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3><a data-fragment="LDrawLoader.load" target="_parent" title="LDrawLoader.load" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.load">#</a> .<a data-fragment="LDrawLoader.load" id="load" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.load">load</a> ( url : <span>String</span>, onLoad : <a data-fragment="Function">Function</a>, onProgress : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a> ) : <span>undefined</span></h3>
+		<p>
+		<a data-fragment="String" title="String">url</a> — A string containing the path/URL of the LDraw file.<br>
+		<a data-fragment="Function" title="Function">onLoad</a> — A function to be called after the loading is successfully completed. The function receives the loaded JSON response returned from <a data-fragment="Function" title="Function">parse</a>.<br>
+		<a data-fragment="Function" title="Function">onProgress</a> — (optional) A function to be called while the loading is in progress. The argument will be the XMLHttpRequest instance, that contains .<a data-fragment="Integer" title="Integer">total</a> and .<a data-fragment="Integer" title="Integer">loaded</a> bytes. If the server does not set the Content-Length header; .<a data-fragment="Integer" title="Integer">total</a> will be 0.<br>
+		<a data-fragment="Function" title="Function">onError</a> — (optional) A function to be called if an error occurs during loading. The function receives error as an argument.<br>
+		</p>
+		<p>
+		Begin loading from url and call the callback function with the parsed response content.
+		</p>
+
+		<h3><a data-fragment="LDrawLoader.setPartsLibraryPath" target="_parent" title="LDrawLoader.setPartsLibraryPath" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.setPartsLibraryPath">#</a> .<a data-fragment="LDrawLoader.setPartsLibraryPath" id="setPartsLibraryPath" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.setPartsLibraryPath">setPartsLibraryPath</a> ( path : <span>String</span> ) : <span>this</span></h3>
+		<p>
+		<a data-fragment="String" title="String">path</a> —  Path to library parts files to load referenced parts from. This is different from <a data-fragment="Loader.setPath" title="Loader.setPath" href="https://threejs.org/docs/index.html#api/en/loaders/Loader.setPath">Loader.setPath</a>, which indicates the path to load the main asset from.<br>
+		</p>
+		<p>
+		This method must be called prior to <a data-fragment="LDrawLoader.load" title="LDrawLoader.load" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.load">.load</a> unless the model to load does not reference library parts (usually it will be a model with all its parts packed in a single file)
+		</p>
+
+		<h3><a data-fragment="LDrawLoader.setFileMap" target="_parent" title="LDrawLoader.setFileMap" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.setFileMap">#</a> .<a data-fragment="LDrawLoader.setFileMap" id="setFileMap" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.setFileMap">setFileMap</a> ( fileMap : <a data-fragment="Map">Map</a> ) : <span>this</span></h3>
+		<p>
+		<a data-fragment="Map" title="Map">map</a> — Set a map from <a data-fragment="String" title="String">String</a> to <a data-fragment="String" title="String">String</a> which maps referenced library filenames to new filenames. If a fileMap is not specified (the default), library parts will be accessed by trial and error in subfolders 'parts', 'p' and 'models'.
+		</p>
+
+		<h3><a data-fragment="LDrawLoader.parse" target="_parent" title="LDrawLoader.parse" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.parse">#</a> .<a data-fragment="LDrawLoader.parse" id="parse" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.parse">parse</a> ( text : <span>String</span>, path : <span>String</span>, onLoad : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a> ) : <span>undefined</span></h3>
+		<p>
+		<a data-fragment="String" title="String">text</a> — LDraw asset to parse, as string.<br>
+		<a data-fragment="String" title="String">path</a> — The base path from which to find other referenced LDraw asset files.<br>
+		<a data-fragment="Function" title="Function">onLoad</a> — A function to be called when parse completes.<br>
+		</p>
+		<p>
+		Parse a LDraw file contents as a String and fire <a data-fragment="Function" title="Function">onLoad</a> callback when complete. The argument to <a data-fragment="Function" title="Function">onLoad</a> will be an <a data-fragment="Group" title="Group" href="https://threejs.org/docs/index.html#api/en/objects/Group">Group</a> that contains hierarchy of <a data-fragment="Group" title="Group" href="https://threejs.org/docs/index.html#api/en/objects/Group">Group</a>, <a data-fragment="Mesh" title="Mesh" href="https://threejs.org/docs/index.html#api/en/objects/Mesh">Mesh</a> and <a data-fragment="LineSegments" title="LineSegments" href="https://threejs.org/docs/index.html#api/en/objects/LineSegments">LineSegments</a> (with other part data in .userData fields).
+		</p>
+
+		<h3><a data-fragment="LDrawLoader.getMaterial" target="_parent" title="LDrawLoader.getMaterial" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.getMaterial">#</a> .<a data-fragment="LDrawLoader.getMaterial" id="getMaterial" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.getMaterial">getMaterial</a> ( colourCode : <span>String</span> ) : <a data-fragment="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a></h3>
+		<p>
+		<a data-fragment="String" title="String">colourCode</a> — Color code to get the associated <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a>.
+		</p>
+
+		<h3><a data-fragment="LDrawLoader.getMainMaterial" target="_parent" title="LDrawLoader.getMainMaterial" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.getMainMaterial">#</a> .<a data-fragment="LDrawLoader.getMainMaterial" id="getMainMaterial" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.getMainMaterial">getMainMaterial</a> () : <span>String</span></h3>
+		<p>
+		Returns the <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> for the main LDraw color.
+		</p>
+
+		<p>For an already loaded LDraw asset, returns the <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> associated with the main color code.
+		This method can be useful to modify the main material of a model or part that exposes it.
+		</p>
+
+		<p>
+		The main color code is the standard way to color an LDraw part. It is '16' for triangles and '24' for edges. Usually
+		a complete model will not expose the main color (that is, no part uses the code '16' at the top level, because they
+		are assigned other specific colors) An LDraw part file on the other hand will expose the code '16' to be colored, and
+		can have additional fixed colors.
+		</p>
+
+		<h3><a data-fragment="LDrawLoader.getMainEdgeMaterial" target="_parent" title="LDrawLoader.getMainEdgeMaterial" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.getMainEdgeMaterial">#</a> .<a data-fragment="LDrawLoader.getMainEdgeMaterial" id="getMainEdgeMaterial" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.getMainEdgeMaterial">getMainEdgeMaterial</a> () : <span>String</span></h3>
+		<p>
+		Returns the <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> for the edges main LDraw color.
+		</p>
+
+		<h3><a data-fragment="LDrawLoader.preloadMaterials" target="_parent" title="LDrawLoader.preloadMaterials" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.preloadMaterials">#</a> .<a data-fragment="LDrawLoader.preloadMaterials" id="preloadMaterials" href="https://threejs.org/docs/index.html#examples/en/loaders/LDrawLoader.preloadMaterials">preloadMaterials</a> ( path : <span>String</span> ) : <a data-fragment="void">void</a></h3>
+		<p>
+		<a data-fragment="String" title="String">path</a> — Path of the LDraw materials asset.
+		</p>
+
+		<p>This async method preloads materials from a single LDraw file. In the official parts library there is a special
+		file which is loaded always the first (LDConfig.ldr) and contains all the standard color codes. This method is
+		intended to be used with not packed files, for example in an editor where materials are preloaded and parts are
+		loaded on demand.</p>
+
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/loaders/LDrawLoader.js" target="_blank">examples/jsm/loaders/LDrawLoader.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

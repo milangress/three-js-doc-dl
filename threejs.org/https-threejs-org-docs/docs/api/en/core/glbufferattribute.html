@@ -1,0 +1,121 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<div><p>
+			This buffer attribute class does not construct a VBO. Instead, it uses
+			whatever VBO is passed in constructor and can later be altered via the
+			<code translate="no"><span>buffer</span></code> property.</p><p>
+			It is required to pass additional params alongside the VBO. Those are: the
+			GL context, the GL data type, the number of components per vertex, the
+			number of bytes per component, and the number of vertices.</p><p>
+			The most common use case for this class is when some kind of GPGPU
+			calculation interferes or even produces the VBOs in question.
+		</p></div>
+
+		<h2>Constructor</h2>
+		<h3>GLBufferAttribute( buffer : <a data-fragment="WebGLBuffer">WebGLBuffer</a>, type : <a data-fragment="GLenum">GLenum</a>, itemSize : <span>Integer</span>, elementSize : <span>Integer</span>, count : <span>Integer</span> )</h3>
+		<p>
+			<code translate="no"><span>buffer</span></code> — Must be a
+			<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer" target="_blank">WebGLBuffer</a>.
+			<br>
+			<code translate="no"><span>type</span></code> — One of
+			<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Constants#Data_types" target="_blank">WebGL Data Types</a>.
+			<br>
+			<code translate="no"><span>itemSize</span></code> — The number of values of the array that should be associated
+			with a particular vertex. For instance, if this attribute is storing a
+			3-component vector (such as a position, normal, or color), then itemSize
+			should be 3.
+			<br>
+			<code translate="no"><span>elementSize</span></code> — 1, 2 or 4. The corresponding size (in bytes) for the given
+			"type" param.
+		</p>
+
+		<ul>
+			<li>gl.FLOAT: 4</li>
+			<li>gl.UNSIGNED_SHORT: 2</li>
+			<li>gl.SHORT: 2</li>
+			<li>gl.UNSIGNED_INT: 4</li>
+			<li>gl.INT: 4</li>
+			<li>gl.BYTE: 1</li>
+			<li>gl.UNSIGNED_BYTE: 1</li>
+		</ul>
+		<p><code translate="no"><span>count</span></code> — The expected number of vertices in VBO.
+
+		</p><h2>Properties</h2>
+
+		<h3><a data-fragment="GLBufferAttribute.buffer" target="_parent" title="GLBufferAttribute.buffer" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.buffer">#</a> .<a data-fragment="GLBufferAttribute.buffer" id="buffer" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.buffer">buffer</a>  : <a data-fragment="WebGLBuffer">WebGLBuffer</a></h3>
+		<p>
+			The current
+			<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer" target="_blank">WebGLBuffer</a> instance.
+		</p>
+
+		<h3><a data-fragment="GLBufferAttribute.count" target="_parent" title="GLBufferAttribute.count" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.count">#</a> .<a data-fragment="GLBufferAttribute.count" id="count" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.count">count</a>  : <span>Integer</span></h3>
+		<p>The expected number of vertices in VBO.</p>
+
+		<h3><a data-fragment="GLBufferAttribute.isGLBufferAttribute" target="_parent" title="GLBufferAttribute.isGLBufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.isGLBufferAttribute">#</a> .<a data-fragment="GLBufferAttribute.isGLBufferAttribute" id="isGLBufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.isGLBufferAttribute">isGLBufferAttribute</a>  : <span>Boolean</span></h3>
+		<p>Read-only. Always <code translate="no"><span>true</span></code>.</p>
+
+		<h3><a data-fragment="GLBufferAttribute.itemSize" target="_parent" title="GLBufferAttribute.itemSize" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.itemSize">#</a> .<a data-fragment="GLBufferAttribute.itemSize" id="itemSize" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.itemSize">itemSize</a>  : <span>Integer</span></h3>
+		<p>How many values make up each item (vertex).</p>
+
+		<h3><a data-fragment="GLBufferAttribute.elementSize" target="_parent" title="GLBufferAttribute.elementSize" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.elementSize">#</a> .<a data-fragment="GLBufferAttribute.elementSize" id="elementSize" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.elementSize">elementSize</a>  : <span>Integer</span></h3>
+		<p>
+			Stores the corresponding size in bytes for the current <code translate="no"><span>type</span></code> property
+			value.
+		</p>
+		<p>See above (constructor) for a list of known type sizes.</p>
+
+		<h3><a data-fragment="GLBufferAttribute.name" target="_parent" title="GLBufferAttribute.name" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.name">#</a> .<a data-fragment="GLBufferAttribute.name" id="name" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.name">name</a>  : <span>String</span></h3>
+		<p>
+			Optional name for this attribute instance. Default is an empty string.
+		</p>
+
+		<h3><a data-fragment="GLBufferAttribute.type" target="_parent" title="GLBufferAttribute.type" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.type">#</a> .<a data-fragment="GLBufferAttribute.type" id="type" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.type">type</a>  : <a data-fragment="GLenum">GLenum</a></h3>
+		<p>
+			A
+			<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Constants#Data_types" target="_blank">WebGL Data Type</a> describing the underlying VBO contents.
+		</p>
+		<p>
+			Set this property together with <code translate="no"><span>elementSize</span></code>. The recommended way is
+			using the <code translate="no"><span>setType</span></code> method.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="GLBufferAttribute.setBuffer" target="_parent" title="GLBufferAttribute.setBuffer" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setBuffer">#</a> .<a data-fragment="GLBufferAttribute.setBuffer" id="setBuffer" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setBuffer">setBuffer</a> ( buffer ) : <span>this</span></h3>
+		<p>Sets the <code translate="no"><span>buffer</span></code> property.</p>
+
+		<h3><a data-fragment="GLBufferAttribute.setType" target="_parent" title="GLBufferAttribute.setType" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setType">#</a> .<a data-fragment="GLBufferAttribute.setType" id="setType" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setType">setType</a> ( type, elementSize ) : <span>this</span></h3>
+		<p>Sets the both <code translate="no"><span>type</span></code> and <code translate="no"><span>elementSize</span></code> properties.</p>
+
+		<h3><a data-fragment="GLBufferAttribute.setItemSize" target="_parent" title="GLBufferAttribute.setItemSize" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setItemSize">#</a> .<a data-fragment="GLBufferAttribute.setItemSize" id="setItemSize" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setItemSize">setItemSize</a> ( itemSize ) : <span>this</span></h3>
+		<p>Sets the <code translate="no"><span>itemSize</span></code> property.</p>
+
+		<h3><a data-fragment="GLBufferAttribute.setCount" target="_parent" title="GLBufferAttribute.setCount" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setCount">#</a> .<a data-fragment="GLBufferAttribute.setCount" id="setCount" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.setCount">setCount</a> ( count ) : <span>this</span></h3>
+		<p>Sets the <code translate="no"><span>count</span></code> property.</p>
+
+		<h3><a data-fragment="GLBufferAttribute.version" target="_parent" title="GLBufferAttribute.version" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.version">#</a> .<a data-fragment="GLBufferAttribute.version" id="version" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.version">version</a>  : <span>Integer</span></h3>
+		<p>
+			A version number, incremented every time the needsUpdate property is set
+			to true.
+		</p>
+
+		<h3><a data-fragment="GLBufferAttribute.needsUpdate" target="_parent" title="GLBufferAttribute.needsUpdate" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.needsUpdate">#</a> .<a data-fragment="GLBufferAttribute.needsUpdate" id="needsUpdate" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.needsUpdate">needsUpdate</a>  : <span>Boolean</span></h3>
+		<p>
+			Default is <code translate="no"><span>false</span></code>. Setting this to true increments
+			<a data-fragment="GLBufferAttribute.version" title="GLBufferAttribute.version" href="https://threejs.org/docs/index.html#api/en/core/GLBufferAttribute.version">version</a>.
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/core/GLBufferAttribute.js" target="_blank">src/core/GLBufferAttribute.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

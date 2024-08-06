@@ -1,0 +1,69 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<h2>WebGLRenderer Constants</h2>
+
+		<h2>Cull Face Modes</h2>
+		<p><code translate="no"><span>THREE</span><span>.</span><span>CullFaceNone</span><span> 
+THREE</span><span>.</span><span>CullFaceBack</span><span> 
+THREE</span><span>.</span><span>CullFaceFront</span><span>
+THREE</span><span>.</span><span>CullFaceFrontBack</span></code></p><p>
+			<a data-fragment="constant" title="constant">CullFaceNone</a> disables face culling.<br>
+			<a data-fragment="constant" title="constant">CullFaceBack</a> culls back faces (default).<br>
+			<a data-fragment="constant" title="constant">CullFaceFront</a> culls front faces.<br>
+			<a data-fragment="constant" title="constant">CullFaceFrontBack</a> culls both front and back faces.
+		</p>
+
+		<h2>Shadow Types</h2>
+		<p><code translate="no"><span>THREE</span><span>.</span><span>BasicShadowMap</span><span> 
+THREE</span><span>.</span><span>PCFShadowMap</span><span> 
+THREE</span><span>.</span><span>PCFSoftShadowMap</span><span>
+THREE</span><span>.</span><span>VSMShadowMap</span></code></p><div><p>
+			These define the WebGLRenderer's <a data-fragment="WebGLRenderer.shadowMap.type" title="WebGLRenderer.shadowMap.type" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.shadowMap">shadowMap.type</a> property.</p><p>
+			<a data-fragment="constant" title="constant">BasicShadowMap</a> gives unfiltered shadow maps - fastest, but 
+			lowest quality.<br>
+			<a data-fragment="constant" title="constant">PCFShadowMap</a> filters shadow maps using the
+			Percentage-Closer Filtering (PCF) algorithm (default).<br>
+			<a data-fragment="constant" title="constant">PCFSoftShadowMap</a> filters shadow maps using the
+			Percentage-Closer Filtering (PCF) algorithm with better soft shadows
+			especially when using low-resolution shadow maps.<br>
+			<a data-fragment="constant" title="constant">VSMShadowMap</a> filters shadow maps using the Variance Shadow
+			Map (VSM) algorithm. When using VSMShadowMap all shadow receivers will
+			also cast shadows.
+		</p></div>
+
+		
+		<h2>Tone Mapping</h2>
+		<p><code translate="no"><span>THREE</span><span>.</span><span>NoToneMapping</span><span> 
+THREE</span><span>.</span><span>LinearToneMapping</span><span> 
+THREE</span><span>.</span><span>ReinhardToneMapping</span><span>
+THREE</span><span>.</span><span>CineonToneMapping</span><span> 
+THREE</span><span>.</span><span>ACESFilmicToneMapping</span><span>
+THREE</span><span>.</span><span>AgXToneMapping</span><span>
+THREE</span><span>.</span><span>NeutralToneMapping</span><span>
+THREE</span><span>.</span><span>CustomToneMapping</span></code></p><p>
+			These define the WebGLRenderer's <a data-fragment="WebGLRenderer.toneMapping" title="WebGLRenderer.toneMapping" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.toneMapping">toneMapping</a> property. This is used to approximate the appearance of high
+			dynamic range (HDR) on the low dynamic range medium of a standard computer
+			monitor or mobile device's screen.
+		</p>
+		<p>
+			THREE.LinearToneMapping, THREE.ReinhardToneMapping, THREE.CineonToneMapping, THREE.ACESFilmicToneMapping, 
+			THREE.AgXToneMapping and THREE.NeutralToneMapping are built-inimplementations of tone mapping. 
+			THREE.CustomToneMapping expects a custom implementation by modyfing GLSL code of the material's fragment shader.
+			See the <a href="https://threejs.org/examples/#webgl_tonemapping" target="_blank">WebGL / tonemapping</a> example.
+		</p>
+		<p>
+			THREE.NeutralToneMapping is an implementation based on the Khronos 3D Commerce Group standard tone mapping.
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/constants.js" target="_blank">src/constants.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

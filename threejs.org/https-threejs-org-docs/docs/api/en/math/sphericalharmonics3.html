@@ -1,0 +1,157 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			Represents a third-order spherical harmonics (SH). Light probes use this
+			class to encode lighting information.
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>SphericalHarmonics3()</h3>
+		<p>Creates a new instance of SphericalHarmonics3.</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="SphericalHarmonics3.coefficients" target="_parent" title="SphericalHarmonics3.coefficients" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.coefficients">#</a> .<a data-fragment="SphericalHarmonics3.coefficients" id="coefficients" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.coefficients">coefficients</a>  : <span>Array</span></h3>
+		<p>
+			An array holding the (9) SH coefficients. A single coefficient is
+			represented as an instance of <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>.
+		</p>
+
+		<h3><a data-fragment="SphericalHarmonics3.isSphericalHarmonics3" target="_parent" title="SphericalHarmonics3.isSphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.isSphericalHarmonics3">#</a> .<a data-fragment="SphericalHarmonics3.isSphericalHarmonics3" id="isSphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.isSphericalHarmonics3">isSphericalHarmonics3</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type SphericalHarmonics3.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="SphericalHarmonics3.add" target="_parent" title="SphericalHarmonics3.add" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.add">#</a> .<a data-fragment="SphericalHarmonics3.add" id="add" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.add">add</a> ( sh : <a data-fragment="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to add.</p><p>
+
+			Adds the given SH to this instance.
+		</p></div>
+
+		<h3>
+			<a data-fragment="SphericalHarmonics3.addScaledSH" target="_parent" title="SphericalHarmonics3.addScaledSH" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.addScaledSH">#</a> .<a data-fragment="SphericalHarmonics3.addScaledSH" id="addScaledSH" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.addScaledSH">addScaledSH</a> ( sh : <a data-fragment="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a>, scale : <span>Number</span> ) : <span>this</span>
+		</h3>
+		<div>
+			<p><a data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to add.<br>
+			<a data-fragment="Number" title="Number">scale</a> - The scale factor.</p><p>
+
+			A convenience method for performing <a data-fragment="SphericalHarmonics3.add" title="SphericalHarmonics3.add" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.add">.add</a>() and <a data-fragment="SphericalHarmonics3.scale" title="SphericalHarmonics3.scale" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.scale">.scale</a>() at
+			once.
+		</p></div>
+
+		<h3><a data-fragment="SphericalHarmonics3.clone" target="_parent" title="SphericalHarmonics3.clone" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.clone">#</a> .<a data-fragment="SphericalHarmonics3.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.clone">clone</a> () : <a data-fragment="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a></h3>
+		<p>Returns a new instance of SphericalHarmonics3 with equal coefficients.</p>
+
+		<h3><a data-fragment="SphericalHarmonics3.copy" target="_parent" title="SphericalHarmonics3.copy" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.copy">#</a> .<a data-fragment="SphericalHarmonics3.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.copy">copy</a> ( sh : <a data-fragment="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to copy.</p><p>
+
+			Copies the given SH to this instance.
+		</p></div>
+
+		<h3><a data-fragment="SphericalHarmonics3.equals" target="_parent" title="SphericalHarmonics3.equals" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.equals">#</a> .<a data-fragment="SphericalHarmonics3.equals" id="equals" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.equals">equals</a> ( sh : <a data-fragment="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to compare with.</p><p>
+
+			Returns true if the given SH and this instance have equal coefficients.
+		</p></div>
+
+		<h3>
+			<a data-fragment="SphericalHarmonics3.fromArray" target="_parent" title="SphericalHarmonics3.fromArray" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.fromArray">#</a> .<a data-fragment="SphericalHarmonics3.fromArray" id="fromArray" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.fromArray">fromArray</a> ( array : <span>Array</span>, offset : <span>Number</span> ) : <span>this</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Array" title="Array">array</a> - The array holding the numbers of the SH
+			coefficients.<br>
+			<a data-fragment="Number" title="Number">offset</a> - (optional) The array offset.</p><p>
+
+			Sets the coefficients of this instance from the given array.
+		</p></div>
+
+		<h3>
+			<a data-fragment="SphericalHarmonics3.getAt" target="_parent" title="SphericalHarmonics3.getAt" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.getAt">#</a> .<a data-fragment="SphericalHarmonics3.getAt" id="getAt" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.getAt">getAt</a> ( normal : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">normal</a> - The normal vector (assumed to be unit length).<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> - The result vector.</p><p>
+
+			Returns the radiance in the direction of the given normal.
+		</p></div>
+
+		<h3>
+			<a data-fragment="SphericalHarmonics3.getIrradianceAt" target="_parent" title="SphericalHarmonics3.getIrradianceAt" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.getIrradianceAt">#</a> .<a data-fragment="SphericalHarmonics3.getIrradianceAt" id="getIrradianceAt" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.getIrradianceAt">getIrradianceAt</a> ( normal : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">normal</a> - The normal vector (assumed to be unit length).<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> - The result vector.</p><p>
+
+			Returns the irradiance (radiance convolved with cosine lobe) in the
+			direction of the given normal.
+		</p></div>
+
+		<h3>
+			<a data-fragment="SphericalHarmonics3.lerp" target="_parent" title="SphericalHarmonics3.lerp" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.lerp">#</a> .<a data-fragment="SphericalHarmonics3.lerp" id="lerp" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.lerp">lerp</a> ( sh : <a data-fragment="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">SphericalHarmonics3</a>, alpha : <span>Number</span> ) : <span>this</span>
+		</h3>
+		<div>
+			<p><a data-fragment="SphericalHarmonics3" title="SphericalHarmonics3" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3">sh</a> - The SH to interpolate with.<br>
+			<a data-fragment="Number" title="Number">alpha</a> - The alpha factor.</p><p>
+
+			Linear interpolates between the given SH and this instance by the given
+			alpha factor.
+		</p></div>
+
+		<h3><a data-fragment="SphericalHarmonics3.scale" target="_parent" title="SphericalHarmonics3.scale" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.scale">#</a> .<a data-fragment="SphericalHarmonics3.scale" id="scale" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.scale">scale</a> ( scale : <span>Number</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Number" title="Number">scale</a> - The scale factor.</p><p>
+
+			Scales this SH by the given scale factor.
+		</p></div>
+
+		<h3><a data-fragment="SphericalHarmonics3.set" target="_parent" title="SphericalHarmonics3.set" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.set">#</a> .<a data-fragment="SphericalHarmonics3.set" id="set" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.set">set</a> ( coefficients : <span>Array</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Array" title="Array">coefficients</a> - An array of SH coefficients.</p><p>
+
+			Sets the given SH coefficients to this instance.
+		</p></div>
+
+		<h3>
+			<a data-fragment="SphericalHarmonics3.toArray" target="_parent" title="SphericalHarmonics3.toArray" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.toArray">#</a> .<a data-fragment="SphericalHarmonics3.toArray" id="toArray" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.toArray">toArray</a> ( array : <span>Array</span>, offset : <span>Number</span> ) : <span>Array</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Array" title="Array">array</a> - (optional) The target array.<br>
+			<a data-fragment="Number" title="Number">offset</a> - (optional) The array offset.</p><p>
+
+			Returns an array with the coefficients, or copies them into the provided
+			array. The coefficients are represented as numbers.
+		</p></div>
+
+		<h3><a data-fragment="SphericalHarmonics3.zero" target="_parent" title="SphericalHarmonics3.zero" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.zero">#</a> .<a data-fragment="SphericalHarmonics3.zero" id="zero" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.zero">zero</a> () : <span>this</span></h3>
+		<p>Sets all SH coefficients to <code translate="no"><span>0</span></code>.</p>
+
+		<h2>Static Methods</h2>
+
+		<h3>
+			<a data-fragment="SphericalHarmonics3.getBasisAt" target="_parent" title="SphericalHarmonics3.getBasisAt" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.getBasisAt">#</a> .<a data-fragment="SphericalHarmonics3.getBasisAt" id="getBasisAt" href="https://threejs.org/docs/index.html#api/en/math/SphericalHarmonics3.getBasisAt">getBasisAt</a> ( normal : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, shBasis : <span>Array</span> ) : <span>undefined</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">normal</a> - The normal vector (assumed to be unit length).<br>
+			<a data-fragment="Array" title="Array">shBasis</a> - The resulting SH basis.</p><p>
+
+			Computes the SH basis for the given normal vector.
+		</p></div>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/SphericalHarmonics3.js" target="_blank">src/math/SphericalHarmonics3.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,122 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			A
+			<a href="https://webglfundamentals.org/webgl/lessons/webgl-render-to-texture.html" target="_blank">render target</a> 
+			is a buffer where the video card draws pixels for a scene
+			that is being rendered in the background. It is used in different effects,
+			such as applying postprocessing to a rendered image before displaying it
+			on the screen.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			WebGLRenderTarget(width : <span>Number</span>, height : <span>Number</span>, options : <span>Object</span>)
+		</h3>
+
+		
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="WebGLRenderTarget.isWebGLRenderTarget" target="_parent" title="WebGLRenderTarget.isWebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.isWebGLRenderTarget">#</a> .<a data-fragment="WebGLRenderTarget.isWebGLRenderTarget" id="isWebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.isWebGLRenderTarget">isWebGLRenderTarget</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type WebGLRenderTarget.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.width" target="_parent" title="WebGLRenderTarget.width" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.width">#</a> .<a data-fragment="WebGLRenderTarget.width" id="width" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.width">width</a>  : <span>number</span></h3>
+		<p>The width of the render target.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.height" target="_parent" title="WebGLRenderTarget.height" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.height">#</a> .<a data-fragment="WebGLRenderTarget.height" id="height" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.height">height</a>  : <span>number</span></h3>
+		<p>The height of the render target.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.scissor" target="_parent" title="WebGLRenderTarget.scissor" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.scissor">#</a> .<a data-fragment="WebGLRenderTarget.scissor" id="scissor" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.scissor">scissor</a>  : <a data-fragment="Vector4" href="https://threejs.org/docs/index.html#api/en/math/Vector4">Vector4</a></h3>
+		<p>
+			A rectangular area inside the render target's viewport. Fragments that are
+			outside the area will be discarded.
+		</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.scissorTest" target="_parent" title="WebGLRenderTarget.scissorTest" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.scissorTest">#</a> .<a data-fragment="WebGLRenderTarget.scissorTest" id="scissorTest" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.scissorTest">scissorTest</a>  : <span>Boolean</span></h3>
+		<p>Indicates whether the scissor test is active or not.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.viewport" target="_parent" title="WebGLRenderTarget.viewport" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.viewport">#</a> .<a data-fragment="WebGLRenderTarget.viewport" id="viewport" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.viewport">viewport</a>  : <a data-fragment="Vector4" href="https://threejs.org/docs/index.html#api/en/math/Vector4">Vector4</a></h3>
+		<p>The viewport of this render target.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.texture" target="_parent" title="WebGLRenderTarget.texture" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.texture">#</a> .<a data-fragment="WebGLRenderTarget.texture" id="texture" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.texture">texture</a>  : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			This texture instance holds the rendered pixels. Use it as input for
+			further processing.
+		</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.textures" target="_parent" title="WebGLRenderTarget.textures" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.textures">#</a> .<a data-fragment="WebGLRenderTarget.textures" id="textures" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.textures">textures</a>  : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			An array holding the <a data-fragment="WebGLRenderTarget.texture" title="WebGLRenderTarget.texture" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.texture">texture</a> references
+			of multiple render targets configured with the <a data-fragment="Number" title="Number">count</a> option.
+		</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.depthBuffer" target="_parent" title="WebGLRenderTarget.depthBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.depthBuffer">#</a> .<a data-fragment="WebGLRenderTarget.depthBuffer" id="depthBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.depthBuffer">depthBuffer</a>  : <span>Boolean</span></h3>
+		<p>Renders to the depth buffer. Default is true.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.stencilBuffer" target="_parent" title="WebGLRenderTarget.stencilBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.stencilBuffer">#</a> .<a data-fragment="WebGLRenderTarget.stencilBuffer" id="stencilBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.stencilBuffer">stencilBuffer</a>  : <span>Boolean</span></h3>
+		<p>Renders to the stencil buffer. Default is false.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.resolveDepthBuffer" target="_parent" title="WebGLRenderTarget.resolveDepthBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.resolveDepthBuffer">#</a> .<a data-fragment="WebGLRenderTarget.resolveDepthBuffer" id="resolveDepthBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.resolveDepthBuffer">resolveDepthBuffer</a>  : <span>Boolean</span></h3>
+		<p>
+			Defines whether the depth buffer should be resolved when rendering into a multisampled render target. 
+			Default is <code translate="no"><span>true</span></code>.
+		</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.resolveStencilBuffer" target="_parent" title="WebGLRenderTarget.resolveStencilBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.resolveStencilBuffer">#</a> .<a data-fragment="WebGLRenderTarget.resolveStencilBuffer" id="resolveStencilBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.resolveStencilBuffer">resolveStencilBuffer</a>  : <span>Boolean</span></h3>
+		<p>
+			Defines whether the stencil buffer should be resolved when rendering into a multisampled render target. 
+			This property has no effect when <a data-fragment="WebGLRenderTarget.resolveDepthBuffer" title="WebGLRenderTarget.resolveDepthBuffer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.resolveDepthBuffer">.resolveDepthBuffer</a> is set to <code translate="no"><span>false</span></code>. 
+			Default is <code translate="no"><span>true</span></code>.
+		</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.depthTexture" target="_parent" title="WebGLRenderTarget.depthTexture" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.depthTexture">#</a> .<a data-fragment="WebGLRenderTarget.depthTexture" id="depthTexture" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.depthTexture">depthTexture</a>  : <a data-fragment="DepthTexture" href="https://threejs.org/docs/index.html#api/en/textures/DepthTexture">DepthTexture</a></h3>
+		<p>
+			If set, the scene depth will be rendered to this texture. Default is null.
+		</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.samples" target="_parent" title="WebGLRenderTarget.samples" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.samples">#</a> .<a data-fragment="WebGLRenderTarget.samples" id="samples" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.samples">samples</a>  : <span>Number</span></h3>
+		<p>
+			Defines the count of MSAA samples. Default is <code translate="no"><span>0</span></code>.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3>
+			<a data-fragment="WebGLRenderTarget.setSize" target="_parent" title="WebGLRenderTarget.setSize" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.setSize">#</a> .<a data-fragment="WebGLRenderTarget.setSize" id="setSize" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.setSize">setSize</a> ( width : <span>Number</span>, height : <span>Number</span> ) : <span>undefined</span>
+		</h3>
+		<p>Sets the size of the render target.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.clone" target="_parent" title="WebGLRenderTarget.clone" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.clone">#</a> .<a data-fragment="WebGLRenderTarget.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.clone">clone</a> () : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a></h3>
+		<p>Creates a copy of this render target.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.copy" target="_parent" title="WebGLRenderTarget.copy" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.copy">#</a> .<a data-fragment="WebGLRenderTarget.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.copy">copy</a> ( source : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a> ) : <span>this</span></h3>
+		<p>Adopts the settings of the given render target.</p>
+
+		<h3><a data-fragment="WebGLRenderTarget.dispose" target="_parent" title="WebGLRenderTarget.dispose" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.dispose">#</a> .<a data-fragment="WebGLRenderTarget.dispose" id="dispose" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<p>
+			<a data-fragment="EventDispatcher" title="EventDispatcher" href="https://threejs.org/docs/index.html#api/en/core/EventDispatcher">EventDispatcher</a> methods are available on this
+			class.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/renderers/WebGLRenderTarget.js" target="_blank">src/renderers/WebGLRenderTarget.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

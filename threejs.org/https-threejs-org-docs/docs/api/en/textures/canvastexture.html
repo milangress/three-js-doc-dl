@@ -1,0 +1,86 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> →
+
+		</p><h2>CanvasTexture</h2>
+
+		<div><p>
+			Creates a texture from a canvas element.</p><p>
+
+			This is almost the same as the base <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> class, except
+			that it sets <a data-fragment="Texture.needsUpdate" title="Texture.needsUpdate" href="https://threejs.org/docs/index.html#api/en/textures/Texture.needsUpdate">needsUpdate</a> to <code translate="no"><span>true</span></code> immediately.
+		</p></div>
+
+		<h2>Constructor</h2>
+		<h3>
+			CanvasTexture( canvas : <a data-fragment="HTMLElement">HTMLElement</a>, mapping : <a data-fragment="Constant">Constant</a>,
+			wrapS : <a data-fragment="Constant">Constant</a>, wrapT : <a data-fragment="Constant">Constant</a>, magFilter : <a data-fragment="Constant">Constant</a>, 
+			minFilter : <a data-fragment="Constant">Constant</a>, format : <a data-fragment="Constant">Constant</a>,
+			type : <a data-fragment="Constant">Constant</a>, anisotropy : <span>Number</span> )
+		</h3>
+		<div>
+			<p><a data-fragment="HTMLElement" title="HTMLElement">canvas</a> -- The HTML canvas element from which to load
+			the texture. <br>
+
+			<a data-fragment="Constant" title="Constant">mapping</a> -- How the image is applied to the object. An
+			object type of <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.UVMapping</a>. See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">mapping constants</a> for other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">wrapS</a> -- The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.ClampToEdgeWrapping</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">wrap mode constants</a> for
+			other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">wrapT</a> -- The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.ClampToEdgeWrapping</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">wrap mode constants</a> for
+			other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">magFilter</a> -- How the texture is sampled when a texel
+			covers more than one pixel. The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.LinearFilter</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">magnification filter constants</a>
+			for other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">minFilter</a> -- How the texture is sampled when a texel
+			covers less than one pixel. The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.LinearMipmapLinearFilter</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">minification filter constants</a> for other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">format</a> -- The format used in the texture. See
+			<a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">format constants</a> for other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">type</a> -- Default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.UnsignedByteType</a>.
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">type constants</a> for other choices.<br>
+
+			<a data-fragment="Number" title="Number">anisotropy</a> -- The number of samples taken along the axis
+			through the pixel that has the highest density of texels. By default, this
+			value is <code translate="no"><span>1</span></code>. A higher value gives a less blurry result than a basic mipmap,
+			at the cost of more texture samples being used. Use
+			<a data-fragment="WebGLrenderer.getMaxAnisotropy" title="WebGLrenderer.getMaxAnisotropy">renderer.getMaxAnisotropy</a>() to find
+			the maximum valid anisotropy value for the GPU; this value is usually a
+			power of 2.</p></div>
+
+		<h2>Properties</h2>
+
+		<p>See the base <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> class for common properties.</p>
+
+		<h3><a data-fragment="CanvasTexture.isCanvasTexture" target="_parent" title="CanvasTexture.isCanvasTexture" href="https://threejs.org/docs/index.html#api/en/textures/CanvasTexture.isCanvasTexture">#</a> .<a data-fragment="CanvasTexture.isCanvasTexture" id="isCanvasTexture" href="https://threejs.org/docs/index.html#api/en/textures/CanvasTexture.isCanvasTexture">isCanvasTexture</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type CanvasTexture.</p>
+
+		<h3><a data-fragment="CanvasTexture.needsUpdate" target="_parent" title="CanvasTexture.needsUpdate" href="https://threejs.org/docs/index.html#api/en/textures/CanvasTexture.needsUpdate">#</a> .<a data-fragment="CanvasTexture.needsUpdate" id="needsUpdate" href="https://threejs.org/docs/index.html#api/en/textures/CanvasTexture.needsUpdate">needsUpdate</a>  : <span>Boolean</span></h3>
+
+		<p>True by default. This is required so that the canvas data is loaded.</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/textures/CanvasTexture.js" target="_blank">src/textures/CanvasTexture.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

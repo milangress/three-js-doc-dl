@@ -1,0 +1,113 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> →
+
+		</p>
+
+		<p>
+			A loader for the PCD (Point Cloud Data) file format. PCDLoader supports ASCII and (compressed) binary files as well as the following PCD fields:
+			</p><ul>
+				<li>x y z</li>
+				<li>rgb</li>
+				<li>normal_x normal_y normal_z</li>
+				<li>intensity</li>
+				<li>label</li>
+			</ul>
+		
+
+		<h2>Import</h2>
+
+		<p>
+			PCDLoader is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>PCDLoader</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/loaders/PCDLoader.js'</span><span>;</span></code></p><h2>Code Example</h2>
+
+		<p><code translate="no"><span>// instantiate a loader</span><span>
+</span><span>const</span><span> loader </span><span>=</span><span> </span><span>new</span><span> </span><span>PCDLoader</span><span>();</span><span>
+
+</span><span>// load a resource</span><span>
+loader</span><span>.</span><span>load</span><span>(</span><span>
+	</span><span>// resource URL</span><span>
+	</span><span>'pointcloud.pcd'</span><span>,</span><span>
+	</span><span>// called when the resource is loaded</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> points </span><span>)</span><span> </span><span>{</span><span>
+
+		scene</span><span>.</span><span>add</span><span>(</span><span> points </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	</span><span>// called when loading is in progresses</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> xhr </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>(</span><span> xhr</span><span>.</span><span>loaded </span><span>/</span><span> xhr</span><span>.</span><span>total </span><span>*</span><span> </span><span>100</span><span> </span><span>)</span><span> </span><span>+</span><span> </span><span>'% loaded'</span><span> </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	</span><span>// called when loading has errors</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> error </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>'An error happened'</span><span> </span><span>);</span><span>
+
+	</span><span>}</span><span>
+</span><span>);</span></code></p><h2>Examples</h2>
+		<p>
+			<a href="https://threejs.org/examples/#webgl_loader_pcd" target="_blank">webgl_loader_pcd</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>PCDLoader( manager : <a data-fragment="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		<p>
+		<a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">manager</a> — The <a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">loadingManager</a> for the loader to use. Default is <a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">THREE.DefaultLoadingManager</a>.
+		</p>
+		<p>
+		Creates a new PCDLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h3><a data-fragment="Boolean" title="Boolean">littleEndian</a></h3>
+		<p>
+		Default value is true.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3><a data-fragment="PCDLoader.load" target="_parent" title="PCDLoader.load" href="https://threejs.org/docs/index.html#examples/en/loaders/PCDLoader.load">#</a> .<a data-fragment="PCDLoader.load" id="load" href="https://threejs.org/docs/index.html#examples/en/loaders/PCDLoader.load">load</a> ( url : <span>String</span>, onLoad : <a data-fragment="Function">Function</a>, onProgress : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a> ) : <span>undefined</span></h3>
+		<p>
+		<a data-fragment="String" title="String">url</a> — A string containing the path/URL of the <code translate="no"><span>.</span><span>pcd</span></code> file.<br>
+		<a data-fragment="Function" title="Function">onLoad</a> — (optional) A function to be called after loading is successfully completed. The function receives loaded <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> as an argument.<br>
+		<a data-fragment="Function" title="Function">onProgress</a> — (optional) A function to be called while the loading is in progress. The argument will be the XMLHttpRequest instance, which contains <a data-fragment="Integer" title="Integer">total</a> and <a data-fragment="Integer" title="Integer">loaded</a> bytes. If the server does not set the Content-Length header; .<a data-fragment="Integer" title="Integer">total</a> will be 0.<br>
+		<a data-fragment="Function" title="Function">onError</a> — (optional) A function to be called if an error occurs during loading. The function receives the error as an argument.<br>
+		</p>
+		<p>
+		Begin loading from url and call onLoad with the parsed response content.
+		</p>
+
+		<h3><a data-fragment="PCDLoader.parse" target="_parent" title="PCDLoader.parse" href="https://threejs.org/docs/index.html#examples/en/loaders/PCDLoader.parse">#</a> .<a data-fragment="PCDLoader.parse" id="parse" href="https://threejs.org/docs/index.html#examples/en/loaders/PCDLoader.parse">parse</a> ( data : <span>Arraybuffer</span>,url : <span>String</span> ) : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a></h3>
+		<p>
+		<a data-fragment="Arraybuffer" title="Arraybuffer">data</a> — The binary structure to parse.
+		</p>
+		<p>
+		<a data-fragment="String" title="String">url</a> — The file name or file url.
+		</p>
+		<p>
+		Parse an <code translate="no"><span>pcd</span></code> binary structure and return an <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a>.<br>
+		The object is converted to <a data-fragment="Points" title="Points" href="https://threejs.org/docs/index.html#api/en/objects/Points">Points</a> with a <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> and a <a data-fragment="PointsMaterial" title="PointsMaterial" href="https://threejs.org/docs/index.html#api/en/materials/PointsMaterial">PointsMaterial</a>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/loaders/PCDLoader.js" target="_blank">examples/jsm/loaders/PCDLoader.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

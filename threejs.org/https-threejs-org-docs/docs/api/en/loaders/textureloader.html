@@ -1,0 +1,90 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> →
+
+		</p>
+
+		<p>
+			Class for loading a <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">texture</a>. This uses the
+			<a data-fragment="ImageLoader" title="ImageLoader" href="https://threejs.org/docs/index.html#api/en/loaders/ImageLoader">ImageLoader</a> internally for loading files.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> texture </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>TextureLoader</span><span>().</span><span>load</span><span>(</span><span>'textures/land_ocean_ice_cloud_2048.jpg'</span><span> </span><span>);</span><span> 
+</span><span>// immediately use the texture for material creation </span><span>
+
+</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshBasicMaterial</span><span>(</span><span> </span><span>{</span><span> map</span><span>:</span><span>texture </span><span>}</span><span> </span><span>);</span></code></p><h2>Code Example with Callbacks</h2>
+
+		<p><code translate="no"><span>// instantiate a loader</span><span>
+</span><span>const</span><span> loader </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>TextureLoader</span><span>();</span><span>
+
+</span><span>// load a resource</span><span>
+loader</span><span>.</span><span>load</span><span>(</span><span>
+	</span><span>// resource URL</span><span>
+	</span><span>'textures/land_ocean_ice_cloud_2048.jpg'</span><span>,</span><span>
+
+	</span><span>// onLoad callback</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> texture </span><span>)</span><span> </span><span>{</span><span>
+		</span><span>// in this example we create the material when the texture is loaded</span><span>
+		</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshBasicMaterial</span><span>(</span><span> </span><span>{</span><span>
+			map</span><span>:</span><span> texture
+		 </span><span>}</span><span> </span><span>);</span><span>
+	</span><span>},</span><span>
+
+	</span><span>// onProgress callback currently not supported</span><span>
+	</span><span>undefined</span><span>,</span><span>
+
+	</span><span>// onError callback</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> err </span><span>)</span><span> </span><span>{</span><span>
+		console</span><span>.</span><span>error</span><span>(</span><span> </span><span>'An error happened.'</span><span> </span><span>);</span><span>
+	</span><span>}</span><span>
+</span><span>);</span></code></p><p>
+			Please note three.js r84 dropped support for TextureLoader progress
+			events. For a TextureLoader that supports progress events, see
+			<a href="https://github.com/mrdoob/three.js/issues/10439#issuecomment-293260145" target="_blank">this thread</a>.
+		</p>
+
+		<h2>Examples</h2>
+		<p><a href="https://threejs.org/examples/#webgl_geometry_cube" target="_blank">geometry / cube</a></p>
+
+		<h2>Constructor</h2>
+		<h3>TextureLoader( manager : <a data-fragment="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3>
+			<a data-fragment="TextureLoader.load" target="_parent" title="TextureLoader.load" href="https://threejs.org/docs/index.html#api/en/loaders/TextureLoader.load">#</a> .<a data-fragment="TextureLoader.load" id="load" href="https://threejs.org/docs/index.html#api/en/loaders/TextureLoader.load">load</a> ( url : <span>String</span>, onLoad : <a data-fragment="Function">Function</a>, onProgress : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a> ) : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a>
+		</h3>
+		<div>
+			<p><a data-fragment="String" title="String">url</a> — the path or URL to the file. This can also be a
+			<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs" target="_blank">Data URI</a>.<br>
+			<a data-fragment="Function" title="Function">onLoad</a> (optional) — Will be called when load completes.
+			The argument will be the loaded <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">texture</a>.<br>
+			<a data-fragment="Function" title="Function">onProgress</a> (optional) — This callback function is
+			currently not supported.<br>
+			<a data-fragment="Function" title="Function">onError</a> (optional) — Will be called when load errors.</p><p>
+
+			Begin loading from the given URL and pass the fully loaded <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">texture</a> 
+			to onLoad. The method also returns a new texture object which can
+			directly be used for material creation. If you do it this way, the texture
+			may pop up in your scene once the respective loading process is finished.
+		</p></div>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/loaders/TextureLoader.js" target="_blank">src/loaders/TextureLoader.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,259 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			A KeyframeTrack is a timed sequence of
+			<a href="https://en.wikipedia.org/wiki/Key_frame" target="_blank">keyframes</a>, which are
+			composed of lists of times and related values, and which are used to
+			animate a specific property of an object.
+		</p>
+
+		<p>
+			For an overview of the different elements of the three.js animation system
+			see the "Animation System" article in the "Next Steps" section of the
+			manual.
+		</p>
+
+		<p>
+			In contrast to the animation hierarchy of the
+			<a href="https://github.com/mrdoob/three.js/wiki/JSON-Model-format-3" target="_blank">JSON model format</a> a <code translate="no"><span>KeyframeTrack</span></code> doesn't store its single keyframes as
+			objects in a "keys" array (holding the times and the values for each frame
+			together in one place).
+		</p>
+
+		<p>
+			Instead of this there are always two arrays in a <code translate="no"><span>KeyframeTrack</span></code>: the
+			<a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">times</a> array stores the time values for all keyframes of this
+			track in sequential order, and the <a data-fragment="KeyframeTrack.values" title="KeyframeTrack.values" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.values">values</a> array contains
+			the corresponding changing values of the animated property.
+		</p>
+
+		<p>
+			A single value, belonging to a certain point of time, can not only be a
+			simple number, but (for example) a vector (if a position is animated) or a
+			quaternion (if a rotation is animated). For this reason the values array
+			(which is a flat array, too) might be three or four times as long as the
+			times array.
+		</p>
+
+		<p>
+			Corresponding to the different possible types of animated values there are
+			several subclasses of <code translate="no"><span>KeyframeTrack</span></code>, inheriting the most properties and
+			methods:
+		</p>
+
+		<ul>
+			<li><a data-fragment="BooleanKeyframeTrack" title="BooleanKeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/tracks/BooleanKeyframeTrack">BooleanKeyframeTrack</a></li>
+			<li><a data-fragment="ColorKeyframeTrack" title="ColorKeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/tracks/ColorKeyframeTrack">ColorKeyframeTrack</a></li>
+			<li><a data-fragment="NumberKeyframeTrack" title="NumberKeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/tracks/NumberKeyframeTrack">NumberKeyframeTrack</a></li>
+			<li><a data-fragment="QuaternionKeyframeTrack" title="QuaternionKeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/tracks/QuaternionKeyframeTrack">QuaternionKeyframeTrack</a></li>
+			<li><a data-fragment="StringKeyframeTrack" title="StringKeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/tracks/StringKeyframeTrack">StringKeyframeTrack</a></li>
+			<li><a data-fragment="VectorKeyframeTrack" title="VectorKeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/tracks/VectorKeyframeTrack">VectorKeyframeTrack</a></li>
+		</ul>
+
+		<p>
+			Some examples of how to manually create <a data-fragment="AnimationClip" title="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClips</a> with different sorts of KeyframeTracks can be found in the
+			<a href="https://threejs.org/examples/jsm/animation/AnimationClipCreator.js" target="_blank">AnimationClipCreator</a> file.
+		</p>
+
+		<p>
+			Since explicit values are only specified for the discrete points of time
+			stored in the times array, all values in between have to be interpolated.
+		</p>
+
+		<p>
+			The track's name is important for the connection of this track with a
+			specific property of the animated node (done by <a data-fragment="PropertyBinding" title="PropertyBinding" href="https://threejs.org/docs/index.html#api/en/animation/PropertyBinding">PropertyBinding</a>).
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>KeyframeTrack( name : <span>String</span>, times : <span>Array</span>, values : <span>Array</span>, interpolation : <a data-fragment="Constant">Constant</a> )
+		</h3>
+		<p>
+			<a data-fragment="String" title="String">name</a> - the identifier for the <code translate="no"><span>KeyframeTrack</span></code>.<br>
+			<a data-fragment="Array" title="Array">times</a> - an array of keyframe times, converted internally to a
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">Float32Array</a>.<br>
+			<a data-fragment="Array" title="Array">values</a> - an array with the values related to the times array,
+			converted internally to a
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">Float32Array</a>.<br>
+			<a data-fragment="Constant" title="Constant">interpolation</a> - the type of interpolation to use. See
+			<a data-fragment="Animation" title="Animation" href="https://threejs.org/docs/index.html#api/en/constants/Animation">Animation Constants</a> for possible values. Default is
+			<a data-fragment="Animation" title="Animation" href="https://threejs.org/docs/index.html#api/en/constants/Animation">InterpolateLinear</a>.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="KeyframeTrack.name" target="_parent" title="KeyframeTrack.name" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.name">#</a> .<a data-fragment="KeyframeTrack.name" id="name" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.name">name</a>  : <span>String</span></h3>
+		<p>
+			The track's name can refer to morph targets or <a data-fragment="SkinnedMesh" title="SkinnedMesh" href="https://threejs.org/docs/index.html#api/en/objects/SkinnedMesh">bones</a> or
+			possibly other values within an animated object. See
+			<a data-fragment="PropertyBinding.parseTrackName" title="PropertyBinding.parseTrackName" href="https://threejs.org/docs/index.html#api/en/animation/PropertyBinding.parseTrackName">PropertyBinding.parseTrackName</a> for the forms of strings that can be
+			parsed for property binding:
+		</p>
+
+		<p>
+			The name can specify the node either using its name or its uuid (although
+			it needs to be in the subtree of the scene graph node passed into the
+			mixer). Or, if the track name starts with a dot, the track applies to the
+			root node that was passed into the mixer.
+		</p>
+
+		<p>
+			Usually after the node a property will be specified directly. But you can
+			also specify a subproperty, such as .rotation[x], if you just want to
+			drive the X component of the rotation via a float track.
+		</p>
+
+		<p>
+			You can also specify bones or multimaterials by using an object name, for
+			example: .bones[R_hand].scale; the red channel of the diffuse color of the
+			fourth material in a materials array - as a further example - can be
+			accessed with .materials[3].diffuse[r].
+		</p>
+
+		<p>
+			PropertyBinding will also resolve morph target names, for example:
+			.morphTargetInfluences[run].
+		</p>
+
+		<p>
+			Note: The track's name does not necessarily have to be unique. Multiple
+			tracks can drive the same property. The result should be based on a
+			weighted blend between the multiple tracks according to the weights of
+			their respective actions.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.times" target="_parent" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">#</a> .<a data-fragment="KeyframeTrack.times" id="times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">times</a>  : <a data-fragment="Float32Array">Float32Array</a></h3>
+		<p>
+			A
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">Float32Array</a>, converted from the times array which is passed in the
+			constructor.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.values" target="_parent" title="KeyframeTrack.values" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.values">#</a> .<a data-fragment="KeyframeTrack.values" id="values" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.values">values</a>  : <a data-fragment="Float32Array">Float32Array</a></h3>
+		<p>
+			A
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">Float32Array</a>, converted from the values array which is passed in the
+			constructor.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.DefaultInterpolation" target="_parent" title="KeyframeTrack.DefaultInterpolation" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.DefaultInterpolation">#</a> .<a data-fragment="KeyframeTrack.DefaultInterpolation" id="DefaultInterpolation" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.DefaultInterpolation">DefaultInterpolation</a>  : <a data-fragment="Constant">Constant</a></h3>
+		<p>The default interpolation type: <a data-fragment="Animation" title="Animation" href="https://threejs.org/docs/index.html#api/en/constants/Animation">InterpolateLinear</a>.</p>
+
+		<h3><a data-fragment="KeyframeTrack.TimeBufferType " target="_parent" title="KeyframeTrack.TimeBufferType " href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.TimeBufferType">#</a> .<a data-fragment="KeyframeTrack.TimeBufferType " id="TimeBufferType " href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.TimeBufferType">TimeBufferType </a>  : <a data-fragment="Constant">Constant</a></h3>
+		<p>
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">Float32Array</a>, the type of the buffer internally used for the times.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.ValueBufferType " target="_parent" title="KeyframeTrack.ValueBufferType " href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.ValueBufferType">#</a> .<a data-fragment="KeyframeTrack.ValueBufferType " id="ValueBufferType " href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.ValueBufferType">ValueBufferType </a>  : <a data-fragment="Constant">Constant</a></h3>
+		<p>
+			<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">Float32Array</a>, the type of the buffer internally used for the values.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="KeyframeTrack.clone" target="_parent" title="KeyframeTrack.clone" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.clone">#</a> .<a data-fragment="KeyframeTrack.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.clone">clone</a> () : <a data-fragment="KeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack">KeyframeTrack</a></h3>
+		<p>Returns a copy of this track.</p>
+
+		<h3><a data-fragment="KeyframeTrack.createInterpolant" target="_parent" title="KeyframeTrack.createInterpolant" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.createInterpolant">#</a> .<a data-fragment="KeyframeTrack.createInterpolant" id="createInterpolant" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.createInterpolant">createInterpolant</a> () : <a data-fragment="Interpolant" href="https://threejs.org/docs/index.html#api/en/math/Interpolant">Interpolant</a></h3>
+		<p>
+			Creates a <a data-fragment="LinearInterpolant" title="LinearInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/LinearInterpolant">LinearInterpolant</a>,
+			<a data-fragment="CubicInterpolant" title="CubicInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/CubicInterpolant">CubicInterpolant</a> or <a data-fragment="DiscreteInterpolant" title="DiscreteInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/DiscreteInterpolant">DiscreteInterpolant</a>, depending on the value of the interpolation
+			parameter passed in the constructor.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.getInterpolation" target="_parent" title="KeyframeTrack.getInterpolation" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.getInterpolation">#</a> .<a data-fragment="KeyframeTrack.getInterpolation" id="getInterpolation" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.getInterpolation">getInterpolation</a> () : <a data-fragment="Interpolant" href="https://threejs.org/docs/index.html#api/en/math/Interpolant">Interpolant</a></h3>
+		<p>Returns the interpolation type.</p>
+
+		<h3><a data-fragment="KeyframeTrack.getValueSize" target="_parent" title="KeyframeTrack.getValueSize" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.getValueSize">#</a> .<a data-fragment="KeyframeTrack.getValueSize" id="getValueSize" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.getValueSize">getValueSize</a> () : <span>Number</span></h3>
+		<p>
+			Returns the size of each value (that is the length of the <a data-fragment="KeyframeTrack.values" title="KeyframeTrack.values" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.values">values</a> array divided by the length of the <a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">times</a> array).
+		</p>
+
+		<h3>
+			<a data-fragment="KeyframeTrack.InterpolantFactoryMethodDiscrete" target="_parent" title="KeyframeTrack.InterpolantFactoryMethodDiscrete" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.InterpolantFactoryMethodDiscrete">#</a> .<a data-fragment="KeyframeTrack.InterpolantFactoryMethodDiscrete" id="InterpolantFactoryMethodDiscrete" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.InterpolantFactoryMethodDiscrete">InterpolantFactoryMethodDiscrete</a> ( <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">result</a> ) : <a data-fragment="DiscreteInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/DiscreteInterpolant">DiscreteInterpolant</a>
+		</h3>
+		<p>
+			Creates a new <a data-fragment="DiscreteInterpolant" title="DiscreteInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/DiscreteInterpolant">DiscreteInterpolant</a> from the
+			<a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">times</a> and <a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">values</a>. A
+			Float32Array can be passed which will receive the results. Otherwise a new
+			array with the appropriate size will be created automatically.
+		</p>
+
+		<h3>
+			<a data-fragment="KeyframeTrack.InterpolantFactoryMethodLinear" target="_parent" title="KeyframeTrack.InterpolantFactoryMethodLinear" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.InterpolantFactoryMethodLinear">#</a> .<a data-fragment="KeyframeTrack.InterpolantFactoryMethodLinear" id="InterpolantFactoryMethodLinear" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.InterpolantFactoryMethodLinear">InterpolantFactoryMethodLinear</a> ( <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">result</a> ) : <a data-fragment="LinearInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/LinearInterpolant">LinearInterpolant</a>
+		</h3>
+		<p>
+			Creates a new <a data-fragment="LinearInterpolant" title="LinearInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/LinearInterpolant">LinearInterpolant</a> from the
+			<a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">times</a> and <a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">values</a>. A
+			Float32Array can be passed which will receive the results. Otherwise a new
+			array with the appropriate size will be created automatically.
+		</p>
+
+		<h3>
+			<a data-fragment="KeyframeTrack.InterpolantFactoryMethodSmooth" target="_parent" title="KeyframeTrack.InterpolantFactoryMethodSmooth" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.InterpolantFactoryMethodSmooth">#</a> .<a data-fragment="KeyframeTrack.InterpolantFactoryMethodSmooth" id="InterpolantFactoryMethodSmooth" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.InterpolantFactoryMethodSmooth">InterpolantFactoryMethodSmooth</a> ( <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" target="_blank">result</a> ) : <a data-fragment="CubicInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/CubicInterpolant">CubicInterpolant</a>
+		</h3>
+		<p>
+			Create a new <a data-fragment="CubicInterpolant" title="CubicInterpolant" href="https://threejs.org/docs/index.html#api/en/math/interpolants/CubicInterpolant">CubicInterpolant</a> from the
+			<a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">times</a> and <a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">values</a>. A
+			Float32Array can be passed which will receive the results. Otherwise a new
+			array with the appropriate size will be created automatically.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.optimize" target="_parent" title="KeyframeTrack.optimize" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.optimize">#</a> .<a data-fragment="KeyframeTrack.optimize" id="optimize" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.optimize">optimize</a> () : <span>this</span></h3>
+		<p>
+			Removes equivalent sequential keys, which are common in morph target
+			sequences.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.scale" target="_parent" title="KeyframeTrack.scale" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.scale">#</a> .<a data-fragment="KeyframeTrack.scale" id="scale" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.scale">scale</a> () : <span>this</span></h3>
+		
+
+		<h3>
+			<a data-fragment="KeyframeTrack.setInterpolation" target="_parent" title="KeyframeTrack.setInterpolation" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.setInterpolation">#</a> .<a data-fragment="KeyframeTrack.setInterpolation" id="setInterpolation" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.setInterpolation">setInterpolation</a> ( interpolationType : <a data-fragment="Constant">Constant</a> ) : <span>this</span>
+		</h3>
+		<p>
+			Sets the interpolation type. See <a data-fragment="Animation" title="Animation" href="https://threejs.org/docs/index.html#api/en/constants/Animation">Animation Constants</a> for
+			choices.
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.shift" target="_parent" title="KeyframeTrack.shift" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.shift">#</a> .<a data-fragment="KeyframeTrack.shift" id="shift" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.shift">shift</a> ( timeOffsetInSeconds : <span>Number</span> ) : <span>this</span></h3>
+		<p>Moves all keyframes either forward or backward in time.</p>
+
+		<h3>
+			<a data-fragment="KeyframeTrack.trim" target="_parent" title="KeyframeTrack.trim" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.trim">#</a> .<a data-fragment="KeyframeTrack.trim" id="trim" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.trim">trim</a> ( startTimeInSeconds : <span>Number</span>, endTimeInSeconds : <span>Number</span> ) : <span>this</span>
+		</h3>
+		<p>
+			Removes keyframes before <code translate="no"><span>startTime</span></code> and after <code translate="no"><span>endTime</span></code>, without changing
+			any values within the range [<code translate="no"><span>startTime</span></code>, <code translate="no"><span>endTime</span></code>].
+		</p>
+
+		<h3><a data-fragment="KeyframeTrack.validate" target="_parent" title="KeyframeTrack.validate" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.validate">#</a> .<a data-fragment="KeyframeTrack.validate" id="validate" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.validate">validate</a> () : <span>Boolean</span></h3>
+		<p>Performs minimal validation on the tracks. Returns true if valid.</p>
+
+		<p>
+			This method logs errors to the console, if a track is empty, if the
+			<a data-fragment="KeyframeTrack.valueSize" title="KeyframeTrack.valueSize" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.valueSize">value size</a> is not valid, if an item in the <a data-fragment="KeyframeTrack.times" title="KeyframeTrack.times" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.times">times</a> or <a data-fragment="KeyframeTrack.values" title="KeyframeTrack.values" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.values">values</a> array is not a valid number or if the
+			items in the <code translate="no"><span>times</span></code> array are out of order.
+		</p>
+
+		<h2>Static Methods</h2>
+
+		<h3><a data-fragment="KeyframeTrack.toJSON" target="_parent" title="KeyframeTrack.toJSON" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.toJSON">#</a> .<a data-fragment="KeyframeTrack.toJSON" id="toJSON" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack.toJSON">toJSON</a> ( track : <a data-fragment="KeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack">KeyframeTrack</a> ) : <a data-fragment="JSON">JSON</a></h3>
+		<p>Converts the track to JSON.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/animation/KeyframeTrack.js" target="_blank">src/animation/KeyframeTrack.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

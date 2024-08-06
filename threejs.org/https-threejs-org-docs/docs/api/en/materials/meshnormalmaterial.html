@@ -1,0 +1,122 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> →
+
+		</p>
+
+		<p>A material that maps the normal vectors to RGB colors.</p>
+
+		
+
+		
+
+		<h2>Constructor</h2>
+
+		<h3>MeshNormalMaterial( parameters : <span>Object</span> )</h3>
+		<p>
+			<a data-fragment="Object" title="Object">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a>) can be
+			passed in here.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> class for common properties.</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.bumpMap" target="_parent" title="MeshNormalMaterial.bumpMap" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.bumpMap">#</a> .<a data-fragment="MeshNormalMaterial.bumpMap" id="bumpMap" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.bumpMap">bumpMap</a>  : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The texture to create a bump map. The black and white values map to the
+			perceived depth in relation to the lights. Bump doesn't actually affect
+			the geometry of the object, only the lighting. If a normal map is defined
+			this will be ignored.
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.bumpScale" target="_parent" title="MeshNormalMaterial.bumpScale" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.bumpScale">#</a> .<a data-fragment="MeshNormalMaterial.bumpScale" id="bumpScale" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.bumpScale">bumpScale</a>  : <span>Float</span></h3>
+		<p>
+			How much the bump map affects the material. Typical ranges are 0-1.
+			Default is <code translate="no"><span>1</span></code>.
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.displacementMap" target="_parent" title="MeshNormalMaterial.displacementMap" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.displacementMap">#</a> .<a data-fragment="MeshNormalMaterial.displacementMap" id="displacementMap" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.displacementMap">displacementMap</a>  : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The displacement map affects the position of the mesh's vertices. Unlike
+			other maps which only affect the light and shade of the material the
+			displaced vertices can cast shadows, block other objects, and otherwise
+			act as real geometry. The displacement texture is an image where the value
+			of each pixel (white being the highest) is mapped against, and
+			repositions, the vertices of the mesh.
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.displacementScale" target="_parent" title="MeshNormalMaterial.displacementScale" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.displacementScale">#</a> .<a data-fragment="MeshNormalMaterial.displacementScale" id="displacementScale" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.displacementScale">displacementScale</a>  : <span>Float</span></h3>
+		<p>
+			How much the displacement map affects the mesh (where black is no
+			displacement, and white is maximum displacement). Without a displacement
+			map set, this value is not applied. Default is <code translate="no"><span>1</span></code>.
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.displacementBias" target="_parent" title="MeshNormalMaterial.displacementBias" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.displacementBias">#</a> .<a data-fragment="MeshNormalMaterial.displacementBias" id="displacementBias" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.displacementBias">displacementBias</a>  : <span>Float</span></h3>
+		<p>
+			The offset of the displacement map's values on the mesh's vertices.
+			Without a displacement map set, this value is not applied. Default is <code translate="no"><span>0</span></code>.
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.flatShading" target="_parent" title="MeshNormalMaterial.flatShading" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.flatShading">#</a> .<a data-fragment="MeshNormalMaterial.flatShading" id="flatShading" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.flatShading">flatShading</a>  : <span>Boolean</span></h3>
+		<p>
+			Define whether the material is rendered with flat shading. Default is
+			false.
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.fog" target="_parent" title="MeshNormalMaterial.fog" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.fog">#</a> .<a data-fragment="MeshNormalMaterial.fog" id="fog" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.fog">fog</a>  : <span>Boolean</span></h3>
+		<p>Whether the material is affected by fog. Default is <code translate="no"><span>false</span></code>.</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.normalMap" target="_parent" title="MeshNormalMaterial.normalMap" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.normalMap">#</a> .<a data-fragment="MeshNormalMaterial.normalMap" id="normalMap" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.normalMap">normalMap</a>  : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>
+			The texture to create a normal map. The RGB values affect the surface
+			normal for each pixel fragment and change the way the color is lit. Normal
+			maps do not change the actual shape of the surface, only the lighting. In
+			case the material has a normal map authored using the left handed
+			convention, the y component of normalScale should be negated to compensate
+			for the different handedness.
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.normalMapType" target="_parent" title="MeshNormalMaterial.normalMapType" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.normalMapType">#</a> .<a data-fragment="MeshNormalMaterial.normalMapType" id="normalMapType" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.normalMapType">normalMapType</a>  : <span>Integer</span></h3>
+		
+
+		<h3><a data-fragment="MeshNormalMaterial.normalScale" target="_parent" title="MeshNormalMaterial.normalScale" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.normalScale">#</a> .<a data-fragment="MeshNormalMaterial.normalScale" id="normalScale" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.normalScale">normalScale</a>  : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			How much the normal map affects the material. Typical ranges are 0-1.
+			Default is a <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> set to (1,1).
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.wireframe" target="_parent" title="MeshNormalMaterial.wireframe" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.wireframe">#</a> .<a data-fragment="MeshNormalMaterial.wireframe" id="wireframe" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.wireframe">wireframe</a>  : <span>Boolean</span></h3>
+		<p>
+			Render geometry as wireframe. Default is false (i.e. render as smooth
+			shaded).
+		</p>
+
+		<h3><a data-fragment="MeshNormalMaterial.wireframeLinewidth" target="_parent" title="MeshNormalMaterial.wireframeLinewidth" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.wireframeLinewidth">#</a> .<a data-fragment="MeshNormalMaterial.wireframeLinewidth" id="wireframeLinewidth" href="https://threejs.org/docs/index.html#api/en/materials/MeshNormalMaterial.wireframeLinewidth">wireframeLinewidth</a>  : <span>Float</span></h3>
+		<div><p>
+			Controls wireframe thickness. Default is <code translate="no"><span>1</span></code>.</p><p>
+
+			Due to limitations of the
+			<a href="https://www.khronos.org/registry/OpenGL/specs/gl/glspec46.core.pdf" target="_blank">OpenGL Core Profile</a> 
+			with the <a data-fragment="WebGLRenderer" title="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer on most
+			platforms linewidth will always be <code translate="no"><span>1</span></code> regardless of the set value.
+		</p></div>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/materials/MeshNormalMaterial.js" target="_blank">src/materials/MeshNormalMaterial.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,106 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<div>
+			<p><a href="http://en.wikipedia.org/wiki/Frustum" target="_blank">Frustums</a> are used to determine
+			what is inside the camera's field of view. They help speed up the
+			rendering process - objects which lie outside a camera's frustum can
+			safely be excluded from rendering.</p><p>
+
+			This class is mainly intended for use internally by a renderer for
+			calculating a <a data-fragment="Camera" title="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">camera</a> or <a data-fragment="LightShadow.camera" title="LightShadow.camera" href="https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow.camera">shadowCamera</a>'s frustum.
+		</p></div>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			Frustum(p0 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p1 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p2 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p3 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p4 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p5 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>)
+		</h3>
+		<div>
+			<p><a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">p0</a> - (optional) defaults to a new <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>.<br>
+			<a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">p1</a> - (optional) defaults to a new <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>.<br>
+			<a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">p2</a> - (optional) defaults to a new <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>.<br>
+			<a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">p3</a> - (optional) defaults to a new <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>.<br>
+			<a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">p4</a> - (optional) defaults to a new <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>.<br>
+			<a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">p5</a> - (optional) defaults to a new <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>.</p><p>
+
+			Creates a new Frustum.
+		</p></div>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="Frustum.planes" target="_parent" title="Frustum.planes" href="https://threejs.org/docs/index.html#api/en/math/Frustum.planes">#</a> .<a data-fragment="Frustum.planes" id="planes" href="https://threejs.org/docs/index.html#api/en/math/Frustum.planes">planes</a>  : <span>Array</span></h3>
+		<p>Array of 6 <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">planes</a>.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="Frustum.clone" target="_parent" title="Frustum.clone" href="https://threejs.org/docs/index.html#api/en/math/Frustum.clone">#</a> .<a data-fragment="Frustum.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/math/Frustum.clone">clone</a> () : <a data-fragment="Frustum" href="https://threejs.org/docs/index.html#api/en/math/Frustum">Frustum</a></h3>
+		<p>Return a new Frustum with the same parameters as this one.</p>
+
+		<h3><a data-fragment="Frustum.containsPoint" target="_parent" title="Frustum.containsPoint" href="https://threejs.org/docs/index.html#api/en/math/Frustum.containsPoint">#</a> .<a data-fragment="Frustum.containsPoint" id="containsPoint" href="https://threejs.org/docs/index.html#api/en/math/Frustum.containsPoint">containsPoint</a> ( point : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <span>Boolean</span></h3>
+		
+
+		<h3><a data-fragment="Frustum.copy" target="_parent" title="Frustum.copy" href="https://threejs.org/docs/index.html#api/en/math/Frustum.copy">#</a> .<a data-fragment="Frustum.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/math/Frustum.copy">copy</a> ( frustum : <a data-fragment="Frustum" href="https://threejs.org/docs/index.html#api/en/math/Frustum">Frustum</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Frustum" title="Frustum" href="https://threejs.org/docs/index.html#api/en/math/Frustum">frustum</a> - The frustum to copy</p><p>
+
+			Copies the properties of the passed <a data-fragment="Frustum" title="Frustum" href="https://threejs.org/docs/index.html#api/en/math/Frustum">frustum</a> into this one.
+		</p></div>
+
+		<h3><a data-fragment="Frustum.intersectsBox" target="_parent" title="Frustum.intersectsBox" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsBox">#</a> .<a data-fragment="Frustum.intersectsBox" id="intersectsBox" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsBox">intersectsBox</a> ( box : <a data-fragment="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">box</a> - <a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a> to check for intersection.</p><p>
+
+			Return true if <a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">box</a> intersects with this frustum.
+		</p></div>
+
+		<h3><a data-fragment="Frustum.intersectsObject" target="_parent" title="Frustum.intersectsObject" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsObject">#</a> .<a data-fragment="Frustum.intersectsObject" id="intersectsObject" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsObject">intersectsObject</a> ( object : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> ) : <span>Boolean</span></h3>
+		<div><p>
+			Checks whether the <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">object</a>'s
+			<a data-fragment="BufferGeometry.boundingSphere" title="BufferGeometry.boundingSphere" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.boundingSphere">bounding sphere</a> is intersecting the
+			Frustum.</p><p>
+
+			Note that the object must have a <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">geometry</a> so that
+			the bounding sphere can be calculated.
+		</p></div>
+
+		<h3><a data-fragment="Frustum.intersectsSphere" target="_parent" title="Frustum.intersectsSphere" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsSphere">#</a> .<a data-fragment="Frustum.intersectsSphere" id="intersectsSphere" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsSphere">intersectsSphere</a> ( sphere : <a data-fragment="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">Sphere</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="Sphere" title="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">sphere</a> - <a data-fragment="Sphere" title="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">Sphere</a> to check for intersection.</p><p>
+
+			Return true if <a data-fragment="Sphere" title="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">sphere</a> intersects with this frustum.
+		</p></div>
+
+		<h3><a data-fragment="Frustum.intersectsSprite" target="_parent" title="Frustum.intersectsSprite" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsSprite">#</a> .<a data-fragment="Frustum.intersectsSprite" id="intersectsSprite" href="https://threejs.org/docs/index.html#api/en/math/Frustum.intersectsSprite">intersectsSprite</a> ( sprite : <a data-fragment="Sprite" href="https://threejs.org/docs/index.html#api/en/objects/Sprite">Sprite</a> ) : <span>Boolean</span></h3>
+		<div><p>
+			Checks whether the <a data-fragment="Sprite" title="Sprite" href="https://threejs.org/docs/index.html#api/en/objects/Sprite">sprite</a> is intersecting the Frustum.</p></div>
+
+		<h3>
+			<a data-fragment="Frustum.set" target="_parent" title="Frustum.set" href="https://threejs.org/docs/index.html#api/en/math/Frustum.set">#</a> .<a data-fragment="Frustum.set" id="set" href="https://threejs.org/docs/index.html#api/en/math/Frustum.set">set</a> ( p0 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p1 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p2 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p3 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p4 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, p5 : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a> ) : <span>this</span>
+		</h3>
+		<p>
+			Sets the frustum from the passed planes. No plane order is implied.<br>
+			Note that this method only copies the values from the given objects.
+		</p>
+
+		<h3><a data-fragment="Frustum.setFromProjectionMatrix" target="_parent" title="Frustum.setFromProjectionMatrix" href="https://threejs.org/docs/index.html#api/en/math/Frustum.setFromProjectionMatrix">#</a> .<a data-fragment="Frustum.setFromProjectionMatrix" id="setFromProjectionMatrix" href="https://threejs.org/docs/index.html#api/en/math/Frustum.setFromProjectionMatrix">setFromProjectionMatrix</a> ( matrix : <a data-fragment="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">Matrix4</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Matrix4" title="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">matrix</a> - Projection <a data-fragment="Matrix4" title="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">Matrix4</a> used to set the
+			<a data-fragment="Frustum.planes" title="Frustum.planes" href="https://threejs.org/docs/index.html#api/en/math/Frustum.planes">planes</a></p><p>
+			Sets the frustum planes from the projection matrix.
+		</p></div>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Frustum.js" target="_blank">src/math/Frustum.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

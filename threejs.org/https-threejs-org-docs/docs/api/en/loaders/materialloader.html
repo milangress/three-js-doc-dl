@@ -1,0 +1,97 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> →
+
+		</p>
+
+		<p>
+			A loader for loading a <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> in JSON format. This uses the
+			<a data-fragment="FileLoader" title="FileLoader" href="https://threejs.org/docs/index.html#api/en/loaders/FileLoader">FileLoader</a> internally for loading files.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>// instantiate a loader</span><span>
+</span><span>const</span><span> loader </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MaterialLoader</span><span>();</span><span>
+
+</span><span>// load a resource</span><span>
+loader</span><span>.</span><span>load</span><span>(</span><span>
+	</span><span>// resource URL</span><span>
+	</span><span>'path/to/material.json'</span><span>,</span><span>
+
+	</span><span>// onLoad callback</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> material </span><span>)</span><span> </span><span>{</span><span>
+		</span><span>object</span><span>.</span><span>material </span><span>=</span><span> material</span><span>;</span><span>
+	</span><span>},</span><span>
+
+	</span><span>// onProgress callback</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> xhr </span><span>)</span><span> </span><span>{</span><span>
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>(</span><span>xhr</span><span>.</span><span>loaded </span><span>/</span><span> xhr</span><span>.</span><span>total </span><span>*</span><span> </span><span>100</span><span>)</span><span> </span><span>+</span><span> </span><span>'% loaded'</span><span> </span><span>);</span><span>
+	</span><span>},</span><span>
+
+	</span><span>// onError callback</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> err </span><span>)</span><span> </span><span>{</span><span>
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>'An error happened'</span><span> </span><span>);</span><span>
+	</span><span>}</span><span>
+</span><span>);</span></code></p><h2>Constructor</h2>
+
+		<h3>MaterialLoader( manager : <a data-fragment="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h3><a data-fragment="MaterialLoader.textures" target="_parent" title="MaterialLoader.textures" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.textures">#</a> .<a data-fragment="MaterialLoader.textures" id="textures" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.textures">textures</a>  : <span>Object</span></h3>
+		<p>
+			Object holding any textures used by the material. See <a data-fragment="MaterialLoader.setTextures" title="MaterialLoader.setTextures" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.setTextures">.setTextures</a>.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3>
+			<a data-fragment="MaterialLoader.load" target="_parent" title="MaterialLoader.load" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.load">#</a> .<a data-fragment="MaterialLoader.load" id="load" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.load">load</a> ( url : <span>String</span>, onLoad : <a data-fragment="Function">Function</a>, onProgress : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a> ) : <span>undefined</span>
+		</h3>
+		<div>
+			<p><a data-fragment="String" title="String">url</a> — the path or URL to the file. This can also be a
+			<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs" target="_blank">Data URI</a>.<br>
+			<a data-fragment="Function" title="Function">onLoad</a> — Will be called when load completes. The argument
+			will be the loaded <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a>.<br>
+			<a data-fragment="Function" title="Function">onProgress</a> (optional) — Will be called while load
+			progresses. The argument will be the ProgressEvent instance, which
+			contains .<a data-fragment="Boolean" title="Boolean">lengthComputable</a>, .<a data-fragment="Integer" title="Integer">total</a> and
+			.<a data-fragment="Integer" title="Integer">loaded</a>. If the server does not set the Content-Length
+			header; .<a data-fragment="Integer" title="Integer">total</a> will be 0.<br>
+			<a data-fragment="Function" title="Function">onError</a> (optional) — Will be called when load errors.</p><p>
+
+			Begin loading from url.
+		</p></div>
+
+		<h3><a data-fragment="MaterialLoader.parse" target="_parent" title="MaterialLoader.parse" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.parse">#</a> .<a data-fragment="MaterialLoader.parse" id="parse" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.parse">parse</a> ( json : <span>Object</span> ) : <a data-fragment="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a></h3>
+		<div>
+			<p><a data-fragment="Object" title="Object">json</a> — The json object containing the parameters of the
+			Material.</p><p>
+
+			Parse a <code translate="no"><span>JSON</span></code> structure and create a new <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> of the type
+			<a data-fragment="String" title="String">json.type</a> with parameters defined in the json object.
+		</p></div>
+
+		<h3><a data-fragment="MaterialLoader.setTextures" target="_parent" title="MaterialLoader.setTextures" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.setTextures">#</a> .<a data-fragment="MaterialLoader.setTextures" id="setTextures" href="https://threejs.org/docs/index.html#api/en/loaders/MaterialLoader.setTextures">setTextures</a> ( textures : <span>Object</span> ) : <span>this</span></h3>
+		<p>
+			<a data-fragment="Object" title="Object">textures</a> — object containing any textures used by the
+			material.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/loaders/MaterialLoader.js" target="_blank">src/loaders/MaterialLoader.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

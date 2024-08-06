@@ -1,0 +1,287 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="EventDispatcher" title="EventDispatcher" href="https://threejs.org/docs/index.html#api/en/core/EventDispatcher">EventDispatcher</a> →
+
+		</p>
+
+		<div><p>
+		Arcball controls allow the camera to be controlled by a virtual trackball with full touch support and advanced navigation functionality. <br>
+		Cursor/finger positions and movements are mapped over a virtual trackball surface
+		represented by a gizmo and mapped in intuitive and consistent camera movements.
+		Dragging cursor/fingers will cause camera to orbit around the center of the trackball in a conservative way (returning to the starting point
+		will make the camera to return to its starting orientation).</p><p>
+
+		In addition to supporting pan, zoom and pinch gestures, Arcball controls provide <i>focus</i> functionality with a double click/tap for
+		intuitively moving the object's point of interest in the center of the virtual trackball.
+		Focus allows a much better inspection and navigation in complex environment.
+		Moreover Arcball controls allow FOV manipulation (in a vertigo-style method) and z-rotation.
+		Saving and restoring of Camera State is supported also through clipboard
+		(use ctrl+c and ctrl+v shortcuts for copy and paste the state).</p><p>
+
+		Unlike <a data-fragment="OrbitControls" title="OrbitControls" href="https://threejs.org/docs/index.html#examples/en/controls/OrbitControls">OrbitControls</a> and <a data-fragment="TrackballControls" title="TrackballControls" href="https://threejs.org/docs/index.html#examples/en/controls/TrackballControls">TrackballControls</a>, ArcballControls doesn't require <a data-fragment="ArcballControls.update" title="ArcballControls.update" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.update">.update</a> to be called externally in an animation loop when animations
+		are on.</p><p>
+
+
+		To use this, as with all files in the /examples directory, you will have to
+		include the file separately in your HTML.
+		</p></div>
+
+		<h2>Import</h2>
+
+		<p>
+			ArcballControls is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>ArcballControls</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/controls/ArcballControls.js'</span><span>;</span></code></p><h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> renderer </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>WebGLRenderer</span><span>();</span><span>
+renderer</span><span>.</span><span>setSize</span><span>(</span><span> window</span><span>.</span><span>innerWidth</span><span>,</span><span> window</span><span>.</span><span>innerHeight </span><span>);</span><span>
+document</span><span>.</span><span>body</span><span>.</span><span>appendChild</span><span>(</span><span> renderer</span><span>.</span><span>domElement </span><span>);</span><span>
+
+</span><span>const</span><span> scene </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Scene</span><span>();</span><span>
+
+</span><span>const</span><span> camera </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>PerspectiveCamera</span><span>(</span><span> </span><span>45</span><span>,</span><span> window</span><span>.</span><span>innerWidth </span><span>/</span><span> window</span><span>.</span><span>innerHeight</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>10000</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> controls </span><span>=</span><span> </span><span>new</span><span> </span><span>ArcballControls</span><span>(</span><span> camera</span><span>,</span><span> renderer</span><span>.</span><span>domElement</span><span>,</span><span> scene </span><span>);</span><span>
+
+controls</span><span>.</span><span>addEventListener</span><span>(</span><span> </span><span>'change'</span><span>,</span><span> </span><span>function</span><span> </span><span>()</span><span> </span><span>{</span><span>
+
+	renderer</span><span>.</span><span>render</span><span>(</span><span> scene</span><span>,</span><span> camera </span><span>);</span><span>
+
+</span><span>}</span><span> </span><span>);</span><span>
+
+</span><span>//controls.update() must be called after any manual changes to the camera's transform</span><span>
+camera</span><span>.</span><span>position</span><span>.</span><span>set</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>20</span><span>,</span><span> </span><span>100</span><span> </span><span>);</span><span>
+controls</span><span>.</span><span>update</span><span>();</span></code></p><h2>Examples</h2>
+
+		<p><a href="https://threejs.org/examples/#misc_controls_arcball" target="_blank">misc / controls / arcball </a></p>
+
+		<h2>Constructor</h2>
+
+		<h3>ArcballControls( camera : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a>, domElement : <a data-fragment="HTMLDOMElement">HTMLDOMElement</a>, scene : <a data-fragment="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">Scene</a> )</h3>
+		<div>
+			<p><a data-fragment="Camera" title="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">camera</a>: (required) The camera to be controlled. The camera must not be a child of another object, unless that object is the scene itself.</p><p>
+
+			<a data-fragment="HTMLDOMElement" title="HTMLDOMElement">domElement</a>: The HTML element used for event listeners.</p><p>
+
+			<a data-fragment="Scene" title="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">scene</a>: The scene rendered by the camera. If not given, gizmos cannot be shown.
+		</p></div>
+
+		<h2>Events</h2>
+
+		<h3>change</h3>
+		<p>
+			Fires when the camera has been transformed by the controls.
+		</p>
+
+		<h3>start</h3>
+		<p>
+			Fires when an interaction was initiated.
+		</p>
+
+		<h3>end</h3>
+		<p>
+			Fires when an interaction has finished.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="ArcballControls.adjustNearFar" target="_parent" title="ArcballControls.adjustNearFar" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.adjustNearFar">#</a> .<a data-fragment="ArcballControls.adjustNearFar" id="adjustNearFar" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.adjustNearFar">adjustNearFar</a>  : <span>Boolean</span></h3>
+		<p>
+			If true, camera's near and far values will be adjusted every time zoom is performed trying to mantain the same visible portion
+			given by initial near and far values ( <a data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a> only ).
+			Default is false.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.camera" target="_parent" title="ArcballControls.camera" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.camera">#</a> .<a data-fragment="ArcballControls.camera" id="camera" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.camera">camera</a>  : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a></h3>
+		<p>
+			The camera being controlled.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.cursorZoom" target="_parent" title="ArcballControls.cursorZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.cursorZoom">#</a> .<a data-fragment="ArcballControls.cursorZoom" id="cursorZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.cursorZoom">cursorZoom</a>  : <span>Boolean</span></h3>
+		<p>
+			Set to true to make zoom become cursor centered.
+		</p>
+
+		<h3>
+			<a data-fragment="ArcballControls.dampingFactor" target="_parent" title="ArcballControls.dampingFactor" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.dampingFactor">#</a> .<a data-fragment="ArcballControls.dampingFactor" id="dampingFactor" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.dampingFactor">dampingFactor</a>  : <span>Float</span></h3>
+		<p>
+			The damping inertia used if <a data-fragment="ArcballControls.enableAnimations" title="ArcballControls.enableAnimations" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableAnimations">.enableAnimations</a> is set to true.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.domElement" target="_parent" title="ArcballControls.domElement" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.domElement">#</a> .<a data-fragment="ArcballControls.domElement" id="domElement" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.domElement">domElement</a>  : <a data-fragment="HTMLDOMElement">HTMLDOMElement</a></h3>
+		<p>
+			The HTMLDOMElement used to listen for mouse / touch events. This must be passed in the constructor; changing it here will
+			not set up new event listeners.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.enabled" target="_parent" title="ArcballControls.enabled" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enabled">#</a> .<a data-fragment="ArcballControls.enabled" id="enabled" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enabled">enabled</a>  : <span>Boolean</span></h3>
+		<p>
+			When set to <code translate="no"><span>false</span></code>, the controls will not respond to user input. Default is <code translate="no"><span>true</span></code>.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.enableAnimations" target="_parent" title="ArcballControls.enableAnimations" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableAnimations">#</a> .<a data-fragment="ArcballControls.enableAnimations" id="enableAnimations" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableAnimations">enableAnimations</a>  : <span>Boolean</span></h3>
+		<p>
+			Set to true to enable animations for rotation (damping) and focus operation. Default is true.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.enableGrid" target="_parent" title="ArcballControls.enableGrid" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableGrid">#</a> .<a data-fragment="ArcballControls.enableGrid" id="enableGrid" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableGrid">enableGrid</a>  : <span>Boolean</span></h3>
+		<p>
+			When set to true, a grid will appear when panning operation is being performed (desktop interaction only). Default is false.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.enablePan" target="_parent" title="ArcballControls.enablePan" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enablePan">#</a> .<a data-fragment="ArcballControls.enablePan" id="enablePan" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enablePan">enablePan</a>  : <span>Boolean</span></h3>
+		<p>
+			Enable or disable camera panning. Default is true.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.enableRotate" target="_parent" title="ArcballControls.enableRotate" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableRotate">#</a> .<a data-fragment="ArcballControls.enableRotate" id="enableRotate" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableRotate">enableRotate</a>  : <span>Boolean</span></h3>
+		<p>
+			Enable or disable camera rotation. Default is true.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.enableZoom" target="_parent" title="ArcballControls.enableZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableZoom">#</a> .<a data-fragment="ArcballControls.enableZoom" id="enableZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.enableZoom">enableZoom</a>  : <span>Boolean</span></h3>
+		<p>
+			Enable or disable zooming of the camera.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.focusAnimationTime" target="_parent" title="ArcballControls.focusAnimationTime" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.focusAnimationTime">#</a> .<a data-fragment="ArcballControls.focusAnimationTime" id="focusAnimationTime" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.focusAnimationTime">focusAnimationTime</a>  : <span>Float</span></h3>
+		<p>
+			Duration time of focus animation.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.maxDistance" target="_parent" title="ArcballControls.maxDistance" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.maxDistance">#</a> .<a data-fragment="ArcballControls.maxDistance" id="maxDistance" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.maxDistance">maxDistance</a>  : <span>Float</span></h3>
+		<p>
+			How far you can dolly out ( <a data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a> only ). Default is Infinity.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.maxZoom" target="_parent" title="ArcballControls.maxZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.maxZoom">#</a> .<a data-fragment="ArcballControls.maxZoom" id="maxZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.maxZoom">maxZoom</a>  : <span>Float</span></h3>
+		<p>
+			How far you can zoom out ( <a data-fragment="OrthographicCamera" title="OrthographicCamera" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera">OrthographicCamera</a> only ). Default is Infinity.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.minDistance" target="_parent" title="ArcballControls.minDistance" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.minDistance">#</a> .<a data-fragment="ArcballControls.minDistance" id="minDistance" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.minDistance">minDistance</a>  : <span>Float</span></h3>
+		<p>
+			 How far you can dolly in ( <a data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a> only ). Default is 0.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.minZoom" target="_parent" title="ArcballControls.minZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.minZoom">#</a> .<a data-fragment="ArcballControls.minZoom" id="minZoom" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.minZoom">minZoom</a>  : <span>Float</span></h3>
+		<p>
+			How far you can zoom in ( <a data-fragment="OrthographicCamera" title="OrthographicCamera" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera">OrthographicCamera</a> only ). Default is 0.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.radiusFactor" target="_parent" title="ArcballControls.radiusFactor" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.radiusFactor">#</a> .<a data-fragment="ArcballControls.radiusFactor" id="radiusFactor" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.radiusFactor">radiusFactor</a>  : <span>Float</span></h3>
+		<p>
+			The size of the gizmo relative to the screen width and height. Default is 0.67.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.rotateSpeed" target="_parent" title="ArcballControls.rotateSpeed" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.rotateSpeed">#</a> .<a data-fragment="ArcballControls.rotateSpeed" id="rotateSpeed" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.rotateSpeed">rotateSpeed</a>  : <span>Float</span></h3>
+		<p>
+			Speed of rotation. Default is 1.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.scaleFactor" target="_parent" title="ArcballControls.scaleFactor" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.scaleFactor">#</a> .<a data-fragment="ArcballControls.scaleFactor" id="scaleFactor" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.scaleFactor">scaleFactor</a>  : <span>Float</span></h3>
+		<p>
+			The scaling factor used when performing zoom operation.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.scene" target="_parent" title="ArcballControls.scene" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.scene">#</a> .<a data-fragment="ArcballControls.scene" id="scene" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.scene">scene</a>  : <a data-fragment="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">Scene</a></h3>
+		<p>
+			The scene rendered by the camera.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.wMax" target="_parent" title="ArcballControls.wMax" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.wMax">#</a> .<a data-fragment="ArcballControls.wMax" id="wMax" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.wMax">wMax</a>  : <span>Float</span></h3>
+		<p>
+			Maximum angular velocity allowed on rotation animation start.
+		</p>
+
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="ArcballControls.activateGizmos" target="_parent" title="ArcballControls.activateGizmos" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.activateGizmos">#</a> .<a data-fragment="ArcballControls.activateGizmos" id="activateGizmos" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.activateGizmos">activateGizmos</a> ( isActive : <span>Boolean</span> ) : <span>undefined</span></h3>
+		<p>
+			Make gizmos more or less visible.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.copyState" target="_parent" title="ArcballControls.copyState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.copyState">#</a> .<a data-fragment="ArcballControls.copyState" id="copyState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.copyState">copyState</a> () : <span>undefined</span></h3>
+		<p>
+			Copy the current state to clipboard (as a readable JSON text).
+		</p>
+
+		<h3><a data-fragment="ArcballControls.dispose" target="_parent" title="ArcballControls.dispose" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.dispose">#</a> .<a data-fragment="ArcballControls.dispose" id="dispose" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Remove all the event listeners, cancel any pending animation and clean the scene from gizmos and grid.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.pasteState" target="_parent" title="ArcballControls.pasteState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.pasteState">#</a> .<a data-fragment="ArcballControls.pasteState" id="pasteState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.pasteState">pasteState</a> () : <span>undefined</span></h3>
+		<p>
+			Set the controls state from the clipboard, assumes that the clipboard stores a JSON text as saved from <a data-fragment="ArcballControls.copyState" title="ArcballControls.copyState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.copyState">.copyState</a>.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.reset" target="_parent" title="ArcballControls.reset" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.reset">#</a> .<a data-fragment="ArcballControls.reset" id="reset" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.reset">reset</a> () : <span>undefined</span></h3>
+		<p>
+			Reset the controls to their state from either the last time the <a data-fragment="ArcballControls.saveState" title="ArcballControls.saveState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.saveState">.saveState</a> was called, or the initial state.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.saveState" target="_parent" title="ArcballControls.saveState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.saveState">#</a> .<a data-fragment="ArcballControls.saveState" id="saveState" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.saveState">saveState</a> () : <span>undefined</span></h3>
+		<p>
+			Save the current state of the controls. This can later be recovered with <a data-fragment="ArcballControls.reset" title="ArcballControls.reset" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.reset">.reset</a>.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.setCamera" target="_parent" title="ArcballControls.setCamera" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setCamera">#</a> .<a data-fragment="ArcballControls.setCamera" id="setCamera" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setCamera">setCamera</a> ( camera : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a> ) : <span>undefined</span></h3>
+		<p>
+			Set the camera to be controlled. Must be called in order to set a new camera to be controlled.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.setGizmosVisible" target="_parent" title="ArcballControls.setGizmosVisible" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setGizmosVisible">#</a> .<a data-fragment="ArcballControls.setGizmosVisible" id="setGizmosVisible" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setGizmosVisible">setGizmosVisible</a> ( value : <span>Boolean</span> ) : <span>undefined</span></h3>
+		<p>
+			Set the visible property of gizmos.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.setTbRadius" target="_parent" title="ArcballControls.setTbRadius" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setTbRadius">#</a> .<a data-fragment="ArcballControls.setTbRadius" id="setTbRadius" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setTbRadius">setTbRadius</a> ( value : <span>Float</span> ) : <span>undefined</span></h3>
+		<p>
+			Update the <code translate="no"><span>radiusFactor</span></code> value, redraw the gizmo and send a <code translate="no"><span>changeEvent</span></code> to visualise the changes.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.setMouseAction" target="_parent" title="ArcballControls.setMouseAction" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setMouseAction">#</a> .<a data-fragment="ArcballControls.setMouseAction" id="setMouseAction" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.setMouseAction">setMouseAction</a> ( operation : <span>String</span>, mouse, key ) : <span>Boolean</span></h3>
+		<div><p>
+			Set a new mouse action by specifying the operation to be performed and a mouse/key combination. In case of conflict, replaces the existing one.</p><p>
+			Operations can be specified as 'ROTATE', 'PAN', 'FOV' or 'ZOOM'.<br>
+			Mouse inputs can be specified as mouse buttons 0, 1 and 2 or 'WHEEL' for wheel notches.<br>
+			Keyboard modifiers can be specified as 'CTRL', 'SHIFT' or null if not needed.
+		</p></div>
+
+		<h3><a data-fragment="ArcballControls.unsetMouseAction" target="_parent" title="ArcballControls.unsetMouseAction" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.unsetMouseAction">#</a> .<a data-fragment="ArcballControls.unsetMouseAction" id="unsetMouseAction" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.unsetMouseAction">unsetMouseAction</a> ( mouse, key ) : <span>Boolean</span></h3>
+		<div><p>
+			Removes a mouse action by specifying its mouse/key combination.</p><p>
+			Mouse inputs can be specified as mouse buttons 0, 1 and 2 or 'WHEEL' for wheel notches.<br>
+			Keyboard modifiers can be specified as 'CTRL', 'SHIFT' or null if not needed.
+		</p></div>
+
+		<h3><a data-fragment="ArcballControls.update" target="_parent" title="ArcballControls.update" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.update">#</a> .<a data-fragment="ArcballControls.update" id="update" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.update">update</a> () : <span>undefined</span></h3>
+		<p>
+			Update the controls. Must be called after any manual changes to the camera's transform.
+		</p>
+
+		<h3><a data-fragment="ArcballControls.getRaycaster" target="_parent" title="ArcballControls.getRaycaster" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.getRaycaster">#</a> .<a data-fragment="ArcballControls.getRaycaster" id="getRaycaster" href="https://threejs.org/docs/index.html#examples/en/controls/ArcballControls.getRaycaster">getRaycaster</a> () : <a data-fragment="Raycaster" href="https://threejs.org/docs/index.html#api/en/core/Raycaster">Raycaster</a></h3>
+		<p>
+			Returns the <a data-fragment="Raycaster" title="Raycaster" href="https://threejs.org/docs/index.html#api/en/core/Raycaster">Raycaster</a> object that is used for user interaction. This object is shared between all instances of
+			ArcballControls. If you set the <a data-fragment="Object3D.layers" title="Object3D.layers" href="https://threejs.org/docs/index.html#api/en/core/Object3D.layers">.layers</a> property of the ArcballControls, you will also want to
+			set the <a data-fragment="Raycaster.layers" title="Raycaster.layers" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.layers">.layers</a> property on the <a data-fragment="Raycaster" title="Raycaster" href="https://threejs.org/docs/index.html#api/en/core/Raycaster">Raycaster</a> with a matching value, or else the ArcballControls
+			won't work as expected.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/controls/ArcballControls.js" target="_blank">examples/jsm/controls/ArcballControls.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

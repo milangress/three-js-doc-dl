@@ -1,0 +1,103 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Curve" title="Curve" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve">Curve</a> → <a data-fragment="CurvePath" title="CurvePath" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath">CurvePath</a> → <a data-fragment="Path" title="Path" href="https://threejs.org/docs/index.html#api/en/extras/core/Path">Path</a> →
+
+		</p>
+
+		<p>
+			Defines an arbitrary 2d shape plane using paths with optional holes. It
+			can be used with <a data-fragment="ExtrudeGeometry" title="ExtrudeGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry">ExtrudeGeometry</a>, <a data-fragment="ShapeGeometry" title="ShapeGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/ShapeGeometry">ShapeGeometry</a>, to get
+			points, or to get triangulated faces.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> heartShape </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Shape</span><span>();</span><span>
+
+heartShape</span><span>.</span><span>moveTo</span><span>(</span><span> </span><span>25</span><span>,</span><span> </span><span>25</span><span> </span><span>);</span><span>
+heartShape</span><span>.</span><span>bezierCurveTo</span><span>(</span><span> </span><span>25</span><span>,</span><span> </span><span>25</span><span>,</span><span> </span><span>20</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span> </span><span>);</span><span>
+heartShape</span><span>.</span><span>bezierCurveTo</span><span>(</span><span> </span><span>-</span><span> </span><span>30</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>-</span><span> </span><span>30</span><span>,</span><span> </span><span>35</span><span>,</span><span> </span><span>-</span><span> </span><span>30</span><span>,</span><span> </span><span>35</span><span> </span><span>);</span><span>
+heartShape</span><span>.</span><span>bezierCurveTo</span><span>(</span><span> </span><span>-</span><span> </span><span>30</span><span>,</span><span> </span><span>55</span><span>,</span><span> </span><span>-</span><span> </span><span>10</span><span>,</span><span> </span><span>77</span><span>,</span><span> </span><span>25</span><span>,</span><span> </span><span>95</span><span> </span><span>);</span><span>
+heartShape</span><span>.</span><span>bezierCurveTo</span><span>(</span><span> </span><span>60</span><span>,</span><span> </span><span>77</span><span>,</span><span> </span><span>80</span><span>,</span><span> </span><span>55</span><span>,</span><span> </span><span>80</span><span>,</span><span> </span><span>35</span><span> </span><span>);</span><span>
+heartShape</span><span>.</span><span>bezierCurveTo</span><span>(</span><span> </span><span>80</span><span>,</span><span> </span><span>35</span><span>,</span><span> </span><span>80</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>50</span><span>,</span><span> </span><span>0</span><span> </span><span>);</span><span>
+heartShape</span><span>.</span><span>bezierCurveTo</span><span>(</span><span> </span><span>35</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>25</span><span>,</span><span> </span><span>25</span><span>,</span><span> </span><span>25</span><span>,</span><span> </span><span>25</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> extrudeSettings </span><span>=</span><span> </span><span>{</span><span> 
+	depth</span><span>:</span><span> </span><span>8</span><span>,</span><span> 
+	bevelEnabled</span><span>:</span><span> </span><span>true</span><span>,</span><span> 
+	bevelSegments</span><span>:</span><span> </span><span>2</span><span>,</span><span> 
+	steps</span><span>:</span><span> </span><span>2</span><span>,</span><span> 
+	bevelSize</span><span>:</span><span> </span><span>1</span><span>,</span><span> 
+	bevelThickness</span><span>:</span><span> </span><span>1</span><span> 
+</span><span>};</span><span>
+
+</span><span>const</span><span> geometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>ExtrudeGeometry</span><span>(</span><span> heartShape</span><span>,</span><span> extrudeSettings </span><span>);</span><span>
+
+</span><span>const</span><span> mesh </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> geometry</span><span>,</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshPhongMaterial</span><span>()</span><span> </span><span>);</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#webgl_geometry_shapes" target="_blank">geometry / shapes </a><br>
+			<a href="https://threejs.org/examples/#webgl_geometry_extrude_shapes" target="_blank">geometry / extrude / shapes </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Shape( points : <span>Array</span> )</h3>
+		<div><p>
+			points -- (optional) array of <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2s</a>.</p><p>
+
+			Creates a Shape from the points. The first point defines the offset, then
+			successive points are added to the <a data-fragment="CurvePath.curves" title="CurvePath.curves" href="https://threejs.org/docs/index.html#api/en/extras/core/CurvePath.curves">curves</a> array as
+			<a data-fragment="LineCurve" title="LineCurve" href="https://threejs.org/docs/index.html#api/en/extras/curves/LineCurve">LineCurves</a>.</p><p>
+
+			If no points are specified, an empty shape is created and the
+			<a data-fragment="Shape.currentPoint" title="Shape.currentPoint" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.currentPoint">.currentPoint</a> is set to the origin.
+		</p></div>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Path" title="Path" href="https://threejs.org/docs/index.html#api/en/extras/core/Path">Path</a> class for common properties.</p>
+
+		<h3><a data-fragment="Shape.uuid" target="_parent" title="Shape.uuid" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.uuid">#</a> .<a data-fragment="Shape.uuid" id="uuid" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.uuid">uuid</a>  : <span>String</span></h3>
+		<p>
+			<a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a> of
+			this instance. This gets automatically assigned, so this shouldn't be
+			edited.
+		</p>
+
+		<h3><a data-fragment="Shape.holes" target="_parent" title="Shape.holes" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.holes">#</a> .<a data-fragment="Shape.holes" id="holes" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.holes">holes</a>  : <span>Array</span></h3>
+		<p>An array of <a data-fragment="Path" title="Path" href="https://threejs.org/docs/index.html#api/en/extras/core/Path">paths</a> that define the holes in the shape.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Path" title="Path" href="https://threejs.org/docs/index.html#api/en/extras/core/Path">Path</a> class for common methods.</p>
+
+		<h3><a data-fragment="Shape.extractPoints" target="_parent" title="Shape.extractPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.extractPoints">#</a> .<a data-fragment="Shape.extractPoints" id="extractPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.extractPoints">extractPoints</a> ( divisions : <span>Integer</span> ) : <span>Array</span></h3>
+		<div><p>
+			divisions -- The fineness of the result.</p><p>
+
+			Call <a data-fragment="Curve.getPoints" title="Curve.getPoints" href="https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPoints">getPoints</a> on the shape and the <a data-fragment="Shape.holes" title="Shape.holes" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.holes">.holes</a>
+			array, and return an object of the form:
+			<code translate="no"><span> </span><span>{</span><span> shape holes </span><span>}</span><span> </span></code>
+			where shape and holes are arrays of <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2s</a>.
+		</p></div>
+
+		<h3><a data-fragment="Shape.getPointsHoles" target="_parent" title="Shape.getPointsHoles" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.getPointsHoles">#</a> .<a data-fragment="Shape.getPointsHoles" id="getPointsHoles" href="https://threejs.org/docs/index.html#api/en/extras/core/Shape.getPointsHoles">getPointsHoles</a> ( divisions : <span>Integer</span> ) : <span>Array</span></h3>
+		<div><p>
+			divisions -- The fineness of the result.</p><p>
+
+			Get an array of <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2s</a> that represent the holes in the
+			shape.
+		</p></div>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/extras/core/Shape.js" target="_blank">src/extras/core/Shape.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,136 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> → <a data-fragment="Camera" title="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a> →
+
+		</p>
+		<div><p>
+			Camera that uses
+			<a href="https://en.wikipedia.org/wiki/Orthographic_projection" target="_blank">orthographic projection</a>.</p><p>
+
+			In this projection mode, an object's size in the rendered image stays
+			constant regardless of its distance from the camera.</p><p>
+
+			This can be useful for rendering 2D scenes and UI elements, amongst other
+			things.
+		</p></div>
+
+		<h2>Code Example</h2>
+		<p><code translate="no"><span>const</span><span> camera </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>OrthographicCamera</span><span>(</span><span> width </span><span>/</span><span> </span><span>-</span><span> </span><span>2</span><span>,</span><span> width </span><span>/</span><span> </span><span>2</span><span>,</span><span> height </span><span>/</span><span> </span><span>2</span><span>,</span><span> height </span><span>/</span><span> </span><span>-</span><span> </span><span>2</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>1000</span><span> </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> camera </span><span>);</span></code></p><h2>Examples</h2>
+		<p>
+			<a href="https://threejs.org/examples/#webgl_camera" target="_blank">camera </a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_cubes_ortho" target="_blank">interactive / cubes / ortho </a><br>
+			<a href="https://threejs.org/examples/#webgl_materials_cubemap_dynamic" target="_blank">materials / cubemap / dynamic</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_advanced" target="_blank">postprocessing / advanced </a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_dof2" target="_blank">postprocessing / dof2 </a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_godrays" target="_blank">postprocessing / godrays </a><br>
+			<a href="https://threejs.org/examples/#webgl_rtt" target="_blank">rtt </a><br>
+			<a href="https://threejs.org/examples/#webgl_shadowmap" target="_blank">shadowmap </a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>OrthographicCamera( left : <span>Number</span>, right : <span>Number</span>, top : <span>Number</span>, bottom : <span>Number</span>, near : <span>Number</span>, far : <span>Number</span> )</h3>
+		<div><p>
+			left — Camera frustum left plane.<br>
+			right — Camera frustum right plane.<br>
+			top — Camera frustum top plane.<br>
+			bottom — Camera frustum bottom plane.<br>
+			near — Camera frustum near plane.<br>
+			far — Camera frustum far plane.</p><p>
+
+			Together these define the camera's
+			<a href="https://en.wikipedia.org/wiki/Viewing_frustum" target="_blank">viewing frustum</a>.
+		</p></div>
+
+		<h2>Properties</h2>
+		<p>
+			See the base <a data-fragment="Camera" title="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a> class for common properties.<br>
+			Note that after making changes to most of these properties you will have
+			to call <a data-fragment="OrthographicCamera.updateProjectionMatrix" title="OrthographicCamera.updateProjectionMatrix" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.updateProjectionMatrix">.updateProjectionMatrix</a> for the changes to take effect.
+		</p>
+
+		<h3><a data-fragment="OrthographicCamera.bottom" target="_parent" title="OrthographicCamera.bottom" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.bottom">#</a> .<a data-fragment="OrthographicCamera.bottom" id="bottom" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.bottom">bottom</a>  : <span>Float</span></h3>
+		<p>Camera frustum bottom plane.</p>
+
+		<h3><a data-fragment="OrthographicCamera.far" target="_parent" title="OrthographicCamera.far" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.far">#</a> .<a data-fragment="OrthographicCamera.far" id="far" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.far">far</a>  : <span>Float</span></h3>
+		<div><p>
+			Camera frustum far plane. Default is <code translate="no"><span>2000</span></code>.</p><p>
+			Must be greater than the current value of <a data-fragment="OrthographicCamera.near" title="OrthographicCamera.near" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.near">near</a> plane.
+		</p></div>
+
+		<h3><a data-fragment="OrthographicCamera.isOrthographicCamera" target="_parent" title="OrthographicCamera.isOrthographicCamera" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.isOrthographicCamera">#</a> .<a data-fragment="OrthographicCamera.isOrthographicCamera" id="isOrthographicCamera" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.isOrthographicCamera">isOrthographicCamera</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type OrthographicCamera.</p>
+
+		<h3><a data-fragment="OrthographicCamera.left" target="_parent" title="OrthographicCamera.left" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.left">#</a> .<a data-fragment="OrthographicCamera.left" id="left" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.left">left</a>  : <span>Float</span></h3>
+		<p>Camera frustum left plane.</p>
+
+		<h3><a data-fragment="OrthographicCamera.near" target="_parent" title="OrthographicCamera.near" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.near">#</a> .<a data-fragment="OrthographicCamera.near" id="near" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.near">near</a>  : <span>Float</span></h3>
+		<div><p>
+			Camera frustum near plane. Default is <code translate="no"><span>0.1</span></code>.</p><p>
+
+			The valid range is between <code translate="no"><span>0</span></code> and the current value of the <a data-fragment="OrthographicCamera.far" title="OrthographicCamera.far" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.far">far</a> plane. Note that, unlike for the <a data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a>, <code translate="no"><span>0</span></code> is a
+			valid value for an OrthographicCamera's near plane.
+		</p></div>
+
+		<h3><a data-fragment="OrthographicCamera.right" target="_parent" title="OrthographicCamera.right" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.right">#</a> .<a data-fragment="OrthographicCamera.right" id="right" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.right">right</a>  : <span>Float</span></h3>
+		<p>Camera frustum right plane.</p>
+
+		<h3><a data-fragment="OrthographicCamera.top" target="_parent" title="OrthographicCamera.top" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.top">#</a> .<a data-fragment="OrthographicCamera.top" id="top" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.top">top</a>  : <span>Float</span></h3>
+		<p>Camera frustum top plane.</p>
+
+		<h3><a data-fragment="OrthographicCamera.view" target="_parent" title="OrthographicCamera.view" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.view">#</a> .<a data-fragment="OrthographicCamera.view" id="view" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.view">view</a>  : <span>Object</span></h3>
+		<p>
+			Set by <a data-fragment="OrthographicCamera.setViewOffset" title="OrthographicCamera.setViewOffset" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.setViewOffset">setViewOffset</a>. Default is
+			<code translate="no"><span>null</span></code>.
+		</p>
+
+		<h3><a data-fragment="OrthographicCamera.zoom" target="_parent" title="OrthographicCamera.zoom" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.zoom">#</a> .<a data-fragment="OrthographicCamera.zoom" id="zoom" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.zoom">zoom</a>  : <span>number</span></h3>
+		<p>Gets or sets the zoom factor of the camera. Default is <code translate="no"><span>1</span></code>.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Camera" title="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a> class for common methods.</p>
+
+		<h3><a data-fragment="OrthographicCamera.setViewOffset" target="_parent" title="OrthographicCamera.setViewOffset" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.setViewOffset">#</a> .<a data-fragment="OrthographicCamera.setViewOffset" id="setViewOffset" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.setViewOffset">setViewOffset</a> ( fullWidth : <span>Float</span>, fullHeight : <span>Float</span>, x : <span>Float</span>, y : <span>Float</span>, width : <span>Float</span>, height : <span>Float</span> ) : <span>undefined</span></h3>
+		<div><p>
+			fullWidth — full width of multiview setup<br>
+			fullHeight — full height of multiview setup<br>
+			x — horizontal offset of subcamera<br>
+			y — vertical offset of subcamera<br>
+			width — width of subcamera<br>
+			height — height of subcamera</p><p>
+
+			Sets an offset in a larger
+			<a href="https://en.wikipedia.org/wiki/Viewing_frustum" target="_blank">viewing frustum</a>. This
+			is useful for multi-window or multi-monitor/multi-machine setups. For an
+			example on how to use it see <a data-fragment="PerspectiveCamera.setViewOffset" title="PerspectiveCamera.setViewOffset" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera.setViewOffset">PerspectiveCamera</a>.
+		</p></div>
+
+		<h3><a data-fragment="OrthographicCamera.clearViewOffset" target="_parent" title="OrthographicCamera.clearViewOffset" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.clearViewOffset">#</a> .<a data-fragment="OrthographicCamera.clearViewOffset" id="clearViewOffset" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.clearViewOffset">clearViewOffset</a> () : <span>undefined</span></h3>
+		<p>Removes any offset set by the .setViewOffset method.</p>
+
+		<h3><a data-fragment="OrthographicCamera.updateProjectionMatrix" target="_parent" title="OrthographicCamera.updateProjectionMatrix" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.updateProjectionMatrix">#</a> .<a data-fragment="OrthographicCamera.updateProjectionMatrix" id="updateProjectionMatrix" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.updateProjectionMatrix">updateProjectionMatrix</a> () : <span>undefined</span></h3>
+		<p>
+			Updates the camera projection matrix. Must be called after any change of
+			parameters.
+		</p>
+
+		<h3><a data-fragment="OrthographicCamera.toJSON" target="_parent" title="OrthographicCamera.toJSON" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.toJSON">#</a> .<a data-fragment="OrthographicCamera.toJSON" id="toJSON" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.toJSON">toJSON</a> (meta : <span>Object</span>) : <span>Object</span></h3>
+		<p>
+			meta -- object containing metadata such as textures or images in objects'
+			descendants.<br>
+			Convert the camera to three.js
+			<a href="https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4" target="_blank">JSON Object/Scene format</a>.
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/cameras/OrthographicCamera.js" target="_blank">src/cameras/OrthographicCamera.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

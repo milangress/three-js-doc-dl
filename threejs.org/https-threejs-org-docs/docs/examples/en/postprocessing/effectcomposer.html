@@ -1,0 +1,176 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+
+		<h2>EffectComposer</h2>
+
+		<p>
+			Used to implement post-processing effects in three.js. The class manages a chain of post-processing passes
+			to produce the final visual result. Post-processing passes are executed in order of their addition/insertion.
+			The last pass is automatically rendered to screen.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			EffectComposer is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>EffectComposer</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/postprocessing/EffectComposer.js'</span><span>;</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#webgl_postprocessing" target="_blank">postprocessing</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_advanced" target="_blank">postprocessing advanced</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_backgrounds" target="_blank">postprocessing backgrounds</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_transition" target="_blank">postprocessing transition</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_dof" target="_blank">postprocessing depth-of-field</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_dof2" target="_blank">postprocessing depth-of-field 2</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_fxaa" target="_blank">postprocessing fxaa</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_glitch" target="_blank">postprocessing glitch</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_godrays" target="_blank">postprocessing godrays</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_gtao" target="_blank">postprocessing gtao</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_masking" target="_blank">postprocessing masking</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_material_ao" target="_blank">postprocessing material ao</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_outline" target="_blank">postprocessing outline</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_pixel" target="_blank">postprocessing pixelate</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_procedural" target="_blank">postprocessing procedural</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_rgb_halftone" target="_blank">postprocessing rgb halftone</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_sao" target="_blank">postprocessing sao</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_smaa" target="_blank">postprocessing smaa</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_sobel" target="_blank">postprocessing sobel</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_ssaa" target="_blank">postprocessing ssaa</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_ssao" target="_blank">postprocessing ssao</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_taa" target="_blank">postprocessing taa</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_unreal_bloom" target="_blank">postprocessing unreal bloom</a><br>
+			<a href="https://threejs.org/examples/#webgl_postprocessing_unreal_bloom_selective" target="_blank">postprocessing unreal bloom selective</a><br>
+		</p>
+
+		<h2>Constructor</h2>
+
+
+		<h3>EffectComposer( renderer : <a data-fragment="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">WebGLRenderer</a>, renderTarget : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a> )</h3>
+		<p>
+		<a data-fragment="WebGLRenderer" title="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">renderer</a> -- The renderer used to render the scene. <br>
+		<a data-fragment="WebGLRenderTarget" title="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">renderTarget</a> -- (optional) A preconfigured render target internally used by EffectComposer.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="EffectComposer.passes" target="_parent" title="EffectComposer.passes" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.passes">#</a> .<a data-fragment="EffectComposer.passes" id="passes" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.passes">passes</a>  : <span>Array</span></h3>
+		<p>
+			An array representing the (ordered) chain of post-processing passes.
+		</p>
+
+		<h3><a data-fragment="EffectComposer.readBuffer" target="_parent" title="EffectComposer.readBuffer" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.readBuffer">#</a> .<a data-fragment="EffectComposer.readBuffer" id="readBuffer" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.readBuffer">readBuffer</a>  : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a></h3>
+		<p>
+			A reference to the internal read buffer. Passes usually read the previous render result from this buffer.
+		</p>
+
+		<h3><a data-fragment="EffectComposer.renderer" target="_parent" title="EffectComposer.renderer" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.renderer">#</a> .<a data-fragment="EffectComposer.renderer" id="renderer" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.renderer">renderer</a>  : <a data-fragment="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">WebGLRenderer</a></h3>
+		<p>
+			A reference to the internal renderer.
+		</p>
+
+		<h3><a data-fragment="EffectComposer.renderToScreen" target="_parent" title="EffectComposer.renderToScreen" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.renderToScreen">#</a> .<a data-fragment="EffectComposer.renderToScreen" id="renderToScreen" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.renderToScreen">renderToScreen</a>  : <span>Boolean</span></h3>
+		<p>
+			Whether the final pass is rendered to the screen (default framebuffer) or not.
+		</p>
+
+		<h3><a data-fragment="EffectComposer.writeBuffer" target="_parent" title="EffectComposer.writeBuffer" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.writeBuffer">#</a> .<a data-fragment="EffectComposer.writeBuffer" id="writeBuffer" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.writeBuffer">writeBuffer</a>  : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a></h3>
+		<p>
+			A reference to the internal write buffer. Passes usually write their result into this buffer.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="EffectComposer.addPass" target="_parent" title="EffectComposer.addPass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.addPass">#</a> .<a data-fragment="EffectComposer.addPass" id="addPass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.addPass">addPass</a> ( pass : <a data-fragment="Pass">Pass</a> ) : <span>undefined</span></h3>
+
+		<div><p>
+			pass -- The pass to add to the pass chain.</p><p>
+
+			Adds the given pass to the pass chain.
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.dispose" target="_parent" title="EffectComposer.dispose" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.dispose">#</a> .<a data-fragment="EffectComposer.dispose" id="dispose" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a data-fragment="EffectComposer.insertPass" target="_parent" title="EffectComposer.insertPass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.insertPass">#</a> .<a data-fragment="EffectComposer.insertPass" id="insertPass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.insertPass">insertPass</a> ( pass : <a data-fragment="Pass">Pass</a>, index : <span>Integer</span> ) : <span>undefined</span></h3>
+
+		<div><p>
+			pass -- The pass to insert into the pass chain.<br>
+			index -- Defines the position in the pass chain where the pass should be inserted.</p><p>
+
+			Inserts the given pass into the pass chain at the given index.
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.isLastEnabledPass" target="_parent" title="EffectComposer.isLastEnabledPass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.isLastEnabledPass">#</a> .<a data-fragment="EffectComposer.isLastEnabledPass" id="isLastEnabledPass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.isLastEnabledPass">isLastEnabledPass</a> ( passIndex : <span>Integer</span> ) : <span>Boolean</span></h3>
+
+		<div><p>
+			passIndex -- The pass to check.</p><p>
+
+			Returns true if the pass for the given index is the last enabled pass in the pass chain.
+			Used by EffectComposer to determine when a pass should be rendered to screen.
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.removePass" target="_parent" title="EffectComposer.removePass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.removePass">#</a> .<a data-fragment="EffectComposer.removePass" id="removePass" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.removePass">removePass</a> ( pass : <a data-fragment="Pass">Pass</a> ) : <span>undefined</span></h3>
+
+		<div><p>
+			pass -- The pass to remove from the pass chain.</p><p>
+
+			Removes the given pass from the pass chain.
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.render" target="_parent" title="EffectComposer.render" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.render">#</a> .<a data-fragment="EffectComposer.render" id="render" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.render">render</a> ( deltaTime : <span>Float</span> ) : <span>undefined</span></h3>
+
+		<div><p>
+			deltaTime -- The delta time value.</p><p>
+
+			Executes all enabled post-processing passes in order to produce the final frame.
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.reset" target="_parent" title="EffectComposer.reset" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.reset">#</a> .<a data-fragment="EffectComposer.reset" id="reset" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.reset">reset</a> ( renderTarget : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a> ) : <span>undefined</span></h3>
+
+		<div>
+			<p><a data-fragment="WebGLRenderTarget" title="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">renderTarget</a> -- (optional) A preconfigured render target internally used by EffectComposer..</p><p>
+
+			Resets the internal state of the EffectComposer.
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.setPixelRatio" target="_parent" title="EffectComposer.setPixelRatio" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.setPixelRatio">#</a> .<a data-fragment="EffectComposer.setPixelRatio" id="setPixelRatio" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.setPixelRatio">setPixelRatio</a> ( pixelRatio : <span>Float</span> ) : <span>undefined</span></h3>
+
+		<div><p>
+			pixelRatio -- The device pixel ratio.</p><p>
+
+			Sets device pixel ratio. This is usually used for HiDPI device to prevent blurring output.
+				Thus, the semantic of the method is similar to <a data-fragment="WebGLRenderer.setPixelRatio" title="WebGLRenderer.setPixelRatio" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.setPixelRatio">WebGLRenderer.setPixelRatio</a>().
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.setSize" target="_parent" title="EffectComposer.setSize" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.setSize">#</a> .<a data-fragment="EffectComposer.setSize" id="setSize" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.setSize">setSize</a> ( width : <span>Integer</span>, height : <span>Integer</span> ) : <span>undefined</span></h3>
+
+		<div><p>
+			width -- The width of the EffectComposer.<br>
+			height -- The height of the EffectComposer.</p><p>
+
+				Resizes the internal render buffers and passes to (width, height) with device pixel ratio taken into account.
+				Thus, the semantic of the method is similar to <a data-fragment="WebGLRenderer.setSize" title="WebGLRenderer.setSize" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.setSize">WebGLRenderer.setSize</a>().
+		</p></div>
+
+		<h3><a data-fragment="EffectComposer.swapBuffers" target="_parent" title="EffectComposer.swapBuffers" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.swapBuffers">#</a> .<a data-fragment="EffectComposer.swapBuffers" id="swapBuffers" href="https://threejs.org/docs/index.html#examples/en/postprocessing/EffectComposer.swapBuffers">swapBuffers</a> () : <span>undefined</span></h3>
+
+		<p>Swaps the internal read/write buffers.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/postprocessing/EffectComposer.js" target="_blank">examples/jsm/postprocessing/EffectComposer.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

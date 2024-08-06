@@ -1,0 +1,102 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> →
+
+		</p><h2>LineBasicMaterial</h2>
+
+		<p>A material for drawing wireframe-style geometries.</p>
+
+		<h2>Code Example</h2>
+		<p><code translate="no"><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>LineBasicMaterial</span><span>(</span><span> </span><span>{</span><span>
+	color</span><span>:</span><span> </span><span>0xffffff</span><span>,</span><span>
+	linewidth</span><span>:</span><span> </span><span>1</span><span>,</span><span>
+	linecap</span><span>:</span><span> </span><span>'round'</span><span>,</span><span> </span><span>//ignored by WebGLRenderer</span><span>
+	linejoin</span><span>:</span><span>  </span><span>'round'</span><span> </span><span>//ignored by WebGLRenderer</span><span>
+</span><span>}</span><span> </span><span>);</span></code></p><h2>Examples</h2>
+		<p>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_drawrange" target="_blank">WebGL / buffergeometry / drawrange</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_lines" target="_blank">WebGL / buffergeometry / lines</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_lines_indexed" target="_blank">WebGL / buffergeometry / lines / indexed</a><br>
+			<a href="https://threejs.org/examples/#webgl_decals" target="_blank">WebGL / decals</a><br>
+			<a href="https://threejs.org/examples/#webgl_geometry_nurbs" target="_blank">WebGL / geometry / nurbs</a><br>
+			<a href="https://threejs.org/examples/#webgl_geometry_shapes" target="_blank">WebGL / geometry / shapes</a><br>
+			<a href="https://threejs.org/examples/#webgl_geometry_spline_editor" target="_blank">WebGL / geometry / spline / editor</a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_buffergeometry" target="_blank">WebGL / interactive / buffergeometry</a><br>
+			<a href="https://threejs.org/examples/#webgl_interactive_voxelpainter" target="_blank">WebGL / interactive / voxelpainter</a><br>
+			<a href="https://threejs.org/examples/#webgl_lines_colors" target="_blank">WebGL / lines / colors</a><br>
+			<a href="https://threejs.org/examples/#webgl_lines_dashed" target="_blank">WebGL / lines / dashed</a><br>
+			<a href="https://threejs.org/examples/#physics_ammo_rope" target="_blank">physics / ammo / rope</a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>LineBasicMaterial( parameters : <span>Object</span> )</h3>
+
+		<div>
+			<p><a data-fragment="Object" title="Object">parameters</a> - (optional) an object with one or more
+			properties defining the material's appearance. Any property of the
+			material (including any property inherited from <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a>) can be
+			passed in here.</p><p>
+
+			The exception is the property <a data-fragment="Hexadecimal" title="Hexadecimal">color</a>, which can be
+			passed in as a hexadecimal string and is <code translate="no"><span>0xffffff</span></code> (white) by default.
+			<a data-fragment="Color.set" title="Color.set" href="https://threejs.org/docs/index.html#api/en/math/Color.set">Color.set</a>( color ) is called internally.
+		</p></div>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> class for common properties.</p>
+
+		<h3><a data-fragment="LineBasicMaterial.color" target="_parent" title="LineBasicMaterial.color" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.color">#</a> .<a data-fragment="LineBasicMaterial.color" id="color" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.color">color</a>  : <a data-fragment="Color" href="https://threejs.org/docs/index.html#api/en/math/Color">Color</a></h3>
+		<p><a data-fragment="Color" title="Color" href="https://threejs.org/docs/index.html#api/en/math/Color">Color</a> of the material, by default set to white (0xffffff).</p>
+
+		<h3><a data-fragment="LineBasicMaterial.fog" target="_parent" title="LineBasicMaterial.fog" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.fog">#</a> .<a data-fragment="LineBasicMaterial.fog" id="fog" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.fog">fog</a>  : <span>Boolean</span></h3>
+		<p>Whether the material is affected by fog. Default is <code translate="no"><span>true</span></code>.</p>
+
+		<h3><a data-fragment="LineBasicMaterial.linewidth" target="_parent" title="LineBasicMaterial.linewidth" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.linewidth">#</a> .<a data-fragment="LineBasicMaterial.linewidth" id="linewidth" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.linewidth">linewidth</a>  : <span>Float</span></h3>
+		<div><p>
+			Controls line thickness. Default is <code translate="no"><span>1</span></code>.</p><p>
+
+			Due to limitations of the
+			<a href="https://www.khronos.org/registry/OpenGL/specs/gl/glspec46.core.pdf" target="_blank">OpenGL Core Profile</a> 
+			with the <a data-fragment="WebGLRenderer" title="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer on most
+			platforms linewidth will always be <code translate="no"><span>1</span></code> regardless of the set value.
+		</p></div>
+
+		<h3><a data-fragment="LineBasicMaterial.linecap" target="_parent" title="LineBasicMaterial.linecap" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.linecap">#</a> .<a data-fragment="LineBasicMaterial.linecap" id="linecap" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.linecap">linecap</a>  : <span>String</span></h3>
+		<div><p>
+			Define appearance of line ends. Possible values are 'butt', 'round' and
+			'square'. Default is 'round'.</p><p>
+
+			This corresponds to the
+			<a href="https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/lineCap" target="_blank">2D Canvas lineCap</a> 
+			property and it is ignored by the <a data-fragment="WebGLRenderer" title="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer.
+		</p></div>
+
+		<h3><a data-fragment="LineBasicMaterial.linejoin" target="_parent" title="LineBasicMaterial.linejoin" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.linejoin">#</a> .<a data-fragment="LineBasicMaterial.linejoin" id="linejoin" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.linejoin">linejoin</a>  : <span>String</span></h3>
+		<div><p>
+			Define appearance of line joints. Possible values are 'round', 'bevel' and
+			'miter'. Default is 'round'. </p><p>
+
+			This corresponds to the
+			<a href="https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/lineJoin" target="_blank">2D Canvas lineJoin</a> 
+			property and it is ignored by the <a data-fragment="WebGLRenderer" title="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">WebGL</a> renderer.
+		</p></div>
+
+		<h3><a data-fragment="LineBasicMaterial.map" target="_parent" title="LineBasicMaterial.map" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.map">#</a> .<a data-fragment="LineBasicMaterial.map" id="map" href="https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial.map">map</a>  : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a></h3>
+		<p>Sets the color of the lines using data from a <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a>.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Material" title="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/materials/LineBasicMaterial.js" target="_blank">src/materials/LineBasicMaterial.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

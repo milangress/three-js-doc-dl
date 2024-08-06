@@ -1,0 +1,149 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<div><p>
+			An AnimationClip is a reusable set of keyframe tracks which represent an
+			animation.</p><p>
+			For an overview of the different elements of the three.js animation system
+			see the "Animation System" article in the "Next Steps" section of the
+			manual.
+		</p></div>
+
+		<h2>Constructor</h2>
+
+		<h3>
+			AnimationClip( name : <span>String</span>, duration : <span>Number</span>, tracks : <span>Array</span> )
+		</h3>
+		<div>
+			<p><a data-fragment="String" title="String">name</a> - a name for this clip.<br>
+			<a data-fragment="Number" title="Number">duration</a> - the duration of this clip (in seconds). If a
+			negative value is passed, the duration will be calculated from the passed
+			<code translate="no"><span>tracks</span></code> array.<br>
+			<a data-fragment="Array" title="Array">tracks</a> - an array of <a data-fragment="KeyframeTrack" title="KeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack">KeyframeTracks</a>.<br>
+			<a data-fragment="Number" title="Number">blendMode</a> - defines how the animation is blended/combined
+			when two or more animations are simultaneously played.</p><p>
+
+			Note: Instead of instantiating an AnimationClip directly with the
+			constructor, you can use one of its static methods to create
+			AnimationClips: from JSON (<a data-fragment="AnimationClip.parse" title="AnimationClip.parse" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.parse">parse</a>), from morph target
+			sequences (<a data-fragment="AnimationClip.CreateFromMorphTargetSequence" title="AnimationClip.CreateFromMorphTargetSequence" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.CreateFromMorphTargetSequence">CreateFromMorphTargetSequence</a>, 
+			<a data-fragment="AnimationClip.CreateClipsFromMorphTargetSequences" title="AnimationClip.CreateClipsFromMorphTargetSequences" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.CreateClipsFromMorphTargetSequences">CreateClipsFromMorphTargetSequences</a>) or from animation hierarchies
+			(<a data-fragment="AnimationClip.parseAnimation" title="AnimationClip.parseAnimation" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.parseAnimation">parseAnimation</a>) - if your model doesn't already
+			hold AnimationClips in its geometry's animations array.
+		</p></div>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="AnimationClip.blendMode" target="_parent" title="AnimationClip.blendMode" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.blendMode">#</a> .<a data-fragment="AnimationClip.blendMode" id="blendMode" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.blendMode">blendMode</a>  : <span>Number</span></h3>
+		<p>
+			Defines how the animation is blended/combined when two or more animations
+			are simultaneously played. Valid values are <strong>NormalAnimationBlendMode</strong>
+			(default) and <strong>AdditiveAnimationBlendMode</strong>.
+		</p>
+
+		<h3><a data-fragment="AnimationClip.duration" target="_parent" title="AnimationClip.duration" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.duration">#</a> .<a data-fragment="AnimationClip.duration" id="duration" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.duration">duration</a>  : <span>Number</span></h3>
+		<p>
+			The duration of this clip (in seconds). This can be calculated from the
+			<a data-fragment="AnimationClip.tracks" title="AnimationClip.tracks" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.tracks">tracks</a> array via <a data-fragment="AnimationClip.resetDuration" title="AnimationClip.resetDuration" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.resetDuration">resetDuration</a>.
+		</p>
+
+		<h3><a data-fragment="AnimationClip.name" target="_parent" title="AnimationClip.name" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.name">#</a> .<a data-fragment="AnimationClip.name" id="name" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.name">name</a>  : <span>String</span></h3>
+		<p>
+			A name for this clip. A certain clip can be searched via <a data-fragment="AnimationClip.findByName" title="AnimationClip.findByName" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.findByName">findByName</a>.
+		</p>
+
+		<h3><a data-fragment="AnimationClip.tracks" target="_parent" title="AnimationClip.tracks" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.tracks">#</a> .<a data-fragment="AnimationClip.tracks" id="tracks" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.tracks">tracks</a>  : <span>Array</span></h3>
+		<p>
+			An array containing a <a data-fragment="KeyframeTrack" title="KeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack">KeyframeTrack</a> for each property that are
+			animated by this clip.
+		</p>
+
+		<h3><a data-fragment="AnimationClip.uuid" target="_parent" title="AnimationClip.uuid" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.uuid">#</a> .<a data-fragment="AnimationClip.uuid" id="uuid" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.uuid">uuid</a>  : <span>String</span></h3>
+		<p>
+			The <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a>
+			of this clip instance. It gets automatically assigned and shouldn't be
+			edited.
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="AnimationClip.clone" target="_parent" title="AnimationClip.clone" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.clone">#</a> .<a data-fragment="AnimationClip.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.clone">clone</a> () : <a data-fragment="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClip</a></h3>
+		<p>Returns a copy of this clip.</p>
+
+		<h3><a data-fragment="AnimationClip.optimize" target="_parent" title="AnimationClip.optimize" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.optimize">#</a> .<a data-fragment="AnimationClip.optimize" id="optimize" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.optimize">optimize</a> () : <span>this</span></h3>
+		<p>
+			Optimizes each track by removing equivalent sequential keys (which are
+			common in morph target sequences).
+		</p>
+
+		<h3><a data-fragment="AnimationClip.resetDuration" target="_parent" title="AnimationClip.resetDuration" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.resetDuration">#</a> .<a data-fragment="AnimationClip.resetDuration" id="resetDuration" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.resetDuration">resetDuration</a> () : <span>this</span></h3>
+		<p>
+			Sets the <a data-fragment="AnimationClip.duration" title="AnimationClip.duration" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.duration">duration</a> of the clip to the duration of its
+			longest <a data-fragment="KeyframeTrack" title="KeyframeTrack" href="https://threejs.org/docs/index.html#api/en/animation/KeyframeTrack">KeyframeTrack</a>.
+		</p>
+
+		<h3><a data-fragment="AnimationClip.toJSON" target="_parent" title="AnimationClip.toJSON" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.toJSON">#</a> .<a data-fragment="AnimationClip.toJSON" id="toJSON" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.toJSON">toJSON</a> () : <span>Object</span></h3>
+		<p>Returns a JSON object representing the serialized animation clip.</p>
+
+		<h3><a data-fragment="AnimationClip.trim" target="_parent" title="AnimationClip.trim" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.trim">#</a> .<a data-fragment="AnimationClip.trim" id="trim" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.trim">trim</a> () : <span>this</span></h3>
+		<p>Trims all tracks to the clip's duration.</p>
+
+		<h3><a data-fragment="AnimationClip.validate" target="_parent" title="AnimationClip.validate" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.validate">#</a> .<a data-fragment="AnimationClip.validate" id="validate" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.validate">validate</a> () : <span>Boolean</span></h3>
+		<p>
+			Performs minimal validation on each track in the clip. Returns true if all
+			tracks are valid.
+		</p>
+
+		<h2>Static Methods</h2>
+
+
+		<h3><a data-fragment="AnimationClip.CreateClipsFromMorphTargetSequences" target="_parent" title="AnimationClip.CreateClipsFromMorphTargetSequences" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.CreateClipsFromMorphTargetSequences">#</a> .<a data-fragment="AnimationClip.CreateClipsFromMorphTargetSequences" id="CreateClipsFromMorphTargetSequences" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.CreateClipsFromMorphTargetSequences">CreateClipsFromMorphTargetSequences</a> ( name : <span>String</span>, morphTargetSequence : <span>Array</span>, fps : <span>Number</span>, noLoop : <span>Boolean</span> ) : <span>Array</span></h3>
+		<p>
+			Returns an array of new AnimationClips created from the morph target
+			sequences of a geometry, trying to sort morph target names into
+			animation-group-based patterns like "Walk_001, Walk_002, Run_001, Run_002...".
+		</p>
+
+		<h3><a data-fragment="AnimationClip.CreateFromMorphTargetSequence" target="_parent" title="AnimationClip.CreateFromMorphTargetSequence" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.CreateFromMorphTargetSequence">#</a> .<a data-fragment="AnimationClip.CreateFromMorphTargetSequence" id="CreateFromMorphTargetSequence" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.CreateFromMorphTargetSequence">CreateFromMorphTargetSequence</a> ( name : <span>String</span>, morphTargetSequence : <span>Array</span>, fps : <span>Number</span>, noLoop : <span>Boolean</span> ) : <a data-fragment="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClip</a>
+		</h3>
+		<div><p>
+			Returns a new AnimationClip from the passed morph targets array of a
+			geometry, taking a name and the number of frames per second.</p><p>
+
+			Note: The fps parameter is required, but the animation speed can be
+			overridden in an <code translate="no"><span>AnimationAction</span></code> via <a data-fragment="AnimationAction.setDuration" title="AnimationAction.setDuration" href="https://threejs.org/docs/index.html#api/en/animation/AnimationAction.setDuration">animationAction.setDuration</a>.
+		</p></div>
+
+		<h3><a data-fragment="AnimationClip.findByName" target="_parent" title="AnimationClip.findByName" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.findByName">#</a> .<a data-fragment="AnimationClip.findByName" id="findByName" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.findByName">findByName</a> ( objectOrClipArray : <span>Object</span>, name : <span>String</span> ) : <a data-fragment="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClip</a>
+		</h3>
+		<p>
+			Searches for an AnimationClip by name, taking as its first parameter
+			either an array of AnimationClips, or a mesh or geometry that contains an
+			array named "animations".
+		</p>
+
+		<h3><a data-fragment="AnimationClip.parse" target="_parent" title="AnimationClip.parse" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.parse">#</a> .<a data-fragment="AnimationClip.parse" id="parse" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.parse">parse</a> ( json : <span>Object</span> ) : <a data-fragment="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClip</a></h3>
+		<p>Parses a JSON representation of a clip and returns an AnimationClip.</p>
+
+		<h3>
+			<a data-fragment="AnimationClip.parseAnimation" target="_parent" title="AnimationClip.parseAnimation" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.parseAnimation">#</a> .<a data-fragment="AnimationClip.parseAnimation" id="parseAnimation" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.parseAnimation">parseAnimation</a> ( animation : <span>Object</span>, bones : <span>Array</span> ) : <a data-fragment="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClip</a>
+		</h3>
+		<p>Parses the animation.hierarchy format and returns an AnimationClip.</p>
+
+		<h3><a data-fragment="AnimationClip.toJSON" target="_parent" title="AnimationClip.toJSON" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.toJSON">#</a> .<a data-fragment="AnimationClip.toJSON" id="toJSON" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip.toJSON">toJSON</a> ( clip : <a data-fragment="AnimationClip" href="https://threejs.org/docs/index.html#api/en/animation/AnimationClip">AnimationClip</a> ) : <span>Object</span></h3>
+		<p>Takes an AnimationClip and returns a JSON object.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/animation/AnimationClip.js" target="_blank">src/animation/AnimationClip.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

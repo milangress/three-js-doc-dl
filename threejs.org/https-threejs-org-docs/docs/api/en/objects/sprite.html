@@ -1,0 +1,74 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> →
+
+		</p>
+
+		<div><p>
+			A sprite is a plane that always faces towards the camera, generally with a
+			partially transparent texture applied.</p><p>
+
+			Sprites do not cast shadows, setting <code translate="no"><span>castShadow </span><span>=</span><span> </span><span>true</span></code> will
+			have no effect.
+		</p></div>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> map </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>TextureLoader</span><span>().</span><span>load</span><span>(</span><span> </span><span>'sprite.png'</span><span> </span><span>);</span><span>
+</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>SpriteMaterial</span><span>(</span><span> </span><span>{</span><span> map</span><span>:</span><span> map </span><span>}</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> sprite </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Sprite</span><span>(</span><span> material </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> sprite </span><span>);</span></code></p><h2>Constructor</h2>
+
+		<h3>Sprite( material : <a data-fragment="Material" href="https://threejs.org/docs/index.html#api/en/materials/Material">Material</a> )</h3>
+		
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> class for common properties.</p>
+
+		<h3><a data-fragment="Sprite.isSprite" target="_parent" title="Sprite.isSprite" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.isSprite">#</a> .<a data-fragment="Sprite.isSprite" id="isSprite" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.isSprite">isSprite</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Sprite.</p>
+
+		<h3><a data-fragment="Sprite.material" target="_parent" title="Sprite.material" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.material">#</a> .<a data-fragment="Sprite.material" id="material" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.material">material</a>  : <a data-fragment="SpriteMaterial" href="https://threejs.org/docs/index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a></h3>
+		<p>
+			An instance of <a data-fragment="SpriteMaterial" title="SpriteMaterial" href="https://threejs.org/docs/index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a>, defining the object's appearance.
+			Default is a white <a data-fragment="SpriteMaterial" title="SpriteMaterial" href="https://threejs.org/docs/index.html#api/en/materials/SpriteMaterial">SpriteMaterial</a>.
+		</p>
+
+		<h3><a data-fragment="Sprite.center" target="_parent" title="Sprite.center" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.center">#</a> .<a data-fragment="Sprite.center" id="center" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.center">center</a>  : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			The sprite's anchor point, and the point around which the sprite rotates.
+			A value of (0.5, 0.5) corresponds to the midpoint of the sprite. A value
+			of (0, 0) corresponds to the lower left corner of the sprite. The default
+			is (0.5, 0.5).
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> class for common methods.</p>
+
+		<h3><a data-fragment="Sprite.copy" target="_parent" title="Sprite.copy" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.copy">#</a> .<a data-fragment="Sprite.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.copy">copy</a> ( sprite : <a data-fragment="Sprite" href="https://threejs.org/docs/index.html#api/en/objects/Sprite">Sprite</a> ) : <span>this</span></h3>
+		<p>Copies the properties of the passed sprite to this one.</p>
+
+		<h3>
+			<a data-fragment="Sprite.raycast" target="_parent" title="Sprite.raycast" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.raycast">#</a> .<a data-fragment="Sprite.raycast" id="raycast" href="https://threejs.org/docs/index.html#api/en/objects/Sprite.raycast">raycast</a> ( raycaster : <a data-fragment="Raycaster" href="https://threejs.org/docs/index.html#api/en/core/Raycaster">Raycaster</a>, intersects : <span>Array</span> ) : <span>undefined</span>
+		</h3>
+		<p>
+			Get intersections between a casted ray and this sprite.
+			<a data-fragment="Raycaster.intersectObject" title="Raycaster.intersectObject" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.intersectObject">Raycaster.intersectObject</a>() will call this method. The raycaster
+			must be initialized by calling <a data-fragment="Raycaster.setFromCamera" title="Raycaster.setFromCamera" href="https://threejs.org/docs/index.html#api/en/core/Raycaster.setFromCamera">Raycaster.setFromCamera</a>() before
+			raycasting against sprites.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/objects/Sprite.js" target="_blank">src/objects/Sprite.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,156 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> →
+		</p>
+
+		<div><p>
+			A loader for geometry compressed with the Draco library. </p><p>
+			<a href="https://google.github.io/draco/" target="_blank">Draco</a> is an open source library for compressing and
+			decompressing 3D meshes and point clouds. Compressed geometry can be significantly smaller,
+			at the cost of additional decoding time on the client device.
+		</p></div>
+
+		<p>
+			Standalone Draco files have a <code translate="no"><span>.</span><span>drc</span></code> extension, and contain vertex positions,
+			normals, colors, and other attributes. Draco files <strong>do not</strong> contain materials,
+			textures, animation, or node hierarchies – to use these features, embed Draco geometry
+			inside of a glTF file. A normal glTF file can be converted to a Draco-compressed glTF file
+			using <a href="https://github.com/AnalyticalGraphicsInc/gltf-pipeline" target="_blank">glTF-Pipeline</a>. When
+			using Draco with glTF, an instance of DRACOLoader will be used internally by <a data-fragment="GLTFLoader" title="GLTFLoader" href="https://threejs.org/docs/index.html#examples/en/loaders/GLTFLoader">GLTFLoader</a>.
+		</p>
+
+		<p>
+			It is recommended to create one DRACOLoader instance and reuse it to avoid loading and creating multiple
+			decoder instances.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			DRACOLoader is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>DRACOLoader</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/loaders/DRACOLoader.js'</span><span>;</span></code></p><h2>Code Example</h2>
+
+		<p><code translate="no"><span>// Instantiate a loader</span><span>
+</span><span>const</span><span> loader </span><span>=</span><span> </span><span>new</span><span> </span><span>DRACOLoader</span><span>();</span><span>
+
+</span><span>// Specify path to a folder containing WASM/JS decoding libraries.</span><span>
+loader</span><span>.</span><span>setDecoderPath</span><span>(</span><span> </span><span>'/examples/jsm/libs/draco/'</span><span> </span><span>);</span><span>
+
+</span><span>// Optional: Pre-fetch Draco WASM/JS module.</span><span>
+loader</span><span>.</span><span>preload</span><span>();</span><span>
+
+</span><span>// Load a Draco geometry</span><span>
+loader</span><span>.</span><span>load</span><span>(</span><span>
+	</span><span>// resource URL</span><span>
+	</span><span>'model.drc'</span><span>,</span><span>
+	</span><span>// called when the resource is loaded</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> geometry </span><span>)</span><span> </span><span>{</span><span>
+
+		</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshStandardMaterial</span><span>(</span><span> </span><span>{</span><span> color</span><span>:</span><span> </span><span>0x606060</span><span> </span><span>}</span><span> </span><span>);</span><span>
+		</span><span>const</span><span> mesh </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> geometry</span><span>,</span><span> material </span><span>);</span><span>
+		scene</span><span>.</span><span>add</span><span>(</span><span> mesh </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	</span><span>// called as loading progresses</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> xhr </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>(</span><span> xhr</span><span>.</span><span>loaded </span><span>/</span><span> xhr</span><span>.</span><span>total </span><span>*</span><span> </span><span>100</span><span> </span><span>)</span><span> </span><span>+</span><span> </span><span>'% loaded'</span><span> </span><span>);</span><span>
+
+	</span><span>},</span><span>
+	</span><span>// called when loading has errors</span><span>
+	</span><span>function</span><span> </span><span>(</span><span> error </span><span>)</span><span> </span><span>{</span><span>
+
+		console</span><span>.</span><span>log</span><span>(</span><span> </span><span>'An error happened'</span><span> </span><span>);</span><span>
+
+	</span><span>}</span><span>
+</span><span>);</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#webgl_loader_draco" target="_blank">webgl_loader_draco</a>
+		</p>
+
+		<h2>Browser compatibility</h2>
+
+		<p>DRACOLoader will automatically use either the JS or the WASM decoding library, based on browser capabilities.</p>
+
+		<br>
+		<hr>
+
+		<h2>Constructor</h2>
+
+		<h3>DRACOLoader( manager : <a data-fragment="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		<p>
+		<a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">manager</a> — The <a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">loadingManager</a> for the loader to use. Default is <a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">THREE.DefaultLoadingManager</a>.
+		</p>
+		<p>
+		Creates a new DRACOLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3><a data-fragment="DRACOLoader.load" target="_parent" title="DRACOLoader.load" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.load">#</a> .<a data-fragment="DRACOLoader.load" id="load" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.load">load</a> ( url : <span>String</span>, onLoad : <a data-fragment="Function">Function</a>, onProgress : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a> ) : <span>undefined</span></h3>
+		<p>
+		<a data-fragment="String" title="String">url</a> — A string containing the path/URL of the <code translate="no"><span>.</span><span>drc</span></code> file.<br>
+		<a data-fragment="Function" title="Function">onLoad</a> — A function to be called after the loading is successfully completed.<br>
+		<a data-fragment="Function" title="Function">onProgress</a> — (optional) A function to be called while the loading is in progress. The argument will be the XMLHttpRequest instance, that contains .<a data-fragment="Integer" title="Integer">total</a> and .<a data-fragment="Integer" title="Integer">loaded</a> bytes. If the server does not set the Content-Length header; .<a data-fragment="Integer" title="Integer">total</a> will be 0.<br>
+		<a data-fragment="Function" title="Function">onError</a> — (optional) A function to be called if an error occurs during loading. The function receives error as an argument.<br>
+		</p>
+		<p>
+		Begin loading from url and call the <code translate="no"><span>onLoad</span></code> function with the decompressed geometry.
+		</p>
+
+		<h3><a data-fragment="DRACOLoader.setDecoderPath" target="_parent" title="DRACOLoader.setDecoderPath" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.setDecoderPath">#</a> .<a data-fragment="DRACOLoader.setDecoderPath" id="setDecoderPath" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.setDecoderPath">setDecoderPath</a> ( value : <span>String</span> ) : <span>this</span></h3>
+		<p>
+		<a data-fragment="String" title="String">value</a> — Path to folder containing the JS and WASM decoder libraries.
+		</p>
+
+		<h3><a data-fragment="DRACOLoader.setDecoderConfig" target="_parent" title="DRACOLoader.setDecoderConfig" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.setDecoderConfig">#</a> .<a data-fragment="DRACOLoader.setDecoderConfig" id="setDecoderConfig" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.setDecoderConfig">setDecoderConfig</a> ( config : <span>Object</span> ) : <span>this</span></h3>
+		<p>
+			<a data-fragment="String" title="String">config.type</a> - (Optional) <code translate="no"><span>"js"</span></code> or <code translate="no"><span>"wasm"</span></code>.<br>
+		</p>
+		<p>
+		Provides configuration for the decoder libraries. Configuration cannot be changed
+		after decoding begins.
+		</p>
+
+		<h3><a data-fragment="DRACOLoader.setWorkerLimit" target="_parent" title="DRACOLoader.setWorkerLimit" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.setWorkerLimit">#</a> .<a data-fragment="DRACOLoader.setWorkerLimit" id="setWorkerLimit" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.setWorkerLimit">setWorkerLimit</a> ( workerLimit : <span>Number</span> ) : <span>this</span></h3>
+		<p>
+			<a data-fragment="Number" title="Number">workerLimit</a> - Maximum number of workers to be allocated. Default is 4.<br>
+		</p>
+		<p>
+		Sets the maximum number of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank">Web Workers</a>
+		to be used during decoding. A lower limit may be preferable if workers are also for other tasks
+		in the application.
+		</p>
+
+		<h3><a data-fragment="DRACOLoader.preload" target="_parent" title="DRACOLoader.preload" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.preload">#</a> .<a data-fragment="DRACOLoader.preload" id="preload" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.preload">preload</a> () : <span>this</span></h3>
+		<p>
+		Requests the decoder libraries, if not already loaded.
+		</p>
+
+		<h3><a data-fragment="DRACOLoader.dispose" target="_parent" title="DRACOLoader.dispose" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.dispose">#</a> .<a data-fragment="DRACOLoader.dispose" id="dispose" href="https://threejs.org/docs/index.html#examples/en/loaders/DRACOLoader.dispose">dispose</a> () : <span>this</span></h3>
+		<p>
+		Disposes of the decoder resources and deallocates memory. The decoder
+		<a href="https://github.com/google/draco/issues/349" target="_blank">cannot be reloaded afterward</a>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/loaders/DRACOLoader.js" target="_blank">examples/jsm/loaders/DRACOLoader.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

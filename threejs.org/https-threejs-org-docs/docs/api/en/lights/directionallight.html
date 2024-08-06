@@ -1,0 +1,136 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> → <a data-fragment="Light" title="Light" href="https://threejs.org/docs/index.html#api/en/lights/Light">Light</a> →
+
+		</p>
+
+		<div><p>
+			A light that gets emitted in a specific direction. This light will behave
+			as though it is infinitely far away and the rays produced from it are all
+			parallel. The common use case for this is to simulate daylight; the sun is
+			far enough away that its position can be considered to be infinite, and
+			all light rays coming from it are parallel.</p><p>
+
+			This light can cast shadows - see the <a data-fragment="DirectionalLightShadow" title="DirectionalLightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow">DirectionalLightShadow</a> page
+			for details.
+		</p></div>
+
+		<h2>A Note about Position, Target and rotation</h2>
+		<div><p>
+			A common point of confusion for directional lights is that setting the
+			rotation has no effect. This is because three.js's DirectionalLight is the
+			equivalent to what is often called a 'Target Direct Light' in other
+			applications.</p><p>
+
+			This means that its direction is calculated as pointing from the light's
+			<a data-fragment="Object3D.position" title="Object3D.position" href="https://threejs.org/docs/index.html#api/en/core/Object3D.position">position</a> to the <a data-fragment="DirectionalLight.target" title="DirectionalLight.target" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.target">target</a>'s position
+			(as opposed to a 'Free Direct Light' that just has a rotation
+			component).</p><p>
+
+			The reason for this is to allow the light to cast shadows - the
+			<a data-fragment="DirectionalLight.shadow" title="DirectionalLight.shadow" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.shadow">shadow</a> camera needs a position to calculate shadows
+			from.</p><p>
+
+			See the <a data-fragment="DirectionalLight.target" title="DirectionalLight.target" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.target">target</a> property below for details on updating the
+			target.
+		</p></div>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>// White directional light at half intensity shining from the top.</span><span>
+</span><span>const</span><span> directionalLight </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>DirectionalLight</span><span>(</span><span> </span><span>0xffffff</span><span>,</span><span> </span><span>0.5</span><span> </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> directionalLight </span><span>);</span></code></p><h2>Examples</h2>
+		<p>
+			<a href="https://threejs.org/examples/#misc_controls_fly" target="_blank">controls / fly </a><br>
+			<a href="https://threejs.org/examples/#webgl_effects_parallaxbarrier" target="_blank">effects / parallaxbarrier </a><br>
+			<a href="https://threejs.org/examples/#webgl_effects_stereo" target="_blank">effects / stereo </a><br>
+			<a href="https://threejs.org/examples/#webgl_geometry_extrude_splines" target="_blank">geometry / extrude / splines </a><br>
+			<a href="https://threejs.org/examples/#webgl_materials_bumpmap" target="_blank">materials / bumpmap </a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>DirectionalLight( color : <span>Integer</span>, intensity : <span>Float</span> )</h3>
+		<div>
+			<p><a data-fragment="Integer" title="Integer">color</a> - (optional) hexadecimal color of the light. Default
+			is 0xffffff (white).<br>
+			<a data-fragment="Float" title="Float">intensity</a> - (optional) numeric value of the light's
+			strength/intensity. Default is <code translate="no"><span>1</span></code>.</p><p>
+
+			Creates a new DirectionalLight.
+		</p></div>
+
+		<h2>Properties</h2>
+
+		<p>See the base <a data-fragment="Light" title="Light" href="https://threejs.org/docs/index.html#api/en/lights/Light">Light</a> class for common properties.</p>
+
+		<h3><a data-fragment="DirectionalLight.castShadow" target="_parent" title="DirectionalLight.castShadow" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.castShadow">#</a> .<a data-fragment="DirectionalLight.castShadow" id="castShadow" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.castShadow">castShadow</a>  : <span>Boolean</span></h3>
+		<p>
+			If set to <code translate="no"><span>true</span></code> light will cast dynamic shadows. <strong>Warning</strong>: This is
+			expensive and requires tweaking to get shadows looking right. See the
+			<a data-fragment="DirectionalLightShadow" title="DirectionalLightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow">DirectionalLightShadow</a> for details. The default is <code translate="no"><span>false</span></code>.
+		</p>
+
+		<h3><a data-fragment="DirectionalLight.isDirectionalLight" target="_parent" title="DirectionalLight.isDirectionalLight" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.isDirectionalLight">#</a> .<a data-fragment="DirectionalLight.isDirectionalLight" id="isDirectionalLight" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.isDirectionalLight">isDirectionalLight</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type DirectionalLight.</p>
+
+		<h3><a data-fragment="DirectionalLight.position" target="_parent" title="DirectionalLight.position" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.position">#</a> .<a data-fragment="DirectionalLight.position" id="position" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.position">position</a>  : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a></h3>
+		<p>
+			This is set equal to <a data-fragment="Object3D.DEFAULT_UP" title="Object3D.DEFAULT_UP" href="https://threejs.org/docs/index.html#api/en/core/Object3D.DEFAULT_UP">Object3D.DEFAULT_UP</a> (0, 1, 0), so that the
+			light shines from the top down.
+		</p>
+
+		<h3><a data-fragment="DirectionalLight.shadow" target="_parent" title="DirectionalLight.shadow" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.shadow">#</a> .<a data-fragment="DirectionalLight.shadow" id="shadow" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.shadow">shadow</a>  : <a data-fragment="DirectionalLightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow">DirectionalLightShadow</a></h3>
+		<p>
+			A <a data-fragment="DirectionalLightShadow" title="DirectionalLightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow">DirectionalLightShadow</a> used to calculate shadows for this light.
+		</p>
+
+		<h3><a data-fragment="DirectionalLight.target" target="_parent" title="DirectionalLight.target" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.target">#</a> .<a data-fragment="DirectionalLight.target" id="target" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.target">target</a>  : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a></h3>
+		<p>
+			The DirectionalLight points from its <a data-fragment="DirectionalLight.position" title="DirectionalLight.position" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.position">position</a> to
+			target.position. The default position of the target is <code translate="no"><span>(</span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>)</span></code>.<br>
+
+			<strong>Note</strong>: For the target's position to be changed to anything other than the
+			default, it must be added to the <a data-fragment="Scene" title="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">scene</a> using
+		</p>
+		<p><code translate="no"><span>scene</span><span>.</span><span>add</span><span>(</span><span> light</span><span>.</span><span>target </span><span>);</span></code></p><div><p>
+			This is so that the target's <a data-fragment="Object3D.matrixWorld" title="Object3D.matrixWorld" href="https://threejs.org/docs/index.html#api/en/core/Object3D.matrixWorld">matrixWorld</a> gets
+			automatically updated each frame.</p><p>
+
+			It is also possible to set the target to be another object in the scene
+			(anything with a <a data-fragment="Object3D.position" title="Object3D.position" href="https://threejs.org/docs/index.html#api/en/core/Object3D.position">position</a> property), like so:
+		</p></div>
+		<p><code translate="no"><span>const</span><span> targetObject </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Object3D</span><span>();</span><span> 
+scene</span><span>.</span><span>add</span><span>(</span><span>targetObject</span><span>);</span><span>
+
+light</span><span>.</span><span>target </span><span>=</span><span> targetObject</span><span>;</span></code></p><p>The directionalLight will now track the target object.</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a data-fragment="Light" title="Light" href="https://threejs.org/docs/index.html#api/en/lights/Light">Light</a> class for common methods.</p>
+
+		<h3><a data-fragment="DirectionalLight.dispose" target="_parent" title="DirectionalLight.dispose" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.dispose">#</a> .<a data-fragment="DirectionalLight.dispose" id="dispose" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a data-fragment="DirectionalLight.copy" target="_parent" title="DirectionalLight.copy" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.copy">#</a> .<a data-fragment="DirectionalLight.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight.copy">copy</a> ( source : <a data-fragment="DirectionalLight" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight">DirectionalLight</a> ) : <span>this</span></h3>
+		<p>
+			Copies value of all the properties from the <a data-fragment="DirectionalLight" title="DirectionalLight" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight">source</a>
+			to this DirectionalLight.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLight.js" target="_blank">src/lights/DirectionalLight.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

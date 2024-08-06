@@ -1,0 +1,389 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			Class representing a 2D <a href="https://en.wikipedia.org/wiki/Vector_space" target="_blank">vector</a>. 
+			A 2D vector is an ordered pair of numbers (labeled x and y),
+			which can be used to represent a number of things, such as:
+		</p>
+
+		<ul>
+			<li>A point in 2D space (i.e. a position on a plane).</li>
+			<li>
+				A direction and length across a plane. In three.js the length will
+				always be the <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank">Euclidean distance</a> 
+				(straight-line distance) from <code translate="no"><span>(</span><span>0</span><span>,</span><span> </span><span>0</span><span>)</span></code> to <code translate="no"><span>(</span><span>x</span><span>,</span><span> y</span><span>)</span></code>
+				and the direction is also measured from <code translate="no"><span>(</span><span>0</span><span>,</span><span> </span><span>0</span><span>)</span></code> towards <code translate="no"><span>(</span><span>x</span><span>,</span><span> y</span><span>)</span></code>.
+			</li>
+			<li>Any arbitrary ordered pair of numbers.</li>
+		</ul>
+
+		<p>
+			There are other things a 2D vector can be used to represent, such as
+			momentum vectors, complex numbers and so on, however these are the most
+			common uses in three.js.
+		</p>
+
+		<p>
+			Iterating through a Vector2 instance will yield its components <code translate="no"><span>(</span><span>x</span><span>,</span><span> y</span><span>)</span></code> in
+			the corresponding order.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> a </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Vector2</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>1</span><span> </span><span>);</span><span>
+
+</span><span>//no arguments; will be initialised to (0, 0)</span><span>
+</span><span>const</span><span> b </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Vector2</span><span>(</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> d </span><span>=</span><span> a</span><span>.</span><span>distanceTo</span><span>(</span><span> b </span><span>);</span></code></p><h2>Constructor</h2>
+
+		<h3>Vector2( x : <span>Float</span>, y : <span>Float</span> )</h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">x</a> - the x value of this vector. Default is <code translate="no"><span>0</span></code>.<br>
+			<a data-fragment="Float" title="Float">y</a> - the y value of this vector. Default is <code translate="no"><span>0</span></code>.</p><p>
+
+			Creates a new Vector2.
+		</p></div>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="Vector2.height" target="_parent" title="Vector2.height" href="https://threejs.org/docs/index.html#api/en/math/Vector2.height">#</a> .<a data-fragment="Vector2.height" id="height" href="https://threejs.org/docs/index.html#api/en/math/Vector2.height">height</a>  : <span>Float</span></h3>
+		<p>Alias for <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a>.</p>
+
+		<h3><a data-fragment="Vector2.isVector2" target="_parent" title="Vector2.isVector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2.isVector2">#</a> .<a data-fragment="Vector2.isVector2" id="isVector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2.isVector2">isVector2</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type Vector2.</p>
+
+		<h3><a data-fragment="Vector2.width" target="_parent" title="Vector2.width" href="https://threejs.org/docs/index.html#api/en/math/Vector2.width">#</a> .<a data-fragment="Vector2.width" id="width" href="https://threejs.org/docs/index.html#api/en/math/Vector2.width">width</a>  : <span>Float</span></h3>
+		<p>Alias for <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a>.</p>
+
+		<h3><a data-fragment="Vector2.x" target="_parent" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">#</a> .<a data-fragment="Vector2.x" id="x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a>  : <span>Float</span></h3>
+
+		<h3><a data-fragment="Vector2.y" target="_parent" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">#</a> .<a data-fragment="Vector2.y" id="y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a>  : <span>Float</span></h3>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="Vector2.add" target="_parent" title="Vector2.add" href="https://threejs.org/docs/index.html#api/en/math/Vector2.add">#</a> .<a data-fragment="Vector2.add" id="add" href="https://threejs.org/docs/index.html#api/en/math/Vector2.add">add</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>Adds <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a> to this vector.</p>
+
+		<h3><a data-fragment="Vector2.addScalar" target="_parent" title="Vector2.addScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.addScalar">#</a> .<a data-fragment="Vector2.addScalar" id="addScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.addScalar">addScalar</a> ( s : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Adds the scalar value <a data-fragment="Float" title="Float">s</a> to this vector's <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> and
+			<a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> values.
+		</p>
+
+		<h3><a data-fragment="Vector2.addScaledVector" target="_parent" title="Vector2.addScaledVector" href="https://threejs.org/docs/index.html#api/en/math/Vector2.addScaledVector">#</a> .<a data-fragment="Vector2.addScaledVector" id="addScaledVector" href="https://threejs.org/docs/index.html#api/en/math/Vector2.addScaledVector">addScaledVector</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, s : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Adds the multiple of <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a> and <a data-fragment="Float" title="Float">s</a> to this vector.
+		</p>
+
+		<h3><a data-fragment="Vector2.addVectors" target="_parent" title="Vector2.addVectors" href="https://threejs.org/docs/index.html#api/en/math/Vector2.addVectors">#</a> .<a data-fragment="Vector2.addVectors" id="addVectors" href="https://threejs.org/docs/index.html#api/en/math/Vector2.addVectors">addVectors</a> ( a : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, b : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>Sets this vector to <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">a</a> + <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">b</a>.</p>
+
+		<h3><a data-fragment="Vector2.angle" target="_parent" title="Vector2.angle" href="https://threejs.org/docs/index.html#api/en/math/Vector2.angle">#</a> .<a data-fragment="Vector2.angle" id="angle" href="https://threejs.org/docs/index.html#api/en/math/Vector2.angle">angle</a> () : <span>Float</span></h3>
+		<p>
+			Computes the angle in radians of this vector with respect to the positive
+			x-axis.
+		</p>
+
+		<h3><a data-fragment="Vector2.angleTo" target="_parent" title="Vector2.angleTo" href="https://threejs.org/docs/index.html#api/en/math/Vector2.angleTo">#</a> .<a data-fragment="Vector2.angleTo" id="angleTo" href="https://threejs.org/docs/index.html#api/en/math/Vector2.angleTo">angleTo</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Float</span></h3>
+		<p>
+			Returns the angle between this vector and vector <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a> in
+			radians.
+		</p>
+
+		<h3><a data-fragment="Vector2.applyMatrix3" target="_parent" title="Vector2.applyMatrix3" href="https://threejs.org/docs/index.html#api/en/math/Vector2.applyMatrix3">#</a> .<a data-fragment="Vector2.applyMatrix3" id="applyMatrix3" href="https://threejs.org/docs/index.html#api/en/math/Vector2.applyMatrix3">applyMatrix3</a> ( m : <a data-fragment="Matrix3" href="https://threejs.org/docs/index.html#api/en/math/Matrix3">Matrix3</a> ) : <span>this</span></h3>
+		<p>
+			Multiplies this vector (with an implicit 1 as the 3rd component) by m.
+		</p>
+
+		<h3><a data-fragment="Vector2.ceil" target="_parent" title="Vector2.ceil" href="https://threejs.org/docs/index.html#api/en/math/Vector2.ceil">#</a> .<a data-fragment="Vector2.ceil" id="ceil" href="https://threejs.org/docs/index.html#api/en/math/Vector2.ceil">ceil</a> () : <span>this</span></h3>
+		<p>
+			The <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> and <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> components of this vector are rounded up
+			to the nearest integer value.
+		</p>
+
+		<h3><a data-fragment="Vector2.clamp" target="_parent" title="Vector2.clamp" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clamp">#</a> .<a data-fragment="Vector2.clamp" id="clamp" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clamp">clamp</a> ( min : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, max : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">min</a> - the minimum x and y values.<br>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">max</a> - the maximum x and y values in the desired range</p><p>
+
+			If this vector's x or y value is greater than the max vector's x or y
+			value, it is replaced by the corresponding value. </p><p>
+			If this vector's x or y value is less than the min vector's x or y value,
+			it is replaced by the corresponding value.
+		</p></div>
+
+		<h3><a data-fragment="Vector2.clampLength" target="_parent" title="Vector2.clampLength" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clampLength">#</a> .<a data-fragment="Vector2.clampLength" id="clampLength" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clampLength">clampLength</a> ( min : <span>Float</span>, max : <span>Float</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">min</a> - the minimum value the length will be clamped to <br>
+			<a data-fragment="Float" title="Float">max</a> - the maximum value the length will be clamped to</p><p>
+
+			If this vector's length is greater than the max value, it is replaced by
+			the max value. </p><p>
+			If this vector's length is less than the min value, it is replaced by the
+			min value.
+		</p></div>
+
+		<h3><a data-fragment="Vector2.clampScalar" target="_parent" title="Vector2.clampScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clampScalar">#</a> .<a data-fragment="Vector2.clampScalar" id="clampScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clampScalar">clampScalar</a> ( min : <span>Float</span>, max : <span>Float</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">min</a> - the minimum value the components will be clamped to
+			<br>
+			<a data-fragment="Float" title="Float">max</a> - the maximum value the components will be clamped to</p><p>
+
+			If this vector's x or y values are greater than the max value, they are
+			replaced by the max value. </p><p>
+			If this vector's x or y values are less than the min value, they are
+			replaced by the min value.
+		</p></div>
+
+		<h3><a data-fragment="Vector2.clone" target="_parent" title="Vector2.clone" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clone">#</a> .<a data-fragment="Vector2.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/math/Vector2.clone">clone</a> () : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			Returns a new Vector2 with the same <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> and <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> values as
+			this one.
+		</p>
+
+		<h3><a data-fragment="Vector2.copy" target="_parent" title="Vector2.copy" href="https://threejs.org/docs/index.html#api/en/math/Vector2.copy">#</a> .<a data-fragment="Vector2.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/math/Vector2.copy">copy</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>
+			Copies the values of the passed Vector2's <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> and <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a>
+			properties to this Vector2.
+		</p>
+
+		<h3><a data-fragment="Vector2.distanceTo" target="_parent" title="Vector2.distanceTo" href="https://threejs.org/docs/index.html#api/en/math/Vector2.distanceTo">#</a> .<a data-fragment="Vector2.distanceTo" id="distanceTo" href="https://threejs.org/docs/index.html#api/en/math/Vector2.distanceTo">distanceTo</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Float</span></h3>
+		<p>Computes the distance from this vector to <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>.</p>
+
+		<h3><a data-fragment="Vector2.manhattanDistanceTo" target="_parent" title="Vector2.manhattanDistanceTo" href="https://threejs.org/docs/index.html#api/en/math/Vector2.manhattanDistanceTo">#</a> .<a data-fragment="Vector2.manhattanDistanceTo" id="manhattanDistanceTo" href="https://threejs.org/docs/index.html#api/en/math/Vector2.manhattanDistanceTo">manhattanDistanceTo</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Float</span></h3>
+		<p>
+			Computes the <a href="https://en.wikipedia.org/wiki/Taxicab_geometry" target="_blank">Manhattan distance</a> 
+			from this vector to <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>.
+		</p>
+
+		<h3><a data-fragment="Vector2.distanceToSquared" target="_parent" title="Vector2.distanceToSquared" href="https://threejs.org/docs/index.html#api/en/math/Vector2.distanceToSquared">#</a> .<a data-fragment="Vector2.distanceToSquared" id="distanceToSquared" href="https://threejs.org/docs/index.html#api/en/math/Vector2.distanceToSquared">distanceToSquared</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Float</span></h3>
+		<p>
+			Computes the squared distance from this vector to <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>. If you
+			are just comparing the distance with another distance, you should compare
+			the distance squared instead as it is slightly more efficient to
+			calculate.
+		</p>
+
+		<h3><a data-fragment="Vector2.divide" target="_parent" title="Vector2.divide" href="https://threejs.org/docs/index.html#api/en/math/Vector2.divide">#</a> .<a data-fragment="Vector2.divide" id="divide" href="https://threejs.org/docs/index.html#api/en/math/Vector2.divide">divide</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>Divides this vector by <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>.</p>
+
+		<h3><a data-fragment="Vector2.divideScalar" target="_parent" title="Vector2.divideScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.divideScalar">#</a> .<a data-fragment="Vector2.divideScalar" id="divideScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.divideScalar">divideScalar</a> ( s : <span>Float</span> ) : <span>this</span></h3>
+		<p>Divides this vector by scalar <a data-fragment="Float" title="Float">s</a>.</p>
+
+		<h3><a data-fragment="Vector2.dot" target="_parent" title="Vector2.dot" href="https://threejs.org/docs/index.html#api/en/math/Vector2.dot">#</a> .<a data-fragment="Vector2.dot" id="dot" href="https://threejs.org/docs/index.html#api/en/math/Vector2.dot">dot</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Float</span></h3>
+		<p>
+			Calculates the <a href="https://en.wikipedia.org/wiki/Dot_product" target="_blank">dot product</a> 
+			of this vector and <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>.
+		</p>
+
+		<h3><a data-fragment="Vector2.cross" target="_parent" title="Vector2.cross" href="https://threejs.org/docs/index.html#api/en/math/Vector2.cross">#</a> .<a data-fragment="Vector2.cross" id="cross" href="https://threejs.org/docs/index.html#api/en/math/Vector2.cross">cross</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Float</span></h3>
+		<p>
+			Calculates the <a href="https://en.wikipedia.org/wiki/Cross_product" target="_blank">cross product</a> 
+			of this vector and <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>. Note that a 'cross-product'
+			in 2D is not well-defined. This function computes a geometric
+			cross-product often used in 2D graphics
+		</p>
+
+		<h3><a data-fragment="Vector2.equals" target="_parent" title="Vector2.equals" href="https://threejs.org/docs/index.html#api/en/math/Vector2.equals">#</a> .<a data-fragment="Vector2.equals" id="equals" href="https://threejs.org/docs/index.html#api/en/math/Vector2.equals">equals</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Boolean</span></h3>
+		<p>
+			Returns <code translate="no"><span>true</span></code> if the components of this vector and <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a> are
+			strictly equal; <code translate="no"><span>false</span></code> otherwise.
+		</p>
+
+		<h3><a data-fragment="Vector2.floor" target="_parent" title="Vector2.floor" href="https://threejs.org/docs/index.html#api/en/math/Vector2.floor">#</a> .<a data-fragment="Vector2.floor" id="floor" href="https://threejs.org/docs/index.html#api/en/math/Vector2.floor">floor</a> () : <span>this</span></h3>
+		<p>
+			The components of this vector are rounded down to the nearest integer
+			value.
+		</p>
+
+		<h3>
+			<a data-fragment="Vector2.fromArray" target="_parent" title="Vector2.fromArray" href="https://threejs.org/docs/index.html#api/en/math/Vector2.fromArray">#</a> .<a data-fragment="Vector2.fromArray" id="fromArray" href="https://threejs.org/docs/index.html#api/en/math/Vector2.fromArray">fromArray</a> ( array : <span>Array</span>, offset : <span>Integer</span> ) : <span>this</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Array" title="Array">array</a> - the source array.<br>
+			<a data-fragment="Integer" title="Integer">offset</a> - (optional) offset into the array. Default is <code translate="no"><span>0</span></code>.</p><p>
+
+			Sets this vector's <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> value to be <code translate="no"><span>array</span><span>[</span><span> offset </span><span>]</span></code> and <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> 
+			value to be <code translate="no"><span>array</span><span>[</span><span> offset </span><span>+</span><span> </span><span>1</span><span> </span><span>]</span></code>.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Vector2.fromBufferAttribute" target="_parent" title="Vector2.fromBufferAttribute" href="https://threejs.org/docs/index.html#api/en/math/Vector2.fromBufferAttribute">#</a> .<a data-fragment="Vector2.fromBufferAttribute" id="fromBufferAttribute" href="https://threejs.org/docs/index.html#api/en/math/Vector2.fromBufferAttribute">fromBufferAttribute</a> ( attribute : <a data-fragment="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a>, index : <span>Integer</span> ) : <span>this</span>
+		</h3>
+		
+
+		<h3><a data-fragment="Vector2.getComponent" target="_parent" title="Vector2.getComponent" href="https://threejs.org/docs/index.html#api/en/math/Vector2.getComponent">#</a> .<a data-fragment="Vector2.getComponent" id="getComponent" href="https://threejs.org/docs/index.html#api/en/math/Vector2.getComponent">getComponent</a> ( index : <span>Integer</span> ) : <span>Float</span></h3>
+		<div>
+			<p><a data-fragment="Integer" title="Integer">index</a> - <code translate="no"><span>0</span></code> or <code translate="no"><span>1</span></code>.</p><p>
+
+			If index equals <code translate="no"><span>0</span></code> returns the <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> value. <br>
+			If index equals <code translate="no"><span>1</span></code> returns the <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> value.
+		</p></div>
+
+		<h3><a data-fragment="Vector2.length" target="_parent" title="Vector2.length" href="https://threejs.org/docs/index.html#api/en/math/Vector2.length">#</a> .<a data-fragment="Vector2.length" id="length" href="https://threejs.org/docs/index.html#api/en/math/Vector2.length">length</a> () : <span>Float</span></h3>
+		<p>
+			Computes the <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank">Euclidean length</a> 
+			(straight-line length) from (0, 0) to (x, y).
+		</p>
+
+		<h3><a data-fragment="Vector2.manhattanLength" target="_parent" title="Vector2.manhattanLength" href="https://threejs.org/docs/index.html#api/en/math/Vector2.manhattanLength">#</a> .<a data-fragment="Vector2.manhattanLength" id="manhattanLength" href="https://threejs.org/docs/index.html#api/en/math/Vector2.manhattanLength">manhattanLength</a> () : <span>Float</span></h3>
+		<p>
+			Computes the <a href="http://en.wikipedia.org/wiki/Taxicab_geometry" target="_blank">Manhattan length</a> of this vector.
+		</p>
+
+		<h3><a data-fragment="Vector2.lengthSq" target="_parent" title="Vector2.lengthSq" href="https://threejs.org/docs/index.html#api/en/math/Vector2.lengthSq">#</a> .<a data-fragment="Vector2.lengthSq" id="lengthSq" href="https://threejs.org/docs/index.html#api/en/math/Vector2.lengthSq">lengthSq</a> () : <span>Float</span></h3>
+		<p>
+			Computes the square of the
+			<a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank">Euclidean length</a>
+			(straight-line length) from (0, 0) to (x, y). If you are comparing the
+			lengths of vectors, you should compare the length squared instead as it is
+			slightly more efficient to calculate.
+		</p>
+
+		<h3><a data-fragment="Vector2.lerp" target="_parent" title="Vector2.lerp" href="https://threejs.org/docs/index.html#api/en/math/Vector2.lerp">#</a> .<a data-fragment="Vector2.lerp" id="lerp" href="https://threejs.org/docs/index.html#api/en/math/Vector2.lerp">lerp</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, alpha : <span>Float</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> to interpolate towards.<br>
+			<a data-fragment="Float" title="Float">alpha</a> - interpolation factor, typically in the closed
+			interval <code translate="no"><span>[</span><span>0</span><span>,</span><span> </span><span>1</span><span>]</span></code>.</p><p>
+
+			Linearly interpolates between this vector and <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>, where
+			alpha is the percent distance along the line - alpha = 0 will be this
+			vector, and alpha = 1 will be <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Vector2.lerpVectors" target="_parent" title="Vector2.lerpVectors" href="https://threejs.org/docs/index.html#api/en/math/Vector2.lerpVectors">#</a> .<a data-fragment="Vector2.lerpVectors" id="lerpVectors" href="https://threejs.org/docs/index.html#api/en/math/Vector2.lerpVectors">lerpVectors</a> ( v1 : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, v2 : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, alpha : <span>Float</span> ) : <span>this</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v1</a> - the starting <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>.<br>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v2</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> to interpolate towards.<br>
+			<a data-fragment="Float" title="Float">alpha</a> - interpolation factor, typically in the closed
+			interval <code translate="no"><span>[</span><span>0</span><span>,</span><span> </span><span>1</span><span>]</span></code>.</p><p>
+
+			Sets this vector to be the vector linearly interpolated between
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v1</a> and <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v2</a> where alpha is the percent
+			distance along the line connecting the two vectors - alpha = 0 will be
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v1</a>, and alpha = 1 will be <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v2</a>.
+		</p></div>
+
+		<h3><a data-fragment="Vector2.negate" target="_parent" title="Vector2.negate" href="https://threejs.org/docs/index.html#api/en/math/Vector2.negate">#</a> .<a data-fragment="Vector2.negate" id="negate" href="https://threejs.org/docs/index.html#api/en/math/Vector2.negate">negate</a> () : <span>this</span></h3>
+		<p>Inverts this vector - i.e. sets x = -x and y = -y.</p>
+
+		<h3><a data-fragment="Vector2.normalize" target="_parent" title="Vector2.normalize" href="https://threejs.org/docs/index.html#api/en/math/Vector2.normalize">#</a> .<a data-fragment="Vector2.normalize" id="normalize" href="https://threejs.org/docs/index.html#api/en/math/Vector2.normalize">normalize</a> () : <span>this</span></h3>
+		<p>
+			Converts this vector to a <a href="https://en.wikipedia.org/wiki/Unit_vector" target="_blank">unit vector</a> - 
+			that is, sets it equal to a vector with the same direction
+			as this one, but <a data-fragment="Vector2.length" title="Vector2.length" href="https://threejs.org/docs/index.html#api/en/math/Vector2.length">length</a> 1.
+		</p>
+
+		<h3><a data-fragment="Vector2.max" target="_parent" title="Vector2.max" href="https://threejs.org/docs/index.html#api/en/math/Vector2.max">#</a> .<a data-fragment="Vector2.max" id="max" href="https://threejs.org/docs/index.html#api/en/math/Vector2.max">max</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>
+			If this vector's x or y value is less than <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>'s x or y
+			value, replace that value with the corresponding max value.
+		</p>
+
+		<h3><a data-fragment="Vector2.min" target="_parent" title="Vector2.min" href="https://threejs.org/docs/index.html#api/en/math/Vector2.min">#</a> .<a data-fragment="Vector2.min" id="min" href="https://threejs.org/docs/index.html#api/en/math/Vector2.min">min</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>
+			If this vector's x or y value is greater than <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>'s x or y
+			value, replace that value with the corresponding min value.
+		</p>
+
+		<h3><a data-fragment="Vector2.multiply" target="_parent" title="Vector2.multiply" href="https://threejs.org/docs/index.html#api/en/math/Vector2.multiply">#</a> .<a data-fragment="Vector2.multiply" id="multiply" href="https://threejs.org/docs/index.html#api/en/math/Vector2.multiply">multiply</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>Multiplies this vector by <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a>.</p>
+
+		<h3><a data-fragment="Vector2.multiplyScalar" target="_parent" title="Vector2.multiplyScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.multiplyScalar">#</a> .<a data-fragment="Vector2.multiplyScalar" id="multiplyScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.multiplyScalar">multiplyScalar</a> ( s : <span>Float</span> ) : <span>this</span></h3>
+		<p>Multiplies this vector by scalar <a data-fragment="Float" title="Float">s</a>.</p>
+
+		<h3>
+			<a data-fragment="Vector2.rotateAround" target="_parent" title="Vector2.rotateAround" href="https://threejs.org/docs/index.html#api/en/math/Vector2.rotateAround">#</a> .<a data-fragment="Vector2.rotateAround" id="rotateAround" href="https://threejs.org/docs/index.html#api/en/math/Vector2.rotateAround">rotateAround</a> ( center : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, angle : <span>Float</span> ) : <span>this</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">center</a> - the point around which to rotate.<br>
+			<a data-fragment="Float" title="Float">angle</a> - the angle to rotate, in radians.</p><p>
+
+			Rotates this vector around <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">center</a> by <a data-fragment="Float" title="Float">angle</a>
+			radians.
+		</p></div>
+
+		<h3><a data-fragment="Vector2.round" target="_parent" title="Vector2.round" href="https://threejs.org/docs/index.html#api/en/math/Vector2.round">#</a> .<a data-fragment="Vector2.round" id="round" href="https://threejs.org/docs/index.html#api/en/math/Vector2.round">round</a> () : <span>this</span></h3>
+		<p>
+			The components of this vector are rounded to the nearest integer value.
+		</p>
+
+		<h3><a data-fragment="Vector2.roundToZero" target="_parent" title="Vector2.roundToZero" href="https://threejs.org/docs/index.html#api/en/math/Vector2.roundToZero">#</a> .<a data-fragment="Vector2.roundToZero" id="roundToZero" href="https://threejs.org/docs/index.html#api/en/math/Vector2.roundToZero">roundToZero</a> () : <span>this</span></h3>
+		<p>
+			The components of this vector are rounded towards zero (up if negative,
+			down if positive) to an integer value.
+		</p>
+
+		<h3><a data-fragment="Vector2.set" target="_parent" title="Vector2.set" href="https://threejs.org/docs/index.html#api/en/math/Vector2.set">#</a> .<a data-fragment="Vector2.set" id="set" href="https://threejs.org/docs/index.html#api/en/math/Vector2.set">set</a> ( x : <span>Float</span>, y : <span>Float</span> ) : <span>this</span></h3>
+		<p>Sets the <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> and <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> components of this vector.</p>
+
+		<h3>
+			<a data-fragment="Vector2.setComponent" target="_parent" title="Vector2.setComponent" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setComponent">#</a> .<a data-fragment="Vector2.setComponent" id="setComponent" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setComponent">setComponent</a> ( index : <span>Integer</span>, value : <span>Float</span> ) : <span>this</span>
+		</h3>
+		
+
+		<h3><a data-fragment="Vector2.setLength" target="_parent" title="Vector2.setLength" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setLength">#</a> .<a data-fragment="Vector2.setLength" id="setLength" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setLength">setLength</a> ( l : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Sets this vector to a vector with the same direction as this one, but
+			<a data-fragment="Vector2.length" title="Vector2.length" href="https://threejs.org/docs/index.html#api/en/math/Vector2.length">length</a> <a data-fragment="Float" title="Float">l</a>.
+		</p>
+
+		<h3><a data-fragment="Vector2.setScalar" target="_parent" title="Vector2.setScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setScalar">#</a> .<a data-fragment="Vector2.setScalar" id="setScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setScalar">setScalar</a> ( scalar : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Sets the <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> and <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> values of this vector both equal to
+			<a data-fragment="Float" title="Float">scalar</a>.
+		</p>
+
+		<h3><a data-fragment="Vector2.setX" target="_parent" title="Vector2.setX" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setX">#</a> .<a data-fragment="Vector2.setX" id="setX" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setX">setX</a> ( x : <span>Float</span> ) : <span>this</span></h3>
+		<p>Replaces this vector's <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> value with <a data-fragment="Float" title="Float">x</a>.</p>
+
+		<h3><a data-fragment="Vector2.setY" target="_parent" title="Vector2.setY" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setY">#</a> .<a data-fragment="Vector2.setY" id="setY" href="https://threejs.org/docs/index.html#api/en/math/Vector2.setY">setY</a> ( y : <span>Float</span> ) : <span>this</span></h3>
+		<p>Replaces this vector's <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a> value with <a data-fragment="Float" title="Float">y</a>.</p>
+
+		<h3><a data-fragment="Vector2.sub" target="_parent" title="Vector2.sub" href="https://threejs.org/docs/index.html#api/en/math/Vector2.sub">#</a> .<a data-fragment="Vector2.sub" id="sub" href="https://threejs.org/docs/index.html#api/en/math/Vector2.sub">sub</a> ( v : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>Subtracts <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">v</a> from this vector.</p>
+
+		<h3><a data-fragment="Vector2.subScalar" target="_parent" title="Vector2.subScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.subScalar">#</a> .<a data-fragment="Vector2.subScalar" id="subScalar" href="https://threejs.org/docs/index.html#api/en/math/Vector2.subScalar">subScalar</a> ( s : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Subtracts <a data-fragment="Float" title="Float">s</a> from this vector's <a data-fragment="Vector2.x" title="Vector2.x" href="https://threejs.org/docs/index.html#api/en/math/Vector2.x">x</a> and <a data-fragment="Vector2.y" title="Vector2.y" href="https://threejs.org/docs/index.html#api/en/math/Vector2.y">y</a>
+			components.
+		</p>
+
+		<h3><a data-fragment="Vector2.subVectors" target="_parent" title="Vector2.subVectors" href="https://threejs.org/docs/index.html#api/en/math/Vector2.subVectors">#</a> .<a data-fragment="Vector2.subVectors" id="subVectors" href="https://threejs.org/docs/index.html#api/en/math/Vector2.subVectors">subVectors</a> ( a : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, b : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<p>Sets this vector to <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">a</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">b</a>.</p>
+
+		<h3>
+			<a data-fragment="Vector2.toArray" target="_parent" title="Vector2.toArray" href="https://threejs.org/docs/index.html#api/en/math/Vector2.toArray">#</a> .<a data-fragment="Vector2.toArray" id="toArray" href="https://threejs.org/docs/index.html#api/en/math/Vector2.toArray">toArray</a> ( array : <span>Array</span>, offset : <span>Integer</span> ) : <span>Array</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Array" title="Array">array</a> - (optional) array to store this vector to. If this is
+			not provided, a new array will be created.<br>
+			<a data-fragment="Integer" title="Integer">offset</a> - (optional) optional offset into the array.</p><p>
+
+			Returns an array [x, y], or copies x and y into the provided <a data-fragment="Array" title="Array">array</a>.
+		</p></div>
+
+		<h3><a data-fragment="Vector2.random" target="_parent" title="Vector2.random" href="https://threejs.org/docs/index.html#api/en/math/Vector2.random">#</a> .<a data-fragment="Vector2.random" id="random" href="https://threejs.org/docs/index.html#api/en/math/Vector2.random">random</a> () : <span>this</span></h3>
+		<p>
+			Sets each component of this vector to a pseudo-random value between <code translate="no"><span>0</span></code> and
+			<code translate="no"><span>1</span></code>, excluding <code translate="no"><span>1</span></code>.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Vector2.js" target="_blank">src/math/Vector2.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,82 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<div><p>CSS3DRenderer can be used to apply hierarchical 3D transformations to DOM elements
+			via the CSS3 <a href="https://www.w3schools.com/cssref/css3_pr_transform.asp" target="_blank">transform</a> property.
+			This renderer is particularly interesting if you want to apply 3D effects to a website without
+			canvas based rendering. It can also be used in order to combine DOM elements with WebGL
+			content.</p><p>
+			There are, however, some important limitations:
+			</p></div><ul>
+				<li>It's not possible to use the material system of <strong>three.js</strong>.</li>
+				<li>It's also not possible to use geometries.</li>
+				<li><code translate="no"><span>CSS3DRenderer</span></code> only supports 100% browser and display zoom.</li>
+			</ul><p>
+			So <code translate="no"><span>CSS3DRenderer</span></code> is just focused on ordinary DOM elements. These elements are wrapped into special objects (<code translate="no"><span>CSS3DObject</span></code> or <code translate="no"><span>CSS3DSprite</span></code>) and then added to the scene graph.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			CSS3DRenderer is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> CSS3DRenderer </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/renderers/CSS3DRenderer.js'</span><span>;</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#css3d_molecules" target="_blank">molecules</a><br>
+			<a href="https://threejs.org/examples/#css3d_orthographic" target="_blank">orthographic camera</a><br>
+			<a href="https://threejs.org/examples/#css3d_periodictable" target="_blank">periodictable</a><br>
+			<a href="https://threejs.org/examples/#css3d_sprites" target="_blank">sprites</a><br>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>CSS3DRenderer( parameters : <span>Object</span> )</h3>
+		<p>
+			<a data-fragment="DOMElement" title="DOMElement">element</a> - A <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" target="_blank">HTMLElement</a>
+			where the renderer appends its child-elements.
+			This corresponds to the <a data-fragment="CSS3DRenderer.domElement" title="CSS3DRenderer.domElement" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.domElement">domElement</a> property below.
+			If not passed in here, a new div element will be created.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="CSS3DRenderer.domElement" target="_parent" title="CSS3DRenderer.domElement" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.domElement">#</a> .<a data-fragment="CSS3DRenderer.domElement" id="domElement" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.domElement">domElement</a>  : <a data-fragment="DOMElement">DOMElement</a></h3>
+		<p>
+			A <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" target="_blank">HTMLElement</a> where the renderer appends its child-elements.<br>
+			This is automatically created by the renderer in the constructor (if not provided already).
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="CSS3DRenderer.getSize" target="_parent" title="CSS3DRenderer.getSize" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.getSize">#</a> .<a data-fragment="CSS3DRenderer.getSize" id="getSize" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.getSize">getSize</a> () : <span>Object</span></h3>
+		<p>
+			Returns an object containing the width and height of the renderer.
+		</p>
+
+		<h3><a data-fragment="CSS3DRenderer.render" target="_parent" title="CSS3DRenderer.render" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.render">#</a> .<a data-fragment="CSS3DRenderer.render" id="render" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.render">render</a> ( scene : <a data-fragment="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">Scene</a>, camera : <a data-fragment="PerspectiveCamera" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera">PerspectiveCamera</a> ) : <span>undefined</span></h3>
+		<p>
+			Renders a <a data-fragment="Scene" title="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">scene</a> using a <a data-fragment="PerspectiveCamera" title="PerspectiveCamera" href="https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera">perspective camera</a>.<br>
+		</p>
+
+		<h3><a data-fragment="CSS3DRenderer.setSize" target="_parent" title="CSS3DRenderer.setSize" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.setSize">#</a> .<a data-fragment="CSS3DRenderer.setSize" id="setSize" href="https://threejs.org/docs/index.html#examples/en/renderers/CSS3DRenderer.setSize">setSize</a> (width : <span>Number</span>, height : <span>Number</span>) : <span>undefined</span></h3>
+		<p>
+			Resizes the renderer to (width, height).
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/renderers/CSS3DRenderer.js" target="_blank">examples/jsm/renderers/CSS3DRenderer.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

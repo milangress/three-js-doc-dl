@@ -1,0 +1,138 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> →
+
+		</p>
+
+		<p>
+			This class can be used to automatically save the depth information of a
+			rendering into a texture.
+		</p>
+
+		<h2>Examples</h2>
+
+		<p><a href="https://threejs.org/examples/#webgl_depth_texture" target="_blank">depth / texture</a></p>
+
+		<h2>Constructor</h2>
+		<h3>
+			DepthTexture( width : <span>Number</span>, height : <span>Number</span>, type : <a data-fragment="Constant">Constant</a>, 
+			mapping : <a data-fragment="Constant">Constant</a>, wrapS : <a data-fragment="Constant">Constant</a>, wrapT : <a data-fragment="Constant">Constant</a>, 
+			magFilter : <a data-fragment="Constant">Constant</a>, minFilter : <a data-fragment="Constant">Constant</a>,
+			anisotropy : <span>Number</span>, format : <a data-fragment="Constant">Constant</a> )
+		</h3>
+
+		<p>
+			<a data-fragment="Number" title="Number">width</a> -- width of the texture.<br>
+
+			<a data-fragment="Number" title="Number">height</a> -- height of the texture.<br>
+
+			<a data-fragment="Constant" title="Constant">type</a> -- Default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.UnsignedIntType</a>. See <a data-fragment="DepthTexture" title="DepthTexture" href="https://threejs.org/docs/index.html#api/en/textures/DepthTexture">DepthTexture.type</a> for other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">mapping</a> -- See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">mapping mode constants</a> for
+			details.<br>
+
+			<a data-fragment="Constant" title="Constant">wrapS</a> -- The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.ClampToEdgeWrapping</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">wrap mode constants</a> for
+			other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">wrapT</a> -- The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.ClampToEdgeWrapping</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">wrap mode constants</a> for
+			other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">magFilter</a> -- How the texture is sampled when a texel
+			covers more than one pixel. The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.NearestFilter</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">magnification filter constants</a>
+			for other choices.<br>
+
+			<a data-fragment="Constant" title="Constant">minFilter</a> -- How the texture is sampled when a texel
+			covers less than one pixel. The default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.NearestFilter</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">minification filter constants</a>
+			for other choices.<br>
+
+			<a data-fragment="Number" title="Number">anisotropy</a> -- The number of samples taken along the axis
+			through the pixel that has the highest density of texels. By default, this
+			value is <code translate="no"><span>1</span></code>. A higher value gives a less blurry result than a basic mipmap,
+			at the cost of more texture samples being used. Use
+			<a data-fragment="WebGLrenderer.getMaxAnisotropy" title="WebGLrenderer.getMaxAnisotropy">renderer.getMaxAnisotropy</a>() to find
+			the maximum valid anisotropy value for the GPU; this value is usually a
+			power of 2.<br>
+
+			<a data-fragment="Constant" title="Constant">format</a> -- must be either <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">DepthFormat</a>
+			(default) or <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">DepthStencilFormat</a>. See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">format constants</a> for details.<br>
+		</p>
+
+		<h2>Properties</h2>
+
+		<p>
+			See the base <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> class for common properties - the
+			following are also part of the texture class, but have different defaults
+			here.
+		</p>
+
+		<h3><a data-fragment="Texture.format" title="Texture.format" href="https://threejs.org/docs/index.html#api/en/textures/Texture.format">format</a></h3>
+		<p>
+			Either <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">DepthFormat</a> (default) or <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">DepthStencilFormat</a>. 
+			See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">format constants</a> for details.<br>
+		</p>
+
+		<h3><a data-fragment="Texture.type" title="Texture.type" href="https://threejs.org/docs/index.html#api/en/textures/Texture.type">type</a></h3>
+		<p>
+			Default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.UnsignedIntType</a>. The following are options and how they map to internal
+			gl depth format types depending on the stencil format, as well:
+
+			<a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.UnsignedIntType</a> -- Uses DEPTH_COMPONENT24 or DEPTH24_STENCIL8 internally.<br>
+
+			<a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.FloatType</a> -- Uses DEPTH_COMPONENT32F or DEPTH32F_STENCIL8 internally.<br>
+
+			<a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.UnsignedShortType</a> -- Uses DEPTH_COMPONENT16 internally. Stencil buffer is unsupported when using this type.<br>
+		</p>
+
+		<h3><a data-fragment="Texture.magFilter" title="Texture.magFilter" href="https://threejs.org/docs/index.html#api/en/textures/Texture.magFilter">magFilter</a></h3>
+		<p>
+			How the texture is sampled when a texel covers more than one pixel. The
+			default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.NearestFilter</a>. See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">magnification filter constants</a> for other choices.
+		</p>
+
+		<h3><a data-fragment="Texture.minFilter" title="Texture.minFilter" href="https://threejs.org/docs/index.html#api/en/textures/Texture.minFilter">minFilter</a></h3>
+		<p>
+			How the texture is sampled when a texel covers less than one pixel. The
+			default is <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">THREE.NearestFilter</a>. See <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">magnification filter constants</a> 
+			for other choices.
+		</p>
+
+		<h3><a data-fragment="Texture.flipY" title="Texture.flipY" href="https://threejs.org/docs/index.html#api/en/textures/Texture.flipY">flipY</a></h3>
+		<p>
+			Depth textures do not need to be flipped so this is <code translate="no"><span>false</span></code> by default.
+		</p>
+
+		<h3><a data-fragment="Texture.generateMipmaps" title="Texture.generateMipmaps" href="https://threejs.org/docs/index.html#api/en/textures/Texture.generateMipmaps">.generateMipmaps</a></h3>
+		<p>Depth textures do not use mipmaps.</p>
+
+		<h3><a data-fragment="DepthTexture.isDepthTexture" target="_parent" title="DepthTexture.isDepthTexture" href="https://threejs.org/docs/index.html#api/en/textures/DepthTexture.isDepthTexture">#</a> .<a data-fragment="DepthTexture.isDepthTexture" id="isDepthTexture" href="https://threejs.org/docs/index.html#api/en/textures/DepthTexture.isDepthTexture">isDepthTexture</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type DepthTexture.</p>
+
+		<h3><a data-fragment="DepthTexture.compareFunction" target="_parent" title="DepthTexture.compareFunction" href="https://threejs.org/docs/index.html#api/en/textures/DepthTexture.compareFunction">#</a> .<a data-fragment="DepthTexture.compareFunction" id="compareFunction" href="https://threejs.org/docs/index.html#api/en/textures/DepthTexture.compareFunction">compareFunction</a>  : <span>number</span></h3>
+		<div><p>
+		This is used to define the comparison function used when comparing texels in the depth texture to the value in the depth buffer. 
+		Default is <code translate="no"><span>null</span></code> which means comparison is disabled.</p><p>
+
+		See the <a data-fragment="Textures" title="Textures" href="https://threejs.org/docs/index.html#api/en/constants/Textures">texture constants</a> page for details of other functions.
+		</p></div>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/textures/DepthTexture.js" target="_blank">src/textures/DepthTexture.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

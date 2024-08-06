@@ -1,0 +1,128 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<div><p>
+			This class generates a Prefiltered, Mipmapped Radiance Environment Map
+			(PMREM) from a cubeMap environment texture. This allows different levels
+			of blur to be quickly accessed based on material roughness. Unlike a
+			traditional mipmap chain, it only goes down to the LOD_MIN level (above),
+			and then creates extra even more filtered 'mips' at the same LOD_MIN
+			resolution, associated with higher roughness levels. In this way we
+			maintain resolution to smoothly interpolate diffuse lighting while
+			limiting sampling computation.</p><p>
+
+			Note: The minimum <a data-fragment="MeshStandardMaterial" title="MeshStandardMaterial" href="https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial">MeshStandardMaterial</a>'s roughness depends on the
+			size of the provided texture. If your render has small dimensions or the
+			shiny parts have a lot of curvature, you may still be able to get away
+			with a smaller texture size.
+		</p></div>
+
+		<table>
+			<tbody><tr>
+				<th>texture size</th>
+				<td>minimum roughness</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td>0.21</td>
+			</tr>
+			<tr>
+				<td>32</td>
+				<td>0.15</td>
+			</tr>
+			<tr>
+				<td>64</td>
+				<td>0.11</td>
+			</tr>
+			<tr>
+				<td>128</td>
+				<td>0.076</td>
+			</tr>
+			<tr>
+				<td>256</td>
+				<td>0.054</td>
+			</tr>
+			<tr>
+				<td>512</td>
+				<td>0.038</td>
+			</tr>
+			<tr>
+				<td>1024</td>
+				<td>0.027</td>
+			</tr>
+		</tbody></table>
+
+		<h2>Constructor</h2>
+
+		<h3>PMREMGenerator( renderer : <a data-fragment="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">WebGLRenderer</a> )</h3>
+		<p>This constructor creates a new PMREMGenerator.</p>
+
+		<h2>Methods</h2>
+
+		<h3>
+			<a data-fragment="PMREMGenerator.fromScene" target="_parent" title="PMREMGenerator.fromScene" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.fromScene">#</a> .<a data-fragment="PMREMGenerator.fromScene" id="fromScene" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.fromScene">fromScene</a> ( scene : <a data-fragment="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">Scene</a>, sigma : <span>Number</span>, near : <span>Number</span>, far : <span>Number</span> ) : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Scene" title="Scene" href="https://threejs.org/docs/index.html#api/en/scenes/Scene">scene</a> - The given scene.<br>
+			<a data-fragment="Number" title="Number">sigma</a> - (optional) Specifies a blur radius in radians to be
+			applied to the scene before PMREM generation. Default is <code translate="no"><span>0</span></code>.<br>
+			<a data-fragment="Number" title="Number">near</a> - (optional) The near plane value. Default is <code translate="no"><span>0.1</span></code>.<br>
+			<a data-fragment="Number" title="Number">far</a> - (optional) The far plane value. Default is <code translate="no"><span>100</span></code>.</p><p>
+
+			Generates a PMREM from a supplied Scene, which can be faster than using an
+			image if networking bandwidth is low. Optional near and far planes ensure
+			the scene is rendered in its entirety (the cubeCamera is placed at the
+			origin).
+		</p></div>
+
+		<h3>
+			<a data-fragment="PMREMGenerator.fromEquirectangular" target="_parent" title="PMREMGenerator.fromEquirectangular" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.fromEquirectangular">#</a> .<a data-fragment="PMREMGenerator.fromEquirectangular" id="fromEquirectangular" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.fromEquirectangular">fromEquirectangular</a> ( equirectangular : <a data-fragment="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> ) : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">equirectangular</a> - The equirectangular texture.</p><p>
+
+			Generates a PMREM from an equirectangular texture.
+		</p></div>
+
+		<h3>
+			<a data-fragment="PMREMGenerator.fromCubemap" target="_parent" title="PMREMGenerator.fromCubemap" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.fromCubemap">#</a> .<a data-fragment="PMREMGenerator.fromCubemap" id="fromCubemap" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.fromCubemap">fromCubemap</a> ( cubemap : <a data-fragment="CubeTexture" href="https://threejs.org/docs/index.html#api/en/textures/CubeTexture">CubeTexture</a> ) : <a data-fragment="WebGLRenderTarget" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderTarget">WebGLRenderTarget</a>
+		</h3>
+		<div>
+			<p><a data-fragment="CubeTexture" title="CubeTexture" href="https://threejs.org/docs/index.html#api/en/textures/CubeTexture">cubemap</a> - The cubemap texture.</p><p>
+
+			Generates a PMREM from an cubemap texture.
+		</p></div>
+
+		<h3><a data-fragment="PMREMGenerator.compileCubemapShader" target="_parent" title="PMREMGenerator.compileCubemapShader" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.compileCubemapShader">#</a> .<a data-fragment="PMREMGenerator.compileCubemapShader" id="compileCubemapShader" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.compileCubemapShader">compileCubemapShader</a> () : <span>undefined</span></h3>
+		<p>
+			Pre-compiles the cubemap shader. You can get faster start-up by invoking
+			this method during your texture's network fetch for increased concurrency.
+		</p>
+
+		<h3><a data-fragment="PMREMGenerator.compileEquirectangularShader" target="_parent" title="PMREMGenerator.compileEquirectangularShader" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.compileEquirectangularShader">#</a> .<a data-fragment="PMREMGenerator.compileEquirectangularShader" id="compileEquirectangularShader" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.compileEquirectangularShader">compileEquirectangularShader</a> () : <span>undefined</span></h3>
+		<p>
+			Pre-compiles the equirectangular shader. You can get faster start-up by
+			invoking this method during your texture's network fetch for increased
+			concurrency.
+		</p>
+
+		<h3><a data-fragment="PMREMGenerator.dispose" target="_parent" title="PMREMGenerator.dispose" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.dispose">#</a> .<a data-fragment="PMREMGenerator.dispose" id="dispose" href="https://threejs.org/docs/index.html#api/en/extras/PMREMGenerator.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/extras/PMREMGenerator.js" target="_blank">src/extras/PMREMGenerator.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

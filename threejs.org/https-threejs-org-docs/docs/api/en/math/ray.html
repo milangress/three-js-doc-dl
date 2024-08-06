@@ -1,0 +1,193 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			A ray that emits from an origin in a certain direction. This is used by
+			the <a data-fragment="Raycaster" title="Raycaster" href="https://threejs.org/docs/index.html#api/en/core/Raycaster">Raycaster</a> to assist with
+			<a href="https://en.wikipedia.org/wiki/Ray_casting" target="_blank">raycasting</a>. Raycasting is
+			used for mouse picking (working out what objects in the 3D space the mouse
+			is over) amongst other things.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Ray( origin : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, direction : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> )</h3>
+		
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="Ray.origin" target="_parent" title="Ray.origin" href="https://threejs.org/docs/index.html#api/en/math/Ray.origin">#</a> .<a data-fragment="Ray.origin" id="origin" href="https://threejs.org/docs/index.html#api/en/math/Ray.origin">origin</a>  : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a></h3>
+		<p>
+			The origin of the <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a>. Default is a <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> at <code translate="no"><span>(</span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>)</span></code>.
+		</p>
+
+		<h3><a data-fragment="Ray.direction" target="_parent" title="Ray.direction" href="https://threejs.org/docs/index.html#api/en/math/Ray.direction">#</a> .<a data-fragment="Ray.direction" id="direction" href="https://threejs.org/docs/index.html#api/en/math/Ray.direction">direction</a>  : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a></h3>
+		<p>
+			The direction of the <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a>. This must be normalized (with
+			<a data-fragment="Vector3.normalize" title="Vector3.normalize" href="https://threejs.org/docs/index.html#api/en/math/Vector3.normalize">Vector3.normalize</a>) for the methods to operate properly. Default is
+			a <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> at (0, 0, -1).
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="Ray.applyMatrix4" target="_parent" title="Ray.applyMatrix4" href="https://threejs.org/docs/index.html#api/en/math/Ray.applyMatrix4">#</a> .<a data-fragment="Ray.applyMatrix4" id="applyMatrix4" href="https://threejs.org/docs/index.html#api/en/math/Ray.applyMatrix4">applyMatrix4</a> ( matrix4 : <a data-fragment="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">Matrix4</a> ) : <span>this</span></h3>
+		
+
+		<h3><a data-fragment="Ray.at" target="_parent" title="Ray.at" href="https://threejs.org/docs/index.html#api/en/math/Ray.at">#</a> .<a data-fragment="Ray.at" id="at" href="https://threejs.org/docs/index.html#api/en/math/Ray.at">at</a> ( t : <span>Float</span>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">t</a> - the distance along the <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> to retrieve a position
+			for.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.</p><p>
+
+			Get a <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> that is a given distance along this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a>.
+		</p></div>
+
+		<h3><a data-fragment="Ray.clone" target="_parent" title="Ray.clone" href="https://threejs.org/docs/index.html#api/en/math/Ray.clone">#</a> .<a data-fragment="Ray.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/math/Ray.clone">clone</a> () : <a data-fragment="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a></h3>
+		<p>
+			Creates a new Ray with identical <a data-fragment="Ray.origin" title="Ray.origin" href="https://threejs.org/docs/index.html#api/en/math/Ray.origin">origin</a> and
+			<a data-fragment="Ray.direction" title="Ray.direction" href="https://threejs.org/docs/index.html#api/en/math/Ray.direction">direction</a> to this one.
+		</p>
+
+		<h3>
+			<a data-fragment="Ray.closestPointToPoint" target="_parent" title="Ray.closestPointToPoint" href="https://threejs.org/docs/index.html#api/en/math/Ray.closestPointToPoint">#</a> .<a data-fragment="Ray.closestPointToPoint" id="closestPointToPoint" href="https://threejs.org/docs/index.html#api/en/math/Ray.closestPointToPoint">closestPointToPoint</a> ( point : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">point</a> - the point to get the closest approach to. <br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.</p><p>
+
+			Get the point along this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> that is closest to the <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+			provided.
+		</p></div>
+
+		<h3><a data-fragment="Ray.copy" target="_parent" title="Ray.copy" href="https://threejs.org/docs/index.html#api/en/math/Ray.copy">#</a> .<a data-fragment="Ray.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/math/Ray.copy">copy</a> ( ray : <a data-fragment="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> ) : <span>this</span></h3>
+		<p>
+			Copies the <a data-fragment="Ray.origin" title="Ray.origin" href="https://threejs.org/docs/index.html#api/en/math/Ray.origin">origin</a> and <a data-fragment="Ray.direction" title="Ray.direction" href="https://threejs.org/docs/index.html#api/en/math/Ray.direction">direction</a>
+			properties of <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">ray</a> into this ray.
+		</p>
+
+		<h3><a data-fragment="Ray.distanceSqToPoint" target="_parent" title="Ray.distanceSqToPoint" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceSqToPoint">#</a> .<a data-fragment="Ray.distanceSqToPoint" id="distanceSqToPoint" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceSqToPoint">distanceSqToPoint</a> ( point : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <span>Float</span></h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">point</a> - the <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> to compute a distance to.</p><p>
+
+			Get the squared distance of the closest approach between the <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a>
+			and the <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Ray.distanceSqToSegment" target="_parent" title="Ray.distanceSqToSegment" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceSqToSegment">#</a> .<a data-fragment="Ray.distanceSqToSegment" id="distanceSqToSegment" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceSqToSegment">distanceSqToSegment</a> ( v0 : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, v1 : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, 
+			optionalPointOnRay : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, optionalPointOnSegment : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <span>Float</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">v0</a> - the start of the line segment.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">v1</a> - the end of the line segment.<br>
+			optionalPointOnRay - (optional) if this is provided, it receives the point
+			on this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> that is closest to the segment.<br>
+			optionalPointOnSegment - (optional) if this is provided, it receives the
+			point on the line segment that is closest to this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a>.</p><p>
+
+			Get the squared distance between this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> and a line segment.
+		</p></div>
+
+		<h3><a data-fragment="Ray.distanceToPlane" target="_parent" title="Ray.distanceToPlane" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceToPlane">#</a> .<a data-fragment="Ray.distanceToPlane" id="distanceToPlane" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceToPlane">distanceToPlane</a> ( plane : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a> ) : <span>Float</span></h3>
+		
+
+		<h3><a data-fragment="Ray.distanceToPoint" target="_parent" title="Ray.distanceToPoint" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceToPoint">#</a> .<a data-fragment="Ray.distanceToPoint" id="distanceToPoint" href="https://threejs.org/docs/index.html#api/en/math/Ray.distanceToPoint">distanceToPoint</a> ( point : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <span>Float</span></h3>
+		
+
+		<h3><a data-fragment="Ray.equals" target="_parent" title="Ray.equals" href="https://threejs.org/docs/index.html#api/en/math/Ray.equals">#</a> .<a data-fragment="Ray.equals" id="equals" href="https://threejs.org/docs/index.html#api/en/math/Ray.equals">equals</a> ( ray : <a data-fragment="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> ) : <span>Boolean</span></h3>
+		
+
+		<h3>
+			<a data-fragment="Ray.intersectBox" target="_parent" title="Ray.intersectBox" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectBox">#</a> .<a data-fragment="Ray.intersectBox" id="intersectBox" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectBox">intersectBox</a> ( box : <a data-fragment="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">box</a> - the <a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a> to intersect with.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.</p><p>
+
+			Intersect this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> with a <a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a>, returning the intersection
+			point or <code translate="no"><span>null</span></code> if there is no intersection.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Ray.intersectPlane" target="_parent" title="Ray.intersectPlane" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectPlane">#</a> .<a data-fragment="Ray.intersectPlane" id="intersectPlane" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectPlane">intersectPlane</a> ( plane : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">plane</a> - the <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a> to intersect with.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.</p><p>
+
+			Intersect this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> with a <a data-fragment="Plane" title="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a>, returning the intersection
+			point or <code translate="no"><span>null</span></code> if there is no intersection.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Ray.intersectSphere" target="_parent" title="Ray.intersectSphere" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectSphere">#</a> .<a data-fragment="Ray.intersectSphere" id="intersectSphere" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectSphere">intersectSphere</a> ( sphere : <a data-fragment="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">Sphere</a>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Sphere" title="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">sphere</a> - the <a data-fragment="Sphere" title="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">Sphere</a> to intersect with.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.</p><p>
+
+			Intersect this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> with a <a data-fragment="Sphere" title="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">Sphere</a>, returning the intersection
+			point or <code translate="no"><span>null</span></code> if there is no intersection.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Ray.intersectTriangle" target="_parent" title="Ray.intersectTriangle" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectTriangle">#</a> .<a data-fragment="Ray.intersectTriangle" id="intersectTriangle" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectTriangle">intersectTriangle</a> ( a : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, b : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, c : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, backfaceCulling : <span>Boolean</span>, target : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">a</a>, <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">b</a>, <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">c</a> - The <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>
+			points making up the triangle.<br>
+			<a data-fragment="Boolean" title="Boolean">backfaceCulling</a> - whether to use backface culling.<br>
+			<a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">target</a> — the result will be copied into this Vector3.</p><p>
+
+			Intersect this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> with a triangle, returning the intersection
+			point or <code translate="no"><span>null</span></code> if there is no intersection.
+		</p></div>
+
+		<h3><a data-fragment="Ray.intersectsBox" target="_parent" title="Ray.intersectsBox" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectsBox">#</a> .<a data-fragment="Ray.intersectsBox" id="intersectsBox" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectsBox">intersectsBox</a> ( box : <a data-fragment="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">box</a> - the <a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a> to intersect with.</p><p>
+
+			Return true if this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> intersects with the <a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a>.
+		</p></div>
+
+		<h3><a data-fragment="Ray.intersectsPlane" target="_parent" title="Ray.intersectsPlane" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectsPlane">#</a> .<a data-fragment="Ray.intersectsPlane" id="intersectsPlane" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectsPlane">intersectsPlane</a> ( plane : <a data-fragment="Plane" href="https://threejs.org/docs/index.html#api/en/math/Plane">Plane</a> ) : <span>Boolean</span></h3>
+		
+
+		<h3><a data-fragment="Ray.intersectsSphere" target="_parent" title="Ray.intersectsSphere" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectsSphere">#</a> .<a data-fragment="Ray.intersectsSphere" id="intersectsSphere" href="https://threejs.org/docs/index.html#api/en/math/Ray.intersectsSphere">intersectsSphere</a> ( sphere : <a data-fragment="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">Sphere</a> ) : <span>Boolean</span></h3>
+		
+
+		<h3><a data-fragment="Ray.lookAt" target="_parent" title="Ray.lookAt" href="https://threejs.org/docs/index.html#api/en/math/Ray.lookAt">#</a> .<a data-fragment="Ray.lookAt" id="lookAt" href="https://threejs.org/docs/index.html#api/en/math/Ray.lookAt">lookAt</a> ( v : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">v</a> - The <a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> to look at.</p><p>
+
+			Adjusts the direction of the ray to point at the vector in world
+			coordinates.
+		</p></div>
+
+		<h3><a data-fragment="Ray.recast" target="_parent" title="Ray.recast" href="https://threejs.org/docs/index.html#api/en/math/Ray.recast">#</a> .<a data-fragment="Ray.recast" id="recast" href="https://threejs.org/docs/index.html#api/en/math/Ray.recast">recast</a> ( t : <span>Float</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">t</a> - The distance along the <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> to interpolate.</p><p>
+
+			Shift the origin of this <a data-fragment="Ray" title="Ray" href="https://threejs.org/docs/index.html#api/en/math/Ray">Ray</a> along its direction by the distance
+			given.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Ray.set" target="_parent" title="Ray.set" href="https://threejs.org/docs/index.html#api/en/math/Ray.set">#</a> .<a data-fragment="Ray.set" id="set" href="https://threejs.org/docs/index.html#api/en/math/Ray.set">set</a> ( origin : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a>, direction : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <span>this</span>
+		</h3>
+		
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Ray.js" target="_blank">src/math/Ray.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

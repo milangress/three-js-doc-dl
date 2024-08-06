@@ -1,0 +1,74 @@
+<div id="readability-page-1" class="page"><div>
+    <meta charset="utf-8">
+    <base href="../../../">
+    
+    
+  
+  
+    <p><a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> →
+
+    </p>
+
+    <p>
+      BoxGeometry is a geometry class for a rectangular cuboid with a given 'width',
+      'height', and 'depth'. On creation, the cuboid is centred on the origin,
+      with each edge parallel to one of the axes.
+    </p>
+
+    
+
+    
+
+    <h2>Code Example</h2>
+
+    <p><code translate="no"><span>const</span><span> geometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>BoxGeometry</span><span>(</span><span> </span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>1</span><span> </span><span>);</span><span> 
+</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshBasicMaterial</span><span>(</span><span> </span><span>{</span><span>color</span><span>:</span><span> </span><span>0x00ff00</span><span>}</span><span> </span><span>);</span><span> 
+</span><span>const</span><span> cube </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> geometry</span><span>,</span><span> material </span><span>);</span><span> 
+scene</span><span>.</span><span>add</span><span>(</span><span> cube </span><span>);</span></code></p><h2>Constructor</h2>
+
+    <h3>
+      BoxGeometry(width : <span>Float</span>, height : <span>Float</span>, depth : <span>Float</span>,
+      widthSegments : <span>Integer</span>, heightSegments : <span>Integer</span>,
+      depthSegments : <span>Integer</span>)
+    </h3>
+    <p>
+      width — Width; that is, the length of the edges parallel to the X axis.
+      Optional; defaults to <code translate="no"><span>1</span></code>.
+      <br>
+      height — Height; that is, the length of the edges parallel to the Y axis.
+      Optional; defaults to <code translate="no"><span>1</span></code>.
+      <br>
+      depth — Depth; that is, the length of the edges parallel to the Z axis.
+      Optional; defaults to <code translate="no"><span>1</span></code>.
+      <br>
+      widthSegments — Number of segmented rectangular faces along the width of
+      the sides. Optional; defaults to <code translate="no"><span>1</span></code>.
+      <br>
+      heightSegments — Number of segmented rectangular faces along the height of
+      the sides. Optional; defaults to <code translate="no"><span>1</span></code>.
+      <br>
+      depthSegments — Number of segmented rectangular faces along the depth of
+      the sides. Optional; defaults to <code translate="no"><span>1</span></code>.
+      <br>
+    </p>
+
+    <h2>Properties</h2>
+    <p>See the base <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common properties.</p>
+
+    <h3><a data-fragment="BoxGeometry.parameters" target="_parent" title="BoxGeometry.parameters" href="https://threejs.org/docs/index.html#api/en/geometries/BoxGeometry.parameters">#</a> .<a data-fragment="BoxGeometry.parameters" id="parameters" href="https://threejs.org/docs/index.html#api/en/geometries/BoxGeometry.parameters">parameters</a>  : <span>Object</span></h3>
+    <p>
+      An object with a property for each of the constructor parameters. Any
+      modification after instantiation does not change the geometry.
+    </p>
+
+    <h2>Methods</h2>
+    <p>See the base <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common methods.</p>
+
+    <h2>Source</h2>
+
+    <p>
+      <a href="https://github.com/mrdoob/three.js/blob/master/src/geometries/BoxGeometry.js" target="_blank">src/geometries/BoxGeometry.js</a>
+    </p>
+  
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

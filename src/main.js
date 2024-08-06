@@ -1,4 +1,4 @@
-import { PlaywrightCrawler, Configuration, Dataset, playwrightUtils } from 'crawlee';
+import { PlaywrightCrawler, Configuration, Dataset, playwrightUtils, log } from 'crawlee';
 import fs from 'fs';
 import path from 'path';
 import { URL } from 'url';
@@ -6,7 +6,12 @@ import { Readability, isProbablyReaderable } from '@mozilla/readability';
 import { JSDOM } from 'jsdom';
 import TurndownService from 'turndown';
 
-const turndownService = new TurndownService();
+const turndownService = new TurndownService({
+    headingStyle: 'atx',
+    bulletListMarker: '-',
+    codeBlockStyle: 'fenced',
+    hr: '---'
+});
 
 function sanitizeFolderName(name) {
     return name
@@ -35,24 +40,33 @@ function generateFolderStructure(url, baseUrl) {
 }
 
 async function crawlWebsite(config) {
+    if (config.basePathOrGlobs.length === 0) {
+        config.basePathOrGlobs = [config.startUrls];
+    }
+    if (!config.projectDir) {
+        config.projectDir = new URL(config.startUrls[0]).hostname;
+    }
+    if (config.format !== 'html' && config.format !== 'markdown') {
+        config.format = 'markdown';
+    }
+    
     let {
         startUrls,
         basePathOrGlobs,
         projectDir,
         overwriteProjectDir = true,
-        maxRequestsPerCrawl = 9,
+        maxRequestsPerCrawl,
         waitForTimeout = 3000,
+        format
     } = config;
 
-    if (basePathOrGlobs.length === 0) {
-        basePathOrGlobs = [startUrls];
-    }
-    if (!projectDir) {
-        projectDir = new URL(startUrls[0]).hostname;
-    }
+    console.log('config:', config);
 
     const createGlobs = paths => paths.map(p => p.includes('*') ? p : `${p.endsWith('/') ? p : `${p}/`}**`);
     const globs = createGlobs(basePathOrGlobs);
+
+    let counter = 1;
+    let totalQueued = 0;
 
     const crawler = new PlaywrightCrawler({
         preNavigationHooks: [async (ctx, gotoOptions) => {
@@ -62,7 +76,8 @@ async function crawlWebsite(config) {
             await page.waitForTimeout(waitForTimeout);
 
             const title = await page.title();
-            console.log(`Processing: ${title}`);
+            log.info(`${counter}/${totalQueued} --- Processing: ${title} (${totalQueued - counter} to do)`);
+
 
             const $ = await playwrightUtils.parseWithCheerio(page,false,false);
 
@@ -133,14 +148,22 @@ async function crawlWebsite(config) {
                 title,
                 url: request.loadedUrl,
                 mockHtml,
-                readability: contentRead,
+                readabilityHtml: contentRead,
                 markdown,
                 escapedTitle
             });
 
-            await enqueueLinks({
+            const queueRequests = await enqueueLinks({
                 globs: globs,
             });
+
+           
+            totalQueued += queueRequests.processedRequests.filter(request => !request.wasAlreadyHandled).length;
+            counter++;
+            //log.info(`Queued links: ${queueRequests.processedRequests.length} (+${queueRequests.unprocessedRequests.length}) `);
+            //log.info(`Queue was already handled: ${queueWasAlreadyHandled.length}`);
+            //log.info(`Queue already present: ${queueAlreadyPresent.length}`);
+            //log.info(`Queue to do: ${queueToDo.map(request => request.uniqueKey).join('\n')}`);
         },
         maxRequestsPerCrawl: maxRequestsPerCrawl,
     }, new Configuration({
@@ -186,8 +209,13 @@ async function crawlWebsite(config) {
         const htmlFilePath = path.join(path.dirname(fullPath), `${fileNameBase}.html`);
         const markdownFilePath = path.join(path.dirname(fullPath), `${fileNameBase}.md`);
 
-        fs.writeFileSync(htmlFilePath, item.mockHtml);
-        fs.writeFileSync(markdownFilePath, item.markdown);
+        if (format === 'html' || format === 'both') {
+            const htmlContent = item.readabilityHtml || item.mockHtml;
+            fs.writeFileSync(htmlFilePath, htmlContent);
+        }
+        if (format === 'markdown' || format === 'both') {
+            fs.writeFileSync(markdownFilePath, item.markdown);
+        }
 
         return {
             filepath: htmlFilePath,
@@ -198,7 +226,11 @@ async function crawlWebsite(config) {
         };
     }).filter(Boolean);
 
-    console.log('Generated file paths:', filePaths.map(item => item.filepath));
+    console.log('Generated file paths:', filePaths.map(item => {
+        if (format === 'both') return `${item.filepath}, ${item.markdownPath}`;
+        if (format === 'html') return item.filepath;
+        if (format === 'markdown') return item.markdownPath;
+    }));
 
     const indexHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -211,7 +243,18 @@ async function crawlWebsite(config) {
 <h1>Crawled Website</h1>
 <nav>
 <ul>
-${filePaths.map(item => `<li><a href="${item.relativePath}">${item.title}</a></li>`).join('')}
+${filePaths.map(item => {
+    if (format === 'both') {
+        return `<li>
+            <a href="${item.relativePath}">${item.title}</a>
+            (<a href="${item.relativeMarkdownPath}">Markdown</a>)
+        </li>`;
+    } else if (format === 'html') {
+        return `<li><a href="${item.relativePath}">${item.title}</a></li>`;
+    } else {
+        return `<li><a href="${item.relativeMarkdownPath}">${item.title}</a></li>`;
+    }
+}).join('')}
 </ul>
 </nav>
 </body>
@@ -220,5 +263,4 @@ ${filePaths.map(item => `<li><a href="${item.relativePath}">${item.title}</a></l
     fs.writeFileSync(path.join(projectDir, 'index.html'), indexHtml);
     console.log("Index file created successfully.");
 }
-
 export default crawlWebsite;

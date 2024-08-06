@@ -1,0 +1,70 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> →
+
+		</p>
+
+		<p>
+			A polyhedron is a solid in three dimensions with flat faces. This class
+			will take an array of vertices, project them onto a sphere, and then
+			divide them up to the desired level of detail. This class is used by
+			<a data-fragment="DodecahedronGeometry" title="DodecahedronGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/DodecahedronGeometry">DodecahedronGeometry</a>, <a data-fragment="IcosahedronGeometry" title="IcosahedronGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/IcosahedronGeometry">IcosahedronGeometry</a>,
+			<a data-fragment="OctahedronGeometry" title="OctahedronGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/OctahedronGeometry">OctahedronGeometry</a>, and <a data-fragment="TetrahedronGeometry" title="TetrahedronGeometry" href="https://threejs.org/docs/index.html#api/en/geometries/TetrahedronGeometry">TetrahedronGeometry</a> to generate
+			their respective geometries.
+		</p>
+
+		<h2>Code Example</h2>
+		<p><code translate="no"><span>const</span><span> verticesOfCube </span><span>=</span><span> </span><span>[</span><span>
+    </span><span>-</span><span>1</span><span>,-</span><span>1</span><span>,-</span><span>1</span><span>,</span><span>    </span><span>1</span><span>,-</span><span>1</span><span>,-</span><span>1</span><span>,</span><span>    </span><span>1</span><span>,</span><span> </span><span>1</span><span>,-</span><span>1</span><span>,</span><span>    </span><span>-</span><span>1</span><span>,</span><span> </span><span>1</span><span>,-</span><span>1</span><span>,</span><span>
+    </span><span>-</span><span>1</span><span>,-</span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span>    </span><span>1</span><span>,-</span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span>    </span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span>    </span><span>-</span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span>
+</span><span>];</span><span>
+
+</span><span>const</span><span> indicesOfFaces </span><span>=</span><span> </span><span>[</span><span>
+    </span><span>2</span><span>,</span><span>1</span><span>,</span><span>0</span><span>,</span><span>    </span><span>0</span><span>,</span><span>3</span><span>,</span><span>2</span><span>,</span><span>
+    </span><span>0</span><span>,</span><span>4</span><span>,</span><span>7</span><span>,</span><span>    </span><span>7</span><span>,</span><span>3</span><span>,</span><span>0</span><span>,</span><span>
+    </span><span>0</span><span>,</span><span>1</span><span>,</span><span>5</span><span>,</span><span>    </span><span>5</span><span>,</span><span>4</span><span>,</span><span>0</span><span>,</span><span>
+    </span><span>1</span><span>,</span><span>2</span><span>,</span><span>6</span><span>,</span><span>    </span><span>6</span><span>,</span><span>5</span><span>,</span><span>1</span><span>,</span><span>
+    </span><span>2</span><span>,</span><span>3</span><span>,</span><span>7</span><span>,</span><span>    </span><span>7</span><span>,</span><span>6</span><span>,</span><span>2</span><span>,</span><span>
+    </span><span>4</span><span>,</span><span>5</span><span>,</span><span>6</span><span>,</span><span>    </span><span>6</span><span>,</span><span>7</span><span>,</span><span>4</span><span>
+</span><span>];</span><span>
+
+</span><span>const</span><span> geometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>PolyhedronGeometry</span><span>(</span><span> verticesOfCube</span><span>,</span><span> indicesOfFaces</span><span>,</span><span> </span><span>6</span><span>,</span><span> </span><span>2</span><span> </span><span>);</span></code></p><h2>Constructor</h2>
+
+		<h3>
+			PolyhedronGeometry(vertices : <span>Array</span>, indices : <span>Array</span>, radius : <span>Float</span>, detail : <span>Integer</span>)
+		</h3>
+		<p>
+			vertices — <a data-fragment="Array" title="Array">Array</a> of points of the form [1,1,1, -1,-1,-1, ... ]
+			<br>
+			indices — <a data-fragment="Array" title="Array">Array</a> of indices that make up the faces of the form
+			[0,1,2, 2,3,0, ... ] <br>
+			radius — <a data-fragment="Float" title="Float">Float</a> - The radius of the final shape <br>
+			detail — <a data-fragment="Integer" title="Integer">Integer</a> - How many levels to subdivide the geometry. The
+			more detail, the smoother the shape.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common properties.</p>
+
+		<h3><a data-fragment="PolyhedronGeometry.parameters" target="_parent" title="PolyhedronGeometry.parameters" href="https://threejs.org/docs/index.html#api/en/geometries/PolyhedronGeometry.parameters">#</a> .<a data-fragment="PolyhedronGeometry.parameters" id="parameters" href="https://threejs.org/docs/index.html#api/en/geometries/PolyhedronGeometry.parameters">parameters</a>  : <span>Object</span></h3>
+		<p>
+			An object with a property for each of the constructor parameters. Any
+			modification after instantiation does not change the geometry.
+		</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/geometries/PolyhedronGeometry.js" target="_blank">src/geometries/PolyhedronGeometry.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

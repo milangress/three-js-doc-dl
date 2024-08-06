@@ -1,0 +1,84 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> →
+
+		</p>
+
+		<p>A loader for loading an <code translate="no"><span>.</span><span>mtl</span></code> resource, used internally by <a data-fragment="OBJLoader" title="OBJLoader" href="https://threejs.org/docs/index.html#examples/en/loaders/OBJLoader">OBJLoader</a>.<br>
+		The Material Template Library format (MTL) or .MTL File Format is a companion file format to .OBJ that describes surface shading
+		(material) properties of objects within one or more .OBJ files.
+		</p>
+
+		<h2>Import</h2>
+
+		<p>
+			MTLLoader is an add-on, and must be imported explicitly.
+			See <a href="#manual/introduction/Installation" target="_blank">Installation / Addons</a>.
+		</p>
+
+		<p><code translate="no"><span>import</span><span> </span><span>{</span><span> </span><span>MTLLoader</span><span> </span><span>}</span><span> </span><span>from</span><span> </span><span>'three/addons/loaders/MTLLoader.js'</span><span>;</span></code></p><h2>Constructor</h2>
+
+		<h3>MTLLoader( loadingManager : <a data-fragment="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">LoadingManager</a> )</h3>
+		<p>
+			<a data-fragment="LoadingManager" title="LoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/LoadingManager">loadingManager</a> — LoadingManager to use. Defaults to <a data-fragment="DefaultLoadingManager" title="DefaultLoadingManager" href="https://threejs.org/docs/index.html#api/en/loaders/managers/DefaultLoadingManager">DefaultLoadingManager</a><br>
+		</p>
+		<p>
+			Creates a new MTLLoader.
+		</p>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="Loader" title="Loader" href="https://threejs.org/docs/index.html#api/en/loaders/Loader">Loader</a> class for common methods.</p>
+
+		<h3><a data-fragment="MTLLoader.load" target="_parent" title="MTLLoader.load" href="https://threejs.org/docs/index.html#examples/en/loaders/MTLLoader.load">#</a> .<a data-fragment="MTLLoader.load" id="load" href="https://threejs.org/docs/index.html#examples/en/loaders/MTLLoader.load">load</a> ( url : <span>String</span>, onLoad : <a data-fragment="Function">Function</a>, onProgress : <a data-fragment="Function">Function</a>, onError : <a data-fragment="Function">Function</a> ) : <span>undefined</span></h3>
+		<p>
+			<a data-fragment="String" title="String">url</a> — A string containing the path/URL of the <code translate="no"><span>.</span><span>mtl</span></code> file.<br>
+			<a data-fragment="Function" title="Function">onLoad</a> — (optional) A function to be called after the loading is successfully completed. The function receives the loaded <a data-fragment="MTLLoaderMaterialCreator" title="MTLLoaderMaterialCreator">MTLLoader.MaterialCreator</a> instance.<br>
+			<a data-fragment="Function" title="Function">onProgress</a> — (optional) A function to be called while the loading is in progress. The argument will be the XMLHttpRequest instance, which contains <a data-fragment="Integer" title="Integer">total</a> and <a data-fragment="Integer" title="Integer">loaded</a> bytes. If the server does not set the Content-Length header; .<a data-fragment="Integer" title="Integer">total</a> will be 0.<br>
+			<a data-fragment="Function" title="Function">onError</a> — (optional) A function to be called if an error occurs during loading. The function receives the error as an argument.<br>
+		</p>
+		<p>
+			Begin loading from url and return the loaded material.
+		</p>
+
+		<h3><a data-fragment="MTLLoader.setMaterialOptions" target="_parent" title="MTLLoader.setMaterialOptions" href="https://threejs.org/docs/index.html#examples/en/loaders/MTLLoader.setMaterialOptions">#</a> .<a data-fragment="MTLLoader.setMaterialOptions" id="setMaterialOptions" href="https://threejs.org/docs/index.html#examples/en/loaders/MTLLoader.setMaterialOptions">setMaterialOptions</a> ( options : <span>Object</span> ) : <span>this</span></h3>
+		<p>
+			<a data-fragment="Object" title="Object">options</a> — required
+			</p><ul>
+				<li>side: Which side to apply the material. THREE.FrontSide (default), THREE.BackSide, THREE.DoubleSide</li>
+				<li>wrap: What type of wrapping to apply for textures. THREE.RepeatWrapping (default), THREE.ClampToEdgeWrapping, THREE.MirroredRepeatWrapping</li>
+				<li>normalizeRGB: RGBs need to be normalized to 0-1 from 0-255. Default: false, assumed to be already normalized</li>
+				<li>ignoreZeroRGBs: Ignore values of RGBs (Ka,Kd,Ks) that are all 0's. Default: false</li>
+				<li>invertTrProperty: Use values 1 of Tr field for fully opaque. This option is useful for obj exported from 3ds MAX, vcglib or meshlab. Default: false</li>
+			</ul>
+		
+		<p>
+			Set of options on how to construct the materials
+		</p>
+
+
+		<h3><a data-fragment="MTLLoader.parse" target="_parent" title="MTLLoader.parse" href="https://threejs.org/docs/index.html#examples/en/loaders/MTLLoader.parse">#</a> .<a data-fragment="MTLLoader.parse" id="parse" href="https://threejs.org/docs/index.html#examples/en/loaders/MTLLoader.parse">parse</a> ( [param:String text, param:String path] ) : <a data-fragment="MTLLoaderMaterialCreator">MTLLoaderMaterialCreator</a></h3>
+		<p>
+			<a data-fragment="String" title="String">text</a> — The textual <code translate="no"><span>mtl</span></code> structure to parse.
+			<a data-fragment="String" title="String">path</a> — The path to the MTL file.
+		</p>
+		<p>
+			Parse a <code translate="no"><span>mtl</span></code> text structure and return a <a data-fragment="MTLLoaderMaterialCreator" title="MTLLoaderMaterialCreator">MTLLoader.MaterialCreator</a> instance.<br>
+		</p>
+
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/examples/jsm/loaders/MTLLoader.js" target="_blank">examples/jsm/loaders/MTLLoader.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

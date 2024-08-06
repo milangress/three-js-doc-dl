@@ -1,0 +1,89 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../../">
+		
+		
+	
+	
+		<p><a data-fragment="LightShadow" title="LightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow">LightShadow</a> →
+
+		</p>
+
+		
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>//Create a WebGLRenderer and turn on shadows in the renderer</span><span>
+</span><span>const</span><span> renderer </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>WebGLRenderer</span><span>();</span><span>
+renderer</span><span>.</span><span>shadowMap</span><span>.</span><span>enabled </span><span>=</span><span> </span><span>true</span><span>;</span><span>
+renderer</span><span>.</span><span>shadowMap</span><span>.</span><span>type </span><span>=</span><span> THREE</span><span>.</span><span>PCFSoftShadowMap</span><span>;</span><span> </span><span>// default THREE.PCFShadowMap</span><span>
+
+</span><span>//Create a DirectionalLight and turn on shadows for the light</span><span>
+</span><span>const</span><span> light </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>DirectionalLight</span><span>(</span><span> </span><span>0xffffff</span><span>,</span><span> </span><span>1</span><span> </span><span>);</span><span>
+light</span><span>.</span><span>position</span><span>.</span><span>set</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>0</span><span> </span><span>);</span><span> </span><span>//default; light shining from top</span><span>
+light</span><span>.</span><span>castShadow </span><span>=</span><span> </span><span>true</span><span>;</span><span> </span><span>// default false</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> light </span><span>);</span><span>
+
+</span><span>//Set up shadow properties for the light</span><span>
+light</span><span>.</span><span>shadow</span><span>.</span><span>mapSize</span><span>.</span><span>width </span><span>=</span><span> </span><span>512</span><span>;</span><span> </span><span>// default</span><span>
+light</span><span>.</span><span>shadow</span><span>.</span><span>mapSize</span><span>.</span><span>height </span><span>=</span><span> </span><span>512</span><span>;</span><span> </span><span>// default</span><span>
+light</span><span>.</span><span>shadow</span><span>.</span><span>camera</span><span>.</span><span>near </span><span>=</span><span> </span><span>0.5</span><span>;</span><span> </span><span>// default</span><span>
+light</span><span>.</span><span>shadow</span><span>.</span><span>camera</span><span>.</span><span>far </span><span>=</span><span> </span><span>500</span><span>;</span><span> </span><span>// default</span><span>
+
+</span><span>//Create a sphere that cast shadows (but does not receive them)</span><span>
+</span><span>const</span><span> sphereGeometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>SphereGeometry</span><span>(</span><span> </span><span>5</span><span>,</span><span> </span><span>32</span><span>,</span><span> </span><span>32</span><span> </span><span>);</span><span>
+</span><span>const</span><span> sphereMaterial </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshStandardMaterial</span><span>(</span><span> </span><span>{</span><span> color</span><span>:</span><span> </span><span>0xff0000</span><span> </span><span>}</span><span> </span><span>);</span><span>
+</span><span>const</span><span> sphere </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> sphereGeometry</span><span>,</span><span> sphereMaterial </span><span>);</span><span>
+sphere</span><span>.</span><span>castShadow </span><span>=</span><span> </span><span>true</span><span>;</span><span> </span><span>//default is false</span><span>
+sphere</span><span>.</span><span>receiveShadow </span><span>=</span><span> </span><span>false</span><span>;</span><span> </span><span>//default</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> sphere </span><span>);</span><span>
+
+</span><span>//Create a plane that receives shadows (but does not cast them)</span><span>
+</span><span>const</span><span> planeGeometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>PlaneGeometry</span><span>(</span><span> </span><span>20</span><span>,</span><span> </span><span>20</span><span>,</span><span> </span><span>32</span><span>,</span><span> </span><span>32</span><span> </span><span>);</span><span>
+</span><span>const</span><span> planeMaterial </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshStandardMaterial</span><span>(</span><span> </span><span>{</span><span> color</span><span>:</span><span> </span><span>0x00ff00</span><span> </span><span>}</span><span> </span><span>)</span><span>
+</span><span>const</span><span> plane </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> planeGeometry</span><span>,</span><span> planeMaterial </span><span>);</span><span>
+plane</span><span>.</span><span>receiveShadow </span><span>=</span><span> </span><span>true</span><span>;</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> plane </span><span>);</span><span>
+
+</span><span>//Create a helper for the shadow camera (optional)</span><span>
+</span><span>const</span><span> helper </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>CameraHelper</span><span>(</span><span> light</span><span>.</span><span>shadow</span><span>.</span><span>camera </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> helper </span><span>);</span></code></p><h2>Constructor</h2>
+		<h3>DirectionalLightShadow( )</h3>
+		<p>
+			Creates a new DirectionalLightShadow. This is not intended to be called directly - it is
+			called internally by <a data-fragment="DirectionalLight" title="DirectionalLight" href="https://threejs.org/docs/index.html#api/en/lights/DirectionalLight">DirectionalLight</a>.
+		</p>
+
+		<h2>Properties</h2>
+		<p>
+			See the base <a data-fragment="LightShadow" title="LightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow">LightShadow</a> class for common properties.
+		</p>
+
+		<h3><a data-fragment="DirectionalLightShadow.camera" target="_parent" title="DirectionalLightShadow.camera" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow.camera">#</a> .<a data-fragment="DirectionalLightShadow.camera" id="camera" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow.camera">camera</a>  : <a data-fragment="Camera" href="https://threejs.org/docs/index.html#api/en/cameras/Camera">Camera</a></h3>
+		<div><p>
+			The light's view of the world. This is used to generate a depth map of the
+			scene; objects behind other objects from the light's perspective will be
+			in shadow.</p><p>
+
+			The default is an <a data-fragment="OrthographicCamera" title="OrthographicCamera" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera">OrthographicCamera</a> with
+			<a data-fragment="OrthographicCamera.left" title="OrthographicCamera.left" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.left">left</a> and <a data-fragment="OrthographicCamera.bottom" title="OrthographicCamera.bottom" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.bottom">bottom</a>
+			set to <code translate="no"><span>-</span><span>5</span></code>, <a data-fragment="OrthographicCamera.right" title="OrthographicCamera.right" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.right">right</a> and
+			<a data-fragment="OrthographicCamera.top" title="OrthographicCamera.top" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.top">top</a> set to <code translate="no"><span>5</span></code>, the
+			<a data-fragment="OrthographicCamera.near" title="OrthographicCamera.near" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.near">near</a> clipping plane at <code translate="no"><span>0.5</span></code> and the
+			<a data-fragment="OrthographicCamera.far" title="OrthographicCamera.far" href="https://threejs.org/docs/index.html#api/en/cameras/OrthographicCamera.far">far</a> clipping plane at <code translate="no"><span>500</span></code>.
+		</p></div>
+
+		<h3><a data-fragment="DirectionalLightShadow.isDirectionalLightShadow" target="_parent" title="DirectionalLightShadow.isDirectionalLightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow.isDirectionalLightShadow">#</a> .<a data-fragment="DirectionalLightShadow.isDirectionalLightShadow" id="isDirectionalLightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/DirectionalLightShadow.isDirectionalLightShadow">isDirectionalLightShadow</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type DirectionalLightShadow.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="LightShadow" title="LightShadow" href="https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow">LightShadow</a> class for common methods.</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/lights/DirectionalLightShadow.js" target="_blank">src/lights/DirectionalLightShadow.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

@@ -1,0 +1,352 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			A representation of mesh, line, or point geometry. Includes vertex
+			positions, face indices, normals, colors, UVs, and custom attributes
+			within buffers, reducing the cost of passing all this data to the GPU.
+		</p>
+		<p>
+			To read and edit data in BufferGeometry attributes, see
+			<a data-fragment="BufferAttribute" title="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a> documentation.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> geometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>BufferGeometry</span><span>();</span><span>
+
+</span><span>// create a simple square shape. We duplicate the top left and bottom right</span><span>
+</span><span>// vertices because each vertex needs to appear once per triangle.</span><span>
+</span><span>const</span><span> vertices </span><span>=</span><span> </span><span>new</span><span> </span><span>Float32Array</span><span>(</span><span> </span><span>[</span><span>
+	</span><span>-</span><span>1.0</span><span>,</span><span> </span><span>-</span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v0</span><span>
+	 </span><span>1.0</span><span>,</span><span> </span><span>-</span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v1</span><span>
+	 </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v2</span><span>
+
+	 </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v3</span><span>
+	</span><span>-</span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v4</span><span>
+	</span><span>-</span><span>1.0</span><span>,</span><span> </span><span>-</span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>  </span><span>// v5</span><span>
+</span><span>]</span><span> </span><span>);</span><span>
+
+</span><span>// itemSize = 3 because there are 3 values (components) per vertex</span><span>
+geometry</span><span>.</span><span>setAttribute</span><span>(</span><span> </span><span>'position'</span><span>,</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>BufferAttribute</span><span>(</span><span> vertices</span><span>,</span><span> </span><span>3</span><span> </span><span>)</span><span> </span><span>);</span><span>
+</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshBasicMaterial</span><span>(</span><span> </span><span>{</span><span> color</span><span>:</span><span> </span><span>0xff0000</span><span> </span><span>}</span><span> </span><span>);</span><span>
+</span><span>const</span><span> mesh </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> geometry</span><span>,</span><span> material </span><span>);</span></code></p><h2>Code Example (Index)</h2>
+
+		<p><code translate="no"><span>const</span><span> geometry </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>BufferGeometry</span><span>();</span><span>
+
+</span><span>const</span><span> vertices </span><span>=</span><span> </span><span>new</span><span> </span><span>Float32Array</span><span>(</span><span> </span><span>[</span><span>
+	</span><span>-</span><span>1.0</span><span>,</span><span> </span><span>-</span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v0</span><span>
+	 </span><span>1.0</span><span>,</span><span> </span><span>-</span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v1</span><span>
+	 </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v2</span><span>
+	</span><span>-</span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span>  </span><span>1.0</span><span>,</span><span> </span><span>// v3</span><span>
+</span><span>]</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> indices </span><span>=</span><span> </span><span>[</span><span>
+	</span><span>0</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>2</span><span>,</span><span>
+	</span><span>2</span><span>,</span><span> </span><span>3</span><span>,</span><span> </span><span>0</span><span>,</span><span>
+</span><span>];</span><span>
+
+geometry</span><span>.</span><span>setIndex</span><span>(</span><span> indices </span><span>);</span><span>
+geometry</span><span>.</span><span>setAttribute</span><span>(</span><span> </span><span>'position'</span><span>,</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>BufferAttribute</span><span>(</span><span> vertices</span><span>,</span><span> </span><span>3</span><span> </span><span>)</span><span> </span><span>);</span><span>
+
+</span><span>const</span><span> material </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshBasicMaterial</span><span>(</span><span> </span><span>{</span><span> color</span><span>:</span><span> </span><span>0xff0000</span><span> </span><span>}</span><span> </span><span>);</span><span>
+</span><span>const</span><span> mesh </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> geometry</span><span>,</span><span> material </span><span>);</span></code></p><h2>Examples</h2>
+		<p>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry" target="_blank">Mesh with non-indexed faces</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_indexed" target="_blank">Mesh with indexed faces</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_lines" target="_blank">Lines</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_lines_indexed" target="_blank">Indexed Lines</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_custom_attributes_particles" target="_blank">Particles</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_rawshader" target="_blank">Raw Shaders</a>
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>BufferGeometry()</h3>
+		<p>
+			This creates a new BufferGeometry. It also sets several properties to a default
+			value.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="BufferGeometry.attributes" target="_parent" title="BufferGeometry.attributes" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.attributes">#</a> .<a data-fragment="BufferGeometry.attributes" id="attributes" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.attributes">attributes</a>  : <span>Object</span></h3>
+		<p>
+			This hashmap has as id the name of the attribute to be set and as value
+			the <a data-fragment="BufferAttribute" title="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">buffer</a> to set it to. Rather than accessing this
+			property directly, use <a data-fragment="BufferGeometry.setAttribute" title="BufferGeometry.setAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setAttribute">.setAttribute</a> and <a data-fragment="BufferGeometry.getAttribute" title="BufferGeometry.getAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.getAttribute">.getAttribute</a> to
+			access attributes of this geometry.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.boundingBox" target="_parent" title="BufferGeometry.boundingBox" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.boundingBox">#</a> .<a data-fragment="BufferGeometry.boundingBox" id="boundingBox" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.boundingBox">boundingBox</a>  : <a data-fragment="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a></h3>
+		<p>
+			Bounding box for the bufferGeometry, which can be calculated with
+			<a data-fragment="BufferGeometry.computeBoundingBox" title="BufferGeometry.computeBoundingBox" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeBoundingBox">.computeBoundingBox</a>(). Default is <code translate="no"><span>null</span></code>.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.boundingSphere" target="_parent" title="BufferGeometry.boundingSphere" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.boundingSphere">#</a> .<a data-fragment="BufferGeometry.boundingSphere" id="boundingSphere" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.boundingSphere">boundingSphere</a>  : <a data-fragment="Sphere" href="https://threejs.org/docs/index.html#api/en/math/Sphere">Sphere</a></h3>
+		<p>
+			Bounding sphere for the bufferGeometry, which can be calculated with
+			<a data-fragment="BufferGeometry.computeBoundingSphere" title="BufferGeometry.computeBoundingSphere" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeBoundingSphere">.computeBoundingSphere</a>(). Default is <code translate="no"><span>null</span></code>.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.drawRange" target="_parent" title="BufferGeometry.drawRange" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.drawRange">#</a> .<a data-fragment="BufferGeometry.drawRange" id="drawRange" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.drawRange">drawRange</a>  : <span>Object</span></h3>
+		<p>
+			Determines the part of the geometry to render. This should not be set
+			directly, instead use <a data-fragment="BufferGeometry.setDrawRange" title="BufferGeometry.setDrawRange" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setDrawRange">.setDrawRange</a>. Default is
+			<code translate="no"><span>{</span><span> start</span><span>:</span><span> </span><span>0</span><span>,</span><span> count</span><span>:</span><span> </span><span>Infinity</span><span> </span><span>}</span></code>
+			For non-indexed BufferGeometry, count is the number of vertices to render.
+			For indexed BufferGeometry, count is the number of indices to render.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.groups" target="_parent" title="BufferGeometry.groups" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.groups">#</a> .<a data-fragment="BufferGeometry.groups" id="groups" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.groups">groups</a>  : <span>Array</span></h3>
+		<div><p>
+			Split the geometry into groups, each of which will be rendered in a
+			separate WebGL draw call. This allows an array of materials to be used
+			with the geometry.</p><p>
+
+			Each group is an object of the form:
+			<code translate="no"><span>{</span><span> start</span><span>:</span><span> </span><span>Integer</span><span>,</span><span> count</span><span>:</span><span> </span><span>Integer</span><span>,</span><span> materialIndex</span><span>:</span><span> </span><span>Integer</span><span> </span><span>}</span></code>
+			where start specifies the first element in this draw call – the first
+			vertex for non-indexed geometry, otherwise the first triangle index. Count
+			specifies how many vertices (or indices) are included, and materialIndex
+			specifies the material array index to use.</p><p>
+
+			Use <a data-fragment="BufferGeometry.addGroup" title="BufferGeometry.addGroup" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.addGroup">.addGroup</a> to add groups, rather than modifying this array
+			directly.</p><p>
+
+			Every vertex and index must belong to exactly one group — groups must not
+			share vertices or indices, and must not leave vertices or indices unused.
+		</p></div>
+
+		<!-- Note: groups used to be called drawCalls
+
+		<h3><a class='permalink links' data-fragment='BufferGeometry.drawcalls' target='_parent' title='BufferGeometry.drawcalls'>#</a> .<a class='links' data-fragment='BufferGeometry.drawcalls' id='drawcalls'>drawcalls</a>  : <span class="param">Array</span></h3>
+		<p>
+		For geometries that use indexed triangles, this Array can be used to split the object
+		into multiple WebGL draw calls. Each draw call will draw some subset of the vertices
+		in this geometry using the configured <a class='links' data-fragment='Material' title='Material'>shader</a>. This may be necessary if,
+		for instance, you have more than 65535 vertices in your object.
+		</p> -->
+
+		<h3><a data-fragment="BufferGeometry.id" target="_parent" title="BufferGeometry.id" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.id">#</a> .<a data-fragment="BufferGeometry.id" id="id" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.id">id</a>  : <span>Integer</span></h3>
+		<p>Unique number for this bufferGeometry instance.</p>
+
+		<h3><a data-fragment="BufferGeometry.index" target="_parent" title="BufferGeometry.index" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.index">#</a> .<a data-fragment="BufferGeometry.index" id="index" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.index">index</a>  : <a data-fragment="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a></h3>
+		<p>
+			Allows for vertices to be re-used across multiple triangles; this is
+			called using "indexed triangles". Each triangle is associated with the
+			indices of three vertices. This attribute therefore stores the index of
+			each vertex for each triangular face. If this attribute is not set, the
+			<a data-fragment="WebGLRenderer" title="WebGLRenderer" href="https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer">renderer</a> assumes that each three contiguous positions
+			represent a single triangle. Default is <code translate="no"><span>null</span></code>.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.isBufferGeometry" target="_parent" title="BufferGeometry.isBufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.isBufferGeometry">#</a> .<a data-fragment="BufferGeometry.isBufferGeometry" id="isBufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.isBufferGeometry">isBufferGeometry</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type BufferGeometry.</p>
+
+		<h3><a data-fragment="BufferGeometry.morphAttributes" target="_parent" title="BufferGeometry.morphAttributes" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.morphAttributes">#</a> .<a data-fragment="BufferGeometry.morphAttributes" id="morphAttributes" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.morphAttributes">morphAttributes</a>  : <span>Object</span></h3>
+		<p>
+			Hashmap of <a data-fragment="BufferAttribute" title="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a>s holding details of the geometry's morph
+			targets.<br>
+			Note: Once the geometry has been rendered, the morph attribute data cannot
+			be changed. You will have to call <a data-fragment="BufferGeometry.dispose" title="BufferGeometry.dispose" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.dispose">.dispose</a>(), and create a new
+			instance of BufferGeometry.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.morphTargetsRelative" target="_parent" title="BufferGeometry.morphTargetsRelative" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.morphTargetsRelative">#</a> .<a data-fragment="BufferGeometry.morphTargetsRelative" id="morphTargetsRelative" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.morphTargetsRelative">morphTargetsRelative</a>  : <span>Boolean</span></h3>
+		<p>
+			Used to control the morph target behavior; when set to true, the morph
+			target data is treated as relative offsets, rather than as absolute
+			positions/normals. Default is <code translate="no"><span>false</span></code>.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.name" target="_parent" title="BufferGeometry.name" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.name">#</a> .<a data-fragment="BufferGeometry.name" id="name" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.name">name</a>  : <span>String</span></h3>
+		<p>
+			Optional name for this bufferGeometry instance. Default is an empty
+			string.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.userData" target="_parent" title="BufferGeometry.userData" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.userData">#</a> .<a data-fragment="BufferGeometry.userData" id="userData" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.userData">userData</a>  : <span>Object</span></h3>
+		<p>
+			An object that can be used to store custom data about the BufferGeometry.
+			It should not hold references to functions as these will not be cloned.
+			Default is an empty object <code translate="no"><span>{}</span></code>.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.uuid" target="_parent" title="BufferGeometry.uuid" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.uuid">#</a> .<a data-fragment="BufferGeometry.uuid" id="uuid" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.uuid">uuid</a>  : <span>String</span></h3>
+		<p>
+			<a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a> of
+			this object instance. This gets automatically assigned and shouldn't be
+			edited.
+		</p>
+
+		<h2>Methods</h2>
+
+		<p>
+			<a data-fragment="EventDispatcher" title="EventDispatcher" href="https://threejs.org/docs/index.html#api/en/core/EventDispatcher">EventDispatcher</a> methods are available on this
+			class.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.addGroup" target="_parent" title="BufferGeometry.addGroup" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.addGroup">#</a> .<a data-fragment="BufferGeometry.addGroup" id="addGroup" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.addGroup">addGroup</a> ( start : <span>Integer</span>, count : <span>Integer</span>, materialIndex : <span>Integer</span> ) : <span>undefined</span></h3>
+		<p>
+			Adds a group to this geometry; see the <a data-fragment="BufferGeometry.groups" title="BufferGeometry.groups" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.groups">groups</a>
+			property for details.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.applyMatrix4" target="_parent" title="BufferGeometry.applyMatrix4" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.applyMatrix4">#</a> .<a data-fragment="BufferGeometry.applyMatrix4" id="applyMatrix4" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.applyMatrix4">applyMatrix4</a> ( matrix : <a data-fragment="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">Matrix4</a> ) : <span>this</span></h3>
+		<p>Applies the matrix transform to the geometry.</p>
+
+		<h3><a data-fragment="BufferGeometry.applyQuaternion" target="_parent" title="BufferGeometry.applyQuaternion" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.applyQuaternion">#</a> .<a data-fragment="BufferGeometry.applyQuaternion" id="applyQuaternion" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.applyQuaternion">applyQuaternion</a> ( quaternion : <a data-fragment="Quaternion" href="https://threejs.org/docs/index.html#api/en/math/Quaternion">Quaternion</a> ) : <span>this</span></h3>
+		<p>Applies the rotation represented by the quaternion to the geometry.</p>
+
+		<h3><a data-fragment="BufferGeometry.center" target="_parent" title="BufferGeometry.center" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.center">#</a> .<a data-fragment="BufferGeometry.center" id="center" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.center">center</a> () : <span>this</span></h3>
+		<p>Center the geometry based on the bounding box.</p>
+
+		<h3><a data-fragment="BufferGeometry.clearGroups" target="_parent" title="BufferGeometry.clearGroups" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.clearGroups">#</a> .<a data-fragment="BufferGeometry.clearGroups" id="clearGroups" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.clearGroups">clearGroups</a> ( ) : <span>undefined</span></h3>
+		<p>Clears all groups.</p>
+
+		<h3><a data-fragment="BufferGeometry.clone" target="_parent" title="BufferGeometry.clone" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.clone">#</a> .<a data-fragment="BufferGeometry.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.clone">clone</a> () : <a data-fragment="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a></h3>
+		<p>Creates a clone of this BufferGeometry.</p>
+
+		<h3><a data-fragment="BufferGeometry.computeBoundingBox" target="_parent" title="BufferGeometry.computeBoundingBox" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeBoundingBox">#</a> .<a data-fragment="BufferGeometry.computeBoundingBox" id="computeBoundingBox" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeBoundingBox">computeBoundingBox</a> () : <span>undefined</span></h3>
+		<p>
+			Computes the bounding box of the geometry, and updates the <a data-fragment="BufferGeometry.boundingBox" title="BufferGeometry.boundingBox" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.boundingBox">.boundingBox</a> attribute.
+			The bounding box is not computed by the engine; it must be computed by your app.
+			You may need to recompute the bounding box if the geometry vertices are modified.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.computeBoundingSphere" target="_parent" title="BufferGeometry.computeBoundingSphere" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeBoundingSphere">#</a> .<a data-fragment="BufferGeometry.computeBoundingSphere" id="computeBoundingSphere" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeBoundingSphere">computeBoundingSphere</a> () : <span>undefined</span></h3>
+		<p>
+			Computes the bounding sphere of the geometry, and updates the <a data-fragment="BufferGeometry.boundingSphere" title="BufferGeometry.boundingSphere" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.boundingSphere">.boundingSphere</a> attribute.
+			The engine automatically computes the bounding sphere when it is needed, e.g., for ray casting or view frustum culling.
+			You may need to recompute the bounding sphere if the geometry vertices are modified.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.computeTangents" target="_parent" title="BufferGeometry.computeTangents" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeTangents">#</a> .<a data-fragment="BufferGeometry.computeTangents" id="computeTangents" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeTangents">computeTangents</a> () : <span>undefined</span></h3>
+		<p>
+			Calculates and adds a tangent attribute to this geometry.<br>
+			The computation is only supported for indexed geometries and if position,
+			normal, and uv attributes are defined. When using a tangent space normal
+			map, prefer the MikkTSpace algorithm provided by
+			<a data-fragment="BufferGeometryUtils.computeMikkTSpaceTangents" title="BufferGeometryUtils.computeMikkTSpaceTangents" href="https://threejs.org/docs/index.html#examples/en/utils/BufferGeometryUtils.computeMikkTSpaceTangents">BufferGeometryUtils.computeMikkTSpaceTangents</a> instead.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.computeVertexNormals" target="_parent" title="BufferGeometry.computeVertexNormals" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeVertexNormals">#</a> .<a data-fragment="BufferGeometry.computeVertexNormals" id="computeVertexNormals" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.computeVertexNormals">computeVertexNormals</a> () : <span>undefined</span></h3>
+		<p>Computes vertex normals for the given vertex data. For indexed geometries, the method sets each vertex normal to be the average of the face normals of the faces that share that vertex.
+		For non-indexed geometries, vertices are not shared, and the method sets each vertex normal to be the same as the face normal.</p>
+
+		<h3><a data-fragment="BufferGeometry.copy" target="_parent" title="BufferGeometry.copy" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.copy">#</a> .<a data-fragment="BufferGeometry.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.copy">copy</a> ( bufferGeometry : <a data-fragment="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> ) : <span>this</span></h3>
+		<p>Copies another BufferGeometry to this BufferGeometry.</p>
+
+		<h3><a data-fragment="BufferGeometry.deleteAttribute" target="_parent" title="BufferGeometry.deleteAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.deleteAttribute">#</a> .<a data-fragment="BufferGeometry.deleteAttribute" id="deleteAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.deleteAttribute">deleteAttribute</a> ( name : <span>String</span> ) : <a data-fragment="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a></h3>
+		<p>Deletes the <a data-fragment="BufferAttribute" title="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">attribute</a> with the specified name.</p>
+
+		<h3><a data-fragment="BufferGeometry.dispose" target="_parent" title="BufferGeometry.dispose" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.dispose">#</a> .<a data-fragment="BufferGeometry.dispose" id="dispose" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.getAttribute" target="_parent" title="BufferGeometry.getAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.getAttribute">#</a> .<a data-fragment="BufferGeometry.getAttribute" id="getAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.getAttribute">getAttribute</a> ( name : <span>String</span> ) : <a data-fragment="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a></h3>
+		<p>Returns the <a data-fragment="BufferAttribute" title="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">attribute</a> with the specified name.</p>
+
+		<h3><a data-fragment="BufferGeometry.getIndex" target="_parent" title="BufferGeometry.getIndex" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.getIndex">#</a> .<a data-fragment="BufferGeometry.getIndex" id="getIndex" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.getIndex">getIndex</a> () : <a data-fragment="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a></h3>
+		<p>Return the <a data-fragment="BufferGeometry.index" title="BufferGeometry.index" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.index">.index</a> buffer.</p>
+
+		<h3><a data-fragment="BufferGeometry.hasAttribute" target="_parent" title="BufferGeometry.hasAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.hasAttribute">#</a> .<a data-fragment="BufferGeometry.hasAttribute" id="hasAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.hasAttribute">hasAttribute</a> ( name : <span>String</span> ) : <span>Boolean</span></h3>
+		<p>Returns <code translate="no"><span>true</span></code> if the attribute with the specified name exists.</p>
+
+		<h3><a data-fragment="BufferGeometry.lookAt" target="_parent" title="BufferGeometry.lookAt" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.lookAt">#</a> .<a data-fragment="BufferGeometry.lookAt" id="lookAt" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.lookAt">lookAt</a> ( vector : <a data-fragment="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">Vector3</a> ) : <span>this</span></h3>
+		<div><p>
+			vector - A world vector to look at.</p><p>
+
+			Rotates the geometry to face a point in space. This is typically done as a
+			one time operation, and not during a loop. Use <a data-fragment="Object3D.lookAt" title="Object3D.lookAt" href="https://threejs.org/docs/index.html#api/en/core/Object3D.lookAt">Object3D.lookAt</a> for
+			typical real-time mesh usage.
+		</p></div>
+
+		<h3><a data-fragment="BufferGeometry.normalizeNormals" target="_parent" title="BufferGeometry.normalizeNormals" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.normalizeNormals">#</a> .<a data-fragment="BufferGeometry.normalizeNormals" id="normalizeNormals" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.normalizeNormals">normalizeNormals</a> () : <span>undefined</span></h3>
+		<p>
+			Every normal vector in a geometry will have a magnitude of <code translate="no"><span>1</span></code>. This will
+			correct lighting on the geometry surfaces.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.rotateX" target="_parent" title="BufferGeometry.rotateX" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.rotateX">#</a> .<a data-fragment="BufferGeometry.rotateX" id="rotateX" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.rotateX">rotateX</a> ( radians : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Rotate the geometry about the X axis. This is typically done as a one time
+			operation, and not during a loop. Use <a data-fragment="Object3D.rotation" title="Object3D.rotation" href="https://threejs.org/docs/index.html#api/en/core/Object3D.rotation">Object3D.rotation</a> for typical
+			real-time mesh rotation.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.rotateY" target="_parent" title="BufferGeometry.rotateY" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.rotateY">#</a> .<a data-fragment="BufferGeometry.rotateY" id="rotateY" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.rotateY">rotateY</a> ( radians : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Rotate the geometry about the Y axis. This is typically done as a one time
+			operation, and not during a loop. Use <a data-fragment="Object3D.rotation" title="Object3D.rotation" href="https://threejs.org/docs/index.html#api/en/core/Object3D.rotation">Object3D.rotation</a> for typical
+			real-time mesh rotation.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.rotateZ" target="_parent" title="BufferGeometry.rotateZ" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.rotateZ">#</a> .<a data-fragment="BufferGeometry.rotateZ" id="rotateZ" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.rotateZ">rotateZ</a> ( radians : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Rotate the geometry about the Z axis. This is typically done as a one time
+			operation, and not during a loop. Use <a data-fragment="Object3D.rotation" title="Object3D.rotation" href="https://threejs.org/docs/index.html#api/en/core/Object3D.rotation">Object3D.rotation</a> for typical
+			real-time mesh rotation.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.scale" target="_parent" title="BufferGeometry.scale" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.scale">#</a> .<a data-fragment="BufferGeometry.scale" id="scale" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.scale">scale</a> ( x : <span>Float</span>, y : <span>Float</span>, z : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Scale the geometry data. This is typically done as a one time operation,
+			and not during a loop. Use <a data-fragment="Object3D.scale" title="Object3D.scale" href="https://threejs.org/docs/index.html#api/en/core/Object3D.scale">Object3D.scale</a> for typical real-time
+			mesh scaling.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.setAttribute" target="_parent" title="BufferGeometry.setAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setAttribute">#</a> .<a data-fragment="BufferGeometry.setAttribute" id="setAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setAttribute">setAttribute</a> ( name : <span>String</span>, attribute : <a data-fragment="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a> ) : <span>this</span></h3>
+		<p>
+			Sets an attribute to this geometry. Use this rather than the attributes
+			property, because an internal hashmap of <a data-fragment="BufferGeometry.attributes" title="BufferGeometry.attributes" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.attributes">.attributes</a> is maintained
+			to speed up iterating over attributes.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.setDrawRange" target="_parent" title="BufferGeometry.setDrawRange" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setDrawRange">#</a> .<a data-fragment="BufferGeometry.setDrawRange" id="setDrawRange" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setDrawRange">setDrawRange</a> ( start : <span>Integer</span>, count : <span>Integer</span> ) : <span>undefined</span></h3>
+		<p>
+			Set the <a data-fragment="BufferGeometry.drawRange" title="BufferGeometry.drawRange" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.drawRange">.drawRange</a> property. For non-indexed BufferGeometry, count
+			is the number of vertices to render. For indexed BufferGeometry, count is
+			the number of indices to render.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.setFromPoints" target="_parent" title="BufferGeometry.setFromPoints" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setFromPoints">#</a> .<a data-fragment="BufferGeometry.setFromPoints" id="setFromPoints" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setFromPoints">setFromPoints</a> ( points : <span>Array</span> ) : <span>this</span></h3>
+		<p>Sets the attributes for this BufferGeometry from an array of points.</p>
+
+		<h3><a data-fragment="BufferGeometry.setIndex" target="_parent" title="BufferGeometry.setIndex" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setIndex">#</a> .<a data-fragment="BufferGeometry.setIndex" id="setIndex" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.setIndex">setIndex</a> ( index : <a data-fragment="BufferAttribute" href="https://threejs.org/docs/index.html#api/en/core/BufferAttribute">BufferAttribute</a> ) : <span>this</span></h3>
+		<p>Set the <a data-fragment="BufferGeometry.index" title="BufferGeometry.index" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.index">.index</a> buffer.</p>
+
+		<h3><a data-fragment="BufferGeometry.toJSON" target="_parent" title="BufferGeometry.toJSON" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.toJSON">#</a> .<a data-fragment="BufferGeometry.toJSON" id="toJSON" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.toJSON">toJSON</a> () : <span>Object</span></h3>
+		<p>
+			Convert the buffer geometry to three.js
+			<a href="https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4" target="_blank">JSON Object/Scene format</a>.
+		</p>
+
+		<h3><a data-fragment="BufferGeometry.toNonIndexed" target="_parent" title="BufferGeometry.toNonIndexed" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.toNonIndexed">#</a> .<a data-fragment="BufferGeometry.toNonIndexed" id="toNonIndexed" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.toNonIndexed">toNonIndexed</a> () : <a data-fragment="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a></h3>
+		<p>Return a non-index version of an indexed BufferGeometry.</p>
+
+		<h3><a data-fragment="BufferGeometry.translate" target="_parent" title="BufferGeometry.translate" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.translate">#</a> .<a data-fragment="BufferGeometry.translate" id="translate" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry.translate">translate</a> ( x : <span>Float</span>, y : <span>Float</span>, z : <span>Float</span> ) : <span>this</span></h3>
+		<p>
+			Translate the geometry. This is typically done as a one time operation,
+			and not during a loop. Use <a data-fragment="Object3D.position" title="Object3D.position" href="https://threejs.org/docs/index.html#api/en/core/Object3D.position">Object3D.position</a> for typical real-time
+			mesh translation.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/core/BufferGeometry.js" target="_blank">src/core/BufferGeometry.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

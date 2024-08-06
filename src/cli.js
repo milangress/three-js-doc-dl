@@ -11,6 +11,11 @@ yargs(hideBin(process.argv))
                 describe: 'The starting URL to crawl',
                 type: 'string'
             })
+            .option('format', {
+                describe: 'Format of the output [markdown, html]',
+                type: 'string',
+                default: 'markdown'
+            })
             .option('basePathOrGlobs', {
                 describe: 'Base paths or globs for crawling',
                 type: 'array',
@@ -44,7 +49,8 @@ yargs(hideBin(process.argv))
                 projectDir: argv.projectDir,
                 overwriteProjectDir: argv.overwriteProjectDir,
                 maxRequestsPerCrawl: argv.maxRequestsPerCrawl,
-                waitForTimeout: argv.waitForTimeout
+                waitForTimeout: argv.waitForTimeout,
+                format: argv.format
             });
         } catch (error) {
             console.error('Error during crawl:', error);

@@ -1,0 +1,226 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			Represents an axis-aligned bounding box (AABB) in 2D space.
+		</p>
+
+		<h2>Constructor</h2>
+
+		<h3>Box2( min : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, max : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> )</h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">min</a> - (optional) <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> representing the lower (x,
+			y) boundary of the box. Default is ( + Infinity, + Infinity ).<br>
+
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">max</a> - (optional) <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> representing the upper (x,
+			y) boundary of the box. Default is ( - Infinity, - Infinity ).</p><p>
+
+			Creates a Box2 bounded by min and max.
+		</p></div>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="Box2.min" target="_parent" title="Box2.min" href="https://threejs.org/docs/index.html#api/en/math/Box2.min">#</a> .<a data-fragment="Box2.min" id="min" href="https://threejs.org/docs/index.html#api/en/math/Box2.min">min</a>  : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> representing the lower (x, y) boundary of the box.<br>
+			Default is ( + Infinity, + Infinity ).
+		</p>
+
+		<h3><a data-fragment="Box2.max" target="_parent" title="Box2.max" href="https://threejs.org/docs/index.html#api/en/math/Box2.max">#</a> .<a data-fragment="Box2.max" id="max" href="https://threejs.org/docs/index.html#api/en/math/Box2.max">max</a>  : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<p>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> representing the lower upper (x, y) boundary of the box.<br>
+			Default is ( - Infinity, - Infinity ).
+		</p>
+
+		<h2>Methods</h2>
+
+		<h3>
+			<a data-fragment="Box2.clampPoint" target="_parent" title="Box2.clampPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.clampPoint">#</a> .<a data-fragment="Box2.clampPoint" id="clampPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.clampPoint">clampPoint</a> ( point : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, target : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>
+		</h3>
+		
+
+		<h3><a data-fragment="Box2.clone" target="_parent" title="Box2.clone" href="https://threejs.org/docs/index.html#api/en/math/Box2.clone">#</a> .<a data-fragment="Box2.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/math/Box2.clone">clone</a> () : <a data-fragment="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a></h3>
+		<p>
+			Returns a new <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> with the same <a data-fragment="Box2.min" title="Box2.min" href="https://threejs.org/docs/index.html#api/en/math/Box2.min">min</a> and <a data-fragment="Box2.max" title="Box2.max" href="https://threejs.org/docs/index.html#api/en/math/Box2.max">max</a> as this one.
+		</p>
+
+		<h3><a data-fragment="Box2.containsBox" target="_parent" title="Box2.containsBox" href="https://threejs.org/docs/index.html#api/en/math/Box2.containsBox">#</a> .<a data-fragment="Box2.containsBox" id="containsBox" href="https://threejs.org/docs/index.html#api/en/math/Box2.containsBox">containsBox</a> ( box : <a data-fragment="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> - <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> to test for inclusion.</p><p>
+
+			Returns true if this box includes the entirety of <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a>. If this
+			and <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> are identical, <br>
+			this function also returns true.
+		</p></div>
+
+		<h3><a data-fragment="Box2.containsPoint" target="_parent" title="Box2.containsPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.containsPoint">#</a> .<a data-fragment="Box2.containsPoint" id="containsPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.containsPoint">containsPoint</a> ( point : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">point</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> to check for inclusion.</p><p>
+
+			Returns true if the specified <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">point</a> lies within or on the
+			boundaries of this box.
+		</p></div>
+
+		<h3><a data-fragment="Box2.copy" target="_parent" title="Box2.copy" href="https://threejs.org/docs/index.html#api/en/math/Box2.copy">#</a> .<a data-fragment="Box2.copy" id="copy" href="https://threejs.org/docs/index.html#api/en/math/Box2.copy">copy</a> ( box : <a data-fragment="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> ) : <span>this</span></h3>
+		<p>
+			Copies the <a data-fragment="Box2.min" title="Box2.min" href="https://threejs.org/docs/index.html#api/en/math/Box2.min">min</a> and <a data-fragment="Box2.max" title="Box2.max" href="https://threejs.org/docs/index.html#api/en/math/Box2.max">max</a> from <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> to
+			this box.
+		</p>
+
+		<h3><a data-fragment="Box2.distanceToPoint" target="_parent" title="Box2.distanceToPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.distanceToPoint">#</a> .<a data-fragment="Box2.distanceToPoint" id="distanceToPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.distanceToPoint">distanceToPoint</a> ( point : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>Float</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">point</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> to measure distance to.</p><p>
+
+			Returns the distance from any edge of this box to the specified point. If
+			the <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">point</a> lies inside of this box, the distance will be <code translate="no"><span>0</span></code>.
+		</p></div>
+
+		<h3><a data-fragment="Box2.equals" target="_parent" title="Box2.equals" href="https://threejs.org/docs/index.html#api/en/math/Box2.equals">#</a> .<a data-fragment="Box2.equals" id="equals" href="https://threejs.org/docs/index.html#api/en/math/Box2.equals">equals</a> ( box : <a data-fragment="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> - Box to compare with this one.</p><p>
+
+			Returns true if this box and <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> share the same lower and
+			upper bounds.
+		</p></div>
+
+		<h3><a data-fragment="Box2.expandByPoint" target="_parent" title="Box2.expandByPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.expandByPoint">#</a> .<a data-fragment="Box2.expandByPoint" id="expandByPoint" href="https://threejs.org/docs/index.html#api/en/math/Box2.expandByPoint">expandByPoint</a> ( point : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">point</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> that should be included in the
+			box.</p><p>
+
+			Expands the boundaries of this box to include <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">point</a>.
+		</p></div>
+
+		<h3><a data-fragment="Box2.expandByScalar" target="_parent" title="Box2.expandByScalar" href="https://threejs.org/docs/index.html#api/en/math/Box2.expandByScalar">#</a> .<a data-fragment="Box2.expandByScalar" id="expandByScalar" href="https://threejs.org/docs/index.html#api/en/math/Box2.expandByScalar">expandByScalar</a> ( scalar : <span>Float</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Float" title="Float">scalar</a> - Distance to expand the box by.</p><p>
+
+			Expands each dimension of the box by <a data-fragment="Float" title="Float">scalar</a>. If negative, the
+			dimensions of the box will be contracted.
+		</p></div>
+
+		<h3><a data-fragment="Box2.expandByVector" target="_parent" title="Box2.expandByVector" href="https://threejs.org/docs/index.html#api/en/math/Box2.expandByVector">#</a> .<a data-fragment="Box2.expandByVector" id="expandByVector" href="https://threejs.org/docs/index.html#api/en/math/Box2.expandByVector">expandByVector</a> ( vector : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">vector</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> to expand the box by.</p><p>
+
+			Expands this box equilaterally by <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">vector</a>. The width of this
+			box will be expanded by the x component of <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">vector</a> in both
+			directions. The height of this box will be expanded by the y component of
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">vector</a> in both directions.
+		</p></div>
+
+		<h3><a data-fragment="Box2.getCenter" target="_parent" title="Box2.getCenter" href="https://threejs.org/docs/index.html#api/en/math/Box2.getCenter">#</a> .<a data-fragment="Box2.getCenter" id="getCenter" href="https://threejs.org/docs/index.html#api/en/math/Box2.getCenter">getCenter</a> ( target : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">target</a> — the result will be copied into this Vector2.</p><p>
+
+			Returns the center point of the box as a <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Box2.getParameter" target="_parent" title="Box2.getParameter" href="https://threejs.org/docs/index.html#api/en/math/Box2.getParameter">#</a> .<a data-fragment="Box2.getParameter" id="getParameter" href="https://threejs.org/docs/index.html#api/en/math/Box2.getParameter">getParameter</a> ( point : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, target : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">point</a> - <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>.<br>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">target</a> — the result will be copied into this Vector2.</p><p>
+
+			Returns a point as a proportion of this box's width and height.
+		</p></div>
+
+		<h3><a data-fragment="Box2.getSize" target="_parent" title="Box2.getSize" href="https://threejs.org/docs/index.html#api/en/math/Box2.getSize">#</a> .<a data-fragment="Box2.getSize" id="getSize" href="https://threejs.org/docs/index.html#api/en/math/Box2.getSize">getSize</a> ( target : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">target</a> — the result will be copied into this Vector2.</p><p>
+
+			Returns the width and height of this box.
+		</p></div>
+
+		<h3><a data-fragment="Box2.intersect" target="_parent" title="Box2.intersect" href="https://threejs.org/docs/index.html#api/en/math/Box2.intersect">#</a> .<a data-fragment="Box2.intersect" id="intersect" href="https://threejs.org/docs/index.html#api/en/math/Box2.intersect">intersect</a> ( box : <a data-fragment="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> - Box to intersect with.</p><p>
+
+			Returns the intersection of this and <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a>, setting the upper
+			bound of this box to the lesser of the two boxes' upper bounds and the
+			lower bound of this box to the greater of the two boxes' lower bounds.
+		</p></div>
+
+		<h3><a data-fragment="Box2.intersectsBox" target="_parent" title="Box2.intersectsBox" href="https://threejs.org/docs/index.html#api/en/math/Box2.intersectsBox">#</a> .<a data-fragment="Box2.intersectsBox" id="intersectsBox" href="https://threejs.org/docs/index.html#api/en/math/Box2.intersectsBox">intersectsBox</a> ( box : <a data-fragment="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> ) : <span>Boolean</span></h3>
+		<div>
+			<p><a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> - Box to check for intersection against.</p><p>
+
+			Determines whether or not this box intersects <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a>.
+		</p></div>
+
+		<h3><a data-fragment="Box2.isEmpty" target="_parent" title="Box2.isEmpty" href="https://threejs.org/docs/index.html#api/en/math/Box2.isEmpty">#</a> .<a data-fragment="Box2.isEmpty" id="isEmpty" href="https://threejs.org/docs/index.html#api/en/math/Box2.isEmpty">isEmpty</a> () : <span>Boolean</span></h3>
+		<p>
+			Returns true if this box includes zero points within its bounds.<br>
+			Note that a box with equal lower and upper bounds still includes one
+			point, the one both bounds share.
+		</p>
+
+		<h3><a data-fragment="Box2.makeEmpty" target="_parent" title="Box2.makeEmpty" href="https://threejs.org/docs/index.html#api/en/math/Box2.makeEmpty">#</a> .<a data-fragment="Box2.makeEmpty" id="makeEmpty" href="https://threejs.org/docs/index.html#api/en/math/Box2.makeEmpty">makeEmpty</a> () : <span>this</span></h3>
+		<p>Makes this box empty.</p>
+
+		<h3><a data-fragment="Box2.set" target="_parent" title="Box2.set" href="https://threejs.org/docs/index.html#api/en/math/Box2.set">#</a> .<a data-fragment="Box2.set" id="set" href="https://threejs.org/docs/index.html#api/en/math/Box2.set">set</a> ( min : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, max : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">min</a> - (required ) <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> representing the lower (x,
+			y) boundary of the box. <br>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">max</a> - (required) <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> representing the upper (x,
+			y) boundary of the box. </p><p>
+
+			Sets the lower and upper (x, y) boundaries of this box.<br>
+			Please note that this method only copies the values from the given
+			objects.
+		</p></div>
+
+		<h3>
+			<a data-fragment="Box2.setFromCenterAndSize" target="_parent" title="Box2.setFromCenterAndSize" href="https://threejs.org/docs/index.html#api/en/math/Box2.setFromCenterAndSize">#</a> .<a data-fragment="Box2.setFromCenterAndSize" id="setFromCenterAndSize" href="https://threejs.org/docs/index.html#api/en/math/Box2.setFromCenterAndSize">setFromCenterAndSize</a> ( center : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>, size : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span>
+		</h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">center</a> - Desired center position of the box
+			(<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>). <br>
+			<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">size</a> - Desired x and y dimensions of the box
+			(<a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>).</p><p>
+
+			Centers this box on <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">center</a> and sets this box's width and
+			height to the values specified in <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">size</a>.
+		</p></div>
+
+		<h3><a data-fragment="Box2.setFromPoints" target="_parent" title="Box2.setFromPoints" href="https://threejs.org/docs/index.html#api/en/math/Box2.setFromPoints">#</a> .<a data-fragment="Box2.setFromPoints" id="setFromPoints" href="https://threejs.org/docs/index.html#api/en/math/Box2.setFromPoints">setFromPoints</a> ( points : <span>Array</span> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Array" title="Array">points</a> - Array of <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2s</a> that the resulting
+			box will contain.</p><p>
+
+			Sets the upper and lower bounds of this box to include all of the points
+			in <a data-fragment="Array" title="Array">points</a>.
+		</p></div>
+
+		<h3><a data-fragment="Box2.translate" target="_parent" title="Box2.translate" href="https://threejs.org/docs/index.html#api/en/math/Box2.translate">#</a> .<a data-fragment="Box2.translate" id="translate" href="https://threejs.org/docs/index.html#api/en/math/Box2.translate">translate</a> ( offset : <a data-fragment="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">offset</a> - Direction and distance of offset.</p><p>
+
+			Adds <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">offset</a> to both the upper and lower bounds of this box,
+			effectively moving this box <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">offset</a> units in 2D space.
+		</p></div>
+
+		<h3><a data-fragment="Box2.union" target="_parent" title="Box2.union" href="https://threejs.org/docs/index.html#api/en/math/Box2.union">#</a> .<a data-fragment="Box2.union" id="union" href="https://threejs.org/docs/index.html#api/en/math/Box2.union">union</a> ( box : <a data-fragment="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">Box2</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a> - Box that will be unioned with this box.</p><p>
+
+			Unions this box with <a data-fragment="Box2" title="Box2" href="https://threejs.org/docs/index.html#api/en/math/Box2">box</a>, setting the upper bound of this box
+			to the greater of the two boxes' upper bounds and the lower bound of this
+			box to the lesser of the two boxes' lower bounds.
+		</p></div>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/math/Box2.js" target="_blank">src/math/Box2.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

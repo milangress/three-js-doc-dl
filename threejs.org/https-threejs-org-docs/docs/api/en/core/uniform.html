@@ -1,0 +1,258 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		
+
+		<p>
+			Uniforms are global GLSL variables. They are passed to shader programs.
+		</p>
+
+		<h2>Code Example</h2>
+		<p>
+			When declaring a uniform of a <a data-fragment="ShaderMaterial" title="ShaderMaterial" href="https://threejs.org/docs/index.html#api/en/materials/ShaderMaterial">ShaderMaterial</a>, it is declared by
+			value or by object.
+		</p>
+		<p><code translate="no"><span>uniforms</span><span>:</span><span> </span><span>{</span><span>
+	time</span><span>:</span><span> </span><span>{</span><span> value</span><span>:</span><span> </span><span>1.0</span><span> </span><span>},</span><span> 
+	resolution</span><span>:</span><span> </span><span>new</span><span> </span><span>Uniform</span><span>(</span><span> </span><span>new</span><span> </span><span>Vector2</span><span>()</span><span> </span><span>)</span><span>
+</span><span>};</span></code></p><h2>Uniform types</h2>
+		<p>
+			Each uniform must have a <code translate="no"><span>value</span></code> property. The type of the value must
+			correspond to the type of the uniform variable in the GLSL code as
+			specified for the primitive GLSL types in the table below. Uniform
+			structures and arrays are also supported. GLSL arrays of primitive type
+			must either be specified as an array of the corresponding THREE objects or
+			as a flat array containing the data of all the objects. In other words;
+			GLSL primitives in arrays must not be represented by arrays. This rule
+			does not apply transitively. An array of <code translate="no"><span>vec2</span></code> arrays, each with a length
+			of five vectors, must be an array of arrays, of either five <a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">Vector2</a>
+			objects or ten <code translate="no"><span>number</span></code>s.
+		</p>
+
+		<table>
+			<caption>
+				<a id="uniform-types">Uniform types</a>
+			</caption>
+			<thead>
+				<tr>
+					<th>GLSL type</th>
+					<th>JavaScript type</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>int</td>
+					<td><a data-fragment="Number" title="Number">Number</a></td>
+				</tr>
+				<tr>
+					<td>uint</td>
+					<td><a data-fragment="Number" title="Number">Number</a></td>
+				</tr>
+				<tr>
+					<td>float</td>
+					<td><a data-fragment="Number" title="Number">Number</a></td>
+				</tr>
+				<tr>
+					<td>bool</td>
+					<td><a data-fragment="Boolean" title="Boolean">Boolean</a></td>
+				</tr>
+				<tr>
+					<td>bool</td>
+					<td><a data-fragment="Number" title="Number">Number</a></td>
+				</tr>
+				<tr>
+					<td>vec2</td>
+					<td><a data-fragment="Vector2" title="Vector2" href="https://threejs.org/docs/index.html#api/en/math/Vector2">THREE.Vector2</a></td>
+				</tr>
+				<tr>
+					<td>vec2</td>
+					<td><a data-fragment="Float32Array" title="Float32Array">Float32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>vec2</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>vec3</td>
+					<td><a data-fragment="Vector3" title="Vector3" href="https://threejs.org/docs/index.html#api/en/math/Vector3">THREE.Vector3</a></td>
+				</tr>
+				<tr>
+					<td>vec3</td>
+					<td><a data-fragment="Color" title="Color" href="https://threejs.org/docs/index.html#api/en/math/Color">THREE.Color</a></td>
+				</tr>
+				<tr>
+					<td>vec3</td>
+					<td><a data-fragment="Float32Array" title="Float32Array">Float32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>vec3</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>vec4</td>
+					<td><a data-fragment="Vector4" title="Vector4" href="https://threejs.org/docs/index.html#api/en/math/Vector4">THREE.Vector4</a></td>
+				</tr>
+				<tr>
+					<td>vec4</td>
+					<td><a data-fragment="Quaternion" title="Quaternion" href="https://threejs.org/docs/index.html#api/en/math/Quaternion">THREE.Quaternion</a></td>
+				</tr>
+				<tr>
+					<td>vec4</td>
+					<td><a data-fragment="Float32Array" title="Float32Array">Float32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>vec4</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>mat2</td>
+					<td><a data-fragment="Float32Array" title="Float32Array">Float32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>mat2</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>mat3</td>
+					<td><a data-fragment="Matrix3" title="Matrix3" href="https://threejs.org/docs/index.html#api/en/math/Matrix3">THREE.Matrix3</a></td>
+				</tr>
+				<tr>
+					<td>mat3</td>
+					<td><a data-fragment="Float32Array" title="Float32Array">Float32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>mat3</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>mat4</td>
+					<td><a data-fragment="Matrix4" title="Matrix4" href="https://threejs.org/docs/index.html#api/en/math/Matrix4">THREE.Matrix4</a></td>
+				</tr>
+				<tr>
+					<td>mat4</td>
+					<td><a data-fragment="Float32Array" title="Float32Array">Float32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>mat4</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>ivec2, bvec2</td>
+					<td><a data-fragment="Float32Array" title="Float32Array">Float32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>ivec2, bvec2</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>ivec3, bvec3</td>
+					<td><a data-fragment="Int32Array" title="Int32Array">Int32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>ivec3, bvec3</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>ivec4, bvec4</td>
+					<td><a data-fragment="Int32Array" title="Int32Array">Int32Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>ivec4, bvec4</td>
+					<td><a data-fragment="Array" title="Array">Array</a> (*)</td>
+				</tr>
+				<tr>
+					<td>sampler2D</td>
+					<td><a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">THREE.Texture</a></td>
+				</tr>
+				<tr>
+					<td>samplerCube</td>
+					<td><a data-fragment="CubeTexture" title="CubeTexture" href="https://threejs.org/docs/index.html#api/en/textures/CubeTexture">THREE.CubeTexture</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>
+			(*) Same for an (innermost) array (dimension) of the same GLSL type,
+			containing the components of all vectors or matrices in the array.
+		</p>
+
+		<h2>Structured Uniforms</h2>
+
+		<p>
+			Sometimes you want to organize uniforms as <code translate="no"><span>structs</span></code> in your shader code.
+			The following style must be used so <code translate="no"><span>three</span><span>.</span><span>js</span></code> is able to process
+			structured uniform data.
+		</p>
+		<p><code translate="no"><span>uniforms </span><span>=</span><span> </span><span>{</span><span>
+	data</span><span>:</span><span> </span><span>{</span><span> 
+		value</span><span>:</span><span> </span><span>{</span><span>
+			position</span><span>:</span><span> </span><span>new</span><span> </span><span>Vector3</span><span>(),</span><span> 
+			direction</span><span>:</span><span> </span><span>new</span><span> </span><span>Vector3</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>1</span><span> </span><span>)</span><span> 
+		</span><span>}</span><span> 
+	</span><span>}</span><span> 
+</span><span>};</span></code>
+		This definition can be mapped on the following GLSL code:
+		<code translate="no"><span>struct</span><span> </span><span>Data</span><span> </span><span>{</span><span> 
+	vec3 position</span><span>;</span><span>
+	vec3 direction</span><span>;</span><span>
+</span><span>};</span><span>
+uniform </span><span>Data</span><span> data</span><span>;</span></code></p><h2>Structured Uniforms with Arrays</h2>
+
+		<p>
+			It's also possible to manage <code translate="no"><span>structs</span></code> in arrays. The syntax for this use
+			case looks like so:
+		</p>
+		<p><code translate="no"><span>const</span><span> entry1 </span><span>=</span><span> </span><span>{</span><span>
+	position</span><span>:</span><span> </span><span>new</span><span> </span><span>Vector3</span><span>(),</span><span>
+	direction</span><span>:</span><span> </span><span>new</span><span> </span><span>Vector3</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>1</span><span> </span><span>)</span><span>
+</span><span>};</span><span>
+</span><span>const</span><span> entry2 </span><span>=</span><span> </span><span>{</span><span>
+	position</span><span>:</span><span> </span><span>new</span><span> </span><span>Vector3</span><span>(</span><span> </span><span>1</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>1</span><span> </span><span>),</span><span>
+	direction</span><span>:</span><span> </span><span>new</span><span> </span><span>Vector3</span><span>(</span><span> </span><span>0</span><span>,</span><span> </span><span>1</span><span>,</span><span> </span><span>0</span><span> </span><span>)</span><span>
+</span><span>};</span><span>
+
+uniforms </span><span>=</span><span> </span><span>{</span><span>
+	data</span><span>:</span><span> </span><span>{</span><span>
+		value</span><span>:</span><span> </span><span>[</span><span> entry1</span><span>,</span><span> entry2 </span><span>]</span><span>
+	</span><span>}</span><span>
+</span><span>};</span></code>
+		This definition can be mapped on the following GLSL code:
+		<code translate="no"><span>struct</span><span> </span><span>Data</span><span> </span><span>{</span><span> 
+	vec3 position</span><span>;</span><span> 
+	vec3 direction</span><span>;</span><span> 
+</span><span>};</span><span>
+uniform </span><span>Data</span><span> data</span><span>[</span><span> </span><span>2</span><span> </span><span>];</span></code></p><h2>Constructor</h2>
+
+		<h3>Uniform( value : <span>Object</span> )</h3>
+		<p>
+			value -- An object containing the value to set up the uniform. It's type
+			must be one of the Uniform Types described above.
+		</p>
+
+		<h2>Properties</h2>
+
+		<h3><a data-fragment="Uniform.value" target="_parent" title="Uniform.value" href="https://threejs.org/docs/index.html#api/en/core/Uniform.value">#</a> .<a data-fragment="Uniform.value" id="value" href="https://threejs.org/docs/index.html#api/en/core/Uniform.value">value</a>  : <span>Object</span></h3>
+		<p>Current value of the uniform.</p>
+
+		<h2>Methods</h2>
+
+		<h3><a data-fragment="Uniform.clone" target="_parent" title="Uniform.clone" href="https://threejs.org/docs/index.html#api/en/core/Uniform.clone">#</a> .<a data-fragment="Uniform.clone" id="clone" href="https://threejs.org/docs/index.html#api/en/core/Uniform.clone">clone</a> () : <a data-fragment="Uniform" href="https://threejs.org/docs/index.html#api/en/core/Uniform">Uniform</a></h3>
+		<p>
+			Returns a clone of this uniform.<br>
+			If the uniform's value property is an <a data-fragment="Object" title="Object">Object</a> with a clone() method,
+			this is used, otherwise the value is copied by assignment. Array values
+			are shared between cloned <a data-fragment="Uniform" title="Uniform" href="https://threejs.org/docs/index.html#api/en/core/Uniform">Uniform</a>s.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/core/Uniform.js" target="_blank">src/core/Uniform.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

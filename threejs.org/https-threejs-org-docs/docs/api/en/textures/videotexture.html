@@ -1,0 +1,74 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> →
+
+		</p>
+
+		<p>Creates a texture for use with a video.</p>
+
+		<p>
+			Note: After the initial use of a texture, the video cannot be changed.
+			Instead, call <a data-fragment="VideoTexture.dispose" title="VideoTexture.dispose" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.dispose">.dispose</a>() on the texture and instantiate a new one.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>// assuming you have created a HTML video element with id="video"</span><span>
+</span><span>const</span><span> video </span><span>=</span><span> document</span><span>.</span><span>getElementById</span><span>(</span><span> </span><span>'video'</span><span> </span><span>);</span><span>
+</span><span>const</span><span> texture </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>VideoTexture</span><span>(</span><span> video </span><span>);</span></code></p><h2>Examples</h2>
+
+		<p>
+			<a href="https://threejs.org/examples/#webgl_materials_video" target="_blank">materials / video</a><br>
+			<a href="https://threejs.org/examples/#webgl_materials_video_webcam" target="_blank">materials / video / webcam</a><br>
+			<a href="https://threejs.org/examples/#webgl_video_kinect" target="_blank">video / kinect</a><br>
+			<a href="https://threejs.org/examples/#webgl_video_panorama_equirectangular" target="_blank">video / panorama / equirectangular</a><br>
+			<a href="https://threejs.org/examples/#webxr_vr_video" target="_blank">vr / video</a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>
+			VideoTexture( video : <a data-fragment="Video">Video</a>, mapping : <a data-fragment="Constant">Constant</a>, wrapS : <a data-fragment="Constant">Constant</a>, 
+			wrapT : <a data-fragment="Constant">Constant</a>, magFilter : <a data-fragment="Constant">Constant</a>, minFilter : <a data-fragment="Constant">Constant</a>, 
+			format : <a data-fragment="Constant">Constant</a>, type : <a data-fragment="Constant">Constant</a>, anisotropy : <span>Number</span> )
+		</h3>
+		
+
+		<h2>Properties</h2>
+
+		<p>See the base <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> class for common properties.</p>
+
+		<h3><a data-fragment="VideoTexture.generateMipmaps" target="_parent" title="VideoTexture.generateMipmaps" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.generateMipmaps">#</a> .<a data-fragment="VideoTexture.generateMipmaps" id="generateMipmaps" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.generateMipmaps">generateMipmaps</a>  : <span>Boolean</span></h3>
+		<p>Whether to generate mipmaps. <code translate="no"><span>false</span></code> by default.</p>
+
+		<h3><a data-fragment="VideoTexture.isVideoTexture" target="_parent" title="VideoTexture.isVideoTexture" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.isVideoTexture">#</a> .<a data-fragment="VideoTexture.isVideoTexture" id="isVideoTexture" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.isVideoTexture">isVideoTexture</a>  : <span>Boolean</span></h3>
+		<p>Read-only flag to check if a given object is of type VideoTexture.</p>
+
+		<h3><a data-fragment="VideoTexture.needsUpdate" target="_parent" title="VideoTexture.needsUpdate" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.needsUpdate">#</a> .<a data-fragment="VideoTexture.needsUpdate" id="needsUpdate" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.needsUpdate">needsUpdate</a>  : <span>Boolean</span></h3>
+		<p>
+			You will not need to set this manually here as it is handled by the
+			<a data-fragment="VideoTexture.update" title="VideoTexture.update" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.update">update</a>() method.
+		</p>
+
+		<h2>Methods</h2>
+
+		<p>See the base <a data-fragment="Texture" title="Texture" href="https://threejs.org/docs/index.html#api/en/textures/Texture">Texture</a> class for common methods.</p>
+
+		<h3><a data-fragment="VideoTexture.update" target="_parent" title="VideoTexture.update" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.update">#</a> .<a data-fragment="VideoTexture.update" id="update" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.update">update</a> () : <span>undefined</span></h3>
+		<p>
+			This is called automatically and sets <a data-fragment="VideoTexture.needsUpdate" title="VideoTexture.needsUpdate" href="https://threejs.org/docs/index.html#api/en/textures/VideoTexture.needsUpdate">.needsUpdate</a> 
+			to <code translate="no"><span>true</span></code> every time a new frame is available.
+		</p>
+
+		<h2>Source</h2>
+
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/textures/VideoTexture.js" target="_blank">src/textures/VideoTexture.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>

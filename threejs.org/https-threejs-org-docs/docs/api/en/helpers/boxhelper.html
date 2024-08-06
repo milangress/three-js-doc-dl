@@ -1,0 +1,77 @@
+<div id="readability-page-1" class="page"><div>
+		<meta charset="utf-8">
+		<base href="../../../">
+		
+		
+	
+	
+		<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> → <a data-fragment="Line" title="Line" href="https://threejs.org/docs/index.html#api/en/objects/Line">Line</a> → <a data-fragment="LineSegments" title="LineSegments" href="https://threejs.org/docs/index.html#api/en/objects/LineSegments">LineSegments</a> →
+
+		</p>
+
+		<p>
+			Helper object to graphically show the world-axis-aligned bounding box
+			around an object. The actual bounding box is handled with <a data-fragment="Box3" title="Box3" href="https://threejs.org/docs/index.html#api/en/math/Box3">Box3</a>,
+			this is just a visual helper for debugging. It can be automatically
+			resized with the <a data-fragment="BoxHelper.update" title="BoxHelper.update" href="https://threejs.org/docs/index.html#api/en/helpers/BoxHelper.update">BoxHelper.update</a> method when the object it's
+			created from is transformed. Note that the object must have a
+			<a data-fragment="BufferGeometry" title="BufferGeometry" href="https://threejs.org/docs/index.html#api/en/core/BufferGeometry">BufferGeometry</a> for this to work, so it won't work with <a data-fragment="Sprite" title="Sprite" href="https://threejs.org/docs/index.html#api/en/objects/Sprite">Sprites</a>.
+		</p>
+
+		<h2>Code Example</h2>
+
+		<p><code translate="no"><span>const</span><span> sphere </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>SphereGeometry</span><span>();</span><span>
+</span><span>const</span><span> </span><span>object</span><span> </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>Mesh</span><span>(</span><span> sphere</span><span>,</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>MeshBasicMaterial</span><span>(</span><span> </span><span>0xff0000</span><span> </span><span>)</span><span> </span><span>);</span><span>
+</span><span>const</span><span> box </span><span>=</span><span> </span><span>new</span><span> THREE</span><span>.</span><span>BoxHelper</span><span>(</span><span> </span><span>object</span><span>,</span><span> </span><span>0xffff00</span><span> </span><span>);</span><span>
+scene</span><span>.</span><span>add</span><span>(</span><span> box </span><span>);</span></code></p><h2>Examples</h2>
+		<p>
+			<a href="https://threejs.org/examples/#webgl_helpers" target="_blank">WebGL / helpers</a><br>
+			<a href="https://threejs.org/examples/#webgl_loader_nrrd" target="_blank">WebGL / loader / nrrd</a><br>
+			<a href="https://threejs.org/examples/#webgl_buffergeometry_drawrange" target="_blank">WebGL / buffergeometry / drawrange</a>
+		</p>
+
+		<h2>Constructor</h2>
+		<h3>BoxHelper( object : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a>, color : <a data-fragment="Color" href="https://threejs.org/docs/index.html#api/en/math/Color">Color</a> )</h3>
+		<div>
+			<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">object</a> -- (optional) the object3D to show the
+			world-axis-aligned boundingbox.<br>
+			<a data-fragment="Color" title="Color" href="https://threejs.org/docs/index.html#api/en/math/Color">color</a> -- (optional) hexadecimal value that defines the box's
+			color. Default is 0xffff00.</p><p>
+
+			Creates a new wireframe box that bounds the passed object. Internally this
+			uses <a data-fragment="Box3.setFromObject" title="Box3.setFromObject" href="https://threejs.org/docs/index.html#api/en/math/Box3.setFromObject">Box3.setFromObject</a> to calculate the dimensions. Note that this
+			includes any children.
+		</p></div>
+
+		<h2>Properties</h2>
+		<p>See the base <a data-fragment="LineSegments" title="LineSegments" href="https://threejs.org/docs/index.html#api/en/objects/LineSegments">LineSegments</a> class for common properties.</p>
+
+		<h2>Methods</h2>
+		<p>See the base <a data-fragment="LineSegments" title="LineSegments" href="https://threejs.org/docs/index.html#api/en/objects/LineSegments">LineSegments</a> class for common methods.</p>
+
+		<h3><a data-fragment="BoxHelper.update" target="_parent" title="BoxHelper.update" href="https://threejs.org/docs/index.html#api/en/helpers/BoxHelper.update">#</a> .<a data-fragment="BoxHelper.update" id="update" href="https://threejs.org/docs/index.html#api/en/helpers/BoxHelper.update">update</a> () : <span>undefined</span></h3>
+		<p>
+			Updates the helper's geometry to match the dimensions of the object,
+			including any children. See <a data-fragment="Box3.setFromObject" title="Box3.setFromObject" href="https://threejs.org/docs/index.html#api/en/math/Box3.setFromObject">Box3.setFromObject</a>.
+		</p>
+
+		<h3><a data-fragment="BoxHelper.setFromObject" target="_parent" title="BoxHelper.setFromObject" href="https://threejs.org/docs/index.html#api/en/helpers/BoxHelper.setFromObject">#</a> .<a data-fragment="BoxHelper.setFromObject" id="setFromObject" href="https://threejs.org/docs/index.html#api/en/helpers/BoxHelper.setFromObject">setFromObject</a> ( object : <a data-fragment="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> ) : <span>this</span></h3>
+		<div>
+			<p><a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">object</a> - <a data-fragment="Object3D" title="Object3D" href="https://threejs.org/docs/index.html#api/en/core/Object3D">Object3D</a> to create the helper of.</p><p>
+
+			Updates the wireframe box for the passed object.
+		</p></div>
+
+		<h3><a data-fragment="BoxHelper.dispose" target="_parent" title="BoxHelper.dispose" href="https://threejs.org/docs/index.html#api/en/helpers/BoxHelper.dispose">#</a> .<a data-fragment="BoxHelper.dispose" id="dispose" href="https://threejs.org/docs/index.html#api/en/helpers/BoxHelper.dispose">dispose</a> () : <span>undefined</span></h3>
+		<p>
+			Frees the GPU-related resources allocated by this instance. Call this
+			method whenever this instance is no longer used in your app.
+		</p>
+
+		<h2>Source</h2>
+		<p>
+			<a href="https://github.com/mrdoob/three.js/blob/master/src/helpers/BoxHelper.js" target="_blank">src/helpers/BoxHelper.js</a>
+		</p>
+	
+
+<p><img src="https://threejs.org/files/ic_mode_edit_black_24dp.svg"></p></div></div>
