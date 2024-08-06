@@ -57,6 +57,7 @@ async function crawlWebsite(config) {
         overwriteProjectDir = true,
         maxRequestsPerCrawl,
         waitForTimeout = 3000,
+        skipPathIncludes,
         format
     } = config;
 
@@ -65,18 +66,29 @@ async function crawlWebsite(config) {
     const createGlobs = paths => paths.map(p => p.includes('*') ? p : `${p.endsWith('/') ? p : `${p}/`}**`);
     const globs = createGlobs(basePathOrGlobs);
 
-    let counter = 1;
+    let counter = 0;
     let totalQueued = 0;
 
     const crawler = new PlaywrightCrawler({
-        preNavigationHooks: [async (ctx, gotoOptions) => {
-            gotoOptions.waitUntil = 'networkidle';
-        }],
+        preNavigationHooks: [
+            // Add this hook before other hooks
+            async ({ request, page, crawler }) => {
+                counter++;
+                log.info(`${counter}/${totalQueued} --- Processing: ${request.url} (${totalQueued - counter} to do)`);
+                const url = new URL(request.url);
+                const shouldSkip = skipPathIncludes.some(fragment => url.pathname.includes(fragment));
+                if (shouldSkip) {
+                    console.log(`Skipping URL: ${request.url}`);
+                    return false; // This will skip the request
+                }
+            },
+            // ... existing hooks ...
+        ],
         requestHandler: async ({ request, page, enqueueLinks }) => {
             await page.waitForTimeout(waitForTimeout);
 
             const title = await page.title();
-            log.info(`${counter}/${totalQueued} --- Processing: ${title} (${totalQueued - counter} to do)`);
+            //log.info(`${counter}/${totalQueued} --- Processing: ${title} (${totalQueued - counter} to do)`);
 
 
             const $ = await playwrightUtils.parseWithCheerio(page,false,false);
@@ -159,7 +171,6 @@ async function crawlWebsite(config) {
 
            
             totalQueued += queueRequests.processedRequests.filter(request => !request.wasAlreadyHandled).length;
-            counter++;
             //log.info(`Queued links: ${queueRequests.processedRequests.length} (+${queueRequests.unprocessedRequests.length}) `);
             //log.info(`Queue was already handled: ${queueWasAlreadyHandled.length}`);
             //log.info(`Queue already present: ${queueAlreadyPresent.length}`);

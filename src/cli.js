@@ -16,6 +16,11 @@ yargs(hideBin(process.argv))
                 type: 'string',
                 default: 'markdown'
             })
+            .option('skipPaths', {
+                describe: 'Skip paths that include these strings',
+                type: 'array',
+                default: []
+            })
             .option('basePathOrGlobs', {
                 describe: 'Base paths or globs for crawling',
                 type: 'array',
@@ -50,6 +55,7 @@ yargs(hideBin(process.argv))
                 overwriteProjectDir: argv.overwriteProjectDir,
                 maxRequestsPerCrawl: argv.maxRequestsPerCrawl,
                 waitForTimeout: argv.waitForTimeout,
+                skipPathIncludes: argv.skipPaths,
                 format: argv.format
             });
         } catch (error) {
