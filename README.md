@@ -1,33 +1,46 @@
-# Website Crawler
+# Web Crawl Doc AI
 
-A general-purpose website crawler and saver.
+## Overview
+
+Web Crawl Doc AI is a versatile website crawler and content extractor designed to crawl websites and save the content as markdown files. This tool is particularly useful for creating AI-friendly (embeddable) documentation from existing web content.
+
+## Features
+
+- Crawl websites starting from a specified URL
+- Extract content using Readability
+- Convert HTML content to Markdown
+- Save crawled content as HTML and/or Markdown files
+- Configurable crawl parameters
+- Command-line interface for easy use
 
 ## Installation
 
+To install the package globally, run:
+
 ```bash
-npm install -g website-crawler
+npm install -g web-crawl-doc-ai
 ```
 
 ## Usage
 
 ### As a CLI tool
 
+The primary way to use this tool is through the command line interface:
+
 ```bash
-website-crawler crawl <startUrl> [options]
+web-crawl crawl <startUrl> [options]
 ```
 
 Options:
-- `--basePathOrGlobs`: Base paths or globs for crawling (default: startUrl)
-- `--projectDir`: Directory to save crawled data (default: 'crawled-website')
-- `--overwriteProjectDir`: Overwrite project directory if it exists (default: true)
-- `--maxRequestsPerCrawl`: Maximum number of requests per crawl
-- `--waitForTimeout`: Timeout to wait for each page load (default: 3000)
+- '--format': Output format (markdown, html, or both) (default: markdown)
+- '--skipPaths': Array of path fragments to skip during crawling
+- '--basePathOrGlobs': Base paths or globs for crawling (default: startUrl)
+- '--projectDir': Directory to save crawled data (default: hostname of startUrl)
+- '--overwriteProjectDir': Overwrite project directory if it exists (default: true)
+- '--maxRequestsPerCrawl': Maximum number of requests per crawl
+- '--waitForTimeout': Timeout to wait for each page load (default: 3000ms)
 
 Example:
 ```bash
-website-crawler crawl https://example.com --projectDir my-crawl --maxRequestsPerCrawl 100
+web-crawl crawl https://example.com --format=markdown --skipPaths=/blog /news
 ```
-
-## License
-
-MIT
