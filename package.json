@@ -20,6 +20,7 @@
     "start": "node src/main.js",
     "threejs": "node src/threejs-dl.js",
     "crawl": "node src/cli.js crawl",
+    "semantic-release": "semantic-release",
     "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1",
     "postinstall": "npx crawlee install-playwright-browsers"
   },
@@ -27,5 +28,8 @@
   "license": "MIT",
   "volta": {
     "node": "20.16.0"
+  },
+  "devDependencies": {
+    "semantic-release": "^24.0.0"
   }
 }
