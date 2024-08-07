@@ -18,7 +18,17 @@ Web Crawl Doc AI is a versatile website crawler and content extractor designed t
 To install the package globally, run:
 
 ```bash
-npm install -g web-crawl-doc-ai
+npm install -g @milangress/web-crawl-doc-ai
+```
+
+## NPX (recommended)
+Alternatively, you can use npx to run the package.
+This allows you to use the latest version of the package without installing it globally.
+
+```bash
+npx @milangress/web-crawl-doc-ai crawl <startUrl> [options]
+#eg:
+npx @milangress/web-crawl-doc-ai crawl https://threejs.org/docs/ --format=markdown
 ```
 
 ## Usage
