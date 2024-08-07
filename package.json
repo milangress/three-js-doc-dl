@@ -1,6 +1,6 @@
 {
   "name": "@milangress/web-crawl-doc-ai",
-  "version": "0.0.0-development",
+  "version": "1.2.1",
   "description": "Crawls websites and save markdown files for ai embedding",
   "main": "src/index.js",
   "type": "module",
